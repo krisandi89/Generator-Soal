@@ -21,6 +21,9 @@
             max-width: 800px;
             width: 90%;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1 {
@@ -41,6 +44,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
+            margin-bottom: 40px;
         }
 
         .class-card {
@@ -101,6 +105,30 @@
         .card-k4 .icon { color: #0984e3; }
         .card-k4 .btn-enter { background-color: #0984e3; }
 
+        /* Styling Tombol Generator (Kecil di Bawah) */
+        .admin-card {
+            background: white;
+            border: 1px solid #dfe6e9;
+            padding: 10px 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #636e72;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            color: #2980b9;
+            border-color: #74b9ff;
+        }
+
         footer {
             margin-top: 50px;
             color: #b2bec3;
@@ -131,6 +159,12 @@
                 <span class="btn-enter">Masuk Kelas ➜</span>
             </a>
         </div>
+
+        <!-- Tombol Generator Kecil -->
+        <a href="generator.html" class="admin-card">
+            <span>⚙️</span>
+            <strong>Buat Soal (Guru)</strong>
+        </a>
 
         <footer>
             &copy; 2025 Portal Belajar Bersama
