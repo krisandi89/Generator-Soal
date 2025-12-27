@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal Kelas 2 - SDIT FREINDS</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color: #f0fff4; /* Background kehijauan soft untuk beda suasana */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #27ae60; /* Warna Hijau Utama */
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #a8e6cf;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid #2ecc71;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 260px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 4px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1));
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+
+        .btn-start {
+            display: inline-block;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: auto;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            background-color: #27ae60; /* Default Hijau untuk Kelas 2 */
+        }
+        
+        .btn-start:hover { background-color: #2ecc71; }
+
+        /* Styling Kartu (Default Hijau untuk Kelas 2 agar beda tema) */
+        .card:hover { border-color: #2ecc71; }
+
+        footer {
+            margin-top: auto;
+            padding-top: 60px;
+            color: #b2bec3;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .home-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .admin-link {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">⬅ Kembali ke Menu Utama</a>
+
+    <h1>🎈 Ruang Belajar Ceria 🎈</h1>
+    <div class="subtitle">SDIT FREINDS - Kelas 2</div>
+
+    <div class="card-container">
+        <!-- LINK MAPEL KELAS 2 (Sementara disamakan) -->
+        <!-- Nanti file mapel kelas 2 bisa digenerate dengan nama unik, misal: pancasila_k2.html -->
+        
+        <a href="pancasila.html" class="card">
+            <div class="card-icon">🇮🇩</div>
+            <div class="card-title">Pancasila</div>
+            <div class="card-desc">Simbol Negara dan Aturan di Rumah.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="ipas.html" class="card">
+            <div class="card-icon">🌿</div>
+            <div class="card-title">IPAS</div>
+            <div class="card-desc">Benda Padat, Cair, dan Lingkungan.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="pai.html" class="card">
+            <div class="card-icon">🌙</div>
+            <div class="card-title">PAI</div>
+            <div class="card-desc">Huruf Hijaiyah dan Perilaku Terpuji.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="bahasaindonesia.html" class="card">
+            <div class="card-icon">📖</div>
+            <div class="card-title">B. Indonesia</div>
+            <div class="card-desc">Kalimat Tanya dan Membaca Puisi.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="matematika.html" class="card">
+            <div class="card-icon">➗</div>
+            <div class="card-title">Matematika</div>
+            <div class="card-desc">Penjumlahan dan Perkalian Dasar.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="bahasainggris.html" class="card">
+            <div class="card-icon">🇬🇧</div>
+            <div class="card-title">B. Inggris</div>
+            <div class="card-desc">Numbers, Colors, and Animals.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="bahasaarab.html" class="card">
+            <div class="card-icon">🕌</div>
+            <div class="card-title">B. Arab</div>
+            <div class="card-desc">Anggota Tubuh dan Keluarga.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="budipekerti.html" class="card">
+            <div class="card-icon">🤝</div>
+            <div class="card-title">Budi Pekerti</div>
+            <div class="card-desc">Sopan Santun dan Tolong Menolong.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="senirupa.html" class="card">
+            <div class="card-icon">🎨</div>
+            <div class="card-title">Seni Rupa</div>
+            <div class="card-desc">Menggambar dan Mewarnai.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="pjok.html" class="card">
+            <div class="card-icon">🏀</div>
+            <div class="card-title">PJOK</div>
+            <div class="card-desc">Gerak Lokomotor dan Keseimbangan.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="tik.html" class="card">
+            <div class="card-icon">💻</div>
+            <div class="card-title">TIK</div>
+            <div class="card-desc">Mengenal Bagian Komputer.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SDIT FREINDS</p>
+        <a href="generator.html" class="admin-link">⚙️ Login Guru</a>
+    </footer>
+
+</body>
+</html>
