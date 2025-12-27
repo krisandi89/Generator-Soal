@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal Kelas 4 - SD Dilaraf</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color: #eaf2f8; /* Sedikit beda background biar fresh */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #ffeaa7;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 260px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 4px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 0 rgba(0,0,0,0.1));
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+
+        .btn-start {
+            display: inline-block;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: auto;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        /* Warna Tombol Tetap Sama */
+        .card.pancasila:hover { border-color: #74b9ff; }
+        .btn-pancasila { background-color: #0984e3; box-shadow: 0 4px #06528f; }
+        .btn-pancasila:hover { background-color: #74b9ff; }
+
+        .card.ipas:hover { border-color: #2ecc71; }
+        .btn-ipas { background-color: #27ae60; box-shadow: 0 4px #1e8449; }
+        .btn-ipas:hover { background-color: #2ecc71; }
+
+        .card.pai:hover { border-color: #55efc4; }
+        .btn-pai { background-color: #00b894; box-shadow: 0 4px #008f72; }
+        .btn-pai:hover { background-color: #55efc4; }
+
+        .card.arab:hover { border-color: #e67e22; }
+        .btn-arab { background-color: #d35400; box-shadow: 0 4px #a04000; }
+        .btn-arab:hover { background-color: #e67e22; }
+
+        .card.budipekerti:hover { border-color: #9b59b6; }
+        .btn-budipekerti { background-color: #8e44ad; box-shadow: 0 4px #6c3483; }
+        .btn-budipekerti:hover { background-color: #9b59b6; }
+
+        .card.indo:hover { border-color: #e74c3c; }
+        .btn-indo { background-color: #c0392b; box-shadow: 0 4px #922b21; }
+        .btn-indo:hover { background-color: #e74c3c; }
+
+        .card.mtk:hover { border-color: #3498db; }
+        .btn-mtk { background-color: #2980b9; box-shadow: 0 4px #1f618d; }
+        .btn-mtk:hover { background-color: #3498db; }
+
+        .card.inggris:hover { border-color: #fd79a8; }
+        .btn-inggris { background-color: #e84393; box-shadow: 0 4px #ad316d; }
+        .btn-inggris:hover { background-color: #fd79a8; }
+
+        .card.seni:hover { border-color: #f39c12; }
+        .btn-seni { background-color: #e67e22; box-shadow: 0 4px #af601a; }
+        .btn-seni:hover { background-color: #f39c12; }
+
+        .card.pjok:hover { border-color: #e67e22; }
+        .btn-pjok { background-color: #d35400; box-shadow: 0 4px #a04000; }
+        .btn-pjok:hover { background-color: #e67e22; }
+
+        .card.tik:hover { border-color: #1abc9c; }
+        .btn-tik { background-color: #34495e; box-shadow: 0 4px #2c3e50; }
+        .btn-tik:hover { background-color: #1abc9c; }
+
+        footer {
+            margin-top: auto;
+            padding-top: 60px;
+            color: #b2bec3;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .home-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .admin-link {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="home-btn">⬅ Kembali ke Menu Utama</a>
+
+    <h1>🌟 Ruang Belajar Ceria 🌟</h1>
+    <div class="subtitle">SD DILARAF ISLAMIC SCHOOL - Kelas 4</div>
+
+    <div class="card-container">
+        <!-- LINK KE FILE MAPEL KELAS 4 -->
+        <a href="pancasila.html" class="card pancasila">
+            <div class="card-icon">🇮🇩</div>
+            <div class="card-title">Pancasila</div>
+            <div class="card-desc">Hak, Kewajiban, dan Cinta Tanah Air.</div>
+            <span class="btn-start btn-pancasila">Mulai!</span>
+        </a>
+
+        <a href="ipas.html" class="card ipas">
+            <div class="card-icon">🌿</div>
+            <div class="card-title">IPAS</div>
+            <div class="card-desc">Alam, Peta, dan Iklim.</div>
+            <span class="btn-start btn-ipas">Mulai!</span>
+        </a>
+
+        <a href="pai.html" class="card pai">
+            <div class="card-icon">🌙</div>
+            <div class="card-title">PAI</div>
+            <div class="card-desc">Baligh dan Kisah Nabi.</div>
+            <span class="btn-start btn-pai">Mulai!</span>
+        </a>
+
+        <a href="bahasaindonesia.html" class="card indo">
+            <div class="card-icon">📖</div>
+            <div class="card-title">B. Indonesia</div>
+            <div class="card-desc">Denah, Wawancara, Deskripsi.</div>
+            <span class="btn-start btn-indo">Mulai!</span>
+        </a>
+
+        <a href="matematika.html" class="card mtk">
+            <div class="card-icon">➗</div>
+            <div class="card-title">Matematika</div>
+            <div class="card-desc">Pecahan dan Pola Bilangan.</div>
+            <span class="btn-start btn-mtk">Mulai!</span>
+        </a>
+
+        <a href="bahasainggris.html" class="card inggris">
+            <div class="card-icon">🇬🇧</div>
+            <div class="card-title">B. Inggris</div>
+            <div class="card-desc">Daily Activities & Rooms.</div>
+            <span class="btn-start btn-inggris">Mulai!</span>
+        </a>
+
+        <a href="bahasaarab.html" class="card arab">
+            <div class="card-icon">🕌</div>
+            <div class="card-title">B. Arab</div>
+            <div class="card-desc">Dhomir dan Cita-cita.</div>
+            <span class="btn-start btn-arab">Mulai!</span>
+        </a>
+
+        <a href="budipekerti.html" class="card budipekerti">
+            <div class="card-icon">🤝</div>
+            <div class="card-title">Budi Pekerti</div>
+            <div class="card-desc">Menghargai Keragaman.</div>
+            <span class="btn-start btn-budipekerti">Mulai!</span>
+        </a>
+
+        <a href="senirupa.html" class="card seni">
+            <div class="card-icon">🎨</div>
+            <div class="card-title">Seni Rupa</div>
+            <div class="card-desc">Karya 2D/3D, Tekstur.</div>
+            <span class="btn-start btn-seni">Mulai!</span>
+        </a>
+
+        <a href="pjok.html" class="card pjok">
+            <div class="card-icon">🏀</div>
+            <div class="card-title">PJOK</div>
+            <div class="card-desc">Sepak Bola dan Senam.</div>
+            <span class="btn-start btn-pjok">Mulai!</span>
+        </a>
+
+        <a href="tik.html" class="card tik">
+            <div class="card-icon">💻</div>
+            <div class="card-title">TIK</div>
+            <div class="card-desc">Komputer & Internet.</div>
+            <span class="btn-start btn-tik">Mulai!</span>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SD Dilaraf Islamic School</p>
+        <a href="generator.html" class="admin-link">⚙️ Login Guru</a>
+    </footer>
+
+</body>
+</html>
