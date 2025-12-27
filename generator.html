@@ -148,7 +148,16 @@
                     <label class="block text-xs font-bold text-slate-600 mb-2">GitHub Integration (Optional)</label>
                     <input type="text" id="ghOwner" class="w-full p-2 border rounded text-sm mb-2" placeholder="GitHub Username">
                     <input type="text" id="ghRepo" class="w-full p-2 border rounded text-sm mb-2" placeholder="Repository Name">
-                    <input type="password" id="ghToken" class="w-full p-2 border rounded text-sm" placeholder="Personal Access Token">
+                    <input type="password" id="ghToken" class="w-full p-2 border rounded text-sm mb-2" placeholder="Personal Access Token">
+
+                    <div class="flex gap-2">
+                        <select id="ghBranch" class="w-full p-2 border rounded text-sm bg-white">
+                            <option value="main">main</option>
+                        </select>
+                        <button onclick="fetchBranches()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 rounded text-xs transition" title="Load Branches">
+                            🔄
+                        </button>
+                    </div>
                 </div>
 
                 <button onclick="saveSettings()" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 rounded transition">
@@ -184,16 +193,59 @@
             modal.classList.toggle('hidden');
         }
 
+        async function fetchBranches() {
+            const owner = document.getElementById('ghOwner').value;
+            const repo = document.getElementById('ghRepo').value;
+            const token = document.getElementById('ghToken').value;
+            const select = document.getElementById('ghBranch');
+
+            if(!owner || !repo) return alert("Isi Username & Repo dulu!");
+
+            select.innerHTML = "<option>Loading...</option>";
+
+            try {
+                const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/branches`, {
+                    headers: token ? {Authorization: `token ${token}`} : {}
+                });
+                if(!res.ok) throw new Error("Gagal load branch");
+                const data = await res.json();
+
+                select.innerHTML = "";
+                data.forEach(b => {
+                    const opt = document.createElement('option');
+                    opt.value = b.name;
+                    opt.textContent = b.name;
+                    select.appendChild(opt);
+                });
+            } catch(e) {
+                alert("Error: " + e.message);
+                select.innerHTML = "<option value='main'>main</option>";
+            }
+        }
+
         function loadSettings() {
             const apiKey = localStorage.getItem('groq_apiKey');
             const ghOwner = localStorage.getItem('groq_ghOwner');
             const ghRepo = localStorage.getItem('groq_ghRepo');
             const ghToken = localStorage.getItem('groq_ghToken');
+            const ghBranch = localStorage.getItem('groq_ghBranch');
 
             if(apiKey) document.getElementById('apiKey').value = apiKey;
             if(ghOwner) document.getElementById('ghOwner').value = ghOwner;
             if(ghRepo) document.getElementById('ghRepo').value = ghRepo;
             if(ghToken) document.getElementById('ghToken').value = ghToken;
+
+            if(ghBranch) {
+                const select = document.getElementById('ghBranch');
+                // Check if option exists, if not add it temporarily
+                if(!select.querySelector(`option[value="${ghBranch}"]`)) {
+                    const opt = document.createElement('option');
+                    opt.value = ghBranch;
+                    opt.textContent = ghBranch;
+                    select.appendChild(opt);
+                }
+                select.value = ghBranch;
+            }
         }
 
         function saveSettings() {
@@ -201,11 +253,13 @@
             const ghOwner = document.getElementById('ghOwner').value;
             const ghRepo = document.getElementById('ghRepo').value;
             const ghToken = document.getElementById('ghToken').value;
+            const ghBranch = document.getElementById('ghBranch').value;
 
             localStorage.setItem('groq_apiKey', apiKey);
             localStorage.setItem('groq_ghOwner', ghOwner);
             localStorage.setItem('groq_ghRepo', ghRepo);
             localStorage.setItem('groq_ghToken', ghToken);
+            localStorage.setItem('groq_ghBranch', ghBranch);
 
             alert('Konfigurasi tersimpan!');
             toggleSettings();
@@ -461,16 +515,18 @@
             const owner = document.getElementById('ghOwner').value;
             const repo = document.getElementById('ghRepo').value;
             const token = document.getElementById('ghToken').value;
+            const branch = document.getElementById('ghBranch').value || 'main';
             const filename = getFileName();
             
             const log = document.getElementById('ghLog');
             log.classList.remove('hidden');
-            log.innerHTML = `⏳ Uploading ${filename}...`;
+            log.innerHTML = `⏳ Uploading ${filename} to ${branch}...`;
 
             try {
                 const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filename}`;
                 let sha = null;
-                const check = await fetch(url, { headers: {Authorization: `token ${token}`} });
+                // Check if file exists on the specific branch
+                const check = await fetch(`${url}?ref=${branch}`, { headers: {Authorization: `token ${token}`} });
                 if(check.ok) { const d = await check.json(); sha = d.sha; }
 
                 const content = btoa(unescape(encodeURIComponent(generatedHTML)));
@@ -480,12 +536,13 @@
                     body: JSON.stringify({
                         message: `Update ${filename}`,
                         content: content,
-                        sha: sha
+                        sha: sha,
+                        branch: branch
                     })
                 });
                 
                 if(!res.ok) throw new Error("Gagal upload GitHub");
-                log.innerHTML = `✅ Sukses! File <b>${filename}</b> terupload.`;
+                log.innerHTML = `✅ Sukses! File <b>${filename}</b> terupload ke branch <b>${branch}</b>.`;
             } catch(e) {
                 log.innerHTML = `❌ Error: ${e.message}`;
             }
