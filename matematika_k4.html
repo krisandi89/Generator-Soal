@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Matematika Kelas 4</title>
+    <style>
+        
+        .reading-text { background: #fff; padding: 15px; border: 2px dashed #ccc; margin-bottom: 15px; border-radius: 10px; font-style: italic; font-family: 'Times New Roman'; }
+        :root { --primary: #2980b9; --secondary: #3498db; --bg: #eaf2f8; --success: #27ae60; --error: #c0392b; }
+        body { font-family: 'Comic Sans MS', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: #2d3436; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: var(--primary); color: white; padding: 30px; text-align: center; border-bottom: 5px solid rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 1.8em; }
+        .question-list { padding: 30px; }
+        .question-item { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px dashed #dfe6e9; }
+        .q-number { font-weight: bold; color: var(--primary); margin-bottom: 10px; display: block; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; padding: 10px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; }
+        .radio-label:hover { background: #e8daef; border-color: var(--primary); }
+        input[type="radio"], input[type="checkbox"] { margin-right: 12px; transform: scale(1.2); }
+        .input-text, .input-area { width: 100%; padding: 10px; border: 2px solid #b2bec3; border-radius: 8px; }
+        .feedback-box { margin-top: 15px; padding: 15px; border-radius: 8px; display: none; }
+        .correct { background: #d4edda; color: #155724; } .wrong { background: #f8d7da; color: #721c24; } .manual { background: #fff3cd; color: #856404; }
+        .footer-action { background: #f1f2f6; padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 1px solid #dfe6e9; }
+        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        .score-board { text-align: center; padding: 20px; background: var(--secondary); color: white; display: none; }
+        .back-btn { display: inline-block; margin-top: 10px; color: var(--bg); text-decoration: underline; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Matematika</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL - Kelas 4</p>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>Nilai PG & BS</h2>
+            <div style="font-size: 3em; font-weight: bold;" id="final-score">0</div>
+            <p>Periksa isian secara mandiri.</p>
+            <a href="kelas4.html" class="back-btn">Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "text": "Berapa jumlah sisi yang dimiliki oleh segitiga?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Apa ciri-ciri segitiga?",
+        "options": [
+            "Memiliki 2 sisi",
+            "Memiliki 3 sisi dan 3 sudut",
+            "Memiliki 4 sisi",
+            "Memiliki 5 sisi"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 sisi dan 3 sudut"
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Berapa jumlah sudut yang dimiliki oleh segitiga?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 sudut"
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Apa yang dimaksud dengan titik sudut?",
+        "options": [
+            "Titik pertemuan 2 sisi",
+            "Titik pertemuan 3 sisi",
+            "Titik pertemuan 4 sisi",
+            "Titik pertemuan 5 sisi"
+        ],
+        "answer": 0,
+        "hint": "Titik sudut adalah titik pertemuan 2 sisi"
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Berapa jumlah titik sudut yang dimiliki oleh segitiga?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 titik sudut"
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Apa nama bangun datar yang memiliki 3 sisi?",
+        "options": [
+            "Segitiga",
+            "Persegi",
+            "Lingkaran",
+            "Trapesium"
+        ],
+        "answer": 0,
+        "hint": "Segitiga adalah bangun datar yang memiliki 3 sisi"
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Apa ciri-ciri segitiga siku-siku?",
+        "options": [
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut siku-siku",
+            "Memiliki 2 sudut siku-siku",
+            "Memiliki 3 sudut siku-siku"
+        ],
+        "answer": 1,
+        "hint": "Segitiga siku-siku memiliki 1 sudut siku-siku"
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Berapa jumlah sisi yang sama panjang pada segitiga sama sisi?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "answer": 2,
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang"
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Apa nama segitiga yang memiliki 2 sisi yang sama panjang?",
+        "options": [
+            "Segitiga siku-siku",
+            "Segitiga sama kaki",
+            "Segitiga sama sisi",
+            "Segitiga sembarang"
+        ],
+        "answer": 1,
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang"
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Apa ciri-ciri segitiga sembarang?",
+        "options": [
+            "Memiliki 3 sisi yang sama panjang",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut siku-siku",
+            "Tidak memiliki ciri-ciri khusus"
+        ],
+        "answer": 3,
+        "hint": "Segitiga sembarang tidak memiliki ciri-ciri khusus"
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga!",
+        "options": [
+            "Memiliki 3 sisi",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sisi",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Segitiga memiliki 3 sisi dan 3 sudut"
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 jenis segitiga!",
+        "options": [
+            "Segitiga siku-siku",
+            "Segitiga sama kaki",
+            "Segitiga sembarang",
+            "Persegi"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Segitiga siku-siku dan segitiga sama kaki adalah jenis segitiga"
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga siku-siku!",
+        "options": [
+            "Memiliki 1 sudut siku-siku",
+            "Memiliki 2 sudut siku-siku",
+            "Memiliki 3 sudut siku-siku",
+            "Memiliki 2 sisi yang sama panjang"
+        ],
+        "answer": [
+            0,
+            3
+        ],
+        "hint": "Segitiga siku-siku memiliki 1 sudut siku-siku dan 2 sisi yang sama panjang"
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga sama sisi!",
+        "options": [
+            "Memiliki 3 sisi yang sama panjang",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut siku-siku",
+            "Memiliki 2 sudut siku-siku"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang"
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 jenis bangun datar!",
+        "options": [
+            "Segitiga",
+            "Persegi",
+            "Lingkaran",
+            "Trapesium"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Segitiga dan persegi adalah jenis bangun datar"
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri persegi!",
+        "options": [
+            "Memiliki 4 sisi yang sama panjang",
+            "Memiliki 3 sisi yang sama panjang",
+            "Memiliki 2 sudut siku-siku",
+            "Memiliki 1 sudut siku-siku"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Persegi memiliki 4 sisi yang sama panjang dan 2 sudut siku-siku"
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri lingkaran!",
+        "options": [
+            "Memiliki 1 titik pusat",
+            "Memiliki 2 titik pusat",
+            "Memiliki 1 sisi",
+            "Memiliki 2 sisi"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Lingkaran memiliki 1 titik pusat"
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri trapesium!",
+        "options": [
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sisi yang sama panjang",
+            "Memiliki 2 sudut siku-siku",
+            "Memiliki 1 sudut siku-siku"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Trapesium memiliki 2 sisi yang sama panjang dan 2 sudut siku-siku"
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 jenis bangun ruang!",
+        "options": [
+            "Kubus",
+            "Bola",
+            "Prisma",
+            "Piramide"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Kubus dan bola adalah jenis bangun ruang"
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri kubus!",
+        "options": [
+            "Memiliki 6 sisi yang sama panjang",
+            "Memiliki 5 sisi yang sama panjang",
+            "Memiliki 2 sudut siku-siku",
+            "Memiliki 1 sudut siku-siku"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Kubus memiliki 6 sisi yang sama panjang dan 2 sudut siku-siku"
+    },
+    {
+        "id": 21,
+        "type": "bs",
+        "text": "Segitiga memiliki 4 sisi",
+        "answer": false,
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 22,
+        "type": "bs",
+        "text": "Persegi memiliki 4 sisi yang sama panjang",
+        "answer": true,
+        "hint": "Persegi memiliki 4 sisi yang sama panjang"
+    },
+    {
+        "id": 23,
+        "type": "bs",
+        "text": "Lingkaran memiliki 1 sisi",
+        "answer": false,
+        "hint": "Lingkaran tidak memiliki sisi"
+    },
+    {
+        "id": 24,
+        "type": "bs",
+        "text": "Trapesium memiliki 2 sisi yang sama panjang",
+        "answer": true,
+        "hint": "Trapesium memiliki 2 sisi yang sama panjang"
+    },
+    {
+        "id": 25,
+        "type": "bs",
+        "text": "Kubus memiliki 6 sisi yang sama panjang",
+        "answer": true,
+        "hint": "Kubus memiliki 6 sisi yang sama panjang"
+    },
+    {
+        "id": 26,
+        "type": "bs",
+        "text": "Bola memiliki 1 titik pusat",
+        "answer": true,
+        "hint": "Bola memiliki 1 titik pusat"
+    },
+    {
+        "id": 27,
+        "type": "bs",
+        "text": "Prisma memiliki 5 sisi yang sama panjang",
+        "answer": false,
+        "hint": "Prisma memiliki 5 sisi yang tidak sama panjang"
+    },
+    {
+        "id": 28,
+        "type": "bs",
+        "text": "Piramide memiliki 4 sisi yang sama panjang",
+        "answer": false,
+        "hint": "Piramide memiliki 4 sisi yang tidak sama panjang"
+    },
+    {
+        "id": 29,
+        "type": "bs",
+        "text": "Segitiga siku-siku memiliki 1 sudut siku-siku",
+        "answer": true,
+        "hint": "Segitiga siku-siku memiliki 1 sudut siku-siku"
+    },
+    {
+        "id": 30,
+        "type": "bs",
+        "text": "Segitiga sama sisi memiliki 3 sisi yang sama panjang",
+        "answer": true,
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang"
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Segitiga memiliki _____ sisi",
+        "answer": "3",
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Persegi memiliki _____ sisi yang sama panjang",
+        "answer": "4",
+        "hint": "Persegi memiliki 4 sisi yang sama panjang"
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Lingkaran memiliki _____ titik pusat",
+        "answer": "1",
+        "hint": "Lingkaran memiliki 1 titik pusat"
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Trapesium memiliki _____ sisi yang sama panjang",
+        "answer": "2",
+        "hint": "Trapesium memiliki 2 sisi yang sama panjang"
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Kubus memiliki _____ sisi yang sama panjang",
+        "answer": "6",
+        "hint": "Kubus memiliki 6 sisi yang sama panjang"
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri segitiga!",
+        "answer": "Segitiga memiliki 3 sisi, 3 sudut, dan 3 titik sudut",
+        "hint": "Segitiga memiliki 3 sisi, 3 sudut, dan 3 titik sudut"
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri persegi!",
+        "answer": "Persegi memiliki 4 sisi yang sama panjang, 4 sudut siku-siku, dan 1 titik pusat",
+        "hint": "Persegi memiliki 4 sisi yang sama panjang, 4 sudut siku-siku, dan 1 titik pusat"
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri lingkaran!",
+        "answer": "Lingkaran memiliki 1 titik pusat, 1 sisi yang sama panjang, dan tidak memiliki sudut",
+        "hint": "Lingkaran memiliki 1 titik pusat, 1 sisi yang sama panjang, dan tidak memiliki sudut"
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri trapesium!",
+        "answer": "Trapesium memiliki 2 sisi yang sama panjang, 2 sudut siku-siku, dan 1 titik pusat",
+        "hint": "Trapesium memiliki 2 sisi yang sama panjang, 2 sudut siku-siku, dan 1 titik pusat"
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri kubus!",
+        "answer": "Kubus memiliki 6 sisi yang sama panjang, 8 titik sudut, dan 12 sudut siku-siku",
+        "hint": "Kubus memiliki 6 sisi yang sama panjang, 8 titik sudut, dan 12 sudut siku-siku"
+    }
+];
+        const container = document.getElementById('question-container');
+
+        function render() {
+            let html = "";
+            questions.forEach((q, idx) => {
+                let inputHtml = "";
+                if(q.type==='pg' || q.type==='bs') {
+                    let opts = q.type==='bs' ? ["Benar","Salah"] : q.options;
+                    opts.forEach((opt,i) => {
+                        let val = q.type==='bs' ? opt : i;
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${val}"> ${opt}</label>`;
+                    });
+                } else if(q.type==='pg_kompleks') {
+                    q.options.forEach((opt,i) => {
+                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${opt}</label>`;
+                    });
+                } else {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Jawaban...">`;
+                }
+                html += `<div class="question-item"><span class="q-number">No. ${idx+1}</span><div>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html;
+        }
+        
+        function submitExam() {
+            let score=0, max=0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if(q.type==='pg'||q.type==='bs') {
+                    max++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if(sel) {
+                        let val = q.type==='pg' ? parseInt(sel.value) : sel.value;
+                        if(val === q.answer) { score++; fb.className="feedback-box correct"; fb.innerHTML="✅ Benar"; }
+                        else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Salah. Hint: "+q.hint; }
+                    } else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Kosong"; }
+                } else {
+                     fb.className="feedback-box manual"; fb.innerHTML="ℹ️ Cek Manual (Kunci: "+q.answer+")";
+                }
+                fb.style.display="block";
+            });
+            document.getElementById('final-score').innerText = Math.round((score/max)*100) || 0;
+            document.getElementById('score-board').style.display="block";
+            document.getElementById('footer-action').style.display="none";
+            window.scrollTo(0,0);
+        }
+        render();
+    </script>
+</body>
+</html>
