@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Matematika Kelas 4</title>
+    <style>
+        
+        .reading-text { background: #fff; padding: 15px; border: 2px dashed #ccc; margin-bottom: 15px; border-radius: 10px; font-style: italic; font-family: 'Times New Roman'; }
+        :root { --primary: #2980b9; --secondary: #3498db; --bg: #eaf2f8; --success: #27ae60; --error: #c0392b; }
+        body { font-family: 'Comic Sans MS', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: #2d3436; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: var(--primary); color: white; padding: 30px; text-align: center; border-bottom: 5px solid rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 1.8em; }
+        .question-list { padding: 30px; }
+        .question-item { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px dashed #dfe6e9; }
+        .q-number { font-weight: bold; color: var(--primary); margin-bottom: 10px; display: block; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; padding: 10px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; }
+        .radio-label:hover { background: #e8daef; border-color: var(--primary); }
+        input[type="radio"], input[type="checkbox"] { margin-right: 12px; transform: scale(1.2); }
+        .input-text, .input-area { width: 100%; padding: 10px; border: 2px solid #b2bec3; border-radius: 8px; }
+        .feedback-box { margin-top: 15px; padding: 15px; border-radius: 8px; display: none; }
+        .correct { background: #d4edda; color: #155724; } .wrong { background: #f8d7da; color: #721c24; } .manual { background: #fff3cd; color: #856404; }
+        .footer-action { background: #f1f2f6; padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 1px solid #dfe6e9; }
+        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        .score-board { text-align: center; padding: 20px; background: var(--secondary); color: white; display: none; }
+        .back-btn { display: inline-block; margin-top: 10px; color: var(--bg); text-decoration: underline; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Matematika</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL - Kelas 4</p>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>Nilai PG & BS</h2>
+            <div style="font-size: 3em; font-weight: bold;" id="final-score">0</div>
+            <p>Periksa isian secara mandiri.</p>
+            <a href="kelas4.html" class="back-btn">Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "text": "Berapa banyak sisi yang dimiliki oleh segitiga?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Berapa banyak sudut yang dimiliki oleh segitiga?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 sudut"
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Berapa banyak titik sudut yang dimiliki oleh segitiga?",
+        "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 titik sudut"
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Apa ciri-ciri segitiga?",
+        "options": [
+            "Memiliki 4 sisi",
+            "Memiliki 3 sisi",
+            "Memiliki 2 sudut",
+            "Memiliki 3 titik sudut"
+        ],
+        "answer": 1,
+        "hint": "Segitiga memiliki 3 sisi, 3 sudut, dan 3 titik sudut"
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Apa nama bangun datar yang memiliki 3 sisi?",
+        "options": [
+            "Segitiga",
+            "Persegi",
+            "Lingkaran",
+            "Trapesium"
+        ],
+        "answer": 0,
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Apa perbedaan antara segitiga siku-siku dan segitiga sama kaki?",
+        "options": [
+            "Segitiga siku-siku memiliki 2 sisi yang sama panjang",
+            "Segitiga sama kaki memiliki 2 sisi yang sama panjang",
+            "Segitiga siku-siku memiliki 1 sudut yang lebih besar",
+            "Segitiga sama kaki memiliki 1 sudut yang lebih kecil"
+        ],
+        "answer": 1,
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang"
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Apa yang dimaksud dengan titik sudut?",
+        "options": [
+            "Titik pertemuan 2 sisi",
+            "Titik pertemuan 3 sisi",
+            "Titik pertemuan 4 sisi",
+            "Titik pertemuan 5 sisi"
+        ],
+        "answer": 0,
+        "hint": "Titik sudut adalah titik pertemuan 2 sisi"
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Apa yang dimaksud dengan sudut?",
+        "options": [
+            "Daerah yang dibentuk oleh pertemuan 2 sisi",
+            "Daerah yang dibentuk oleh pertemuan 3 sisi",
+            "Daerah yang dibentuk oleh pertemuan 4 sisi",
+            "Daerah yang dibentuk oleh pertemuan 5 sisi"
+        ],
+        "answer": 0,
+        "hint": "Sudut adalah daerah yang dibentuk oleh pertemuan 2 sisi"
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Berapa banyak sudut yang dimiliki oleh segitiga siku-siku?",
+        "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "answer": 2,
+        "hint": "Segitiga siku-siku memiliki 3 sudut"
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Apa ciri-ciri segitiga sama sisi?",
+        "options": [
+            "Memiliki 3 sisi yang sama panjang",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut yang lebih besar",
+            "Memiliki 1 sudut yang lebih kecil"
+        ],
+        "answer": 0,
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang"
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga!",
+        "options": [
+            "Memiliki 3 sisi",
+            "Memiliki 2 sisi",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga memiliki 3 sisi dan 3 sudut"
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga siku-siku!",
+        "options": [
+            "Memiliki 1 sudut yang lebih besar",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga siku-siku memiliki 1 sudut yang lebih besar dan 3 sudut"
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga sama kaki!",
+        "options": [
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut yang lebih kecil",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang dan 3 sudut"
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga sama sisi!",
+        "options": [
+            "Memiliki 3 sisi yang sama panjang",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut yang lebih besar",
+            "Memiliki 1 sudut yang lebih kecil"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang dan 3 sudut"
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri titik sudut!",
+        "options": [
+            "Titik pertemuan 2 sisi",
+            "Titik pertemuan 3 sisi",
+            "Titik pertemuan 4 sisi",
+            "Titik pertemuan 5 sisi"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Titik sudut adalah titik pertemuan 2 sisi"
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri sudut!",
+        "options": [
+            "Daerah yang dibentuk oleh pertemuan 2 sisi",
+            "Daerah yang dibentuk oleh pertemuan 3 sisi",
+            "Daerah yang dibentuk oleh pertemuan 4 sisi",
+            "Daerah yang dibentuk oleh pertemuan 5 sisi"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Sudut adalah daerah yang dibentuk oleh pertemuan 2 sisi"
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga yang benar!",
+        "options": [
+            "Memiliki 3 sisi",
+            "Memiliki 2 sisi",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga memiliki 3 sisi dan 3 sudut"
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga siku-siku yang benar!",
+        "options": [
+            "Memiliki 1 sudut yang lebih besar",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga siku-siku memiliki 1 sudut yang lebih besar dan 3 sudut"
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga sama kaki yang benar!",
+        "options": [
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut yang lebih kecil",
+            "Memiliki 3 sudut",
+            "Memiliki 2 sudut"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang dan 3 sudut"
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Pilih 2 ciri-ciri segitiga sama sisi yang benar!",
+        "options": [
+            "Memiliki 3 sisi yang sama panjang",
+            "Memiliki 2 sisi yang sama panjang",
+            "Memiliki 1 sudut yang lebih besar",
+            "Memiliki 1 sudut yang lebih kecil"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang dan 3 sudut"
+    },
+    {
+        "id": 21,
+        "type": "bs",
+        "text": "Segitiga memiliki 4 sisi",
+        "answer": false,
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 22,
+        "type": "bs",
+        "text": "Segitiga siku-siku memiliki 2 sudut yang lebih besar",
+        "answer": false,
+        "hint": "Segitiga siku-siku memiliki 1 sudut yang lebih besar"
+    },
+    {
+        "id": 23,
+        "type": "bs",
+        "text": "Segitiga sama kaki memiliki 3 sisi yang sama panjang",
+        "answer": false,
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang"
+    },
+    {
+        "id": 24,
+        "type": "bs",
+        "text": "Segitiga sama sisi memiliki 2 sudut yang lebih kecil",
+        "answer": false,
+        "hint": "Segitiga sama sisi memiliki 3 sudut"
+    },
+    {
+        "id": 25,
+        "type": "bs",
+        "text": "Titik sudut adalah titik pertemuan 3 sisi",
+        "answer": false,
+        "hint": "Titik sudut adalah titik pertemuan 2 sisi"
+    },
+    {
+        "id": 26,
+        "type": "bs",
+        "text": "Sudut adalah daerah yang dibentuk oleh pertemuan 3 sisi",
+        "answer": false,
+        "hint": "Sudut adalah daerah yang dibentuk oleh pertemuan 2 sisi"
+    },
+    {
+        "id": 27,
+        "type": "bs",
+        "text": "Segitiga memiliki 2 titik sudut",
+        "answer": false,
+        "hint": "Segitiga memiliki 3 titik sudut"
+    },
+    {
+        "id": 28,
+        "type": "bs",
+        "text": "Segitiga siku-siku memiliki 2 sudut",
+        "answer": false,
+        "hint": "Segitiga siku-siku memiliki 3 sudut"
+    },
+    {
+        "id": 29,
+        "type": "bs",
+        "text": "Segitiga sama kaki memiliki 2 sisi",
+        "answer": false,
+        "hint": "Segitiga sama kaki memiliki 3 sisi"
+    },
+    {
+        "id": 30,
+        "type": "bs",
+        "text": "Segitiga sama sisi memiliki 2 sisi yang sama panjang",
+        "answer": false,
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang"
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Segitiga memiliki ______ sisi",
+        "answer": "3",
+        "hint": "Segitiga memiliki 3 sisi"
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Segitiga siku-siku memiliki ______ sudut yang lebih besar",
+        "answer": "1",
+        "hint": "Segitiga siku-siku memiliki 1 sudut yang lebih besar"
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Segitiga sama kaki memiliki ______ sisi yang sama panjang",
+        "answer": "2",
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang"
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Segitiga sama sisi memiliki ______ sisi yang sama panjang",
+        "answer": "3",
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang"
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Titik sudut adalah titik pertemuan ______ sisi",
+        "answer": "2",
+        "hint": "Titik sudut adalah titik pertemuan 2 sisi"
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri segitiga!",
+        "answer": "Segitiga memiliki 3 sisi, 3 sudut, dan 3 titik sudut",
+        "hint": "Segitiga memiliki 3 sisi, 3 sudut, dan 3 titik sudut"
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri segitiga siku-siku!",
+        "answer": "Segitiga siku-siku memiliki 1 sudut yang lebih besar dan 3 sudut",
+        "hint": "Segitiga siku-siku memiliki 1 sudut yang lebih besar dan 3 sudut"
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri segitiga sama kaki!",
+        "answer": "Segitiga sama kaki memiliki 2 sisi yang sama panjang dan 3 sudut",
+        "hint": "Segitiga sama kaki memiliki 2 sisi yang sama panjang dan 3 sudut"
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Jelaskan ciri-ciri segitiga sama sisi!",
+        "answer": "Segitiga sama sisi memiliki 3 sisi yang sama panjang dan 3 sudut",
+        "hint": "Segitiga sama sisi memiliki 3 sisi yang sama panjang dan 3 sudut"
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Jelaskan perbedaan antara segitiga siku-siku dan segitiga sama kaki!",
+        "answer": "Segitiga siku-siku memiliki 1 sudut yang lebih besar, sedangkan segitiga sama kaki memiliki 2 sisi yang sama panjang",
+        "hint": "Segitiga siku-siku memiliki 1 sudut yang lebih besar, sedangkan segitiga sama kaki memiliki 2 sisi yang sama panjang"
+    }
+];
+        const container = document.getElementById('question-container');
+
+        function render() {
+            let html = "";
+            questions.forEach((q, idx) => {
+                let inputHtml = "";
+                if(q.type==='pg' || q.type==='bs') {
+                    let opts = q.type==='bs' ? ["Benar","Salah"] : q.options;
+                    opts.forEach((opt,i) => {
+                        let val = q.type==='bs' ? opt : i;
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${val}"> ${opt}</label>`;
+                    });
+                } else if(q.type==='pg_kompleks') {
+                    q.options.forEach((opt,i) => {
+                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${opt}</label>`;
+                    });
+                } else {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Jawaban...">`;
+                }
+                html += `<div class="question-item"><span class="q-number">No. ${idx+1}</span><div>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html;
+        }
+        
+        function submitExam() {
+            let score=0, max=0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if(q.type==='pg'||q.type==='bs') {
+                    max++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if(sel) {
+                        let val = q.type==='pg' ? parseInt(sel.value) : sel.value;
+                        if(val === q.answer) { score++; fb.className="feedback-box correct"; fb.innerHTML="✅ Benar"; }
+                        else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Salah. Hint: "+q.hint; }
+                    } else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Kosong"; }
+                } else {
+                     fb.className="feedback-box manual"; fb.innerHTML="ℹ️ Cek Manual (Kunci: "+q.answer+")";
+                }
+                fb.style.display="block";
+            });
+            document.getElementById('final-score').innerText = Math.round((score/max)*100) || 0;
+            document.getElementById('score-board').style.display="block";
+            document.getElementById('footer-action').style.display="none";
+            window.scrollTo(0,0);
+        }
+        render();
+    </script>
+</body>
+</html>
