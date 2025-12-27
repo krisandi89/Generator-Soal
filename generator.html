@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator Soal SD (Groq AI)</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <!-- PDF.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
@@ -29,23 +34,29 @@
         .class-radio:checked + label .check-icon { display: inline-block; }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen font-sans text-slate-800">
+<body class="bg-slate-100 dark:bg-slate-900 min-h-screen font-sans text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
     <div class="max-w-6xl mx-auto p-6">
         <!-- Header with Back & Settings Buttons -->
-        <div class="bg-white rounded-xl shadow-md p-6 mb-6 flex justify-between items-center border-t-4 border-orange-500 relative">
-            <a href="index.html" class="text-slate-500 hover:text-orange-600 transition p-2" title="Kembali ke Utama">
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md p-6 mb-6 flex justify-between items-center border-t-4 border-orange-500 relative transition-colors duration-300">
+            <a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition p-2" title="Kembali ke Utama">
                 <i class="fas fa-home text-2xl"></i>
             </a>
 
             <div class="text-center">
-                <h1 class="text-2xl font-bold text-slate-800">⚡ Generator Soal Ujian SD (Groq)</h1>
-                <p class="text-slate-500 text-sm mt-1">Powered by Groq Llama 3 (Super Cepat)</p>
+                <h1 class="text-2xl font-bold text-slate-800 dark:text-slate-100">⚡ Generator Soal Ujian SD (Groq)</h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Powered by Groq Llama 3 (Super Cepat)</p>
             </div>
 
-            <button onclick="toggleSettings()" class="text-slate-500 hover:text-orange-600 transition p-2" title="Pengaturan">
-                <i class="fas fa-cog text-2xl"></i>
-            </button>
+            <div class="flex gap-2">
+                <button onclick="toggleDarkMode()" class="text-slate-500 dark:text-yellow-400 hover:text-orange-600 transition p-2" title="Mode Gelap/Terang">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
+                </button>
+                <button onclick="toggleSettings()" class="text-slate-500 dark:text-slate-400 hover:text-orange-600 transition p-2" title="Pengaturan">
+                    <i class="fas fa-cog text-2xl"></i>
+                </button>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -53,23 +64,23 @@
             <div class="md:col-span-1 space-y-4">
                 
                 <!-- PILIH KELAS (TAB) -->
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 transition-colors duration-300">
                     <label class="block text-xs font-bold uppercase text-slate-400 mb-3">Pilih Jenjang Kelas</label>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <input type="radio" name="kelasSelect" id="k2" value="2" class="class-radio hidden">
-                            <label for="k2" class="block text-center border-2 border-slate-200 rounded-lg p-3 cursor-pointer hover:border-green-400 transition select-none">
+                            <label for="k2" class="block text-center border-2 border-slate-200 dark:border-slate-600 rounded-lg p-3 cursor-pointer hover:border-green-400 dark:hover:border-green-400 transition select-none dark:bg-slate-700">
                                 <div class="text-2xl mb-1">🎈</div>
-                                <div class="font-bold text-sm">Kelas 2</div>
+                                <div class="font-bold text-sm dark:text-slate-200">Kelas 2</div>
                                 <div class="text-[10px] text-slate-400">SDIT FREINDS</div>
                                 <i class="fas fa-check-circle check-icon hidden mt-1 text-white"></i>
                             </label>
                         </div>
                         <div>
                             <input type="radio" name="kelasSelect" id="k4" value="4" class="class-radio hidden" checked>
-                            <label for="k4" class="block text-center border-2 border-slate-200 rounded-lg p-3 cursor-pointer hover:border-blue-400 transition select-none">
+                            <label for="k4" class="block text-center border-2 border-slate-200 dark:border-slate-600 rounded-lg p-3 cursor-pointer hover:border-blue-400 dark:hover:border-blue-400 transition select-none dark:bg-slate-700">
                                 <div class="text-2xl mb-1">🚀</div>
-                                <div class="font-bold text-sm">Kelas 4</div>
+                                <div class="font-bold text-sm dark:text-slate-200">Kelas 4</div>
                                 <div class="text-[10px] text-slate-400">SD DILARAF</div>
                                 <i class="fas fa-check-circle check-icon hidden mt-1 text-white"></i>
                             </label>
@@ -78,11 +89,11 @@
                 </div>
 
                 <!-- Mapel & Upload -->
-                <div class="bg-white p-5 rounded-xl shadow-sm border border-green-100">
-                    <label class="block text-xs font-bold uppercase text-green-600 mb-2">Materi Soal</label>
+                <div class="bg-white dark:bg-slate-800 p-5 rounded-xl shadow-sm border border-green-100 dark:border-green-900 transition-colors duration-300">
+                    <label class="block text-xs font-bold uppercase text-green-600 dark:text-green-400 mb-2">Materi Soal</label>
                     <div class="mb-3">
-                        <label class="block text-sm font-medium mb-1">Mata Pelajaran</label>
-                        <select id="mapel" class="w-full p-2 border rounded text-sm bg-white">
+                        <label class="block text-sm font-medium mb-1 dark:text-slate-300">Mata Pelajaran</label>
+                        <select id="mapel" class="w-full p-2 border rounded text-sm bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200">
                             <option value="Pancasila">Pancasila</option>
                             <option value="IPAS">IPAS</option>
                             <option value="PAI">PAI</option>
@@ -99,13 +110,13 @@
 
                     <!-- Updated Input for PDF/Images -->
                     <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1">Upload Materi (PDF/Gambar)</label>
-                        <input type="file" id="pdfFile" accept="application/pdf, image/png, image/jpeg, image/jpg" class="w-full text-xs text-slate-500 file:mr-2 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100">
+                        <label class="block text-sm font-medium mb-1 dark:text-slate-300">Upload Materi (PDF/Gambar)</label>
+                        <input type="file" id="pdfFile" accept="application/pdf, image/png, image/jpeg, image/jpg" class="w-full text-xs text-slate-500 dark:text-slate-400 file:mr-2 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100 dark:file:bg-orange-900 dark:file:text-orange-200 dark:hover:file:bg-orange-800">
 
                         <!-- OCR Checkbox -->
-                        <div class="flex items-center mt-2 gap-2 bg-orange-50 p-2 rounded border border-orange-100">
-                            <input type="checkbox" id="useOCR" class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500 cursor-pointer">
-                            <label for="useOCR" class="text-xs text-slate-700 cursor-pointer select-none">
+                        <div class="flex items-center mt-2 gap-2 bg-orange-50 dark:bg-slate-700 p-2 rounded border border-orange-100 dark:border-slate-600">
+                            <input type="checkbox" id="useOCR" class="w-4 h-4 text-orange-600 rounded border-gray-300 dark:border-slate-500 focus:ring-orange-500 cursor-pointer">
+                            <label for="useOCR" class="text-xs text-slate-700 dark:text-slate-300 cursor-pointer select-none">
                                 <b>Gunakan OCR</b> (Centang jika PDF berisi hasil scan/foto)
                             </label>
                         </div>
@@ -115,26 +126,26 @@
                         Generate Soal (Groq) 🚀
                     </button>
                     <div id="loader" class="loader mt-4"></div>
-                    <p id="statusMsg" class="text-center text-xs text-slate-500 mt-2 italic"></p>
+                    <p id="statusMsg" class="text-center text-xs text-slate-500 dark:text-slate-400 mt-2 italic"></p>
                 </div>
             </div>
 
             <!-- Right Panel -->
             <div class="md:col-span-2">
-                <div class="bg-white p-6 rounded-xl shadow-sm min-h-[500px] flex flex-col">
-                    <div class="flex justify-between items-center mb-4 border-b pb-4">
-                        <h2 class="text-lg font-bold">Preview Output</h2>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm min-h-[500px] flex flex-col transition-colors duration-300">
+                    <div class="flex justify-between items-center mb-4 border-b dark:border-slate-700 pb-4">
+                        <h2 class="text-lg font-bold dark:text-slate-200">Preview Output</h2>
                         <div class="flex gap-2">
                             <button onclick="downloadHTML()" id="btnDownload" disabled class="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600 disabled:opacity-50 transition">
                                 <i class="fas fa-download"></i> Download HTML
                             </button>
-                            <button onclick="uploadToGitHub()" id="btnGithub" disabled class="px-3 py-1 bg-gray-800 text-white rounded text-sm hover:bg-gray-900 disabled:opacity-50 transition">
+                            <button onclick="uploadToGitHub()" id="btnGithub" disabled class="px-3 py-1 bg-gray-800 dark:bg-slate-700 text-white rounded text-sm hover:bg-gray-900 dark:hover:bg-slate-600 disabled:opacity-50 transition">
                                 <i class="fab fa-github"></i> Push to GitHub
                             </button>
                         </div>
                     </div>
-                    <div id="ghLog" class="hidden mb-4 p-3 bg-gray-50 border border-gray-200 rounded text-xs font-mono text-gray-600"></div>
-                    <div id="previewArea" class="flex-grow bg-slate-50 rounded border border-slate-200 p-4 font-mono text-xs overflow-auto h-96">
+                    <div id="ghLog" class="hidden mb-4 p-3 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded text-xs font-mono text-gray-600 dark:text-slate-300"></div>
+                    <div id="previewArea" class="flex-grow bg-slate-50 dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-700 p-4 font-mono text-xs overflow-auto h-96 dark:text-slate-300">
                         <p class="text-slate-400 text-center mt-20">Siap untuk generate soal dengan Groq AI.</p>
                     </div>
                 </div>
@@ -144,9 +155,9 @@
 
     <!-- Settings Modal -->
     <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden z-50">
-        <div class="bg-white rounded-xl shadow-2xl p-6 w-96 max-w-full m-4">
-            <div class="flex justify-between items-center mb-4 border-b pb-2">
-                <h3 class="text-lg font-bold text-slate-800">⚙️ Pengaturan</h3>
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 w-96 max-w-full m-4 border dark:border-slate-700 transition-colors duration-300">
+            <div class="flex justify-between items-center mb-4 border-b dark:border-slate-700 pb-2">
+                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">⚙️ Pengaturan</h3>
                 <button onclick="toggleSettings()" class="text-slate-400 hover:text-red-500">
                     <i class="fas fa-times"></i>
                 </button>
@@ -154,22 +165,22 @@
 
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-600 mb-1">Groq API Key</label>
-                    <input type="password" id="apiKey" class="w-full p-2 border rounded text-sm focus:ring-2 focus:ring-orange-400 outline-none" placeholder="gsk_...">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1">Groq API Key</label>
+                    <input type="password" id="apiKey" class="w-full p-2 border dark:border-slate-600 rounded text-sm focus:ring-2 focus:ring-orange-400 outline-none bg-white dark:bg-slate-700 dark:text-white" placeholder="gsk_...">
                     <a href="https://console.groq.com/keys" target="_blank" class="text-[10px] text-blue-500 hover:underline">Dapatkan API Key Gratis</a>
                 </div>
 
-                <div class="border-t border-dashed pt-2">
-                    <label class="block text-xs font-bold text-slate-600 mb-2">GitHub Integration (Optional)</label>
-                    <input type="text" id="ghOwner" class="w-full p-2 border rounded text-sm mb-2" placeholder="GitHub Username">
-                    <input type="text" id="ghRepo" class="w-full p-2 border rounded text-sm mb-2" placeholder="Repository Name">
-                    <input type="password" id="ghToken" class="w-full p-2 border rounded text-sm mb-2" placeholder="Personal Access Token">
+                <div class="border-t border-dashed dark:border-slate-700 pt-2">
+                    <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-2">GitHub Integration (Optional)</label>
+                    <input type="text" id="ghOwner" class="w-full p-2 border dark:border-slate-600 rounded text-sm mb-2 bg-white dark:bg-slate-700 dark:text-white" placeholder="GitHub Username">
+                    <input type="text" id="ghRepo" class="w-full p-2 border dark:border-slate-600 rounded text-sm mb-2 bg-white dark:bg-slate-700 dark:text-white" placeholder="Repository Name">
+                    <input type="password" id="ghToken" class="w-full p-2 border dark:border-slate-600 rounded text-sm mb-2 bg-white dark:bg-slate-700 dark:text-white" placeholder="Personal Access Token">
 
                     <div class="flex gap-2">
-                        <select id="ghBranch" class="w-full p-2 border rounded text-sm bg-white">
+                        <select id="ghBranch" class="w-full p-2 border dark:border-slate-600 rounded text-sm bg-white dark:bg-slate-700 dark:text-white">
                             <option value="main">main</option>
                         </select>
-                        <button onclick="fetchBranches()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 rounded text-xs transition" title="Load Branches">
+                        <button onclick="fetchBranches()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-white px-3 rounded text-xs transition" title="Load Branches">
                             🔄
                         </button>
                     </div>
@@ -201,6 +212,29 @@
         let generatedQuestions = null;
         let generatedHTML = null;
         let currentClass = "4"; // Default
+
+        // --- DARK MODE LOGIC ---
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Initialize Theme on Load
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && sysDark)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        })();
 
         // --- SETTINGS MODAL LOGIC ---
         function toggleSettings() {
