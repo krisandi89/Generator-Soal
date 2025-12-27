@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Soal SD Multi-Kelas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .loader {
+            border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%;
+            width: 30px; height: 30px; animation: spin 1s linear infinite; display: none; margin: 0 auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        pre { white-space: pre-wrap; word-wrap: break-word; }
+        
+        /* Tab Selection Style */
+        .class-radio:checked + label {
+            background-color: #2563eb; color: white; border-color: #2563eb;
+        }
+        .class-radio:checked + label .check-icon { display: inline-block; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen font-sans text-slate-800">
+
+    <div class="max-w-6xl mx-auto p-6">
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6 text-center border-t-4 border-blue-600">
+            <h1 class="text-2xl font-bold text-slate-800">🛠️ Generator Soal Ujian SD</h1>
+            <p class="text-slate-500 text-sm mt-1">Otomatisasi Pembuatan Soal untuk SDIT FREINDS & SD DILARAF</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Left Panel -->
+            <div class="md:col-span-1 space-y-4">
+                
+                <!-- PILIH KELAS (TAB) -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-3">Pilih Jenjang Kelas</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <input type="radio" name="kelasSelect" id="k2" value="2" class="class-radio hidden">
+                            <label for="k2" class="block text-center border-2 border-slate-200 rounded-lg p-3 cursor-pointer hover:border-green-400 transition select-none">
+                                <div class="text-2xl mb-1">🎈</div>
+                                <div class="font-bold text-sm">Kelas 2</div>
+                                <div class="text-[10px] text-slate-400">SDIT FREINDS</div>
+                                <i class="fas fa-check-circle check-icon hidden mt-1 text-white"></i>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="kelasSelect" id="k4" value="4" class="class-radio hidden" checked>
+                            <label for="k4" class="block text-center border-2 border-slate-200 rounded-lg p-3 cursor-pointer hover:border-blue-400 transition select-none">
+                                <div class="text-2xl mb-1">🚀</div>
+                                <div class="font-bold text-sm">Kelas 4</div>
+                                <div class="text-[10px] text-slate-400">SD DILARAF</div>
+                                <i class="fas fa-check-circle check-icon hidden mt-1 text-white"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API & GitHub Config -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                    <label class="block text-xs font-bold uppercase text-blue-600 mb-2">Konfigurasi</label>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-500">Gemini API Key</label>
+                            <input type="password" id="apiKey" class="w-full p-2 border rounded text-xs" placeholder="Paste API Key...">
+                        </div>
+                        <div class="pt-2 border-t border-dashed">
+                            <label class="block text-[10px] font-bold text-slate-500 mb-1">GitHub (Opsional)</label>
+                            <input type="text" id="ghOwner" class="w-full p-1 border rounded text-xs mb-1" placeholder="Username">
+                            <input type="text" id="ghRepo" class="w-full p-1 border rounded text-xs mb-1" placeholder="Repository">
+                            <input type="password" id="ghToken" class="w-full p-1 border rounded text-xs" placeholder="Token (PAT)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapel & Upload -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-green-100">
+                    <label class="block text-xs font-bold uppercase text-green-600 mb-2">Materi Soal</label>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium mb-1">Mata Pelajaran</label>
+                        <select id="mapel" class="w-full p-2 border rounded text-sm bg-white">
+                            <option value="Pancasila">Pancasila</option>
+                            <option value="IPAS">IPAS</option>
+                            <option value="PAI">PAI</option>
+                            <option value="Bahasa Arab">Bahasa Arab</option>
+                            <option value="Budi Pekerti" selected>Budi Pekerti</option>
+                            <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                            <option value="Matematika">Matematika</option>
+                            <option value="Bahasa Inggris">Bahasa Inggris</option>
+                            <option value="Seni Rupa">Seni Rupa</option>
+                            <option value="PJOK">PJOK</option>
+                            <option value="TIK">TIK</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-1">Upload PDF</label>
+                        <input type="file" id="pdfFile" accept="application/pdf" class="w-full text-xs text-slate-500 file:mr-2 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    </div>
+                    <button onclick="startGeneration()" id="btnGenerate" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition shadow-lg mb-2">
+                        Generate Soal 🚀
+                    </button>
+                    <div id="loader" class="loader mt-4"></div>
+                    <p id="statusMsg" class="text-center text-xs text-slate-500 mt-2 italic"></p>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="md:col-span-2">
+                <div class="bg-white p-6 rounded-xl shadow-sm min-h-[500px] flex flex-col">
+                    <div class="flex justify-between items-center mb-4 border-b pb-4">
+                        <h2 class="text-lg font-bold">Preview Output</h2>
+                        <div class="flex gap-2">
+                            <button onclick="downloadHTML()" id="btnDownload" disabled class="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600 disabled:opacity-50 transition">
+                                <i class="fas fa-download"></i> Download HTML
+                            </button>
+                            <button onclick="uploadToGitHub()" id="btnGithub" disabled class="px-3 py-1 bg-gray-800 text-white rounded text-sm hover:bg-gray-900 disabled:opacity-50 transition">
+                                <i class="fab fa-github"></i> Push to GitHub
+                            </button>
+                        </div>
+                    </div>
+                    <div id="ghLog" class="hidden mb-4 p-3 bg-gray-50 border border-gray-200 rounded text-xs font-mono text-gray-600"></div>
+                    <div id="previewArea" class="flex-grow bg-slate-50 rounded border border-slate-200 p-4 font-mono text-xs overflow-auto h-96">
+                        <p class="text-slate-400 text-center mt-20">Siap untuk generate soal Kelas 2 atau 4.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIG
+        const THEMES = {
+            "Pancasila": { primary: "#0984e3", secondary: "#74b9ff", bg: "#f0f8ff" },
+            "IPAS": { primary: "#27ae60", secondary: "#2ecc71", bg: "#eafaf1" },
+            "PAI": { primary: "#00b894", secondary: "#55efc4", bg: "#e8fff8" },
+            "Bahasa Arab": { primary: "#d35400", secondary: "#e67e22", bg: "#fdf2e9", font: "@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap'); .arabic-text { font-family: 'Amiri', serif; font-size: 1.4em; }" },
+            "Budi Pekerti": { primary: "#8e44ad", secondary: "#9b59b6", bg: "#f5eaf7" },
+            "Bahasa Indonesia": { primary: "#c0392b", secondary: "#e74c3c", bg: "#fadbd8" },
+            "Matematika": { primary: "#2980b9", secondary: "#3498db", bg: "#eaf2f8" },
+            "Bahasa Inggris": { primary: "#e84393", secondary: "#fd79a8", bg: "#fce4ec" },
+            "Seni Rupa": { primary: "#e67e22", secondary: "#f39c12", bg: "#fff3e0" },
+            "PJOK": { primary: "#d35400", secondary: "#e67e22", bg: "#fff1e6" },
+            "TIK": { primary: "#34495e", secondary: "#1abc9c", bg: "#ecf0f1" }
+        };
+
+        let generatedQuestions = null;
+        let generatedHTML = null;
+        let currentClass = "4"; // Default
+
+        // PDF Extractor
+        async function extractTextFromPDF(file) {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+            let fullText = "";
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textContent = await page.getTextContent();
+                fullText += textContent.items.map(item => item.str).join(" ") + "\n";
+            }
+            return fullText.substring(0, 50000); 
+        }
+
+        // --- INTELLIGENT PROMPT BUILDER ---
+        function buildPrompt(mapel, textData, grade) {
+            let gradeContext = "";
+            let questionCount = 40;
+            
+            if (grade === "2") {
+                gradeContext = "Anak SD Kelas 2 (usia 7-8 tahun). Gunakan kalimat yang sangat sederhana, pendek, dan mudah dipahami. Hindari kata-kata sulit.";
+            } else {
+                gradeContext = "Anak SD Kelas 4 (usia 9-10 tahun). Bahasa standar pendidikan SD.";
+            }
+
+            return `
+            Bertindaklah sebagai Guru SD Kelas ${grade} profesional. 
+            Tugas: Buat SOAL UJIAN mata pelajaran "${mapel}" untuk ${gradeContext}.
+            
+            Materi:
+            ${textData.substring(0, 25000)} ...
+
+            Output: JSON Array Valid (tanpa markdown). 
+            Total ${questionCount} Soal.
+
+            DISTRIBUSI JENIS SOAL:
+            1. ID 1-10: 'pg' (Pilihan Ganda 3 Opsi A,B,C untuk Kelas 2. 4 Opsi A,B,C,D untuk Kelas 4).
+            2. ID 11-20: 'pg_kompleks' (Pilih 2 jawaban benar).
+            3. ID 21-30: 'bs' (Benar/Salah).
+            4. ID 31-35: 'isian' (Isian Singkat).
+            5. ID 36-40: 'uraian' (Jawab Singkat).
+
+            SYARAT:
+            - Mapel Bahasa: Wajib ada bacaan pendek (<div class='reading-text'>...</div>).
+            - Arab: Pakai <span class='arabic-text'>...</span>.
+            - Hint: 1 kalimat petunjuk.
+
+            Format JSON: [{"id":1, "type":"pg", "text":"...", "options":["..."], "answer":0, "hint":"..."}]
+            `;
+        }
+
+        // --- HTML GENERATOR with SCHOOL CLASSIFICATION ---
+        function generateExamHTML(mapel, questions, grade) {
+            const theme = THEMES[mapel] || THEMES["Budi Pekerti"];
+            const questionsJSON = JSON.stringify(questions, null, 4);
+            
+            // LOGIKA PENENTUAN JUDUL & LINK KEMBALI
+            let schoolName = "";
+            let backLink = "";
+            
+            if (grade === "2") {
+                schoolName = "SDIT FREINDS";
+                backLink = "kelas2.html";
+            } else {
+                schoolName = "SD DILARAF ISLAMIC SCHOOL";
+                backLink = "kelas4.html";
+            }
+
+            // Using <\/script> escape
+            return `<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian ${mapel} Kelas ${grade}</title>
+    <style>
+        ${theme.font || ""}
+        .reading-text { background: #fff; padding: 15px; border: 2px dashed #ccc; margin-bottom: 15px; border-radius: 10px; font-style: italic; font-family: 'Times New Roman'; }
+        :root { --primary: ${theme.primary}; --secondary: ${theme.secondary}; --bg: ${theme.bg}; --success: #27ae60; --error: #c0392b; }
+        body { font-family: 'Comic Sans MS', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: #2d3436; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: var(--primary); color: white; padding: 30px; text-align: center; border-bottom: 5px solid rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 1.8em; }
+        .question-list { padding: 30px; }
+        .question-item { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px dashed #dfe6e9; }
+        .q-number { font-weight: bold; color: var(--primary); margin-bottom: 10px; display: block; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; padding: 10px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; }
+        .radio-label:hover { background: #e8daef; border-color: var(--primary); }
+        input[type="radio"], input[type="checkbox"] { margin-right: 12px; transform: scale(1.2); }
+        .input-text, .input-area { width: 100%; padding: 10px; border: 2px solid #b2bec3; border-radius: 8px; }
+        .feedback-box { margin-top: 15px; padding: 15px; border-radius: 8px; display: none; }
+        .correct { background: #d4edda; color: #155724; } .wrong { background: #f8d7da; color: #721c24; } .manual { background: #fff3cd; color: #856404; }
+        .footer-action { background: #f1f2f6; padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 1px solid #dfe6e9; }
+        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        .score-board { text-align: center; padding: 20px; background: var(--secondary); color: white; display: none; }
+        .back-btn { display: inline-block; margin-top: 10px; color: var(--bg); text-decoration: underline; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>${mapel}</h1>
+            <p>${schoolName} - Kelas ${grade}</p>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>Nilai PG & BS</h2>
+            <div style="font-size: 3em; font-weight: bold;" id="final-score">0</div>
+            <p>Periksa isian secara mandiri.</p>
+            <a href="${backLink}" class="back-btn">Kembali ke Menu Kelas ${grade}</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = ${questionsJSON};
+        const container = document.getElementById('question-container');
+
+        function render() {
+            let html = "";
+            questions.forEach((q, idx) => {
+                let inputHtml = "";
+                if(q.type==='pg' || q.type==='bs') {
+                    let opts = q.type==='bs' ? ["Benar","Salah"] : q.options;
+                    opts.forEach((opt,i) => {
+                        let val = q.type==='bs' ? opt : i;
+                        inputHtml += \`<label class="radio-label"><input type="radio" name="q\${q.id}" value="\${val}"> \${opt}</label>\`;
+                    });
+                } else if(q.type==='pg_kompleks') {
+                    q.options.forEach((opt,i) => {
+                         inputHtml += \`<label class="checkbox-label"><input type="checkbox" name="q\${q.id}" value="\${i}"> \${opt}</label>\`;
+                    });
+                } else {
+                    inputHtml = \`<input type="text" class="input-text" name="q\${q.id}" placeholder="Jawaban...">\`;
+                }
+                html += \`<div class="question-item"><span class="q-number">No. \${idx+1}</span><div>\${q.text}</div><div class="options-group">\${inputHtml}</div><div class="feedback-box" id="fb-\${q.id}"></div></div>\`;
+            });
+            container.innerHTML = html;
+        }
+        
+        function submitExam() {
+            let score=0, max=0;
+            questions.forEach(q => {
+                const fb = document.getElementById(\`fb-\${q.id}\`);
+                if(q.type==='pg'||q.type==='bs') {
+                    max++;
+                    const sel = document.querySelector(\`input[name="q\${q.id}"]:checked\`);
+                    if(sel) {
+                        let val = q.type==='pg' ? parseInt(sel.value) : sel.value;
+                        if(val === q.answer) { score++; fb.className="feedback-box correct"; fb.innerHTML="✅ Benar"; }
+                        else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Salah. Hint: "+q.hint; }
+                    } else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Kosong"; }
+                } else if(q.type==='pg_kompleks') {
+                     max++;
+                     // Simple logic check for demo
+                     fb.className="feedback-box manual"; fb.innerHTML="ℹ️ Cek Manual (Kunci: "+q.answer+")";
+                } else {
+                     fb.className="feedback-box manual"; fb.innerHTML="ℹ️ Cek Manual (Kunci: "+q.answer+")";
+                }
+                fb.style.display="block";
+            });
+            document.getElementById('final-score').innerText = Math.round((score/max)*100) || 0;
+            document.getElementById('score-board').style.display="block";
+            document.getElementById('footer-action').style.display="none";
+            window.scrollTo(0,0);
+        }
+        render();
+    <\/script>
+</body>
+</html>`;
+        }
+
+        // --- MAIN LOGIC ---
+        async function startGeneration() {
+            const apiKey = document.getElementById('apiKey').value;
+            const pdfFile = document.getElementById('pdfFile').files[0];
+            const mapel = document.getElementById('mapel').value;
+            
+            // GET CLASS SELECTION
+            currentClass = document.querySelector('input[name="kelasSelect"]:checked').value;
+            
+            if(!apiKey || !pdfFile) return alert("API Key & PDF wajib diisi!");
+
+            const btn = document.getElementById('btnGenerate');
+            const loader = document.getElementById('loader');
+            const status = document.getElementById('statusMsg');
+
+            btn.disabled = true; loader.style.display = 'block';
+            status.textContent = `Menganalisis Materi untuk Kelas ${currentClass}...`;
+
+            try {
+                const text = await extractTextFromPDF(pdfFile);
+                status.textContent = "Mengirim ke AI...";
+                
+                const prompt = buildPrompt(mapel, text, currentClass);
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST', headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                
+                const data = await res.json();
+                if(data.error) throw new Error(data.error.message);
+                
+                const aiText = data.candidates[0].content.parts[0].text;
+                const jsonStr = aiText.replace(/```json/g,'').replace(/```/g,'').trim();
+                generatedQuestions = JSON.parse(jsonStr);
+                
+                // GENERATE HTML
+                generatedHTML = generateExamHTML(mapel, generatedQuestions, currentClass);
+                
+                document.getElementById('previewArea').textContent = JSON.stringify(generatedQuestions, null, 2);
+                document.getElementById('btnDownload').disabled = false;
+                
+                // Cek GitHub config
+                if(document.getElementById('ghToken').value) document.getElementById('btnGithub').disabled = false;
+                
+                status.textContent = "✅ Selesai!";
+
+            } catch(e) {
+                alert("Error: " + e.message);
+                status.textContent = "Gagal.";
+            } finally {
+                btn.disabled = false; loader.style.display = 'none';
+            }
+        }
+
+        function getFileName() {
+            const mapelClean = document.getElementById('mapel').value.toLowerCase().replace(/\s+/g,'');
+            const suffix = currentClass === "2" ? "_k2" : "_k4";
+            return `${mapelClean}${suffix}.html`;
+        }
+
+        function downloadHTML() {
+            const blob = new Blob([generatedHTML], {type:'text/html'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = getFileName();
+            link.click();
+        }
+
+        async function uploadToGitHub() {
+            const owner = document.getElementById('ghOwner').value;
+            const repo = document.getElementById('ghRepo').value;
+            const token = document.getElementById('ghToken').value;
+            const filename = getFileName();
+            
+            const log = document.getElementById('ghLog');
+            log.classList.remove('hidden');
+            log.innerHTML = `⏳ Uploading ${filename} ke ${owner}/${repo}...`;
+
+            try {
+                const url = `https://api.github.com/repos/${owner}/${repo}/contents/${filename}`;
+                // Cek SHA existing
+                let sha = null;
+                const check = await fetch(url, { headers: {Authorization: `token ${token}`} });
+                if(check.ok) { const d = await check.json(); sha = d.sha; }
+
+                // Upload
+                const content = btoa(unescape(encodeURIComponent(generatedHTML)));
+                const res = await fetch(url, {
+                    method: 'PUT',
+                    headers: {Authorization: `token ${token}`, 'Content-Type':'application/json'},
+                    body: JSON.stringify({
+                        message: `Update Soal Kelas ${currentClass} - ${filename}`,
+                        content: content,
+                        sha: sha
+                    })
+                });
+                
+                if(!res.ok) throw new Error("Gagal upload");
+                log.innerHTML = `✅ Sukses! File <b>${filename}</b> terupload di Kelas ${currentClass}.`;
+            } catch(e) {
+                log.innerHTML = `❌ Error: ${e.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
