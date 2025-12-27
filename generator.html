@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator Soal SD (Groq AI)</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PDF.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     </script>
+    <!-- Tesseract.js for OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .loader {
@@ -92,10 +96,21 @@
                             <option value="TIK">TIK</option>
                         </select>
                     </div>
+
+                    <!-- Updated Input for PDF/Images -->
                     <div class="mb-4">
-                        <label class="block text-sm font-medium mb-1">Upload PDF</label>
-                        <input type="file" id="pdfFile" accept="application/pdf" class="w-full text-xs text-slate-500 file:mr-2 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100">
+                        <label class="block text-sm font-medium mb-1">Upload Materi (PDF/Gambar)</label>
+                        <input type="file" id="pdfFile" accept="application/pdf, image/png, image/jpeg, image/jpg" class="w-full text-xs text-slate-500 file:mr-2 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100">
+
+                        <!-- OCR Checkbox -->
+                        <div class="flex items-center mt-2 gap-2 bg-orange-50 p-2 rounded border border-orange-100">
+                            <input type="checkbox" id="useOCR" class="w-4 h-4 text-orange-600 rounded border-gray-300 focus:ring-orange-500 cursor-pointer">
+                            <label for="useOCR" class="text-xs text-slate-700 cursor-pointer select-none">
+                                <b>Gunakan OCR</b> (Centang jika PDF berisi hasil scan/foto)
+                            </label>
+                        </div>
                     </div>
+
                     <button onclick="startGeneration()" id="btnGenerate" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition shadow-lg mb-2">
                         Generate Soal (Groq) 🚀
                     </button>
@@ -268,7 +283,9 @@
         // Load settings on startup
         document.addEventListener('DOMContentLoaded', loadSettings);
 
-        // PDF Extractor
+        // --- EXTRACTORS ---
+
+        // 1. Text PDF (Default)
         async function extractTextFromPDF(file) {
             const arrayBuffer = await file.arrayBuffer();
             const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
@@ -281,6 +298,56 @@
             return fullText.substring(0, 50000); 
         }
 
+        // 2. Image OCR (Direct)
+        async function extractTextFromImage(file) {
+            const worker = await Tesseract.createWorker('ind');
+            const ret = await worker.recognize(file);
+            await worker.terminate();
+            return ret.data.text;
+        }
+
+        // 3. PDF OCR (Render Pages -> Tesseract)
+        async function extractTextFromPDFWithOCR(file) {
+            const arrayBuffer = await file.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+
+            let fullText = "";
+            const totalPages = pdf.numPages;
+
+            // Constraint Check: Max 20 Pages for OCR
+            const maxPages = 20;
+            if (totalPages > maxPages) {
+                alert(`Info: Dokumen memiliki ${totalPages} halaman. Sesuai batas performa, hanya ${maxPages} halaman pertama yang akan diproses OCR.`);
+            }
+
+            const pagesToProcess = Math.min(totalPages, maxPages);
+            const status = document.getElementById('statusMsg');
+
+            // Create Worker once
+            const worker = await Tesseract.createWorker('ind');
+
+            for (let i = 1; i <= pagesToProcess; i++) {
+                status.textContent = `⏳ Sedang memproses OCR Halaman ${i} dari ${pagesToProcess}... (Mohon tunggu)`;
+
+                const page = await pdf.getPage(i);
+                const viewport = page.getViewport({ scale: 1.5 }); // Scale 1.5 is good enough balance
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+                // OCR the canvas
+                const ret = await worker.recognize(canvas);
+                fullText += `--- Halaman ${i} ---\n` + ret.data.text + "\n\n";
+            }
+
+            await worker.terminate();
+            return fullText.substring(0, 50000);
+        }
+
         // --- PROMPT BUILDER ---
         function buildPrompt(mapel, textData, grade) {
             let gradeContext = grade === "2" 
@@ -291,7 +358,7 @@
             Bertindaklah sebagai Guru SD profesional. 
             Buat 40 SOAL UJIAN "${mapel}" untuk ${gradeContext} dari materi berikut:
             
-            ${textData.substring(0, 20000)}
+            ${textData.substring(0, 25000)}
 
             OUTPUT HARUS JSON MURNI VALID (Array of Objects).
             Format:
@@ -426,11 +493,12 @@
             const apiKey = document.getElementById('apiKey').value;
             const pdfFile = document.getElementById('pdfFile').files[0];
             const mapel = document.getElementById('mapel').value;
+            const useOCR = document.getElementById('useOCR').checked;
             
             // GET CLASS SELECTION
             currentClass = document.querySelector('input[name="kelasSelect"]:checked').value;
             
-            if(!apiKey || !pdfFile) return alert("API Key & PDF wajib diisi!");
+            if(!apiKey || !pdfFile) return alert("API Key & File Materi wajib diisi!");
 
             const btn = document.getElementById('btnGenerate');
             const loader = document.getElementById('loader');
@@ -440,8 +508,30 @@
             status.textContent = `Menganalisis Materi untuk Kelas ${currentClass}...`;
 
             try {
-                const text = await extractTextFromPDF(pdfFile);
-                status.textContent = "Mengirim ke Groq Llama 3...";
+                let text = "";
+                const isImage = pdfFile.type.startsWith('image/');
+                const isPDF = pdfFile.type === 'application/pdf';
+
+                if (isImage) {
+                    status.textContent = "🔍 Sedang membaca teks dari Gambar (OCR)...";
+                    text = await extractTextFromImage(pdfFile);
+                } else if (isPDF) {
+                    if (useOCR) {
+                        status.textContent = "🔍 Menyiapkan OCR PDF (Mungkin butuh waktu lama)...";
+                        text = await extractTextFromPDFWithOCR(pdfFile);
+                    } else {
+                        status.textContent = "📑 Mengekstrak teks PDF...";
+                        text = await extractTextFromPDF(pdfFile);
+                    }
+                } else {
+                    throw new Error("Format file tidak didukung! Gunakan PDF atau Gambar (JPG/PNG).");
+                }
+
+                if (!text || text.trim().length < 10) {
+                    throw new Error("Gagal membaca teks! Jika ini adalah file scan/gambar, pastikan 'Gunakan OCR' dicentang.");
+                }
+
+                status.textContent = "🤖 Mengirim ke Groq Llama 3...";
                 
                 const prompt = buildPrompt(mapel, text, currentClass);
                 
@@ -491,7 +581,7 @@
 
             } catch(e) {
                 alert("Error: " + e.message);
-                status.textContent = "Gagal.";
+                status.textContent = "Gagal: " + e.message;
             } finally {
                 btn.disabled = false; loader.style.display = 'none';
             }
