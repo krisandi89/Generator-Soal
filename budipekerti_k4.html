@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Budi Pekerti Kelas 4</title>
+    <style>
+        
+        .reading-text { background: #fff; padding: 15px; border: 2px dashed #ccc; margin-bottom: 15px; border-radius: 10px; font-style: italic; font-family: 'Times New Roman'; }
+        :root { --primary: #8e44ad; --secondary: #9b59b6; --bg: #f5eaf7; --success: #27ae60; --error: #c0392b; }
+        body { font-family: 'Comic Sans MS', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: #2d3436; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: var(--primary); color: white; padding: 30px; text-align: center; border-bottom: 5px solid rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 1.8em; }
+        .question-list { padding: 30px; }
+        .question-item { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px dashed #dfe6e9; }
+        .q-number { font-weight: bold; color: var(--primary); margin-bottom: 10px; display: block; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; padding: 10px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; }
+        .radio-label:hover { background: #e8daef; border-color: var(--primary); }
+        input[type="radio"], input[type="checkbox"] { margin-right: 12px; transform: scale(1.2); }
+        .input-text, .input-area { width: 100%; padding: 10px; border: 2px solid #b2bec3; border-radius: 8px; }
+        .feedback-box { margin-top: 15px; padding: 15px; border-radius: 8px; display: none; }
+        .correct { background: #d4edda; color: #155724; } .wrong { background: #f8d7da; color: #721c24; } .manual { background: #fff3cd; color: #856404; }
+        .footer-action { background: #f1f2f6; padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 1px solid #dfe6e9; }
+        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-weight: bold; }
+        .score-board { text-align: center; padding: 20px; background: var(--secondary); color: white; display: none; }
+        .back-btn { display: inline-block; margin-top: 10px; color: var(--bg); text-decoration: underline; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Budi Pekerti</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL - Kelas 4</p>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>Nilai PG & BS</h2>
+            <div style="font-size: 3em; font-weight: bold;" id="final-score">0</div>
+            <p>Periksa isian secara mandiri.</p>
+            <a href="kelas4.html" class="back-btn">Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "text": "Apa yang dimaksud dengan menghargai keragaman suku bangsa dan budaya setempat?",
+        "options": [
+            "Menghormati perbedaan suku bangsa dan budaya",
+            "Menghina perbedaan suku bangsa dan budaya",
+            "Mengabaikan perbedaan suku bangsa dan budaya",
+            "Menganggap perbedaan suku bangsa dan budaya tidak penting"
+        ],
+        "answer": 0,
+        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Apa yang terjadi jika kita menghina teman dari suku bangsa lain?",
+        "options": [
+            "Teman kita akan merasa senang",
+            "Teman kita akan merasa sedih",
+            "Teman kita akan merasa marah",
+            "Teman kita akan merasa tidak terpengaruh"
+        ],
+        "answer": 1,
+        "hint": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai"
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Salah satu budaya Cina yang tumbuh dan berkembang di Indonesia adalah?",
+        "options": [
+            "Budaya Jawa",
+            "Budaya Sunda",
+            "Budaya Cina: Imlek",
+            "Budaya Arab"
+        ],
+        "answer": 2,
+        "hint": "Imlek adalah salah satu budaya Cina yang tumbuh dan berkembang di Indonesia"
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Salah satu tari budaya di Tangerang adalah?",
+        "options": [
+            "Tari Jaipong",
+            "Tari Kecak",
+            "Tari Legong",
+            "Tari Zapin"
+        ],
+        "answer": 0,
+        "hint": "Tari Jaipong adalah salah satu tari budaya di Tangerang"
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Salah satu festival budaya yang diselenggarakan di Tangerang adalah?",
+        "options": [
+            "Festival Budaya Tangerang",
+            "Festival Imlek",
+            "Festival Idul Fitri",
+            "Festival Natal"
+        ],
+        "answer": 0,
+        "hint": "Festival Budaya Tangerang adalah salah satu festival budaya yang diselenggarakan di Tangerang"
+    },
+    {
+        "id": 6,
+        "type": "pg_kompleks",
+        "text": "Apa yang harus kita lakukan untuk memanfaatkan waktu dengan tepat?",
+        "options": [
+            "Membuat jadwal harian",
+            "Menggunakan waktu untuk bermain",
+            "Menggunakan waktu untuk belajar",
+            "Menggunakan waktu untuk tidur"
+        ],
+        "answer": [
+            0,
+            2
+        ],
+        "hint": "Membuat jadwal harian dan menggunakan waktu untuk belajar adalah contoh memanfaatkan waktu dengan tepat"
+    },
+    {
+        "id": 7,
+        "type": "pg_kompleks",
+        "text": "Apa yang terjadi jika kita tidak memanfaatkan waktu dengan tepat?",
+        "options": [
+            "Kita akan memiliki banyak waktu luang",
+            "Kita akan memiliki sedikit waktu luang",
+            "Kita akan merasa bosan",
+            "Kita akan merasa stres"
+        ],
+        "answer": [
+            1,
+            3
+        ],
+        "hint": "Tidak memanfaatkan waktu dengan tepat dapat menyebabkan kita memiliki sedikit waktu luang dan merasa stres"
+    },
+    {
+        "id": 8,
+        "type": "pg_kompleks",
+        "text": "Apa yang harus kita lakukan untuk menepati janji?",
+        "options": [
+            "Membuat janji yang tidak realistis",
+            "Mengingat janji yang telah dibuat",
+            "Mengabaikan janji yang telah dibuat",
+            "Mengubah janji yang telah dibuat"
+        ],
+        "answer": [
+            1
+        ],
+        "hint": "Mengingat janji yang telah dibuat adalah contoh menepati janji"
+    },
+    {
+        "id": 9,
+        "type": "pg_kompleks",
+        "text": "Apa yang terjadi jika kita tidak menepati janji?",
+        "options": [
+            "Orang lain akan percaya pada kita",
+            "Orang lain akan tidak percaya pada kita",
+            "Orang lain akan merasa senang",
+            "Orang lain akan merasa sedih"
+        ],
+        "answer": [
+            1
+        ],
+        "hint": "Tidak menepati janji dapat menyebabkan orang lain tidak percaya pada kita"
+    },
+    {
+        "id": 10,
+        "type": "pg_kompleks",
+        "text": "Apa yang harus kita lakukan untuk menghargai keragaman suku bangsa dan budaya?",
+        "options": [
+            "Menghormati perbedaan suku bangsa dan budaya",
+            "Menghina perbedaan suku bangsa dan budaya",
+            "Mengabaikan perbedaan suku bangsa dan budaya",
+            "Menganggap perbedaan suku bangsa dan budaya tidak penting"
+        ],
+        "answer": [
+            0
+        ],
+        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai keragaman suku bangsa dan budaya"
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "text": "Pasangan makanan khas daerah dengan asal daerahnya adalah?",
+        "options": [
+            "Nasi Goreng - Jawa",
+            "Gado-Gado - Sunda",
+            "Sate - Madura",
+            "Martabak - India"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Nasi Goreng - Jawa, Gado-Gado - Sunda, Sate - Madura adalah contoh pasangan makanan khas daerah dengan asal daerahnya"
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Apa yang harus kita lakukan untuk memahami budaya lain?",
+        "options": [
+            "Membaca buku tentang budaya lain",
+            "Mengunjungi tempat budaya lain",
+            "Mengobrol dengan orang dari budaya lain",
+            "Mengabaikan budaya lain"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Membaca buku tentang budaya lain, mengunjungi tempat budaya lain, mengobrol dengan orang dari budaya lain adalah contoh memahami budaya lain"
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Apa yang terjadi jika kita tidak memahami budaya lain?",
+        "options": [
+            "Kita akan memiliki banyak teman dari budaya lain",
+            "Kita akan memiliki sedikit teman dari budaya lain",
+            "Kita akan merasa bosan",
+            "Kita akan merasa stres"
+        ],
+        "answer": [
+            1,
+            3
+        ],
+        "hint": "Tidak memahami budaya lain dapat menyebabkan kita memiliki sedikit teman dari budaya lain dan merasa stres"
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Apa yang harus kita lakukan untuk menghargai perbedaan suku bangsa dan budaya?",
+        "options": [
+            "Menghormati perbedaan suku bangsa dan budaya",
+            "Menghina perbedaan suku bangsa dan budaya",
+            "Mengabaikan perbedaan suku bangsa dan budaya",
+            "Menganggap perbedaan suku bangsa dan budaya tidak penting"
+        ],
+        "answer": [
+            0
+        ],
+        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Apa yang terjadi jika kita tidak menghargai perbedaan suku bangsa dan budaya?",
+        "options": [
+            "Orang lain akan percaya pada kita",
+            "Orang lain akan tidak percaya pada kita",
+            "Orang lain akan merasa senang",
+            "Orang lain akan merasa sedih"
+        ],
+        "answer": [
+            1
+        ],
+        "hint": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
+    },
+    {
+        "id": 16,
+        "type": "bs",
+        "text": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya",
+        "answer": true,
+        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 17,
+        "type": "bs",
+        "text": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai",
+        "answer": true,
+        "hint": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai"
+    },
+    {
+        "id": 18,
+        "type": "bs",
+        "text": "Membuat jadwal harian dapat membantu kita memanfaatkan waktu dengan tepat",
+        "answer": true,
+        "hint": "Membuat jadwal harian dapat membantu kita memanfaatkan waktu dengan tepat"
+    },
+    {
+        "id": 19,
+        "type": "bs",
+        "text": "Menggunakan waktu untuk bermain dapat menyebabkan kita memiliki sedikit waktu luang",
+        "answer": false,
+        "hint": "Menggunakan waktu untuk bermain tidak selalu menyebabkan kita memiliki sedikit waktu luang"
+    },
+    {
+        "id": 20,
+        "type": "bs",
+        "text": "Menghargai perbedaan suku bangsa dan budaya berarti menghormati dan menghargai perbedaan suku bangsa dan budaya",
+        "answer": true,
+        "hint": "Menghargai perbedaan suku bangsa dan budaya berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 21,
+        "type": "isian",
+        "text": "Salah satu contoh budaya Cina yang tumbuh dan berkembang di Indonesia adalah _______",
+        "answer": "Imlek",
+        "hint": "Imlek adalah salah satu contoh budaya Cina yang tumbuh dan berkembang di Indonesia"
+    },
+    {
+        "id": 22,
+        "type": "isian",
+        "text": "Salah satu contoh tari budaya di Tangerang adalah _______",
+        "answer": "Tari Jaipong",
+        "hint": "Tari Jaipong adalah salah satu contoh tari budaya di Tangerang"
+    },
+    {
+        "id": 23,
+        "type": "isian",
+        "text": "Salah satu contoh festival budaya yang diselenggarakan di Tangerang adalah _______",
+        "answer": "Festival Budaya Tangerang",
+        "hint": "Festival Budaya Tangerang adalah salah satu contoh festival budaya yang diselenggarakan di Tangerang"
+    },
+    {
+        "id": 24,
+        "type": "isian",
+        "text": "Menghargai keragaman suku bangsa dan budaya setempat berarti _______",
+        "answer": "menghormati dan menghargai perbedaan suku bangsa dan budaya",
+        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 25,
+        "type": "isian",
+        "text": "Menghina teman dari suku bangsa lain dapat menyebabkan _______",
+        "answer": "teman kita merasa sedih dan tidak dihargai",
+        "hint": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai"
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "text": "Membuat jadwal harian dapat membantu kita _______",
+        "answer": "memanfaatkan waktu dengan tepat",
+        "hint": "Membuat jadwal harian dapat membantu kita memanfaatkan waktu dengan tepat"
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Menggunakan waktu untuk bermain dapat menyebabkan kita _______",
+        "answer": "memiliki sedikit waktu luang",
+        "hint": "Menggunakan waktu untuk bermain tidak selalu menyebabkan kita memiliki sedikit waktu luang"
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Menghargai perbedaan suku bangsa dan budaya berarti _______",
+        "answer": "menghormati dan menghargai perbedaan suku bangsa dan budaya",
+        "hint": "Menghargai perbedaan suku bangsa dan budaya berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Salah satu contoh makanan khas daerah yang berasal dari Jawa adalah _______",
+        "answer": "Nasi Goreng",
+        "hint": "Nasi Goreng adalah salah satu contoh makanan khas daerah yang berasal dari Jawa"
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Salah satu contoh makanan khas daerah yang berasal dari Sunda adalah _______",
+        "answer": "Gado-Gado",
+        "hint": "Gado-Gado adalah salah satu contoh makanan khas daerah yang berasal dari Sunda"
+    },
+    {
+        "id": 31,
+        "type": "uraian",
+        "text": "Jelaskan apa yang dimaksud dengan menghargai keragaman suku bangsa dan budaya setempat!",
+        "answer": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya",
+        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 32,
+        "type": "uraian",
+        "text": "Jelaskan apa yang terjadi jika kita tidak menghargai perbedaan suku bangsa dan budaya!",
+        "answer": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita",
+        "hint": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
+    },
+    {
+        "id": 33,
+        "type": "uraian",
+        "text": "Jelaskan apa yang harus kita lakukan untuk memanfaatkan waktu dengan tepat!",
+        "answer": "Membuat jadwal harian dan menggunakan waktu untuk belajar adalah contoh memanfaatkan waktu dengan tepat",
+        "hint": "Membuat jadwal harian dan menggunakan waktu untuk belajar adalah contoh memanfaatkan waktu dengan tepat"
+    },
+    {
+        "id": 34,
+        "type": "uraian",
+        "text": "Jelaskan apa yang terjadi jika kita tidak memanfaatkan waktu dengan tepat!",
+        "answer": "Tidak memanfaatkan waktu dengan tepat dapat menyebabkan kita memiliki sedikit waktu luang dan merasa stres",
+        "hint": "Tidak memanfaatkan waktu dengan tepat dapat menyebabkan kita memiliki sedikit waktu luang dan merasa stres"
+    },
+    {
+        "id": 35,
+        "type": "uraian",
+        "text": "Jelaskan apa yang harus kita lakukan untuk menghargai perbedaan suku bangsa dan budaya!",
+        "answer": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai perbedaan suku bangsa dan budaya",
+        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai perbedaan suku bangsa dan budaya"
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "text": "Jelaskan apa yang terjadi jika kita tidak menghargai perbedaan suku bangsa dan budaya!",
+        "answer": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita",
+        "hint": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan apa yang harus kita lakukan untuk memahami budaya lain!",
+        "answer": "Membaca buku tentang budaya lain, mengunjungi tempat budaya lain, mengobrol dengan orang dari budaya lain adalah contoh memahami budaya lain",
+        "hint": "Membaca buku tentang budaya lain, mengunjungi tempat budaya lain, mengobrol dengan orang dari budaya lain adalah contoh memahami budaya lain"
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Jelaskan apa yang terjadi jika kita tidak memahami budaya lain!",
+        "answer": "Tidak memahami budaya lain dapat menyebabkan kita memiliki sedikit teman dari budaya lain dan merasa stres",
+        "hint": "Tidak memahami budaya lain dapat menyebabkan kita memiliki sedikit teman dari budaya lain dan merasa stres"
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Jelaskan apa yang harus kita lakukan untuk menghargai keragaman suku bangsa dan budaya!",
+        "answer": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai keragaman suku bangsa dan budaya",
+        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai keragaman suku bangsa dan budaya"
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Jelaskan apa yang terjadi jika kita tidak menghargai keragaman suku bangsa dan budaya!",
+        "answer": "Tidak menghargai keragaman suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita",
+        "hint": "Tidak menghargai keragaman suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
+    }
+];
+        const container = document.getElementById('question-container');
+
+        function render() {
+            let html = "";
+            questions.forEach((q, idx) => {
+                let inputHtml = "";
+                if(q.type==='pg' || q.type==='bs') {
+                    let opts = q.type==='bs' ? ["Benar","Salah"] : q.options;
+                    opts.forEach((opt,i) => {
+                        let val = q.type==='bs' ? opt : i;
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${val}"> ${opt}</label>`;
+                    });
+                } else if(q.type==='pg_kompleks') {
+                    q.options.forEach((opt,i) => {
+                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${opt}</label>`;
+                    });
+                } else {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Jawaban...">`;
+                }
+                html += `<div class="question-item"><span class="q-number">No. ${idx+1}</span><div>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html;
+        }
+        
+        function submitExam() {
+            let score=0, max=0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if(q.type==='pg'||q.type==='bs') {
+                    max++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if(sel) {
+                        let val = q.type==='pg' ? parseInt(sel.value) : sel.value;
+                        if(val === q.answer) { score++; fb.className="feedback-box correct"; fb.innerHTML="✅ Benar"; }
+                        else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Salah. Hint: "+q.hint; }
+                    } else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Kosong"; }
+                } else {
+                     fb.className="feedback-box manual"; fb.innerHTML="ℹ️ Cek Manual (Kunci: "+q.answer+")";
+                }
+                fb.style.display="block";
+            });
+            document.getElementById('final-score').innerText = Math.round((score/max)*100) || 0;
+            document.getElementById('score-board').style.display="block";
+            document.getElementById('footer-action').style.display="none";
+            window.scrollTo(0,0);
+        }
+        render();
+    </script>
+</body>
+</html>
