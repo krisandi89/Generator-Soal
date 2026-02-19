@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian PAI Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #196f3d;
+            --primary-light: #27ae60;
+            --bg: #eafaf1;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #fff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: none;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.3s;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(25, 111, 61, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.4em;
+            direction: rtl;
+            text-align: right;
+            color: var(--primary);
+            line-height: 2;
+            background: #eafaf1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border: 1px solid #a9dfbf;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #eafaf1;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(25, 111, 61, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+
+            .arabic {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☪️ Pendidikan Agama Islam</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            // ===== PILIHAN GANDA (No 1-10) =====
+            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Surat An-Nisa terdiri dari berapa ayat?", options: ["76 ayat", "114 ayat", "176 ayat", "286 ayat"], answer: 2, hint: "Surat An-Nisa terdiri dari 176 ayat." },
+            { id: 2, type: "pg", text: "Surat An-Nisa diturunkan di kota...", options: ["Mekah", "Madinah", "Thaif", "Yerusalem"], answer: 1, hint: "Surat An-Nisa termasuk surat Madaniyah (diturunkan di Madinah)." },
+            { id: 3, type: "pg", text: "An-Nisa artinya...", options: ["Laki-laki", "Wanita", "Anak-anak", "Orang tua"], answer: 1, hint: "An-Nisa (النِّسَاء) artinya wanita/perempuan." },
+            { id: 4, type: "pg", text: 'Apa arti dari potongan ayat berikut? <div class="arabic">أَيْمَانُكُمْ</div> (Q.S. An-Nisa ayat 36)', options: ["Tangan kananmu", "Sumpah/janji kalian", "Keimanan kalian", "Iman dan taqwa"], answer: 1, hint: 'أَيْمَانُكُمْ artinya sumpah/janji kalian.' },
+            { id: 5, type: "pg", text: 'Apa arti dari potongan ayat berikut? <div class="arabic">وَالْمَسَاكِينِ</div> (Q.S. An-Nisa ayat 36)', options: ["Dan orang-orang kaya", "Dan orang-orang miskin", "Dan orang-orang tua", "Dan anak-anak yatim"], answer: 1, hint: 'وَالْمَسَاكِينِ artinya dan orang-orang miskin.' },
+            { id: 6, type: "pg", text: "Pesan pokok surat An-Nisa ayat 36 adalah perintah untuk...", options: ["Berperang melawan musuh", "Beribadah kepada Allah dan berbuat baik kepada sesama", "Memperbanyak harta kekayaan", "Berpuasa setiap hari"], answer: 1, hint: "Q.S. An-Nisa ayat 36 berisi perintah beribadah kepada Allah dan berbuat baik kepada orang tua, kerabat, anak yatim, dan orang miskin." },
+            { id: 7, type: "pg", text: "Arti silaturrahmi adalah...", options: ["Memutuskan hubungan dengan keluarga", "Menyambung tali persaudaraan dan kasih sayang", "Berlomba-lomba dalam kebaikan", "Menjauhi tetangga yang berbeda pendapat"], answer: 1, hint: "Silaturrahmi artinya menyambung tali persaudaraan dan kasih sayang." },
+            { id: 8, type: "pg", text: "Silaturrahmi sebaiknya dilakukan...", options: ["Hanya saat Hari Raya", "Hanya saat ada keperluan", "Setiap saat dan kapan saja", "Hanya dengan orang yang kaya"], answer: 2, hint: "Silaturrahmi sebaiknya dilakukan setiap saat, tidak hanya di waktu-waktu tertentu." },
+            { id: 9, type: "pg", text: "Perbuatan yang termasuk menjaga silaturrahmi adalah...", options: ["Mengunjungi saudara yang sakit", "Mengolok-olok tetangga", "Tidak mau berbicara dengan teman", "Memutuskan hubungan dengan kerabat"], answer: 0, hint: "Mengunjungi saudara yang sakit adalah contoh menjaga silaturrahmi." },
+            { id: 10, type: "pg", text: "Contoh perilaku menjaga silaturrahmi di sekolah adalah...", options: ["Mencontek saat ujian", "Membantu teman yang kesulitan belajar", "Membicarakan keburukan teman", "Tidak mau berbagi bekal makanan"], answer: 1, hint: "Membantu teman yang kesulitan belajar termasuk menjaga silaturrahmi." },
+
+            // ===== PG KOMPLEKS (No 11-20) =====
+            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: "Tugas-tugas Nabi dan Rasul adalah... (pilih semua yang benar)", options: ["Menyampaikan wahyu Allah SWT kepada umat", "Memberi teladan kehidupan yang baik", "Mencari kekayaan dunia sebanyak-banyaknya", "Membimbing umat ke jalan yang benar"], answer: [0, 1, 3], hint: "Tugas Nabi dan Rasul: menyampaikan wahyu, memberi teladan, dan membimbing umat." },
+            { id: 12, type: "pg_kompleks", text: "Tujuan dan hikmah diutusnya Nabi dan Rasul adalah... (pilih semua yang benar)", options: ["Sebagai pembawa kabar gembira dan peringatan", "Untuk membimbing manusia ke jalan lurus", "Untuk mencari popularitas", "Sebagai uswatun hasanah (teladan yang baik)"], answer: [0, 1, 3], hint: "Nabi dan Rasul diutus sebagai pembawa kabar, pembimbing, dan teladan." },
+            { id: 13, type: "pg_kompleks", text: 'Makna Uswatun Hasanah adalah... (pilih semua yang benar)', options: ["Teladan yang baik", "Contoh perilaku mulia", "Orang yang kaya raya", "Panutan dalam kehidupan"], answer: [0, 1, 3], hint: "Uswatun Hasanah berarti teladan yang baik, contoh perilaku mulia, dan panutan hidup." },
+            { id: 14, type: "pg_kompleks", text: "Perilaku yang mencerminkan keteladanan Nabi dan Rasul adalah... (pilih semua yang benar)", options: ["Berkata jujur dalam segala keadaan", "Bersikap amanah (dapat dipercaya)", "Sombong dan merasa paling hebat", "Menyampaikan kebenaran dengan sabar"], answer: [0, 1, 3], hint: "Jujur, amanah, dan menyampaikan kebenaran merupakan sifat teladan Nabi." },
+            { id: 15, type: "pg_kompleks", text: 'Isi kandungan Q.S. Yunus ayat 47 tentang Rasul dan keadilan Allah SWT meliputi... (pilih semua yang benar)', options: ["Setiap umat memiliki Rasul", "Allah memutuskan perkara dengan adil", "Hanya bangsa Arab yang memiliki Rasul", "Tidak ada yang dizalimi di sisi Allah"], answer: [0, 1, 3], hint: "Q.S. Yunus:47 menyatakan setiap umat memiliki Rasul dan Allah memutuskan dengan adil." },
+            { id: 16, type: "pg_kompleks", text: 'Isi kandungan Q.S. Al-Hajj ayat 75 tentang utusan Allah SWT meliputi... (pilih semua yang benar)', options: ["Allah memilih utusan dari malaikat", "Allah memilih utusan dari manusia", "Allah memilih utusan sesuai kehendak-Nya", "Utusan Allah dipilih oleh manusia"], answer: [0, 1, 2], hint: "Q.S. Al-Hajj:75 menyatakan Allah memilih utusan dari malaikat dan manusia sesuai kehendak-Nya." },
+            { id: 17, type: "pg_kompleks", text: "Sikap meneladani Nabi dan Rasul dalam kehidupan sehari-hari adalah... (pilih semua yang benar)", options: ["Berkata jujur", "Menepati janji", "Malas beribadah", "Bersikap sabar"], answer: [0, 1, 3], hint: "Jujur, menepati janji, dan sabar adalah sikap meneladani Nabi." },
+            { id: 18, type: "pg_kompleks", text: "Sifat wajib bagi Rasul adalah... (pilih semua yang benar)", options: ["Shiddiq (jujur)", "Amanah (dapat dipercaya)", "Tabligh (menyampaikan)", "Kidzib (bohong)"], answer: [0, 1, 2], hint: "Sifat wajib Rasul: Shiddiq, Amanah, Tabligh, Fathanah. Kidzib adalah sifat mustahil." },
+            { id: 19, type: "pg_kompleks", text: "Sifat Shiddiq dan Amanah pada Rasul berarti... (pilih semua yang benar)", options: ["Shiddiq = jujur dalam perkataan dan perbuatan", "Amanah = dapat dipercaya", "Shiddiq = suka berbohong", "Amanah = menjaga amanah Allah dan manusia"], answer: [0, 1, 3], hint: "Shiddiq = jujur, Amanah = dapat dipercaya dan menjaga amanah." },
+            { id: 20, type: "pg_kompleks", text: "Contoh beriman kepada Rasul dalam kehidupan sehari-hari adalah... (pilih semua yang benar)", options: ["Meneladani akhlak Rasul", "Membaca shalawat kepada Nabi", "Tidak peduli dengan ajaran Rasul", "Mengamalkan sunnah Rasul"], answer: [0, 1, 3], hint: "Beriman kepada Rasul diwujudkan dengan meneladani akhlak, membaca shalawat, dan mengamalkan sunnah." },
+
+            // ===== BENAR / SALAH (No 21-30) =====
+            { id: 21, type: "bs", section: "Benar / Salah", text: "Sifat Jaiz bagi Rasul artinya Rasul boleh memiliki sifat-sifat manusiawi seperti makan, minum, dan tidur.", answer: "Benar", hint: "Benar. Sifat Jaiz = sifat manusiawi yang boleh dimiliki Rasul." },
+            { id: 22, type: "bs", text: "Rasul tidak pernah merasa lapar karena mereka adalah utusan Allah.", answer: "Salah", hint: "Salah. Rasul juga manusia yang merasakan lapar, haus, dan lelah (sifat Jaiz)." },
+            { id: 23, type: "bs", text: "Rasul juga merasakan sakit dan sedih seperti manusia biasa.", answer: "Benar", hint: "Benar. Sakit dan sedih termasuk sifat Jaiz (manusiawi) bagi Rasul." },
+            { id: 24, type: "bs", text: "Rasul memiliki kebutuhan fisik seperti makan, minum, dan tidur.", answer: "Benar", hint: "Benar. Makan, minum, dan tidur termasuk sifat Jaiz bagi Rasul." },
+            { id: 25, type: "bs", text: "Rasul adalah malaikat yang tidak memiliki sifat manusia.", answer: "Salah", hint: "Salah. Rasul adalah manusia pilihan Allah, bukan malaikat." },
+            { id: 26, type: "bs", text: "Rasul adalah utusan Allah SWT yang bertugas menyampaikan wahyu kepada umat manusia.", answer: "Benar", hint: "Benar. Tugas utama Rasul adalah menyampaikan wahyu Allah." },
+            { id: 27, type: "bs", text: "Rukun iman ada 5 perkara.", answer: "Salah", hint: "Salah. Rukun iman ada 6: iman kepada Allah, Malaikat, Kitab, Rasul, Hari Akhir, dan Qada & Qadar." },
+            { id: 28, type: "bs", text: "Rasul bertugas membimbing manusia agar beribadah kepada Allah SWT.", answer: "Benar", hint: "Benar. Rasul membimbing manusia ke jalan yang benar." },
+            { id: 29, type: "bs", text: "Membicarakan keburukan orang lain (ghibah) termasuk perilaku terpuji.", answer: "Salah", hint: "Salah. Ghibah (membicarakan keburukan orang lain) termasuk perilaku tercela." },
+            { id: 30, type: "bs", text: "Beriman kepada Rasul termasuk salah satu rukun iman.", answer: "Benar", hint: "Benar. Iman kepada Rasul adalah rukun iman yang ke-4." },
+
+            // ===== ISIAN (No 31-35) =====
+            { id: 31, type: "isian", section: "Isian Singkat", text: "Jumlah Nabi dan Rasul yang wajib diimani ada...", answer: "25", hint: "Ada 25 Nabi dan Rasul yang wajib diimani oleh umat Islam." },
+            { id: 32, type: "isian", text: "Keluarga adalah tempat pertama penanaman nilai...", answer: "Islam", hint: "Keluarga adalah tempat pertama penanaman nilai-nilai Islam." },
+            { id: 33, type: "isian", text: "Allah SWT memerintahkan manusia untuk berbuat baik kepada kedua orang tua dalam surat...", answer: "Al-Isra", hint: "Q.S. Al-Isra' ayat 23 berisi perintah berbuat baik kepada kedua orang tua." },
+            { id: 34, type: "isian", text: "Peran ayah dalam keluarga adalah sebagai... keluarga.", answer: "Pemimpin", hint: "Ayah berperan sebagai pemimpin (kepala) keluarga." },
+            { id: 35, type: "isian", text: "Contoh adab kepada orang tua adalah berkata sopan dan tidak berkata...", answer: "Kasar", hint: "Adab kepada orang tua: berkata sopan, tidak berkata kasar/menyakiti hati." },
+
+            // ===== URAIAN (No 36-40) =====
+            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Jelaskan peran keluarga sebagai tempat pertama penanaman nilai Islam!", answer: "Keluarga adalah madrasah pertama bagi anak. Di dalam keluarga, orang tua mengajarkan nilai-nilai Islam seperti shalat, puasa, membaca Al-Quran, dan akhlak mulia. Orang tua menjadi teladan pertama bagi anak-anak dalam menjalankan perintah Allah SWT.", hint: "Jelaskan fungsi keluarga dalam pendidikan Islam." },
+            { id: 37, type: "uraian", text: 'Jelaskan kandungan Q.S. Al-Isra\' ayat 23 tentang adab kepada orang tua! <div class="arabic">وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا</div>', answer: "Q.S. Al-Isra' ayat 23 berisi: 1) Perintah untuk beribadah hanya kepada Allah SWT, 2) Perintah untuk berbuat baik (ihsan) kepada kedua orang tua, 3) Larangan berkata 'uff' (kasar) kepada orang tua, 4) Perintah berkata mulia kepada mereka.", hint: "Jelaskan perintah beribadah kepada Allah dan berbuat baik kepada orang tua." },
+            { id: 38, type: "uraian", text: "Sebutkan 3 contoh cara keluarga saling menjaga diri dari siksa api neraka!", answer: "1) Saling mengingatkan untuk shalat 5 waktu; 2) Mengajarkan membaca Al-Quran; 3) Saling menasihati dalam kebaikan dan kesabaran; 4) Menjauhi perbuatan maksiat bersama-sama; 5) Berdoa bersama keluarga.", hint: "Sebutkan kegiatan keluarga yang bertujuan menjaga keimanan." },
+            { id: 39, type: "uraian", text: "Jelaskan alasan pentingnya berbicara sopan kepada anggota keluarga!", answer: "Berbicara sopan kepada keluarga penting karena: 1) Merupakan perintah Allah SWT dalam Al-Quran; 2) Menjaga perasaan dan keharmonisan keluarga; 3) Menunjukkan rasa hormat dan kasih sayang; 4) Menjadi teladan bagi adik dan anggota keluarga lainnya; 5) Mendapatkan ridha Allah SWT dan orang tua.", hint: "Jelaskan alasan dari sisi agama dan kehidupan sosial." },
+            { id: 40, type: "uraian", text: "Berikan 3 contoh perilaku saling menyayangi dalam keluarga!", answer: "1) Membantu orang tua membersihkan rumah; 2) Berbagi makanan dengan saudara; 3) Menjenguk anggota keluarga yang sakit; 4) Mendoakan kesehatan dan kebaikan keluarga; 5) Tidak bertengkar dan saling memaafkan.", hint: "Sebutkan perilaku kasih sayang antar anggota keluarga." }
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
+                else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html; updateProgress();
+        }
+        function updateProgress() { let a = 0; questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) a++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) a++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) a++; } }); document.getElementById('progress-fill').style.width = `${(a / questions.length) * 100}%`; }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let s = 0, m = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            document.getElementById('final-score').innerText = m > 0 ? Math.round((s / m) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${s} dari ${m} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block'; document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%'; window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>

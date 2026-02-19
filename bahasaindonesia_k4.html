@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Bahasa Indonesia Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c0392b;
+            --primary-light: #e74c3c;
+            --bg: #fdf2f0;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score-board h2 {
+            font-size: 1.3em;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .score-board .detail {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+        }
+
+        .infographic-box {
+            background: #eaf2f8;
+            border: 2px solid #85c1e9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+        }
+
+        .infographic-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .infographic-box ul {
+            padding-left: 20px;
+        }
+
+        .infographic-box li {
+            margin: 5px 0;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #fdedec;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+
+            .question-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 Bahasa Indonesia</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            // ===== PILIHAN GANDA (No 1-10) =====
+            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Penulisan yang benar untuk nilai uang lima puluh ribu rupiah adalah...", options: ["Rp. 50.000,-", "Rp50.000,00", "Rp 50.000", "RP. 50000"], answer: 1, hint: "Penulisan nilai uang yang benar menurut EYD: Rp50.000,00 (tanpa spasi dan titik setelah Rp)." },
+            { id: 2, type: "pg", text: "Kalimat berikut yang merupakan kalimat perintah adalah...", options: ["Apakah kamu sudah menabung?", "Aku suka menabung di celengan.", "Tolong simpan uang receh ini ke dalam celengan!", "Menabung adalah kebiasaan yang baik."], answer: 2, hint: "Kalimat perintah biasanya menggunakan kata 'tolong', 'silakan', atau diakhiri tanda seru (!)." },
+            { id: 3, type: "pg", text: "Ciri-ciri teks prosedur adalah...", options: ["Berisi opini dan pendapat penulis", "Berisi langkah-langkah yang harus dilakukan secara berurutan", "Berisi cerita imajinatif dengan tokoh fiksi", "Berisi lirik lagu yang berirama"], answer: 1, hint: "Teks prosedur berisi petunjuk atau langkah-langkah yang harus dilakukan secara berurutan." },
+            { id: 4, type: "pg", text: "Agar puisi menjadi menarik, seorang penulis harus memperhatikan...", options: ["Jumlah halaman yang banyak", "Diksi (pilihan kata) yang tepat dan imajinatif", "Penggunaan bahasa asing sebanyak mungkin", "Menulis dalam bentuk paragraf panjang"], answer: 1, hint: "Diksi (pilihan kata) yang tepat dan imajinatif membuat puisi menjadi menarik dan bermakna." },
+            { id: 5, type: "pg", text: 'Perhatikan penggalan puisi berikut:<div class="reading-box">Alam Indonesia<br>Indahnya negeriku<br>Gunung menjulang tinggi<br>Laut membentang _____<br>Sawah menghijau padi</div>Kata yang tepat untuk melengkapi puisi tersebut adalah...', options: ["sempit", "luas", "kecil", "pendek"], answer: 1, hint: "Kata 'luas' sesuai konteks puisi yang menggambarkan bentang alam Indonesia." },
+            { id: 6, type: "pg", text: "Contoh kalimat perintah yang sopan adalah...", options: ["Kerjakan PR-mu sekarang juga!", "Pergi sana! Jangan ganggu!", "Tolong ambilkan buku di atas meja, ya!", "Diam kamu!"], answer: 2, hint: "Kalimat perintah yang sopan menggunakan kata 'tolong' dan disampaikan dengan santun." },
+            { id: 7, type: "pg", text: "Tujuan kalimat efektif adalah...", options: ["Membuat kalimat sepanjang mungkin", "Menyampaikan pesan secara jelas dan mudah dipahami", "Menggunakan kata-kata yang sulit dimengerti", "Membuat pembaca bingung"], answer: 1, hint: "Kalimat efektif bertujuan menyampaikan pesan secara jelas, singkat, dan mudah dipahami." },
+            { id: 8, type: "pg", text: 'Contoh kalimat efektif di bawah ini adalah...', options: ["Para murid-murid sedang belajar di kelas.", "Murid-murid sedang belajar di kelas.", "Para semua murid sedang belajar di kelas.", "Murid yang banyak sedang belajar di kelas."], answer: 1, hint: "'Murid-murid sedang belajar di kelas' adalah kalimat efektif karena tidak ada kata yang mubazir." },
+            { id: 9, type: "pg", text: 'Perhatikan kalimat berikut: "Saya makan nasi yang dimasak yang dimakan bersama keluarga." Kalimat efektif yang tepat adalah...', options: ["Saya makan nasi bersama keluarga.", "Saya yang makan nasi yang dimasak keluarga.", "Nasi yang dimakan saya yang bersama keluarga.", "Saya nasi makan bersama keluarga."], answer: 0, hint: "Kalimat efektif menghilangkan kata-kata yang berlebihan dan mubazir." },
+            { id: 10, type: "pg", text: 'Perhatikan puisi berikut:<div class="reading-box">Ibuku Tercinta<br>Engkau matahari yang menerangi hidupku<br>Tak pernah lelah memberikan kasih sayang<br>Senyummu bagai bunga yang selalu mekar<br>Di hatiku selamanya</div>Isi puisi di atas adalah tentang...', options: ["Keindahan matahari", "Kasih sayang seorang ibu", "Bunga yang bermekaran", "Kehidupan di taman"], answer: 1, hint: "Puisi tersebut menggambarkan kasih sayang seorang ibu yang tak pernah lelah." },
+
+            // ===== PG KOMPLEKS (No 11-20) =====
+            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Gunung Bromo terletak di Jawa Timur. Gunung ini terkenal dengan pemandangan matahari terbitnya yang indah. Banyak wisatawan datang ke Gunung Bromo untuk menikmati keindahan alamnya. Di sekitar Gunung Bromo terdapat lautan pasir yang sangat luas.</div>Berdasarkan teks di atas, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Gunung Bromo terletak di Jawa Timur", "Gunung Bromo terkenal dengan matahari terbenamnya", "Di sekitar Gunung Bromo terdapat lautan pasir", "Banyak wisatawan datang ke Gunung Bromo"], answer: [0, 2, 3], hint: "Gunung Bromo terkenal dengan matahari terBIT, bukan terbenam." },
+            { id: 12, type: "pg_kompleks", text: 'Pernyataan yang benar tentang teks prosedur adalah... (pilih semua yang benar)', options: ["Memiliki langkah-langkah yang berurutan", "Menggunakan kalimat perintah", "Berisi cerita fiksi", "Biasanya dilengkapi dengan bahan/alat yang diperlukan"], answer: [0, 1, 3], hint: "Teks prosedur memiliki langkah berurutan, menggunakan kalimat perintah, dan dilengkapi daftar alat/bahan." },
+            { id: 13, type: "pg_kompleks", text: 'Ciri-ciri kalimat efektif adalah... (pilih semua yang benar)', options: ["Tidak menggunakan kata yang mubazir", "Mudah dipahami pembaca", "Menggunakan kata-kata yang bertele-tele", "Struktur kalimatnya baku"], answer: [0, 1, 3], hint: "Kalimat efektif: tidak mubazir, mudah dipahami, dan strukturnya baku." },
+            { id: 14, type: "pg_kompleks", text: 'Unsur-unsur yang harus ada dalam puisi adalah... (pilih semua yang benar)', options: ["Diksi (pilihan kata)", "Rima (persajakan)", "Daftar pustaka", "Irama"], answer: [0, 1, 3], hint: "Puisi memiliki unsur: diksi, rima, irama, tema, dan amanat. Daftar pustaka bukan unsur puisi." },
+            { id: 15, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Candi Borobudur merupakan candi Buddha terbesar di dunia. Candi ini terletak di Magelang, Jawa Tengah. Candi Borobudur dibangun pada abad ke-8 oleh Dinasti Syailendra. Candi ini memiliki 2.672 panel relief dan 504 arca Buddha.</div>Informasi yang terdapat dalam teks tersebut adalah... (pilih semua yang benar)', options: ["Candi Borobudur adalah candi Hindu terbesar", "Candi terletak di Magelang, Jawa Tengah", "Dibangun pada abad ke-8", "Memiliki 504 arca Buddha"], answer: [1, 2, 3], hint: "Candi Borobudur adalah candi Buddha (bukan Hindu) terbesar di dunia." },
+            { id: 16, type: "pg_kompleks", text: 'Perhatikan infografis berikut:<div class="infographic-box"><h4>💰 Tips Menabung untuk Pelajar</h4><ul><li>Sisihkan uang jajan setiap hari</li><li>Gunakan celengan atau tabungan bank</li><li>Catat pengeluaran harianmu</li><li>Tentukan target menabung</li><li>Hindari membeli barang yang tidak perlu</li></ul></div>Berdasarkan infografis di atas, tips menabung yang tepat adalah... (pilih semua yang benar)', options: ["Sisihkan uang jajan setiap hari", "Habiskan semua uang jajan untuk jajan", "Catat pengeluaran harianmu", "Tentukan target menabung"], answer: [0, 2, 3], hint: "Menghabiskan semua uang jajan bukan tips menabung yang tepat." },
+            { id: 17, type: "pg_kompleks", text: 'Berdasarkan infografis tips menabung sebelumnya, manfaat menabung bagi pelajar adalah... (pilih semua yang benar)', options: ["Memiliki uang cadangan untuk kebutuhan mendadak", "Belajar mengatur keuangan sejak dini", "Bisa membeli semua mainan yang diinginkan tanpa batas", "Memiliki kebiasaan hidup hemat"], answer: [0, 1, 3], hint: "Menabung bukan berarti bisa membeli semua yang diinginkan tanpa batas." },
+            { id: 18, type: "pg_kompleks", text: 'Langkah-langkah yang benar dalam membuat teks prosedur adalah... (pilih semua yang benar)', options: ["Menentukan tujuan prosedur", "Menyusun langkah secara berurutan", "Menulis langkah secara acak", "Menyiapkan daftar alat dan bahan"], answer: [0, 1, 3], hint: "Langkah teks prosedur harus berurutan, bukan acak." },
+            { id: 19, type: "pg_kompleks", text: 'Perhatikan infografis tips menabung sebelumnya. Pernyataan yang sesuai dengan isi infografis adalah... (pilih semua yang benar)', options: ["Menggunakan celengan atau tabungan bank", "Menghindari membeli barang tidak perlu", "Tidak perlu mencatat pengeluaran", "Menentukan target menabung"], answer: [0, 1, 3], hint: "Infografis menyarankan untuk mencatat pengeluaran, bukan mengabaikannya." },
+            { id: 20, type: "pg_kompleks", text: 'Jenis-jenis majas metafora yang benar adalah... (pilih semua yang benar)', options: ["Raja siang = matahari", "Buah hati = anak", "Si jago merah = api", "Kuda besi = mobil"], answer: [0, 1, 2], hint: "Kuda besi biasanya merujuk pada sepeda/sepeda motor, bukan mobil. Raja siang = matahari, buah hati = anak, si jago merah = api." },
+
+            // ===== BENAR / SALAH (No 21-30) =====
+            { id: 21, type: "bs", section: "Benar / Salah", text: 'Berdasarkan infografis tips menabung: "Sisihkan uang jajan setiap hari" adalah salah satu tips menabung yang baik.', answer: "Benar", hint: "Benar. Menyisihkan uang jajan setiap hari adalah tips menabung yang baik." },
+            { id: 22, type: "bs", text: 'Berdasarkan infografis tips menabung: "Tidak perlu mencatat pengeluaran harian."', answer: "Salah", hint: "Salah. Infografis menyarankan untuk mencatat pengeluaran harian." },
+            { id: 23, type: "bs", text: 'Berdasarkan infografis tips menabung: "Menggunakan celengan atau tabungan bank adalah cara menabung yang tepat."', answer: "Benar", hint: "Benar. Celengan dan tabungan bank adalah cara yang disarankan." },
+            { id: 24, type: "bs", text: 'Berdasarkan infografis tips menabung: "Membeli semua barang yang diinginkan adalah tips menabung yang baik."', answer: "Salah", hint: "Salah. Infografis menyarankan menghindari membeli barang yang tidak perlu." },
+            { id: 25, type: "bs", text: 'Berdasarkan infografis tips menabung: "Menentukan target menabung membantu kita lebih termotivasi."', answer: "Benar", hint: "Benar. Target menabung membuat kita lebih termotivasi." },
+            { id: 26, type: "bs", text: "Kalimat perintah selalu diakhiri dengan tanda tanya (?).", answer: "Salah", hint: "Salah. Kalimat perintah diakhiri dengan tanda seru (!)." },
+            { id: 27, type: "bs", text: 'Majas metafora "Raja siang" memiliki arti matahari.', answer: "Benar", hint: "Benar. Raja siang adalah majas metafora untuk matahari." },
+            { id: 28, type: "bs", text: "Puisi harus ditulis dalam bentuk paragraf yang panjang.", answer: "Salah", hint: "Salah. Puisi ditulis dalam bentuk bait dan larik, bukan paragraf panjang." },
+            { id: 29, type: "bs", text: 'Majas metafora "Buah hati" memiliki arti anak.', answer: "Benar", hint: 'Benar. "Buah hati" adalah majas metafora yang berarti anak.' },
+            { id: 30, type: "bs", text: "Teks prosedur tidak memerlukan urutan langkah-langkah.", answer: "Salah", hint: "Salah. Teks prosedur harus memiliki langkah-langkah yang berurutan." },
+
+            // ===== ISIAN SINGKAT (No 31-35) =====
+            { id: 31, type: "isian", section: "Isian Singkat", text: "Pesan moral atau pelajaran yang terkandung dalam sebuah cerita disebut...", answer: "Amanat", hint: "Amanat adalah pesan moral yang ingin disampaikan penulis kepada pembaca." },
+            { id: 32, type: "isian", text: "Mata uang resmi negara Indonesia adalah...", answer: "Rupiah", hint: "Rupiah adalah mata uang resmi Republik Indonesia." },
+            { id: 33, type: "isian", text: "Teks yang berisi langkah-langkah cara membuat atau melakukan sesuatu disebut teks...", answer: "Prosedur", hint: "Teks prosedur berisi petunjuk atau langkah-langkah melakukan sesuatu." },
+            { id: 34, type: "isian", text: "Pemilihan kata yang tepat dalam puisi agar puisi terdengar indah dan bermakna disebut...", answer: "Diksi", hint: "Diksi adalah pilihan kata yang digunakan dalam puisi atau karya sastra." },
+            { id: 35, type: "isian", text: "Bunyi yang berulang dalam puisi yang terletak di akhir baris disebut...", answer: "Rima", hint: "Rima (persajakan) adalah bunyi yang berulang di akhir baris puisi." },
+
+            // ===== URAIAN / ESAI (No 36-40) =====
+            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Buatlah 2 contoh kalimat efektif dan 2 contoh kalimat tidak efektif sebagai perbandingan!", answer: "Efektif: 1) Murid-murid sedang belajar di kelas. 2) Ibu memasak nasi goreng. Tidak efektif: 1) Para murid-murid sedang belajar di kelas. 2) Ibu sedang memasak masakan nasi goreng.", hint: "Kalimat tidak efektif biasanya memiliki kata mubazir atau berlebihan." },
+            { id: 37, type: "uraian", text: 'Sebutkan 5 contoh majas metafora beserta artinya!', answer: "1) Raja siang = matahari, 2) Buah hati = anak, 3) Si jago merah = api, 4) Kambing hitam = orang yang dipersalahkan, 5) Tulang punggung = penopang utama", hint: "Majas metafora menggunakan perbandingan langsung tanpa kata 'seperti' atau 'bagai'." },
+            { id: 38, type: "uraian", text: "Jelaskan pengertian kalimat perintah dan fungsinya dalam teks prosedur!", answer: "Kalimat perintah adalah kalimat yang berisi perintah atau instruksi kepada seseorang untuk melakukan sesuatu. Dalam teks prosedur, kalimat perintah berfungsi untuk memberikan instruksi langkah demi langkah yang harus diikuti oleh pembaca.", hint: "Jelaskan pengertian dan hubungannya dengan teks prosedur." },
+            { id: 39, type: "uraian", text: "Jelaskan apa yang dimaksud dengan latar dalam sebuah cerita!", answer: "Latar adalah keterangan tentang tempat, waktu, dan suasana terjadinya peristiwa dalam cerita. Latar tempat menunjukkan di mana peristiwa terjadi, latar waktu menunjukkan kapan peristiwa terjadi, dan latar suasana menunjukkan keadaan yang melingkupi peristiwa.", hint: "Latar cerita terdiri dari latar tempat, waktu, dan suasana." },
+            { id: 40, type: "uraian", text: "Jelaskan apa yang dimaksud dengan puisi dan sebutkan 3 unsur-unsurnya!", answer: "Puisi adalah karya sastra yang menggunakan kata-kata indah dan bermakna yang disusun dalam bait dan larik. Unsur-unsur puisi: 1) Diksi (pilihan kata), 2) Rima (persajakan), 3) Irama (ritme), 4) Tema, 5) Amanat, 6) Imaji.", hint: "Jelaskan pengertian puisi dan unsur-unsur intrinsiknya." }
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`; }
+                else if (q.type === 'uraian') { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html; updateProgress();
+        }
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) answered++; } });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let score = 0, maxAuto = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { maxAuto++; const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value)); if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'isian') { maxAuto++; const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (val === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            document.getElementById('final-score').innerText = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>

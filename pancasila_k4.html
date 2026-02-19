@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Pancasila Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0984e3;
+            --primary-light: #74b9ff;
+            --secondary: #0984e3;
+            --bg: #f0f8ff;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            font-size: 1em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score-board h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .score-board .detail {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(9, 132, 227, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reading-box {
+            background: #f8f9fa;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .table-box {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 15px;
+            font-size: 0.9em;
+        }
+
+        .table-box th,
+        .table-box td {
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .table-box th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .table-box tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #ebf5fb;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+
+            .question-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇮🇩 Pendidikan Pancasila</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            // ===== PILIHAN GANDA (No 1-10) =====
+            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Contoh sikap toleransi di sekolah adalah...", options: ["Mengejek teman yang berbeda agama", "Menghormati teman yang sedang beribadah", "Tidak mau bermain dengan teman yang berbeda suku", "Memaksakan pendapat sendiri kepada teman"], answer: 1, hint: "Menghormati teman yang sedang beribadah adalah contoh sikap toleransi di sekolah." },
+            { id: 2, type: "pg", text: "Contoh sikap toleransi di rumah adalah...", options: ["Membantu ibu menyiapkan makanan saat hari raya keluarga", "Tidak peduli dengan kegiatan keagamaan keluarga", "Marah ketika adik berbeda pendapat", "Melarang anggota keluarga beribadah"], answer: 0, hint: "Membantu keluarga saat hari raya merupakan bentuk toleransi di rumah." },
+            { id: 3, type: "pg", text: "Hari Toleransi Internasional diperingati setiap tanggal...", options: ["16 Oktober", "16 November", "16 Desember", "16 Agustus"], answer: 1, hint: "Hari Toleransi Internasional diperingati setiap 16 November sesuai deklarasi UNESCO." },
+            { id: 4, type: "pg", text: "PBB adalah kepanjangan dari...", options: ["Persatuan Bangsa-Bangsa", "Perserikatan Bangsa-Bangsa", "Perhimpunan Bangsa-Bangsa", "Perkumpulan Bangsa-Bangsa"], answer: 1, hint: "PBB = Perserikatan Bangsa-Bangsa (United Nations)." },
+            { id: 5, type: "pg", text: "Perhatikan gambar berikut! Sekelompok anak yang berbeda suku sedang bermain bersama di halaman sekolah. Sikap toleransi yang ditunjukkan dalam kegiatan tersebut adalah...", options: ["Saling mengejek perbedaan bahasa", "Bermain bersama tanpa membeda-bedakan suku", "Hanya bermain dengan teman sesuku", "Memisahkan kelompok berdasarkan agama"], answer: 1, hint: "Bermain bersama tanpa membeda-bedakan suku adalah sikap toleransi." },
+            { id: 6, type: "pg", text: "Sikap toleransi di masyarakat dapat diwujudkan dengan cara...", options: ["Menutup pintu saat tetangga yang berbeda agama sedang merayakan hari besar", "Mengucapkan selamat kepada tetangga yang merayakan hari besar agamanya", "Menghina tradisi budaya tetangga", "Tidak mau bergaul dengan tetangga yang berbeda suku"], answer: 1, hint: "Mengucapkan selamat hari raya kepada tetangga adalah wujud toleransi di masyarakat." },
+            { id: 7, type: "pg", text: "Di sekolah, jika ada teman yang sedang berpuasa, sikap toleransi yang tepat adalah...", options: ["Makan di depan teman yang sedang berpuasa", "Mengejek teman yang berpuasa karena dianggap lemah", "Tidak makan di hadapan teman yang sedang berpuasa", "Memaksa teman untuk ikut berpuasa"], answer: 2, hint: "Menghargai teman yang berpuasa dengan tidak makan di hadapannya adalah sikap toleransi." },
+            { id: 8, type: "pg", text: "Contoh toleransi di rumah ketika saudara memiliki pendapat berbeda adalah...", options: ["Memaksakan pendapat sendiri", "Bermusyawarah untuk mencari solusi bersama", "Tidak berbicara dengan saudara", "Marah-marah kepada saudara"], answer: 1, hint: "Bermusyawarah adalah cara menghargai perbedaan pendapat." },
+            { id: 9, type: "pg", text: "Sikap toleransi dalam masyarakat Indonesia sangat penting karena...", options: ["Indonesia hanya memiliki satu suku bangsa", "Indonesia memiliki keragaman suku, agama, dan budaya", "Semua orang Indonesia memiliki budaya yang sama", "Toleransi tidak diperlukan di Indonesia"], answer: 1, hint: "Indonesia memiliki keragaman suku, agama, ras, dan budaya sehingga toleransi sangat penting." },
+            { id: 10, type: "pg", text: "Pada tahun 2023, Hari Raya Idul Fitri dan Jumat Agung hanya berbeda satu hari. Peristiwa ini mengajarkan kita untuk...", options: ["Merayakan hanya satu hari raya saja", "Menghormati perayaan hari besar semua agama", "Tidak merayakan hari raya apapun", "Hanya menghormati agama sendiri"], answer: 1, hint: "Kedekatan waktu perayaan hari besar agama yang berbeda mengajarkan pentingnya saling menghormati." },
+
+            // ===== PG KOMPLEKS (No 11-15) =====
+            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Perhatikan tabel persentase penganut agama di Indonesia berikut:<table class="table-box"><tr><th>Agama</th><th>Persentase</th></tr><tr><td>Islam</td><td>87,2%</td></tr><tr><td>Kristen Protestan</td><td>6,9%</td></tr><tr><td>Katolik</td><td>2,9%</td></tr><tr><td>Hindu</td><td>1,7%</td></tr><tr><td>Buddha</td><td>0,7%</td></tr><tr><td>Konghucu</td><td>0,05%</td></tr></table>Berdasarkan tabel di atas, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Agama Islam memiliki penganut terbanyak di Indonesia", "Agama Konghucu memiliki penganut paling sedikit", "Indonesia hanya mengakui 4 agama", "Agama Kristen Protestan memiliki penganut lebih banyak dari Katolik"], answer: [0, 1, 3], hint: "Islam terbanyak (87,2%), Konghucu paling sedikit (0,05%), dan Protestan (6,9%) > Katolik (2,9%). Indonesia mengakui 6 agama." },
+            { id: 12, type: "pg_kompleks", text: 'Berdasarkan tabel penganut agama sebelumnya, hal yang dapat kita simpulkan adalah... (pilih semua yang benar)', options: ["Indonesia memiliki keragaman agama", "Penganut agama minoritas harus dihormati", "Hanya agama mayoritas yang boleh beribadah", "Toleransi antarumat beragama sangat diperlukan"], answer: [0, 1, 3], hint: "Keragaman agama mengharuskan kita bertoleransi dan menghormati semua penganut agama." },
+            { id: 13, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Indonesia memiliki lebih dari 1.340 suku bangsa yang tersebar di seluruh kepulauan. Setiap suku memiliki bahasa, pakaian adat, rumah adat, dan tradisi yang berbeda-beda. Keragaman ini menjadi kekayaan bangsa Indonesia yang harus dijaga dan dilestarikan.</div>Berdasarkan teks di atas, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Indonesia memiliki lebih dari 1.340 suku bangsa", "Setiap suku memiliki budaya yang sama", "Keragaman suku merupakan kekayaan bangsa", "Keragaman suku harus dijaga dan dilestarikan"], answer: [0, 2, 3], hint: "Indonesia memiliki 1.340+ suku bangsa dengan budaya berbeda-beda yang merupakan kekayaan bangsa." },
+            { id: 14, type: "pg_kompleks", text: 'Berdasarkan teks keragaman suku bangsa sebelumnya, sikap yang tepat terhadap keragaman tersebut adalah... (pilih semua yang benar)', options: ["Menghargai perbedaan antar suku bangsa", "Memaksakan budaya sendiri kepada suku lain", "Mempelajari budaya suku lain", "Melestarikan budaya daerah masing-masing"], answer: [0, 2, 3], hint: "Menghargai, mempelajari, dan melestarikan budaya adalah sikap yang tepat." },
+            { id: 15, type: "pg_kompleks", text: 'Keragaman budaya Indonesia tercermin dalam berbagai hal berikut... (pilih semua yang benar)', options: ["Rumah adat yang berbeda-beda di setiap daerah", "Bahasa daerah yang beragam", "Tarian tradisional khas setiap daerah", "Semua orang Indonesia berbicara bahasa yang sama"], answer: [0, 1, 2], hint: "Rumah adat, bahasa daerah, dan tarian tradisional adalah bentuk keragaman budaya Indonesia." },
+
+            // ===== PG KOMPLEKS lanjutan (No 16-20) =====
+            { id: 16, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Di sebuah sekolah di Tangerang, terdapat murid-murid yang berasal dari berbagai suku bangsa. Ada yang berasal dari suku Jawa, Sunda, Batak, Minang, dan Betawi. Mereka belajar dan bermain bersama tanpa membeda-bedakan asal suku.</div>Pelajaran yang dapat kita ambil dari teks tersebut adalah... (pilih semua yang benar)', options: ["Perbedaan suku bukan penghalang untuk berteman", "Kebersamaan lebih penting dari perbedaan", "Bermain hanya boleh dengan teman sesuku", "Sekolah adalah tempat yang baik untuk belajar toleransi"], answer: [0, 1, 3], hint: "Teks menunjukkan bahwa perbedaan suku tidak menghalangi persahabatan di sekolah." },
+            { id: 17, type: "pg_kompleks", text: "Cara melestarikan keragaman budaya Indonesia adalah... (pilih semua yang benar)", options: ["Mempelajari tarian tradisional daerah", "Mengganti semua budaya daerah dengan budaya asing", "Mengikuti festival budaya daerah", "Mengenakan pakaian adat pada hari-hari tertentu"], answer: [0, 2, 3], hint: "Mempelajari tarian, mengikuti festival, dan mengenakan pakaian adat adalah cara melestarikan budaya." },
+            { id: 18, type: "pg_kompleks", text: "Tradisi budaya Suku Minangkabau yang terkenal adalah... (pilih semua yang benar)", options: ["Rumah Gadang sebagai rumah adat", "Tari Piring sebagai tarian tradisional", "Rendang sebagai makanan khas", "Gamelan sebagai alat musik tradisional"], answer: [0, 1, 2], hint: "Rumah Gadang, Tari Piring, dan Rendang adalah tradisi khas Suku Minangkabau. Gamelan berasal dari Jawa." },
+            { id: 19, type: "pg_kompleks", text: "Alat musik tradisional Indonesia dan daerah asalnya yang benar adalah... (pilih semua yang benar)", options: ["Angklung — Jawa Barat", "Sasando — Nusa Tenggara Timur", "Gamelan — Jawa", "Tifa — Papua"], answer: [0, 1, 2, 3], hint: "Semua pasangan alat musik dan daerah asalnya sudah benar." },
+            { id: 20, type: "pg_kompleks", text: "Makanan tradisional Indonesia dan daerah asalnya yang benar adalah... (pilih semua yang benar)", options: ["Papeda — Papua", "Gudeg — Yogyakarta", "Pempek — Palembang", "Soto Banjar — Jawa Tengah"], answer: [0, 1, 2], hint: "Papeda dari Papua, Gudeg dari Yogyakarta, Pempek dari Palembang. Soto Banjar berasal dari Kalimantan Selatan." },
+
+            // ===== BENAR / SALAH (No 21-30) =====
+            { id: 21, type: "bs", section: "Benar / Salah", text: "Rumah adat Suku Minangkabau disebut Rumah Gadang.", answer: "Benar", hint: "Benar. Rumah Gadang adalah rumah adat khas Suku Minangkabau dari Sumatera Barat." },
+            { id: 22, type: "bs", text: "Bahasa daerah Suku Minangkabau disebut Bahasa Sunda.", answer: "Salah", hint: "Salah. Bahasa daerah Suku Minangkabau adalah Bahasa Minang, bukan Bahasa Sunda." },
+            { id: 23, type: "bs", text: "Rendang adalah makanan tradisional khas Suku Minangkabau.", answer: "Benar", hint: "Benar. Rendang berasal dari Sumatera Barat (Minangkabau)." },
+            { id: 24, type: "bs", text: "Talempong adalah alat musik tradisional dari suku Betawi.", answer: "Salah", hint: "Salah. Talempong adalah alat musik tradisional dari Suku Minangkabau, Sumatera Barat." },
+            { id: 25, type: "bs", text: "Tari Piring adalah tarian tradisional khas Sumatera Barat.", answer: "Benar", hint: "Benar. Tari Piring (Tari Piriang) berasal dari Sumatera Barat." },
+            { id: 26, type: "bs", text: "Indonesia memiliki lebih dari 700 bahasa daerah.", answer: "Benar", hint: "Benar. Indonesia memiliki sekitar 718 bahasa daerah yang tercatat." },
+            { id: 27, type: "bs", text: "Semua suku bangsa di Indonesia memiliki budaya yang sama.", answer: "Salah", hint: "Salah. Setiap suku bangsa memiliki budaya, bahasa, dan tradisi yang berbeda-beda." },
+            { id: 28, type: "bs", text: "Bhinneka Tunggal Ika artinya berbeda-beda tetapi tetap satu jua.", answer: "Benar", hint: "Benar. Bhinneka Tunggal Ika adalah semboyan negara Indonesia yang berarti berbeda-beda tetapi tetap satu." },
+            { id: 29, type: "bs", text: "Toleransi berarti memaksakan keyakinan kepada orang lain.", answer: "Salah", hint: "Salah. Toleransi berarti menghargai dan menghormati perbedaan, bukan memaksakan keyakinan." },
+            { id: 30, type: "bs", text: "Indonesia mengakui 6 agama resmi.", answer: "Benar", hint: "Benar. Enam agama resmi di Indonesia: Islam, Kristen Protestan, Katolik, Hindu, Buddha, dan Konghucu." },
+
+            // ===== ISIAN SINGKAT (No 31-35) =====
+            { id: 31, type: "isian", section: "Isian Singkat", text: "Tari Saman berasal dari daerah...", answer: "Aceh", hint: "Tari Saman adalah tarian tradisional dari Aceh." },
+            { id: 32, type: "isian", text: "Tari Kecak berasal dari daerah...", answer: "Bali", hint: "Tari Kecak adalah tarian tradisional dari Bali." },
+            { id: 33, type: "isian", text: "Tari Jaipong berasal dari daerah...", answer: "Jawa Barat", hint: "Tari Jaipong berasal dari Jawa Barat (Sunda)." },
+            { id: 34, type: "isian", text: "Tradisi lompat batu (Fahombo) berasal dari suku di Pulau...", answer: "Nias", hint: "Tradisi lompat batu (Fahombo) berasal dari suku Nias, Sumatera Utara." },
+            { id: 35, type: "isian", text: "Upacara pembakaran mayat yang terkenal di Bali disebut...", answer: "Ngaben", hint: "Ngaben adalah upacara kremasi (pembakaran jenazah) dalam tradisi Hindu di Bali." },
+
+            // ===== URAIAN / ESAI (No 36-40) =====
+            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Sebutkan 3 sikap toleransi yang pernah kamu lakukan di sekolah!", answer: "Contoh: 1) Menghormati teman yang sedang beribadah, 2) Bermain bersama tanpa membeda-bedakan suku/agama, 3) Tidak mengejek teman yang berbeda budaya", hint: "Pikirkan sikap menghargai perbedaan yang kamu lakukan di sekolah." },
+            { id: 37, type: "uraian", text: "Sebutkan 3 sikap toleransi yang pernah kamu lakukan di rumah!", answer: "Contoh: 1) Menghormati waktu ibadah anggota keluarga, 2) Tidak memaksakan pendapat sendiri, 3) Membantu keluarga merayakan hari besar agama", hint: "Pikirkan cara kamu menghargai perbedaan di lingkungan rumah." },
+            { id: 38, type: "uraian", text: "Jelaskan alasan mengapa toleransi sangat diperlukan dalam kehidupan umat beragama di Indonesia!", answer: "Indonesia memiliki 6 agama resmi dan ratusan suku bangsa. Toleransi diperlukan agar tercipta keharmonisan, mencegah konflik antar umat beragama, dan menjaga persatuan bangsa sesuai semboyan Bhinneka Tunggal Ika.", hint: "Jelaskan hubungan antara keragaman agama di Indonesia dengan pentingnya toleransi." },
+            { id: 39, type: "uraian", text: "Jelaskan manfaat menerapkan sikap toleransi dalam beragama terhadap kehidupan bangsa Indonesia!", answer: "1) Tercipta kerukunan antar umat beragama, 2) Memperkuat persatuan dan kesatuan bangsa, 3) Mencegah konflik SARA, 4) Mewujudkan kehidupan yang damai dan harmonis, 5) Menunjukkan bahwa perbedaan adalah kekayaan bangsa", hint: "Pikirkan dampak positif toleransi bagi kehidupan berbangsa." },
+            { id: 40, type: "uraian", text: "Sebutkan masing-masing 2 hari besar peringatan Agama Islam dan Agama Kristen!", answer: "Agama Islam: 1) Idul Fitri, 2) Idul Adha, 3) Maulid Nabi. Agama Kristen: 1) Natal (25 Desember), 2) Paskah, 3) Kenaikan Isa Al-Masih", hint: "Ingat perayaan hari besar yang sering diperingati di Indonesia." }
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`; }
+                else if (q.type === 'uraian') { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++; }
+                else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++; }
+                else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) answered++; }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let score = 0, maxAuto = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { maxAuto++; const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value)); if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'isian') { maxAuto++; const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (val === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            const pct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = pct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal (PG, PG Kompleks, B/S, Isian). Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>

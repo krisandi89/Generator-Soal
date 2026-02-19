@@ -1,44 +1,341 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujian Budi Pekerti Kelas 4</title>
+    <title>Ujian Budi Pekerti Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        
-        .reading-text { background: #fff; padding: 15px; border: 2px dashed #ccc; margin-bottom: 15px; border-radius: 10px; font-style: italic; font-family: 'Times New Roman'; }
-        :root { --primary: #8e44ad; --secondary: #9b59b6; --bg: #f5eaf7; --success: #27ae60; --error: #c0392b; }
-        body { font-family: 'Comic Sans MS', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: #2d3436; }
-        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; }
-        .header { background: var(--primary); color: white; padding: 30px; text-align: center; border-bottom: 5px solid rgba(0,0,0,0.1); }
-        .header h1 { margin: 0; font-size: 1.8em; }
-        .question-list { padding: 30px; }
-        .question-item { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px dashed #dfe6e9; }
-        .q-number { font-weight: bold; color: var(--primary); margin-bottom: 10px; display: block; }
-        .options-group { display: flex; flex-direction: column; gap: 10px; }
-        .radio-label, .checkbox-label { display: flex; align-items: center; padding: 10px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; }
-        .radio-label:hover { background: #e8daef; border-color: var(--primary); }
-        input[type="radio"], input[type="checkbox"] { margin-right: 12px; transform: scale(1.2); }
-        .input-text, .input-area { width: 100%; padding: 10px; border: 2px solid #b2bec3; border-radius: 8px; }
-        .feedback-box { margin-top: 15px; padding: 15px; border-radius: 8px; display: none; }
-        .correct { background: #d4edda; color: #155724; } .wrong { background: #f8d7da; color: #721c24; } .manual { background: #fff3cd; color: #856404; }
-        .footer-action { background: #f1f2f6; padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 1px solid #dfe6e9; }
-        .btn-submit { background: var(--primary); color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 50px; cursor: pointer; font-weight: bold; }
-        .score-board { text-align: center; padding: 20px; background: var(--secondary); color: white; display: none; }
-        .back-btn { display: inline-block; margin-top: 10px; color: var(--bg); text-decoration: underline; font-weight: bold; }
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #a569bd;
+            --bg: #f5eef8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #fff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: none;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .score-board .detail {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.3s;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+            line-height: 1.8;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #f5eef8;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1>Budi Pekerti</h1>
-            <p>SD DILARAF ISLAMIC SCHOOL - Kelas 4</p>
+            <h1>🌿 Budi Pekerti</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>Nilai PG & BS</h2>
-            <div style="font-size: 3em; font-weight: bold;" id="final-score">0</div>
-            <p>Periksa isian secara mandiri.</p>
-            <a href="kelas4.html" class="back-btn">Kembali ke Menu Kelas 4</a>
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
         </div>
         <div class="question-list" id="question-container"></div>
         <div class="footer-action" id="footer-action">
@@ -47,451 +344,93 @@
     </div>
     <script>
         const questions = [
-    {
-        "id": 1,
-        "type": "pg",
-        "text": "Apa yang dimaksud dengan menghargai keragaman suku bangsa dan budaya setempat?",
-        "options": [
-            "Menghormati perbedaan suku bangsa dan budaya",
-            "Menghina perbedaan suku bangsa dan budaya",
-            "Mengabaikan perbedaan suku bangsa dan budaya",
-            "Menganggap perbedaan suku bangsa dan budaya tidak penting"
-        ],
-        "answer": 0,
-        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 2,
-        "type": "pg",
-        "text": "Apa yang terjadi jika kita menghina teman dari suku bangsa lain?",
-        "options": [
-            "Teman kita akan merasa senang",
-            "Teman kita akan merasa sedih",
-            "Teman kita akan merasa marah",
-            "Teman kita akan merasa tidak terpengaruh"
-        ],
-        "answer": 1,
-        "hint": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai"
-    },
-    {
-        "id": 3,
-        "type": "pg",
-        "text": "Salah satu budaya Cina yang tumbuh dan berkembang di Indonesia adalah?",
-        "options": [
-            "Budaya Jawa",
-            "Budaya Sunda",
-            "Budaya Cina: Imlek",
-            "Budaya Arab"
-        ],
-        "answer": 2,
-        "hint": "Imlek adalah salah satu budaya Cina yang tumbuh dan berkembang di Indonesia"
-    },
-    {
-        "id": 4,
-        "type": "pg",
-        "text": "Salah satu tari budaya di Tangerang adalah?",
-        "options": [
-            "Tari Jaipong",
-            "Tari Kecak",
-            "Tari Legong",
-            "Tari Zapin"
-        ],
-        "answer": 0,
-        "hint": "Tari Jaipong adalah salah satu tari budaya di Tangerang"
-    },
-    {
-        "id": 5,
-        "type": "pg",
-        "text": "Salah satu festival budaya yang diselenggarakan di Tangerang adalah?",
-        "options": [
-            "Festival Budaya Tangerang",
-            "Festival Imlek",
-            "Festival Idul Fitri",
-            "Festival Natal"
-        ],
-        "answer": 0,
-        "hint": "Festival Budaya Tangerang adalah salah satu festival budaya yang diselenggarakan di Tangerang"
-    },
-    {
-        "id": 6,
-        "type": "pg_kompleks",
-        "text": "Apa yang harus kita lakukan untuk memanfaatkan waktu dengan tepat?",
-        "options": [
-            "Membuat jadwal harian",
-            "Menggunakan waktu untuk bermain",
-            "Menggunakan waktu untuk belajar",
-            "Menggunakan waktu untuk tidur"
-        ],
-        "answer": [
-            0,
-            2
-        ],
-        "hint": "Membuat jadwal harian dan menggunakan waktu untuk belajar adalah contoh memanfaatkan waktu dengan tepat"
-    },
-    {
-        "id": 7,
-        "type": "pg_kompleks",
-        "text": "Apa yang terjadi jika kita tidak memanfaatkan waktu dengan tepat?",
-        "options": [
-            "Kita akan memiliki banyak waktu luang",
-            "Kita akan memiliki sedikit waktu luang",
-            "Kita akan merasa bosan",
-            "Kita akan merasa stres"
-        ],
-        "answer": [
-            1,
-            3
-        ],
-        "hint": "Tidak memanfaatkan waktu dengan tepat dapat menyebabkan kita memiliki sedikit waktu luang dan merasa stres"
-    },
-    {
-        "id": 8,
-        "type": "pg_kompleks",
-        "text": "Apa yang harus kita lakukan untuk menepati janji?",
-        "options": [
-            "Membuat janji yang tidak realistis",
-            "Mengingat janji yang telah dibuat",
-            "Mengabaikan janji yang telah dibuat",
-            "Mengubah janji yang telah dibuat"
-        ],
-        "answer": [
-            1
-        ],
-        "hint": "Mengingat janji yang telah dibuat adalah contoh menepati janji"
-    },
-    {
-        "id": 9,
-        "type": "pg_kompleks",
-        "text": "Apa yang terjadi jika kita tidak menepati janji?",
-        "options": [
-            "Orang lain akan percaya pada kita",
-            "Orang lain akan tidak percaya pada kita",
-            "Orang lain akan merasa senang",
-            "Orang lain akan merasa sedih"
-        ],
-        "answer": [
-            1
-        ],
-        "hint": "Tidak menepati janji dapat menyebabkan orang lain tidak percaya pada kita"
-    },
-    {
-        "id": 10,
-        "type": "pg_kompleks",
-        "text": "Apa yang harus kita lakukan untuk menghargai keragaman suku bangsa dan budaya?",
-        "options": [
-            "Menghormati perbedaan suku bangsa dan budaya",
-            "Menghina perbedaan suku bangsa dan budaya",
-            "Mengabaikan perbedaan suku bangsa dan budaya",
-            "Menganggap perbedaan suku bangsa dan budaya tidak penting"
-        ],
-        "answer": [
-            0
-        ],
-        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai keragaman suku bangsa dan budaya"
-    },
-    {
-        "id": 11,
-        "type": "pg_kompleks",
-        "text": "Pasangan makanan khas daerah dengan asal daerahnya adalah?",
-        "options": [
-            "Nasi Goreng - Jawa",
-            "Gado-Gado - Sunda",
-            "Sate - Madura",
-            "Martabak - India"
-        ],
-        "answer": [
-            0,
-            1,
-            2
-        ],
-        "hint": "Nasi Goreng - Jawa, Gado-Gado - Sunda, Sate - Madura adalah contoh pasangan makanan khas daerah dengan asal daerahnya"
-    },
-    {
-        "id": 12,
-        "type": "pg_kompleks",
-        "text": "Apa yang harus kita lakukan untuk memahami budaya lain?",
-        "options": [
-            "Membaca buku tentang budaya lain",
-            "Mengunjungi tempat budaya lain",
-            "Mengobrol dengan orang dari budaya lain",
-            "Mengabaikan budaya lain"
-        ],
-        "answer": [
-            0,
-            1,
-            2
-        ],
-        "hint": "Membaca buku tentang budaya lain, mengunjungi tempat budaya lain, mengobrol dengan orang dari budaya lain adalah contoh memahami budaya lain"
-    },
-    {
-        "id": 13,
-        "type": "pg_kompleks",
-        "text": "Apa yang terjadi jika kita tidak memahami budaya lain?",
-        "options": [
-            "Kita akan memiliki banyak teman dari budaya lain",
-            "Kita akan memiliki sedikit teman dari budaya lain",
-            "Kita akan merasa bosan",
-            "Kita akan merasa stres"
-        ],
-        "answer": [
-            1,
-            3
-        ],
-        "hint": "Tidak memahami budaya lain dapat menyebabkan kita memiliki sedikit teman dari budaya lain dan merasa stres"
-    },
-    {
-        "id": 14,
-        "type": "pg_kompleks",
-        "text": "Apa yang harus kita lakukan untuk menghargai perbedaan suku bangsa dan budaya?",
-        "options": [
-            "Menghormati perbedaan suku bangsa dan budaya",
-            "Menghina perbedaan suku bangsa dan budaya",
-            "Mengabaikan perbedaan suku bangsa dan budaya",
-            "Menganggap perbedaan suku bangsa dan budaya tidak penting"
-        ],
-        "answer": [
-            0
-        ],
-        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 15,
-        "type": "pg_kompleks",
-        "text": "Apa yang terjadi jika kita tidak menghargai perbedaan suku bangsa dan budaya?",
-        "options": [
-            "Orang lain akan percaya pada kita",
-            "Orang lain akan tidak percaya pada kita",
-            "Orang lain akan merasa senang",
-            "Orang lain akan merasa sedih"
-        ],
-        "answer": [
-            1
-        ],
-        "hint": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
-    },
-    {
-        "id": 16,
-        "type": "bs",
-        "text": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya",
-        "answer": true,
-        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 17,
-        "type": "bs",
-        "text": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai",
-        "answer": true,
-        "hint": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai"
-    },
-    {
-        "id": 18,
-        "type": "bs",
-        "text": "Membuat jadwal harian dapat membantu kita memanfaatkan waktu dengan tepat",
-        "answer": true,
-        "hint": "Membuat jadwal harian dapat membantu kita memanfaatkan waktu dengan tepat"
-    },
-    {
-        "id": 19,
-        "type": "bs",
-        "text": "Menggunakan waktu untuk bermain dapat menyebabkan kita memiliki sedikit waktu luang",
-        "answer": false,
-        "hint": "Menggunakan waktu untuk bermain tidak selalu menyebabkan kita memiliki sedikit waktu luang"
-    },
-    {
-        "id": 20,
-        "type": "bs",
-        "text": "Menghargai perbedaan suku bangsa dan budaya berarti menghormati dan menghargai perbedaan suku bangsa dan budaya",
-        "answer": true,
-        "hint": "Menghargai perbedaan suku bangsa dan budaya berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 21,
-        "type": "isian",
-        "text": "Salah satu contoh budaya Cina yang tumbuh dan berkembang di Indonesia adalah _______",
-        "answer": "Imlek",
-        "hint": "Imlek adalah salah satu contoh budaya Cina yang tumbuh dan berkembang di Indonesia"
-    },
-    {
-        "id": 22,
-        "type": "isian",
-        "text": "Salah satu contoh tari budaya di Tangerang adalah _______",
-        "answer": "Tari Jaipong",
-        "hint": "Tari Jaipong adalah salah satu contoh tari budaya di Tangerang"
-    },
-    {
-        "id": 23,
-        "type": "isian",
-        "text": "Salah satu contoh festival budaya yang diselenggarakan di Tangerang adalah _______",
-        "answer": "Festival Budaya Tangerang",
-        "hint": "Festival Budaya Tangerang adalah salah satu contoh festival budaya yang diselenggarakan di Tangerang"
-    },
-    {
-        "id": 24,
-        "type": "isian",
-        "text": "Menghargai keragaman suku bangsa dan budaya setempat berarti _______",
-        "answer": "menghormati dan menghargai perbedaan suku bangsa dan budaya",
-        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 25,
-        "type": "isian",
-        "text": "Menghina teman dari suku bangsa lain dapat menyebabkan _______",
-        "answer": "teman kita merasa sedih dan tidak dihargai",
-        "hint": "Menghina teman dari suku bangsa lain dapat menyebabkan teman kita merasa sedih dan tidak dihargai"
-    },
-    {
-        "id": 26,
-        "type": "isian",
-        "text": "Membuat jadwal harian dapat membantu kita _______",
-        "answer": "memanfaatkan waktu dengan tepat",
-        "hint": "Membuat jadwal harian dapat membantu kita memanfaatkan waktu dengan tepat"
-    },
-    {
-        "id": 27,
-        "type": "isian",
-        "text": "Menggunakan waktu untuk bermain dapat menyebabkan kita _______",
-        "answer": "memiliki sedikit waktu luang",
-        "hint": "Menggunakan waktu untuk bermain tidak selalu menyebabkan kita memiliki sedikit waktu luang"
-    },
-    {
-        "id": 28,
-        "type": "isian",
-        "text": "Menghargai perbedaan suku bangsa dan budaya berarti _______",
-        "answer": "menghormati dan menghargai perbedaan suku bangsa dan budaya",
-        "hint": "Menghargai perbedaan suku bangsa dan budaya berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 29,
-        "type": "isian",
-        "text": "Salah satu contoh makanan khas daerah yang berasal dari Jawa adalah _______",
-        "answer": "Nasi Goreng",
-        "hint": "Nasi Goreng adalah salah satu contoh makanan khas daerah yang berasal dari Jawa"
-    },
-    {
-        "id": 30,
-        "type": "isian",
-        "text": "Salah satu contoh makanan khas daerah yang berasal dari Sunda adalah _______",
-        "answer": "Gado-Gado",
-        "hint": "Gado-Gado adalah salah satu contoh makanan khas daerah yang berasal dari Sunda"
-    },
-    {
-        "id": 31,
-        "type": "uraian",
-        "text": "Jelaskan apa yang dimaksud dengan menghargai keragaman suku bangsa dan budaya setempat!",
-        "answer": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya",
-        "hint": "Menghargai keragaman suku bangsa dan budaya setempat berarti menghormati dan menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 32,
-        "type": "uraian",
-        "text": "Jelaskan apa yang terjadi jika kita tidak menghargai perbedaan suku bangsa dan budaya!",
-        "answer": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita",
-        "hint": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
-    },
-    {
-        "id": 33,
-        "type": "uraian",
-        "text": "Jelaskan apa yang harus kita lakukan untuk memanfaatkan waktu dengan tepat!",
-        "answer": "Membuat jadwal harian dan menggunakan waktu untuk belajar adalah contoh memanfaatkan waktu dengan tepat",
-        "hint": "Membuat jadwal harian dan menggunakan waktu untuk belajar adalah contoh memanfaatkan waktu dengan tepat"
-    },
-    {
-        "id": 34,
-        "type": "uraian",
-        "text": "Jelaskan apa yang terjadi jika kita tidak memanfaatkan waktu dengan tepat!",
-        "answer": "Tidak memanfaatkan waktu dengan tepat dapat menyebabkan kita memiliki sedikit waktu luang dan merasa stres",
-        "hint": "Tidak memanfaatkan waktu dengan tepat dapat menyebabkan kita memiliki sedikit waktu luang dan merasa stres"
-    },
-    {
-        "id": 35,
-        "type": "uraian",
-        "text": "Jelaskan apa yang harus kita lakukan untuk menghargai perbedaan suku bangsa dan budaya!",
-        "answer": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai perbedaan suku bangsa dan budaya",
-        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai perbedaan suku bangsa dan budaya"
-    },
-    {
-        "id": 36,
-        "type": "uraian",
-        "text": "Jelaskan apa yang terjadi jika kita tidak menghargai perbedaan suku bangsa dan budaya!",
-        "answer": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita",
-        "hint": "Tidak menghargai perbedaan suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
-    },
-    {
-        "id": 37,
-        "type": "uraian",
-        "text": "Jelaskan apa yang harus kita lakukan untuk memahami budaya lain!",
-        "answer": "Membaca buku tentang budaya lain, mengunjungi tempat budaya lain, mengobrol dengan orang dari budaya lain adalah contoh memahami budaya lain",
-        "hint": "Membaca buku tentang budaya lain, mengunjungi tempat budaya lain, mengobrol dengan orang dari budaya lain adalah contoh memahami budaya lain"
-    },
-    {
-        "id": 38,
-        "type": "uraian",
-        "text": "Jelaskan apa yang terjadi jika kita tidak memahami budaya lain!",
-        "answer": "Tidak memahami budaya lain dapat menyebabkan kita memiliki sedikit teman dari budaya lain dan merasa stres",
-        "hint": "Tidak memahami budaya lain dapat menyebabkan kita memiliki sedikit teman dari budaya lain dan merasa stres"
-    },
-    {
-        "id": 39,
-        "type": "uraian",
-        "text": "Jelaskan apa yang harus kita lakukan untuk menghargai keragaman suku bangsa dan budaya!",
-        "answer": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai keragaman suku bangsa dan budaya",
-        "hint": "Menghormati perbedaan suku bangsa dan budaya adalah contoh menghargai keragaman suku bangsa dan budaya"
-    },
-    {
-        "id": 40,
-        "type": "uraian",
-        "text": "Jelaskan apa yang terjadi jika kita tidak menghargai keragaman suku bangsa dan budaya!",
-        "answer": "Tidak menghargai keragaman suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita",
-        "hint": "Tidak menghargai keragaman suku bangsa dan budaya dapat menyebabkan orang lain tidak percaya pada kita"
-    }
-];
-        const container = document.getElementById('question-container');
+            // ===== PILIHAN GANDA (No 1-10) =====
+            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Peninggalan sejarah yang berupa bangunan tempat ibadah agama Buddha dan Hindu disebut...", options: ["Museum", "Candi", "Benteng", "Monumen"], answer: 1, hint: "Candi adalah peninggalan sejarah berupa bangunan tempat ibadah agama Hindu dan Buddha." },
+            { id: 2, type: "pg", text: "Contoh menjaga peninggalan sejarah adalah...", options: ["Mencoret-coret dinding candi", "Mengambil batu candi sebagai oleh-oleh", "Tidak membuang sampah di area peninggalan sejarah", "Memanjat dan duduk di atas candi"], answer: 2, hint: "Tidak membuang sampah adalah cara menjaga peninggalan sejarah." },
+            { id: 3, type: "pg", text: "Tempat menyimpan dan memamerkan benda-benda bersejarah disebut...", options: ["Perpustakaan", "Museum", "Taman", "Bioskop"], answer: 1, hint: "Museum adalah tempat menyimpan dan memamerkan benda-benda bersejarah." },
+            { id: 4, type: "pg", text: "Contoh peninggalan sejarah berupa tulisan kuno yang dipahat pada batu disebut...", options: ["Lukisan", "Patung", "Prasasti", "Naskah"], answer: 2, hint: "Prasasti adalah tulisan kuno yang dipahat pada batu atau logam." },
+            { id: 5, type: "pg", text: "Sikap yang tepat ketika mengunjungi museum adalah...", options: ["Menyentuh semua benda yang dipamerkan", "Berlari-lari di dalam museum", "Mengikuti peraturan dan tidak menyentuh benda koleksi", "Membawa pulang benda-benda yang ada di museum"], answer: 2, hint: "Mengikuti peraturan museum dan tidak menyentuh koleksi adalah sikap yang tepat." },
+            { id: 6, type: "pg", text: "Alasan kita harus menjaga alam adalah...", options: ["Agar bisa dieksploitasi terus-menerus", "Agar kelestarian lingkungan tetap terjaga untuk generasi mendatang", "Agar tidak ada yang menggunakan sumber daya alam", "Agar hanya kita yang bisa menikmati alam"], answer: 1, hint: "Menjaga alam bertujuan agar kelestarian lingkungan terjaga bagi generasi mendatang." },
+            { id: 7, type: "pg", text: "Contoh kegiatan menjaga alam yang dapat dilakukan siswa di sekolah adalah...", options: ["Membuang sampah sembarangan", "Menanam pohon di halaman sekolah", "Memetik bunga di taman sekolah", "Menebang pohon di halaman sekolah"], answer: 1, hint: "Menanam pohon adalah contoh kegiatan menjaga alam di sekolah." },
+            { id: 8, type: "pg", text: "Dampak negatif jika kita tidak menjaga kelestarian alam adalah...", options: ["Udara semakin bersih", "Terjadi banjir, longsor, dan pencemaran", "Tanaman tumbuh subur", "Air sungai semakin jernih"], answer: 1, hint: "Tidak menjaga alam menyebabkan bencana seperti banjir, longsor, dan pencemaran." },
+            { id: 9, type: "pg", text: "Prinsip 3R dalam menjaga lingkungan adalah...", options: ["Reduce, Reuse, Recycle", "Read, Run, Rest", "Repair, Remove, Replace", "Relax, Refresh, Restart"], answer: 0, hint: "3R: Reduce (kurangi), Reuse (gunakan kembali), Recycle (daur ulang)." },
+            { id: 10, type: "pg", text: "Candi Borobudur ditetapkan sebagai warisan budaya dunia oleh lembaga...", options: ["ASEAN", "PBB", "UNESCO", "FIFA"], answer: 2, hint: "UNESCO menetapkan Candi Borobudur sebagai Situs Warisan Dunia." },
 
+            // ===== PG KOMPLEKS (No 11-20) =====
+            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: "Contoh peninggalan sejarah yang ada di Indonesia adalah... (pilih semua yang benar)", options: ["Candi Borobudur", "Candi Prambanan", "Menara Eiffel", "Benteng Vredeburg"], answer: [0, 1, 3], hint: "Candi Borobudur, Candi Prambanan, dan Benteng Vredeburg ada di Indonesia. Menara Eiffel ada di Prancis." },
+            { id: 12, type: "pg_kompleks", text: "Cara melestarikan peninggalan sejarah adalah... (pilih semua yang benar)", options: ["Menjaga kebersihan area peninggalan", "Melakukan pemugaran dengan ahli", "Mengambil bagian dari peninggalan untuk koleksi pribadi", "Tidak mencoret-coret peninggalan"], answer: [0, 1, 3], hint: "Mengambil bagian dari peninggalan sejarah merupakan tindakan perusakan." },
+            { id: 13, type: "pg_kompleks", text: "Manfaat menjaga peninggalan sejarah bagi masyarakat adalah... (pilih semua yang benar)", options: ["Sebagai sarana edukasi dan pembelajaran", "Menarik wisatawan dan meningkatkan ekonomi", "Menghapus sejarah bangsa", "Memperkuat identitas dan jati diri bangsa"], answer: [0, 1, 3], hint: "Peninggalan sejarah bermanfaat untuk edukasi, ekonomi, dan identitas bangsa." },
+            { id: 14, type: "pg_kompleks", text: "Contoh tindakan menjaga kelestarian alam adalah... (pilih semua yang benar)", options: ["Menanam pohon", "Mengurangi penggunaan plastik", "Membuang limbah ke sungai", "Menghemat penggunaan air"], answer: [0, 1, 3], hint: "Membuang limbah ke sungai merusak lingkungan." },
+            { id: 15, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Museum Nasional Indonesia terletak di Jakarta. Museum ini menyimpan lebih dari 140.000 benda koleksi yang terdiri dari koleksi prasejarah, arkeologi, numismatik, dan etnografi. Museum ini didirikan pada tanggal 24 April 1778 oleh Perkumpulan Bataviasche Genootschap van Kunsten en Wetenschappen.</div>Berdasarkan teks, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Museum Nasional terletak di Jakarta", "Museum menyimpan lebih dari 140.000 koleksi", "Museum didirikan tahun 1778", "Museum ini adalah museum terbaru di Indonesia"], answer: [0, 1, 2], hint: "Museum Nasional didirikan tahun 1778, bukan museum terbaru." },
+            { id: 16, type: "pg_kompleks", text: "Dampak positif menjaga kelestarian alam adalah... (pilih semua yang benar)", options: ["Udara tetap bersih dan segar", "Ekosistem tetap seimbang", "Banyak hewan yang punah", "Sumber air tetap terjaga"], answer: [0, 1, 3], hint: "Menjaga alam menjadikan udara bersih, ekosistem seimbang, dan sumber air terjaga." },
+            { id: 17, type: "pg_kompleks", text: "Kegiatan yang termasuk prinsip Reduce (mengurangi) adalah... (pilih semua yang benar)", options: ["Membawa tas belanja sendiri", "Mengurangi penggunaan sedotan plastik", "Membuang makanan sisa", "Menghemat penggunaan kertas"], answer: [0, 1, 3], hint: "Reduce berarti mengurangi penggunaan bahan yang berpotensi menjadi sampah." },
+            { id: 18, type: "pg_kompleks", text: "Jenis-jenis peninggalan sejarah di Indonesia meliputi... (pilih semua yang benar)", options: ["Candi", "Prasasti", "Benteng", "Komputer"], answer: [0, 1, 2], hint: "Candi, prasasti, dan benteng adalah jenis peninggalan sejarah. Komputer bukan peninggalan sejarah." },
+            { id: 19, type: "pg_kompleks", text: "Contoh kegiatan Recycle (daur ulang) adalah... (pilih semua yang benar)", options: ["Mengolah sampah plastik menjadi kerajinan", "Membuat pupuk kompos dari sampah organik", "Membuang semua sampah ke sungai", "Mengolah kertas bekas menjadi kertas baru"], answer: [0, 1, 3], hint: "Recycle adalah mengolah kembali sampah menjadi barang yang berguna." },
+            { id: 20, type: "pg_kompleks", text: "Perilaku yang mencerminkan kepedulian terhadap lingkungan adalah... (pilih semua yang benar)", options: ["Menghemat listrik", "Mengggunakan kendaraan umum", "Membakar sampah di halaman rumah", "Mematikan keran air saat tidak digunakan"], answer: [0, 1, 3], hint: "Membakar sampah menimbulkan polusi udara, bukan cara yang tepat menjaga lingkungan." },
+
+            // ===== BENAR / SALAH (No 21-30) =====
+            { id: 21, type: "bs", section: "Benar / Salah", text: "Candi Borobudur adalah peninggalan sejarah agama Hindu.", answer: "Salah", hint: "Salah. Candi Borobudur adalah peninggalan sejarah agama Buddha." },
+            { id: 22, type: "bs", text: "Prasasti adalah tulisan kuno yang dipahat pada batu atau logam.", answer: "Benar", hint: "Benar. Prasasti berisi catatan sejarah yang dipahat pada batu atau logam." },
+            { id: 23, type: "bs", text: "Museum berfungsi sebagai tempat menyimpan dan memamerkan benda bersejarah.", answer: "Benar", hint: "Benar. Museum berfungsi menyimpan, merawat, dan memamerkan benda bersejarah." },
+            { id: 24, type: "bs", text: "Mencoret-coret dinding candi termasuk cara melestarikan peninggalan sejarah.", answer: "Salah", hint: "Salah. Mencoret-coret merusak peninggalan sejarah." },
+            { id: 25, type: "bs", text: "Gotong royong membersihkan lingkungan termasuk cara menjaga kelestarian alam.", answer: "Benar", hint: "Benar. Gotong royong membersihkan lingkungan adalah cara menjaga kelestarian alam." },
+            { id: 26, type: "bs", text: "3R singkatan dari Reduce, Reuse, dan Recycle.", answer: "Benar", hint: "Benar. 3R: Reduce (kurangi), Reuse (gunakan kembali), Recycle (daur ulang)." },
+            { id: 27, type: "bs", text: "Membuang sampah ke sungai termasuk menjaga kelestarian alam.", answer: "Salah", hint: "Salah. Membuang sampah ke sungai mencemari lingkungan." },
+            { id: 28, type: "bs", text: "Peninggalan sejarah hanya berupa bangunan candi saja.", answer: "Salah", hint: "Salah. Peninggalan sejarah juga bisa berupa prasasti, naskah kuno, senjata, dan lainnya." },
+            { id: 29, type: "bs", text: "Menanam pohon dapat membantu mengurangi polusi udara.", answer: "Benar", hint: "Benar. Pohon menyerap karbon dioksida dan menghasilkan oksigen." },
+            { id: 30, type: "bs", text: "Penebangan hutan secara liar tidak berdampak pada lingkungan.", answer: "Salah", hint: "Salah. Penebangan hutan liar menyebabkan banjir, longsor, dan kerusakan ekosistem." },
+
+            // ===== ISIAN SINGKAT (No 31-35) =====
+            { id: 31, type: "isian", section: "Isian Singkat", text: "Bangunan peninggalan sejarah kerajaan Hindu yang terkenal di Klaten, Jawa Tengah adalah Candi...", answer: "Prambanan", hint: "Candi Prambanan terletak di Klaten, Jawa Tengah, dan merupakan candi Hindu terbesar di Indonesia." },
+            { id: 32, type: "isian", text: "Prinsip R yang berarti menggunakan kembali barang yang masih bisa dipakai disebut...", answer: "Reuse", hint: "Reuse = menggunakan kembali barang yang masih layak pakai." },
+            { id: 33, type: "isian", text: "Lembaga internasional yang melindungi warisan budaya dunia adalah...", answer: "UNESCO", hint: "UNESCO (United Nations Educational, Scientific and Cultural Organization) melindungi warisan budaya dunia." },
+            { id: 34, type: "isian", text: "Tempat ditemukannya fosil manusia purba di Jawa Tengah adalah...", answer: "Sangiran", hint: "Sangiran di Sragen, Jawa Tengah, adalah situs penemuan fosil manusia purba." },
+            { id: 35, type: "isian", text: "Gas yang dihasilkan oleh pohon dan diperlukan manusia untuk bernapas adalah...", answer: "Oksigen", hint: "Pohon menghasilkan oksigen (O₂) melalui proses fotosintesis." },
+
+            // ===== URAIAN / ESAI (No 36-40) =====
+            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Sebutkan 3 peninggalan sejarah di Indonesia dan jelaskan lokasinya!", answer: "1) Candi Borobudur — Magelang, Jawa Tengah; 2) Candi Prambanan — Klaten, Jawa Tengah; 3) Benteng Vredeburg — Yogyakarta; 4) Museum Nasional — Jakarta", hint: "Sebutkan nama peninggalan dan lokasi daerahnya di Indonesia." },
+            { id: 37, type: "uraian", text: "Jelaskan 3 cara yang dapat kamu lakukan untuk menjaga kelestarian lingkungan di sekitar rumahmu!", answer: "1) Membuang sampah pada tempatnya dan memilah sampah organik/anorganik; 2) Menanam pohon di pekarangan rumah; 3) Menghemat air dan listrik; 4) Tidak membakar sampah sembarangan", hint: "Pikirkan kegiatan sehari-hari yang membantu menjaga lingkungan." },
+            { id: 38, type: "uraian", text: "Jelaskan mengapa peninggalan sejarah harus dijaga dan dilestarikan!", answer: "Peninggalan sejarah harus dijaga karena: 1) Merupakan bukti sejarah dan identitas bangsa; 2) Sarana edukasi bagi generasi mendatang; 3) Menarik wisatawan dan mendukung ekonomi; 4) Menumbuhkan rasa bangga dan cinta tanah air", hint: "Pikirkan nilai-nilai penting dari peninggalan sejarah bagi bangsa." },
+            { id: 39, type: "uraian", text: "Jelaskan prinsip 3R (Reduce, Reuse, Recycle) dan berikan contoh masing-masing!", answer: "Reduce: mengurangi penggunaan plastik, membawa tas belanja sendiri. Reuse: menggunakan kembali botol minum, menggunakan kertas bekas untuk coret-coretan. Recycle: mengolah plastik bekas menjadi kerajinan, membuat kompos dari sampah organik.", hint: "Jelaskan pengertian dan berikan contoh konkret untuk setiap R." },
+            { id: 40, type: "uraian", text: "Apa yang akan terjadi jika masyarakat tidak peduli terhadap kelestarian alam? Jelaskan minimal 3 dampaknya!", answer: "1) Terjadi pencemaran udara, air, dan tanah; 2) Bencana alam seperti banjir dan tanah longsor meningkat; 3) Banyak hewan dan tumbuhan yang punah; 4) Sumber air bersih semakin berkurang; 5) Kualitas hidup manusia menurun", hint: "Pikirkan dampak-dampak negatif dari kerusakan lingkungan." }
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
         function render() {
-            let html = "";
+            let html = '';
             questions.forEach((q, idx) => {
-                let inputHtml = "";
-                if(q.type==='pg' || q.type==='bs') {
-                    let opts = q.type==='bs' ? ["Benar","Salah"] : q.options;
-                    opts.forEach((opt,i) => {
-                        let val = q.type==='bs' ? opt : i;
-                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${val}"> ${opt}</label>`;
-                    });
-                } else if(q.type==='pg_kompleks') {
-                    q.options.forEach((opt,i) => {
-                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${opt}</label>`;
-                    });
-                } else {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Jawaban...">`;
-                }
-                html += `<div class="question-item"><span class="q-number">No. ${idx+1}</span><div>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
+                else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
             });
-            container.innerHTML = html;
+            container.innerHTML = html; updateProgress();
         }
-        
+        function updateProgress() { let a = 0; questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) a++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) a++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) a++; } }); document.getElementById('progress-fill').style.width = `${(a / questions.length) * 100}%`; }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
         function submitExam() {
-            let score=0, max=0;
+            let s = 0, m = 0;
             questions.forEach(q => {
                 const fb = document.getElementById(`fb-${q.id}`);
-                if(q.type==='pg'||q.type==='bs') {
-                    max++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    if(sel) {
-                        let val = q.type==='pg' ? parseInt(sel.value) : sel.value;
-                        if(val === q.answer) { score++; fb.className="feedback-box correct"; fb.innerHTML="✅ Benar"; }
-                        else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Salah. Hint: "+q.hint; }
-                    } else { fb.className="feedback-box wrong"; fb.innerHTML="❌ Kosong"; }
-                } else {
-                     fb.className="feedback-box manual"; fb.innerHTML="ℹ️ Cek Manual (Kunci: "+q.answer+")";
-                }
-                fb.style.display="block";
+                if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
             });
-            document.getElementById('final-score').innerText = Math.round((score/max)*100) || 0;
-            document.getElementById('score-board').style.display="block";
-            document.getElementById('footer-action').style.display="none";
-            window.scrollTo(0,0);
+            document.getElementById('final-score').innerText = m > 0 ? Math.round((s / m) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${s} dari ${m} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block'; document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%'; window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         render();
     </script>
 </body>
+
 </html>

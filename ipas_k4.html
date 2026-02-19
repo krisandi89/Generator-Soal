@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian IPAS Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #16a085;
+            --primary-light: #1abc9c;
+            --bg: #e8f8f5;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #fff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: none;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .score-board .detail {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.3s;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(22, 160, 133, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+            line-height: 1.8;
+        }
+
+        .infographic-box {
+            background: #eaf2f8;
+            border: 2px solid #85c1e9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+        }
+
+        .infographic-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .infographic-box ul {
+            padding-left: 20px;
+        }
+
+        .infographic-box li {
+            margin: 5px 0;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #e8f8f5;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(22, 160, 133, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 IPAS</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            // ===== PILIHAN GANDA (No 1-10) =====
+            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Kota Jakarta pada zaman dahulu dikenal dengan nama...", options: ["Jayakarta", "Surabaya", "Yogyakarta", "Bandung"], answer: 0, hint: "Jakarta pada masa lampau dikenal sebagai Jayakarta, sebelumnya Sunda Kelapa, dan Batavia." },
+            { id: 2, type: "pg", text: "Pekerjaan yang mengolah tanah untuk menanam padi, sayuran, dan buah-buahan disebut...", options: ["Nelayan", "Petani", "Pedagang", "Pengrajin"], answer: 1, hint: "Petani adalah orang yang mengolah tanah untuk bercocok tanam." },
+            { id: 3, type: "pg", text: 'Perhatikan ciri-ciri berikut: Hutannya lebat dan lembap, memiliki banyak jenis tumbuhan tropis, dan terdapat rafflesia arnoldii. Wilayah tersebut termasuk zona pesebaran flora...', options: ["Indonesia Bagian Timur", "Indonesia Bagian Barat", "Indonesia Bagian Tengah", "Luar Indonesia"], answer: 1, hint: "Flora Indonesia Bagian Barat mirip dengan flora Asia dan memiliki hutan hujan tropis yang lebat." },
+            { id: 4, type: "pg", text: "Contoh sumber daya alam yang dapat diperbarui adalah...", options: ["Minyak bumi", "Batu bara", "Hutan", "Emas"], answer: 2, hint: "Hutan adalah SDA yang dapat diperbarui karena pohon bisa ditanam kembali." },
+            { id: 5, type: "pg", text: "Hewan yang hanya terdapat di Indonesia bagian timur (zona Australis) adalah...", options: ["Harimau Sumatera", "Gajah Kalimantan", "Cenderawasih", "Komodo"], answer: 2, hint: "Cenderawasih (burung surga) terdapat di Papua, wilayah Indonesia bagian timur." },
+            { id: 6, type: "pg", text: "Peran adalah...", options: ["Pekerjaan yang menghasilkan uang", "Kedudukan atau fungsi seseorang dalam suatu kelompok", "Kegiatan bermain bersama teman", "Tugas yang diberikan guru di kelas"], answer: 1, hint: "Peran adalah kedudukan atau fungsi seseorang dalam suatu kelompok atau masyarakat." },
+            { id: 7, type: "pg", text: "Contoh peraturan di lingkungan masyarakat adalah...", options: ["Mengerjakan PR tepat waktu", "Memakai seragam sekolah", "Menjaga kebersihan lingkungan sekitar", "Tidak boleh bermain saat jam pelajaran"], answer: 2, hint: "Menjaga kebersihan lingkungan adalah peraturan di lingkungan masyarakat." },
+            { id: 8, type: "pg", text: "Gambar seorang ibu RT yang sedang mengkoordinasi kegiatan kebersihan di lingkungan menunjukkan peran sebagai...", options: ["Guru", "Petani", "Pengurus RT", "Pedagang"], answer: 2, hint: "Mengkoordinasi kebersihan lingkungan adalah peran pengurus RT." },
+            { id: 9, type: "pg", text: "Gambar anak-anak yang saling membantu mengerjakan tugas kelompok menunjukkan contoh interaksi sosial yang bersifat...", options: ["Negatif", "Positif", "Netral", "Tidak baik"], answer: 1, hint: "Saling membantu dalam kelompok adalah interaksi sosial positif." },
+            { id: 10, type: "pg", text: 'Perhatikan ciri peraturan berikut: tertulis secara resmi, memiliki sanksi hukum, dan dibuat oleh lembaga berwenang. Ini merupakan ciri peraturan...', options: ["Peraturan tidak tertulis", "Peraturan tertulis", "Kebiasaan", "Norma agama"], answer: 1, hint: "Peraturan tertulis dibuat secara resmi oleh lembaga berwenang dan memiliki sanksi hukum." },
+
+            // ===== PG KOMPLEKS (No 11-15) =====
+            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Perhatikan infografis berikut:<div class="infographic-box"><h4>🌾 Mata Pencarian Masyarakat Indonesia</h4><ul><li>Dataran tinggi: petani sayur, peternak, pemandu wisata</li><li>Dataran rendah: petani padi, pedagang, pengrajin</li><li>Pesisir pantai: nelayan, petani garam, pedagang ikan</li><li>Perkotaan: pegawai kantoran, wirausahawan, buruh pabrik</li></ul></div>Berdasarkan infografis, mata pencarian masyarakat di dataran tinggi adalah... (pilih semua yang benar)', options: ["Petani sayur", "Nelayan", "Peternak", "Pemandu wisata"], answer: [0, 2, 3], hint: "Mata pencarian di dataran tinggi: petani sayur, peternak, dan pemandu wisata. Nelayan bekerja di pesisir." },
+            { id: 12, type: "pg_kompleks", text: 'Berdasarkan infografis mata pencarian, mata pencarian di pesisir pantai adalah... (pilih semua yang benar)', options: ["Nelayan", "Petani garam", "Pegawai kantoran", "Pedagang ikan"], answer: [0, 1, 3], hint: "Pegawai kantoran bekerja di perkotaan, bukan di pesisir pantai." },
+            { id: 13, type: "pg_kompleks", text: 'Berdasarkan infografis mata pencarian, perbedaan antara dataran rendah dan perkotaan adalah... (pilih semua yang benar)', options: ["Dataran rendah banyak petani padi", "Perkotaan banyak pegawai kantoran", "Dataran rendah memiliki pedagang", "Perkotaan memiliki buruh pabrik"], answer: [0, 1, 2, 3], hint: "Semua pernyataan benar sesuai infografis." },
+            { id: 14, type: "pg_kompleks", text: 'Sumber daya alam yang tidak dapat diperbarui adalah... (pilih semua yang benar)', options: ["Minyak bumi", "Air", "Batu bara", "Gas alam"], answer: [0, 2, 3], hint: "Minyak bumi, batu bara, dan gas alam adalah SDA yang tidak dapat diperbarui karena memerlukan jutaan tahun untuk terbentuk." },
+            { id: 15, type: "pg_kompleks", text: "Flora khas Indonesia bagian barat adalah... (pilih semua yang benar)", options: ["Rafflesia Arnoldii", "Pohon Jati", "Kayu Cendana", "Meranti"], answer: [0, 1, 3], hint: "Kayu Cendana merupakan flora khas Indonesia bagian tengah (NTT), bukan bagian barat." },
+
+            // ===== PG KOMPLEKS lanjutan (No 16-20) =====
+            { id: 16, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Interaksi sosial adalah hubungan timbal balik antara dua orang atau lebih. Interaksi sosial dapat bersifat positif maupun negatif. Interaksi positif contohnya gotong royong, saling membantu, dan kerja sama. Sedangkan interaksi negatif contohnya pertengkaran, perundungan, dan kekerasan.</div>Contoh interaksi sosial positif berdasarkan teks adalah... (pilih semua yang benar)', options: ["Gotong royong", "Pertengkaran", "Saling membantu", "Kerja sama"], answer: [0, 2, 3], hint: "Gotong royong, saling membantu, dan kerja sama adalah interaksi positif." },
+            { id: 17, type: "pg_kompleks", text: 'Berdasarkan teks interaksi sosial sebelumnya, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Interaksi sosial melibatkan dua orang atau lebih", "Interaksi sosial hanya bersifat positif", "Perundungan termasuk interaksi negatif", "Interaksi sosial bersifat timbal balik"], answer: [0, 2, 3], hint: "Interaksi sosial bisa positif maupun negatif, bukan hanya positif." },
+            { id: 18, type: "pg_kompleks", text: "Tugas warga sekolah dalam menjaga kebersihan lingkungan sekolah adalah... (pilih semua yang benar)", options: ["Membuang sampah pada tempatnya", "Piket kebersihan kelas secara bergantian", "Mencoret-coret dinding sekolah", "Merawat tanaman di halaman sekolah"], answer: [0, 1, 3], hint: "Mencoret-coret dinding merupakan tindakan merusak, bukan menjaga kebersihan." },
+            { id: 19, type: "pg_kompleks", text: "Contoh peraturan tertulis di sekolah adalah... (pilih semua yang benar)", options: ["Tata tertib sekolah", "Memakai seragam sesuai jadwal", "Kebiasaan menyapa guru", "Larangan membawa handphone"], answer: [0, 1, 3], hint: "Kebiasaan menyapa guru adalah norma/kebiasaan (peraturan tidak tertulis)." },
+            { id: 20, type: "pg_kompleks", text: "Hewan yang terancam punah di Indonesia adalah... (pilih semua yang benar)", options: ["Harimau Sumatera", "Orangutan Kalimantan", "Kucing domestik", "Badak Jawa"], answer: [0, 1, 3], hint: "Kucing domestik bukan hewan terancam punah." },
+
+            // ===== BENAR / SALAH (No 21-30) =====
+            { id: 21, type: "bs", section: "Benar / Salah", text: 'Petani sawah termasuk mata pencarian yang banyak ditemukan di dataran rendah.', answer: "Benar", hint: "Benar. Petani sawah banyak ditemukan di dataran rendah yang memiliki tanah subur." },
+            { id: 22, type: "bs", text: 'Peternak sapi perah biasanya tinggal di dataran tinggi yang bersuhu sejuk.', answer: "Benar", hint: "Benar. Sapi perah lebih cocok di daerah bersuhu sejuk (dataran tinggi)." },
+            { id: 23, type: "bs", text: 'Nelayan adalah mata pencarian khas masyarakat perkotaan.', answer: "Salah", hint: "Salah. Nelayan adalah mata pencarian khas masyarakat pesisir pantai." },
+            { id: 24, type: "bs", text: 'Minyak bumi termasuk sumber daya alam yang dapat diperbarui.', answer: "Salah", hint: "Salah. Minyak bumi memerlukan jutaan tahun untuk terbentuk, jadi termasuk SDA tidak dapat diperbarui." },
+            { id: 25, type: "bs", text: 'Komodo hanya terdapat di Indonesia, tepatnya di Pulau Komodo, Nusa Tenggara Timur.', answer: "Benar", hint: "Benar. Komodo adalah hewan endemik Indonesia yang hanya ditemukan di Pulau Komodo dan sekitarnya." },
+            { id: 26, type: "isian", text: "Cenderawasih merupakan fauna khas wilayah Indonesia bagian...", answer: "Timur", hint: "Cenderawasih (burung surga) terdapat di Papua, wilayah Indonesia bagian timur." },
+            { id: 27, type: "isian", text: "Sumber daya alam yang tidak dapat diperbarui karena memerlukan jutaan tahun untuk terbentuk, contohnya adalah batu...", answer: "Bara", hint: "Batu bara adalah SDA yang tidak dapat diperbarui." },
+            { id: 28, type: "isian", text: "Nama lama Kota Jakarta sebelum diubah menjadi Jakarta adalah...", answer: "Jayakarta", hint: "Jayakarta diubah menjadi Batavia oleh Belanda, kemudian menjadi Jakarta." },
+            { id: 29, type: "isian", text: "Peran Ketua RT di masyarakat adalah mengkoordinasi kegiatan warga dan menjaga ketertiban di lingkungan...", answer: "RT", hint: "Ketua RT mengkoordinasi kegiatan warga di lingkungan RT." },
+            { id: 30, type: "isian", text: "Peraturan tertulis memiliki sanksi hukum, sedangkan peraturan tidak tertulis biasanya berupa norma dan...", answer: "Kebiasaan", hint: "Peraturan tidak tertulis berupa norma, adat istiadat, dan kebiasaan." },
+
+            // ===== ISIAN SINGKAT (No 31-35) =====
+            { id: 31, type: "isian", section: "Isian Singkat", text: "Tokoh yang menyerang Pelabuhan Kalapa (Sunda Kelapa) pada tahun 1527 adalah...", answer: "Fatahillah", hint: "Fatahillah menyerang dan merebut Pelabuhan Sunda Kelapa pada 22 Juni 1527." },
+            { id: 32, type: "isian", text: "Pekerjaan menangkap ikan di laut disebut...", answer: "Nelayan", hint: "Nelayan adalah orang yang pekerjaannya menangkap ikan di laut." },
+            { id: 33, type: "isian", text: "Peran guru di sekolah adalah mengajar dan mendidik...", answer: "Murid", hint: "Guru berperan mengajar dan mendidik murid-murid di sekolah." },
+            { id: 34, type: "isian", text: "Contoh sumber daya alam yang tidak dapat diperbarui selain minyak bumi dan batu bara adalah...", answer: "Gas alam", hint: "Gas alam termasuk SDA yang tidak dapat diperbarui." },
+            { id: 35, type: "isian", text: "Wilayah ditemukannya sumber daya alam gas bumi terbesar di Indonesia berada di...", answer: "Aceh", hint: "Arun, Aceh memiliki cadangan gas alam terbesar di Indonesia." },
+
+            // ===== URAIAN / ESAI (No 36-40) =====
+            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Ceritakan secara singkat sejarah Kota Jakarta dari nama Sunda Kelapa hingga menjadi Jakarta!", answer: "Sunda Kelapa adalah pelabuhan kerajaan Pajajaran. Pada 1527, Fatahillah merebut pelabuhan ini dan mengubah namanya menjadi Jayakarta. Pada 1619, VOC Belanda menguasai dan mengubah namanya menjadi Batavia. Setelah kemerdekaan 1945, namanya diubah menjadi Jakarta.", hint: "Jelaskan perubahan nama kota dari Sunda Kelapa → Jayakarta → Batavia → Jakarta." },
+            { id: 37, type: "uraian", text: "Jelaskan manfaat keanekaragaman hayati dalam kehidupan sehari-hari! Sebutkan minimal 3 manfaat!", answer: "1) Sumber pangan (padi, jagung, buah-buahan); 2) Sumber obat-obatan (tanaman herbal); 3) Bahan baku industri (kayu, kapas); 4) Menjaga keseimbangan ekosistem; 5) Sumber ekonomi (ekowisata)", hint: "Pikirkan bagaimana keanekaragaman hayati bermanfaat bagi manusia." },
+            { id: 38, type: "uraian", text: "Sebutkan 3 contoh mata pencarian masyarakat berdasarkan wilayah dataran tinggi, dataran rendah, dan perkotaan!", answer: "Dataran tinggi: petani sayuran, peternak sapi, pemandu wisata. Dataran rendah: petani padi, pedagang, pengrajin. Perkotaan: pegawai kantoran, wirausahawan, dokter.", hint: "Sebutkan minimal 1 contoh untuk setiap wilayah." },
+            { id: 39, type: "uraian", text: "Jelaskan contoh interaksi sosial positif dan negatif masing-masing 2!", answer: "Positif: 1) Gotong royong membersihkan lingkungan; 2) Kerja sama dalam kelompok belajar. Negatif: 1) Pertengkaran antar teman; 2) Perundungan (bullying) di sekolah.", hint: "Interaksi positif bermanfaat, interaksi negatif merugikan." },
+            { id: 40, type: "uraian", text: "Jelaskan contoh peraturan tertulis dan peraturan tidak tertulis di lingkungan sekolah masing-masing 2!", answer: "Tertulis: 1) Tata tertib sekolah; 2) Larangan membawa handphone. Tidak tertulis: 1) Kebiasaan menyapa guru saat bertemu; 2) Menghormati teman yang lebih tua.", hint: "Peraturan tertulis bersifat resmi, peraturan tidak tertulis berupa kebiasaan/norma." }
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
+                else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html; updateProgress();
+        }
+        function updateProgress() { let a = 0; questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) a++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) a++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) a++; } }); document.getElementById('progress-fill').style.width = `${(a / questions.length) * 100}%`; }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let s = 0, m = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            document.getElementById('final-score').innerText = m > 0 ? Math.round((s / m) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${s} dari ${m} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block'; document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%'; window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>
