@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian PAI Kelas 2 - SD DILARAF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#6c5ce7;--primary-light:#a29bfe;--bg:#f3f0ff;--success:#27ae60;--error:#e74c3c;--card-bg:#fff;--text:#2d3436;--border:#dfe6e9}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+        .container{max-width:850px;margin:0 auto;background:var(--card-bg);border-radius:0 0 20px 20px;box-shadow:0 10px 40px rgba(0,0,0,.08);overflow:hidden}
+        .header{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;padding:30px;text-align:center;position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 60%);animation:shimmer 8s infinite}
+        @keyframes shimmer{0%,100%{transform:rotate(0)}50%{transform:rotate(180deg)}}
+        .header h1{font-size:2em;font-weight:800;position:relative;z-index:1}
+        .header p{margin-top:5px;opacity:.9;position:relative;z-index:1}
+        .header .badge{display:inline-block;background:rgba(255,255,255,.2);padding:4px 14px;border-radius:20px;font-size:.8em;margin-top:8px;position:relative;z-index:1}
+        .progress-bar{height:6px;background:var(--border);position:sticky;top:0;z-index:100}
+        .progress-fill{height:100%;background:linear-gradient(90deg,var(--success),#2ecc71);width:0;transition:width .5s;border-radius:0 3px 3px 0}
+        .score-board{text-align:center;padding:30px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;display:none;border-radius:0 0 20px 20px;animation:slideDown .6s}
+        @keyframes slideDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+        .score-board h2{font-size:1.3em;margin-bottom:5px}
+        .score-value{font-size:4em;font-weight:800;margin:10px 0}
+        .back-btn{display:inline-block;margin-top:15px;padding:10px 25px;background:rgba(255,255,255,.2);color:#fff;text-decoration:none;border-radius:25px;font-weight:700;border:2px solid rgba(255,255,255,.4)}
+        .question-list{padding:25px}
+        .section-title{font-size:.85em;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--primary);margin:30px 0 15px;padding:10px 15px;background:var(--bg);border-radius:10px;border-left:4px solid var(--primary)}
+        .question-item{margin-bottom:25px;padding:20px;border-radius:12px;border:2px solid var(--border);background:#fafbfc}
+        .q-number{display:inline-block;background:var(--primary);color:#fff;width:32px;height:32px;border-radius:50%;text-align:center;line-height:32px;font-size:.85em;font-weight:800;margin-right:10px}
+        .q-text{font-size:1em;line-height:1.7;margin-bottom:12px}
+        .input-text{width:100%;padding:12px 15px;border:2px solid var(--border);border-radius:10px;font-size:1em;font-family:'Nunito',sans-serif}
+        .input-text:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(108,92,231,.15)}
+        .feedback-box{margin-top:12px;padding:12px 15px;border-radius:10px;display:none;font-size:.9em;font-weight:600}
+        .correct{background:#d4edda;color:#155724;border-left:4px solid var(--success)}
+        .wrong{background:#f8d7da;color:#721c24;border-left:4px solid var(--error)}
+        .footer-action{padding:20px;text-align:center;position:sticky;bottom:0;border-top:2px solid var(--border);background:var(--card-bg)}
+        .btn-submit{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border:none;padding:15px 50px;font-size:1.1em;border-radius:50px;cursor:pointer;font-weight:800;transition:all .3s}
+        .btn-submit:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,92,231,.4)}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>🕌 PAI</h1><p>SD DILARAF ISLAMIC SCHOOL — Kelas 2</p><div class="badge">Asesmen Formatif Tengah Semester</div></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="score-board" id="score-board"><h2>📊 Nilai Kamu</h2><div class="score-value" id="final-score">0</div><a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a></div>
+    <div class="question-list" id="qc"></div>
+    <div class="footer-action" id="fa"><button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button></div>
+</div>
+<script>
+const Q=[
+{id:1,section:"Isian — Bab 6: Hadis Kebersihan",text:"Nabi Muhammad Saw. mencontohkan kepada umat Islam untuk menjaga ...",answer:"Kebersihan",hint:"Rasulullah Saw. mengajarkan kebersihan sebagai bagian dari iman.",alt:["bersih"]},
+{id:2,text:"Menurut hadis riwayat Muslim, kebersihan itu separuh dari ...",answer:"Iman",hint:"الطُّهُورُ شَطْرُ الْإِيْمَانِ — Kebersihan itu separuh dari iman."},
+{id:3,text:"Setelah digunakan, pakaian harus ... agar tetap bersih.",answer:"Dicuci",hint:"Pakaian kotor harus dicuci.",alt:["cuci"]},
+{id:4,text:"Menjaga kebersihan merupakan perintah dari ...",answer:"Allah",hint:"Menjaga kebersihan merupakan perintah Allah Swt.",alt:["allah swt"]},
+{id:5,section:"Isian — Bab 7: Iman kepada Malaikat",text:"Malaikat diciptakan oleh Allah Swt. dari ...",answer:"Cahaya",hint:"Malaikat diciptakan dari cahaya (nur).",alt:["nur"]},
+{id:6,text:"Jumlah malaikat yang wajib diketahui ada ...",answer:"Sepuluh",hint:"Ada 10 malaikat yang wajib diketahui.",alt:["10"]},
+{id:7,text:"Malaikat selalu taat dan ... kepada Allah Swt.",answer:"Patuh",hint:"Malaikat tidak pernah ingkar terhadap perintah Allah.",alt:["taat"]},
+{id:8,text:"Percaya kepada malaikat termasuk rukun iman yang ke- ...",answer:"Dua",hint:"Rukun iman: (1) Allah, (2) Malaikat, (3) Kitab, dst.",alt:["2","kedua"]},
+{id:9,section:"Isian — Bab 8: Rendah Hati",text:"Rendah hati adalah sifat terpuji yang perlu dimiliki oleh setiap ...",answer:"Muslim",hint:"Rendah hati harus dimiliki setiap muslim.",alt:["umat islam"]},
+{id:10,text:"Orang yang rendah hati akan sopan dan menghargai orang lain, sehingga mudah ...",answer:"Bergaul",hint:"Sikap rendah hati membuat kita mudah bergaul.",alt:["berteman"]}
+];
+const c=document.getElementById('qc');let cs='';
+function render(){let h='';Q.forEach((q,i)=>{if(q.section&&q.section!==cs){cs=q.section;h+=`<div class="section-title">${q.section}</div>`}h+=`<div class="question-item"><div class="q-text"><span class="q-number">${i+1}</span>${q.text}</div><input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off"><div class="feedback-box" id="fb-${q.id}"></div></div>`});c.innerHTML=h}
+function updateProgress(){let a=0;Q.forEach(q=>{const e=document.querySelector(`[name="q${q.id}"]`);if(e&&e.value.trim())a++});document.getElementById('progress-fill').style.width=`${(a/Q.length)*100}%`}
+document.addEventListener('input',updateProgress);
+function n(s){return s.toLowerCase().replace(/[-_.,]/g,'').trim()}
+function submitExam(){let s=0;Q.forEach(q=>{const fb=document.getElementById(`fb-${q.id}`);const v=n(document.querySelector(`[name="q${q.id}"]`).value);const a=n(q.answer);let ok=v===a||v.includes(a)||(a.includes(v)&&v.length>2);if(q.alt)q.alt.forEach(x=>{if(n(x)===v||v.includes(n(x)))ok=true});if(ok){s++;fb.className='feedback-box correct';fb.innerHTML='✅ Benar!'}else{fb.className='feedback-box wrong';fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`}fb.style.display='block'});const p=Math.round((s/Q.length)*100);document.getElementById('final-score').innerText=p;document.getElementById('score-board').style.display='block';document.getElementById('fa').style.display='none';document.getElementById('progress-fill').style.width='100%';window.scrollTo({top:0,behavior:'smooth'})}
+render();
+</script>
+</body>
+</html>
