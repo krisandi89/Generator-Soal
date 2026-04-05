@@ -302,23 +302,25 @@
     </div>
     <script>
         const questions = [
-            // Bab 1-2: Kelahiran & Keluarga Nabi
-            { id: 1, section: "Isian — Bab 1-2: Kelahiran & Keluarga Nabi", text: "Nabi Muhammad SAW lahir pada bulan Rabiul Awal bertepatan dengan tanggal ...", answer: "12", hint: "Tanggal 12 Rabiul Awal, yang kini diperingati sebagai Maulid Nabi.", alt: ["dua belas"] },
-            { id: 2, text: "Ayah Nabi Muhammad SAW bernama Abdullah bin ...", answer: "Abdul Muthalib", hint: "Abdul Muthalib adalah kakek Nabi Muhammad SAW.", alt: ["abdul mutholib", "abdulmuthalib"] },
-            { id: 3, text: "Nabi Muhammad SAW menjadi yatim piatu sejak usia ... tahun.", answer: "6", hint: "Ibunda Aminah wafat saat Nabi berusia 6 tahun.", alt: ["enam"] },
+            // Bab 1: Sejarah Wajibnya Puasa Ramadan
+            { id: 1, section: "Isian — Bab 1: Puasa Ramadan", text: "Puasa Ramadan diwajibkan pada bulan Syakban tahun kedua ...", answer: "Hijriah", hint: "Puasa Ramadan diwajibkan pada bulan Syakban tahun kedua Hijriah.", alt: ["hijriyah"] },
+            { id: 2, text: "Selama hidupnya, Rasulullah SAW melaksanakan puasa Ramadan sebanyak ... kali.", answer: "Sembilan", hint: "Rasulullah SAW berpuasa Ramadan sebanyak sembilan kali.", alt: ["9"] },
 
-            // Bab 3: Masa Kecil & Pengasuhan
-            { id: 4, section: "Isian — Bab 3: Masa Kecil Nabi", text: "Ibu susu Nabi Muhammad SAW bernama Halimah As-...", answer: "Sa'diyah", hint: "Halimah As-Sa'diyah, dari perkampungan Bani Sa'ad.", alt: ["sadiyah", "sa'diyyah", "saadiyah"] },
-            { id: 5, text: "Saat tinggal bersama Halimah, Nabi Muhammad SAW tinggal di padang pasir yang udaranya ...", answer: "Segar", hint: "Udara padang pasir yang segar membuat bayi tumbuh sehat dan kuat.", alt: ["bersih", "sejuk"] },
-            { id: 6, text: "Setelah ibunya wafat, Nabi Muhammad SAW diasuh oleh kakeknya bernama ...", answer: "Abdul Muthalib", hint: "Kakek Nabi sangat menyayanginya dan memberinya nama 'Muhammad'.", alt: ["abdul mutholib"] },
+            // Bab 2: Perang Badr
+            { id: 3, section: "Isian — Bab 2: Perang Badr", text: "Perang Badr terjadi pada 17 Ramadan tahun 2 Hijriah. Kafilah dagang Quraisy dipimpin oleh ...", answer: "Abu Sufyan", hint: "Abu Sufyan memimpin kafilah dagang Quraisy dari Syam menuju Makkah.", alt: ["abu sufyan"] },
+            { id: 4, text: "Jumlah pasukan kaum Muslimin dalam Perang Badr adalah ... orang.", answer: "313", hint: "Dengan 313 orang, kaum Muslimin yakin bisa menaklukkan kafilah dagang.", alt: ["tiga ratus tiga belas"] },
 
-            // Bab 4: Remaja & Perdagangan
-            { id: 7, section: "Isian — Bab 4: Nabi Muhammad Remaja", text: "Sejak kecil Nabi Muhammad SAW dikenal jujur, sehingga diberi gelar Al-Amin yang artinya ...", answer: "Dapat dipercaya", hint: "Al-Amin = orang yang dapat dipercaya / terpercaya.", alt: ["terpercaya", "dipercaya", "yang terpercaya", "orang yang terpercaya"] },
-            { id: 8, text: "Ketika remaja, Nabi Muhammad SAW ikut pamannya berdagang ke negeri ...", answer: "Syam", hint: "Negeri Syam (Suriah) adalah tujuan perdagangan bersama Abu Thalib.", alt: ["syiria", "suriah", "syria"] },
+            // Bab 3: Perang Uhud
+            { id: 5, section: "Isian — Bab 3: Perang Uhud", text: "Perang Uhud terjadi karena balas dendam kaum Quraisy setelah kalah pada Perang ...", answer: "Badr", hint: "Perang Uhud adalah balas dendam setelah kekalahan di Perang Badr.", alt: ["badar"] },
+            { id: 6, text: "Sebanyak 50 pasukan pemanah ditempatkan di atas Jabal ...", answer: "Uhud", hint: "50 pasukan pemanah diposisikan di atas Jabal Uhud.", alt: ["gunung uhud"] },
+            { id: 7, text: "Paman Rasulullah SAW yang syahid dalam Perang Uhud bernama ... bin Abdul Muthalib.", answer: "Hamzah", hint: "Hamzah bin Abdul Muthalib syahid karena menjadi perisai Rasulullah SAW.", alt: ["hamzah"] },
 
-            // Bab 5: Akhlak & Pelajaran
-            { id: 9, section: "Isian — Bab 5: Akhlak Nabi Muhammad", text: "Pasukan gajah yang hendak menghancurkan Ka'bah dihancurkan oleh Allah dengan mengirimkan burung ...", answer: "Ababil", hint: "Burung Ababil membawa batu dari neraka (seperti dalam Surah Al-Fil)." },
-            { id: 10, text: "Salah satu sifat terpuji Nabi Muhammad SAW sejak kecil adalah selalu berkata ...", answer: "Jujur", hint: "Sifat Shiddiq artinya selalu berkata jujur.", alt: ["benar", "shiddiq"] }
+            // Bab 4: Peristiwa Bir Maunah
+            { id: 8, section: "Isian — Bab 4: Peristiwa Bir Maunah", text: "Dalam perjalanan Bir Maunah, Rasulullah SAW mengutus al-Mundzir bin Amr bersama ... orang muslim pilihan.", answer: "70", hint: "70 orang muslim pilihan yang mayoritas penghafal Quran.", alt: ["tujuh puluh"] },
+
+            // Bab 5: Perang Khandaq
+            { id: 9, section: "Isian — Bab 5: Perang Khandaq", text: "Strategi kaum Muslimin dalam Perang Khandaq adalah menggali ... di sekitar Madinah.", answer: "Parit", hint: "Khandaq artinya parit. Rasulullah SAW memerintahkan menggali parit untuk pertahanan.", alt: ["khandaq"] },
+            { id: 10, text: "Kaum Quraisy dalam Perang Khandaq dipimpin oleh ...", answer: "Abu Sufyan", hint: "Abu Sufyan memimpin kabilah Quraisy dalam perang ini.", alt: ["abu sufyan"] }
         ];
 
         const container = document.getElementById('question-container');
