@@ -302,16 +302,23 @@
     </div>
     <script>
         const questions = [
-            { id: 1, type: "isian", section: "Isian Singkat", text: "Nabi Muhammad SAW dilahirkan di kota...", answer: "Makkah", hint: "Kota suci tempat Ka'bah berada, kadang ditulis Mekah." },
-            { id: 2, type: "isian", text: "Ayahanda Nabi Muhammad SAW bernama...", answer: "Abdullah", hint: "Beliau meninggal dunia saat Nabi Muhammad SAW masih di dalam kandungan." },
-            { id: 3, type: "isian", text: "Ibunda Nabi Muhammad SAW bernama...", answer: "Aminah", hint: "Aminah binti Wahab." },
-            { id: 4, type: "isian", text: "Kakek Nabi Muhammad SAW yang sangat menyayanginya bernama...", answer: "Abdul Muthalib", hint: "Beliau yang memberi nama 'Muhammad'." },
-            { id: 5, type: "isian", text: "Nabi Muhammad SAW disusui dan diasuh di perkampungan Bani Sa'diyah oleh...", answer: "Halimah", hint: "Nama lengkapnya Halimah As-Sa'diyah." },
-            { id: 6, type: "isian", text: "Nabi Muhammad SAW lahir pada tanggal 12 Rabiul Awal yang sering disebut Tahun...", answer: "Gajah", hint: "Dinamakan demikian karena peristiwa penyerangan Ka'bah oleh pasukan gajah." },
-            { id: 7, type: "isian", text: "Setelah kakeknya wafat, Nabi Muhammad SAW diasuh oleh pamannya yang bernama...", answer: "Abu Thalib", hint: "Paman yang menjaga dan melindungi Nabi dari kecil hingga diangkat jadi rasul." },
-            { id: 8, type: "isian", text: "Sejak kecil, Nabi Muhammad SAW terbiasa bekerja menggembalakan...", answer: "Kambing", hint: "Peternakan kecil seperti domba dan kambing." },
-            { id: 9, type: "isian", text: "Gelar 'Al-Amin' yang diberikan kepada Nabi Muhammad SAW memiliki arti...", answer: "Dapat dipercaya", hint: "Nabi sangat jujur dan amanah." },
-            { id: 10, type: "isian", text: "Nama raja yang hendak menghancurkan Ka'bah saat Nabi Muhammad SAW lahir adalah Raja...", answer: "Abrahah", hint: "Raja dari Yaman yang membawa pasukan gajah." }
+            // Bab 1-2: Kelahiran & Keluarga Nabi
+            { id: 1, section: "Isian — Bab 1-2: Kelahiran & Keluarga Nabi", text: "Nabi Muhammad SAW lahir pada bulan Rabiul Awal bertepatan dengan tanggal ...", answer: "12", hint: "Tanggal 12 Rabiul Awal, yang kini diperingati sebagai Maulid Nabi.", alt: ["dua belas"] },
+            { id: 2, text: "Ayah Nabi Muhammad SAW bernama Abdullah bin ...", answer: "Abdul Muthalib", hint: "Abdul Muthalib adalah kakek Nabi Muhammad SAW.", alt: ["abdul mutholib", "abdulmuthalib"] },
+            { id: 3, text: "Nabi Muhammad SAW menjadi yatim piatu sejak usia ... tahun.", answer: "6", hint: "Ibunda Aminah wafat saat Nabi berusia 6 tahun.", alt: ["enam"] },
+
+            // Bab 3: Masa Kecil & Pengasuhan
+            { id: 4, section: "Isian — Bab 3: Masa Kecil Nabi", text: "Ibu susu Nabi Muhammad SAW bernama Halimah As-...", answer: "Sa'diyah", hint: "Halimah As-Sa'diyah, dari perkampungan Bani Sa'ad.", alt: ["sadiyah", "sa'diyyah", "saadiyah"] },
+            { id: 5, text: "Saat tinggal bersama Halimah, Nabi Muhammad SAW tinggal di padang pasir yang udaranya ...", answer: "Segar", hint: "Udara padang pasir yang segar membuat bayi tumbuh sehat dan kuat.", alt: ["bersih", "sejuk"] },
+            { id: 6, text: "Setelah ibunya wafat, Nabi Muhammad SAW diasuh oleh kakeknya bernama ...", answer: "Abdul Muthalib", hint: "Kakek Nabi sangat menyayanginya dan memberinya nama 'Muhammad'.", alt: ["abdul mutholib"] },
+
+            // Bab 4: Remaja & Perdagangan
+            { id: 7, section: "Isian — Bab 4: Nabi Muhammad Remaja", text: "Sejak kecil Nabi Muhammad SAW dikenal jujur, sehingga diberi gelar Al-Amin yang artinya ...", answer: "Dapat dipercaya", hint: "Al-Amin = orang yang dapat dipercaya / terpercaya.", alt: ["terpercaya", "dipercaya", "yang terpercaya", "orang yang terpercaya"] },
+            { id: 8, text: "Ketika remaja, Nabi Muhammad SAW ikut pamannya berdagang ke negeri ...", answer: "Syam", hint: "Negeri Syam (Suriah) adalah tujuan perdagangan bersama Abu Thalib.", alt: ["syiria", "suriah", "syria"] },
+
+            // Bab 5: Akhlak & Pelajaran
+            { id: 9, section: "Isian — Bab 5: Akhlak Nabi Muhammad", text: "Pasukan gajah yang hendak menghancurkan Ka'bah dihancurkan oleh Allah dengan mengirimkan burung ...", answer: "Ababil", hint: "Burung Ababil membawa batu dari neraka (seperti dalam Surah Al-Fil)." },
+            { id: 10, text: "Salah satu sifat terpuji Nabi Muhammad SAW sejak kecil adalah selalu berkata ...", answer: "Jujur", hint: "Sifat Shiddiq artinya selalu berkata jujur.", alt: ["benar", "shiddiq"] }
         ];
 
         const container = document.getElementById('question-container');
@@ -325,15 +332,12 @@
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 html += `<div class="question-item">
-            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
-            <div class="options-group">
-                <input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">
-            </div>
-            <div class="feedback-box" id="fb-${q.id}"></div>
-        </div>`;
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
             });
             container.innerHTML = html;
-            updateProgress();
         }
 
         function updateProgress() {
@@ -347,39 +351,21 @@
 
         document.addEventListener('input', updateProgress);
 
+        function normalize(s) { return s.toLowerCase().replace(/[-_.,\']/g, '').trim(); }
+
         function submitExam() {
-            let score = 0, maxAuto = questions.length;
+            let score = 0;
             questions.forEach(q => {
                 const fb = document.getElementById(`fb-${q.id}`);
-                const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase();
-
-                let isCorrect = false;
-                let ansLower = q.answer.toLowerCase();
-
-                // Toleransi ejaan
-                if (val === ansLower || val.includes(ansLower) || ansLower.includes(val) && val.length > 3) {
-                    isCorrect = true;
-                } else if (ansLower === "makkah" && val.includes("mekah")) {
-                    isCorrect = true;
-                } else if (ansLower === "abdul muthalib" && val.includes("mutholib")) {
-                    isCorrect = true;
-                } else if (ansLower === "abu thalib" && val.includes("tholib")) {
-                    isCorrect = true;
-                } else if (ansLower === "halimah" && val.includes("sadiah")) {
-                    isCorrect = true;
-                } else if (ansLower === "kambing" && val.includes("domba")) {
-                    isCorrect = true;
-                }
-
-                if (isCorrect) {
-                    score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!';
-                }
-                else {
-                    fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban yang tepat: <b>${q.answer}</b>. ${q.hint}`;
-                }
+                const val = normalize(document.querySelector(`[name="q${q.id}"]`).value);
+                const ans = normalize(q.answer);
+                let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                if (q.alt) { q.alt.forEach(a => { if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true; }); }
+                if (isCorrect) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; }
+                else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; }
                 fb.style.display = 'block';
             });
-            const pct = Math.round((score / maxAuto) * 100);
+            const pct = Math.round((score / questions.length) * 100);
             document.getElementById('final-score').innerText = pct;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
