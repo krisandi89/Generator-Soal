@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STS B. Indonesia Kelas 2 - SDIT Friends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2980b9;
+            --primary-light: #3498db;
+            --bg: #eaf2f8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
+        .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 30px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); animation: shimmer 8s infinite; }
+        @keyframes shimmer { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } }
+        .header h1 { margin: 0; font-size: 2em; font-weight: 800; position: relative; z-index: 1; }
+        .header p { margin-top: 5px; opacity: 0.9; font-size: 1em; position: relative; z-index: 1; }
+        .header .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.8em; margin-top: 8px; position: relative; z-index: 1; }
+        .progress-bar { height: 6px; background: var(--border); position: sticky; top: 0; z-index: 100; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--success), #2ecc71); width: 0%; transition: width 0.5s ease; border-radius: 0 3px 3px 0; }
+        .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
+        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
+        .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
+        .back-btn:hover { background: rgba(255,255,255,0.3); }
+        .question-list { padding: 25px; }
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
+        .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(41,128,185,0.1); }
+        .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; display: flex; align-items: flex-start; gap: 0; }
+        .q-text-content { flex: 1; }
+
+        /* Pilihan Ganda */
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; }
+        .option-label:hover { border-color: var(--primary); background: #eaf2f8; }
+        .option-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .option-label.selected { border-color: var(--primary); background: #eaf2f8; }
+        .option-label.correct-opt { border-color: var(--success) !important; background: #d4edda !important; }
+        .option-label.wrong-opt { border-color: var(--error) !important; background: #f8d7da !important; }
+
+        /* Benar Salah */
+        .bs-options { display: flex; gap: 12px; margin-top: 5px; }
+        .bs-btn { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 1em; font-weight: 700; transition: all 0.2s; }
+        .bs-btn:hover { border-color: var(--primary); background: #eaf2f8; }
+        .bs-btn.selected-benar { border-color: var(--success); background: #d4edda; color: #155724; }
+        .bs-btn.selected-salah { border-color: var(--error); background: #f8d7da; color: #721c24; }
+
+        /* Tarik Garis */
+        .match-container { display: flex; gap: 20px; align-items: flex-start; margin-top: 10px; }
+        .match-col { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .match-col-title { font-weight: 800; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 4px; }
+        .match-item { padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px; font-size: 0.9em; background: white; text-align: center; font-weight: 600; }
+        .match-select { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.9em; background: white; cursor: pointer; font-weight: 600; }
+        .match-select:focus { outline: none; border-color: var(--primary); }
+
+        /* Input teks */
+        .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
+        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(41,128,185,0.15); }
+        textarea.input-text { resize: vertical; min-height: 90px; }
+
+        .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
+        .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
+        .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
+        .partial { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
+
+        .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
+        .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(41,128,185,0.4); }
+        .info-tag { display: inline-block; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 20px; font-size: 0.75em; margin-left: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 Bahasa Indonesia</h1>
+            <p>SDIT Friends — Kelas 2</p>
+            <div class="badge">Sumatif Tengah Semester (STS)</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Nilai Kamu</h2>
+            <div class="score-value" id="final-score">0</div>
+            <div class="score-detail" id="score-detail"></div>
+            <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" id="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+    <script>
+    // ============================================================
+    // DATA SOAL — BAHASA INDONESIA KELAS 2 STS
+    // ============================================================
+    const pgQuestions = [
+        { id: 'pg1', text: 'Kalimat yang subjeknya melakukan pekerjaan disebut kalimat ...', options: ['A. Pasif', 'B. Aktif', 'C. Berita', 'D. Perintah'], answer: 'B' },
+        { id: 'pg2', text: 'Kata "ditulis" menggunakan imbuhan ...', options: ['A. me-', 'B. ber-', 'C. di-', 'D. ter-'], answer: 'C' },
+        { id: 'pg3', text: 'Cerita yang tokoh-tokohnya adalah binatang disebut ...', options: ['A. Legenda', 'B. Mite', 'C. Fabel', 'D. Dongeng biasa'], answer: 'C' },
+        { id: 'pg4', text: 'Pelaku utama dalam sebuah cerita disebut ...', options: ['A. Alur', 'B. Latar', 'C. Amanat', 'D. Tokoh'], answer: 'D' },
+        { id: 'pg5', text: 'Pesan baik yang terdapat dalam sebuah cerita disebut ...', options: ['A. Amanat', 'B. Alur', 'C. Tokoh', 'D. Latar'], answer: 'A' },
+        { id: 'pg6', text: '"Ayah <b>menyiram</b> tanaman." Kata bercetak tebal adalah kata kerja ...', options: ['A. Pasif', 'B. Negatif', 'C. Aktif', 'D. Perintah'], answer: 'C' },
+        { id: 'pg7', text: 'Kata kerja aktif biasanya diawali imbuhan ...', options: ['A. di- atau ter-', 'B. me- atau ber-', 'C. ke- atau se-', 'D. per- atau ke-'], answer: 'B' },
+        { id: 'pg8', text: 'Saat meminjam barang milik teman, kita sebaiknya mengucapkan ...', options: ['A. Terima kasih', 'B. Maaf', 'C. Permisi / Tolong', 'D. Selamat'], answer: 'C' },
+        { id: 'pg9', text: 'Kata "perajin" berasal dari kata dasar ...', options: ['A. Rajin', 'B. Pelajar', 'C. Kerajinan', 'D. Ajar'], answer: 'A' },
+        { id: 'pg10', text: '"Kakakku sangat pandai mendongeng." Kalimat tersebut termasuk kalimat ...', options: ['A. Fakta', 'B. Aktif', 'C. Pasif', 'D. Opini'], answer: 'D' },
+    ];
+
+    const bsQuestions = [
+        { id: 'bs1', text: 'Kalimat "Buku itu <b>dibaca</b> oleh Dina." adalah kalimat pasif.', answer: 'Benar' },
+        { id: 'bs2', text: 'Fabel adalah cerita yang tokoh-tokohnya adalah manusia.', answer: 'Salah' },
+        { id: 'bs3', text: 'Imbuhan "di-" biasanya digunakan pada kata kerja aktif.', answer: 'Salah' },
+        { id: 'bs4', text: 'Amanat adalah pesan baik yang terdapat dalam sebuah cerita.', answer: 'Benar' },
+        { id: 'bs5', text: 'Kata "berlari" menggunakan imbuhan "ber-".', answer: 'Benar' },
+    ];
+
+    const matchQuestions = [
+        { id: 'mt1', left: 'Kalimat Aktif', options: ['Subjek melakukan pekerjaan', 'Subjek dikenai pekerjaan', 'Berisi ajakan', 'Berisi pertanyaan'], answer: 'Subjek melakukan pekerjaan' },
+        { id: 'mt2', left: 'Kalimat Pasif', options: ['Subjek melakukan pekerjaan', 'Subjek dikenai pekerjaan', 'Berisi ajakan', 'Berisi pertanyaan'], answer: 'Subjek dikenai pekerjaan' },
+        { id: 'mt3', left: 'Fabel', options: ['Cerita hewan', 'Cerita hantu', 'Cerita pahlawan', 'Cerita rakyat'], answer: 'Cerita hewan' },
+        { id: 'mt4', left: 'Amanat', options: ['Pesan baik dalam cerita', 'Urutan kejadian', 'Tempat cerita', 'Pelaku cerita'], answer: 'Pesan baik dalam cerita' },
+        { id: 'mt5', left: 'Tokoh', options: ['Pelaku cerita', 'Pemandangan cerita', 'Isi cerita', 'Waktu cerita'], answer: 'Pelaku cerita' },
+    ];
+
+    const isianQuestions = [
+        { id: 'is1', text: '"Adik <b>memakan</b> nasi." Kata bercetak tebal termasuk kata kerja ...', answer: 'Aktif', alt: ['aktif'] },
+        { id: 'is2', text: 'Imbuhan yang biasanya digunakan pada kata kerja pasif adalah ...', answer: 'di-', alt: ['di', 'imbuhan di'] },
+        { id: 'is3', text: 'Cerita Si Kancil termasuk cerita ...', answer: 'Fabel', alt: ['fabel'] },
+        { id: 'is4', text: 'Setelah mendapat bantuan teman, kita mengucapkan ...', answer: 'Terima kasih', alt: ['terimakasih'] },
+        { id: 'is5', text: 'Pelajaran baik yang dapat diambil dari sebuah cerita disebut ...', answer: 'Amanat', alt: ['amanat'] },
+    ];
+
+    const uraianQuestions = [
+        { id: 'ur1', text: 'Tuliskan 2 contoh kalimat aktif! (menggunakan imbuhan me- atau ber-)' },
+        { id: 'ur2', text: 'Apa perbedaan antara kalimat aktif dan kalimat pasif? Jelaskan dengan contoh!' },
+        { id: 'ur3', text: 'Sebutkan 3 unsur cerita yang kamu ketahui dan jelaskan artinya!' },
+        { id: 'ur4', text: 'Buatlah kalimat pasif dari kalimat aktif berikut: "Ibu memasak nasi."' },
+        { id: 'ur5', text: 'Ceritakan secara singkat isi cerita fabel yang pernah kamu baca atau dengar!' },
+    ];
+
+    let totalQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length + uraianQuestions.length;
+    let scoredQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length;
+
+    function render() {
+        let html = '';
+        let qNum = 1;
+
+        // PILIHAN GANDA
+        html += `<div class="section-title">📝 Pilihan Ganda <span class="info-tag">10 soal × 1 poin</span></div>`;
+        pgQuestions.forEach(q => {
+            html += `<div class="question-item" id="item-${q.id}">
+                <div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div>
+                <div class="options">`;
+            q.options.forEach(opt => {
+                const val = opt.charAt(0);
+                html += `<label class="option-label" id="opt-${q.id}-${val}">
+                    <input type="radio" name="${q.id}" value="${val}" onchange="onRadioChange('${q.id}','${val}')"> ${opt}
+                </label>`;
+            });
+            html += `</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+        });
+
+        // BENAR / SALAH
+        html += `<div class="section-title">✔️ Benar atau Salah <span class="info-tag">5 soal × 1 poin</span></div>`;
+        bsQuestions.forEach(q => {
+            html += `<div class="question-item" id="item-${q.id}">
+                <div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div>
+                <div class="bs-options">
+                    <button class="bs-btn" id="bs-benar-${q.id}" onclick="selectBS('${q.id}','Benar')">✅ Benar</button>
+                    <button class="bs-btn" id="bs-salah-${q.id}" onclick="selectBS('${q.id}','Salah')">❌ Salah</button>
+                </div>
+                <input type="hidden" id="${q.id}" value="">
+                <div class="feedback-box" id="fb-${q.id}"></div>
+            </div>`;
+        });
+
+        // TARIK GARIS
+        html += `<div class="section-title">🔗 Tarik Garis (Pasangkan) <span class="info-tag">5 soal × 1 poin</span></div>`;
+        matchQuestions.forEach(q => {
+            let shuffled = [...q.options].sort(() => Math.random() - 0.5);
+            html += `<div class="question-item" id="item-${q.id}">
+                <div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> dengan pernyataan yang tepat!</span></div>
+                <select class="match-select" id="${q.id}">
+                    <option value="">-- Pilih Pasangan --</option>
+                    ${shuffled.map(o => `<option value="${o}">${o}</option>`).join('')}
+                </select>
+                <div class="feedback-box" id="fb-${q.id}"></div>
+            </div>`;
+        });
+
+        // ISIAN SINGKAT
+        html += `<div class="section-title">✏️ Isian Singkat <span class="info-tag">5 soal × 1 poin</span></div>`;
+        isianQuestions.forEach(q => {
+            html += `<div class="question-item" id="item-${q.id}">
+                <div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div>
+                <input type="text" class="input-text" id="${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">
+                <div class="feedback-box" id="fb-${q.id}"></div>
+            </div>`;
+        });
+
+        // URAIAN
+        html += `<div class="section-title">📄 Uraian <span class="info-tag">5 soal — dijawab lengkap</span></div>`;
+        uraianQuestions.forEach(q => {
+            html += `<div class="question-item" id="item-${q.id}">
+                <div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div>
+                <textarea class="input-text" id="${q.id}" placeholder="Tulis jawaban lengkap di sini..."></textarea>
+                <div class="feedback-box" id="fb-${q.id}"></div>
+            </div>`;
+        });
+
+        document.getElementById('question-container').innerHTML = html;
+        document.addEventListener('input', updateProgress);
+        document.addEventListener('change', updateProgress);
+    }
+
+    function onRadioChange(qId, val) {
+        const q = pgQuestions.find(x => x.id === qId);
+        if (!q) return;
+        q.options.map(o => o.charAt(0)).forEach(v => {
+            document.getElementById(`opt-${qId}-${v}`)?.classList.remove('selected');
+        });
+        document.getElementById(`opt-${qId}-${val}`)?.classList.add('selected');
+        updateProgress();
+    }
+
+    function selectBS(qId, val) {
+        document.getElementById(`bs-benar-${qId}`).classList.remove('selected-benar');
+        document.getElementById(`bs-salah-${qId}`).classList.remove('selected-salah');
+        document.getElementById(qId).value = val;
+        if (val === 'Benar') document.getElementById(`bs-benar-${qId}`).classList.add('selected-benar');
+        else document.getElementById(`bs-salah-${qId}`).classList.add('selected-salah');
+        updateProgress();
+    }
+
+    function updateProgress() {
+        let answered = 0;
+        pgQuestions.forEach(q => { if (document.querySelector(`[name="${q.id}"]:checked`)) answered++; });
+        bsQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
+        matchQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
+        isianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
+        uraianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
+        document.getElementById('progress-fill').style.width = `${(answered / totalQ) * 100}%`;
+    }
+
+    function normalize(s) { return s.toLowerCase().replace(/[-_.,!?']/g, '').trim(); }
+
+    function submitExam() {
+        let score = 0;
+
+        // Nilai PG
+        pgQuestions.forEach(q => {
+            const sel = document.querySelector(`[name="${q.id}"]:checked`);
+            const fb = document.getElementById(`fb-${q.id}`);
+            const isCorrect = sel && sel.value === q.answer;
+            q.options.map(o => o.charAt(0)).forEach(v => {
+                const lbl = document.getElementById(`opt-${q.id}-${v}`);
+                if (lbl) { lbl.classList.remove('correct-opt', 'wrong-opt'); }
+            });
+            const correctLabel = document.getElementById(`opt-${q.id}-${q.answer}`);
+            if (correctLabel) correctLabel.classList.add('correct-opt');
+            if (sel && sel.value !== q.answer) {
+                const wrongLabel = document.getElementById(`opt-${q.id}-${sel.value}`);
+                if (wrongLabel) wrongLabel.classList.add('wrong-opt');
+            }
+            if (isCorrect) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; }
+            else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban yang benar: <b>${q.answer}</b>`; }
+            fb.style.display = 'block';
+        });
+
+        // Nilai B/S
+        bsQuestions.forEach(q => {
+            const val = document.getElementById(q.id)?.value;
+            const fb = document.getElementById(`fb-${q.id}`);
+            const isCorrect = val === q.answer;
+            if (isCorrect) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; }
+            else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban yang benar: <b>${q.answer}</b>`; }
+            fb.style.display = 'block';
+        });
+
+        // Nilai Tarik Garis
+        matchQuestions.forEach(q => {
+            const val = document.getElementById(q.id)?.value;
+            const fb = document.getElementById(`fb-${q.id}`);
+            const isCorrect = normalize(val) === normalize(q.answer);
+            if (isCorrect) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; }
+            else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Pasangan yang benar: <b>${q.answer}</b>`; }
+            fb.style.display = 'block';
+        });
+
+        // Nilai Isian Singkat
+        isianQuestions.forEach(q => {
+            const val = normalize(document.getElementById(q.id)?.value || '');
+            const fb = document.getElementById(`fb-${q.id}`);
+            const ans = normalize(q.answer);
+            let ok = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+            if (q.alt) q.alt.forEach(a => { if (normalize(a) === val || val.includes(normalize(a))) ok = true; });
+            if (ok) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; }
+            else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>`; }
+            fb.style.display = 'block';
+        });
+
+        // Uraian — tidak dinilai otomatis
+        uraianQuestions.forEach(q => {
+            const val = document.getElementById(q.id)?.value?.trim();
+            const fb = document.getElementById(`fb-${q.id}`);
+            fb.className = 'feedback-box partial';
+            fb.innerHTML = val ? '📝 Jawaban kamu sudah dicatat. Penilaian dilakukan oleh guru.' : '⚠️ Kamu belum menjawab soal uraian ini.';
+            fb.style.display = 'block';
+        });
+
+        const pct = Math.round((score / scoredQ) * 100);
+        document.getElementById('final-score').innerText = pct;
+        document.getElementById('score-detail').innerText = `Skor: ${score} dari ${scoredQ} soal yang dinilai otomatis`;
+        document.getElementById('score-board').style.display = 'block';
+        document.getElementById('footer-action').style.display = 'none';
+        document.getElementById('progress-fill').style.width = '100%';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    render();
+    </script>
+</body>
+</html>
