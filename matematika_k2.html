@@ -79,44 +79,46 @@
     </div>
     <script>
     const pgQuestions = [
-        { id: 'pg1', text: '45 + 38 = ...', options: ['A. 73', 'B. 83', 'C. 82', 'D. 84'], answer: 'B' },
-        { id: 'pg2', text: '72 - 29 = ...', options: ['A. 42', 'B. 43', 'C. 44', 'D. 41'], answer: 'B' },
-        { id: 'pg3', text: '3 × 7 = ...', options: ['A. 18', 'B. 21', 'C. 24', 'D. 27'], answer: 'B' },
-        { id: 'pg4', text: '4 × 6 = ...', options: ['A. 20', 'B. 22', 'C. 24', 'D. 26'], answer: 'C' },
-        { id: 'pg5', text: '56 + 27 = ...', options: ['A. 83', 'B. 82', 'C. 84', 'D. 79'], answer: 'A' },
-        { id: 'pg6', text: '5 × 8 = ...', options: ['A. 35', 'B. 40', 'C. 45', 'D. 50'], answer: 'B' },
-        { id: 'pg7', text: '90 - 43 = ...', options: ['A. 46', 'B. 47', 'C. 48', 'D. 45'], answer: 'B' },
-        { id: 'pg8', text: 'Nilai 2 × 9 sama dengan ...', options: ['A. 16', 'B. 17', 'C. 18', 'D. 19'], answer: 'C' },
-        { id: 'pg9', text: 'Ani memiliki 6 kotak pensil. Setiap kotak berisi 4 pensil. Jumlah pensil Ani adalah ...', options: ['A. 20', 'B. 22', 'C. 24', 'D. 26'], answer: 'C' },
-        { id: 'pg10', text: 'Bilangan yang tepat untuk mengisi titik-titik: 7 × ... = 42', options: ['A. 5', 'B. 6', 'C. 7', 'D. 8'], answer: 'B' },
+        // Pengukuran Berat
+        { id: 'pg1', text: 'Benda yang lebih berat dari 1 kg adalah ...', options: ['A. Sebuah penghapus', 'B. Sebuah pensil', 'C. Sebuah tas berisi buku', 'D. Sebuah karet gelang'], answer: 'C' },
+        { id: 'pg2', text: 'Ibu membeli 3 kg gula dan 2 kg tepung. Berapa kg berat belanjaan ibu seluruhnya?', options: ['A. 4 kg', 'B. 5 kg', 'C. 6 kg', 'D. 7 kg'], answer: 'B' },
+        { id: 'pg3', text: 'Berat sebuah semangka 4 kg. Berat sebuah nanas 2 kg. Selisih berat keduanya adalah ...', options: ['A. 2 kg', 'B. 3 kg', 'C. 6 kg', 'D. 8 kg'], answer: 'A' },
+        { id: 'pg4', text: 'Alat yang digunakan untuk mengukur berat benda adalah ...', options: ['A. Penggaris', 'B. Jam', 'C. Timbangan', 'D. Termometer'], answer: 'C' },
+        { id: 'pg5', text: '1 kg sama dengan ... gram', options: ['A. 10 gram', 'B. 100 gram', 'C. 500 gram', 'D. 1.000 gram'], answer: 'D' },
+        // Pengukuran Waktu
+        { id: 'pg6', text: 'Dalam satu minggu ada berapa hari?', options: ['A. 5 hari', 'B. 6 hari', 'C. 7 hari', 'D. 8 hari'], answer: 'C' },
+        { id: 'pg7', text: 'Dalam satu tahun ada berapa bulan?', options: ['A. 10 bulan', 'B. 11 bulan', 'C. 12 bulan', 'D. 13 bulan'], answer: 'C' },
+        { id: 'pg8', text: 'Jarum pendek jam menunjukkan angka 8 dan jarum panjang menunjukkan angka 12. Jam tersebut menunjukkan pukul ...', options: ['A. 07.00', 'B. 08.00', 'C. 08.30', 'D. 12.00'], answer: 'B' },
+        { id: 'pg9', text: 'Sani belajar dari pukul 07.00 sampai pukul 09.00. Berapa lama Sani belajar?', options: ['A. 1 jam', 'B. 2 jam', 'C. 3 jam', 'D. 4 jam'], answer: 'B' },
+        { id: 'pg10', text: 'Hari setelah Rabu adalah ...', options: ['A. Senin', 'B. Selasa', 'C. Kamis', 'D. Jumat'], answer: 'C' },
     ];
     const bsQuestions = [
-        { id: 'bs1', text: '3 × 5 = 15', answer: 'Benar' },
-        { id: 'bs2', text: '7 × 4 = 26', answer: 'Salah' },
-        { id: 'bs3', text: '65 + 28 = 93', answer: 'Benar' },
-        { id: 'bs4', text: '80 - 35 = 55', answer: 'Benar' },
-        { id: 'bs5', text: '6 × 9 = 54', answer: 'Benar' },
+        { id: 'bs1', text: 'Berat 1 kg jeruk lebih berat daripada 500 gram jeruk.', answer: 'Benar' },
+        { id: 'bs2', text: 'Dalam satu bulan selalu ada 31 hari.', answer: 'Salah' },
+        { id: 'bs3', text: 'Pukul 06.30 artinya setengah tujuh pagi.', answer: 'Benar' },
+        { id: 'bs4', text: 'Hari Senin adalah hari pertama dalam seminggu.', answer: 'Benar' },
+        { id: 'bs5', text: '2 kg sama dengan 200 gram.', answer: 'Salah' },
     ];
     const matchQuestions = [
-        { id: 'mt1', left: '2 × 3', options: ['4', '6', '8', '9', '12'], answer: '6' },
-        { id: 'mt2', left: '4 × 4', options: ['14', '16', '12', '18', '20'], answer: '16' },
-        { id: 'mt3', left: '5 × 5', options: ['20', '25', '30', '35', '40'], answer: '25' },
-        { id: 'mt4', left: '3 × 8', options: ['21', '24', '18', '27', '30'], answer: '24' },
-        { id: 'mt5', left: '6 × 7', options: ['36', '40', '42', '48', '54'], answer: '42' },
+        { id: 'mt1', left: 'Satu minggu', options: ['6 hari', '7 hari', '30 hari', '12 bulan', '24 jam'], answer: '7 hari' },
+        { id: 'mt2', left: 'Satu tahun', options: ['7 hari', '10 bulan', '12 bulan', '52 minggu', '365 jam'], answer: '12 bulan' },
+        { id: 'mt3', left: 'Satu hari', options: ['12 jam', '24 jam', '60 menit', '7 hari', '30 jam'], answer: '24 jam' },
+        { id: 'mt4', left: 'Pukul 07.30 dibaca', options: ['Tujuh lebih', 'Setengah delapan', 'Delapan kurang', 'Setengah tujuh', 'Jam tujuh'], answer: 'Setengah delapan' },
+        { id: 'mt5', left: '1 kg = ... gram', options: ['100', '500', '1.000', '2.000', '10.000'], answer: '1.000' },
     ];
     const isianQuestions = [
-        { id: 'is1', text: '34 + 48 = ...', answer: '82', alt: ['82'] },
-        { id: 'is2', text: '7 × 6 = ...', answer: '42', alt: ['42'] },
-        { id: 'is3', text: '100 - 57 = ...', answer: '43', alt: ['43'] },
-        { id: 'is4', text: 'Difa memiliki 5 kantong. Setiap kantong berisi 9 kelereng. Jumlah kelereng Difa adalah ...', answer: '45', alt: ['45'] },
-        { id: 'is5', text: '8 × 8 = ...', answer: '64', alt: ['64'] },
+        { id: 'is1', text: 'Ayah membeli 5 kg beras dan 3 kg gula. Berat belanjaan ayah seluruhnya adalah ... kg.', answer: '8', alt: ['8 kg', '8'] },
+        { id: 'is2', text: 'Dalam 2 minggu ada ... hari.', answer: '14', alt: ['14 hari', '14'] },
+        { id: 'is3', text: 'Dinda berangkat sekolah pukul 06.30 dan pulang pukul 12.30. Dinda di sekolah selama ... jam.', answer: '6', alt: ['6 jam', '6'] },
+        { id: 'is4', text: 'Bulan sesudah April adalah bulan ...', answer: 'Mei', alt: ['mei', 'MEI'] },
+        { id: 'is5', text: 'Berat badan Rudi 25 kg. Berat badan adiknya 18 kg. Selisih berat badan mereka adalah ... kg.', answer: '7', alt: ['7 kg', '7'] },
     ];
     const uraianQuestions = [
-        { id: 'ur1', text: 'Selesaikan soal berikut dan tunjukkan caranya:\nBudi mempunyai 37 kelereng. Ia mendapat lagi 45 kelereng dari kakaknya. Berapa jumlah kelereng Budi sekarang?' },
-        { id: 'ur2', text: 'Tuliskan 5 hasil perkalian tabel 6 (dari 6×1 sampai 6×5) secara lengkap!' },
-        { id: 'ur3', text: 'Selesaikan soal berikut:\nDi sebuah rak terdapat 9 baris buku. Setiap baris berisi 7 buku. Berapa total buku di rak tersebut?' },
-        { id: 'ur4', text: 'Ibu membeli 80 buah jeruk. Kemudian 36 jeruk dibagikan ke tetangga. Berapa sisa jeruk ibu? Tuliskan cara penghitunganmu!' },
-        { id: 'ur5', text: 'Jelaskan dengan kata-katamu sendiri apa yang dimaksud dengan perkalian! Berikan 2 contoh soal cerita perkalian!' },
+        { id: 'ur1', text: 'Ibu pergi ke pasar pukul 06.00 dan pulang pukul 09.00.\na. Berapa lama ibu di pasar?\nb. Tunjukkan posisi jarum jam pukul 06.00 dan 09.00 dengan gambar atau kata-kata!' },
+        { id: 'ur2', text: 'Sebutkan nama-nama hari dalam satu minggu mulai dari Senin sampai Minggu secara berurutan!' },
+        { id: 'ur3', text: 'Timbangan menunjukkan berat sebuah tas adalah 3 kg dan berat sebuah kotak adalah 2 kg.\na. Benda mana yang lebih berat?\nb. Berapa kg jumlah berat keduanya?\nc. Berapa kg selisih berat keduanya?' },
+        { id: 'ur4', text: 'Sebuah toko buka setiap hari dari pukul 08.00 hingga pukul 17.00.\na. Berapa lama toko tersebut buka setiap harinya?\nb. Dalam satu minggu (7 hari), berapa totalnya jam toko buka?' },
+        { id: 'ur5', text: 'Jelaskan perbedaan antara jarum pendek dan jarum panjang pada jam! Bagaimana cara membaca jam yang menunjukkan pukul 10.30? Tuliskan penjelasanmu dengan lengkap.' },
     ];
 
     const totalQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length + uraianQuestions.length;
@@ -134,10 +136,10 @@
         bsQuestions.forEach(q => {
             html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="bs-options"><button class="bs-btn" id="bs-benar-${q.id}" onclick="selectBS('${q.id}','Benar')">✅ Benar</button><button class="bs-btn" id="bs-salah-${q.id}" onclick="selectBS('${q.id}','Salah')">❌ Salah</button></div><input type="hidden" id="${q.id}" value=""><div class="feedback-box" id="fb-${q.id}"></div></div>`;
         });
-        html += `<div class="section-title">🔗 Pasangkan Hasil Perkalian <span class="info-tag">5 soal × 1 poin</span></div>`;
+        html += `<div class="section-title">🔗 Pasangkan yang Sesuai <span class="info-tag">5 soal × 1 poin</span></div>`;
         matchQuestions.forEach(q => {
             let shuffled = [...q.options].sort(() => Math.random() - 0.5);
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> = ?</span></div><select class="match-select" id="${q.id}"><option value="">-- Pilih Hasil --</option>${shuffled.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> → ?</span></div><select class="match-select" id="${q.id}"><option value="">-- Pilih Jawaban --</option>${shuffled.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><div class="feedback-box" id="fb-${q.id}"></div></div>`;
         });
         html += `<div class="section-title">✏️ Isian Singkat <span class="info-tag">5 soal × 1 poin</span></div>`;
         isianQuestions.forEach(q => {
