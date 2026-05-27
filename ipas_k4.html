@@ -339,6 +339,23 @@
                 padding: 15px;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -347,7 +364,7 @@
         <div class="header">
             <h1>🔬 IPAS</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -365,57 +382,316 @@
     </div>
     <script>
         const questions = [
-            // ===== PILIHAN GANDA (No 1-10) =====
-            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Kota Jakarta pada zaman dahulu dikenal dengan nama...", options: ["Jayakarta", "Surabaya", "Yogyakarta", "Bandung"], answer: 0, hint: "Jakarta pada masa lampau dikenal sebagai Jayakarta, sebelumnya Sunda Kelapa, dan Batavia." },
-            { id: 2, type: "pg", text: "Pekerjaan yang mengolah tanah untuk menanam padi, sayuran, dan buah-buahan disebut...", options: ["Nelayan", "Petani", "Pedagang", "Pengrajin"], answer: 1, hint: "Petani adalah orang yang mengolah tanah untuk bercocok tanam." },
-            { id: 3, type: "pg", text: 'Perhatikan ciri-ciri berikut: Hutannya lebat dan lembap, memiliki banyak jenis tumbuhan tropis, dan terdapat rafflesia arnoldii. Wilayah tersebut termasuk zona pesebaran flora...', options: ["Indonesia Bagian Timur", "Indonesia Bagian Barat", "Indonesia Bagian Tengah", "Luar Indonesia"], answer: 1, hint: "Flora Indonesia Bagian Barat mirip dengan flora Asia dan memiliki hutan hujan tropis yang lebat." },
-            { id: 4, type: "pg", text: "Contoh sumber daya alam yang dapat diperbarui adalah...", options: ["Minyak bumi", "Batu bara", "Hutan", "Emas"], answer: 2, hint: "Hutan adalah SDA yang dapat diperbarui karena pohon bisa ditanam kembali." },
-            { id: 5, type: "pg", text: "Hewan yang hanya terdapat di Indonesia bagian timur (zona Australis) adalah...", options: ["Harimau Sumatera", "Gajah Kalimantan", "Cenderawasih", "Komodo"], answer: 2, hint: "Cenderawasih (burung surga) terdapat di Papua, wilayah Indonesia bagian timur." },
-            { id: 6, type: "pg", text: "Peran adalah...", options: ["Pekerjaan yang menghasilkan uang", "Kedudukan atau fungsi seseorang dalam suatu kelompok", "Kegiatan bermain bersama teman", "Tugas yang diberikan guru di kelas"], answer: 1, hint: "Peran adalah kedudukan atau fungsi seseorang dalam suatu kelompok atau masyarakat." },
-            { id: 7, type: "pg", text: "Contoh peraturan di lingkungan masyarakat adalah...", options: ["Mengerjakan PR tepat waktu", "Memakai seragam sekolah", "Menjaga kebersihan lingkungan sekitar", "Tidak boleh bermain saat jam pelajaran"], answer: 2, hint: "Menjaga kebersihan lingkungan adalah peraturan di lingkungan masyarakat." },
-            { id: 8, type: "pg", text: "Gambar seorang ibu RT yang sedang mengkoordinasi kegiatan kebersihan di lingkungan menunjukkan peran sebagai...", options: ["Guru", "Petani", "Pengurus RT", "Pedagang"], answer: 2, hint: "Mengkoordinasi kebersihan lingkungan adalah peran pengurus RT." },
-            { id: 9, type: "pg", text: "Gambar anak-anak yang saling membantu mengerjakan tugas kelompok menunjukkan contoh interaksi sosial yang bersifat...", options: ["Negatif", "Positif", "Netral", "Tidak baik"], answer: 1, hint: "Saling membantu dalam kelompok adalah interaksi sosial positif." },
-            { id: 10, type: "pg", text: 'Perhatikan ciri peraturan berikut: tertulis secara resmi, memiliki sanksi hukum, dan dibuat oleh lembaga berwenang. Ini merupakan ciri peraturan...', options: ["Peraturan tidak tertulis", "Peraturan tertulis", "Kebiasaan", "Norma agama"], answer: 1, hint: "Peraturan tertulis dibuat secara resmi oleh lembaga berwenang dan memiliki sanksi hukum." },
-
-            // ===== PG KOMPLEKS (No 11-15) =====
-            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Perhatikan infografis berikut:<div class="infographic-box"><h4>🌾 Mata Pencarian Masyarakat Indonesia</h4><ul><li>Dataran tinggi: petani sayur, peternak, pemandu wisata</li><li>Dataran rendah: petani padi, pedagang, pengrajin</li><li>Pesisir pantai: nelayan, petani garam, pedagang ikan</li><li>Perkotaan: pegawai kantoran, wirausahawan, buruh pabrik</li></ul></div>Berdasarkan infografis, mata pencarian masyarakat di dataran tinggi adalah... (pilih semua yang benar)', options: ["Petani sayur", "Nelayan", "Peternak", "Pemandu wisata"], answer: [0, 2, 3], hint: "Mata pencarian di dataran tinggi: petani sayur, peternak, dan pemandu wisata. Nelayan bekerja di pesisir." },
-            { id: 12, type: "pg_kompleks", text: 'Berdasarkan infografis mata pencarian, mata pencarian di pesisir pantai adalah... (pilih semua yang benar)', options: ["Nelayan", "Petani garam", "Pegawai kantoran", "Pedagang ikan"], answer: [0, 1, 3], hint: "Pegawai kantoran bekerja di perkotaan, bukan di pesisir pantai." },
-            { id: 13, type: "pg_kompleks", text: 'Berdasarkan infografis mata pencarian, perbedaan antara dataran rendah dan perkotaan adalah... (pilih semua yang benar)', options: ["Dataran rendah banyak petani padi", "Perkotaan banyak pegawai kantoran", "Dataran rendah memiliki pedagang", "Perkotaan memiliki buruh pabrik"], answer: [0, 1, 2, 3], hint: "Semua pernyataan benar sesuai infografis." },
-            { id: 14, type: "pg_kompleks", text: 'Sumber daya alam yang tidak dapat diperbarui adalah... (pilih semua yang benar)', options: ["Minyak bumi", "Air", "Batu bara", "Gas alam"], answer: [0, 2, 3], hint: "Minyak bumi, batu bara, dan gas alam adalah SDA yang tidak dapat diperbarui karena memerlukan jutaan tahun untuk terbentuk." },
-            { id: 15, type: "pg_kompleks", text: "Flora khas Indonesia bagian barat adalah... (pilih semua yang benar)", options: ["Rafflesia Arnoldii", "Pohon Jati", "Kayu Cendana", "Meranti"], answer: [0, 1, 3], hint: "Kayu Cendana merupakan flora khas Indonesia bagian tengah (NTT), bukan bagian barat." },
-
-            // ===== PG KOMPLEKS lanjutan (No 16-20) =====
-            { id: 16, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Interaksi sosial adalah hubungan timbal balik antara dua orang atau lebih. Interaksi sosial dapat bersifat positif maupun negatif. Interaksi positif contohnya gotong royong, saling membantu, dan kerja sama. Sedangkan interaksi negatif contohnya pertengkaran, perundungan, dan kekerasan.</div>Contoh interaksi sosial positif berdasarkan teks adalah... (pilih semua yang benar)', options: ["Gotong royong", "Pertengkaran", "Saling membantu", "Kerja sama"], answer: [0, 2, 3], hint: "Gotong royong, saling membantu, dan kerja sama adalah interaksi positif." },
-            { id: 17, type: "pg_kompleks", text: 'Berdasarkan teks interaksi sosial sebelumnya, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Interaksi sosial melibatkan dua orang atau lebih", "Interaksi sosial hanya bersifat positif", "Perundungan termasuk interaksi negatif", "Interaksi sosial bersifat timbal balik"], answer: [0, 2, 3], hint: "Interaksi sosial bisa positif maupun negatif, bukan hanya positif." },
-            { id: 18, type: "pg_kompleks", text: "Tugas warga sekolah dalam menjaga kebersihan lingkungan sekolah adalah... (pilih semua yang benar)", options: ["Membuang sampah pada tempatnya", "Piket kebersihan kelas secara bergantian", "Mencoret-coret dinding sekolah", "Merawat tanaman di halaman sekolah"], answer: [0, 1, 3], hint: "Mencoret-coret dinding merupakan tindakan merusak, bukan menjaga kebersihan." },
-            { id: 19, type: "pg_kompleks", text: "Contoh peraturan tertulis di sekolah adalah... (pilih semua yang benar)", options: ["Tata tertib sekolah", "Memakai seragam sesuai jadwal", "Kebiasaan menyapa guru", "Larangan membawa handphone"], answer: [0, 1, 3], hint: "Kebiasaan menyapa guru adalah norma/kebiasaan (peraturan tidak tertulis)." },
-            { id: 20, type: "pg_kompleks", text: "Hewan yang terancam punah di Indonesia adalah... (pilih semua yang benar)", options: ["Harimau Sumatera", "Orangutan Kalimantan", "Kucing domestik", "Badak Jawa"], answer: [0, 1, 3], hint: "Kucing domestik bukan hewan terancam punah." },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "Benar / Salah", text: 'Petani sawah termasuk mata pencarian yang banyak ditemukan di dataran rendah.', answer: "Benar", hint: "Benar. Petani sawah banyak ditemukan di dataran rendah yang memiliki tanah subur." },
-            { id: 22, type: "bs", text: 'Peternak sapi perah biasanya tinggal di dataran tinggi yang bersuhu sejuk.', answer: "Benar", hint: "Benar. Sapi perah lebih cocok di daerah bersuhu sejuk (dataran tinggi)." },
-            { id: 23, type: "bs", text: 'Nelayan adalah mata pencarian khas masyarakat perkotaan.', answer: "Salah", hint: "Salah. Nelayan adalah mata pencarian khas masyarakat pesisir pantai." },
-            { id: 24, type: "bs", text: 'Minyak bumi termasuk sumber daya alam yang dapat diperbarui.', answer: "Salah", hint: "Salah. Minyak bumi memerlukan jutaan tahun untuk terbentuk, jadi termasuk SDA tidak dapat diperbarui." },
-            { id: 25, type: "bs", text: 'Komodo hanya terdapat di Indonesia, tepatnya di Pulau Komodo, Nusa Tenggara Timur.', answer: "Benar", hint: "Benar. Komodo adalah hewan endemik Indonesia yang hanya ditemukan di Pulau Komodo dan sekitarnya." },
-            { id: 26, type: "isian", text: "Cenderawasih merupakan fauna khas wilayah Indonesia bagian...", answer: "Timur", hint: "Cenderawasih (burung surga) terdapat di Papua, wilayah Indonesia bagian timur." },
-            { id: 27, type: "isian", text: "Sumber daya alam yang tidak dapat diperbarui karena memerlukan jutaan tahun untuk terbentuk, contohnya adalah batu...", answer: "Bara", hint: "Batu bara adalah SDA yang tidak dapat diperbarui." },
-            { id: 28, type: "isian", text: "Nama lama Kota Jakarta sebelum diubah menjadi Jakarta adalah...", answer: "Jayakarta", hint: "Jayakarta diubah menjadi Batavia oleh Belanda, kemudian menjadi Jakarta." },
-            { id: 29, type: "isian", text: "Peran Ketua RT di masyarakat adalah mengkoordinasi kegiatan warga dan menjaga ketertiban di lingkungan...", answer: "RT", hint: "Ketua RT mengkoordinasi kegiatan warga di lingkungan RT." },
-            { id: 30, type: "isian", text: "Peraturan tertulis memiliki sanksi hukum, sedangkan peraturan tidak tertulis biasanya berupa norma dan...", answer: "Kebiasaan", hint: "Peraturan tidak tertulis berupa norma, adat istiadat, dan kebiasaan." },
-
-            // ===== ISIAN SINGKAT (No 31-35) =====
-            { id: 31, type: "isian", section: "Isian Singkat", text: "Tokoh yang menyerang Pelabuhan Kalapa (Sunda Kelapa) pada tahun 1527 adalah...", answer: "Fatahillah", hint: "Fatahillah menyerang dan merebut Pelabuhan Sunda Kelapa pada 22 Juni 1527." },
-            { id: 32, type: "isian", text: "Pekerjaan menangkap ikan di laut disebut...", answer: "Nelayan", hint: "Nelayan adalah orang yang pekerjaannya menangkap ikan di laut." },
-            { id: 33, type: "isian", text: "Peran guru di sekolah adalah mengajar dan mendidik...", answer: "Murid", hint: "Guru berperan mengajar dan mendidik murid-murid di sekolah." },
-            { id: 34, type: "isian", text: "Contoh sumber daya alam yang tidak dapat diperbarui selain minyak bumi dan batu bara adalah...", answer: "Gas alam", hint: "Gas alam termasuk SDA yang tidak dapat diperbarui." },
-            { id: 35, type: "isian", text: "Wilayah ditemukannya sumber daya alam gas bumi terbesar di Indonesia berada di...", answer: "Aceh", hint: "Arun, Aceh memiliki cadangan gas alam terbesar di Indonesia." },
-
-            // ===== URAIAN / ESAI (No 36-40) =====
-            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Ceritakan secara singkat sejarah Kota Jakarta dari nama Sunda Kelapa hingga menjadi Jakarta!", answer: "Sunda Kelapa adalah pelabuhan kerajaan Pajajaran. Pada 1527, Fatahillah merebut pelabuhan ini dan mengubah namanya menjadi Jayakarta. Pada 1619, VOC Belanda menguasai dan mengubah namanya menjadi Batavia. Setelah kemerdekaan 1945, namanya diubah menjadi Jakarta.", hint: "Jelaskan perubahan nama kota dari Sunda Kelapa → Jayakarta → Batavia → Jakarta." },
-            { id: 37, type: "uraian", text: "Jelaskan manfaat keanekaragaman hayati dalam kehidupan sehari-hari! Sebutkan minimal 3 manfaat!", answer: "1) Sumber pangan (padi, jagung, buah-buahan); 2) Sumber obat-obatan (tanaman herbal); 3) Bahan baku industri (kayu, kapas); 4) Menjaga keseimbangan ekosistem; 5) Sumber ekonomi (ekowisata)", hint: "Pikirkan bagaimana keanekaragaman hayati bermanfaat bagi manusia." },
-            { id: 38, type: "uraian", text: "Sebutkan 3 contoh mata pencarian masyarakat berdasarkan wilayah dataran tinggi, dataran rendah, dan perkotaan!", answer: "Dataran tinggi: petani sayuran, peternak sapi, pemandu wisata. Dataran rendah: petani padi, pedagang, pengrajin. Perkotaan: pegawai kantoran, wirausahawan, dokter.", hint: "Sebutkan minimal 1 contoh untuk setiap wilayah." },
-            { id: 39, type: "uraian", text: "Jelaskan contoh interaksi sosial positif dan negatif masing-masing 2!", answer: "Positif: 1) Gotong royong membersihkan lingkungan; 2) Kerja sama dalam kelompok belajar. Negatif: 1) Pertengkaran antar teman; 2) Perundungan (bullying) di sekolah.", hint: "Interaksi positif bermanfaat, interaksi negatif merugikan." },
-            { id: 40, type: "uraian", text: "Jelaskan contoh peraturan tertulis dan peraturan tidak tertulis di lingkungan sekolah masing-masing 2!", answer: "Tertulis: 1) Tata tertib sekolah; 2) Larangan membawa handphone. Tidak tertulis: 1) Kebiasaan menyapa guru saat bertemu; 2) Menghormati teman yang lebih tua.", hint: "Peraturan tertulis bersifat resmi, peraturan tidak tertulis berupa kebiasaan/norma." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Kebutuhan Hidup & Jual Beli)',
+                text: 'Kebutuhan yang sifatnya darurat, mendadak, dan harus segera dipenuhi saat itu juga agar tidak membahayakan keselamatan disebut kebutuhan...',
+                options: ['Mendesak', 'Sekunder', 'Tersier', 'Masa Depan'],
+                answer: 0,
+                hint: 'Kebutuhan mendesak adalah jenis kebutuhan berdasarkan waktu yang penyelesaiannya tidak dapat ditunda.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Bagi seorang pelajar Sekolah Dasar, yang dikategorikan sebagai kebutuhan primer untuk menunjang belajarnya adalah...',
+                options: ['Mobil mewah dan handphone mahal', 'Buku tulis, pensil, dan seragam sekolah', 'Sepeda motor dan liburan ke luar negeri', 'Mainan game console dan bioskop'],
+                answer: 1,
+                hint: 'Buku tulis, pensil, dan seragam adalah kebutuhan utama (primer) yang langsung mendukung aktivitas belajar siswa.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Kegiatan tukar-menukar barang atau jasa dengan menggunakan alat tukar resmi berupa uang yang disepakati bersama disebut transaksi...',
+                options: ['Barter', 'Jual Beli', 'Produksi', 'Distribusi'],
+                answer: 1,
+                hint: 'Jual beli adalah proses penukaran barang/jasa dengan uang sebagai alat tukar.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Seorang guru yang mengajar di kelas memberikan jasa keahlian mengajarnya. Jenis bidang pekerjaan guru tersebut tergolong dalam sektor...',
+                options: ['Agraris / Pertanian', 'Industri Pengolahan', 'Jasa Pelayanan', 'Pertambangan'],
+                answer: 2,
+                hint: 'Pekerjaan guru tidak menghasilkan barang fisik melainkan jasa pendidikan.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Aktivitas bertemunya penjual dan pembeli secara langsung untuk melakukan tawar-menawar harga barang kebutuhan pokok adalah ciri khas kegiatan di...',
+                options: ['Pasar Tradisional', 'Butik Mewah', 'Supermarket Modern', 'Kantor Pos'],
+                answer: 0,
+                hint: 'Tawar-menawar harga secara langsung merupakan ciri khas perdagangan di pasar tradisional.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Pakaian adat tradisional daerah Jawa Barat yang biasa dikenakan oleh kaum wanita adalah...',
+                options: ['Kebaya Sunda', 'Ulos', 'Baju Bodo', 'Koteka'],
+                answer: 0,
+                hint: 'Kebaya Sunda merupakan pakaian adat wanita suku Sunda di Jawa Barat.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Sikap saling menghormati, menghargai, dan menerima perbedaan keyakinan, suku, atau budaya di antara sesama manusia disebut...',
+                options: ['Egoisme', 'Toleransi', 'Asimilasi', 'Modernisasi'],
+                answer: 1,
+                hint: 'Toleransi adalah kunci keharmonisan di tengah keberagaman bangsa.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Makanan pokok tradisional khas dari daerah Papua dan Maluku yang bertekstur kenyal seperti lem dan berbahan dasar sagu adalah...',
+                options: ['Gudeg', 'Rendang', 'Papeda', 'Pempek'],
+                answer: 2,
+                hint: 'Papeda adalah makanan khas Indonesia Timur yang terbuat dari bubur sagu.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Upacara adat pembakaran jenazah bagi umat Hindu di Provinsi Bali dikenal dengan nama...',
+                options: ['Rambu Solo', 'Ngaben', 'Kasada', 'Sekaten'],
+                answer: 1,
+                hint: 'Ngaben adalah upacara kremasi adat di Bali untuk mengantarkan roh leluhur.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Berikut ini contoh perilaku pelajar yang menunjukkan sikap toleransi beragama di sekolah adalah...',
+                options: ['Mengganggu teman yang sedang beribadah', 'Hanya berteman dengan teman yang satu keyakinan saja', 'Mempersilakan dan menghormati teman yang akan berdoa sesuai agamanya', 'Memaksa teman mengikuti cara berdoa agama kita'],
+                answer: 2,
+                hint: 'Menghormati ibadah pemeluk agama lain merupakan perwujudan toleransi beragama.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: "Perhatikan infografis sejarah perkembangan uang berikut:<div class=\"infographic-box\"><h4>📜 Sejarah Alat Tukar</h4><ul><li>Zaman Barter: Pertukaran barang dengan barang secara langsung.</li><li>Zaman Uang Barang: Menggunakan barang berharga (kerang, garam, batu) sebagai alat tukar.</li><li>Zaman Uang Logam & Kertas: Menggunakan emas, perak, dan kertas bernilai nominal resmi.</li><li>Zaman Uang Elektronik: Menggunakan kartu debit, kredit, dan dompet digital (QRIS).</li></ul></div>Manakah pernyataan yang benar mengenai sejarah perkembangan uang berdasarkan infografis? (pilih semua yang benar)",
+                options: ['Zaman barter merupakan cara paling modern dalam bertransaksi', 'Garam dan kerang pernah dijadikan uang barang sebelum uang logam diciptakan', 'Uang kertas dan logam memiliki nilai nominal resmi yang tertera pada uang tersebut', 'Dompet digital (QRIS) tergolong jenis uang elektronik modern'],
+                answer: [1, 2, 3],
+                hint: 'Zaman barter adalah tahap awal/kuno bertransaksi, bukan cara modern.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Berdasarkan infografis sejarah uang, manakah urutan tahap alat tukar yang benar dari masa lampau hingga masa kini? (pilih semua yang benar)',
+                options: ['Barter → Uang Barang → Uang Kertas & Logam → Uang Elektronik', 'Uang Barang selalu digunakan setelah uang kertas diciptakan', 'Penggunaan QRIS adalah perkembangan sesudah adanya uang fisik kertas', 'Zaman barter mendahului penemuan uang barang'],
+                answer: [0, 2, 3],
+                hint: 'Uang barang digunakan sebelum uang kertas, bukan sesudahnya.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah syarat-syarat suatu benda agar dapat dijadikan sebagai uang barang pada masa lampau? (pilih semua yang benar)',
+                options: ['Diterima dan disukai oleh masyarakat umum', 'Nilainya stabil dan sulit diperoleh/langka', 'Mudah hancur dan membusuk dalam waktu satu hari', 'Memiliki nilai guna yang tinggi bagi kehidupan'],
+                answer: [0, 1, 3],
+                hint: 'Uang barang harus tahan lama (tidak boleh mudah membusuk seperti buah segar).',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Zaman dahulu manusia bertransaksi dengan sistem barter. Apa saja kelemahan utama dari sistem barter tersebut? (pilih semua yang benar)',
+                options: ['Sulit mencocokkan keinginan yang sama antara kedua pihak', 'Sulit menentukan nilai takaran pertukaran yang adil', 'Sangat mudah membawa barang berukuran besar ke mana-mana', 'Barang yang ditukar tidak tahan lama/bisa membusuk'],
+                answer: [0, 1, 3],
+                hint: 'Membawa barang besar adalah kesulitan/kelemahan barter, bukan kemudahan.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Uang kartal fisik yang digunakan dalam transaksi sehari-hari di Indonesia terdiri atas... (pilih semua yang benar)',
+                options: ['Uang kertas rupiah', 'Uang logam rupiah', 'Uang mainan anak-anak', 'Emas batangan murni dari toko perhiasan'],
+                answer: [0, 1],
+                hint: 'Uang kartal resmi hanya berupa kertas dan logam rupiah.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: "Perhatikan infografis gerakan Cinta, Bangga, Paham Rupiah berikut:<div class=\"infographic-box\"><h4>🇮🇩 Cinta, Bangga, Paham Rupiah</h4><ul><li>Cinta: Mengenali keaslian dengan 3D (Dilihat, Diraba, Diterawang) dan merawat rupiah (jangan dilipat, dibasahi, distapler, dicoret).</li><li>Bangga: Menjaga kedaulatan Rupiah sebagai lambang NKRI dan alat pembayaran sah tunggal.</li><li>Paham: Membelanjakan Rupiah secara bijak dan menabung untuk masa depan.</li></ul></div>Bagaimana cara menunjukkan rasa Cinta terhadap uang Rupiah kita sesuai infografis? (pilih semua yang benar)",
+                options: ['Merawatnya agar tidak lusuh, dicoret, ataupun distapler', 'Mencoret-coret uang untuk menulis nomor telepon', 'Melipat-lipat uang hingga sekecil mungkin', 'Mengenali keaslian dengan metode Dilihat, Diraba, Diterawang'],
+                answer: [0, 3],
+                hint: 'Mencoret dan melipat merusak fisik rupiah dan dilarang.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Sesuai infografis Cinta Rupiah, manakah tindakan yang menunjukkan rasa Bangga dan Paham terhadap uang Rupiah? (pilih semua yang benar)',
+                options: ['Hanya bertransaksi menggunakan mata uang asing di wilayah NKRI', 'Menggunakan Rupiah sebagai satu-satunya alat pembayaran sah di Indonesia', 'Membelanjakan uang secara bijak dan tidak boros', 'Menyisihkan uang Rupiah untuk ditabung'],
+                answer: [1, 2, 3],
+                hint: 'Menggunakan mata uang asing di dalam wilayah NKRI melanggar kedaulatan Rupiah.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Rupiah merupakan salah satu lambang kedaulatan negara Indonesia. Lambang kenegaraan apa saja yang terdapat pada desain uang kertas Rupiah? (pilih semua yang benar)',
+                options: ['Gambar Pahlawan Nasional Indonesia', 'Lambang Negara Garuda Pancasila', 'Gambar peta wilayah NKRI', 'Bendera negara asing'],
+                answer: [0, 1, 2],
+                hint: 'Bendera negara asing tidak ada pada Rupiah.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Berikut ini yang termasuk dalam kategori alat pembayaran non-tunai modern adalah... (pilih semua yang benar)',
+                options: ['Kartu Debit ATM', 'Uang Kertas Rp50.000', 'Aplikasi E-Wallet (dompet digital)', 'Pembayaran lewat QRIS'],
+                answer: [0, 2, 3],
+                hint: 'Uang kertas Rp50.000 adalah alat pembayaran tunai fisik.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Tujuan dari melakukan pengelolaan keuangan pribadi (financial planning) bagi seorang pelajar sejak dini adalah... (pilih semua yang benar)',
+                options: ['Menghindari perilaku boros', 'Membiasakan hidup hemat dan gemar menabung', 'Membeli mainan mahal setiap hari', 'Mempersiapkan kebutuhan dana masa depan'],
+                answer: [0, 1, 3],
+                hint: 'Tujuan perencanaan keuangan adalah hidup hemat dan menyiapkan masa depan, bukan hidup boros.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Pelaku Ekonomi & Alat Tukar)',
+                text: "Pasangkan istilah berikut dengan keterangannya yang tepat: <b>Kegiatan ekonomi yang bertujuan menghasilkan atau menambah nilai guna barang/jasa</b>",
+                options: ['Produksi', 'Distribusi', 'Konsumsi', 'Uang', 'Jual Beli'],
+                answer: 'Produksi',
+                hint: 'Produksi menghasilkan barang/jasa.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan keterangannya yang tepat: <b>Kegiatan ekonomi menyalurkan barang/jasa dari produsen menuju ke konsumen</b>",
+                options: ['Produksi', 'Distribusi', 'Konsumsi', 'Uang', 'Jual Beli'],
+                answer: 'Distribusi',
+                hint: 'Distribusi menyalurkan barang.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan keterangannya yang tepat: <b>Kegiatan menghabiskan atau mengurangi nilai guna barang/jasa untuk memenuhi kebutuhan</b>",
+                options: ['Produksi', 'Distribusi', 'Konsumsi', 'Uang', 'Jual Beli'],
+                answer: 'Konsumsi',
+                hint: 'Konsumsi menggunakan barang/jasa.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan keterangannya yang tepat: <b>Alat pembayaran sah yang digunakan dalam pertukaran barang/jasa di masyarakat</b>",
+                options: ['Produksi', 'Distribusi', 'Konsumsi', 'Uang', 'Jual Beli'],
+                answer: 'Uang',
+                hint: 'Uang adalah alat tukar resmi.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan keterangannya yang tepat: <b>Kegiatan bertukar barang/jasa dengan menggunakan uang sebagai kesepakatan harga</b>",
+                options: ['Produksi', 'Distribusi', 'Konsumsi', 'Uang', 'Jual Beli'],
+                answer: 'Jual Beli',
+                hint: 'Jual beli adalah kesepakatan penukaran barang dengan uang.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Ekonomi & Budaya)',
+                text: 'Tentukan Benar atau Salah: \'Kebutuhan tersier adalah kebutuhan pokok manusia yang harus dipenuhi paling awal, contohnya adalah makanan.\'',
+                answer: 'Salah',
+                hint: 'Makanan adalah kebutuhan primer, bukan tersier. Tersier berkaitan dengan barang mewah.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Barter adalah sistem perdagangan kuno yang bertumpu pada pertukaran barang dengan barang.\'',
+                answer: 'Benar',
+                hint: 'Barter dilakukan sebelum uang ditemukan.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Suku Baduy di Banten merupakan contoh masyarakat yang sangat menjaga kearifan lokal daerahnya.\'',
+                answer: 'Benar',
+                hint: 'Suku Baduy memegang teguh adat istiadat leluhur.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Membeli produk dalam negeri merupakan salah satu perwujudan rasa bangga terhadap Rupiah dan bangsa.\'',
+                answer: 'Benar',
+                hint: 'Mencintai produk lokal mendukung ekonomi nasional.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Upacara adat Ngaben di Bali diperuntukkan khusus bagi perayaan kelahiran anak pertama.\'',
+                answer: 'Salah',
+                hint: 'Ngaben adalah upacara pembakaran jenazah (kematian), bukan kelahiran.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Kebutuhan mendasar yang wajib dipenuhi manusia untuk mempertahankan hidupnya (seperti makanan, pakaian, tempat tinggal) disebut kebutuhan...',
+                answer: 'Primer',
+                hint: 'Kebutuhan primer wajib dipenuhi terlebih dahulu.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Kebutuhan tambahan yang dipenuhi setelah kebutuhan pokok terpenuhi (contohnya meja, kursi, gawai) disebut kebutuhan...',
+                answer: 'Sekunder',
+                hint: 'Kebutuhan sekunder menduduki posisi kedua.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Kebutuhan akan barang-barang mewah (seperti perhiasan emas, mobil mewah, jet pribadi) disebut kebutuhan...',
+                answer: 'Tersier',
+                hint: 'Kebutuhan tersier dipenuhi untuk menaikkan gengsi atau status sosial setelah kebutuhan pokok aman.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Kebutuhan yang tidak bisa ditunda pelaksanaannya dan harus dipenuhi pada saat itu juga (contoh obat bagi orang sakit) disebut kebutuhan...',
+                answer: 'Sekarang',
+                hint: 'Kebutuhan sekarang mendesak untuk diselesaikan segera.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Kebutuhan yang persiapannya dilakukan saat ini untuk digunakan di masa yang akan datang (contoh tabungan pendidikan) disebut kebutuhan...',
+                answer: 'Akan Datang',
+                hint: 'Kebutuhan akan datang dipersiapkan sejak dini.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Jelaskan apa yang dimaksud dengan kegiatan jual beli secara lengkap!',
+                answer: 'Jual beli adalah proses transaksi tukar-menukar barang atau jasa antara pihak penjual (penyedia barang) dan pembeli (konsumen) dengan menggunakan alat tukar resmi berupa uang berdasarkan kesepakatan harga tertentu.',
+                hint: 'Jelaskan proses pertukaran, pelaku transaksi (penjual/pembeli), dan alat pembayaran (uang).',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Sebutkan 4 unsur utama/pokok yang harus ada agar transaksi jual beli dapat terlaksana dengan sah!',
+                answer: '1) Penjual, 2) Pembeli, 3) Barang atau jasa yang diperjualbelikan, 4) Alat tukar resmi (uang) atau kesepakatan pembayaran.',
+                hint: 'Pikirkan tentang siapa yang terlibat dan objek serta alat transaksi.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan utama antara berbelanja di pasar tradisional dan berbelanja di pasar modern (supermarket)!',
+                answer: 'Pasar Tradisional: Memungkinkan adanya proses tawar-menawar harga secara langsung antara penjual dan pembeli, produk segar langsung ditaruh terbuka, dan pembayaran tunai. Pasar Modern: Harga barang sudah pas (tetap/fixed price) menggunakan barcode, produk dikemas rapi di rak, tempat ber-AC, dan mendukung pembayaran non-tunai (kartu/QRIS).',
+                hint: 'Fokus pada tawar-menawar harga, penataan barang, dan sistem pembayaran.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Jelaskan pengertian toleransi budaya dan berikan 2 contoh konkret pelaksanaannya di sekolah!',
+                answer: 'Toleransi budaya adalah sikap menghargai, menghormati, dan menerima keragaman budaya daerah milik orang lain. Contoh di sekolah: 1) Berteman baik dengan siapa saja tanpa membedakan asal suku daerahnya. 2) Menonton pertunjukan seni budaya daerah teman dengan antusias dan tidak mengejeknya.',
+                hint: 'Definisikan toleransi budaya lalu berikan contoh interaksi antarteman dari berbagai suku.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Mengapa Indonesia memiliki keanekaragaman suku bangsa dan budaya yang sangat melimpah? Jelaskan minimal 2 faktor penyebabnya!',
+                answer: '1) Letak strategis wilayah Indonesia di jalur perdagangan dunia, sehingga terjadi interaksi dengan budaya asing. 2) Kondisi geografis Indonesia yang berupa negara kepulauan, menyebabkan masyarakat di tiap pulau berkembang membentuk suku dan budaya yang khas secara terpisah.',
+                hint: 'Hubungkan dengan letak astronomis/geografis Indonesia dan bentuk kepulauan.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -428,6 +704,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
                 else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -443,6 +720,7 @@
                 if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';

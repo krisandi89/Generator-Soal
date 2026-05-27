@@ -394,6 +394,23 @@
                 padding: 15px;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -402,7 +419,7 @@
         <div class="header">
             <h1>🇮🇩 Pendidikan Pancasila</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -420,57 +437,316 @@
     </div>
     <script>
         const questions = [
-            // ===== PILIHAN GANDA (No 1-10) =====
-            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Contoh sikap toleransi di sekolah adalah...", options: ["Mengejek teman yang berbeda agama", "Menghormati teman yang sedang beribadah", "Tidak mau bermain dengan teman yang berbeda suku", "Memaksakan pendapat sendiri kepada teman"], answer: 1, hint: "Menghormati teman yang sedang beribadah adalah contoh sikap toleransi di sekolah." },
-            { id: 2, type: "pg", text: "Contoh sikap toleransi di rumah adalah...", options: ["Membantu ibu menyiapkan makanan saat hari raya keluarga", "Tidak peduli dengan kegiatan keagamaan keluarga", "Marah ketika adik berbeda pendapat", "Melarang anggota keluarga beribadah"], answer: 0, hint: "Membantu keluarga saat hari raya merupakan bentuk toleransi di rumah." },
-            { id: 3, type: "pg", text: "Hari Toleransi Internasional diperingati setiap tanggal...", options: ["16 Oktober", "16 November", "16 Desember", "16 Agustus"], answer: 1, hint: "Hari Toleransi Internasional diperingati setiap 16 November sesuai deklarasi UNESCO." },
-            { id: 4, type: "pg", text: "PBB adalah kepanjangan dari...", options: ["Persatuan Bangsa-Bangsa", "Perserikatan Bangsa-Bangsa", "Perhimpunan Bangsa-Bangsa", "Perkumpulan Bangsa-Bangsa"], answer: 1, hint: "PBB = Perserikatan Bangsa-Bangsa (United Nations)." },
-            { id: 5, type: "pg", text: "Perhatikan gambar berikut! Sekelompok anak yang berbeda suku sedang bermain bersama di halaman sekolah. Sikap toleransi yang ditunjukkan dalam kegiatan tersebut adalah...", options: ["Saling mengejek perbedaan bahasa", "Bermain bersama tanpa membeda-bedakan suku", "Hanya bermain dengan teman sesuku", "Memisahkan kelompok berdasarkan agama"], answer: 1, hint: "Bermain bersama tanpa membeda-bedakan suku adalah sikap toleransi." },
-            { id: 6, type: "pg", text: "Sikap toleransi di masyarakat dapat diwujudkan dengan cara...", options: ["Menutup pintu saat tetangga yang berbeda agama sedang merayakan hari besar", "Mengucapkan selamat kepada tetangga yang merayakan hari besar agamanya", "Menghina tradisi budaya tetangga", "Tidak mau bergaul dengan tetangga yang berbeda suku"], answer: 1, hint: "Mengucapkan selamat hari raya kepada tetangga adalah wujud toleransi di masyarakat." },
-            { id: 7, type: "pg", text: "Di sekolah, jika ada teman yang sedang berpuasa, sikap toleransi yang tepat adalah...", options: ["Makan di depan teman yang sedang berpuasa", "Mengejek teman yang berpuasa karena dianggap lemah", "Tidak makan di hadapan teman yang sedang berpuasa", "Memaksa teman untuk ikut berpuasa"], answer: 2, hint: "Menghargai teman yang berpuasa dengan tidak makan di hadapannya adalah sikap toleransi." },
-            { id: 8, type: "pg", text: "Contoh toleransi di rumah ketika saudara memiliki pendapat berbeda adalah...", options: ["Memaksakan pendapat sendiri", "Bermusyawarah untuk mencari solusi bersama", "Tidak berbicara dengan saudara", "Marah-marah kepada saudara"], answer: 1, hint: "Bermusyawarah adalah cara menghargai perbedaan pendapat." },
-            { id: 9, type: "pg", text: "Sikap toleransi dalam masyarakat Indonesia sangat penting karena...", options: ["Indonesia hanya memiliki satu suku bangsa", "Indonesia memiliki keragaman suku, agama, dan budaya", "Semua orang Indonesia memiliki budaya yang sama", "Toleransi tidak diperlukan di Indonesia"], answer: 1, hint: "Indonesia memiliki keragaman suku, agama, ras, dan budaya sehingga toleransi sangat penting." },
-            { id: 10, type: "pg", text: "Pada tahun 2023, Hari Raya Idul Fitri dan Jumat Agung hanya berbeda satu hari. Peristiwa ini mengajarkan kita untuk...", options: ["Merayakan hanya satu hari raya saja", "Menghormati perayaan hari besar semua agama", "Tidak merayakan hari raya apapun", "Hanya menghormati agama sendiri"], answer: 1, hint: "Kedekatan waktu perayaan hari besar agama yang berbeda mengajarkan pentingnya saling menghormati." },
-
-            // ===== PG KOMPLEKS (No 11-15) =====
-            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Perhatikan tabel persentase penganut agama di Indonesia berikut:<table class="table-box"><tr><th>Agama</th><th>Persentase</th></tr><tr><td>Islam</td><td>87,2%</td></tr><tr><td>Kristen Protestan</td><td>6,9%</td></tr><tr><td>Katolik</td><td>2,9%</td></tr><tr><td>Hindu</td><td>1,7%</td></tr><tr><td>Buddha</td><td>0,7%</td></tr><tr><td>Konghucu</td><td>0,05%</td></tr></table>Berdasarkan tabel di atas, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Agama Islam memiliki penganut terbanyak di Indonesia", "Agama Konghucu memiliki penganut paling sedikit", "Indonesia hanya mengakui 4 agama", "Agama Kristen Protestan memiliki penganut lebih banyak dari Katolik"], answer: [0, 1, 3], hint: "Islam terbanyak (87,2%), Konghucu paling sedikit (0,05%), dan Protestan (6,9%) > Katolik (2,9%). Indonesia mengakui 6 agama." },
-            { id: 12, type: "pg_kompleks", text: 'Berdasarkan tabel penganut agama sebelumnya, hal yang dapat kita simpulkan adalah... (pilih semua yang benar)', options: ["Indonesia memiliki keragaman agama", "Penganut agama minoritas harus dihormati", "Hanya agama mayoritas yang boleh beribadah", "Toleransi antarumat beragama sangat diperlukan"], answer: [0, 1, 3], hint: "Keragaman agama mengharuskan kita bertoleransi dan menghormati semua penganut agama." },
-            { id: 13, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Indonesia memiliki lebih dari 1.340 suku bangsa yang tersebar di seluruh kepulauan. Setiap suku memiliki bahasa, pakaian adat, rumah adat, dan tradisi yang berbeda-beda. Keragaman ini menjadi kekayaan bangsa Indonesia yang harus dijaga dan dilestarikan.</div>Berdasarkan teks di atas, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Indonesia memiliki lebih dari 1.340 suku bangsa", "Setiap suku memiliki budaya yang sama", "Keragaman suku merupakan kekayaan bangsa", "Keragaman suku harus dijaga dan dilestarikan"], answer: [0, 2, 3], hint: "Indonesia memiliki 1.340+ suku bangsa dengan budaya berbeda-beda yang merupakan kekayaan bangsa." },
-            { id: 14, type: "pg_kompleks", text: 'Berdasarkan teks keragaman suku bangsa sebelumnya, sikap yang tepat terhadap keragaman tersebut adalah... (pilih semua yang benar)', options: ["Menghargai perbedaan antar suku bangsa", "Memaksakan budaya sendiri kepada suku lain", "Mempelajari budaya suku lain", "Melestarikan budaya daerah masing-masing"], answer: [0, 2, 3], hint: "Menghargai, mempelajari, dan melestarikan budaya adalah sikap yang tepat." },
-            { id: 15, type: "pg_kompleks", text: 'Keragaman budaya Indonesia tercermin dalam berbagai hal berikut... (pilih semua yang benar)', options: ["Rumah adat yang berbeda-beda di setiap daerah", "Bahasa daerah yang beragam", "Tarian tradisional khas setiap daerah", "Semua orang Indonesia berbicara bahasa yang sama"], answer: [0, 1, 2], hint: "Rumah adat, bahasa daerah, dan tarian tradisional adalah bentuk keragaman budaya Indonesia." },
-
-            // ===== PG KOMPLEKS lanjutan (No 16-20) =====
-            { id: 16, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Di sebuah sekolah di Tangerang, terdapat murid-murid yang berasal dari berbagai suku bangsa. Ada yang berasal dari suku Jawa, Sunda, Batak, Minang, dan Betawi. Mereka belajar dan bermain bersama tanpa membeda-bedakan asal suku.</div>Pelajaran yang dapat kita ambil dari teks tersebut adalah... (pilih semua yang benar)', options: ["Perbedaan suku bukan penghalang untuk berteman", "Kebersamaan lebih penting dari perbedaan", "Bermain hanya boleh dengan teman sesuku", "Sekolah adalah tempat yang baik untuk belajar toleransi"], answer: [0, 1, 3], hint: "Teks menunjukkan bahwa perbedaan suku tidak menghalangi persahabatan di sekolah." },
-            { id: 17, type: "pg_kompleks", text: "Cara melestarikan keragaman budaya Indonesia adalah... (pilih semua yang benar)", options: ["Mempelajari tarian tradisional daerah", "Mengganti semua budaya daerah dengan budaya asing", "Mengikuti festival budaya daerah", "Mengenakan pakaian adat pada hari-hari tertentu"], answer: [0, 2, 3], hint: "Mempelajari tarian, mengikuti festival, dan mengenakan pakaian adat adalah cara melestarikan budaya." },
-            { id: 18, type: "pg_kompleks", text: "Tradisi budaya Suku Minangkabau yang terkenal adalah... (pilih semua yang benar)", options: ["Rumah Gadang sebagai rumah adat", "Tari Piring sebagai tarian tradisional", "Rendang sebagai makanan khas", "Gamelan sebagai alat musik tradisional"], answer: [0, 1, 2], hint: "Rumah Gadang, Tari Piring, dan Rendang adalah tradisi khas Suku Minangkabau. Gamelan berasal dari Jawa." },
-            { id: 19, type: "pg_kompleks", text: "Alat musik tradisional Indonesia dan daerah asalnya yang benar adalah... (pilih semua yang benar)", options: ["Angklung — Jawa Barat", "Sasando — Nusa Tenggara Timur", "Gamelan — Jawa", "Tifa — Papua"], answer: [0, 1, 2, 3], hint: "Semua pasangan alat musik dan daerah asalnya sudah benar." },
-            { id: 20, type: "pg_kompleks", text: "Makanan tradisional Indonesia dan daerah asalnya yang benar adalah... (pilih semua yang benar)", options: ["Papeda — Papua", "Gudeg — Yogyakarta", "Pempek — Palembang", "Soto Banjar — Jawa Tengah"], answer: [0, 1, 2], hint: "Papeda dari Papua, Gudeg dari Yogyakarta, Pempek dari Palembang. Soto Banjar berasal dari Kalimantan Selatan." },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "Benar / Salah", text: "Rumah adat Suku Minangkabau disebut Rumah Gadang.", answer: "Benar", hint: "Benar. Rumah Gadang adalah rumah adat khas Suku Minangkabau dari Sumatera Barat." },
-            { id: 22, type: "bs", text: "Bahasa daerah Suku Minangkabau disebut Bahasa Sunda.", answer: "Salah", hint: "Salah. Bahasa daerah Suku Minangkabau adalah Bahasa Minang, bukan Bahasa Sunda." },
-            { id: 23, type: "bs", text: "Rendang adalah makanan tradisional khas Suku Minangkabau.", answer: "Benar", hint: "Benar. Rendang berasal dari Sumatera Barat (Minangkabau)." },
-            { id: 24, type: "bs", text: "Talempong adalah alat musik tradisional dari suku Betawi.", answer: "Salah", hint: "Salah. Talempong adalah alat musik tradisional dari Suku Minangkabau, Sumatera Barat." },
-            { id: 25, type: "bs", text: "Tari Piring adalah tarian tradisional khas Sumatera Barat.", answer: "Benar", hint: "Benar. Tari Piring (Tari Piriang) berasal dari Sumatera Barat." },
-            { id: 26, type: "bs", text: "Indonesia memiliki lebih dari 700 bahasa daerah.", answer: "Benar", hint: "Benar. Indonesia memiliki sekitar 718 bahasa daerah yang tercatat." },
-            { id: 27, type: "bs", text: "Semua suku bangsa di Indonesia memiliki budaya yang sama.", answer: "Salah", hint: "Salah. Setiap suku bangsa memiliki budaya, bahasa, dan tradisi yang berbeda-beda." },
-            { id: 28, type: "bs", text: "Bhinneka Tunggal Ika artinya berbeda-beda tetapi tetap satu jua.", answer: "Benar", hint: "Benar. Bhinneka Tunggal Ika adalah semboyan negara Indonesia yang berarti berbeda-beda tetapi tetap satu." },
-            { id: 29, type: "bs", text: "Toleransi berarti memaksakan keyakinan kepada orang lain.", answer: "Salah", hint: "Salah. Toleransi berarti menghargai dan menghormati perbedaan, bukan memaksakan keyakinan." },
-            { id: 30, type: "bs", text: "Indonesia mengakui 6 agama resmi.", answer: "Benar", hint: "Benar. Enam agama resmi di Indonesia: Islam, Kristen Protestan, Katolik, Hindu, Buddha, dan Konghucu." },
-
-            // ===== ISIAN SINGKAT (No 31-35) =====
-            { id: 31, type: "isian", section: "Isian Singkat", text: "Tari Saman berasal dari daerah...", answer: "Aceh", hint: "Tari Saman adalah tarian tradisional dari Aceh." },
-            { id: 32, type: "isian", text: "Tari Kecak berasal dari daerah...", answer: "Bali", hint: "Tari Kecak adalah tarian tradisional dari Bali." },
-            { id: 33, type: "isian", text: "Tari Jaipong berasal dari daerah...", answer: "Jawa Barat", hint: "Tari Jaipong berasal dari Jawa Barat (Sunda)." },
-            { id: 34, type: "isian", text: "Tradisi lompat batu (Fahombo) berasal dari suku di Pulau...", answer: "Nias", hint: "Tradisi lompat batu (Fahombo) berasal dari suku Nias, Sumatera Utara." },
-            { id: 35, type: "isian", text: "Upacara pembakaran mayat yang terkenal di Bali disebut...", answer: "Ngaben", hint: "Ngaben adalah upacara kremasi (pembakaran jenazah) dalam tradisi Hindu di Bali." },
-
-            // ===== URAIAN / ESAI (No 36-40) =====
-            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Sebutkan 3 sikap toleransi yang pernah kamu lakukan di sekolah!", answer: "Contoh: 1) Menghormati teman yang sedang beribadah, 2) Bermain bersama tanpa membeda-bedakan suku/agama, 3) Tidak mengejek teman yang berbeda budaya", hint: "Pikirkan sikap menghargai perbedaan yang kamu lakukan di sekolah." },
-            { id: 37, type: "uraian", text: "Sebutkan 3 sikap toleransi yang pernah kamu lakukan di rumah!", answer: "Contoh: 1) Menghormati waktu ibadah anggota keluarga, 2) Tidak memaksakan pendapat sendiri, 3) Membantu keluarga merayakan hari besar agama", hint: "Pikirkan cara kamu menghargai perbedaan di lingkungan rumah." },
-            { id: 38, type: "uraian", text: "Jelaskan alasan mengapa toleransi sangat diperlukan dalam kehidupan umat beragama di Indonesia!", answer: "Indonesia memiliki 6 agama resmi dan ratusan suku bangsa. Toleransi diperlukan agar tercipta keharmonisan, mencegah konflik antar umat beragama, dan menjaga persatuan bangsa sesuai semboyan Bhinneka Tunggal Ika.", hint: "Jelaskan hubungan antara keragaman agama di Indonesia dengan pentingnya toleransi." },
-            { id: 39, type: "uraian", text: "Jelaskan manfaat menerapkan sikap toleransi dalam beragama terhadap kehidupan bangsa Indonesia!", answer: "1) Tercipta kerukunan antar umat beragama, 2) Memperkuat persatuan dan kesatuan bangsa, 3) Mencegah konflik SARA, 4) Mewujudkan kehidupan yang damai dan harmonis, 5) Menunjukkan bahwa perbedaan adalah kekayaan bangsa", hint: "Pikirkan dampak positif toleransi bagi kehidupan berbangsa." },
-            { id: 40, type: "uraian", text: "Sebutkan masing-masing 2 hari besar peringatan Agama Islam dan Agama Kristen!", answer: "Agama Islam: 1) Idul Fitri, 2) Idul Adha, 3) Maulid Nabi. Agama Kristen: 1) Natal (25 Desember), 2) Paskah, 3) Kenaikan Isa Al-Masih", hint: "Ingat perayaan hari besar yang sering diperingati di Indonesia." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda',
+                text: 'BPUPKI dibentuk oleh pemerintah pendudukan Jepang pada tanggal...',
+                options: ['29 April 1945', '1 Juni 1945', '17 Agustus 1945', '22 Juni 1945'],
+                answer: 0,
+                hint: 'BPUPKI (Dokuritsu Junbi Cosakai) dibentuk pada tanggal 29 April 1945 bertepatan dengan hari ulang tahun Kaisar Hirohito.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Hari Proklamasi Kemerdekaan Republik Indonesia dideklarasikan pada tanggal...',
+                options: ['1 Juni 1945', '22 Juni 1945', '17 Agustus 1945', '18 Agustus 1945'],
+                answer: 2,
+                hint: 'Proklamasi kemerdekaan Indonesia dibacakan oleh Ir. Soekarno didampingi Drs. Moh. Hatta pada 17 Agustus 1945.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'BPUPKI diresmikan/dilantik oleh Jepang pada bulan...',
+                options: ['April 1945', 'Mei 1945', 'Juni 1945', 'Agustus 1945'],
+                answer: 1,
+                hint: 'Meskipun dibentuk akhir April, BPUPKI diresmikan pada 28 Mei 1945 di Gedung Chuo Sangi In, Jakarta.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Tokoh pendiri bangsa yang memaparkan gagasan dasar negara pada tanggal 31 Mei 1945 adalah...',
+                options: ['Mr. Muhammad Yamin', 'Prof. Dr. Mr. Soepomo', 'Ir. Soekarno', 'Drs. Mohammad Hatta'],
+                answer: 1,
+                hint: 'Soepomo memaparkan gagasannya pada sidang BPUPKI hari ketiga, 31 Mei 1945.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Di bawah ini, salah satu tokoh nasional yang masuk dalam keanggotaan Panitia Sembilan adalah...',
+                options: ['Raden Patah', 'Mr. A.A. Maramis', 'Ki Hajar Dewantara', 'dr. Radjiman Wedyodiningrat'],
+                answer: 1,
+                hint: 'Mr. Alexander Andries Maramis adalah salah satu dari sembilan tokoh perumus Piagam Jakarta.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Presiden pertama Republik Indonesia, Ir. Soekarno, lahir pada tanggal...',
+                options: ['1 Juni 1901', '6 Juni 1901', '17 Agustus 1901', '28 Oktober 1901'],
+                answer: 1,
+                hint: 'Ir. Soekarno lahir di Surabaya pada tanggal 6 Juni 1901 dengan nama kecil Koesno Sosrodihardjo.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Wakil Presiden pertama Indonesia, Drs. Mohammad Hatta, dilahirkan di daerah...',
+                options: ['Surabaya, Jawa Timur', 'Yogyakarta', 'Bukittinggi, Sumatera Barat', 'Makassar, Sulawesi Selatan'],
+                answer: 2,
+                hint: 'Mohammad Hatta lahir di Bukittinggi pada 12 Agustus 1902.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Salah satu tokoh Panitia Sembilan, H. Agus Salim, memiliki julukan masa kecil \'Masyhudul Haq\' yang berarti...',
+                options: ['Pembela Kaum Lemah', 'Saksi Kebenaran', 'Pemimpin yang Adil', 'Singa Podium'],
+                answer: 1,
+                hint: 'Masyhudul Haq secara bahasa memiliki arti \'Saksi Kebenaran\'.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Kepanjangan dari nama lembaga BPUPKI yang benar adalah...',
+                options: ['Badan Penyelidik Usaha-usaha Persiapan Kemerdekaan Indonesia', 'Badan Pembuat Undang-undang Persiapan Kemerdekaan Indonesia', 'Badan Pemersatu Unsur Persiapan Kemerdekaan Indonesia', 'Badan Penentu Undang-undang Proklamasi Kemerdekaan Indonesia'],
+                answer: 0,
+                hint: 'BPUPKI singkatan dari Badan Penyelidik Usaha-usaha Persiapan Kemerdekaan Indonesia.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Dalam keberagaman bahasa daerah, ungkapan selamat pagi \'Seulamat beungoh\' berasal dari daerah...',
+                options: ['Sumatera Utara (Medan)', 'Provinsi Aceh', 'Jawa Barat (Sunda)', 'Sulawesi Selatan (Makassar)'],
+                answer: 1,
+                hint: '\'Seulamat beungoh\' adalah kalimat sapaan selamat pagi dalam bahasa Aceh.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: 'Siapa sajakah tiga tokoh pendiri bangsa yang menyampaikan usulan lisan/tertulis rumusan dasar negara pada sidang pertama BPUPKI? (pilih semua yang benar)',
+                options: ['Mr. Muhammad Yamin', 'Prof. Dr. Mr. Soepomo', 'Ir. Soekarno', 'Ki Bagus Hadikusumo'],
+                answer: [0, 1, 2],
+                hint: 'Tiga pembicara utama dasar negara adalah Muhammad Yamin (29 Mei), Soepomo (31 Mei), dan Soekarno (1 Juni).',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Manakah yang merupakan tugas utama dibentuknya BPUPKI oleh pemerintah pendudukan Jepang? (pilih semua yang benar)',
+                options: ['Mempelajari dan menyelidiki hal penting terkait tata pemerintahan negara Indonesia merdeka', 'Menyusun dasar negara Indonesia', 'Melawan sekutu secara militer aktif', 'Mempersiapkan kemerdekaan Indonesia'],
+                answer: [0, 1, 3],
+                hint: 'BPUPKI dibentuk untuk mempersiapkan hal-hal administratif kemerdekaan dan merumuskan dasar negara, bukan bertempur secara militer.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah rumusan dasar negara yang diusulkan oleh Ir. Soekarno dalam pidatonya pada tanggal 1 Juni 1945? (pilih semua yang benar)',
+                options: ['Kebangsaan Indonesia / Nasionalisme', 'Internasionalisme / Peri Kemanusiaan', 'Mufakat / Demokrasi', 'Kesejahteraan Sosial & Ketuhanan yang berkebudayaan'],
+                answer: [0, 1, 2, 3],
+                hint: 'Semua poin tersebut merupakan lima asas dasar negara usulan Ir. Soekarno yang dinamakan Pancasila.',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Panitia Sembilan berhasil merumuskan rancangan pembukaan hukum dasar yang memuat dasar negara. Apa saja sebutan untuk rancangan ini? (pilih semua yang benar)',
+                options: ['Piagam Jakarta (Jakarta Charter)', 'Gentlemen\'s Agreement', 'Preambule', 'Konstitusi RIS'],
+                answer: [0, 1, 2],
+                hint: 'Rancangan pembukaan tersebut dinamakan Piagam Jakarta oleh Yamin, Gentlemen\'s Agreement oleh Sukiman, dan Preambule.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Sikap dan nilai juang para tokoh pendiri bangsa saat melakukan proses perumusan Pancasila yang wajib kita teladani adalah... (pilih semua yang benar)',
+                options: ['Mengutamakan persatuan dan kesatuan bangsa di atas kepentingan pribadi', 'Saling menghargai dan menghormati perbedaan pendapat', 'Mendahulukan musyawarah untuk mufakat', 'Memaksakan kehendak kelompok sendiri agar disetujui'],
+                answer: [0, 1, 2],
+                hint: 'Para pendiri bangsa berjiwa besar dan menghargai perbedaan, tidak memaksakan kehendak pribadi.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Di antara tokoh-tokoh berikut, siapakah yang turut berperan aktif dalam kepanitiaan sidang-sidang BPUPKI maupun PPKI? (pilih semua yang benar)',
+                options: ['Drs. Mohammad Hatta', 'Mr. Muhammad Yamin', 'K.H. Wachid Hasjim', 'Jenderal Sudirman'],
+                answer: [0, 1, 2],
+                hint: 'Jenderal Sudirman adalah panglima militer, bukan anggota komisi perumus BPUPKI/PPKI.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Kata Pancasila berasal dari bahasa Sanskerta. Arti kata \'Panca\' dan \'Sila\' yang benar adalah... (pilih semua yang benar)',
+                options: ['Panca berarti lima', 'Sila berarti batu sendi atau alas/dasar', 'Panca berarti persatuan', 'Sila berarti aturan tingkah laku yang baik'],
+                answer: [0, 1, 3],
+                hint: 'Panca = lima, sila = dasar/batu sendi atau aturan tingkah laku yang baik.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Pernyataan yang benar mengenai sejarah penetapan hari lahir Pancasila adalah... (pilih semua yang benar)',
+                options: ['Diperingati setiap tanggal 1 Juni', 'Berdasarkan tanggal pidato Ir. Soekarno mengenai Pancasila di sidang BPUPKI', 'Ditetapkan sebagai hari libur nasional', 'Diperingati setiap tanggal 17 Agustus'],
+                answer: [0, 1, 2],
+                hint: 'Hari lahir Pancasila adalah 1 Juni. 17 Agustus adalah Hari Kemerdekaan.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Gagasan dasar negara yang diusulkan oleh Prof. Dr. Mr. Soepomo pada 31 Mei 1945 memuat prinsip... (pilih semua yang benar)',
+                options: ['Persatuan', 'Kekeluargaan', 'Keseimbangan lahir dan batin', 'Musyawarah & Keadilan rakyat'],
+                answer: [0, 1, 2, 3],
+                hint: 'Lima prinsip Soepomo: Persatuan, Kekeluargaan, Keseimbangan lahir batin, Musyawarah, dan Keadilan rakyat.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Apakah agenda utama yang dibahas pada Sidang Pertama BPUPKI tanggal 29 Mei - 1 Juni 1945? (pilih semua yang benar)',
+                options: ['Membahas rumusan dasar negara Indonesia merdeka', 'Memilih presiden dan wakil presiden', 'Mendengar usulan konsep dasar negara dari beberapa tokoh', 'Menyusun naskah teks Proklamasi Kemerdekaan'],
+                answer: [0, 2],
+                hint: 'Sidang pertama fokus membahas dasar negara. Pemilihan presiden dan teks proklamasi dibahas setelah proklamasi (PPKI).',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Biografi Panitia Sembilan)',
+                text: "Pasangkan tokoh berikut dengan perannya yang tepat: <b>Ketua Panitia Sembilan sekaligus tokoh pembaca teks Proklamasi</b>",
+                options: ['Ir. Soekarno', 'Drs. Moh. Hatta', 'K.H. Wachid Hasjim', 'Mr. A.A. Maramis', 'H. Agus Salim'],
+                answer: 'Ir. Soekarno',
+                hint: 'Ir. Soekarno memimpin Panitia Sembilan.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan tokoh berikut dengan perannya yang tepat: <b>Wakil Ketua Panitia Sembilan yang mendampingi Bung Karno saat Proklamasi</b>",
+                options: ['Ir. Soekarno', 'Drs. Moh. Hatta', 'K.H. Wachid Hasjim', 'Mr. A.A. Maramis', 'H. Agus Salim'],
+                answer: 'Drs. Moh. Hatta',
+                hint: 'Bung Hatta adalah wakil ketua Panitia Sembilan.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan tokoh berikut dengan perannya yang tepat: <b>Tokoh perwakilan golongan Islam yang juga merupakan putra pendiri Nahdlatul Ulama</b>",
+                options: ['Ir. Soekarno', 'Drs. Moh. Hatta', 'K.H. Wachid Hasjim', 'Mr. A.A. Maramis', 'H. Agus Salim'],
+                answer: 'K.H. Wachid Hasjim',
+                hint: 'KH. Wachid Hasjim adalah putra pendiri NU, KH. Hasyim Asy\'ari.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan tokoh berikut dengan perannya yang tepat: <b>Tokoh perwakilan golongan Kristen Protestan asal Sulawesi Utara di Panitia Sembilan</b>",
+                options: ['Ir. Soekarno', 'Drs. Moh. Hatta', 'K.H. Wachid Hasjim', 'Mr. A.A. Maramis', 'H. Agus Salim'],
+                answer: 'Mr. A.A. Maramis',
+                hint: 'AA Maramis mewakili golongan Kristen di Panitia Sembilan.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan tokoh berikut dengan perannya yang tepat: <b>Tokoh diplomat ulung yang dijuluki The Grand Old Man dan bermarga Salim</b>",
+                options: ['Ir. Soekarno', 'Drs. Moh. Hatta', 'K.H. Wachid Hasjim', 'Mr. A.A. Maramis', 'H. Agus Salim'],
+                answer: 'H. Agus Salim',
+                hint: 'H. Agus Salim adalah diplomat cerdas Indonesia.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat',
+                text: 'Tentukan Benar atau Salah: \'Panitia Sembilan bertugas merumuskan undang-undang dasar perhimpunan dagang.\'',
+                answer: 'Salah',
+                hint: 'Panitia Sembilan bertugas merumuskan dasar negara dan rancangan mukadimah hukum dasar.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Piagam Jakarta disepakati pada tanggal 22 Juni 1945.\'',
+                answer: 'Benar',
+                hint: 'Rumusan Piagam Jakarta selesai ditandatangani pada 22 Juni 1945.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Dalam Piagam Jakarta, sila pertama berbunyi Persatuan Indonesia.\'',
+                answer: 'Salah',
+                hint: 'Sila pertama Piagam Jakarta berbunyi: Ketuhanan dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Sila pertama diubah demi menjaga persatuan bangsa Indonesia dari Sabang sampai Merauke.\'',
+                answer: 'Benar',
+                hint: 'Sila pertama disepakati diubah menjadi \'Ketuhanan Yang Maha Esa\' agar mencakup seluruh warga negara dari berbagai latar belakang agama.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Tokoh-tokoh Panitia Sembilan seluruhnya berasal dari pulau Jawa.\'',
+                answer: 'Salah',
+                hint: 'Anggotanya berasal dari berbagai daerah, seperti Hatta dan Yamin dari Sumatra, Maramis dari Sulawesi.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Lembaga pengganti BPUPKI yang dibentuk pada tanggal 7 Agustus 1945 adalah...',
+                answer: 'PPKI',
+                hint: 'PPKI (Dokuritsu Junbi Inkai) didirikan setelah BPUPKI dibubarkan.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Peristiwa ikrar pemuda-pemudi seluruh Indonesia yang melahirkan lagu kebangsaan Indonesia Raya diperingati sebagai Hari Sumpah Pemuda setiap tanggal...',
+                answer: '28 Oktober',
+                hint: 'Kongres Pemuda II diselenggarakan pada 27-28 Oktober 1928.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Tokoh pemuda pemimpin redaksi koran yang mengusulkan agar bahasa Indonesia menjadi bahasa persatuan dalam Kongres Pemuda I bernama Mohammad...',
+                answer: 'Tabrani',
+                hint: 'M. Tabrani dikenal sebagai bapak pelopor bahasa persatuan Indonesia.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Ikrar Sumpah Pemuda dibacakan di gedung Indonesische Clubgebouw yang beralamat di Jalan Kramat Raya nomor...',
+                answer: '106',
+                hint: 'Jl. Kramat Raya 106, Jakarta Pusat (kini menjadi Museum Sumpah Pemuda).',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Panitia Sembilan resmi dibentuk oleh Ir. Soekarno selaku ketua Panitia Kecil pada tanggal...',
+                answer: '1 Juni 1945',
+                hint: 'Panitia Sembilan dibentuk setelah selesainya sidang pertama BPUPKI pada 1 Juni 1945.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Sebutkan minimal 5 nama tokoh nasional anggota Panitia Sembilan!',
+                answer: '1) Ir. Soekarno, 2) Drs. Mohammad Hatta, 3) Mr. Muhammad Yamin, 4) Mr. A.A. Maramis, 5) K.H. Wachid Hasjim, 6) Abdul Kahar Muzakir, 7) H. Agus Salim, 8) Abikoesno Tjokrosoejoso, 9) Mr. Ahmad Soebardjo.',
+                hint: 'Sebutkan 5 nama dari 9 tokoh perumus Piagam Jakarta.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Sebutkan 3 ungkapan selamat pagi dari berbagai daerah di Indonesia beserta asal provinsinya!',
+                answer: '1) \'Wilujeng enjing\' berasal dari Jawa Barat (Sunda). 2) \'Sugeng enjang\' berasal dari Jawa Tengah/Yogyakarta/Jawa Timur (Jawa). 3) \'Seulamat beungoh\' berasal dari Aceh. 4) \'Salama bari\' berasal dari Sulawesi Selatan (Bugis/Makassar).',
+                hint: 'Tulis ungkapan bahasa daerah dan provinsinya.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan asal-usul ditetapkannya bahasa Indonesia sebagai bahasa pemersatu bangsa!',
+                answer: 'Bahasa Indonesia berakar dari bahasa Melayu Riau yang disederhanakan. Pada Kongres Pemuda II tanggal 28 Oktober 1928, para pemuda mengikrarkan bahasa Indonesia sebagai bahasa persatuan dalam Sumpah Pemuda agar menyatukan komunikasi suku bangsa di nusantara.',
+                hint: 'Jelaskan tentang hubungan bahasa Indonesia dengan bahasa Melayu dan peristiwa Sumpah Pemuda.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Sebutkan 3 cara konkrit yang dapat kamu lakukan sebagai pelajar untuk menumbuhkan rasa bangga terhadap bahasa Indonesia!',
+                answer: '1) Menggunakan bahasa Indonesia yang baik dan benar saat berbicara dengan teman dan guru di sekolah. 2) Rajin membaca buku sastra, artikel, atau cerita dalam bahasa Indonesia. 3) Mengikuti lomba menulis, membaca puisi, atau berpidato bahasa Indonesia. 4) Tidak menggunakan bahasa asing secara berlebihan.',
+                hint: 'Pikirkan sikap positif terhadap penggunaan bahasa nasional sehari-hari.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan biografi singkat Ir. Soekarno serta peran penting beliau dalam mempersiapkan kemerdekaan Indonesia!',
+                answer: 'Ir. Soekarno lahir di Surabaya tanggal 6 Juni 1901. Peran penting beliau: 1) Menyampaikan pidato lahirnya Pancasila pada 1 Juni 1945. 2) Menjabat sebagai Ketua Panitia Sembilan perumus Piagam Jakarta. 3) Menjabat sebagai ketua PPKI. 4) Merumuskan dan membacakan teks Proklamasi Kemerdekaan bersama Bung Hatta pada 17 Agustus 1945.',
+                hint: 'Sebutkan tanggal lahir, perannya di BPUPKI/PPKI, dan sebagai proklamator.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -484,6 +760,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`; }
                 else if (q.type === 'uraian') { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -509,6 +786,7 @@
                 if (q.type === 'pg') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { maxAuto++; const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value)); if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'bs') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { maxAuto++; const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (val === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';

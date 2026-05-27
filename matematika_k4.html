@@ -50,6 +50,23 @@
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(41,128,185,0.4); }
         .btn-submit:active { transform: translateY(0); }
         @media (max-width: 600px) { .header h1 { font-size: 1.5em; } .question-list { padding: 15px; } .question-item { padding: 15px; } }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 <body>
@@ -57,7 +74,7 @@
         <div class="header">
             <h1>➗ Matematika</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="score-board" id="score-board">
@@ -73,56 +90,317 @@
     </div>
     <script>
 const questions = [
-    // ===== PILIHAN GANDA (No 1-10) =====
-    {id:1, type:"pg", section:"Pilihan Ganda", text:"Satuan luas tidak baku yang biasa digunakan untuk mengukur luas permukaan benda adalah...", options:["Meter","Liter","Petak persegi satuan","Kilogram"], answer:2, hint:"Petak persegi satuan adalah satuan luas tidak baku, sedangkan meter persegi adalah satuan baku."},
-    {id:2, type:"pg", text:'Perhatikan gambar berikut!<div class="q-image"><svg width="200" height="160" viewBox="0 0 200 160"><rect x="10" y="10" width="180" height="140" fill="none" stroke="#bdc3c7" stroke-width="1"/><line x1="10" y1="45" x2="190" y2="45" stroke="#bdc3c7"/><line x1="10" y1="80" x2="190" y2="80" stroke="#bdc3c7"/><line x1="10" y1="115" x2="190" y2="115" stroke="#bdc3c7"/><line x1="55" y1="10" x2="55" y2="150" stroke="#bdc3c7"/><line x1="100" y1="10" x2="100" y2="150" stroke="#bdc3c7"/><line x1="145" y1="10" x2="145" y2="150" stroke="#bdc3c7"/><rect x="10" y="10" width="135" height="105" fill="#3498db" fill-opacity="0.3" stroke="#2980b9" stroke-width="2"/><text x="68" y="70" text-anchor="middle" font-size="14" fill="#2980b9" font-weight="bold">?</text></svg></div>Luas bidang yang diarsir pada gambar di atas adalah... petak persegi satuan.', options:["6","9","12","16"], answer:1, hint:"Bidang yang diarsir memiliki 3 kolom × 3 baris = 9 petak persegi satuan."},
-    {id:3, type:"pg", text:"Satuan volume tidak baku yang biasa digunakan dalam kehidupan sehari-hari adalah...", options:["Centimeter kubik","Gelas","Meter persegi","Kilogram"], answer:1, hint:"Gelas adalah satuan volume tidak baku. Centimeter kubik adalah satuan volume baku."},
-    {id:4, type:"pg", text:"Sebuah ember dapat diisi air sebanyak 8 gelas. Jika Ibu memiliki 3 ember, maka volume air seluruhnya adalah... gelas.", options:["11","16","24","32"], answer:2, hint:"3 ember × 8 gelas = 24 gelas."},
-    {id:5, type:"pg", text:'Perhatikan gambar berikut!<div class="q-image"><svg width="200" height="140" viewBox="0 0 200 140"><rect x="20" y="20" width="160" height="100" fill="none" stroke="#bdc3c7" stroke-width="1"/><line x1="20" y1="45" x2="180" y2="45" stroke="#bdc3c7"/><line x1="20" y1="70" x2="180" y2="70" stroke="#bdc3c7"/><line x1="20" y1="95" x2="180" y2="95" stroke="#bdc3c7"/><line x1="52" y1="20" x2="52" y2="120" stroke="#bdc3c7"/><line x1="84" y1="20" x2="84" y2="120" stroke="#bdc3c7"/><line x1="116" y1="20" x2="116" y2="120" stroke="#bdc3c7"/><line x1="148" y1="20" x2="148" y2="120" stroke="#bdc3c7"/><rect x="20" y="20" width="160" height="100" fill="#e74c3c" fill-opacity="0.25" stroke="#c0392b" stroke-width="2"/></svg></div>Pernyataan yang benar tentang gambar di atas adalah...', options:["Luas bidang = 15 petak persegi satuan","Luas bidang = 20 petak persegi satuan","Luas bidang = 25 petak persegi satuan","Luas bidang = 30 petak persegi satuan"], answer:1, hint:"Bidang memiliki 5 kolom × 4 baris = 20 petak persegi satuan."},
-    {id:6, type:"pg", text:'Segitiga yang ketiga sisinya memiliki panjang yang berbeda-beda disebut...', options:["Segitiga sama sisi","Segitiga sama kaki","Segitiga sembarang","Segitiga siku-siku"], answer:2, hint:"Segitiga sembarang memiliki ketiga sisi yang panjangnya berbeda-beda."},
-    {id:7, type:"pg", text:'Perhatikan gambar segitiga berikut!<div class="q-image"><svg width="200" height="160" viewBox="0 0 200 160"><polygon points="100,15 30,145 170,145" fill="#9b59b6" fill-opacity="0.2" stroke="#8e44ad" stroke-width="2"/><text x="58" y="90" font-size="11" fill="#8e44ad">10 cm</text><text x="128" y="90" font-size="11" fill="#8e44ad">10 cm</text><text x="85" y="143" font-size="11" fill="#8e44ad">8 cm</text></svg></div>Segitiga di atas termasuk jenis segitiga...', options:["Sama sisi","Sama kaki","Sembarang","Siku-siku"], answer:1, hint:"Segitiga sama kaki memiliki 2 sisi yang sama panjang (10 cm dan 10 cm) dan 1 sisi yang berbeda (8 cm)."},
-    {id:8, type:"pg", text:'Bangun datar yang memiliki dua pasang sisi berdekatan sama panjang dan salah satu diagonalnya merupakan sumbu simetri disebut...<div class="q-image"><svg width="160" height="120" viewBox="0 0 160 120"><polygon points="80,5 150,55 80,115 10,55" fill="#e67e22" fill-opacity="0.2" stroke="#d35400" stroke-width="2"/></svg></div>', options:["Persegi panjang","Belah ketupat","Layang-layang","Trapesium"], answer:2, hint:"Layang-layang memiliki 2 pasang sisi berdekatan yang sama panjang dan salah satu diagonalnya merupakan sumbu simetri."},
-    {id:9, type:"pg", text:'Perhatikan gambar berikut!<div class="q-image"><svg width="160" height="150" viewBox="0 0 160 150"><polygon points="80,10 140,40 140,100 80,130 20,100 20,40" fill="#27ae60" fill-opacity="0.2" stroke="#1e8449" stroke-width="2"/></svg></div>Bangun datar di atas termasuk segi banyak beraturan yang bernama...', options:["Segi lima beraturan","Segi enam beraturan","Segi tujuh beraturan","Segi delapan beraturan"], answer:1, hint:"Bangun tersebut memiliki 6 sisi yang sama panjang, sehingga disebut segi enam beraturan."},
-    {id:10, type:"pg", text:"Bangun datar tertutup yang dibatasi oleh tiga atau lebih ruas garis lurus disebut...", options:["Lingkaran","Segi banyak","Elips","Busur"], answer:1, hint:"Segi banyak (poligon) adalah bangun datar tertutup yang terbentuk dari tiga atau lebih ruas garis lurus."},
-
-    // ===== PG KOMPLEKS (No 11-20) =====
-    {id:11, type:"pg_kompleks", section:"Pilihan Ganda Kompleks", text:'Perhatikan gambar-gambar berikut!<div class="q-image"><svg width="340" height="100" viewBox="0 0 340 100"><polygon points="20,80 80,80 80,20 20,20" fill="#3498db" fill-opacity="0.2" stroke="#2980b9" stroke-width="2"/><text x="50" y="96" text-anchor="middle" font-size="10" fill="#2980b9">(i)</text><polygon points="120,80 200,80 180,20 140,20" fill="#e74c3c" fill-opacity="0.2" stroke="#c0392b" stroke-width="2"/><text x="160" y="96" text-anchor="middle" font-size="10" fill="#c0392b">(ii)</text><polygon points="240,20 300,20 300,80 240,80" fill="#27ae60" fill-opacity="0.2" stroke="#1e8449" stroke-width="2"/><text x="270" y="96" text-anchor="middle" font-size="10" fill="#1e8449">(iii)</text></svg></div>Bangun yang termasuk segi banyak beraturan adalah... (pilih semua yang benar)', options:["Gambar (i) — persegi","Gambar (ii) — trapesium","Gambar (iii) — persegi panjang","Semua gambar di atas"], answer:[0], hint:"Persegi adalah segi banyak beraturan karena semua sisinya sama panjang dan semua sudutnya sama besar. Trapesium dan persegi panjang bukan segi banyak beraturan."},
-    {id:12, type:"pg_kompleks", text:"Ciri-ciri bangun segi banyak tidak beraturan adalah... (pilih semua yang benar)", options:["Semua sisinya sama panjang","Panjang sisinya tidak sama","Besar sudutnya tidak sama","Semua sudutnya sama besar"], answer:[1,2], hint:"Segi banyak tidak beraturan memiliki sisi yang tidak sama panjang dan sudut yang tidak sama besar."},
-    {id:13, type:"pg_kompleks", text:"Berikut yang termasuk contoh segi banyak beraturan adalah... (pilih semua yang benar)", options:["Segitiga sama sisi","Persegi","Trapesium","Segi lima beraturan"], answer:[0,1,3], hint:"Segitiga sama sisi, persegi, dan segi lima beraturan termasuk segi banyak beraturan karena semua sisi dan sudutnya sama."},
-    {id:14, type:"pg_kompleks", text:"Yang termasuk segi banyak tidak beraturan adalah... (pilih semua yang benar)", options:["Trapesium","Persegi","Layang-layang","Segitiga sama sisi"], answer:[0,2], hint:"Trapesium dan layang-layang termasuk segi banyak tidak beraturan."},
-    {id:15, type:"pg_kompleks", text:"Ciri-ciri segi banyak beraturan adalah... (pilih semua yang benar)", options:["Semua sisinya sama panjang","Semua sudutnya sama besar","Sisinya bisa berbeda panjang","Memiliki minimal 3 sisi"], answer:[0,1,3], hint:"Segi banyak beraturan memiliki semua sisi sama panjang, semua sudut sama besar, dan minimal 3 sisi."},
-    {id:16, type:"pg_kompleks", text:'Perhatikan gambar-gambar berikut!<div class="q-image"><svg width="340" height="110" viewBox="0 0 340 110"><polygon points="30,90 90,90 60,20" fill="#f39c12" fill-opacity="0.2" stroke="#e67e22" stroke-width="2"/><text x="60" y="106" text-anchor="middle" font-size="10" fill="#e67e22">(i)</text><polygon points="130,20 200,20 220,60 180,90 130,90" fill="#9b59b6" fill-opacity="0.2" stroke="#8e44ad" stroke-width="2"/><text x="170" y="106" text-anchor="middle" font-size="10" fill="#8e44ad">(ii)</text><polygon points="260,90 290,20 330,90" fill="#1abc9c" fill-opacity="0.2" stroke="#16a085" stroke-width="2"/><text x="295" y="106" text-anchor="middle" font-size="10" fill="#16a085">(iii)</text></svg></div>Yang termasuk segi banyak tidak beraturan adalah... (pilih semua yang benar)', options:["Gambar (i) — segitiga sembarang","Gambar (ii) — segi lima tidak beraturan","Gambar (iii) — segitiga sama kaki","Semua termasuk segi banyak tidak beraturan"], answer:[0,1], hint:"Segitiga sembarang dan segi lima tidak beraturan termasuk segi banyak tidak beraturan."},
-    {id:17, type:"pg_kompleks", text:"Contoh bangun segi banyak beraturan dalam kehidupan sehari-hari adalah... (pilih semua yang benar)", options:["Ubin lantai berbentuk persegi","Rambu lalu lintas berbentuk segi delapan (STOP)","Meja berbentuk persegi panjang","Sarang lebah berbentuk segi enam beraturan"], answer:[0,1,3], hint:"Ubin persegi, rambu STOP (segi delapan beraturan), dan sarang lebah (segi enam beraturan) adalah contoh segi banyak beraturan."},
-    {id:18, type:"pg_kompleks", text:"Pernyataan yang benar tentang segitiga siku-siku adalah... (pilih semua yang benar)", options:["Memiliki satu sudut 90°","Semua sisinya sama panjang","Memiliki 3 sisi dan 3 sudut","Sisi terpanjangnya disebut hipotenusa"], answer:[0,2,3], hint:"Segitiga siku-siku memiliki satu sudut 90°, 3 sisi dan 3 sudut, dan sisi terpanjangnya disebut hipotenusa."},
-    {id:19, type:"pg_kompleks", text:"Perbedaan belah ketupat dan persegi adalah... (pilih semua yang benar)", options:["Belah ketupat tidak harus memiliki sudut 90°","Persegi memiliki semua sudut 90°","Belah ketupat dan persegi memiliki 4 sisi sama panjang","Belah ketupat tidak memiliki sisi yang sama panjang"], answer:[0,1,2], hint:"Belah ketupat dan persegi sama-sama memiliki 4 sisi sama panjang, tetapi persegi memiliki semua sudut 90° sedangkan belah ketupat tidak harus."},
-    {id:20, type:"pg_kompleks", text:"Berikut yang termasuk contoh segi banyak tidak beraturan adalah... (pilih semua yang benar)", options:["Jajargenjang","Persegi","Segitiga sama sisi","Trapesium"], answer:[0,3], hint:"Jajargenjang dan trapesium termasuk segi banyak tidak beraturan karena sisi-sisinya tidak semuanya sama panjang."},
-
-    // ===== BENAR / SALAH (No 21-30) =====
-    {id:21, type:"bs", section:"Benar / Salah", text:"1 cm³ sama dengan volume 1 kubus kecil dengan sisi 1 cm.", answer:"Benar", hint:"Benar. 1 cm³ adalah volume sebuah kubus dengan panjang sisi 1 cm."},
-    {id:22, type:"bs", text:"1 liter sama dengan 1.000 cm³.", answer:"Benar", hint:"Benar. 1 liter = 1.000 cm³ = 1 dm³."},
-    {id:23, type:"bs", text:"Volume sebuah gelas lebih besar dari volume 1 ember.", answer:"Salah", hint:"Salah. Volume 1 ember jauh lebih besar dari volume 1 gelas."},
-    {id:24, type:"bs", text:"1 m³ sama dengan 1.000 liter.", answer:"Benar", hint:"Benar. 1 m³ = 1.000 dm³ = 1.000 liter."},
-    {id:25, type:"bs", text:"Luas 1 m × 1 m sama dengan 1 m².", answer:"Benar", hint:"Benar. 1 m × 1 m = 1 meter persegi (m²)."},
-    {id:26, type:"bs", text:"Segitiga sama sisi memiliki 3 sisi yang sama panjang dan 3 sudut yang sama besar.", answer:"Benar", hint:"Benar. Setiap sudut segitiga sama sisi besarnya 60°."},
-    {id:27, type:"bs", text:"Trapesium memiliki dua pasang sisi sejajar.", answer:"Salah", hint:"Salah. Trapesium hanya memiliki satu pasang sisi sejajar. Bangun yang memiliki dua pasang sisi sejajar adalah jajargenjang."},
-    {id:28, type:"bs", text:"Persegi panjang termasuk segi banyak beraturan.", answer:"Salah", hint:"Salah. Persegi panjang memiliki sisi-sisi yang tidak semuanya sama panjang, sehingga bukan segi banyak beraturan."},
-    {id:29, type:"bs", text:"Layang-layang memiliki dua diagonal yang saling tegak lurus.", answer:"Benar", hint:"Benar. Diagonal layang-layang saling berpotongan tegak lurus."},
-    {id:30, type:"bs", text:"Lingkaran termasuk segi banyak.", answer:"Salah", hint:"Salah. Lingkaran bukan segi banyak karena tidak dibentuk dari ruas garis lurus."},
-
-    // ===== ISIAN SINGKAT (No 31-35) =====
-    {id:31, type:"isian", section:"Isian Singkat", text:"Bangun datar yang memiliki 3 sisi dan 3 sudut disebut...", answer:"Segitiga", hint:"Segitiga adalah bangun datar yang memiliki 3 sisi dan 3 sudut."},
-    {id:32, type:"isian", text:"Bangun datar segi empat yang memiliki dua pasang sisi berdekatan sama panjang disebut...", answer:"Layang-layang", hint:"Layang-layang memiliki 2 pasang sisi berdekatan yang sama panjang."},
-    {id:33, type:"isian", text:"Bangun datar segi empat yang keempat sisinya sama panjang dan kedua diagonalnya saling membagi dua sama panjang disebut...", answer:"Belah ketupat", hint:"Belah ketupat memiliki 4 sisi sama panjang dengan diagonal saling membagi dua sama panjang."},
-    {id:34, type:"isian", text:"Bangun datar yang tidak memiliki sisi dan sudut, serta semua titik pada tepinya berjarak sama dari titik pusat disebut...", answer:"Lingkaran", hint:"Lingkaran tidak memiliki sisi dan sudut, semua titik pada tepinya berjarak sama dari pusat."},
-    {id:35, type:"isian", text:"Bangun datar segi empat yang keempat sisinya sama panjang dan keempat sudutnya 90° disebut...", answer:"Persegi", hint:"Persegi memiliki 4 sisi sama panjang dan 4 sudut siku-siku (90°)."},
-
-    // ===== URAIAN / ESAI (No 36-40) =====
-    {id:36, type:"uraian", section:"Uraian / Esai", text:"Sebutkan 3 benda di sekitar rumah yang permukaannya dapat diukur dengan satuan meter persegi (m²)!", answer:"Contoh: lantai rumah, dinding kamar, atap rumah, halaman rumah, pintu, kaca jendela", hint:"Benda yang luas permukaannya cukup besar sehingga cocok diukur dalam m²."},
-    {id:37, type:"uraian", text:"Sebutkan 5 benda di sekitar yang volumenya lebih dari 1 liter!", answer:"Contoh: ember, galon air, bak mandi, akuarium, tong sampah, kulkas", hint:"Pikirkan benda-benda di rumah yang dapat menampung lebih dari 1 liter air."},
-    {id:38, type:"uraian", text:"Sebutkan 3 ciri-ciri bangun segi banyak tidak beraturan!", answer:"1. Panjang sisi-sisinya tidak sama, 2. Besar sudut-sudutnya tidak sama, 3. Tidak memiliki simetri putar selain 360°", hint:"Segi banyak tidak beraturan memiliki sisi dan sudut yang tidak seragam."},
-    {id:39, type:"uraian", text:"Jelaskan ciri-ciri bangun layang-layang!", answer:"1. Memiliki 4 sisi, 2. Memiliki 2 pasang sisi berdekatan sama panjang, 3. Memiliki 1 sumbu simetri, 4. Diagonal-diagonalnya saling tegak lurus, 5. Hanya satu diagonal yang dibagi dua sama panjang", hint:"Perhatikan sisi, sudut, diagonal, dan simetri layang-layang."},
-    {id:40, type:"uraian", text:"Sebuah bak penampungan air berbentuk balok memiliki panjang 2 meter, lebar 1 meter, dan tinggi 1 meter. Berapa liter air yang dapat ditampung oleh bak tersebut? Jelaskan cara menghitungnya!", answer:"Volume = p × l × t = 2 × 1 × 1 = 2 m³. Karena 1 m³ = 1.000 liter, maka 2 m³ = 2.000 liter.", hint:"Gunakan rumus volume balok: p × l × t, kemudian ubah ke satuan liter."}
-];
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Membaca & Menafsirkan Data)',
+                text: 'Keterangan atau informasi nyata yang dikumpulkan dari suatu pengamatan atau pengukuran disebut...',
+                options: ['Data', 'Diagram', 'Tabel', 'Statistik'],
+                answer: 0,
+                hint: 'Data adalah catatan atas kumpulan fakta atau keterangan.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Cara menyusun data ke dalam susunan kolom dan baris dengan garis-garis pembatas disebut penyajian data bentuk...',
+                options: ['Diagram Batang', 'Piktogram', 'Tabel', 'Diagram Lingkaran'],
+                answer: 2,
+                hint: 'Tabel menyajikan data dalam baris dan kolom yang dibatasi oleh garis.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: "Perhatikan diagram gambar (piktogram) penjualan es krim berikut!<div class=\"q-image\"><svg width=\"250\" height=\"130\" viewBox=\"0 0 250 130\"><text x=\"10\" y=\"30\" font-weight=\"bold\">Senin: 🍨 🍨 🍨</text><text x=\"10\" y=\"60\" font-weight=\"bold\">Selasa: 🍨 🍨 🍨 🍨</text><text x=\"10\" y=\"90\" font-weight=\"bold\">Rabu: 🍨 🍨</text><text x=\"10\" y=\"120\" font-size=\"11\" fill=\"#7f8c8d\">*Keterangan: 1 🍨 mewakili 5 cup es krim</text></svg></div>Berapakah jumlah es krim yang terjual pada hari Senin?",
+                options: ['3 cup', '10 cup', '15 cup', '20 cup'],
+                answer: 2,
+                hint: 'Senin memiliki 3 gambar es krim. Karena 1 gambar mewakili 5 cup, maka 3 × 5 = 15 cup.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Berdasarkan diagram es krim di atas, berapakah jumlah penjualan pada hari Selasa?',
+                options: ['4 cup', '12 cup', '16 cup', '20 cup'],
+                answer: 3,
+                hint: 'Selasa memiliki 4 gambar. Maka 4 × 5 = 20 cup.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Berdasarkan diagram es krim di atas, pada hari apa penjualan paling sedikit dan berapa jumlahnya?',
+                options: ['Senin, 15 cup', 'Selasa, 20 cup', 'Rabu, 10 cup', 'Rabu, 2 cup'],
+                answer: 2,
+                hint: 'Hari Rabu hanya memiliki 2 gambar (2 × 5 = 10 cup), merupakan penjualan tersedikit.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Berdasarkan diagram es krim di atas, berapakah total seluruh es krim yang terjual selama tiga hari tersebut?',
+                options: ['9 cup', '45 cup', '50 cup', '35 cup'],
+                answer: 1,
+                hint: 'Total gambar = 3 + 4 + 2 = 9 gambar. Total terjual = 9 × 5 = 45 cup.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: "Perhatikan diagram batang nilai ulangan Matematika siswa Kelas 4 berikut!<div class=\"q-image\"><svg width=\"280\" height=\"150\" viewBox=\"0 0 280 150\"><line x1=\"40\" y1=\"20\" x2=\"40\" y2=\"120\" stroke=\"#000\" stroke-width=\"2\"/><line x1=\"40\" y1=\"120\" x2=\"260\" y2=\"120\" stroke=\"#000\" stroke-width=\"2\"/><text x=\"15\" y=\"125\" font-size=\"10\">0</text><line x1=\"37\" y1=\"95\" x2=\"40\" y2=\"95\" stroke=\"#000\"/><text x=\"15\" y=\"99\" font-size=\"10\">5</text><line x1=\"37\" y1=\"70\" x2=\"40\" y2=\"70\" stroke=\"#000\"/><text x=\"10\" y=\"74\" font-size=\"10\">10</text><line x1=\"37\" y1=\"45\" x2=\"40\" y2=\"45\" stroke=\"#000\"/><text x=\"10\" y=\"49\" font-size=\"10\">15</text><rect x=\"60\" y=\"70\" width=\"30\" height=\"50\" fill=\"#2980b9\"/><text x=\"75\" y=\"132\" font-size=\"10\" text-anchor=\"middle\">Nilai 70</text><rect x=\"110\" y=\"45\" width=\"30\" height=\"75\" fill=\"#2980b9\"/><text x=\"125\" y=\"132\" font-size=\"10\" text-anchor=\"middle\">Nilai 80</text><rect x=\"160\" y=\"95\" width=\"30\" height=\"25\" fill=\"#2980b9\"/><text x=\"175\" y=\"132\" font-size=\"10\" text-anchor=\"middle\">Nilai 90</text><rect x=\"210\" y=\"110\" width=\"30\" height=\"10\" fill=\"#2980b9\"/><text x=\"225\" y=\"132\" font-size=\"10\" text-anchor=\"middle\">Nilai 100</text></svg></div>Berapa jumlah siswa yang mendapat nilai 80?",
+                options: ['5 siswa', '10 siswa', '15 siswa', '20 siswa'],
+                answer: 2,
+                hint: 'Batang Nilai 80 sejajar dengan angka 15 pada sumbu tegak (jumlah siswa).',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Berdasarkan diagram batang di atas, nilai ulangan berapakah yang paling banyak diperoleh siswa?',
+                options: ['70', '80', '90', '100'],
+                answer: 1,
+                hint: 'Nilai 80 memiliki batang tertinggi (15 siswa).',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Berdasarkan diagram batang di atas, berapakah selisih jumlah siswa yang mendapat nilai 70 dan 90?',
+                options: ['5 siswa', '10 siswa', '15 siswa', '0 siswa (sama banyak)'],
+                answer: 3,
+                hint: 'Siswa dengan nilai 70 ada 10 anak, dan nilai 90 ada 10 anak. Selisih = 10 - 10 = 0 siswa.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Berdasarkan diagram batang di atas, berapakah jumlah seluruh siswa yang mengikuti ulangan?',
+                options: ['30 siswa', '33 siswa', '37 siswa', '40 siswa'],
+                answer: 2,
+                hint: 'Jumlah siswa = Nilai 70 (10) + Nilai 80 (15) + Nilai 90 (10) + Nilai 100 (2) = 37 siswa. (Nilai 100 tingginya 2 siswa).',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: "Perhatikan diagram gambar data peminjaman buku perpustakaan dalam seminggu berikut!<div class=\"q-image\"><svg width=\"260\" height=\"150\" viewBox=\"0 0 260 150\"><text x=\"10\" y=\"25\" font-weight=\"bold\">Kamis: 📚 📚 📚 📚</text><text x=\"10\" y=\"55\" font-weight=\"bold\">Jumat: 📚 📚</text><text x=\"10\" y=\"85\" font-weight=\"bold\">Sabtu: 📚 📚 📚 📚 📚 📚</text><text x=\"10\" y=\"115\" font-size=\"11\" fill=\"#7f8c8d\">*Keterangan: 1 📚 mewakili 10 buku</text></svg></div>Pernyataan manakah yang benar berdasarkan diagram gambar di atas? (pilih semua yang benar)",
+                options: ['Buku yang dipinjam pada hari Kamis sebanyak 40 buku', 'Buku yang dipinjam pada hari Jumat sebanyak 2 buku', 'Peminjaman buku terbanyak terjadi pada hari Sabtu', 'Total buku yang dipinjam selama tiga hari adalah 120 buku'],
+                answer: [0, 2, 3],
+                hint: 'Hari Jumat = 2 × 10 = 20 buku, bukan 2 buku. Sabtu = 6 × 10 = 60 buku (terbanyak). Total = 40 + 20 + 60 = 120 buku.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Berdasarkan diagram peminjaman buku perpustakaan di atas, tentukan perbandingan peminjaman yang benar! (pilih semua yang benar)',
+                options: ['Buku hari Sabtu lebih banyak daripada hari Kamis', 'Hari Kamis meminjam dua kali lipat dari hari Jumat', 'Peminjaman hari Jumat lebih banyak dari hari Sabtu', 'Selisih peminjaman hari Sabtu dan Jumat adalah 40 buku'],
+                answer: [0, 1, 3],
+                hint: 'Sabtu (60) > Kamis (40). Kamis (40) adalah 2 × Jumat (20). Selisih Sabtu dan Jumat = 60 - 20 = 40.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah pernyataan di bawah ini yang merupakan kelebihan dari penyajian data dalam bentuk diagram batang dibandingkan tabel? (pilih semua yang benar)',
+                options: ['Lebih mudah melihat perbandingan data secara visual', 'Lebih cepat melihat data tertinggi dan terendah', 'Tampilan grafis lebih menarik secara warna dan bentuk', 'Menampilkan data secara rahasia agar sulit dibaca'],
+                answer: [0, 1, 2],
+                hint: 'Diagram batang didesain agar data mudah dibaca secara visual, bukan untuk disembunyikan.',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Apa saja hal-hal penting yang harus selalu ada pada sebuah diagram batang agar data yang disajikan jelas? (pilih semua yang benar)',
+                options: ['Judul diagram yang menggambarkan isi data', 'Sumbu mendatar (horizontal) dan sumbu tegak (vertikal)', 'Skala angka yang teratur pada sumbu tegak', 'Hiasan gambar bunga atau kartun di seluruh diagram'],
+                answer: [0, 1, 2],
+                hint: 'Judul, sumbu x/y, dan skala angka adalah elemen wajib diagram batang. Hiasan kartun tidak wajib.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Dalam suatu diagram gambar (piktogram), jika 1 gambar mewakili 8 orang, berapakah jumlah orang yang diwakili oleh: (pilih semua yang benar)',
+                options: ['3 gambar mewakili 24 orang', '5 gambar mewakili 40 orang', '10 gambar mewakili 80 orang', '2 gambar mewakili 10 orang'],
+                answer: [0, 1, 2],
+                hint: '2 gambar = 2 × 8 = 16 orang, bukan 10 orang.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Manakah dari metode berikut yang digunakan untuk mengumpulkan data primer (langsung)? (pilih semua yang benar)',
+                options: ['Melakukan wawancara langsung dengan narasumber', 'Membagikan lembar kuesioner / angket untuk diisi', 'Melakukan pengamatan langsung (observasi) di lapangan', 'Menyalin data dari ensiklopedia atau buku perpustakaan'],
+                answer: [0, 1, 2],
+                hint: 'Menyalin dari buku adalah pengumpulan data sekunder (tidak langsung).',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Diagram batang dapat disajikan dalam dua jenis bentuk, yaitu... (pilih semua yang benar)',
+                options: ['Diagram batang tegak (vertikal)', 'Diagram batang mendatar (horizontal)', 'Diagram batang melingkar', 'Diagram batang berombak'],
+                answer: [0, 1],
+                hint: 'Diagram batang hanya disajikan secara tegak (vertikal) atau mendatar (horizontal).',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Manakah yang termasuk bentuk penyajian data yang umum dipelajari di Sekolah Dasar? (pilih semua yang benar)',
+                options: ['Tabel data', 'Diagram gambar (piktogram)', 'Diagram batang', 'Diagram kartogram'],
+                answer: [0, 1, 2],
+                hint: 'Kartogram (peta data) jarang dipelajari di tingkat dasar. Tabel, piktogram, dan diagram batang adalah yang utama.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Di bawah ini, manakah contoh data yang nilainya selalu berubah-ubah setiap saat jika diukur? (pilih semua yang benar)',
+                options: ['Suhu badan pasien rumah sakit', 'Jumlah hari dalam satu minggu', 'Jumlah kendaraan yang melewati jalan raya per jam', 'Tinggi badan anak usia pertumbuhan'],
+                answer: [0, 2, 3],
+                hint: 'Jumlah hari dalam seminggu selalu tetap (7 hari).',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Jika kita menyajikan data tentang hewan peliharaan favorit siswa kelas 4, manakah cara penyajian yang mempermudah pembaca melihat hewan terpopuler? (pilih semua yang benar)',
+                options: ['Membuat diagram batang tegak dengan tinggi sesuai jumlah siswa', 'Membuat piktogram dengan gambar hewan kecil yang mewakili jumlah siswa', 'Menuliskan paragraf cerita panjang menceritakan kesukaan masing-masing anak', 'Menyajikan dalam bentuk tabel baris-kolom terurut dari jumlah terbanyak'],
+                answer: [0, 1, 3],
+                hint: 'Paragraf cerita panjang mempersulit pembaca dalam membandingkan data dengan cepat.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Definisi Istilah Data)',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Catatan atas kumpulan fakta atau keterangan yang belum diolah</b>",
+                options: ['Data', 'Diagram Gambar', 'Diagram Batang', 'Penyajian Data', 'Tabel'],
+                answer: 'Data',
+                hint: 'Data adalah fakta mentah.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Penyajian data menggunakan gambar-gambar atau simbol untuk mewakili jumlah tertentu</b>",
+                options: ['Data', 'Diagram Gambar', 'Diagram Batang', 'Penyajian Data', 'Tabel'],
+                answer: 'Diagram Gambar',
+                hint: 'Diagram gambar menggunakan simbol/piktogram.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Penyajian data menggunakan persegi panjang tegak atau mendatar yang panjangnya sesuai nilai data</b>",
+                options: ['Data', 'Diagram Gambar', 'Diagram Batang', 'Penyajian Data', 'Tabel'],
+                answer: 'Diagram Batang',
+                hint: 'Diagram batang menggambarkan data dengan balok persegi panjang.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Proses menyusun data mentah ke dalam format visual agar mudah dibaca dan dipahami</b>",
+                options: ['Data', 'Diagram Gambar', 'Diagram Batang', 'Penyajian Data', 'Tabel'],
+                answer: 'Penyajian Data',
+                hint: 'Penyajian data adalah proses visualisasi data.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Penyajian data dalam bentuk susunan baris dan kolom yang dibatasi garis pembatas</b>",
+                options: ['Data', 'Diagram Gambar', 'Diagram Batang', 'Penyajian Data', 'Tabel'],
+                answer: 'Tabel',
+                hint: 'Tabel menyusun data dalam kolom-baris bergaris.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Benar/Salah & Teori Data)',
+                text: 'Tentukan Benar atau Salah pernyataan berikut: \'Diagram gambar (piktogram) tidak memerlukan keterangan skala/nilai gambar.\'',
+                answer: 'Salah',
+                hint: 'Keterangan nilai gambar sangat penting agar pembaca tahu berapa nilai yang diwakili 1 gambar.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah pernyataan berikut: \'Semua batang pada diagram batang harus memiliki lebar yang sama.\'',
+                answer: 'Benar',
+                hint: 'Lebar batang harus seragam, yang membedakan nilainya adalah tingginya saja.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah pernyataan berikut: \'Data kuantitatif adalah data yang disajikan dalam bentuk angka.\'',
+                answer: 'Benar',
+                hint: 'Kuantitatif berhubungan dengan jumlah atau angka.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah pernyataan berikut: \'Judul diagram diletakkan di paling bawah diagram dan ditulis sangat kecil.\'',
+                answer: 'Salah',
+                hint: 'Judul diagram diletakkan di bagian atas agar pertama kali dibaca oleh orang.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah pernyataan berikut: \'Skala angka pada sumbu tegak diagram batang harus ditulis acak dan tidak berurutan.\'',
+                answer: 'Salah',
+                hint: 'Skala angka harus berurutan dengan kelipatan yang sama (misal 0, 5, 10, 15).',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Cara memperoleh data dengan memberikan daftar pertanyaan tertulis kepada responden disebut metode...',
+                answer: 'kuesioner',
+                hint: 'Kuesioner atau angket adalah daftar pertanyaan tertulis.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Manfaat utama menyajikan data dalam bentuk visual (diagram) agar data lebih mudah untuk...',
+                answer: 'dibaca',
+                hint: 'Agar data mudah dibaca, dianalisis, dan dibandingkan.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Tuliskan salah satu contoh bentuk penyajian data yang menggunakan gambar simbol yaitu diagram...',
+                answer: 'gambar',
+                hint: 'Diagram gambar disebut juga piktogram.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Langkah pertama sebelum menyajikan data adalah... data terlebih dahulu.',
+                answer: 'mengumpulkan',
+                hint: 'Kita harus mengumpulkan data (lewat observasi/wawancara) sebelum mengolah dan menyajikannya.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Tiga jenis penyajian data yang kita pelajari di kelas 4 adalah tabel, diagram gambar, dan diagram...',
+                answer: 'batang',
+                hint: 'Tabel, piktogram, dan diagram batang.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Jelaskan perbedaan utama penyajian data dalam bentuk tabel, diagram gambar (piktogram), dan diagram batang!',
+                answer: 'Tabel menyajikan data dalam kolom dan baris berupa angka mentah. Diagram gambar menggunakan simbol/gambar visual untuk mewakili jumlah tertentu. Diagram batang menggambarkan tinggi-rendah nilai data dengan bentuk persegi panjang (balok) vertikal atau horizontal.',
+                hint: 'Fokus pada bentuk visual masing-masing (angka/kolom, simbol gambar, balok persegi panjang).',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Ada data hasil pertanian desa: Padi = 30 ton, Jagung = 20 ton, Kedelai = 10 ton. Jelaskan langkah-langkah untuk membuat diagram batang dari data tersebut!',
+                answer: '1) Tentukan judul diagram: \'Data Hasil Pertanian Desa\'. 2) Buat sumbu mendatar untuk jenis tanaman (Padi, Jagung, Kedelai). 3) Buat sumbu tegak untuk berat hasil (skala kelipatan 10: 0, 10, 20, 30). 4) Gambar batang persegi panjang untuk Padi setinggi angka 30, Jagung setinggi 20, dan Kedelai setinggi 10.',
+                hint: 'Jelaskan langkah pembuatan judul, sumbu mendatar, sumbu tegak, skala, dan tinggi batang.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Sebuah diagram batang menunjukkan data tinggi badan siswa: A = 130 cm, B = 135 cm, C = 125 cm. Siapakah siswa yang tertinggi dan berapakah selisih tinggi badan antara siswa tertinggi dan terendah?',
+                answer: 'Siswa tertinggi adalah B (135 cm). Siswa terendah adalah C (125 cm). Selisih tinggi badan = 135 cm - 125 cm = 10 cm.',
+                hint: 'Cari nilai terbesar, nilai terkecil, lalu lakukan pengurangan.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Jika pada suatu diagram gambar penjualan mobil, 1 gambar mobil merah mewakili 10 unit mobil terjual. Berapa unit mobil yang terjual jika pada data hari Sabtu terdapat 4,5 gambar mobil merah? Jelaskan cara menghitungnya!',
+                answer: 'Karena 1 gambar mewakili 10 unit, maka 4,5 gambar mewakili: 4,5 × 10 = 45 unit mobil terjual.',
+                hint: 'Kalikan jumlah gambar (4,5) dengan nilai per gambar (10).',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Mengapa kita perlu menentukan skala (keterangan satu gambar mewakili berapa unit) pada diagram gambar? Berikan contoh akibat jika tidak mencantumkannya!',
+                answer: 'Keterangan skala diperlukan agar pembaca tahu nilai kuantitatif data sebenarnya. Jika tidak dicantumkan, pembaca tidak akan mengetahui jumlah data riil (hanya mengetahui jumlah simbol gambar saja, misalnya menyangka penjualan hanya 3 unit padahal aslinya 30 unit).',
+                hint: 'Jelaskan tentang kejelasan informasi bagi pembaca.',
+            },
+        ];
 
 const container = document.getElementById('question-container');
 let currentSection = '';
@@ -146,7 +424,8 @@ function render() {
         } else if (q.type === 'bs') {
             inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label>`;
             inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`;
-        } else if (q.type === 'isian') {
+        } else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
+                else if (q.type === 'isian') {
             inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`;
         } else if (q.type === 'uraian') {
             inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`;
@@ -195,7 +474,8 @@ function submitExam() {
             const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
             if (sel && sel.value === q.answer) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
             else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Salah. ${q.hint}`; }
-        } else if (q.type === 'isian') {
+        } else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
+                else if (q.type === 'isian') {
             maxAuto++;
             const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase();
             if (val === q.answer.toLowerCase()) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }

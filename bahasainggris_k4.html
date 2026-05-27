@@ -342,6 +342,23 @@
                 padding: 15px;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -350,7 +367,7 @@
         <div class="header">
             <h1>🌍 Bahasa Inggris</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Grade 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -378,57 +395,316 @@
         }
 
         const questions = [
-            // ===== MULTIPLE CHOICE (No 1-10) =====
-            { id: 1, type: "pg", section: "Multiple Choice", text: 'Look at the picture: A boy is watching TV in the living room. Complete the sentence: "He _____ watch TV in the living room."', options: ["can", "is", "are", "do"], answer: 0, hint: '"Can" is the modal auxiliary used to express ability or possibility.' },
-            { id: 2, type: "pg", text: 'What activity can you do in the kitchen?', options: ["We can sleep in the kitchen", "We can cook in the kitchen", "We can swim in the kitchen", "We can play football in the kitchen"], answer: 1, hint: "The kitchen is the place where we cook food." },
-            { id: 3, type: "pg", text: '"Can you read a book in the library?" The correct answer is...', options: ["Yes, I can", "Yes, I do", "No, I am", "Yes, I is"], answer: 0, hint: 'Questions with "can" are answered with "Yes, I can" or "No, I can\'t".' },
-            { id: 4, type: "pg", text: 'Complete: "She _____ play the piano very well."', options: ["is", "can", "are", "am"], answer: 1, hint: '"Can" is used before a verb to express ability.' },
-            { id: 5, type: "pg", text: 'Which sentence uses "can" correctly?', options: ["I can swimming", "I can to swim", "I can swim", "I can swims"], answer: 2, hint: 'After "can", use the base form of the verb (swim), not swimming/to swim/swims.' },
-            { id: 6, type: "pg", text: '"My sister can _____ a bicycle." Choose the correct word.', options: ["rides", "riding", "rode", "ride"], answer: 3, hint: 'After "can", use the base form of the verb: ride.' },
-            { id: 7, type: "pg", text: '"We _____ play in the garden." Choose the correct modal.', options: ["can", "is", "am", "are"], answer: 0, hint: '"Can" is the correct modal auxiliary for expressing ability.' },
-            { id: 8, type: "pg", text: '"They can _____ in the swimming pool." Choose the correct word.', options: ["swims", "swimming", "swim", "to swim"], answer: 2, hint: 'After "can", always use the base form of the verb.' },
-            { id: 9, type: "pg", text: `Look at the clock.${clockSvg(3, 0)}What time is it?`, options: ["It is two o'clock", "It is three o'clock", "It is four o'clock", "It is six o'clock"], answer: 1, hint: "The hour hand points to 3, so it is three o'clock." },
-            { id: 10, type: "pg", text: `Look at the clock.${clockSvg(7, 30)}What time is it?`, options: ["It is seven thirty", "It is half past eight", "It is seven o'clock", "It is eight thirty"], answer: 0, hint: "The hour hand is between 7 and 8, and the minute hand points to 6, so it is seven thirty (7:30)." },
-
-            // ===== PG KOMPLEKS (No 11-15) =====
-            { id: 11, type: "pg_kompleks", section: "Complex Multiple Choice", text: 'Read the text:<div class="reading-box">My name is Rina. I live with my family. In the living room, we can watch TV together. My brother can play video games there too. In the kitchen, my mother can cook delicious food. In the bedroom, I can read books and sleep.</div>Based on the text, which statements are TRUE? (choose all correct answers)', options: ["Rina can watch TV in the living room", "Rina's brother can play video games in the bedroom", "Rina's mother can cook in the kitchen", "Rina can read books in the bedroom"], answer: [0, 2, 3], hint: "Rina's brother can play video games in the LIVING ROOM, not the bedroom." },
-            { id: 12, type: "pg_kompleks", text: 'Based on the text about Rina, activities that can be done in the living room are... (choose all correct answers)', options: ["Watch TV", "Play video games", "Cook food", "Read books"], answer: [0, 1], hint: "Watching TV and playing video games are activities done in the living room. Cooking is in the kitchen, reading is in the bedroom." },
-            { id: 13, type: "pg_kompleks", text: 'Read the text:<div class="reading-box">Today is Sunday. Ali wakes up at six o\'clock. He takes a bath at half past six. He has breakfast at seven o\'clock. Then, he goes to the park at eight o\'clock. He plays with his friends until ten o\'clock.</div>Based on the text, correct statements are... (choose all correct answers)', options: ["Ali wakes up at 6:00", "Ali takes a bath at 6:30", "Ali has breakfast at 8:00", "Ali goes to the park at 8:00"], answer: [0, 1, 3], hint: "Ali has breakfast at SEVEN o'clock (7:00), not eight." },
-            { id: 14, type: "pg_kompleks", text: 'Based on the text about Ali, what Ali does in the morning are... (choose all correct answers)', options: ["Wake up", "Take a bath", "Have breakfast", "Go to school"], answer: [0, 1, 2], hint: "Ali goes to the PARK on Sunday, not to school." },
-            { id: 15, type: "pg_kompleks", text: 'Activities that use modal "can" correctly are... (choose all correct answers)', options: ["I can swim", "She can cooking", "He can read", "They can plays"], answer: [0, 2], hint: 'After "can", always use the base form: swim, read. Not cooking or plays.' },
-
-            // ===== PG KOMPLEKS (No 16-20) =====
-            { id: 16, type: "pg_kompleks", text: 'Read the text:<div class="reading-box">Siti goes to school every day. She wakes up at five o\'clock. She takes a bath at half past five. She has breakfast at six o\'clock. She goes to school at half past six. She studies until twelve o\'clock.</div>Correct statements about Siti are... (choose all correct answers)', options: ["Siti wakes up at 5:00", "Siti has breakfast at 6:00", "Siti goes to school at 7:00", "Siti studies until 12:00"], answer: [0, 1, 3], hint: "Siti goes to school at HALF PAST SIX (6:30), not 7:00." },
-            { id: 17, type: "pg_kompleks", text: 'Based on the text about Siti, what time does Siti do these activities? (choose all correct answers)', options: ["Takes a bath at 5:30", "Has breakfast at 6:00", "Goes to school at 6:30", "Studies until 1:00"], answer: [0, 1, 2], hint: "Siti studies until TWELVE o'clock (12:00), not 1:00." },
-            { id: 18, type: "pg_kompleks", text: 'What you CAN do at school are... (choose all correct answers)', options: ["Study in the classroom", "Play in the playground", "Sleep on the road", "Read books in the library"], answer: [0, 1, 3], hint: "You don't sleep on the road at school." },
-            { id: 19, type: "pg_kompleks", text: 'Rooms in a house and their activities that match are... (choose all correct answers)', options: ["Kitchen — cook food", "Bedroom — sleep", "Living room — take a bath", "Garden — play"], answer: [0, 1, 3], hint: "We take a bath in the BATHROOM, not the living room." },
-            { id: 20, type: "pg_kompleks", text: 'Correct time expressions are... (choose all correct answers)', options: ["7:00 — seven o\'clock", "7:30 — half past seven", "7:00 — half past seven", "3:30 — half past three"], answer: [0, 1, 3], hint: "7:00 is seven o'clock, NOT half past seven." },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "True or False", text: '"I go to school at seven o\'clock every morning." — Siti goes to school every morning.', answer: "Benar", hint: "True. The sentence says she goes to school every morning." },
-            { id: 22, type: "bs", text: '"He takes a bath at half past five." — He takes a bath at 5:00.', answer: "Salah", hint: "False. Half past five means 5:30, not 5:00." },
-            { id: 23, type: "bs", text: '"She can play the piano." — She is able to play the piano.', answer: "Benar", hint: 'True. "Can" means able to. Both sentences have the same meaning.' },
-            { id: 24, type: "bs", text: '"We can cook in the bedroom." — This sentence is correct.', answer: "Salah", hint: "False. We cook in the kitchen, not in the bedroom." },
-            { id: 25, type: "bs", text: '"They play football at four o\'clock." — They play football at 4:00.', answer: "Benar", hint: "True. Four o'clock = 4:00." },
-            { id: 26, type: "bs", text: '"I wake up at six o\'clock." means I wake up at 6:00 AM.', answer: "Benar", hint: "True. Six o'clock in the context of waking up means 6:00 AM." },
-            { id: 27, type: "bs", text: '"He can swims in the pool." is grammatically correct.', answer: "Salah", hint: 'False. After "can", use the base form "swim", not "swims".' },
-            { id: 28, type: "bs", text: '"It is half past twelve" means the time is 12:30.', answer: "Benar", hint: "True. Half past twelve = 12:30." },
-            { id: 29, type: "bs", text: '"She has dinner at seven o\'clock" means she eats dinner at 7:00 PM.', answer: "Benar", hint: "True. Dinner at seven o'clock in the evening = 7:00 PM." },
-            { id: 30, type: "bs", text: '"He goes to bed at ten o\'clock" means he goes to bed at 10:00 AM.', answer: "Salah", hint: "False. Going to bed at ten o'clock means 10:00 PM (nighttime)." },
-
-            // ===== ISIAN (No 31-35) =====
-            { id: 31, type: "isian", section: "Fill in the Blanks", text: 'Complete: "I wake up at six _____ every morning." (fill with the correct word)', answer: "o'clock", hint: "o'clock is used after the hour to indicate the time." },
-            { id: 32, type: "isian", text: 'Complete: "She _____ play badminton very well." (fill with the correct modal)', answer: "can", hint: '"Can" is the modal auxiliary used to express ability.' },
-            { id: 33, type: "isian", text: 'Complete: "It is half _____ eight." (fill with the correct preposition)', answer: "past", hint: '"Half past" is the expression used for 30 minutes after the hour.' },
-            { id: 34, type: "isian", text: '"I have breakfast at seven o\'clock." What time do I have breakfast? Answer: _____', answer: "7:00", hint: "Seven o'clock = 7:00" },
-            { id: 35, type: "isian", text: '"She goes to school at half past six." What time does she go to school? Answer: _____', answer: "6:30", hint: "Half past six = 6:30" },
-
-            // ===== URAIAN (No 36-40) =====
-            { id: 36, type: "uraian", section: "Essay", text: '<div class="reading-box">Look at the activity table:<table class="table-box"><tr><th>Time</th><th>Activity</th></tr><tr><td>5:00 AM</td><td>Wake up</td></tr><tr><td>5:30 AM</td><td>Take a bath</td></tr><tr><td>6:00 AM</td><td>Have breakfast</td></tr><tr><td>6:30 AM</td><td>Go to school</td></tr><tr><td>12:00 PM</td><td>Go home</td></tr></table></div>Based on the table, what time does the student wake up?', answer: "The student wakes up at five o'clock / 5:00 AM.", hint: "Look at the first row of the table." },
-            { id: 37, type: "uraian", text: "Based on the activity table above, write a short paragraph about the student's morning activities!", answer: "The student wakes up at five o'clock. Then, he/she takes a bath at half past five. After that, he/she has breakfast at six o'clock. Finally, he/she goes to school at half past six.", hint: "Use the table to write about each activity and its time." },
-            { id: 38, type: "uraian", text: 'Based on the activity table, what does the student do at half past five?', answer: "The student takes a bath at half past five / 5:30 AM.", hint: "Half past five = 5:30 AM. Look at the second row of the table." },
-            { id: 39, type: "uraian", text: "Write 3 activities that you CAN do at home using the modal 'can'!", answer: "Example: 1) I can watch TV in the living room. 2) I can cook in the kitchen. 3) I can read books in my bedroom. 4) I can play in the garden.", hint: 'Use the pattern: "I can + verb + in the + place."' },
-            { id: 40, type: "uraian", text: 'Based on the activity table, how long does the student study at school? Explain your answer!', answer: "The student goes to school at 6:30 AM and goes home at 12:00 PM. So the student studies for 5 hours and 30 minutes at school.", hint: "Calculate from 6:30 AM to 12:00 PM." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Adverbs & Vehicles)',
+                text: 'Every morning, Rano gets up at 4:30 AM and prays. He does this every single day without exception. It means Rano ... wakes up early.',
+                options: ['Always', 'Sometimes', 'Never', 'Usually'],
+                answer: 0,
+                hint: 'Always is used when a habit happens 100% of the time.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Santi does not like coffee. She has not tasted coffee in her entire life. Santi ... drinks coffee.',
+                options: ['Always', 'Sometimes', 'Usually', 'Never'],
+                answer: 3,
+                hint: 'Never is used for things that do not happen at all (0% frequency).',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Tono goes to school by bicycle about 4 days out of 5. We can say that Tono ... goes to school by bicycle.',
+                options: ['Never', 'Usually', 'Sometimes', 'Always'],
+                answer: 1,
+                hint: 'Usually indicates a high frequency (around 80-90%), but not always.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Lina plays tennis once or twice a month when she has free time. Lina ... plays tennis.',
+                options: ['Always', 'Usually', 'Sometimes', 'Never'],
+                answer: 2,
+                hint: 'Sometimes indicates a lower frequency (around 20-50%).',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Look at the sentence: \'My father usually drinks tea in the morning.\' The word \'usually\' tells us...',
+                options: ['How often my father drinks tea', 'Where my father drinks tea', 'What my father drinks', 'With whom my father drinks tea'],
+                answer: 0,
+                hint: '\'Usually\' is an adverb of frequency, which answers the question \'How often?\'.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Which vehicle has wings, carries hundreds of passengers, and flies in the sky?',
+                options: ['Ship', 'Train', 'Airplane', 'Helicopter'],
+                answer: 2,
+                hint: 'An airplane is a large public vehicle that flies in the sky.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'If you want to cross the sea to go to another island, you will ride a...',
+                options: ['Ship', 'Bus', 'Car', 'Train'],
+                answer: 0,
+                hint: 'A ship is used to travel across bodies of water like seas or oceans.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'This vehicle runs on a special track called rails, has many cars, and is very long. What is it?',
+                options: ['Bus', 'Truck', 'Subway / Train', 'Motorcycle'],
+                answer: 2,
+                hint: 'A train runs on tracks/rails.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'A vehicle with two wheels that does not use fuel (gasoline) and requires you to peddle is a...',
+                options: ['Motorcycle', 'Scooter', 'Bicycle', 'Car'],
+                answer: 2,
+                hint: 'A bicycle has two wheels and requires pedaling to move.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'A large road vehicle designed to carry many passengers along a fixed route is called a...',
+                options: ['Bus', 'Cab', 'Cart', 'Truck'],
+                answer: 0,
+                hint: 'A bus is a large passenger vehicle.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: 'Which of the following are land transportations? (pilih semua yang benar)',
+                options: ['Train', 'Submarine', 'Car', 'Motorcycle'],
+                answer: [0, 2, 3],
+                hint: 'Train, car, and motorcycle run on land. Submarines travel underwater.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Which of the following transportations fly in the air? (pilih semua yang benar)',
+                options: ['Helicopter', 'Sailboat', 'Airplane', 'Hot air balloon'],
+                answer: [0, 2, 3],
+                hint: 'Sailboats travel on water, while others fly in the air.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Choose the correct sentences using adverbs of frequency: (pilih semua yang benar)',
+                options: ['She always eats breakfast before school.', 'They never are late to class.', 'I sometimes read a book before bed.', 'We usually play soccer on Fridays.'],
+                answer: [0, 2, 3],
+                hint: 'The adverb goes before the main verb (e.g., always eats, sometimes read, usually play). (Note: \'never are\' should be \'are never\').',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Which of these are good daily routines at home? (pilih semua yang benar)',
+                options: ['Always making my bed in the morning', 'Sometimes helping my mom in the kitchen', 'Never washing hands before meals', 'Usually cleaning my study table'],
+                answer: [0, 1, 3],
+                hint: 'Not washing hands is a bad routine.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Which transportations are usually used for public transit? (pilih semua yang benar)',
+                options: ['Bus', 'Ambulance', 'MRT / Train', 'Ship'],
+                answer: [0, 2, 3],
+                hint: 'Ambulances are emergency vehicles, not public transit.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Select the two-wheeled vehicles: (pilih semua yang benar)',
+                options: ['Bicycle', 'Truck', 'Motorcycle', 'Helicopter'],
+                answer: [0, 2],
+                hint: 'Bicycles and motorcycles have two wheels.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Select air and water vehicles: (pilih semua yang benar)',
+                options: ['Airplane', 'Ship', 'Ferry', 'Car'],
+                answer: [0, 1, 2],
+                hint: 'Car is a land vehicle.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'What activities can you do at the library? (pilih semua yang benar)',
+                options: ['Read stories', 'Borrow books', 'Study quietly', 'Swim in the pool'],
+                answer: [0, 1, 2],
+                hint: 'You cannot swim in a library.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'What activities can you do at the park? (pilih semua yang benar)',
+                options: ['Play on the slides', 'Buy medicine', 'Have a picnic', 'Ride a bicycle'],
+                answer: [0, 2, 3],
+                hint: 'Medicine is bought at a pharmacy/drugstore.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Which places are public places? (pilih semua yang benar)',
+                options: ['Hospital', 'Market', 'My bedroom', 'Post office'],
+                answer: [0, 1, 3],
+                hint: 'Your bedroom is a private place.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Public Places & Vehicles)',
+                text: "Match the place to its description: <b>A place where you buy medicines</b>",
+                options: ['Pharmacy', 'Hospital', 'Railway Station', 'Airplane', 'Train'],
+                answer: 'Pharmacy',
+                hint: 'Pharmacy or drugstore is where medicine is sold.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Match the place to its description: <b>A place where doctors and nurses treat sick people</b>",
+                options: ['Pharmacy', 'Hospital', 'Railway Station', 'Airplane', 'Train'],
+                answer: 'Hospital',
+                hint: 'Hospital is for medical care.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Match the place to its description: <b>A place where you catch a train</b>",
+                options: ['Pharmacy', 'Hospital', 'Railway Station', 'Airplane', 'Train'],
+                answer: 'Railway Station',
+                hint: 'Trains stop at railway stations.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Match the description to its vehicle: <b>An air transportation that flies fast</b>",
+                options: ['Pharmacy', 'Hospital', 'Railway Station', 'Airplane', 'Train'],
+                answer: 'Airplane',
+                hint: 'Airplanes fly in the air.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Match the description to its vehicle: <b>A long vehicle running on rails</b>",
+                options: ['Pharmacy', 'Hospital', 'Railway Station', 'Airplane', 'Train'],
+                answer: 'Train',
+                hint: 'Trains run on rails.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Reading & Adverbs)',
+                text: 'Read the text: \'Tommy lives near his school. He always walks to school because it only takes 5 minutes.\' Is the statement \'Tommy goes to school by bus\' True or Salah?',
+                answer: 'Salah',
+                hint: 'Tommy walks to school, so he doesn\'t ride a bus.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Read the text: \'Tommy walks to school every day.\' Is the statement \'Tommy always walks to school\' True or Salah?',
+                answer: 'True',
+                hint: 'Every day means always.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Read the text: \'Mrs. Green is a librarian. She works from Monday to Friday.\' Is the statement \'Mrs. Green works at the library\' True or Salah?',
+                answer: 'True',
+                hint: 'A librarian works in a library.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Read the text: \'Bobby rides a bicycle to school when it is sunny, but when it rains, his father drives him.\' Is the statement \'Bobby always rides a bicycle to school\' True or Salah?',
+                answer: 'Salah',
+                hint: 'Bobby sometimes goes by car (when it rains).',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Read the text: \'The zoo is open every day except Monday.\' Is the statement \'We can visit the zoo on Monday\' True or Salah?',
+                answer: 'Salah',
+                hint: 'Except Monday means it is closed on Mondays.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Fill in the blank: \'I ... (100% frequency) brush my teeth before sleeping.\'',
+                answer: 'always',
+                hint: '100% frequency corresponds to \'always\'.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Fill in the blank: \'Rina does not know how to swim, so she ... (0% frequency) swims in the sea.\'',
+                answer: 'never',
+                hint: '0% frequency corresponds to \'never\'.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Fill in the blank: \'We ... (80% frequency) watch movies on weekends.\'',
+                answer: 'usually',
+                hint: '80% frequency corresponds to \'usually\'.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Fill in the blank: \'My father ... (40% frequency) drinks coffee, but he prefers tea.\'',
+                answer: 'sometimes',
+                hint: '40% frequency corresponds to \'sometimes\'.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Opposite of \'always\' is...',
+                answer: 'never',
+                hint: 'Always means all the time, never means not at all.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Create a sentence showing how you go to school using the preposition \'by\' and a vehicle! (Example: by car, by bus)',
+                answer: 'I go to school by bus / I go to school by motorcycle / I go to school by car.',
+                hint: 'Ensure your sentence has \'by\' followed directly by a vehicle.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Write a sentence describing an action at a public place using the preposition \'at\'! (Example: at the library, at the hospital)',
+                answer: 'I read books at the library / My father works at the hospital / We play at the park.',
+                hint: 'Make sure your sentence mentions an activity and uses \'at the [place]\'.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Complete this sentence: \'They go ... the market ... Friday.\' (Use prepositions \'to\' and \'on\')',
+                answer: 'They go to the market on Friday.',
+                hint: 'Use \'to\' for destination and \'on\' for days of the week.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Translate the sentence: \'Saya selalu pergi ke sekolah tepat waktu.\' into English!',
+                answer: 'I always go to school on time.',
+                hint: 'Saya (I) selalu (always) pergi (go) ke sekolah (to school) tepat waktu (on time).',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Write 3 English vocabulary words of land transportation along with their Indonesian meanings!',
+                answer: '1) Car = Mobil, 2) Bicycle = Sepeda, 3) Train = Kereta api, 4) Motorcycle = Sepeda motor, 5) Bus = Bis',
+                hint: 'Give 3 items with their meanings.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -441,6 +717,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ True</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ False</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Write your answer..." autocomplete="off">`; }
                 else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Write your complete answer..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -456,6 +733,7 @@
                 if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Correct!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Wrong. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Correct!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Wrong. ${q.hint}`; } }
                 else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Correct!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Wrong. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Correct!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Answer: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Check manually. Key: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';

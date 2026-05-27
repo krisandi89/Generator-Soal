@@ -318,6 +318,23 @@
                 padding: 15px;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -326,7 +343,7 @@
         <div class="header">
             <h1>🌿 Budi Pekerti</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -344,55 +361,316 @@
     </div>
     <script>
         const questions = [
-            // ===== PILIHAN GANDA (No 1-10) =====
-            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Peninggalan sejarah yang berupa bangunan tempat ibadah agama Buddha dan Hindu disebut...", options: ["Museum", "Candi", "Benteng", "Monumen"], answer: 1, hint: "Candi adalah peninggalan sejarah berupa bangunan tempat ibadah agama Hindu dan Buddha." },
-            { id: 2, type: "pg", text: "Contoh menjaga peninggalan sejarah adalah...", options: ["Mencoret-coret dinding candi", "Mengambil batu candi sebagai oleh-oleh", "Tidak membuang sampah di area peninggalan sejarah", "Memanjat dan duduk di atas candi"], answer: 2, hint: "Tidak membuang sampah adalah cara menjaga peninggalan sejarah." },
-            { id: 3, type: "pg", text: "Tempat menyimpan dan memamerkan benda-benda bersejarah disebut...", options: ["Perpustakaan", "Museum", "Taman", "Bioskop"], answer: 1, hint: "Museum adalah tempat menyimpan dan memamerkan benda-benda bersejarah." },
-            { id: 4, type: "pg", text: "Contoh peninggalan sejarah berupa tulisan kuno yang dipahat pada batu disebut...", options: ["Lukisan", "Patung", "Prasasti", "Naskah"], answer: 2, hint: "Prasasti adalah tulisan kuno yang dipahat pada batu atau logam." },
-            { id: 5, type: "pg", text: "Sikap yang tepat ketika mengunjungi museum adalah...", options: ["Menyentuh semua benda yang dipamerkan", "Berlari-lari di dalam museum", "Mengikuti peraturan dan tidak menyentuh benda koleksi", "Membawa pulang benda-benda yang ada di museum"], answer: 2, hint: "Mengikuti peraturan museum dan tidak menyentuh koleksi adalah sikap yang tepat." },
-            { id: 6, type: "pg", text: "Alasan kita harus menjaga alam adalah...", options: ["Agar bisa dieksploitasi terus-menerus", "Agar kelestarian lingkungan tetap terjaga untuk generasi mendatang", "Agar tidak ada yang menggunakan sumber daya alam", "Agar hanya kita yang bisa menikmati alam"], answer: 1, hint: "Menjaga alam bertujuan agar kelestarian lingkungan terjaga bagi generasi mendatang." },
-            { id: 7, type: "pg", text: "Contoh kegiatan menjaga alam yang dapat dilakukan siswa di sekolah adalah...", options: ["Membuang sampah sembarangan", "Menanam pohon di halaman sekolah", "Memetik bunga di taman sekolah", "Menebang pohon di halaman sekolah"], answer: 1, hint: "Menanam pohon adalah contoh kegiatan menjaga alam di sekolah." },
-            { id: 8, type: "pg", text: "Dampak negatif jika kita tidak menjaga kelestarian alam adalah...", options: ["Udara semakin bersih", "Terjadi banjir, longsor, dan pencemaran", "Tanaman tumbuh subur", "Air sungai semakin jernih"], answer: 1, hint: "Tidak menjaga alam menyebabkan bencana seperti banjir, longsor, dan pencemaran." },
-            { id: 9, type: "pg", text: "Prinsip 3R dalam menjaga lingkungan adalah...", options: ["Reduce, Reuse, Recycle", "Read, Run, Rest", "Repair, Remove, Replace", "Relax, Refresh, Restart"], answer: 0, hint: "3R: Reduce (kurangi), Reuse (gunakan kembali), Recycle (daur ulang)." },
-            { id: 10, type: "pg", text: "Candi Borobudur ditetapkan sebagai warisan budaya dunia oleh lembaga...", options: ["ASEAN", "PBB", "UNESCO", "FIFA"], answer: 2, hint: "UNESCO menetapkan Candi Borobudur sebagai Situs Warisan Dunia." },
-
-            // ===== PG KOMPLEKS (No 11-20) =====
-            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: "Contoh peninggalan sejarah yang ada di Indonesia adalah... (pilih semua yang benar)", options: ["Candi Borobudur", "Candi Prambanan", "Menara Eiffel", "Benteng Vredeburg"], answer: [0, 1, 3], hint: "Candi Borobudur, Candi Prambanan, dan Benteng Vredeburg ada di Indonesia. Menara Eiffel ada di Prancis." },
-            { id: 12, type: "pg_kompleks", text: "Cara melestarikan peninggalan sejarah adalah... (pilih semua yang benar)", options: ["Menjaga kebersihan area peninggalan", "Melakukan pemugaran dengan ahli", "Mengambil bagian dari peninggalan untuk koleksi pribadi", "Tidak mencoret-coret peninggalan"], answer: [0, 1, 3], hint: "Mengambil bagian dari peninggalan sejarah merupakan tindakan perusakan." },
-            { id: 13, type: "pg_kompleks", text: "Manfaat menjaga peninggalan sejarah bagi masyarakat adalah... (pilih semua yang benar)", options: ["Sebagai sarana edukasi dan pembelajaran", "Menarik wisatawan dan meningkatkan ekonomi", "Menghapus sejarah bangsa", "Memperkuat identitas dan jati diri bangsa"], answer: [0, 1, 3], hint: "Peninggalan sejarah bermanfaat untuk edukasi, ekonomi, dan identitas bangsa." },
-            { id: 14, type: "pg_kompleks", text: "Contoh tindakan menjaga kelestarian alam adalah... (pilih semua yang benar)", options: ["Menanam pohon", "Mengurangi penggunaan plastik", "Membuang limbah ke sungai", "Menghemat penggunaan air"], answer: [0, 1, 3], hint: "Membuang limbah ke sungai merusak lingkungan." },
-            { id: 15, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Museum Nasional Indonesia terletak di Jakarta. Museum ini menyimpan lebih dari 140.000 benda koleksi yang terdiri dari koleksi prasejarah, arkeologi, numismatik, dan etnografi. Museum ini didirikan pada tanggal 24 April 1778 oleh Perkumpulan Bataviasche Genootschap van Kunsten en Wetenschappen.</div>Berdasarkan teks, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Museum Nasional terletak di Jakarta", "Museum menyimpan lebih dari 140.000 koleksi", "Museum didirikan tahun 1778", "Museum ini adalah museum terbaru di Indonesia"], answer: [0, 1, 2], hint: "Museum Nasional didirikan tahun 1778, bukan museum terbaru." },
-            { id: 16, type: "pg_kompleks", text: "Dampak positif menjaga kelestarian alam adalah... (pilih semua yang benar)", options: ["Udara tetap bersih dan segar", "Ekosistem tetap seimbang", "Banyak hewan yang punah", "Sumber air tetap terjaga"], answer: [0, 1, 3], hint: "Menjaga alam menjadikan udara bersih, ekosistem seimbang, dan sumber air terjaga." },
-            { id: 17, type: "pg_kompleks", text: "Kegiatan yang termasuk prinsip Reduce (mengurangi) adalah... (pilih semua yang benar)", options: ["Membawa tas belanja sendiri", "Mengurangi penggunaan sedotan plastik", "Membuang makanan sisa", "Menghemat penggunaan kertas"], answer: [0, 1, 3], hint: "Reduce berarti mengurangi penggunaan bahan yang berpotensi menjadi sampah." },
-            { id: 18, type: "pg_kompleks", text: "Jenis-jenis peninggalan sejarah di Indonesia meliputi... (pilih semua yang benar)", options: ["Candi", "Prasasti", "Benteng", "Komputer"], answer: [0, 1, 2], hint: "Candi, prasasti, dan benteng adalah jenis peninggalan sejarah. Komputer bukan peninggalan sejarah." },
-            { id: 19, type: "pg_kompleks", text: "Contoh kegiatan Recycle (daur ulang) adalah... (pilih semua yang benar)", options: ["Mengolah sampah plastik menjadi kerajinan", "Membuat pupuk kompos dari sampah organik", "Membuang semua sampah ke sungai", "Mengolah kertas bekas menjadi kertas baru"], answer: [0, 1, 3], hint: "Recycle adalah mengolah kembali sampah menjadi barang yang berguna." },
-            { id: 20, type: "pg_kompleks", text: "Perilaku yang mencerminkan kepedulian terhadap lingkungan adalah... (pilih semua yang benar)", options: ["Menghemat listrik", "Mengggunakan kendaraan umum", "Membakar sampah di halaman rumah", "Mematikan keran air saat tidak digunakan"], answer: [0, 1, 3], hint: "Membakar sampah menimbulkan polusi udara, bukan cara yang tepat menjaga lingkungan." },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "Benar / Salah", text: "Candi Borobudur adalah peninggalan sejarah agama Hindu.", answer: "Salah", hint: "Salah. Candi Borobudur adalah peninggalan sejarah agama Buddha." },
-            { id: 22, type: "bs", text: "Prasasti adalah tulisan kuno yang dipahat pada batu atau logam.", answer: "Benar", hint: "Benar. Prasasti berisi catatan sejarah yang dipahat pada batu atau logam." },
-            { id: 23, type: "bs", text: "Museum berfungsi sebagai tempat menyimpan dan memamerkan benda bersejarah.", answer: "Benar", hint: "Benar. Museum berfungsi menyimpan, merawat, dan memamerkan benda bersejarah." },
-            { id: 24, type: "bs", text: "Mencoret-coret dinding candi termasuk cara melestarikan peninggalan sejarah.", answer: "Salah", hint: "Salah. Mencoret-coret merusak peninggalan sejarah." },
-            { id: 25, type: "bs", text: "Gotong royong membersihkan lingkungan termasuk cara menjaga kelestarian alam.", answer: "Benar", hint: "Benar. Gotong royong membersihkan lingkungan adalah cara menjaga kelestarian alam." },
-            { id: 26, type: "bs", text: "3R singkatan dari Reduce, Reuse, dan Recycle.", answer: "Benar", hint: "Benar. 3R: Reduce (kurangi), Reuse (gunakan kembali), Recycle (daur ulang)." },
-            { id: 27, type: "bs", text: "Membuang sampah ke sungai termasuk menjaga kelestarian alam.", answer: "Salah", hint: "Salah. Membuang sampah ke sungai mencemari lingkungan." },
-            { id: 28, type: "bs", text: "Peninggalan sejarah hanya berupa bangunan candi saja.", answer: "Salah", hint: "Salah. Peninggalan sejarah juga bisa berupa prasasti, naskah kuno, senjata, dan lainnya." },
-            { id: 29, type: "bs", text: "Menanam pohon dapat membantu mengurangi polusi udara.", answer: "Benar", hint: "Benar. Pohon menyerap karbon dioksida dan menghasilkan oksigen." },
-            { id: 30, type: "bs", text: "Penebangan hutan secara liar tidak berdampak pada lingkungan.", answer: "Salah", hint: "Salah. Penebangan hutan liar menyebabkan banjir, longsor, dan kerusakan ekosistem." },
-
-            // ===== ISIAN SINGKAT (No 31-35) =====
-            { id: 31, type: "isian", section: "Isian Singkat", text: "Bangunan peninggalan sejarah kerajaan Hindu yang terkenal di Klaten, Jawa Tengah adalah Candi...", answer: "Prambanan", hint: "Candi Prambanan terletak di Klaten, Jawa Tengah, dan merupakan candi Hindu terbesar di Indonesia." },
-            { id: 32, type: "isian", text: "Prinsip R yang berarti menggunakan kembali barang yang masih bisa dipakai disebut...", answer: "Reuse", hint: "Reuse = menggunakan kembali barang yang masih layak pakai." },
-            { id: 33, type: "isian", text: "Lembaga internasional yang melindungi warisan budaya dunia adalah...", answer: "UNESCO", hint: "UNESCO (United Nations Educational, Scientific and Cultural Organization) melindungi warisan budaya dunia." },
-            { id: 34, type: "isian", text: "Tempat ditemukannya fosil manusia purba di Jawa Tengah adalah...", answer: "Sangiran", hint: "Sangiran di Sragen, Jawa Tengah, adalah situs penemuan fosil manusia purba." },
-            { id: 35, type: "isian", text: "Gas yang dihasilkan oleh pohon dan diperlukan manusia untuk bernapas adalah...", answer: "Oksigen", hint: "Pohon menghasilkan oksigen (O₂) melalui proses fotosintesis." },
-
-            // ===== URAIAN / ESAI (No 36-40) =====
-            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Sebutkan 3 peninggalan sejarah di Indonesia dan jelaskan lokasinya!", answer: "1) Candi Borobudur — Magelang, Jawa Tengah; 2) Candi Prambanan — Klaten, Jawa Tengah; 3) Benteng Vredeburg — Yogyakarta; 4) Museum Nasional — Jakarta", hint: "Sebutkan nama peninggalan dan lokasi daerahnya di Indonesia." },
-            { id: 37, type: "uraian", text: "Jelaskan 3 cara yang dapat kamu lakukan untuk menjaga kelestarian lingkungan di sekitar rumahmu!", answer: "1) Membuang sampah pada tempatnya dan memilah sampah organik/anorganik; 2) Menanam pohon di pekarangan rumah; 3) Menghemat air dan listrik; 4) Tidak membakar sampah sembarangan", hint: "Pikirkan kegiatan sehari-hari yang membantu menjaga lingkungan." },
-            { id: 38, type: "uraian", text: "Jelaskan mengapa peninggalan sejarah harus dijaga dan dilestarikan!", answer: "Peninggalan sejarah harus dijaga karena: 1) Merupakan bukti sejarah dan identitas bangsa; 2) Sarana edukasi bagi generasi mendatang; 3) Menarik wisatawan dan mendukung ekonomi; 4) Menumbuhkan rasa bangga dan cinta tanah air", hint: "Pikirkan nilai-nilai penting dari peninggalan sejarah bagi bangsa." },
-            { id: 39, type: "uraian", text: "Jelaskan prinsip 3R (Reduce, Reuse, Recycle) dan berikan contoh masing-masing!", answer: "Reduce: mengurangi penggunaan plastik, membawa tas belanja sendiri. Reuse: menggunakan kembali botol minum, menggunakan kertas bekas untuk coret-coretan. Recycle: mengolah plastik bekas menjadi kerajinan, membuat kompos dari sampah organik.", hint: "Jelaskan pengertian dan berikan contoh konkret untuk setiap R." },
-            { id: 40, type: "uraian", text: "Apa yang akan terjadi jika masyarakat tidak peduli terhadap kelestarian alam? Jelaskan minimal 3 dampaknya!", answer: "1) Terjadi pencemaran udara, air, dan tanah; 2) Bencana alam seperti banjir dan tanah longsor meningkat; 3) Banyak hewan dan tumbuhan yang punah; 4) Sumber air bersih semakin berkurang; 5) Kualitas hidup manusia menurun", hint: "Pikirkan dampak-dampak negatif dari kerusakan lingkungan." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Masalah Sosial & Teknologi)',
+                text: 'Mengapa kita harus senantiasa menjaga kebersihan dan kelestarian lingkungan di sekitar tempat tinggal kita?',
+                options: ['Agar dinilai kaya oleh tetangga', 'Mencegah timbulnya berbagai penyakit dan bencana banjir', 'Supaya rumah cepat rusak dan bisa dibangun baru', 'Agar lahan pemukiman menjadi sempit'],
+                answer: 1,
+                hint: 'Menjaga kebersihan mencegah sarang kuman penyakit dan menjaga kelancaran saluran air untuk menghindari banjir.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Keadaan atau fenomena di masyarakat yang tidak sesuai dengan nilai-nilai sosial dan mengganggu kenyamanan hidup bersama disebut...',
+                options: ['Solusi Sosial', 'Kerukunan Sosial', 'Masalah Sosial', 'Prestasi Sosial'],
+                answer: 2,
+                hint: 'Masalah sosial adalah kondisi negatif di masyarakat yang membutuhkan penanganan bersama.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Berikut ini yang merupakan contoh masalah sosial yang sering kita jumpai di wilayah perkotaan padat penduduk adalah...',
+                options: ['Udara pegunungan yang sejuk', 'Kemacetan lalu lintas dan sampah yang menumpuk', 'Sungai yang jernih dan banyak ikan', 'Masyarakat yang saling tolong-menolong'],
+                answer: 1,
+                hint: 'Kemacetan dan penumpukan sampah adalah masalah sosial perkotaan akibat populasi padat dan kurangnya kesadaran.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Penggunaan gawai (gadget) yang berlebihan pada anak-anak dapat menimbulkan kecanduan buruk, salah satu dampaknya adalah...',
+                options: ['Konsentrasi belajar meningkat tajam', 'Tubuh menjadi semakin bugar dan sehat', 'Menjadi malas bersosialisasi dan malas belajar', 'Hubungan dengan keluarga menjadi sangat erat'],
+                answer: 2,
+                hint: 'Kecanduan gawai membuat anak menjauh dari lingkungan nyata (antisosial) dan menurunkan minat belajar.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Alat komunikasi cetak yang diterbitkan setiap hari secara berkala untuk memuat berita-berita hangat terhangat disebut...',
+                options: ['Koran (Surat Kabar)', 'Radio', 'Televisi', 'Telepon Rumah'],
+                answer: 0,
+                hint: 'Koran adalah media informasi cetak berkala.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Dalam Islam, sebelum mempercayai atau menyebarkan suatu berita yang kita terima dari media sosial, kita wajib melakukan...',
+                options: ['Ghibah (menggunjing)', 'Tabayyun (mencari kejelasan fakta)', 'Fitnah (tuduhan palsu)', 'Taqlid (ikut-ikutan tanpa tahu)'],
+                answer: 1,
+                hint: 'Tabayyun adalah meneliti kebenaran suatu berita agar tidak merugikan orang lain akibat kabar bohong.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Sikap bermedia sosial yang bertentangan dengan ajaran Islam dan kesusilaan adalah...',
+                options: ['Menyebarkan ajakan gotong royong warga', 'Mengunggah konten pembelajaran yang bermanfaat', 'Menulis komentar kasar dan menyebarkan berita bohong (hoax)', 'Mengucapkan terima kasih atas informasi yang diberikan'],
+                answer: 2,
+                hint: 'Menulis komentar kasar dan menyebarkan kebohongan dilarang dalam agama.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Di bawah ini yang termasuk alat komunikasi elektronik satu arah yang menyajikan suara saja adalah...',
+                options: ['Handphone', 'Radio', 'Televisi', 'Laptop'],
+                answer: 1,
+                hint: 'Radio adalah media elektronik pemancar suara (audio) satu arah.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Salah satu adab penting dalam bermedia sosial agar aman dari kejahatan siber (cyber crime) adalah...',
+                options: ['Membagikan lokasi rumah dan PIN ATM di status', 'Menggunakan kata sandi yang kuat dan tidak membagikan informasi pribadi', 'Menceritakan seluruh rahasia keluarga di video live', 'Menerima semua permintaan pertemanan dari orang asing'],
+                answer: 1,
+                hint: 'Menjaga kerahasiaan kata sandi dan data pribadi adalah langkah pencegahan kejahatan internet.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Ketika melihat sampah menyumbat selokan di depan rumah kita, tindakan terpuji yang sebaiknya segera dilakukan adalah...',
+                options: ['Membiarkannya hingga terbawa banjir sendiri', 'Mengambil sampah tersebut dan membuangnya ke tempat sampah', 'Menyalahkan pemerintah karena tidak membersihkannya', 'Menimbunnya dengan tanah'],
+                answer: 1,
+                hint: 'Tindakan cepat memungut sampah adalah cerminan kepedulian lingkungan.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: 'Manakah di bawah ini yang merupakan dampak negatif dari tidak tertatanya sampah di lingkungan masyarakat? (pilih semua yang benar)',
+                options: ['Menimbulkan bau tidak sedap di sekitar pemukiman', 'Menjadi sarang nyamuk penular demam berdarah', 'Menyebabkan penyumbatan saluran air dan banjir saat hujan', 'Meningkatkan kesuburan tanah pemukiman secara alami'],
+                answer: [0, 1, 2],
+                hint: 'Sampah anorganik tidak menyuburkan tanah, melainkan mencemari tanah.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Tindakan apa saja yang dapat membantu mengurangi kemacetan lalu lintas di perkotaan? (pilih semua yang benar)',
+                options: ['Menggunakan transportasi umum seperti busway atau kereta', 'Bersepeda atau berjalan kaki untuk jarak dekat', 'Seluruh warga menggunakan mobil pribadi masing-masing', 'Bekerja sama mengatur tertib lalu lintas'],
+                answer: [0, 1, 3],
+                hint: 'Semua menggunakan kendaraan pribadi justru memperparah kemacetan.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah nilai-nilai Islam dalam adab bermedia sosial yang harus dipatuhi sesuai Al-Qur\'an? (pilih semua yang benar)',
+                options: ['Larangan menyebarkan fitnah dan gosip (namimah/ghibah)', 'Perintah berkata jujur dan lemah lembut (qaulan sadida)', 'Menganjurkan saling mencela jika berbeda pendapat', 'Kewajiban bertabayyun atas berita meragukan'],
+                answer: [0, 1, 3],
+                hint: 'Saling mencela dilarang keras dalam Islam.',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Manakah sarana teknologi informasi modern yang banyak digunakan masyarakat saat ini untuk mencari berita secara cepat? (pilih semua yang benar)',
+                options: ['Portal berita internet', 'Aplikasi media sosial', 'Telegraf kuno', 'Televisi digital'],
+                answer: [0, 1, 3],
+                hint: 'Telegraf kuno sudah tidak umum digunakan masyarakat modern.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Di bawah ini yang merupakan ciri-ciri dari berita palsu atau hoax di internet adalah... (pilih semua yang benar)',
+                options: ['Menggunakan judul yang sangat heboh dan memicu kemarahan', 'Tidak mencantumkan sumber berita atau nama penulis yang jelas', 'Meminta pembaca untuk membagikan (share) pesan secara berantai', 'Menyajikan data riset resmi dari lembaga tepercaya'],
+                answer: [0, 1, 2],
+                hint: 'Data resmi dari lembaga tepercaya adalah ciri berita fakta, bukan hoax.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Dampak positif dari perkembangan teknologi komunikasi dan internet bagi dunia pendidikan adalah... (pilih semua yang benar)',
+                options: ['Memudahkan siswa mencari referensi materi belajar tambahan', 'Memungkinkan pelaksanaan pembelajaran jarak jauh (online)', 'Membuat siswa malas membaca buku fisik sama sekali', 'Menyediakan aplikasi perpustakaan digital gratis'],
+                answer: [0, 1, 3],
+                hint: 'Malas membaca buku adalah dampak negatif.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Bahaya fisik apa saja yang dapat ditimbulkan jika kita menggunakan laptop atau handphone dalam durasi terlalu lama tanpa istirahat? (pilih semua yang benar)',
+                options: ['Mata lelah, kering, dan penglihatan kabur', 'Nyeri pada bagian leher dan punggung akibat posisi membungkuk', 'Kebugaran fisik meningkat pesat', 'Gangguan pola tidur akibat radiasi layar gawai'],
+                answer: [0, 1, 3],
+                hint: 'Penggunaan gawai berlebih justru menurunkan kebugaran fisik.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Bagaimana cara bijak orang tua membimbing anak dalam menggunakan internet di rumah? (pilih semua yang benar)',
+                options: ['Membatasi durasi waktu bermain gawai (screen time)', 'Mendampingi anak saat berselancar di internet', 'Membebaskan anak mengakses situs apa saja tanpa pengawasan', 'Mengaktifkan fitur perlindungan anak (parental control) di aplikasi'],
+                answer: [0, 1, 3],
+                hint: 'Membebaskan akses tanpa pengawasan membahayakan keselamatan digital anak.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Berikut yang merupakan contoh perilaku perundungan dunia maya (cyberbullying) yang wajib kita hindari adalah... (pilih semua yang benar)',
+                options: ['Mengirim pesan ancaman atau makian ke akun orang lain', 'Meninggalkan komentar ejekan pada foto teman', 'Mengunggah foto aib teman tanpa izin untuk bahan lelucon', 'Mengirimkan ucapan selamat ulang tahun yang sopan'],
+                answer: [0, 1, 2],
+                hint: 'Ucapan selamat yang sopan adalah perilaku baik.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Dalam menjaga keamanan lingkungan pemukiman, teknologi apa saja yang dapat membantu tugas Satpam/warga? (pilih semua yang benar)',
+                options: ['Pemasangan kamera pemantau (CCTV) di titik rawan', 'Aplikasi grup pesan cepat warga untuk pelaporan darurat', 'Pemasangan sirene alarm otomatis di pos keamanan', 'Penggunaan kentongan bambu tradisional saja tanpa alat lain'],
+                answer: [0, 1, 2],
+                hint: 'CCTV, grup chat, dan alarm adalah bentuk bantuan teknologi modern untuk keamanan.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Sarana Komunikasi)',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Media cetak harian berisi berita tertulis dan iklan</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Koran',
+                hint: 'Koran adalah media cetak berita.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Gawai nirkabel genggam untuk telepon, berkirim pesan, dan akses internet</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Handphone',
+                hint: 'Handphone adalah telepon genggam/gawai cerdas.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Media elektronik audio-visual yang menayangkan gambar bergerak dan suara</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Televisi',
+                hint: 'Televisi menampilkan siaran audio-visual.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Media elektronik audio yang menyiarkan suara musik dan berita radio</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Radio',
+                hint: 'Radio memancarkan suara/audio.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Jaringan komputer global penghubung informasi di seluruh penjuru dunia</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Internet',
+                hint: 'Internet menghubungkan jaringan global dunia.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Benar/Salah & Singkatan)',
+                text: 'Tentukan Benar atau Salah: \'Menyebarkan berita fitnah tentang orang lain di sosial media diperbolehkan asal tujuannya bercanda.\'',
+                answer: 'Salah',
+                hint: 'Fitnah dan ghibah dilarang keras dalam Islam, baik bercanda maupun serius.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Membuang sampah plastik ke dalam selokan dapat menyebabkan saluran air mampet dan memicu banjir.\'',
+                answer: 'Benar',
+                hint: 'Plastik tidak terurai cepat dan menyumbat saluran drainase air.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Internet sehat adalah cara menggunakan internet secara aman tanpa melanggar hukum dan norma sosial.\'',
+                answer: 'Benar',
+                hint: 'Internet sehat bertujuan menjaga keselamatan pengguna secara etika dan hukum.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Gawai boleh digunakan sebelum tidur dalam keadaan lampu kamar dimatikan total.\'',
+                answer: 'Salah',
+                hint: 'Radiasi cahaya biru gawai di kamar gelap merusak kesehatan mata dan mengganggu siklus tidur.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Kemacetan lalu lintas hanya disebabkan oleh sedikitnya jumlah mobil pribadi di jalan raya.\'',
+                answer: 'Salah',
+                hint: 'Kemacetan disebabkan terlalu banyak kendaraan pribadi dan pelanggaran lalu lintas.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Istilah pencarian kejelasan kebenaran suatu informasi/berita dalam Islam disebut...',
+                answer: 'Tabayyun',
+                hint: 'Tabayyun adalah meneliti kebenaran berita sebelum memercayainya.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Perilaku merundung atau mengejek orang lain melalui media elektronik internet disebut...',
+                answer: 'Cyberbullying',
+                hint: 'Cyberbullying adalah perundungan dunia maya.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Kondisi jalan raya yang dipenuhi antrean kendaraan melebihi kapasitas jalan disebut...',
+                answer: 'Kemacetan',
+                hint: 'Kemacetan lalu lintas.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Informasi bohong yang sengaja disebarkan untuk menipu pembaca di internet diistilahkan...',
+                answer: 'Hoax',
+                hint: 'Hoax adalah berita palsu.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Teknologi pemetaan satelit di handphone yang membantu menentukan arah jalan agar terhindar dari salah jalan adalah...',
+                answer: 'GPS',
+                hint: 'GPS (Global Positioning System) digunakan untuk navigasi arah jalan.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Sebutkan 3 cara praktis yang dapat kita lakukan bersama keluarga untuk menjaga kebersihan lingkungan rumah!',
+                answer: '1) Menyapu halaman rumah setiap hari dan mengepel lantai kamar. 2) Membuang sampah dapur ke tempat sampah luar dan memilah sampah basah/kering. 3) Menguras bak mandi secara teratur agar bebas dari jentik nyamuk. 4) Melakukan kerja bakti membersihkan selokan di depan rumah.',
+                hint: 'Pikirkan kegiatan pemeliharaan kebersihan di rumah dan sekitarnya.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Bagaimana cara kita menjaga keamanan rumah agar terhindar dari ancaman pencurian ketika hendak bepergian?',
+                answer: '1) Mengunci rapat semua pintu, jendela, dan pagar rumah. 2) Menyalakan lampu teras secukupnya agar rumah tidak tampak sepi di malam hari. 3) Melaporkan kepada Ketua RT atau menitipkan pesan kepada tetangga terdekat bahwa kita sedang bepergian. 4) Tidak meninggalkan barang berharga di tempat yang mudah terlihat.',
+                hint: 'Pikirkan tentang keamanan fisik pintu/pagar, pencahayaan, dan koordinasi dengan tetangga.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan mengapa kemacetan lalu lintas merupakan masalah sosial dan sebutkan 2 solusinya!',
+                answer: 'Kemacetan adalah masalah sosial karena merugikan banyak orang, membuang waktu produktif, meningkatkan polusi udara, dan memicu tingkat stres pengendara. Solusinya: 1) Beralih menggunakan sarana transportasi umum (busway, kereta). 2) Menggunakan sistem pembatasan ganjil-genap kendaraan.',
+                hint: 'Jelaskan dampak kerugian kemacetan bagi masyarakat dan cara mengatasinya.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Sebutkan 3 dampak positif dan 3 dampak negatif dari perkembangan teknologi informasi dan komunikasi saat ini!',
+                answer: 'Dampak Positif: 1) Mempercepat pertukaran informasi secara global, 2) Mempermudah proses belajar online, 3) Mempermudah komunikasi jarak jauh. Dampak Negatif: 1) Meningkatkan kecanduan gawai, 2) Mempermudah penyebaran berita palsu (hoax), 3) Mengurangi interaksi sosial secara tatap muka (langsung).',
+                hint: 'Tuliskan 3 hal baik dan 3 hal buruk dari kemajuan teknologi.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan manfaat keberadaan alat komunikasi dan sarana penyebaran informasi bagi kehidupan manusia modern!',
+                answer: 'Manfaatnya adalah membuat kehidupan menjadi lebih efisien karena kita dapat berkomunikasi secara instan tanpa terhalang jarak, mengakses ilmu pengetahuan terbaru dengan mudah, mendukung kegiatan ekonomi (jual beli online), serta membantu penyebaran informasi darurat (bencana alam) secara cepat.',
+                hint: 'Pikirkan kegunaannya dalam komunikasi jarak jauh, pendidikan, bisnis, dan kedaruratan.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -405,6 +683,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
                 else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -420,6 +699,7 @@
                 if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';

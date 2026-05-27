@@ -376,6 +376,23 @@
                 padding: 15px;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -384,7 +401,7 @@
         <div class="header">
             <h1>📖 Bahasa Indonesia</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -402,55 +419,316 @@
     </div>
     <script>
         const questions = [
-            // ===== PILIHAN GANDA (No 1-10) =====
-            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Penulisan yang benar untuk nilai uang lima puluh ribu rupiah adalah...", options: ["Rp. 50.000,-", "Rp50.000,00", "Rp 50.000", "RP. 50000"], answer: 1, hint: "Penulisan nilai uang yang benar menurut EYD: Rp50.000,00 (tanpa spasi dan titik setelah Rp)." },
-            { id: 2, type: "pg", text: "Kalimat berikut yang merupakan kalimat perintah adalah...", options: ["Apakah kamu sudah menabung?", "Aku suka menabung di celengan.", "Tolong simpan uang receh ini ke dalam celengan!", "Menabung adalah kebiasaan yang baik."], answer: 2, hint: "Kalimat perintah biasanya menggunakan kata 'tolong', 'silakan', atau diakhiri tanda seru (!)." },
-            { id: 3, type: "pg", text: "Ciri-ciri teks prosedur adalah...", options: ["Berisi opini dan pendapat penulis", "Berisi langkah-langkah yang harus dilakukan secara berurutan", "Berisi cerita imajinatif dengan tokoh fiksi", "Berisi lirik lagu yang berirama"], answer: 1, hint: "Teks prosedur berisi petunjuk atau langkah-langkah yang harus dilakukan secara berurutan." },
-            { id: 4, type: "pg", text: "Agar puisi menjadi menarik, seorang penulis harus memperhatikan...", options: ["Jumlah halaman yang banyak", "Diksi (pilihan kata) yang tepat dan imajinatif", "Penggunaan bahasa asing sebanyak mungkin", "Menulis dalam bentuk paragraf panjang"], answer: 1, hint: "Diksi (pilihan kata) yang tepat dan imajinatif membuat puisi menjadi menarik dan bermakna." },
-            { id: 5, type: "pg", text: 'Perhatikan penggalan puisi berikut:<div class="reading-box">Alam Indonesia<br>Indahnya negeriku<br>Gunung menjulang tinggi<br>Laut membentang _____<br>Sawah menghijau padi</div>Kata yang tepat untuk melengkapi puisi tersebut adalah...', options: ["sempit", "luas", "kecil", "pendek"], answer: 1, hint: "Kata 'luas' sesuai konteks puisi yang menggambarkan bentang alam Indonesia." },
-            { id: 6, type: "pg", text: "Contoh kalimat perintah yang sopan adalah...", options: ["Kerjakan PR-mu sekarang juga!", "Pergi sana! Jangan ganggu!", "Tolong ambilkan buku di atas meja, ya!", "Diam kamu!"], answer: 2, hint: "Kalimat perintah yang sopan menggunakan kata 'tolong' dan disampaikan dengan santun." },
-            { id: 7, type: "pg", text: "Tujuan kalimat efektif adalah...", options: ["Membuat kalimat sepanjang mungkin", "Menyampaikan pesan secara jelas dan mudah dipahami", "Menggunakan kata-kata yang sulit dimengerti", "Membuat pembaca bingung"], answer: 1, hint: "Kalimat efektif bertujuan menyampaikan pesan secara jelas, singkat, dan mudah dipahami." },
-            { id: 8, type: "pg", text: 'Contoh kalimat efektif di bawah ini adalah...', options: ["Para murid-murid sedang belajar di kelas.", "Murid-murid sedang belajar di kelas.", "Para semua murid sedang belajar di kelas.", "Murid yang banyak sedang belajar di kelas."], answer: 1, hint: "'Murid-murid sedang belajar di kelas' adalah kalimat efektif karena tidak ada kata yang mubazir." },
-            { id: 9, type: "pg", text: 'Perhatikan kalimat berikut: "Saya makan nasi yang dimasak yang dimakan bersama keluarga." Kalimat efektif yang tepat adalah...', options: ["Saya makan nasi bersama keluarga.", "Saya yang makan nasi yang dimasak keluarga.", "Nasi yang dimakan saya yang bersama keluarga.", "Saya nasi makan bersama keluarga."], answer: 0, hint: "Kalimat efektif menghilangkan kata-kata yang berlebihan dan mubazir." },
-            { id: 10, type: "pg", text: 'Perhatikan puisi berikut:<div class="reading-box">Ibuku Tercinta<br>Engkau matahari yang menerangi hidupku<br>Tak pernah lelah memberikan kasih sayang<br>Senyummu bagai bunga yang selalu mekar<br>Di hatiku selamanya</div>Isi puisi di atas adalah tentang...', options: ["Keindahan matahari", "Kasih sayang seorang ibu", "Bunga yang bermekaran", "Kehidupan di taman"], answer: 1, hint: "Puisi tersebut menggambarkan kasih sayang seorang ibu yang tak pernah lelah." },
-
-            // ===== PG KOMPLEKS (No 11-20) =====
-            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Gunung Bromo terletak di Jawa Timur. Gunung ini terkenal dengan pemandangan matahari terbitnya yang indah. Banyak wisatawan datang ke Gunung Bromo untuk menikmati keindahan alamnya. Di sekitar Gunung Bromo terdapat lautan pasir yang sangat luas.</div>Berdasarkan teks di atas, pernyataan yang benar adalah... (pilih semua yang benar)', options: ["Gunung Bromo terletak di Jawa Timur", "Gunung Bromo terkenal dengan matahari terbenamnya", "Di sekitar Gunung Bromo terdapat lautan pasir", "Banyak wisatawan datang ke Gunung Bromo"], answer: [0, 2, 3], hint: "Gunung Bromo terkenal dengan matahari terBIT, bukan terbenam." },
-            { id: 12, type: "pg_kompleks", text: 'Pernyataan yang benar tentang teks prosedur adalah... (pilih semua yang benar)', options: ["Memiliki langkah-langkah yang berurutan", "Menggunakan kalimat perintah", "Berisi cerita fiksi", "Biasanya dilengkapi dengan bahan/alat yang diperlukan"], answer: [0, 1, 3], hint: "Teks prosedur memiliki langkah berurutan, menggunakan kalimat perintah, dan dilengkapi daftar alat/bahan." },
-            { id: 13, type: "pg_kompleks", text: 'Ciri-ciri kalimat efektif adalah... (pilih semua yang benar)', options: ["Tidak menggunakan kata yang mubazir", "Mudah dipahami pembaca", "Menggunakan kata-kata yang bertele-tele", "Struktur kalimatnya baku"], answer: [0, 1, 3], hint: "Kalimat efektif: tidak mubazir, mudah dipahami, dan strukturnya baku." },
-            { id: 14, type: "pg_kompleks", text: 'Unsur-unsur yang harus ada dalam puisi adalah... (pilih semua yang benar)', options: ["Diksi (pilihan kata)", "Rima (persajakan)", "Daftar pustaka", "Irama"], answer: [0, 1, 3], hint: "Puisi memiliki unsur: diksi, rima, irama, tema, dan amanat. Daftar pustaka bukan unsur puisi." },
-            { id: 15, type: "pg_kompleks", text: 'Perhatikan teks berikut:<div class="reading-box">Candi Borobudur merupakan candi Buddha terbesar di dunia. Candi ini terletak di Magelang, Jawa Tengah. Candi Borobudur dibangun pada abad ke-8 oleh Dinasti Syailendra. Candi ini memiliki 2.672 panel relief dan 504 arca Buddha.</div>Informasi yang terdapat dalam teks tersebut adalah... (pilih semua yang benar)', options: ["Candi Borobudur adalah candi Hindu terbesar", "Candi terletak di Magelang, Jawa Tengah", "Dibangun pada abad ke-8", "Memiliki 504 arca Buddha"], answer: [1, 2, 3], hint: "Candi Borobudur adalah candi Buddha (bukan Hindu) terbesar di dunia." },
-            { id: 16, type: "pg_kompleks", text: 'Perhatikan infografis berikut:<div class="infographic-box"><h4>💰 Tips Menabung untuk Pelajar</h4><ul><li>Sisihkan uang jajan setiap hari</li><li>Gunakan celengan atau tabungan bank</li><li>Catat pengeluaran harianmu</li><li>Tentukan target menabung</li><li>Hindari membeli barang yang tidak perlu</li></ul></div>Berdasarkan infografis di atas, tips menabung yang tepat adalah... (pilih semua yang benar)', options: ["Sisihkan uang jajan setiap hari", "Habiskan semua uang jajan untuk jajan", "Catat pengeluaran harianmu", "Tentukan target menabung"], answer: [0, 2, 3], hint: "Menghabiskan semua uang jajan bukan tips menabung yang tepat." },
-            { id: 17, type: "pg_kompleks", text: 'Berdasarkan infografis tips menabung sebelumnya, manfaat menabung bagi pelajar adalah... (pilih semua yang benar)', options: ["Memiliki uang cadangan untuk kebutuhan mendadak", "Belajar mengatur keuangan sejak dini", "Bisa membeli semua mainan yang diinginkan tanpa batas", "Memiliki kebiasaan hidup hemat"], answer: [0, 1, 3], hint: "Menabung bukan berarti bisa membeli semua yang diinginkan tanpa batas." },
-            { id: 18, type: "pg_kompleks", text: 'Langkah-langkah yang benar dalam membuat teks prosedur adalah... (pilih semua yang benar)', options: ["Menentukan tujuan prosedur", "Menyusun langkah secara berurutan", "Menulis langkah secara acak", "Menyiapkan daftar alat dan bahan"], answer: [0, 1, 3], hint: "Langkah teks prosedur harus berurutan, bukan acak." },
-            { id: 19, type: "pg_kompleks", text: 'Perhatikan infografis tips menabung sebelumnya. Pernyataan yang sesuai dengan isi infografis adalah... (pilih semua yang benar)', options: ["Menggunakan celengan atau tabungan bank", "Menghindari membeli barang tidak perlu", "Tidak perlu mencatat pengeluaran", "Menentukan target menabung"], answer: [0, 1, 3], hint: "Infografis menyarankan untuk mencatat pengeluaran, bukan mengabaikannya." },
-            { id: 20, type: "pg_kompleks", text: 'Jenis-jenis majas metafora yang benar adalah... (pilih semua yang benar)', options: ["Raja siang = matahari", "Buah hati = anak", "Si jago merah = api", "Kuda besi = mobil"], answer: [0, 1, 2], hint: "Kuda besi biasanya merujuk pada sepeda/sepeda motor, bukan mobil. Raja siang = matahari, buah hati = anak, si jago merah = api." },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "Benar / Salah", text: 'Berdasarkan infografis tips menabung: "Sisihkan uang jajan setiap hari" adalah salah satu tips menabung yang baik.', answer: "Benar", hint: "Benar. Menyisihkan uang jajan setiap hari adalah tips menabung yang baik." },
-            { id: 22, type: "bs", text: 'Berdasarkan infografis tips menabung: "Tidak perlu mencatat pengeluaran harian."', answer: "Salah", hint: "Salah. Infografis menyarankan untuk mencatat pengeluaran harian." },
-            { id: 23, type: "bs", text: 'Berdasarkan infografis tips menabung: "Menggunakan celengan atau tabungan bank adalah cara menabung yang tepat."', answer: "Benar", hint: "Benar. Celengan dan tabungan bank adalah cara yang disarankan." },
-            { id: 24, type: "bs", text: 'Berdasarkan infografis tips menabung: "Membeli semua barang yang diinginkan adalah tips menabung yang baik."', answer: "Salah", hint: "Salah. Infografis menyarankan menghindari membeli barang yang tidak perlu." },
-            { id: 25, type: "bs", text: 'Berdasarkan infografis tips menabung: "Menentukan target menabung membantu kita lebih termotivasi."', answer: "Benar", hint: "Benar. Target menabung membuat kita lebih termotivasi." },
-            { id: 26, type: "bs", text: "Kalimat perintah selalu diakhiri dengan tanda tanya (?).", answer: "Salah", hint: "Salah. Kalimat perintah diakhiri dengan tanda seru (!)." },
-            { id: 27, type: "bs", text: 'Majas metafora "Raja siang" memiliki arti matahari.', answer: "Benar", hint: "Benar. Raja siang adalah majas metafora untuk matahari." },
-            { id: 28, type: "bs", text: "Puisi harus ditulis dalam bentuk paragraf yang panjang.", answer: "Salah", hint: "Salah. Puisi ditulis dalam bentuk bait dan larik, bukan paragraf panjang." },
-            { id: 29, type: "bs", text: 'Majas metafora "Buah hati" memiliki arti anak.', answer: "Benar", hint: 'Benar. "Buah hati" adalah majas metafora yang berarti anak.' },
-            { id: 30, type: "bs", text: "Teks prosedur tidak memerlukan urutan langkah-langkah.", answer: "Salah", hint: "Salah. Teks prosedur harus memiliki langkah-langkah yang berurutan." },
-
-            // ===== ISIAN SINGKAT (No 31-35) =====
-            { id: 31, type: "isian", section: "Isian Singkat", text: "Pesan moral atau pelajaran yang terkandung dalam sebuah cerita disebut...", answer: "Amanat", hint: "Amanat adalah pesan moral yang ingin disampaikan penulis kepada pembaca." },
-            { id: 32, type: "isian", text: "Mata uang resmi negara Indonesia adalah...", answer: "Rupiah", hint: "Rupiah adalah mata uang resmi Republik Indonesia." },
-            { id: 33, type: "isian", text: "Teks yang berisi langkah-langkah cara membuat atau melakukan sesuatu disebut teks...", answer: "Prosedur", hint: "Teks prosedur berisi petunjuk atau langkah-langkah melakukan sesuatu." },
-            { id: 34, type: "isian", text: "Pemilihan kata yang tepat dalam puisi agar puisi terdengar indah dan bermakna disebut...", answer: "Diksi", hint: "Diksi adalah pilihan kata yang digunakan dalam puisi atau karya sastra." },
-            { id: 35, type: "isian", text: "Bunyi yang berulang dalam puisi yang terletak di akhir baris disebut...", answer: "Rima", hint: "Rima (persajakan) adalah bunyi yang berulang di akhir baris puisi." },
-
-            // ===== URAIAN / ESAI (No 36-40) =====
-            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Buatlah 2 contoh kalimat efektif dan 2 contoh kalimat tidak efektif sebagai perbandingan!", answer: "Efektif: 1) Murid-murid sedang belajar di kelas. 2) Ibu memasak nasi goreng. Tidak efektif: 1) Para murid-murid sedang belajar di kelas. 2) Ibu sedang memasak masakan nasi goreng.", hint: "Kalimat tidak efektif biasanya memiliki kata mubazir atau berlebihan." },
-            { id: 37, type: "uraian", text: 'Sebutkan 5 contoh majas metafora beserta artinya!', answer: "1) Raja siang = matahari, 2) Buah hati = anak, 3) Si jago merah = api, 4) Kambing hitam = orang yang dipersalahkan, 5) Tulang punggung = penopang utama", hint: "Majas metafora menggunakan perbandingan langsung tanpa kata 'seperti' atau 'bagai'." },
-            { id: 38, type: "uraian", text: "Jelaskan pengertian kalimat perintah dan fungsinya dalam teks prosedur!", answer: "Kalimat perintah adalah kalimat yang berisi perintah atau instruksi kepada seseorang untuk melakukan sesuatu. Dalam teks prosedur, kalimat perintah berfungsi untuk memberikan instruksi langkah demi langkah yang harus diikuti oleh pembaca.", hint: "Jelaskan pengertian dan hubungannya dengan teks prosedur." },
-            { id: 39, type: "uraian", text: "Jelaskan apa yang dimaksud dengan latar dalam sebuah cerita!", answer: "Latar adalah keterangan tentang tempat, waktu, dan suasana terjadinya peristiwa dalam cerita. Latar tempat menunjukkan di mana peristiwa terjadi, latar waktu menunjukkan kapan peristiwa terjadi, dan latar suasana menunjukkan keadaan yang melingkupi peristiwa.", hint: "Latar cerita terdiri dari latar tempat, waktu, dan suasana." },
-            { id: 40, type: "uraian", text: "Jelaskan apa yang dimaksud dengan puisi dan sebutkan 3 unsur-unsurnya!", answer: "Puisi adalah karya sastra yang menggunakan kata-kata indah dan bermakna yang disusun dalam bait dan larik. Unsur-unsur puisi: 1) Diksi (pilihan kata), 2) Rima (persajakan), 3) Irama (ritme), 4) Tema, 5) Amanat, 6) Imaji.", hint: "Jelaskan pengertian puisi dan unsur-unsur intrinsiknya." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Tata Bahasa & Menulis Cerita)',
+                text: "Lengkapi kalimat rumpang berikut dengan kata hubung antarkalimat yang tepat: <br>'Cuaca di luar sangat terik. ... , adik tetap bermain layang-layang di lapangan.'",
+                options: ['Namun', 'Malah', 'Sehingga', 'Akibatnya'],
+                answer: 0,
+                hint: 'Kata hubung \'Namun\' digunakan untuk menghubungkan dua kalimat yang memiliki hubungan pertentangan.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Sebelum mulai menulis sebuah cerita utuh, langkah awal penting yang harus dipersiapkan penulis agar cerita runtut adalah...',
+                options: ['Membeli buku baru yang tebal', 'Membuat kerangka karangan (outline)', 'Menggambar sampul buku cerita', 'Mempublikasikan judul cerita di koran'],
+                answer: 1,
+                hint: 'Kerangka karangan berfungsi membimbing alur penulisan agar isi cerita sistematis dan terstruktur.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Kata hubung antarkalimat \'namun\' memiliki fungsi utama untuk menyatakan...',
+                options: ['Penambahan informasi baru', 'Sebab dan akibat kejadian', 'Pertentangan atau kebalikan dari kalimat sebelumnya', 'Urutan waktu kejadian'],
+                answer: 2,
+                hint: '\'Namun\' setara dengan kata \'akan tetapi\', yang menghubungkan gagasan bertolak belakang.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Langkah menyusun kerangka karangan dilakukan pada tahap...',
+                options: ['Sebelum menulis cerita', 'Sesudah mencetak cerita', 'Saat membacakan cerita di panggung', 'Setelah cerita selesai dinilai guru'],
+                answer: 0,
+                hint: 'Kerangka karangan dirancang di awal sebagai persiapan pra-menulis.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Penyajian informasi menggunakan kombinasi gambar ilustrasi dan teks ringkas disebut infografis. Mengapa infografis sangat mudah dipahami pembaca?',
+                options: ['Karena memiliki lembar halaman yang sangat banyak', 'Karena memadukan visual menarik dengan poin-poin penjelasan singkat', 'Karena tidak memuat teks informasi sama sekali', 'Karena menggunakan bahasa asing yang sulit dimengerti'],
+                answer: 1,
+                hint: 'Visualisasi grafis membantu otak memproses informasi lebih cepat daripada sekadar tulisan panjang.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Di bawah ini yang merupakan contoh kalimat berisi fakta (kejadian nyata yang dapat dibuktikan kebenarannya) adalah...',
+                options: ['Makanan khas rendang rasanya sangat enak bagi semua orang', 'Ibu kota Provinsi Jawa Barat terletak di Kota Bandung', 'Kota Jakarta mungkin akan diguyur hujan deras nanti malam', 'Gunung Semeru tampak sangat indah jika dilihat dari jauh'],
+                answer: 1,
+                hint: 'Letak ibu kota Jawa Barat di Bandung adalah fakta geografis mutlak. Poin lain mengandung unsur opini/perkiraan.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Di bawah ini yang tergolong kalimat opini (berupa pendapat atau tanggapan seseorang yang kebenarannya relatif) adalah...',
+                options: ['Presiden pertama Republik Indonesia adalah Ir. Soekarno', 'Bahasa resmi negara kita adalah bahasa Indonesia', 'Belajar bahasa Arab terasa lebih mudah daripada matematika', 'Candi Borobudur terletak di wilayah Provinsi Jawa Tengah'],
+                answer: 2,
+                hint: 'Mudah tidaknya suatu pelajaran bersifat subjektif (berbeda bagi tiap orang), sehingga termasuk kalimat opini.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: "Perhatikan teks berikut:<div class=\"reading-box\">Kancil sedang berjalan di pinggir hutan mencari makanan. Tiba-tiba ia melihat pohon mentimun yang berbuah lebat di seberang sungai. Namun, aliran sungai sangat deras dan dihuni banyak buaya lapar. Kancil pun memutar otak agar bisa menyeberang dengan aman.</div>Tokoh utama pada cuplikan teks cerita di atas adalah...",
+                options: ['Buaya', 'Petani', 'Kancil', 'Mentimun'],
+                answer: 2,
+                hint: 'Teks bercerita tentang aktivitas dan pemikiran Kancil sebagai fokus utama alur.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Berdasarkan teks bacaan Kancil di atas, apa masalah yang dihadapi oleh tokoh utama?',
+                options: ['Kancil tersesat di dalam hutan gelap', 'Mentimun yang dicarinya sudah busuk semua', 'Aliran sungai deras dan dijaga buaya sehingga ia sulit menyeberang', 'Kancil dikejar oleh harimau lapar'],
+                answer: 2,
+                hint: 'Masalah Kancil adalah ia ingin makan mentimun di seberang sungai tetapi terhalang aliran deras dan buaya.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Berdasarkan teks bacaan Kancil di atas, watak kancil digambarkan sebagai hewan yang...',
+                options: ['Pemalas', 'Cerdik / Pintar', 'Penakut', 'Sombong'],
+                answer: 1,
+                hint: 'Frasa \'memutar otak\' menunjukkan Kancil adalah tokoh yang cerdik mencari jalan keluar.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: "Perhatikan infografis tentang rasa bangga sebagai anak Indonesia berikut:<div class=\"infographic-box\"><h4>🇮🇩 Mengapa Aku Bangga Jadi Anak Indonesia?</h4><ul><li>Memiliki kekayaan budaya daerah yang sangat melimpah (tarian, alat musik, bahasa).</li><li>Memiliki keindahan alam pariwisata yang diakui dunia (Bali, Raja Ampat).</li><li>Memiliki bahasa persatuan bahasa Indonesia yang menyatukan beragam suku.</li><li>Penduduk Indonesia terkenal ramah, gemar menolong, dan menjunjung gotong royong.</li></ul></div>Berdasarkan infografis di atas, faktor apa saja yang membuat kita bangga menjadi bangsa Indonesia? (pilih semua yang benar)",
+                options: ['Keindahan alam pariwisata yang terkenal hingga ke penjuru dunia', 'Bahasa Indonesia sebagai bahasa persatuan yang menyatukan keberagaman', 'Masyarakat Indonesia terkenal memiliki sikap ramah dan gotong royong', 'Kekayaan budaya Indonesia yang sangat sedikit dan membosankan'],
+                answer: [0, 1, 2],
+                hint: 'Kekayaan budaya Indonesia melimpah dan menarik, bukan sedikit dan membosankan.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Sesuai isi infografis kebanggaan bangsa sebelumnya, sikap manakah yang membuktikan rasa bangga kita dalam kehidupan sehari-hari? (pilih semua yang benar)',
+                options: ['Mempelajari dan melestarikan tarian adat daerah sendiri', 'Berbahasa Indonesia yang sopan saat bertukar kabar dengan teman berbeda daerah', 'Menjaga kebersihan dan tidak merusak fasilitas tempat wisata alam', 'Mengejek tradisi budaya daerah lain'],
+                answer: [0, 1, 2],
+                hint: 'Mengejek kebudayaan lain bertolak belakang dengan sikap toleransi dan bangga tanah air.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah di antara kalimat berikut yang termasuk kalimat fakta? (pilih semua yang benar)',
+                options: ['Indonesia adalah negara kepulauan yang terdiri dari ribuan pulau.', 'Lagu kebangsaan Indonesia berjudul Indonesia Raya.', 'Semua anak kecil pasti menyukai rasa buah durian asli.', 'Pancasila terdiri dari lima dasar negara.'],
+                answer: [0, 1, 3],
+                hint: 'Tidak semua anak menyukai durian (sifatnya relatif/opini).',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Manakah kalimat di bawah ini yang dikategorikan sebagai kalimat opini? (pilih semua yang benar)',
+                options: ['Matematika merupakan mata pelajaran paling menyenangkan di sekolah.', 'Hari ini cuaca terasa sangat panas sekali di kotaku.', 'Proklamasi kemerdekaan dibacakan pada tahun 1945.', 'Menurut saya, baju adat kebaya tampak sangat anggun dipakai.'],
+                answer: [0, 1, 3],
+                hint: 'Tahun proklamasi 1945 adalah fakta sejarah mutlak. Kalimat lain adalah pendapat/opini.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Ciri-ciri utama yang membedakan kalimat fakta dari kalimat opini adalah... (pilih semua yang benar)',
+                options: ['Memiliki data akurat yang dapat dibuktikan kebenarannya', 'Bersifat subjektif atau berdasarkan selera pribadi', 'Berisi informasi nyata yang benar-benar terjadi', 'Biasanya menggunakan kata-kata seperti \'sepertinya\', \'menurut saya\', \'mungkin\''],
+                answer: [0, 2],
+                hint: 'Poin 1 dan 3 adalah ciri fakta, sedangkan 2 dan 4 adalah ciri opini.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: "Perhatikan teks cerita berikut:<div class=\"reading-box\">Budi adalah anak yang rajin. Setiap sore, ia selalu membantu ayahnya menyiram tanaman sayur di kebun belakang rumah. Berbeda dengan adiknya, Riko, yang selalu malas-malasan di kamar bermain game online tanpa memikirkan keadaan sekitar.</div>Berdasarkan kutipan teks cerita tersebut, watak Budi dan Riko yang benar adalah... (pilih semua yang benar)",
+                options: ['Budi memiliki watak rajin dan suka membantu', 'Riko memiliki watak malas dan kurang peduli sekitar', 'Budi berwatak pemarah dan tidak sabar', 'Riko adalah anak yang rajin membantu ibu'],
+                answer: [0, 1],
+                hint: 'Teks dengan jelas menyatakan Budi rajin membantu menyiram tanaman, sedangkan Riko malas-malasan.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Dalam suatu teks cerita, jenis watak tokoh dapat dibagi menjadi... (pilih semua yang benar)',
+                options: ['Protagonis (tokoh berwatak baik)', 'Antagonis (tokoh berwatak jahat/penentang)', 'Tritagonis (tokoh pembantu/penengah)', 'Karbonis (tokoh bayangan)'],
+                answer: [0, 1, 2],
+                hint: 'Protagonis, Antagonis, dan Tritagonis adalah pembagian tokoh berdasarkan watak/fungsi alur.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Manakah kata hubung antarkalimat di bawah ini yang menyatakan hubungan pertentangan? (pilih semua yang benar)',
+                options: ['Namun', 'Akan tetapi', 'Oleh karena itu', 'Sebaliknya'],
+                answer: [0, 1, 3],
+                hint: '\'Oleh karena itu\' digunakan untuk menyatakan hubungan sebab-akibat (kesimpulan).',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Tentukan hal-hal yang perlu diperhatikan ketika membaca nyaring suatu paragraf teks! (pilih semua yang benar)',
+                options: ['Kejelasan lafal pengucapan kata (artikulasi)', 'Intonasi nada suara tinggi rendah yang tepat', 'Tanda baca titik (.) dan koma (,) untuk jeda berhenti', 'Kecepatan membaca secepat mungkin tanpa jeda'],
+                answer: [0, 1, 2],
+                hint: 'Membaca terlalu cepat tanpa menghiraukan tanda baca membuat pendengar sulit memahami pesan.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Unsur-unsur pembentuk sebuah cerita (unsur intrinsik) terdiri atas... (pilih semua yang benar)',
+                options: ['Tokoh dan watak tokoh', 'Latar tempat dan latar waktu', 'Alur cerita (jalan cerita)', 'Jumlah harga cetak buku cerita'],
+                answer: [0, 1, 2],
+                hint: 'Harga cetak buku adalah unsur eksterior ekonomi, bukan unsur intrinsik cerita.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Istilah Karya Sastra)',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Sifat atau karakter pelaku di dalam cerita yang memengaruhi alur</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Watak',
+                hint: 'Watak/penokohan adalah sifat karakter pelaku.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Karangan narasi yang memaparkan rangkaian peristiwa secara runtut</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Cerita',
+                hint: 'Cerita adalah karangan narasi.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Pelaku atau pemeran yang menjalankan peristiwa di dalam cerita</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Tokoh',
+                hint: 'Tokoh adalah orang/pemeran cerita.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Tokoh penentang yang berwatak buruk, jahat, atau menimbulkan konflik</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Antagonis',
+                hint: 'Antagonis identik dengan penentang tokoh utama.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Tokoh utama cerita yang berwatak baik dan disukai pembaca</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Protagonis',
+                hint: 'Protagonis adalah pahlawan/pemeran utama yang baik.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat',
+                text: 'Tentukan Benar atau Salah: \'Menghargai keragaman tarian daerah merupakan bukti rasa bangga kita sebagai bangsa Indonesia.\'',
+                answer: 'Benar',
+                hint: 'Bangga tanah air ditunjukkan dengan menghormati keragaman budaya nusantara.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Kalimat langsung adalah kalimat yang menceritakan kembali ucapan orang lain secara tidak langsung.\'',
+                answer: 'Salah',
+                hint: 'Kalimat langsung adalah kalimat yang menirukan ucapan orang lain secara persis (apa adanya).',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Paragraf deduktif adalah paragraf yang gagasan utamanya terletak di akhir paragraf.\'',
+                answer: 'Salah',
+                hint: 'Paragraf deduktif memiliki kalimat utama di awal (depan) paragraf. Induktif di akhir.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Kata hubung antarkalimat ditulis setelah tanda baca titik (.) di awal kalimat baru, diikuti tanda koma (,).\'',
+                answer: 'Benar',
+                hint: 'Contoh penulisan: \'... . Namun, adik tetap pergi.\' (diikuti koma setelah kata hubung).',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Teks fiksi adalah tulisan ilmiah yang disusun berdasarkan data penelitian matematika.\'',
+                answer: 'Salah',
+                hint: 'Teks fiksi didasarkan pada imajinasi/rekaan penulis, bukan riset data ilmiah.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Paragraf yang letak ide pokok atau kalimat utamanya berada di awal paragraf disebut paragraf...',
+                answer: 'Deduktif',
+                hint: 'Deduktif = Depan (Awal).',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Paragraf yang letak ide pokok atau kalimat utamanya berada di akhir paragraf disebut paragraf...',
+                answer: 'Induktif',
+                hint: 'Induktif = Belakang (Akhir).',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Paragraf yang memiliki kalimat utama di awal sekaligus ditegaskan kembali di akhir paragraf disebut paragraf...',
+                answer: 'Campuran',
+                hint: 'Campuran (deduktif-induktif).',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Kalimat yang diucapkan secara langsung oleh pembicara dan ditandai oleh tanda petik dua (\'...\') disebut kalimat...',
+                answer: 'Langsung',
+                hint: 'Tanda petik dua (\'...\') adalah ciri khas utama kalimat langsung.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Kalimat yang melaporkan kembali ucapan orang lain tanpa meniru persis ucapan aslinya disebut kalimat...',
+                answer: 'Tidak Langsung',
+                hint: 'Kalimat tidak langsung tidak menggunakan tanda petik dua.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Sebutkan 3 hal penting yang harus kita perhatikan dan tunjukkan secara sopan ketika kita menyampaikan pendapat di depan kelas!',
+                answer: '1) Mengangkat tangan kanan terlebih dahulu sebelum berbicara. 2) Berbicara menggunakan kalimat yang sopan, santun, dan nada suara yang tenang (tidak berteriak). 3) Tidak memotong pembicaraan teman atau guru yang sedang berbicara. 4) Menghargai jika pendapat kita tidak disetujui.',
+                hint: 'Pikirkan etika kesopanan saat berdiskusi di dalam kelas.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Buatlah satu kalimat menggunakan kata hubung antarkalimat \'malah\' dan satu kalimat menggunakan \'akibatnya\'!',
+                answer: 'Malah: \'Dino tidak belajar ujian. Malah, ia bermain game hingga larut malam.\' Akibatnya: \'Andi malas mencuci tangan sebelum makan. Akibatnya, ia sakit perut.\'',
+                hint: 'Gunakan kedua kata hubung tersebut di awal kalimat baru setelah tanda titik.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan mendasar antara kalimat fakta dan kalimat opini serta berikan contohnya masing-masing 1!',
+                answer: 'Kalimat fakta adalah kalimat yang kebenarannya nyata dan dapat dibuktikan dengan data akurat (contoh: \'Presiden pertama Indonesia adalah Ir. Soekarno\'). Kalimat opini adalah kalimat berisi pendapat, perkiraan, atau perasaan subjektif seseorang (contoh: \'Matematika adalah pelajaran yang paling sulit\').',
+                hint: 'Bandingkan sifat kebenaran objektif (fakta) dengan subjektif (opini).',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: "Perhatikan teks cerita berikut:<div class=\"reading-box\">\"Jangan khawatir, Rara. Aku akan membantumu membawa tas belanjaan yang berat ini sampai ke rumahmu,\" kata Joni sambil tersenyum ramah dan segera mengambil alih beban tas dari tangan Rara yang lelah.</div>Jelaskan watak tokoh Joni berdasarkan kutipan di atas dan sebutkan bukti kalimatnya!",
+                answer: 'Watak Joni adalah suka menolong/baik hati dan ramah. Buktinya: Joni menawarkan bantuan dengan kalimat \'Aku akan membantumu membawa tas...\' dan ia bertindak ramah (\'tersenyum ramah\').',
+                hint: 'Cari sifat tokoh (suka menolong, ramah) dan tunjukkan kalimat pendukung di teks.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan penulisan antara kalimat langsung dan kalimat tidak langsung serta berikan contohnya masing-masing 1!',
+                answer: 'Kalimat langsung menggunakan tanda petik dua (\'...\') dan menirukan ucapan asli tokoh (contoh: Ibu berkata, \'Budi, cepat mandi!\'). Kalimat tidak langsung tidak menggunakan tanda petik dua dan biasanya menggunakan kata hubung \'bahwa\' atau \'agar\' (contoh: Ibu berkata bahwa Budi harus cepat mandi).',
+                hint: 'Fokus pada penggunaan tanda petik dua dan perubahan kata ganti orang.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -463,6 +741,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`; }
                 else if (q.type === 'uraian') { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -482,6 +761,7 @@
                 if (q.type === 'pg') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { maxAuto++; const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value)); if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'bs') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { maxAuto++; const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (val === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';

@@ -323,6 +323,23 @@
                 font-size: 1.2em;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -331,7 +348,7 @@
         <div class="header">
             <h1>☪️ Pendidikan Agama Islam</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -349,55 +366,316 @@
     </div>
     <script>
         const questions = [
-            // ===== PILIHAN GANDA (No 1-10) =====
-            { id: 1, type: "pg", section: "Pilihan Ganda", text: "Surat An-Nisa terdiri dari berapa ayat?", options: ["76 ayat", "114 ayat", "176 ayat", "286 ayat"], answer: 2, hint: "Surat An-Nisa terdiri dari 176 ayat." },
-            { id: 2, type: "pg", text: "Surat An-Nisa diturunkan di kota...", options: ["Mekah", "Madinah", "Thaif", "Yerusalem"], answer: 1, hint: "Surat An-Nisa termasuk surat Madaniyah (diturunkan di Madinah)." },
-            { id: 3, type: "pg", text: "An-Nisa artinya...", options: ["Laki-laki", "Wanita", "Anak-anak", "Orang tua"], answer: 1, hint: "An-Nisa (النِّسَاء) artinya wanita/perempuan." },
-            { id: 4, type: "pg", text: 'Apa arti dari potongan ayat berikut? <div class="arabic">أَيْمَانُكُمْ</div> (Q.S. An-Nisa ayat 36)', options: ["Tangan kananmu", "Sumpah/janji kalian", "Keimanan kalian", "Iman dan taqwa"], answer: 1, hint: 'أَيْمَانُكُمْ artinya sumpah/janji kalian.' },
-            { id: 5, type: "pg", text: 'Apa arti dari potongan ayat berikut? <div class="arabic">وَالْمَسَاكِينِ</div> (Q.S. An-Nisa ayat 36)', options: ["Dan orang-orang kaya", "Dan orang-orang miskin", "Dan orang-orang tua", "Dan anak-anak yatim"], answer: 1, hint: 'وَالْمَسَاكِينِ artinya dan orang-orang miskin.' },
-            { id: 6, type: "pg", text: "Pesan pokok surat An-Nisa ayat 36 adalah perintah untuk...", options: ["Berperang melawan musuh", "Beribadah kepada Allah dan berbuat baik kepada sesama", "Memperbanyak harta kekayaan", "Berpuasa setiap hari"], answer: 1, hint: "Q.S. An-Nisa ayat 36 berisi perintah beribadah kepada Allah dan berbuat baik kepada orang tua, kerabat, anak yatim, dan orang miskin." },
-            { id: 7, type: "pg", text: "Arti silaturrahmi adalah...", options: ["Memutuskan hubungan dengan keluarga", "Menyambung tali persaudaraan dan kasih sayang", "Berlomba-lomba dalam kebaikan", "Menjauhi tetangga yang berbeda pendapat"], answer: 1, hint: "Silaturrahmi artinya menyambung tali persaudaraan dan kasih sayang." },
-            { id: 8, type: "pg", text: "Silaturrahmi sebaiknya dilakukan...", options: ["Hanya saat Hari Raya", "Hanya saat ada keperluan", "Setiap saat dan kapan saja", "Hanya dengan orang yang kaya"], answer: 2, hint: "Silaturrahmi sebaiknya dilakukan setiap saat, tidak hanya di waktu-waktu tertentu." },
-            { id: 9, type: "pg", text: "Perbuatan yang termasuk menjaga silaturrahmi adalah...", options: ["Mengunjungi saudara yang sakit", "Mengolok-olok tetangga", "Tidak mau berbicara dengan teman", "Memutuskan hubungan dengan kerabat"], answer: 0, hint: "Mengunjungi saudara yang sakit adalah contoh menjaga silaturrahmi." },
-            { id: 10, type: "pg", text: "Contoh perilaku menjaga silaturrahmi di sekolah adalah...", options: ["Mencontek saat ujian", "Membantu teman yang kesulitan belajar", "Membicarakan keburukan teman", "Tidak mau berbagi bekal makanan"], answer: 1, hint: "Membantu teman yang kesulitan belajar termasuk menjaga silaturrahmi." },
-
-            // ===== PG KOMPLEKS (No 11-20) =====
-            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: "Tugas-tugas Nabi dan Rasul adalah... (pilih semua yang benar)", options: ["Menyampaikan wahyu Allah SWT kepada umat", "Memberi teladan kehidupan yang baik", "Mencari kekayaan dunia sebanyak-banyaknya", "Membimbing umat ke jalan yang benar"], answer: [0, 1, 3], hint: "Tugas Nabi dan Rasul: menyampaikan wahyu, memberi teladan, dan membimbing umat." },
-            { id: 12, type: "pg_kompleks", text: "Tujuan dan hikmah diutusnya Nabi dan Rasul adalah... (pilih semua yang benar)", options: ["Sebagai pembawa kabar gembira dan peringatan", "Untuk membimbing manusia ke jalan lurus", "Untuk mencari popularitas", "Sebagai uswatun hasanah (teladan yang baik)"], answer: [0, 1, 3], hint: "Nabi dan Rasul diutus sebagai pembawa kabar, pembimbing, dan teladan." },
-            { id: 13, type: "pg_kompleks", text: 'Makna Uswatun Hasanah adalah... (pilih semua yang benar)', options: ["Teladan yang baik", "Contoh perilaku mulia", "Orang yang kaya raya", "Panutan dalam kehidupan"], answer: [0, 1, 3], hint: "Uswatun Hasanah berarti teladan yang baik, contoh perilaku mulia, dan panutan hidup." },
-            { id: 14, type: "pg_kompleks", text: "Perilaku yang mencerminkan keteladanan Nabi dan Rasul adalah... (pilih semua yang benar)", options: ["Berkata jujur dalam segala keadaan", "Bersikap amanah (dapat dipercaya)", "Sombong dan merasa paling hebat", "Menyampaikan kebenaran dengan sabar"], answer: [0, 1, 3], hint: "Jujur, amanah, dan menyampaikan kebenaran merupakan sifat teladan Nabi." },
-            { id: 15, type: "pg_kompleks", text: 'Isi kandungan Q.S. Yunus ayat 47 tentang Rasul dan keadilan Allah SWT meliputi... (pilih semua yang benar)', options: ["Setiap umat memiliki Rasul", "Allah memutuskan perkara dengan adil", "Hanya bangsa Arab yang memiliki Rasul", "Tidak ada yang dizalimi di sisi Allah"], answer: [0, 1, 3], hint: "Q.S. Yunus:47 menyatakan setiap umat memiliki Rasul dan Allah memutuskan dengan adil." },
-            { id: 16, type: "pg_kompleks", text: 'Isi kandungan Q.S. Al-Hajj ayat 75 tentang utusan Allah SWT meliputi... (pilih semua yang benar)', options: ["Allah memilih utusan dari malaikat", "Allah memilih utusan dari manusia", "Allah memilih utusan sesuai kehendak-Nya", "Utusan Allah dipilih oleh manusia"], answer: [0, 1, 2], hint: "Q.S. Al-Hajj:75 menyatakan Allah memilih utusan dari malaikat dan manusia sesuai kehendak-Nya." },
-            { id: 17, type: "pg_kompleks", text: "Sikap meneladani Nabi dan Rasul dalam kehidupan sehari-hari adalah... (pilih semua yang benar)", options: ["Berkata jujur", "Menepati janji", "Malas beribadah", "Bersikap sabar"], answer: [0, 1, 3], hint: "Jujur, menepati janji, dan sabar adalah sikap meneladani Nabi." },
-            { id: 18, type: "pg_kompleks", text: "Sifat wajib bagi Rasul adalah... (pilih semua yang benar)", options: ["Shiddiq (jujur)", "Amanah (dapat dipercaya)", "Tabligh (menyampaikan)", "Kidzib (bohong)"], answer: [0, 1, 2], hint: "Sifat wajib Rasul: Shiddiq, Amanah, Tabligh, Fathanah. Kidzib adalah sifat mustahil." },
-            { id: 19, type: "pg_kompleks", text: "Sifat Shiddiq dan Amanah pada Rasul berarti... (pilih semua yang benar)", options: ["Shiddiq = jujur dalam perkataan dan perbuatan", "Amanah = dapat dipercaya", "Shiddiq = suka berbohong", "Amanah = menjaga amanah Allah dan manusia"], answer: [0, 1, 3], hint: "Shiddiq = jujur, Amanah = dapat dipercaya dan menjaga amanah." },
-            { id: 20, type: "pg_kompleks", text: "Contoh beriman kepada Rasul dalam kehidupan sehari-hari adalah... (pilih semua yang benar)", options: ["Meneladani akhlak Rasul", "Membaca shalawat kepada Nabi", "Tidak peduli dengan ajaran Rasul", "Mengamalkan sunnah Rasul"], answer: [0, 1, 3], hint: "Beriman kepada Rasul diwujudkan dengan meneladani akhlak, membaca shalawat, dan mengamalkan sunnah." },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "Benar / Salah", text: "Sifat Jaiz bagi Rasul artinya Rasul boleh memiliki sifat-sifat manusiawi seperti makan, minum, dan tidur.", answer: "Benar", hint: "Benar. Sifat Jaiz = sifat manusiawi yang boleh dimiliki Rasul." },
-            { id: 22, type: "bs", text: "Rasul tidak pernah merasa lapar karena mereka adalah utusan Allah.", answer: "Salah", hint: "Salah. Rasul juga manusia yang merasakan lapar, haus, dan lelah (sifat Jaiz)." },
-            { id: 23, type: "bs", text: "Rasul juga merasakan sakit dan sedih seperti manusia biasa.", answer: "Benar", hint: "Benar. Sakit dan sedih termasuk sifat Jaiz (manusiawi) bagi Rasul." },
-            { id: 24, type: "bs", text: "Rasul memiliki kebutuhan fisik seperti makan, minum, dan tidur.", answer: "Benar", hint: "Benar. Makan, minum, dan tidur termasuk sifat Jaiz bagi Rasul." },
-            { id: 25, type: "bs", text: "Rasul adalah malaikat yang tidak memiliki sifat manusia.", answer: "Salah", hint: "Salah. Rasul adalah manusia pilihan Allah, bukan malaikat." },
-            { id: 26, type: "bs", text: "Rasul adalah utusan Allah SWT yang bertugas menyampaikan wahyu kepada umat manusia.", answer: "Benar", hint: "Benar. Tugas utama Rasul adalah menyampaikan wahyu Allah." },
-            { id: 27, type: "bs", text: "Rukun iman ada 5 perkara.", answer: "Salah", hint: "Salah. Rukun iman ada 6: iman kepada Allah, Malaikat, Kitab, Rasul, Hari Akhir, dan Qada & Qadar." },
-            { id: 28, type: "bs", text: "Rasul bertugas membimbing manusia agar beribadah kepada Allah SWT.", answer: "Benar", hint: "Benar. Rasul membimbing manusia ke jalan yang benar." },
-            { id: 29, type: "bs", text: "Membicarakan keburukan orang lain (ghibah) termasuk perilaku terpuji.", answer: "Salah", hint: "Salah. Ghibah (membicarakan keburukan orang lain) termasuk perilaku tercela." },
-            { id: 30, type: "bs", text: "Beriman kepada Rasul termasuk salah satu rukun iman.", answer: "Benar", hint: "Benar. Iman kepada Rasul adalah rukun iman yang ke-4." },
-
-            // ===== ISIAN (No 31-35) =====
-            { id: 31, type: "isian", section: "Isian Singkat", text: "Jumlah Nabi dan Rasul yang wajib diimani ada...", answer: "25", hint: "Ada 25 Nabi dan Rasul yang wajib diimani oleh umat Islam." },
-            { id: 32, type: "isian", text: "Keluarga adalah tempat pertama penanaman nilai...", answer: "Islam", hint: "Keluarga adalah tempat pertama penanaman nilai-nilai Islam." },
-            { id: 33, type: "isian", text: "Allah SWT memerintahkan manusia untuk berbuat baik kepada kedua orang tua dalam surat...", answer: "Al-Isra", hint: "Q.S. Al-Isra' ayat 23 berisi perintah berbuat baik kepada kedua orang tua." },
-            { id: 34, type: "isian", text: "Peran ayah dalam keluarga adalah sebagai... keluarga.", answer: "Pemimpin", hint: "Ayah berperan sebagai pemimpin (kepala) keluarga." },
-            { id: 35, type: "isian", text: "Contoh adab kepada orang tua adalah berkata sopan dan tidak berkata...", answer: "Kasar", hint: "Adab kepada orang tua: berkata sopan, tidak berkata kasar/menyakiti hati." },
-
-            // ===== URAIAN (No 36-40) =====
-            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Jelaskan peran keluarga sebagai tempat pertama penanaman nilai Islam!", answer: "Keluarga adalah madrasah pertama bagi anak. Di dalam keluarga, orang tua mengajarkan nilai-nilai Islam seperti shalat, puasa, membaca Al-Quran, dan akhlak mulia. Orang tua menjadi teladan pertama bagi anak-anak dalam menjalankan perintah Allah SWT.", hint: "Jelaskan fungsi keluarga dalam pendidikan Islam." },
-            { id: 37, type: "uraian", text: 'Jelaskan kandungan Q.S. Al-Isra\' ayat 23 tentang adab kepada orang tua! <div class="arabic">وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا</div>', answer: "Q.S. Al-Isra' ayat 23 berisi: 1) Perintah untuk beribadah hanya kepada Allah SWT, 2) Perintah untuk berbuat baik (ihsan) kepada kedua orang tua, 3) Larangan berkata 'uff' (kasar) kepada orang tua, 4) Perintah berkata mulia kepada mereka.", hint: "Jelaskan perintah beribadah kepada Allah dan berbuat baik kepada orang tua." },
-            { id: 38, type: "uraian", text: "Sebutkan 3 contoh cara keluarga saling menjaga diri dari siksa api neraka!", answer: "1) Saling mengingatkan untuk shalat 5 waktu; 2) Mengajarkan membaca Al-Quran; 3) Saling menasihati dalam kebaikan dan kesabaran; 4) Menjauhi perbuatan maksiat bersama-sama; 5) Berdoa bersama keluarga.", hint: "Sebutkan kegiatan keluarga yang bertujuan menjaga keimanan." },
-            { id: 39, type: "uraian", text: "Jelaskan alasan pentingnya berbicara sopan kepada anggota keluarga!", answer: "Berbicara sopan kepada keluarga penting karena: 1) Merupakan perintah Allah SWT dalam Al-Quran; 2) Menjaga perasaan dan keharmonisan keluarga; 3) Menunjukkan rasa hormat dan kasih sayang; 4) Menjadi teladan bagi adik dan anggota keluarga lainnya; 5) Mendapatkan ridha Allah SWT dan orang tua.", hint: "Jelaskan alasan dari sisi agama dan kehidupan sosial." },
-            { id: 40, type: "uraian", text: "Berikan 3 contoh perilaku saling menyayangi dalam keluarga!", answer: "1) Membantu orang tua membersihkan rumah; 2) Berbagi makanan dengan saudara; 3) Menjenguk anggota keluarga yang sakit; 4) Mendoakan kesehatan dan kebaikan keluarga; 5) Tidak bertengkar dan saling memaafkan.", hint: "Sebutkan perilaku kasih sayang antar anggota keluarga." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Adab Keluarga)',
+                text: 'Lingkungan pertama tempat seseorang mendapatkan bimbingan, pembinaan, serta kasih sayang yang tulus adalah...',
+                options: ['Sekolah', 'Keluarga', 'Masyarakat', 'Tempat bermain'],
+                answer: 1,
+                hint: 'Keluarga adalah lingkungan pertama dan utama tempat anak tumbuh dan mendapatkan kasih sayang.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Sikap saling menyayangi, menghargai, dan menghormati di antara anggota keluarga akan melahirkan suasana...',
+                options: ['Kekacauan', 'Ketegangan', 'Rukun dan harmonis', 'Kecemburuan'],
+                answer: 2,
+                hint: 'Kasih sayang dan rasa saling menghargai melahirkan keharmonisan dan kerukunan dalam keluarga.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Salah satu contoh adab anak yang baik dan terpuji kepada orang tua di rumah adalah...',
+                options: ['Berbicara kasar saat meminta uang jajan', 'Membantah nasihat orang tua dengan nada keras', 'Berbicara dengan sopan dan mendengarkan nasihat mereka', 'Mengabaikan panggilan orang tua ketika sedang bermain game'],
+                answer: 2,
+                hint: 'Menghormati orang tua dilakukan dengan berbicara sopan dan mematuhi nasihat baik mereka.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Di dalam sebuah keluarga, tugas utama dan tanggung jawab ayah serta ibu terhadap anak-anak mereka adalah...',
+                options: ['Membiarkan anak bertingkah laku bebas tanpa batas', 'Merawat, mendidik, dan membimbing anak menuju kebaikan', 'Menuntut anak untuk bekerja mencari uang', 'Menyerahkan seluruh pendidikan anak kepada sekolah saja'],
+                answer: 1,
+                hint: 'Orang tua bertanggung jawab merawat, mendidik, dan membimbing anak agar menjadi anak saleh.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Dalam ajaran Islam, keluarga diposisikan sebagai tempat pendidikan awal bagi seorang anak, yang sering diistilahkan sebagai...',
+                options: ['Madrasatul Ula', 'Baitul Maal', 'Darul Arqam', 'Uswatun Hasanah'],
+                answer: 0,
+                hint: 'Madrasatul Ula berarti sekolah atau tempat pendidikan pertama bagi seorang anak.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Ketika kita ingin masuk ke kamar orang tua atau saat berjalan melewati orang yang lebih tua di rumah, adab sopan santun yang benar adalah...',
+                options: ['Langsung menerobos masuk tanpa bersuara', 'Berteriak memberi tahu kedatangan kita', 'Mengetuk pintu, mengucapkan salam, dan membungkukkan badan sedikit sebagai tanda permisi', 'Berlari kencang agar cepat sampai'],
+                answer: 2,
+                hint: 'Adab permisi dilakukan dengan mengetuk pintu, mengucap salam, dan menunjukkan sikap santun.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Sikap yang mencerminkan rasa syukur atas karunia keluarga yang baik dan rukun dari Allah SWT adalah...',
+                options: ['Selalu mengeluh karena keterbatasan fasilitas di rumah', 'Membantu orang tua dengan ikhlas dan menyayangi saudara', 'Bermusuhan dengan saudara kandung karena berebut mainan', 'Menuntut orang tua membeli barang-barang mewah'],
+                answer: 1,
+                hint: 'Membantu orang tua dan hidup rukun dengan saudara adalah bentuk syukur atas karunia keluarga.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Contoh nyata dari perilaku menjaga kerukunan di dalam rumah bersama anggota keluarga yang lain adalah...',
+                options: ['Membantu ibu membersihkan rumah dan berbagi makanan dengan saudara', 'Menyimpan semua makanan sendiri agar tidak diminta adik', 'Menyalahkan adik ketika terjadi kesalahan', 'Saling mendiamkan dan tidak mau berkomunikasi'],
+                answer: 0,
+                hint: 'Bekerja sama membersihkan rumah dan saling berbagi memupuk kebersamaan dan kerukunan.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Ayah dan ibu di rumah merupakan cerminan bagi anak-anaknya. Oleh karena itu, orang tua berperan sebagai...',
+                options: ['Musuh anak', 'Penonton saja', 'Teladan utama (uswatun hasanah) di rumah', 'Hakim yang kejam'],
+                answer: 2,
+                hint: 'Orang tua adalah teladan utama bagi anak-anaknya dalam perkataan maupun perbuatan.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Keluarga yang senantiasa menerapkan nilai-nilai agama dan rukun satu sama lain akan merasakan dampak...',
+                options: ['Ketakutan dan kecemasan dalam rumah', 'Ketenangan jiwa, kedamaian, dan kebahagiaan', 'Kejenuhan hidup bertetangga', 'Kesulitan dalam berteman di luar rumah'],
+                answer: 1,
+                hint: 'Penerapan nilai agama di rumah membawa kedamaian, ketenangan, dan keberkahan dari Allah.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks (Adab Tetangga)',
+                text: 'Di bawah ini yang merupakan adab yang baik dan terpuji terhadap tetangga di sekitar rumah kita adalah... (pilih semua yang benar)',
+                options: ['Menyapa dengan ramah dan tersenyum ketika bertemu', 'Membantu tetangga yang sedang mengalami kesulitan atau musibah', 'Menyalakan radio dengan volume keras pada malam hari', 'Mengirimkan makanan jika kita memiliki kelebihan makanan'],
+                answer: [0, 1, 3],
+                hint: 'Menyalakan radio dengan keras mengganggu kenyamanan tetangga dan harus dihindari.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Sikap atau perilaku yang harus kita hindari dalam menjalin hubungan bertetangga agar tidak terjadi perpecahan adalah... (pilih semua yang benar)',
+                options: ['Membicarakan aib atau kekurangan tetangga kepada orang lain', 'Membuang sampah di dekat area halaman rumah tetangga', 'Menjenguk tetangga yang sedang terbaring sakit', 'Mengambil buah dari pohon tetangga tanpa izin'],
+                answer: [0, 1, 3],
+                hint: 'Membicarakan aib, membuang sampah sembarangan, dan mengambil barang tanpa izin merusak hubungan baik.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Contoh tindakan nyata yang dapat menjaga kelangsungan hubungan harmonis dengan tetangga terdekat kita adalah... (pilih semua yang benar)',
+                options: ['Saling berbagi berkah atau oleh-oleh setelah bepergian', 'Mendoakan kebaikan untuk tetangga', 'Menutup diri rapat-rapat dan tidak mau tahu urusan sekitar', 'Menghormati perbedaan suku atau agama tetangga'],
+                answer: [0, 1, 3],
+                hint: 'Saling berbagi, mendoakan, dan menghormati perbedaan menguatkan tali silaturahmi antartetangga.',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Sesuai ajaran Islam, perilaku mulia yang sangat dianjurkan ketika kita berpapasan atau bertemu dengan tetangga di jalan adalah... (pilih semua yang benar)',
+                options: ['Menunjukkan wajah masam dan memalingkan muka', 'Tersenyum dengan tulus', 'Mengucapkan salam (Assalamualaikum)', 'Menyapa dengan ucapan yang sopan'],
+                answer: [1, 2, 3],
+                hint: 'Senyuman, salam, dan sapaan hangat adalah anjuran Islam yang mendatangkan pahala dan kedamaian.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Bentuk kepedulian sosial yang dapat kita tunjukkan kepada tetangga di lingkungan tempat tinggal kita adalah... (pilih semua yang benar)',
+                options: ['Ikut serta dalam kegiatan kerja bakti membersihkan lingkungan', 'Memberikan bantuan bahan makanan bagi tetangga yang membutuhkan', 'Mengabaikan tetangga yang meminta tolong darurat', 'Menawarkan bantuan tenaga saat tetangga sedang mengadakan acara hajatan'],
+                answer: [0, 1, 3],
+                hint: 'Ikut kerja bakti, memberi bantuan, dan membantu saat hajatan adalah wujud nyata kepedulian sosial.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Perilaku terpuji terhadap tetangga yang mendatangkan rida Allah SWT menurut ajaran agama Islam adalah... (pilih semua yang benar)',
+                options: ['Menghormati hak privasi dan ketenangan rumah tetangga', 'Bersabar ketika tetangga secara tidak sengaja mengganggu kita', 'Mendoakan keburukan agar tetangga pindah rumah', 'Memaafkan kesalahan tetangga yang meminta maaf'],
+                answer: [0, 1, 3],
+                hint: 'Islam melarang mendoakan keburukan bagi sesama Muslim, sebaliknya kita diajarkan sabar dan pemaaf.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Islam mengajarkan batasan tetangga yang harus kita jaga hak-haknya. Siapakah yang termasuk kategori tetangga menurut sabda sahabat Nabi? (pilih semua yang benar)',
+                options: ['Orang yang tinggal hingga 40 rumah di depan rumah kita', 'Orang yang tinggal hingga 40 rumah di belakang rumah kita', 'Orang yang tinggal hingga 40 rumah di samping kanan dan kiri kita', 'Hanya orang yang rumahnya menempel langsung dengan rumah kita'],
+                answer: [0, 1, 2],
+                hint: 'Tetangga dalam Islam mencakup 40 rumah dari segala arah (depan, belakang, kanan, dan kiri).',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Tindakan yang paling tepat dan cepat kita lakukan saat mendengar ada tetangga dekat yang mengalami musibah kematian atau kecelakaan adalah... (pilih semua yang benar)',
+                options: ['Segera mendatangi rumahnya untuk berbela sungkawa (taziah)', 'Membantu mengurus kebutuhan yang mendesak bagi keluarga korban', 'Menjadikannya bahan obrolan santai di media sosial', 'Menyumbangkan sebagian harta atau makanan untuk meringankan beban mereka'],
+                answer: [0, 1, 3],
+                hint: 'Bela sungkawa dan bantuan nyata sangat dianjurkan, sedangkan menjadikannya gosip adalah perbuatan tercela.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Menjaga kehormatan tetangga adalah hal penting. Perilaku manakah yang menunjukkan sikap menjaga rahasia dan aib tetangga? (pilih semua yang benar)',
+                options: ['Tidak menguping pembicaraan pribadi di dalam rumah tetangga', 'Menolak mendengarkan gosip buruk tentang tetangga kita', 'Menyebarkan rahasia tetangga di grup chat lingkungan', 'Menutup-nutupi kesalahan/aib tetangga yang tidak merugikan umum'],
+                answer: [0, 1, 3],
+                hint: 'Menyebarkan aib tetangga berdosa besar dan dilarang keras dalam agama Islam.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Hikmah atau keuntungan rohani maupun sosial dari membiasakan hidup rukun antartetangga di sekitar kita adalah... (pilih semua yang benar)',
+                options: ['Tercipta suasana lingkungan yang aman, damai, dan tenteram', 'Mendapatkan rida dan pahala dari Allah SWT', 'Memicu rasa saling mencurigai di antara warga', 'Memiliki banyak saudara yang siap menolong saat kita kesulitan'],
+                answer: [0, 1, 3],
+                hint: 'Hidup rukun melahirkan ketenteraman, pahala Allah, dan jalinan tolong-menolong yang erat.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Kisah Hijrah Nabi ke Madinah)',
+                text: "Pasangkan pernyataan berikut dengan nama kota tujuan hijrah Rasulullah SAW yang tepat: <b>Kota tujuan utama hijrah kaum Muslimin yang sebelumnya bernama Yatsrib</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Madinah',
+                hint: 'Madinah adalah kota tujuan hijrah yang sebelumnya bernama Yatsrib.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan sahabat setia Nabi yang tepat: <b>Sahabat setia yang mendampingi perjalanan hijrah Rasulullah SAW dan bersembunyi bersama di Gua Tsur</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Abu Bakar As-Siddiq',
+                hint: 'Abu Bakar As-Siddiq menemani Nabi secara langsung dalam perjalanan hijrah.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan nama kesepakatan bersejarah yang tepat: <b>Perjanjian ikrar kesetiaan antara penduduk Madinah dan Rasulullah SAW sebelum terjadinya hijrah besar-besaran</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Perjanjian Aqabah',
+                hint: 'Perjanjian Aqabah I dan II merupakan pintu masuk utama diterimanya dakwah Islam di Madinah.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan nama kelompok penentang yang tepat: <b>Kaum di Makkah yang selalu menghalangi, memusuhi, dan menyiksa kaum Muslimin karena menolak menyembah berhala</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Kaum Kafir Quraisy',
+                hint: 'Kaum Kafir Quraisy memusuhi dan menyiksa pengikut Islam di Makkah.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan hikmah hijrah Nabi yang tepat: <b>Dampak positif atau hikmah utama setelah Rasulullah SAW menetap dan membangun masjid di kota Madinah</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Dakwah berkembang pesat',
+                hint: 'Hijrah membawa hikmah besar berupa berdirinya negara Islam pertama dan meluasnya dakwah.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Kisah Hijrah & Salat Duha/Tahajud)',
+                text: 'Secara bahasa, kata hijrah memiliki arti...',
+                answer: 'berpindah',
+                hint: 'Hijrah berarti berpindah tempat atau meninggalkan keburukan menuju kebaikan.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Sahabat yang dengan berani menggantikan posisi tidur di ranjang Rasulullah SAW saat rumah beliau dikepung pemuda Quraisy adalah...',
+                answer: 'Ali bin Abi Thalib',
+                hint: 'Ali bin Abi Thalib menyamar tidur berselimut hijau milik Nabi untuk mengelabui pengepung.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Karena khawatir ajaran Islam akan semakin kuat, kaum kafir Quraisy menyusun rencana keji di Darun Nadwah untuk... Nabi Muhammad SAW.',
+                answer: 'membunuh',
+                hint: 'Kaum Quraisy merencanakan pembunuhan Nabi secara bersama-sama oleh perwakilan tiap kabilah.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Gua yang menjadi tempat persembunyian Nabi Muhammad SAW dan Abu Bakar dari kejaran musuh selama tiga hari di awal perjalanan hijrah adalah Gua...',
+                answer: 'Tsur',
+                hint: 'Nabi bersembunyi di Gua Tsur sebelum melanjutkan perjalanan ke arah Madinah.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Kaum Muslimin Madinah yang menyambut kedatangan rombongan muhajirin Makkah dengan senang hati disebut kaum...',
+                answer: 'Ansar',
+                hint: 'Ansar memiliki arti penolong, yaitu sebutan bagi penduduk asli Madinah yang memeluk Islam.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Melaksanakan ibadah salat sunah duha di pagi hari hukumnya adalah...',
+                answer: 'sunah',
+                hint: 'Salat sunah bermakna jika dikerjakan berpahala, jika ditinggalkan tidak berdosa.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Waktu pelaksanaan salat duha dimulai sejak matahari terbit setinggi tombak (pagi hari) sampai menjelang masuk waktu...',
+                answer: 'Zuhur',
+                hint: 'Salat duha berakhir ketika posisi matahari berada tepat di atas kepala (menjelang Zuhur).',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Salah satu syarat penting sebelum melaksanakan salat sunah tahajud di malam hari adalah harus... terlebih dahulu.',
+                answer: 'tidur',
+                hint: 'Salat tahajud dikerjakan pada malam hari sesudah terjaga dari tidur malam.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Waktu yang paling utama (afdal) untuk menunaikan salat tahajud adalah pada sepertiga malam yang...',
+                answer: 'terakhir',
+                hint: 'Sepertiga malam terakhir (sekitar pukul 02.00 hingga subuh) adalah waktu terkabulnya doa.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Jumlah rakaat paling sedikit dalam pelaksanaan salat tahajud adalah... rakaat.',
+                answer: '2',
+                hint: 'Salat tahajud dikerjakan dalam kelipatan dua rakaat dengan satu kali salam.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai (Salat Jumat)',
+                text: 'Jelaskan apa yang dimaksud dengan salat Jumat secara lengkap sesuai ketentuan syariat!',
+                answer: 'Salat Jumat adalah salat fardhu dua rakaat yang dilaksanakan secara berjamaah pada hari Jumat di waktu Zuhur, diawali dengan dua khotbah oleh seorang khatib, dan hukumnya wajib (fardhu ain) bagi laki-laki Muslim yang memenuhi syarat.',
+                hint: 'Sebutkan jumlah rakaat, waktu pelaksanaan, kewajiban khotbah, dan hukumnya.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Sebutkan 2 syarat sahnya pelaksanaan salat Jumat!',
+                answer: '1) Dilaksanakan pada waktu Zuhur, 2) Dilaksanakan di suatu tempat (masjid/lapangan pemukiman) secara berjamaah (minimal 40 orang menurut madzhab Syafi\'i), 3) Didahului dengan penyampaian dua khotbah oleh khatib.',
+                hint: 'Pikirkan tentang waktu pelaksanaan, jumlah jamaah, dan adanya khotbah.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Sebutkan 3 amalan sunah yang dianjurkan untuk dikerjakan sebelum kita mendatangi masjid untuk salat Jumat!',
+                answer: '1) Mandi sunah Jumat, 2) Memotong kuku dan merapikan kumis, 3) Memakai pakaian yang bersih dan disukai berwarna putih, 4) Memakai wewangian (non-alkohol), 5) Membaca Al-Quran (seperti surah Al-Kahfi) atau memperbanyak zikir.',
+                hint: 'Amalan sunah menyangkut kebersihan badan, pakaian, wewangian, dan zikir.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Sebutkan 3 syarat wajib bagi seseorang untuk menunaikan salat Jumat!',
+                answer: '1) Beragama Islam, 2) Baligh (sudah dewasa), 3) Berakal sehat (tidak gila), 4) Laki-laki, 5) Sehat jasmani (tidak sakit berat), 6) Menetap (mukim, bukan dalam perjalanan jauh/musafir).',
+                hint: 'Syarat wajib adalah kriteria seseorang terkena kewajiban salat Jumat.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan secara singkat dan runtut tata cara pelaksanaan ibadah salat Jumat dari awal masuk masjid hingga selesai!',
+                answer: '1) Masuk masjid dengan mendahulukan kaki kanan dan membaca doa, lalu salat sunah Tahiyatul Masjid. 2) Duduk tenang mendengarkan kumandang azan. 3) Mendengarkan dua khotbah Jumat yang disampaikan oleh khatib dengan khusyuk tanpa berbicara. 4) Melaksanakan salat Jumat berjamaah dua rakaat yang dipimpin imam setelah iqamah berkumandang. 5) Berzikir dan berdoa sesudah salat.',
+                hint: 'Urutkan mulai dari salat Tahiyatul Masjid, mendengarkan khotbah, hingga salat berjamaah.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -410,6 +688,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
                 else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -425,6 +704,7 @@
                 if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';

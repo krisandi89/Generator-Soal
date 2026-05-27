@@ -340,6 +340,23 @@
                 font-size: 1.2em;
             }
         }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
     </style>
 </head>
 
@@ -349,7 +366,7 @@
             <h1>🕌 Bahasa Arab</h1>
             <div class="arabic-title">اللُّغَةُ العَرَبِيَّةُ</div>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
-            <div class="badge">ASTS Semester 2 • 2025/2026</div>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -367,55 +384,316 @@
     </div>
     <script>
         const questions = [
-            // ===== PILIHAN GANDA (No 1-10) =====
-            { id: 1, type: "pg", section: "Pilihan Ganda — أَسْئِلَةُ الاِخْتِيَار", text: 'Apa arti kosakata berikut? <div class="arabic">أَبٌ</div>', options: ["Ibu", "Ayah", "Kakak laki-laki", "Paman"], answer: 1, hint: "أَبٌ (abun) artinya Ayah." },
-            { id: 2, type: "pg", text: 'Gambar seorang perempuan dewasa yang menggendong bayi. Kosakata bahasa Arab yang tepat untuk gambar tersebut adalah...', options: ['<span class="arabic-opt">أُمٌّ</span> (Ibu)', '<span class="arabic-opt">أُخْتٌ</span> (Kakak perempuan)', '<span class="arabic-opt">بِنْتٌ</span> (Anak perempuan)', '<span class="arabic-opt">جَدَّةٌ</span> (Nenek)'], answer: 0, hint: 'أُمٌّ (ummun) artinya Ibu.' },
-            { id: 3, type: "pg", text: 'Apa arti kosakata berikut? <div class="arabic">أَخٌ</div>', options: ["Kakak perempuan", "Adik", "Kakak laki-laki / Saudara laki-laki", "Paman"], answer: 2, hint: "أَخٌ (akhun) artinya kakak laki-laki / saudara laki-laki." },
-            { id: 4, type: "pg", text: 'Kosakata bahasa Arab untuk "kakak perempuan" adalah...', options: ['<span class="arabic-opt">أَخٌ</span>', '<span class="arabic-opt">أُخْتٌ</span>', '<span class="arabic-opt">أُمٌّ</span>', '<span class="arabic-opt">بِنْتٌ</span>'], answer: 1, hint: 'أُخْتٌ (ukhtun) artinya kakak/saudara perempuan.' },
-            { id: 5, type: "pg", text: 'Apa arti kosakata berikut? <div class="arabic">بَيْتٌ</div>', options: ["Sekolah", "Masjid", "Rumah", "Taman"], answer: 2, hint: "بَيْتٌ (baitun) artinya rumah." },
-            { id: 6, type: "pg", text: 'Kosakata bahasa Arab untuk "anak laki-laki" adalah...', options: ['<span class="arabic-opt">بِنْتٌ</span>', '<span class="arabic-opt">وَلَدٌ</span>', '<span class="arabic-opt">أَبٌ</span>', '<span class="arabic-opt">عَمٌّ</span>'], answer: 1, hint: 'وَلَدٌ (waladun) artinya anak laki-laki.' },
-            { id: 7, type: "pg", text: 'Kata ganti orang bersambung (الضَّمِيرُ المُتَّصِلُ) digunakan untuk... <div class="arabic">الضَّمِيرُ المُتَّصِلُ</div>', options: ["Mengganti nama benda", "Mengganti kata ganti orang yang melekat pada kata lain", "Mengganti kata kerja", "Mengganti kata sifat"], answer: 1, hint: "الضَّمِيرُ المُتَّصِلُ adalah kata ganti orang yang melekat/bersambung pada kata lain." },
-            { id: 8, type: "pg", text: 'Apa arti dari الضَّمِيرُ المُتَّصِلُ berikut? <div class="arabic">ـهُ</div>', options: ["Milik saya", "Milik kamu (lk)", "Milik dia (lk)", "Milik mereka"], answer: 2, hint: 'ـهُ (-hu) artinya milik dia (laki-laki). Contoh: كِتَابُهُ = bukunya.' },
-            { id: 9, type: "pg", text: 'Apa arti dari الضَّمِيرُ المُتَّصِلُ berikut? <div class="arabic">ـهَا</div>', options: ["Milik saya", "Milik kamu (pr)", "Milik dia (pr)", "Milik kalian"], answer: 2, hint: 'ـهَا (-hā) artinya milik dia (perempuan).' },
-            { id: 10, type: "pg", text: 'Apa arti dari الضَّمِيرُ المُتَّصِلُ berikut? <div class="arabic">ـِي</div>', options: ["Milik saya", "Milik kamu", "Milik dia", "Milik kami"], answer: 0, hint: 'ـِي (-ī) artinya milik saya. Contoh: كِتَابِي = buku saya.' },
-
-            // ===== PG KOMPLEKS (No 11-20) =====
-            { id: 11, type: "pg_kompleks", section: "Pilihan Ganda Kompleks", text: 'Kosakata yang termasuk anggota keluarga (أُسْرَة) adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">أَبٌ</span> (Ayah)', '<span class="arabic-opt">أُمٌّ</span> (Ibu)', '<span class="arabic-opt">مَدْرَسَةٌ</span> (Sekolah)', '<span class="arabic-opt">أَخٌ</span> (Saudara lk)'], answer: [0, 1, 3], hint: 'مَدْرَسَةٌ (madrasatun) artinya sekolah, bukan anggota keluarga.' },
-            { id: 12, type: "pg_kompleks", text: 'Kosakata yang termasuk anggota keluarga (أُسْرَة) adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">أُخْتٌ</span> (Saudara pr)', '<span class="arabic-opt">جَدٌّ</span> (Kakek)', '<span class="arabic-opt">كُرْسِيٌّ</span> (Kursi)', '<span class="arabic-opt">جَدَّةٌ</span> (Nenek)'], answer: [0, 1, 3], hint: 'كُرْسِيٌّ (kursiyyun) artinya kursi, bukan anggota keluarga.' },
-            { id: 13, type: "pg_kompleks", text: 'Kosakata anggota keluarga yang tepat sesuai gambar sebuah keluarga besar (kakek, nenek, ayah, ibu, anak) adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">جَدٌّ</span> (Kakek)', '<span class="arabic-opt">جَدَّةٌ</span> (Nenek)', '<span class="arabic-opt">قَلَمٌ</span> (Pensil)', '<span class="arabic-opt">وَلَدٌ</span> (Anak lk)'], answer: [0, 1, 3], hint: 'قَلَمٌ (qalamun) artinya pensil, bukan anggota keluarga.' },
-            { id: 14, type: "pg_kompleks", text: 'Gambar anggota keluarga: ayah, ibu, dan anak-anak. Kosakata yang sesuai adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">أَبٌ</span> (Ayah)', '<span class="arabic-opt">أُمٌّ</span> (Ibu)', '<span class="arabic-opt">وَلَدٌ</span> (Anak lk)', '<span class="arabic-opt">سَيَّارَةٌ</span> (Mobil)'], answer: [0, 1, 2], hint: 'سَيَّارَةٌ (sayyāratun) artinya mobil, bukan anggota keluarga.' },
-            { id: 15, type: "pg_kompleks", text: 'Gambar keluarga dengan kakek, nenek, paman, dan bibi. Kosakata yang sesuai adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">جَدٌّ</span> (Kakek)', '<span class="arabic-opt">عَمٌّ</span> (Paman)', '<span class="arabic-opt">عَمَّةٌ</span> (Bibi)', '<span class="arabic-opt">بَابٌ</span> (Pintu)'], answer: [0, 1, 2], hint: 'بَابٌ (bābun) artinya pintu, bukan anggota keluarga.' },
-            { id: 16, type: "pg_kompleks", text: 'Kosakata yang termasuk benda di rumah (فِي البَيْتِ) adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">بَابٌ</span> (Pintu)', '<span class="arabic-opt">نَافِذَةٌ</span> (Jendela)', '<span class="arabic-opt">أَخٌ</span> (Saudara lk)', '<span class="arabic-opt">كُرْسِيٌّ</span> (Kursi)'], answer: [0, 1, 3], hint: 'أَخٌ (akhun) adalah anggota keluarga, bukan benda di rumah.' },
-            { id: 17, type: "pg_kompleks", text: 'Kosakata yang termasuk benda di rumah (فِي البَيْتِ) adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">مَائِدَةٌ</span> (Meja makan)', '<span class="arabic-opt">سَرِيرٌ</span> (Tempat tidur)', '<span class="arabic-opt">جَدَّةٌ</span> (Nenek)', '<span class="arabic-opt">مِصْبَاحٌ</span> (Lampu)'], answer: [0, 1, 3], hint: 'جَدَّةٌ (jaddatun) adalah anggota keluarga, bukan benda.' },
-            { id: 18, type: "pg_kompleks", text: 'Kosakata benda di rumah yang termasuk ke dalam ruang tidur adalah... (pilih semua yg benar)', options: ['<span class="arabic-opt">سَرِيرٌ</span> (Tempat tidur)', '<span class="arabic-opt">وِسَادَةٌ</span> (Bantal)', '<span class="arabic-opt">مَطْبَخٌ</span> (Dapur)', '<span class="arabic-opt">لِحَافٌ</span> (Selimut)'], answer: [0, 1, 3], hint: 'مَطْبَخٌ (mathbakhun) artinya dapur, yaitu nama ruangan, bukan benda di kamar tidur.' },
-            { id: 19, type: "pg_kompleks", text: 'Kata yang BUKAN termasuk الضَّمِيرُ المُتَّصِلُ (kata ganti bersambung) adalah... (pilih semua yg benar)', options: ['<span class="arabic-opt">ـهُ</span>', '<span class="arabic-opt">كِتَابٌ</span>', '<span class="arabic-opt">ـكَ</span>', '<span class="arabic-opt">مَدْرَسَةٌ</span>'], answer: [1, 3], hint: 'كِتَابٌ (buku) dan مَدْرَسَةٌ (sekolah) adalah kata benda, bukan kata ganti bersambung.' },
-            { id: 20, type: "pg_kompleks", text: 'Kosakata الضَّمِيرُ المُتَّصِلُ yang tepat adalah... (pilih semua yang benar)', options: ['<span class="arabic-opt">ـِي</span> (milik saya)', '<span class="arabic-opt">ـكَ</span> (milik kamu lk)', '<span class="arabic-opt">بَيْتٌ</span> (rumah)', '<span class="arabic-opt">ـهُ</span> (milik dia lk)'], answer: [0, 1, 3], hint: 'بَيْتٌ adalah kata benda (rumah), bukan kata ganti bersambung.' },
-
-            // ===== BENAR / SALAH (No 21-30) =====
-            { id: 21, type: "bs", section: "Benar / Salah", text: '<span class="arabic-opt">أَبٌ</span> artinya "Ayah" dalam bahasa Indonesia.', answer: "Benar", hint: 'أَبٌ (abun) berarti ayah.' },
-            { id: 22, type: "bs", text: '<span class="arabic-opt">أُمٌّ</span> artinya "Kakak Perempuan" dalam bahasa Indonesia.', answer: "Salah", hint: 'أُمٌّ (ummun) artinya Ibu, bukan kakak perempuan. Kakak perempuan = أُخْتٌ.' },
-            { id: 23, type: "bs", text: '<span class="arabic-opt">ـكَ</span> adalah kata ganti bersambung yang berarti "milik kamu (laki-laki)".', answer: "Benar", hint: 'ـكَ (-ka) artinya milik kamu (laki-laki). Contoh: كِتَابُكَ = bukumu.' },
-            { id: 24, type: "bs", text: '<span class="arabic-opt">ـهَا</span> adalah kata ganti bersambung yang berarti "milik saya".', answer: "Salah", hint: 'ـهَا (-hā) artinya milik dia (perempuan), bukan milik saya. Milik saya = ـِي.' },
-            { id: 25, type: "bs", text: '<span class="arabic-opt">بَابٌ</span> artinya "pintu" dan termasuk kosakata benda di rumah.', answer: "Benar", hint: 'بَابٌ (bābun) artinya pintu, termasuk benda yang ada di rumah.' },
-            { id: 26, type: "bs", text: '<span class="arabic-opt">جَدٌّ</span> artinya "Kakek" dalam bahasa Indonesia.', answer: "Benar", hint: 'جَدٌّ (jaddun) artinya kakek.' },
-            { id: 27, type: "bs", text: '<span class="arabic-opt">عَمَّةٌ</span> artinya "Paman" dalam bahasa Indonesia.', answer: "Salah", hint: 'عَمَّةٌ (ammatun) artinya bibi (saudara perempuan ayah). Paman = عَمٌّ.' },
-            { id: 28, type: "bs", text: '<span class="arabic-opt">نَافِذَةٌ</span> artinya "Jendela" dan termasuk kosakata di rumah.', answer: "Benar", hint: 'نَافِذَةٌ (nāfidzatun) artinya jendela.' },
-            { id: 29, type: "bs", text: '<span class="arabic-opt">مَائِدَةٌ</span> artinya "Tempat Tidur".', answer: "Salah", hint: 'مَائِدَةٌ (māidatun) artinya meja makan. Tempat tidur = سَرِيرٌ.' },
-            { id: 30, type: "bs", text: '<span class="arabic-opt">مِصْبَاحٌ</span> artinya "Lampu" dan termasuk benda di rumah.', answer: "Benar", hint: 'مِصْبَاحٌ (misbāhun) artinya lampu.' },
-
-            // ===== ISIAN (No 31-35) =====
-            { id: 31, type: "isian", section: "Isian Singkat", text: 'Kosakata bahasa Arab untuk "Ayah" adalah... (tulis dalam huruf latin)', answer: "Abun", hint: 'أَبٌ dibaca Abun = Ayah.' },
-            { id: 32, type: "isian", text: 'Kosakata bahasa Arab untuk "Ibu" adalah... (tulis dalam huruf latin)', answer: "Ummun", hint: 'أُمٌّ dibaca Ummun = Ibu.' },
-            { id: 33, type: "isian", text: '<div class="arabic">أُخْتٌ</div> Kosakata di atas artinya... dalam bahasa Indonesia.', answer: "Kakak perempuan", hint: 'أُخْتٌ (ukhtun) artinya kakak/saudara perempuan.' },
-            { id: 34, type: "isian", text: '<div class="arabic">بَيْتٌ</div> Kosakata di atas artinya... dalam bahasa Indonesia.', answer: "Rumah", hint: 'بَيْتٌ (baitun) artinya rumah.' },
-            { id: 35, type: "isian", text: '<div class="arabic">كُرْسِيٌّ</div> Kosakata di atas artinya... dalam bahasa Indonesia.', answer: "Kursi", hint: 'كُرْسِيٌّ (kursiyyun) artinya kursi.' },
-
-            // ===== URAIAN (No 36-40) =====
-            { id: 36, type: "uraian", section: "Uraian / Esai", text: "Tuliskan 3 kosakata bahasa Arab tentang anggota keluarga beserta artinya!", answer: "1) أَبٌ (Abun) = Ayah, 2) أُمٌّ (Ummun) = Ibu, 3) أَخٌ (Akhun) = Saudara laki-laki, 4) أُخْتٌ (Ukhtun) = Saudara perempuan, 5) جَدٌّ (Jaddun) = Kakek", hint: "Sebutkan kosakata Arab, cara baca, dan artinya." },
-            { id: 37, type: "uraian", text: "Tuliskan 3 kosakata bahasa Arab tentang anggota keluarga yang dimulai dari huruf Jim (ج)!", answer: "1) جَدٌّ (Jaddun) = Kakek, 2) جَدَّةٌ (Jaddatun) = Nenek", hint: 'Kosakata keluarga yang dimulai huruf ج: جَدٌّ dan جَدَّةٌ.' },
-            { id: 38, type: "uraian", text: 'Jelaskan apa yang dimaksud dengan الضَّمِيرُ المُتَّصِلُ (kata ganti bersambung) dan berikan 3 contohnya!', answer: "الضَّمِيرُ المُتَّصِلُ adalah kata ganti orang yang melekat/bersambung pada kata lain. Contoh: 1) ـِي (milik saya) → كِتَابِي = buku saya, 2) ـكَ (milik kamu lk) → كِتَابُكَ = bukumu, 3) ـهُ (milik dia lk) → كِتَابُهُ = bukunya", hint: "Jelaskan pengertian dan berikan contoh penggunaannya." },
-            { id: 39, type: "uraian", text: "Tuliskan 3 kosakata bahasa Arab tentang benda-benda yang ada di rumah beserta artinya!", answer: "1) بَابٌ (Bābun) = Pintu, 2) نَافِذَةٌ (Nāfidzatun) = Jendela, 3) كُرْسِيٌّ (Kursiyyun) = Kursi, 4) مَائِدَةٌ (Māidatun) = Meja makan, 5) سَرِيرٌ (Sarīrun) = Tempat tidur", hint: "Sebutkan kosakata Arab, cara baca, dan artinya." },
-            { id: 40, type: "uraian", text: "Tuliskan kosakata bahasa Arab untuk ruangan-ruangan yang ada di rumah minimal 3!", answer: "1) غُرْفَةُ النَّوْمِ (Ghurfatun naum) = Kamar tidur, 2) مَطْبَخٌ (Mathbakhun) = Dapur, 3) حَمَّامٌ (Hammāmun) = Kamar mandi, 4) غُرْفَةُ الجُلُوسِ (Ghurfatul julūs) = Ruang tamu", hint: "Sebutkan nama-nama ruangan dalam bahasa Arab." }
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Isim Mufrod & Aku Cinta Indonesia)',
+                text: "Apa arti kata isim mufrod berikut? <div class=\"arabic\">تِلْمِيْذٌ</div>",
+                options: ['Guru', 'Murid (laki-laki)', 'Sekolah', 'Kelas'],
+                answer: 1,
+                hint: 'تِلْمِيْذٌ (tilmiidzun) berarti murid laki-laki. Bentuk jamak/banyak adalah talamidz.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: "Pilih kata yang tepat untuk melengkapi kalimat berikut: <br> <div class=\"arabic\">هَذَا ... جَدِيْدٌ (Ini sebuah buku baru)</div>",
+                options: ['<span class="arabic-opt">كِتَابٌ</span>', '<span class="arabic-opt">مَدْرَسَةٌ</span>', '<span class="arabic-opt">سَبُّوْرَةٌ</span>', '<span class="arabic-opt">حَقِيْبَةٌ</span>'],
+                answer: 0,
+                hint: 'هَذَا (hadza) digunakan untuk kata benda muzakkar (laki-laki/tanpa ta\' marbuthah), seperti كِتَابٌ.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: "Kata benda tunggal (isim mufrod) yang berarti \"sekolah\" adalah...",
+                options: ['<span class="arabic-opt">بَيْتٌ</span>', '<span class="arabic-opt">فَصْلٌ</span>', '<span class="arabic-opt">مَدْرَسَةٌ</span>', '<span class="arabic-opt">مَكْتَبٌ</span>'],
+                answer: 2,
+                hint: 'مَدْرَسَةٌ (madrasatun) artinya sekolah, merupakan isim mufrod muannas.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: "Kosakata bahasa Arab untuk kata kerja \"saya mencintai\" (dalam materi Aku Cinta Indonesia) adalah...",
+                options: ['<span class="arabic-opt">أَعْمَلُ</span>', '<span class="arabic-opt">أُحِبُّ</span>', '<span class="arabic-opt">أَقْرَأُ</span>', '<span class="arabic-opt">أَكْتُبُ</span>'],
+                answer: 1,
+                hint: 'أُحِبُّ (uhibbu) artinya saya mencintai atau saya menyukai.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: "Apa arti kosakata berikut? <div class=\"arabic\">وَطَنِيْ إِندُوْنِيْسِيَا</div>",
+                options: ['Tanah airku Indonesia', 'Bahasa Indonesia', 'Bendera Indonesia', 'Rakyat Indonesia'],
+                answer: 0,
+                hint: 'وَطَنِيْ (wathanii) berarti tanah airku, إِندُوْنِيْسِيَا (Induuniisiyaa) berarti Indonesia.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Kosakata yang tepat untuk gambar Bendera Merah Putih adalah...',
+                options: ['<span class="arabic-opt">عَلَمٌ أَبْيَضُ</span>', '<span class="arabic-opt">عَلَمٌ أَحْمَرُ وَأَبْيَضُ</span>', '<span class="arabic-opt">عَلَمٌ أَسْوَدُ</span>', '<span class="arabic-opt">عَلَمٌ أَخْضَرُ</span>'],
+                answer: 1,
+                hint: 'عَلَمٌ أَحْمَرُ وَأَبْيَضُ (\'alamun ahmaru wa abyadhu) artinya bendera merah dan putih.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: "Apa arti kata \"cinta tanah air\" dalam bahasa Arab?",
+                options: ['<span class="arabic-opt">حُبُّ الوَطَنِ</span>', '<span class="arabic-opt">حُبُّ المَدْرَسَةِ</span>', '<span class="arabic-opt">حُبُّ العِلْمِ</span>', '<span class="arabic-opt">حُبُّ البَيْتِ</span>'],
+                answer: 0,
+                hint: 'حُبُّ الوَطَنِ (hubbul wathan) artinya cinta tanah air.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Di antara kata berikut, mana yang merupakan Isim \'Alam (nama orang/tempat)?',
+                options: ['<span class="arabic-opt">فَاطِمَةُ</span> (Fatimah)', '<span class="arabic-opt">قَلَمٌ</span> (Pena)', '<span class="arabic-opt">كُرْسِيٌّ</span> (Kursi)', '<span class="arabic-opt">بَابٌ</span> (Pintu)'],
+                answer: 0,
+                hint: 'Isim \'Alam adalah kata benda yang menunjukkan nama orang, kota, negara, dll. فَاطِمَةُ adalah nama orang.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Di antara nama tempat berikut, manakah yang merupakan Isim \'Alam?',
+                options: ['<span class="arabic-opt">جَاكَرْتَا</span> (Jakarta)', '<span class="arabic-opt">مَدِيْنَةٌ</span> (Kota)', '<span class="arabic-opt">بَلَدٌ</span> (Negara)', '<span class="arabic-opt">شَارِعٌ</span> (Jalan)'],
+                answer: 0,
+                hint: 'جَاكَرْتَا (Jakarta) adalah nama kota yang spesifik, sehingga dikelompokkan sebagai Isim \'Alam.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: "Isim 'Alam yang tepat untuk melengkapi kalimat berikut: <br><div class=\"arabic\">تَقَعُ ... فِيْ جَاوَى الوُسْطَى (Terletak ... di Jawa Tengah)</div>",
+                options: ['<span class="arabic-opt">سُوْرَابَايَا</span> (Surabaya)', '<span class="arabic-opt">سَمَارَانْجُ</span> (Semarang)', '<span class="arabic-opt">جَاكَرْتَا</span> (Jakarta)', '<span class="arabic-opt">مَادُوْرَا</span> (Madura)'],
+                answer: 1,
+                hint: 'Semarang (سَمَارَانْجُ) adalah ibu kota Provinsi Jawa Tengah.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: 'Manakah di bawah ini yang termasuk kata benda tunggal (Isim Mufrod)? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">كِتَابٌ</span> (Satu buku)', '<span class="arabic-opt">قَلَمٌ</span> (Satu pena)', '<span class="arabic-opt">مَكْتَبٌ</span> (Satu meja)', '<span class="arabic-opt">مُعَلِّمُوْنَ</span> (Guru-guru)'],
+                answer: [0, 1, 2],
+                hint: 'مُعَلِّمُوْنَ (mu\'allimuuna) adalah kata benda jamak (banyak), bukan isim mufrod.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Kalimat manakah yang menggunakan Isim Mufrod secara tepat dengan kata tunjuk (Isim Isyarah) yang sesuai? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">هَذَا قَلَمٌ</span>', '<span class="arabic-opt">هَذِهِ مَدْرَسَةٌ</span>', '<span class="arabic-opt">هَذِهِ كِتَابٌ</span>', '<span class="arabic-opt">هَذَا مَكْتَبٌ</span>'],
+                answer: [0, 1, 3],
+                hint: 'كِتَابٌ adalah mudzakkar, harus menggunakan هَذَا, bukan هَذِهِ.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah kata benda tunggal (Isim Mufrod) yang berjenis muannats (perempuan / berakhiran ta\' marbuthah)? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">سَبُّوْرَةٌ</span> (Papan tulis)', '<span class="arabic-opt">حَقِيْبَةٌ</span> (Tas)', '<span class="arabic-opt">بَابٌ</span> (Pintu)', '<span class="arabic-opt">مِسْطَرَةٌ</span> (Penggaris)'],
+                answer: [0, 1, 3],
+                hint: 'بَابٌ adalah mudzakkar (laki-laki), sedangkan yang lain berakhiran ة (muannats).',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Pernyataan mana yang benar mengenai Isim Mufrod? (pilih semua yang benar)',
+                options: ['Isim Mufrod menunjukkan jumlah satu (tunggal)', 'Isim Mufrod bisa berjenis mudzakkar atau muannats', 'Isim Mufrod selalu diakhiri dengan wawu dan nun (ـون)', 'Kata \'بَيْتٌ\' (rumah) termasuk Isim Mufrod'],
+                answer: [0, 1, 3],
+                hint: 'Wawu dan nun (ـون) di akhir kata adalah ciri-ciri isim jamak muzakkar salim.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Di antara kata-kata berikut, manakah yang berjenis mudzakkar (laki-laki / tanpa ta\' marbuthah)? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">فَصْلٌ</span> (Kelas)', '<span class="arabic-opt">كُرْسِيٌّ</span> (Kursi)', '<span class="arabic-opt">خَرِيْطَةٌ</span> (Peta)', '<span class="arabic-opt">بَيْتٌ</span> (Rumah)'],
+                answer: [0, 1, 3],
+                hint: 'خَرِيْطَةٌ (khariithatun) berakhiran ta\' marbuthah, sehingga merupakan muannats.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Manakah kosakata bahasa Arab yang berkaitan erat dengan materi \'Aku Cinta Indonesia\' (أنا أحب إندونيسيا)? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">جُمْهُوْرِيَّةٌ</span> (Republik)', '<span class="arabic-opt">عَلَمٌ</span> (Bendera)', '<span class="arabic-opt">شَعْبٌ</span> (Rakyat)', '<span class="arabic-opt">قَلَمٌ</span> (Pena)'],
+                answer: [0, 1, 2],
+                hint: 'قَلَمٌ (pena) adalah alat tulis sekolah, bukan kosakata utama dalam tema cinta Indonesia.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Di antara kata-kata berikut, manakah yang merupakan Isim \'Alam (nama orang)? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">أَحْمَدُ</span> (Ahmad)', '<span class="arabic-opt">عَائِشَةُ</span> (Aisyah)', '<span class="arabic-opt">رَجُلٌ</span> (Laki-laki)', '<span class="arabic-opt">عُثْمَانُ</span> (Utsman)'],
+                answer: [0, 1, 3],
+                hint: 'رَجُلٌ (rajulun) berarti laki-laki umum (isim nakirah/bukan nama orang), bukan Isim \'Alam.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Manakah di bawah ini yang merupakan Isim \'Alam kategori nama negara atau kota? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">إِندُوْنِيْسِيَا</span> (Indonesia)', '<span class="arabic-opt">مَكَّةُ</span> (Makkah)', '<span class="arabic-opt">بَلَدٌ</span> (Negara)', '<span class="arabic-opt">مِصْرُ</span> (Mesir)'],
+                answer: [0, 1, 3],
+                hint: 'بَلَدٌ (baladun) artinya negara secara umum, bukan nama negara tertentu.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Tentukan pernyataan yang benar tentang Isim \'Alam! (pilih semua yang benar)',
+                options: ['Isim \'Alam adalah kata benda yang menunjuk nama spesifik', 'Nama orang seperti \'Muhammad\' adalah Isim \'Alam', 'Kata \'مَدِيْنَةٌ\' (kota) adalah Isim \'Alam', 'Nama negara seperti \'إِندُوْنِيْسِيَا\' adalah Isim \'Alam'],
+                answer: [0, 1, 4],
+                hint: 'Index 2 (مَدِيْنَةٌ) adalah kata umum, bukan Isim \'Alam.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Manakah pasangan kata berikut yang merupakan nama orang (Isim \'Alam)? (pilih semua yang benar)',
+                options: ['<span class="arabic-opt">إِبْرَاهِيْمُ</span>', '<span class="arabic-opt">يُوْسُفُ</span>', '<span class="arabic-opt">مُسْلِمٌ</span>', '<span class="arabic-opt">زَيْنَبُ</span>'],
+                answer: [0, 1, 3],
+                hint: 'مُسْلِمٌ (muslimun) adalah sebutan penganut agama Islam, bukan nama orang secara spesifik.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Aku Cinta Indonesia)',
+                text: "Pasangkan kata Arab berikut dengan artinya yang tepat: <b>أُحِبُّ</b>",
+                options: ['Saya mencintai', 'Tanah airku', 'Bendera', 'Republik', 'Rakyat'],
+                answer: 'Saya mencintai',
+                hint: 'أُحِبُّ (uhibbu) = Saya mencintai.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan kata Arab berikut dengan artinya yang tepat: <b>وَطَنِيْ</b>",
+                options: ['Saya mencintai', 'Tanah airku', 'Bendera', 'Republik', 'Rakyat'],
+                answer: 'Tanah airku',
+                hint: 'وَطَنِيْ (wathanii) = Tanah airku.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan kata Arab berikut dengan artinya yang tepat: <b>عَلَمٌ</b>",
+                options: ['Saya mencintai', 'Tanah airku', 'Bendera', 'Republik', 'Rakyat'],
+                answer: 'Bendera',
+                hint: 'عَلَمٌ (\'alamun) = Bendera.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan kata Arab berikut dengan artinya yang tepat: <b>جُمْهُوْرِيَّةٌ</b>",
+                options: ['Saya mencintai', 'Tanah airku', 'Bendera', 'Republik', 'Rakyat'],
+                answer: 'Republik',
+                hint: 'جُمْهُوْرِيَّةٌ (jumhuuriyyatun) = Republik.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan kata Arab berikut dengan artinya yang tepat: <b>شَعْبٌ</b>",
+                options: ['Saya mencintai', 'Tanah airku', 'Bendera', 'Republik', 'Rakyat'],
+                answer: 'Rakyat',
+                hint: 'شَعْبٌ (sya\'bun) = Rakyat.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat',
+                text: "Tuliskan arti kosakata berikut ke dalam bahasa Indonesia: <div class=\"arabic\">عَلَمٌ إِندُوْنِيْسِيَا</div>",
+                answer: 'Bendera Indonesia',
+                hint: 'عَلَمٌ artinya bendera, إِندُوْنِيْسِيَا artinya Indonesia.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: "Tuliskan arti kata berikut ke dalam bahasa Indonesia: <div class=\"arabic\">خَرِيْطَةٌ</div>",
+                answer: 'Peta',
+                hint: 'خَرِيْطَةٌ (khariithatun) berarti peta.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: "Lengkapi kalimat rumpang berikut: <br><div class=\"arabic\">أَنَا أُحِبُّ ... (Saya cinta Indonesia)</div>",
+                answer: 'indonesia',
+                hint: 'Bahasa Arab Indonesia adalah إِندُوْنِيْسِيَا (Indonesia).',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: "Bahasa Arab dari kata \"Pancasila\" yang sering diadaptasi langsung adalah...",
+                answer: 'pancasila',
+                hint: 'Diadaptasi langsung menjadi Pancasila (بَانْجَاسِيْلَا).',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: "Tuliskan bahasa Indonesia dari kata: <div class=\"arabic\">حُبُّ الوَطَنِ مِنَ الإِيْمَانِ</div>",
+                answer: 'Cinta tanah air sebagian dari iman',
+                hint: 'Slogan terkenal yang mengaitkan cinta tanah air (hubbul wathan) dengan keimanan.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: "Apa arti dari kata tunggal (isim mufrod) berikut? <div class=\"arabic\">قَلَمٌ</div>",
+                answer: 'Pena',
+                hint: 'قَلَمٌ (qalamun) artinya pena atau bolpoin.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: "Apa arti kata benda tunggal berikut? <div class=\"arabic\">بَابٌ</div>",
+                answer: 'Pintu',
+                hint: 'بَابٌ (baabun) berarti pintu.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: "Apa arti kata benda tunggal berikut? <div class=\"arabic\">كِتَابٌ</div>",
+                answer: 'Buku',
+                hint: 'كِتَابٌ (kitaabun) berarti buku.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: "Apa bahasa Arab dari kata \"penggaris\" (tunggal/mufrod)?",
+                answer: 'mistaratun',
+                hint: 'Penggaris dalam bahasa Arab adalah مِسْطَرَةٌ (mistaratun).',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: "Apa bahasa Arab dari kata \"penghapus papan tulis\" (mufrod)?",
+                answer: 'tallasatun',
+                hint: 'Penghapus papan tulis adalah طَلَّاسَةٌ (tallasatun) atau مِمْسَحَةٌ.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: "Tuliskan arti dari kalimat berikut: <div class=\"arabic\">أَنَا أُحِبُّ إِندُوْنِيْسِيَا أُحِبُّ عَلَمَهَا وَشَعْبَهَا</div>",
+                answer: 'Saya cinta Indonesia, saya mencintai benderanya dan rakyatnya.',
+                hint: 'Artikan perkata: Saya cinta Indonesia, saya mencintai benderanya (alamaha) dan rakyatnya (sya\'baha).',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Tuliskan 3 nama kota di Indonesia ke dalam bahasa Arab! (Contoh: Jakarta, Surabaya, Bandung)',
+                answer: '1) جَاكَرْتَا (Jakarta), 2) سُوْرَابَايَا (Surabaya), 3) بَانْدُوْنْجُ (Bandung), 4) سَمَارَانْجُ (Semarang)',
+                hint: 'Tulis nama kota dengan aksara Arab atau latin transliterasi Arab.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan apa yang dimaksud dengan Isim \'Alam dan tuliskan 3 contohnya!',
+                answer: 'Isim \'Alam adalah isim (kata benda) yang menunjukkan nama tertentu, baik nama manusia (contoh: مُحَمَّدٌ, عَائِشَةُ), nama kota/negara (contoh: جَاكَرْتَا, مَكَّةُ, إِندُوْنِيْسِيَا), maupun nama tempat spesifik.',
+                hint: 'Berikan penjelasan isim \'alam beserta contoh nama orang dan nama kota.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Tuliskan perbedaan antara Isim Mufrod dan Isim Jamak, serta berikan contohnya masing-masing 1!',
+                answer: 'Isim Mufrod adalah kata benda yang menunjukkan jumlah satu/tunggal (contoh: كِتَابٌ = satu buku), sedangkan Isim Jamak adalah kata benda yang menunjukkan jumlah banyak/lebih dari dua (contoh: كُتُبٌ = buku-buku).',
+                hint: 'Jelaskan konsep jumlah benda tunggal vs banyak.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Buatlah satu kalimat sederhana dalam bahasa Arab bertema \'Aku Cinta Indonesia\' beserta artinya!',
+                answer: 'أَنَا أُحِبُّ وَطَنِيْ إِندُوْنِيْسِيَا (Saya cinta tanah airku Indonesia) / أَنَا أُحِبُّ إِندُوْنِيْسِيَا (Saya cinta Indonesia).',
+                hint: 'Gunakan kata uhibbu, wathani, atau Induuniisiyaa.',
+            },
         ];
 
         const container = document.getElementById('question-container');
@@ -428,6 +706,7 @@
                 if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
                 else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
                 else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
                 else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
                 html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
@@ -443,6 +722,7 @@
                 if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
                 else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
                 else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
                 fb.style.display = 'block';
