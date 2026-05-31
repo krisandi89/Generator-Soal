@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STS PAI Kelas 2 - SDIT Friends</title>
+    <title>ASAT PAI Kelas 2 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #27ae60; --primary-light: #2ecc71; --bg: #eafaf1; --success: #27ae60; --error: #e74c3c; --warning: #f39c12; --card-bg: #ffffff; --text: #2d3436; --border: #dfe6e9; }
+        :root {
+            --primary: #16a085;
+            --primary-light: #1abc9c;
+            --bg: #e8f8f5;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
         .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
@@ -17,57 +27,49 @@
         .header p { margin-top: 5px; opacity: 0.9; font-size: 1em; position: relative; z-index: 1; }
         .header .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.8em; margin-top: 8px; position: relative; z-index: 1; }
         .progress-bar { height: 6px; background: var(--border); position: sticky; top: 0; z-index: 100; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--success), #58d68d); width: 0%; transition: width 0.5s ease; border-radius: 0 3px 3px 0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--success), #2ecc71); width: 0%; transition: width 0.5s ease; border-radius: 0 3px 3px 0; }
         .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
-        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; }
+        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
         .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
         .back-btn:hover { background: rgba(255,255,255,0.3); }
         .question-list { padding: 25px; }
-        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; }
-        .info-tag { display: inline-block; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 20px; font-size: 0.75em; margin-left: 8px; }
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
         .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
-        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(39,174,96,0.1); }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(22,160,133,0.1); }
         .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
-        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; display: flex; align-items: flex-start; }
-        .q-text-content { flex: 1; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        .option-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; }
-        .option-label:hover { border-color: var(--primary); background: #eafaf1; }
-        .option-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
-        .option-label.correct-opt { border-color: var(--success) !important; background: #d4edda !important; }
-        .option-label.wrong-opt { border-color: var(--error) !important; background: #f8d7da !important; }
-        .bs-options { display: flex; gap: 12px; margin-top: 5px; }
-        .bs-btn { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 1em; font-weight: 700; transition: all 0.2s; }
-        .bs-btn:hover { border-color: var(--primary); background: #eafaf1; }
-        .bs-btn.selected-benar { border-color: var(--success); background: #d4edda; color: #155724; }
-        .bs-btn.selected-salah { border-color: var(--error); background: #f8d7da; color: #721c24; }
-        .match-select { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.9em; background: white; cursor: pointer; font-weight: 600; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; background: white; }
+        .radio-label:hover, .checkbox-label:hover { border-color: var(--primary); background: #e8f8f5; transform: translateX(5px); }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) { border-color: var(--primary); background: #e8f8f5; }
+        .match-select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.95em; background: white; cursor: pointer; font-weight: 600; }
         .match-select:focus { outline: none; border-color: var(--primary); }
         .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
-        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(39,174,96,0.15); }
+        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(22,160,133,0.15); }
         textarea.input-text { resize: vertical; min-height: 90px; }
         .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
         .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
         .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
-        .partial { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
+        .manual { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
         .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
         .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(39,174,96,0.4); }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(22,160,133,0.4); }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌙 PAI & Budi Pekerti</h1>
+            <h1>🌙 Pendidikan Agama Islam dan Budi Pekerti (PAI)</h1>
             <p>SDIT Friends — Kelas 2</p>
-            <div class="badge">Sumatif Tengah Semester (STS)</div>
+            <div class="badge">Asesmen Sumatif Akhir Tahun (ASAT)</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="score-board" id="score-board">
-            <h2>📊 Nilai Kamu</h2>
+            <h2>📊 Hasil Ujian</h2>
             <div class="score-value" id="final-score">0</div>
             <div class="score-detail" id="score-detail"></div>
             <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
@@ -78,150 +80,436 @@
         </div>
     </div>
     <script>
-    const pgQuestions = [
-        { id: 'pg1', text: 'Hadis tentang kebersihan menyebutkan bahwa kebersihan adalah sebagian dari ...', options: ['A. Ibadah', 'B. Iman', 'C. Islam', 'D. Ihsan'], answer: 'B' },
-        { id: 'pg2', text: 'Umat Islam diperintahkan untuk selalu menjaga ...', options: ['A. Kesenangan', 'B. Kebersihan', 'C. Keramaian', 'D. Keindahan'], answer: 'B' },
-        { id: 'pg3', text: 'Malaikat yang bertugas mencatat amal baik manusia adalah ...', options: ['A. Malaikat Izrail', 'B. Malaikat Mikail', 'C. Malaikat Raqib', 'D. Malaikat Atid'], answer: 'C' },
-        { id: 'pg4', text: 'Malaikat yang bertugas mencatat amal buruk manusia adalah ...', options: ['A. Malaikat Raqib', 'B. Malaikat Atid', 'C. Malaikat Jibril', 'D. Malaikat Munkar'], answer: 'B' },
-        { id: 'pg5', text: 'Sifat rendah hati artinya tidak ...', options: ['A. Sombong', 'B. Malas', 'C. Rakus', 'D. Pendiam'], answer: 'A' },
-        { id: 'pg6', text: 'Mandi dua kali sehari dilakukan pada waktu ...', options: ['A. Pagi dan Siang', 'B. Siang dan Malam', 'C. Pagi dan Sore/Malam', 'D. Sore dan Malam'], answer: 'C' },
-        { id: 'pg7', text: 'Pakaian yang kotor sebaiknya segera ...', options: ['A. Dibuang', 'B. Dibiarkan', 'C. Dicuci', 'D. Disimpan'], answer: 'C' },
-        { id: 'pg8', text: 'Jumlah malaikat yang wajib kita ketahui ada ...', options: ['A. 5', 'B. 10', 'C. 15', 'D. 20'], answer: 'B' },
-        { id: 'pg9', text: 'Orang yang sombong tidak disukai oleh Allah. Lawan dari sombong adalah ...', options: ['A. Pemarah', 'B. Rendah hati', 'C. Pemalu', 'D. Pendiam'], answer: 'B' },
-        { id: 'pg10', text: 'Malaikat diciptakan oleh Allah dari ...', options: ['A. Api', 'B. Tanah', 'C. Cahaya / Nur', 'D. Air'], answer: 'C' },
-    ];
-    const bsQuestions = [
-        { id: 'bs1', text: 'Kebersihan adalah sebagian dari iman.', answer: 'Benar' },
-        { id: 'bs2', text: 'Malaikat Raqib bertugas mencatat amal buruk manusia.', answer: 'Salah' },
-        { id: 'bs3', text: 'Sifat sombong adalah sifat yang disukai Allah SWT.', answer: 'Salah' },
-        { id: 'bs4', text: 'Malaikat tidak pernah bermaksiat kepada Allah SWT.', answer: 'Benar' },
-        { id: 'bs5', text: 'Membersihkan pakaian merupakan salah satu bagian dari menjaga kebersihan.', answer: 'Benar' },
-    ];
-    const matchQuestions = [
-        { id: 'mt1', left: 'Malaikat Jibril', options: ['Menyampaikan wahyu', 'Mencabut nyawa', 'Mencatat amal baik', 'Menjaga surga'], answer: 'Menyampaikan wahyu' },
-        { id: 'mt2', left: 'Malaikat Izrail', options: ['Menyampaikan wahyu', 'Mencabut nyawa', 'Mencatat amal baik', 'Membagi rezeki'], answer: 'Mencabut nyawa' },
-        { id: 'mt3', left: 'Malaikat Mikail', options: ['Menyampaikan wahyu', 'Mencabut nyawa', 'Membagi rezeki', 'Menjaga neraka'], answer: 'Membagi rezeki' },
-        { id: 'mt4', left: 'Malaikat Raqib', options: ['Menjaga surga', 'Mencatat amal baik', 'Mencatat amal buruk', 'Membagi rezeki'], answer: 'Mencatat amal baik' },
-        { id: 'mt5', left: 'Malaikat Atid', options: ['Menjaga surga', 'Mencatat amal baik', 'Mencatat amal buruk', 'Menyampaikan wahyu'], answer: 'Mencatat amal buruk' },
-    ];
-    const isianQuestions = [
-        { id: 'is1', text: 'Kebersihan adalah sebagian dari ...', answer: 'Iman', alt: ['iman'] },
-        { id: 'is2', text: 'Malaikat yang menyampaikan wahyu kepada para nabi adalah Malaikat ...', answer: 'Jibril', alt: ['jibril'] },
-        { id: 'is3', text: 'Sifat tidak sombong dan tidak angkuh disebut sifat ...', answer: 'Rendah hati', alt: ['rendahhati', 'tawadhu', 'tawadu'] },
-        { id: 'is4', text: 'Malaikat diciptakan Allah dari ...', answer: 'Cahaya', alt: ['nur', 'cahaya/nur'] },
-        { id: 'is5', text: 'Malaikat yang bertugas mencabut nyawa adalah Malaikat ...', answer: 'Izrail', alt: ['izrail', 'azrail'] },
-    ];
-    const uraianQuestions = [
-        { id: 'ur1', text: 'Sebutkan 3 cara menjaga kebersihan tubuh sesuai ajaran Islam!' },
-        { id: 'ur2', text: 'Sebutkan 5 nama malaikat beserta tugasnya masing-masing!' },
-        { id: 'ur3', text: 'Apa yang dimaksud dengan sifat rendah hati? Berikan 2 contoh perilaku rendah hati dalam kehidupan sehari-hari!' },
-        { id: 'ur4', text: 'Mengapa kita harus menjaga kebersihan? Jelaskan menurut pemahamanmu!' },
-        { id: 'ur5', text: 'Apa perbedaan antara Malaikat Raqib dan Malaikat Atid? Jelaskan tugasnya!' },
-    ];
+        const questions = [
+            // PILIHAN GANDA (1-10)
+            {
+                id: 1,
+                type: 'pg',
+                section: 'I. Pilihan Ganda (10 Soal)',
+                text: 'Nabi Nuh A.S. diutus oleh Allah Swt. untuk berdakwah mengajak kaumnya menyembah Allah. Kaum Nabi Nuh tersebut bernama kaum ...',
+                options: ['Bani Rasib', 'Bani Israil', 'Kaum Aad', 'Kaum Tsamud'],
+                answer: 0,
+                hint: 'Nabi Nuh A.S. diutus kepada kaum Bani Rasib yang menyembah berhala.'
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Karena kaumnya terus menolak dan mengejek dakwahnya, Allah memerintahkan Nabi Nuh A.S. untuk membuat ...',
+                options: ['Rumah batu', 'Masjid besar', 'Kapal besar (bahtera)', 'Benteng pertahanan'],
+                answer: 2,
+                hint: 'Allah memerintahkan membuat kapal besar di atas bukit sebelum banjir besar melanda.'
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Siapakah putra Nabi Nuh A.S. yang membangkang, menolak naik kapal, dan akhirnya ikut tenggelam oleh banjir besar?',
+                options: ['Ibrahim', 'Kan\'an', 'Sam', 'Ham'],
+                answer: 1,
+                hint: 'Kan\'an adalah putra Nabi Nuh A.S. yang durhaka dan tenggelam.'
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Nabi Nuh A.S. dikaruniai umur yang sangat panjang oleh Allah Swt. untuk berdakwah, yaitu selama ...',
+                options: ['95 tahun', '150 tahun', '500 tahun', '950 tahun'],
+                answer: 3,
+                hint: 'Nabi Nuh A.S. berdakwah selama 950 tahun menghadapi pembangkangan kaumnya.'
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Azab dahsyat yang dikirim oleh Allah Swt. untuk menenggelamkan kaum Nabi Nuh A.S. yang ingkar adalah berupa ...',
+                options: ['Gempa bumi dahsyat', 'Banjir bandang yang besar', 'Kebakaran hutan', 'Angin topan badai'],
+                answer: 1,
+                hint: 'Azab kaum Nabi Nuh A.S. berupa air bah/banjir besar yang menutupi gunung sekalipun.'
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Setelah selamat dari banjir besar dan berlabuh di bukit Judi, Nabi Nuh A.S. dan pengikutnya bersyukur kepada Allah dengan ...',
+                options: ['Berpesta makanan', 'Berdoa dan berserah diri kepada Allah', 'Mendirikan kerajaan baru', 'Membuat berhala baru'],
+                answer: 1,
+                hint: 'Nabi Nuh A.S. memimpin pengikutnya untuk bersyukur atas pertolongan Allah.'
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Mengingat Allah Swt. dengan cara membaca kalimat-kalimat tayyibah secara berulang-ulang setelah selesai salat disebut ...',
+                options: ['Tidur', 'Zikir', 'Belajar', 'Bermain'],
+                answer: 1,
+                hint: 'Zikir secara bahasa artinya mengingat Allah Swt.'
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Membaca kalimat tahmid "Alhamdulillah" di dalam berzikir memiliki arti ...',
+                options: ['Maha Suci Allah', 'Segala puji bagi Allah', 'Allah Maha Besar', 'Maha Besar Allah'],
+                answer: 1,
+                hint: 'Alhamdulillah artinya Segala Puji Bagi Allah.'
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Kalimat takbir berbunyi "Allahu Akbar" diucapkan saat berzikir yang memiliki arti ...',
+                options: ['Allah Maha Besar', 'Segala puji bagi Allah', 'Maha Suci Allah', 'Aku mohon ampun kepada Allah'],
+                answer: 0,
+                hint: 'Allahu Akbar artinya Allah Maha Besar.'
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Kebersihan adalah hal penting dalam Islam. Rasulullah bersabda bahwa kebersihan itu adalah sebagian dari ...',
+                options: ['Kekayaan', 'Kekuatan', 'Iman', 'Kecantikan'],
+                answer: 2,
+                hint: 'An-Nazhafatu Minal Iman artinya Kebersihan sebagian dari iman.'
+            },
+            // PILIHAN GANDA KOMPLEKS (11-15)
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'II. Pilihan Ganda Kompleks (5 Soal)',
+                text: 'Siapa saja anggota keluarga terdekat Nabi Nuh A.S. yang durhaka, tidak menerima dakwah beliau, dan ikut tenggelam? (Pilih semua jawaban yang benar)',
+                options: ['Istri Nabi Nuh', 'Putra Nabi Nuh (Kan\'an)', 'Ayah Nabi Nuh', 'Saudara laki-laki Nabi Nuh'],
+                answer: [0, 1],
+                hint: 'Istri dan putra Nabi Nuh (Kan\'an) termasuk golongan yang ingkar dan binasa.'
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Selain orang-orang beriman, makhluk apa saja yang diangkut oleh kapal Nabi Nuh A.S. agar selamat dari air bah? (Pilih semua jawaban yang benar)',
+                options: ['Hewan-hewan peliharaan secara berpasangan', 'Burung-burung dan hewan liar berpasangan', 'Berhala dan patung sembahan', 'Ikan paus raksasa di kolam kapal'],
+                answer: [0, 1],
+                hint: 'Nabi Nuh membawa sepasang (jantan dan betina) dari setiap jenis hewan darat dan udara.'
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah kalimat di bawah ini yang dibaca sebagai zikir setelah melaksanakan salat fardu? (Pilih semua jawaban yang benar)',
+                options: ['Subhanallah (Tasbih)', 'Alhamdulillah (Tahmid)', 'Allahu Akbar (Takbir)', 'Astagfirullah (Istigfar)'],
+                answer: [0, 1, 2, 3],
+                hint: 'Tasbih, tahmid, takbir, dan istigfar adalah bacaan zikir utama setelah salat.'
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Bagaimana adab atau tata cara berdoa kepada Allah Swt. agar doa kita dikabulkan? (Pilih semua jawaban yang benar)',
+                options: ['Mengangkat kedua telapak tangan dengan sopan', 'Menghadap ke arah kiblat', 'Berdoa sambil berteriak-teriak keras', 'Diawali dengan membaca basmalah, tahmid, dan salawat'],
+                answer: [0, 1, 3],
+                hint: 'Berdoa sebaiknya dengan suara lembut dan khusyuk, bukan berteriak.'
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Manakah sikap yang meneladani kegigihan Nabi Nuh A.S. ketika kita berada di sekolah? (Pilih semua jawaban yang benar)',
+                options: ['Tetap gigih belajar meskipun pelajarannya dirasa sulit', 'Sabar dan tidak membalas ketika ada teman yang mengejek', 'Mudah menyerah jika tugas sekolah terlalu panjang', 'Tetap teguh mengajak teman-teman berbuat kebaikan'],
+                answer: [0, 1, 3],
+                hint: 'Nabi Nuh gigih dan sabar berdakwah ratusan tahun tanpa mengeluh/menyerah.'
+            },
+            // BENAR ATAU SALAH (16-20)
+            {
+                id: 16,
+                type: 'bs',
+                section: 'III. Benar atau Salah (5 Soal)',
+                text: 'Kaum Nabi Nuh A.S. mendapat azab karena mereka menyembah berhala/patung dan menolak menyembah Allah.',
+                answer: 'Benar',
+                hint: 'Kaum Bani Rasib menyembah patung-patung seperti Wadd, Suwa\', dll. dan menolak tauhid.'
+            },
+            {
+                id: 17,
+                type: 'bs',
+                text: 'Berzikir mengingat Allah setelah salat fardu hukumnya adalah wajib bagi setiap muslim.',
+                answer: 'Salah',
+                hint: 'Zikir setelah salat fardu hukumnya sunnah yang sangat dianjurkan (sunnah muakkad).'
+            },
+            {
+                id: 18,
+                type: 'bs',
+                text: 'Membaca kalimat tasbih "Subhanallah" memiliki arti "Maha Suci Allah".',
+                answer: 'Benar',
+                hint: 'Subhanallah diucapkan untuk menyucikan Allah dari segala kekurangan.'
+            },
+            {
+                id: 19,
+                type: 'bs',
+                text: 'Malaikat Jibril adalah malaikat Allah yang bertugas membagi rezeki dan menurunkan air hujan.',
+                answer: 'Salah',
+                hint: 'Malaikat Jibril bertugas menyampaikan wahyu. Tugas membagi rezeki adalah malaikat Mikail.'
+            },
+            {
+                id: 20,
+                type: 'bs',
+                text: 'Rendah hati atau tawadhu artinya tidak sombong, menghormati orang lain, dan bersikap santun.',
+                answer: 'Benar',
+                hint: 'Tawadhu adalah sifat mulia yang menjauhkan diri dari kesombongan.'
+            },
+            // MEMASANGKAN (21-25)
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'IV. Memasangkan (5 Soal)',
+                text: 'Pasangkan kisah/kalimat berikut dengan penjelasannya: <b>Nabi Allah yang diperintahkan membuat kapal besar di atas bukit</b>',
+                options: ['Nabi Nuh A.S.', 'Kan\'an', 'Subhanallah', 'Alhamdulillah', 'Allahu Akbar'],
+                answer: 'Nabi Nuh A.S.',
+                hint: 'Nabi Nuh A.S. adalah pembuat bahtera besar.'
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: 'Pasangkan kisah/kalimat berikut dengan penjelasannya: <b>Anak kandung nabi yang durhaka dan tenggelam oleh banjir besar</b>',
+                options: ['Nabi Nuh A.S.', 'Kan\'an', 'Subhanallah', 'Alhamdulillah', 'Allahu Akbar'],
+                answer: 'Kan\'an',
+                hint: 'Kan\'an menolak naik kapal bersama ayahnya.'
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: 'Pasangkan kisah/kalimat berikut dengan penjelasannya: <b>Kalimat Tasbih yang artinya "Maha Suci Allah"</b>',
+                options: ['Nabi Nuh A.S.', 'Kan\'an', 'Subhanallah', 'Alhamdulillah', 'Allahu Akbar'],
+                answer: 'Subhanallah',
+                hint: 'Subhanallah adalah kalimat tasbih.'
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: 'Pasangkan kisah/kalimat berikut dengan penjelasannya: <b>Kalimat Tahmid yang artinya "Segala puji bagi Allah"</b>',
+                options: ['Nabi Nuh A.S.', 'Kan\'an', 'Subhanallah', 'Alhamdulillah', 'Allahu Akbar'],
+                answer: 'Alhamdulillah',
+                hint: 'Alhamdulillah diucapkan sebagai rasa syukur (tahmid).'
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: 'Pasangkan kisah/kalimat berikut dengan penjelasannya: <b>Kalimat Takbir yang artinya "Allah Maha Besar"</b>',
+                options: ['Nabi Nuh A.S.', 'Kan\'an', 'Subhanallah', 'Alhamdulillah', 'Allahu Akbar'],
+                answer: 'Allahu Akbar',
+                hint: 'Allahu Akbar adalah takbir.'
+            },
+            // ISIAN SINGKAT (26-30)
+            {
+                id: 26,
+                type: 'isian',
+                section: 'V. Isian Singkat (5 Soal)',
+                text: 'Agar doa dan keinginan kita dikabulkan Allah Swt., selain berdoa kita juga wajib ...',
+                answer: 'Berusaha',
+                alt: ['berusaha', 'ikhtiar', 'bekerja keras'],
+                hint: 'Doa harus diiringi dengan ikhtiar/usaha nyata.'
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Kalimat tasbih, tahmid, dan takbir merupakan contoh kalimat yang dibaca saat kita melakukan ...',
+                answer: 'Zikir',
+                alt: ['zikir', 'berzikir'],
+                hint: 'Kalimat tayyibah tersebut dibaca berulang-ulang untuk berzikir.'
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Nama malaikat Allah yang bertugas menyampaikan wahyu kepada nabi dan rasul adalah malaikat ...',
+                answer: 'Jibril',
+                alt: ['jibril', 'malaikat jibril'],
+                hint: 'Jibril adalah penyampai wahyu Ilahi.'
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Hadis nabi menyebutkan bahwa kebersihan itu merupakan sebagian dari ...',
+                answer: 'Iman',
+                alt: ['iman'],
+                hint: 'Kebersihan batin berkaitan erat dengan kebersihan fisik.'
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Kapal besar buatan Nabi Nuh A.S. yang menyelamatkan orang beriman dinamakan ...',
+                answer: 'Bahtera',
+                alt: ['bahtera', 'kapal', 'perahu'],
+                hint: 'Kapal besar Nabi Nuh sering disebut dengan istilah Bahtera.'
+            },
+            // URAIAN (31-35)
+            {
+                id: 31,
+                type: 'uraian',
+                section: 'VI. Uraian (5 Soal)',
+                text: 'Mengapa Allah Swt. menurunkan azab banjir bandang yang sangat besar kepada kaum Nabi Nuh A.S.?',
+                answer: 'Karena kaum Nabi Nuh A.S. menolak menyembah Allah Swt., terus-menerus menyembah berhala, durhaka, serta mengejek ajakan dakwah Nabi Nuh A.S. selama ratusan tahun.'
+            },
+            {
+                id: 32,
+                type: 'uraian',
+                text: 'Tuliskan 3 nama malaikat Allah Swt. beserta tugasnya masing-masing yang wajib kamu ketahui!',
+                answer: 'Misal: 1) Jibril tugasnya menyampaikan wahyu, 2) Mikail tugasnya membagi rezeki dan hujan, 3) Israfil tugasnya meniup sangkakala.'
+            },
+            {
+                id: 33,
+                type: 'uraian',
+                text: 'Sebutkan 3 tata cara atau adab yang sopan ketika kita berdoa memohon kepada Allah Swt.!',
+                answer: '1) Menghadap ke arah kiblat, 2) Mengangkat kedua telapak tangan dengan sopan, 3) Memulai doa dengan basmalah, hamdallah, salawat, dan berdoa dengan suara lembut dan khusyuk.'
+            },
+            {
+                id: 34,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan arti lafal zikir "Alhamdulillah" dan lafal "Allahu Akbar"!',
+                answer: 'Alhamdulillah artinya "Segala puji bagi Allah" (merupakan kalimat tahmid). Allahu Akbar artinya "Allah Maha Besar" (merupakan kalimat takbir).'
+            },
+            {
+                id: 35,
+                type: 'uraian',
+                text: 'Tuliskan 3 contoh sikap rendah hati (tawadhu) yang dapat kamu lakukan dalam kehidupan sehari-hari di sekolah!',
+                answer: '1) Menyapa guru dan teman dengan sopan dan senyum, 2) Mau berteman dengan siapa saja tanpa membeda-bedakan, 3) Tidak menyombongkan kepintaran atau barang milik pribadi.'
+            }
+        ];
 
-    const totalQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length + uraianQuestions.length;
-    const scoredQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length;
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
-    function render() {
-        let html = ''; let qNum = 1;
-        html += `<div class="section-title">📝 Pilihan Ganda <span class="info-tag">10 soal × 1 poin</span></div>`;
-        pgQuestions.forEach(q => {
-            html += `<div class="question-item" id="item-${q.id}"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="options">`;
-            q.options.forEach(opt => { const val = opt.charAt(0); html += `<label class="option-label" id="opt-${q.id}-${val}"><input type="radio" name="${q.id}" value="${val}" onchange="onRadioChange('${q.id}','${val}')"> ${opt}</label>`; });
-            html += `</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✔️ Benar atau Salah <span class="info-tag">5 soal × 1 poin</span></div>`;
-        bsQuestions.forEach(q => {
-            html += `<div class="question-item" id="item-${q.id}"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="bs-options"><button class="bs-btn" id="bs-benar-${q.id}" onclick="selectBS('${q.id}','Benar')">✅ Benar</button><button class="bs-btn" id="bs-salah-${q.id}" onclick="selectBS('${q.id}','Salah')">❌ Salah</button></div><input type="hidden" id="${q.id}" value=""><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">🔗 Tarik Garis (Pasangkan) <span class="info-tag">5 soal × 1 poin</span></div>`;
-        matchQuestions.forEach(q => {
-            let shuffled = [...q.options].sort(() => Math.random() - 0.5);
-            html += `<div class="question-item" id="item-${q.id}"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> dengan tugasnya yang tepat!</span></div><select class="match-select" id="${q.id}"><option value="">-- Pilih Jawaban --</option>${shuffled.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✏️ Isian Singkat <span class="info-tag">5 soal × 1 poin</span></div>`;
-        isianQuestions.forEach(q => {
-            html += `<div class="question-item" id="item-${q.id}"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><input type="text" class="input-text" id="${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off"><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">📄 Uraian <span class="info-tag">5 soal — dijawab lengkap</span></div>`;
-        uraianQuestions.forEach(q => {
-            html += `<div class="question-item" id="item-${q.id}"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><textarea class="input-text" id="${q.id}" placeholder="Tulis jawaban lengkap di sini..."></textarea><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        document.getElementById('question-container').innerHTML = html;
-        document.addEventListener('input', updateProgress);
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'bs') {
+                    inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label>
+                                  <label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                                 </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item">
+                            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                            <div class="options-group">${inputHtml}</div>
+                            <div class="feedback-box" id="fb-${q.id}"></div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'bs') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
         document.addEventListener('change', updateProgress);
-    }
+        document.addEventListener('input', updateProgress);
 
-    function onRadioChange(qId, val) {
-        const q = pgQuestions.find(x => x.id === qId);
-        if (!q) return;
-        q.options.map(o => o.charAt(0)).forEach(v => document.getElementById(`opt-${qId}-${v}`)?.classList.remove('selected'));
-        document.getElementById(`opt-${qId}-${val}`)?.classList.add('selected');
-        updateProgress();
-    }
-    function selectBS(qId, val) {
-        document.getElementById(`bs-benar-${qId}`).classList.remove('selected-benar');
-        document.getElementById(`bs-salah-${qId}`).classList.remove('selected-salah');
-        document.getElementById(qId).value = val;
-        val === 'Benar' ? document.getElementById(`bs-benar-${qId}`).classList.add('selected-benar') : document.getElementById(`bs-salah-${qId}`).classList.add('selected-salah');
-        updateProgress();
-    }
-    function updateProgress() {
-        let answered = 0;
-        pgQuestions.forEach(q => { if (document.querySelector(`[name="${q.id}"]:checked`)) answered++; });
-        bsQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        matchQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        isianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        uraianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        document.getElementById('progress-fill').style.width = `${(answered / totalQ) * 100}%`;
-    }
-    function normalize(s) { return s.toLowerCase().replace(/[-_.,!?']/g, '').trim(); }
-    function submitExam() {
-        let score = 0;
-        pgQuestions.forEach(q => {
-            const sel = document.querySelector(`[name="${q.id}"]:checked`); const fb = document.getElementById(`fb-${q.id}`);
-            q.options.map(o => o.charAt(0)).forEach(v => { const lbl = document.getElementById(`opt-${q.id}-${v}`); if (lbl) lbl.classList.remove('correct-opt','wrong-opt'); });
-            const cl = document.getElementById(`opt-${q.id}-${q.answer}`); if (cl) cl.classList.add('correct-opt');
-            if (sel && sel.value !== q.answer) { const wl = document.getElementById(`opt-${q.id}-${sel.value}`); if (wl) wl.classList.add('wrong-opt'); }
-            const ok = sel && sel.value === q.answer;
-            if (ok) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Jawaban yang benar: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        bsQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            if (val === q.answer) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Jawaban yang benar: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        matchQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            if (normalize(val) === normalize(q.answer)) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Pasangan: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        isianQuestions.forEach(q => {
-            const val = normalize(document.getElementById(q.id)?.value || ''); const fb = document.getElementById(`fb-${q.id}`);
-            const ans = normalize(q.answer);
-            let ok = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
-            if (q.alt) q.alt.forEach(a => { if (normalize(a) === val || val.includes(normalize(a))) ok = true; });
-            if (ok) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        uraianQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value?.trim(); const fb = document.getElementById(`fb-${q.id}`);
-            fb.className='feedback-box partial'; fb.innerHTML = val ? '📝 Jawaban kamu sudah dicatat. Penilaian oleh guru.' : '⚠️ Belum dijawab.'; fb.style.display='block';
-        });
-        const pct = Math.round((score / scoredQ) * 100);
-        document.getElementById('final-score').innerText = pct;
-        document.getElementById('score-detail').innerText = `Skor: ${score} dari ${scoredQ} soal yang dinilai otomatis`;
-        document.getElementById('score-board').style.display='block';
-        document.getElementById('footer-action').style.display='none';
-        document.getElementById('progress-fill').style.width='100%';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    render();
+        function normalize(s) {
+            return s.toLowerCase().replace(/[-_.,!?']/g, '').trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'bs') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && sel.value === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && val.toLowerCase() === q.answer.toLowerCase()) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const val = normalize(document.querySelector(`[name="q${q.id}"]`).value || '');
+                    const ans = normalize(q.answer);
+                    let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                    if (q.alt) {
+                        q.alt.forEach(a => {
+                            if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true;
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 Periksa manual. Kunci jawaban perkiraan: <b>${q.answer}</b>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = Math.round((score / maxAuto) * 100);
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan ganda/kompleks/isian. Soal uraian diperiksa manual oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
     </script>
 </body>
 </html>

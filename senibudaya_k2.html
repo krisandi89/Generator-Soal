@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STS Seni Budaya Kelas 2 - SDIT Friends</title>
+    <title>ASAT Seni Budaya Kelas 2 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #d35400; --primary-light: #e67e22; --bg: #fef5e7; --success: #27ae60; --error: #e74c3c; --warning: #f39c12; --card-bg: #ffffff; --text: #2d3436; --border: #dfe6e9; }
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #9b59b6;
+            --bg: #f4ecf7;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
         .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
@@ -21,41 +31,33 @@
         .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
-        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; }
+        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
         .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
         .back-btn:hover { background: rgba(255,255,255,0.3); }
         .question-list { padding: 25px; }
-        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; }
-        .info-tag { display: inline-block; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 20px; font-size: 0.75em; margin-left: 8px; }
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
         .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
-        .question-item:hover { border-color: var(--primary); }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(142,68,173,0.1); }
         .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
-        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; display: flex; align-items: flex-start; }
-        .q-text-content { flex: 1; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        .option-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; }
-        .option-label:hover { border-color: var(--primary); background: #fef5e7; }
-        .option-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
-        .option-label.correct-opt { border-color: var(--success) !important; background: #d4edda !important; }
-        .option-label.wrong-opt { border-color: var(--error) !important; background: #f8d7da !important; }
-        .bs-options { display: flex; gap: 12px; margin-top: 5px; }
-        .bs-btn { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 1em; font-weight: 700; transition: all 0.2s; }
-        .bs-btn:hover { border-color: var(--primary); }
-        .bs-btn.selected-benar { border-color: var(--success); background: #d4edda; color: #155724; }
-        .bs-btn.selected-salah { border-color: var(--error); background: #f8d7da; color: #721c24; }
-        .match-select { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.9em; background: white; cursor: pointer; font-weight: 600; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; background: white; }
+        .radio-label:hover, .checkbox-label:hover { border-color: var(--primary); background: #f4ecf7; transform: translateX(5px); }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) { border-color: var(--primary); background: #f4ecf7; }
+        .match-select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.95em; background: white; cursor: pointer; font-weight: 600; }
         .match-select:focus { outline: none; border-color: var(--primary); }
         .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
-        .input-text:focus { outline: none; border-color: var(--primary); }
+        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(142,68,173,0.15); }
         textarea.input-text { resize: vertical; min-height: 90px; }
         .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
         .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
         .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
-        .partial { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
+        .manual { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
         .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
         .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(211,84,0,0.4); }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(142,68,173,0.4); }
     </style>
 </head>
 <body>
@@ -63,11 +65,11 @@
         <div class="header">
             <h1>🎨 Seni Budaya</h1>
             <p>SDIT Friends — Kelas 2</p>
-            <div class="badge">Sumatif Tengah Semester (STS)</div>
+            <div class="badge">Asesmen Sumatif Akhir Tahun (ASAT)</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="score-board" id="score-board">
-            <h2>📊 Nilai Kamu</h2>
+            <h2>📊 Hasil Ujian</h2>
             <div class="score-value" id="final-score">0</div>
             <div class="score-detail" id="score-detail"></div>
             <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
@@ -78,144 +80,436 @@
         </div>
     </div>
     <script>
-    const pgQuestions = [
-        { id: 'pg1', text: 'Seni membuat gambar atau tempel dari potongan kertas/kain disebut ...', options: ['A. Origami', 'B. Mozaik', 'C. Kolase', 'D. Montase'], answer: 'C' },
-        { id: 'pg2', text: 'Seni melipat kertas menjadi berbagai bentuk hewan atau benda disebut ...', options: ['A. Kolase', 'B. Origami', 'C. Montase', 'D. Mosaik'], answer: 'B' },
-        { id: 'pg3', text: 'Bahan utama yang digunakan dalam membuat origami adalah ...', options: ['A. Tanah liat', 'B. Kain perca', 'C. Kertas', 'D. Daun kering'], answer: 'C' },
-        { id: 'pg4', text: 'Lagu yang dinyanyikan dengan pelan dan lembut menggunakan tempo ...', options: ['A. Cepat', 'B. Sedang', 'C. Lambat', 'D. Sangat cepat'], answer: 'C' },
-        { id: 'pg5', text: 'Alat musik yang cara memainkannya dipukul disebut alat musik ...', options: ['A. Melodis', 'B. Harmonis', 'C. Ritmis', 'D. Melodi'], answer: 'C' },
-        { id: 'pg6', text: 'Mozaik dibuat dari bahan-bahan kecil seperti batu, kaca, atau ...', options: ['A. Daun besar', 'B. Keramik/ubin', 'C. Batang kayu', 'D. Kaleng'], answer: 'B' },
-        { id: 'pg7', text: 'Kolase memanfaatkan bahan-bahan bekas seperti ...', options: ['A. Emas dan perak', 'B. Batu berharga', 'C. Kertas, kain, biji-bijian', 'D. Cat minyak'], answer: 'C' },
-        { id: 'pg8', text: 'Gerakan tari yang mengikuti irama musik melatih ...', options: ['A. Kekuatan otot', 'B. Kecepatan lari', 'C. Koordinasi tubuh dan ritme', 'D. Keseimbangan berdiri'], answer: 'C' },
-        { id: 'pg9', text: 'Gendang adalah contoh alat musik ...', options: ['A. Melodis', 'B. Harmonis', 'C. Ritmis', 'D. Pianis'], answer: 'C' },
-        { id: 'pg10', text: 'Karya seni yang dibuat dari bahan alam seperti daun, ranting, atau biji-bijian disebut karya seni ...', options: ['A. Digital', 'B. Alam', 'C. Modern', 'D. Abstrak'], answer: 'B' },
-    ];
-    const bsQuestions = [
-        { id: 'bs1', text: 'Origami adalah seni melipat kertas yang berasal dari Jepang.', answer: 'Benar' },
-        { id: 'bs2', text: 'Kolase dibuat hanya dari bahan-bahan yang mahal.', answer: 'Salah' },
-        { id: 'bs3', text: 'Gendang dimainkan dengan cara dipukul.', answer: 'Benar' },
-        { id: 'bs4', text: 'Mozaik dibuat dari potongan bahan kecil yang disusun membentuk gambar.', answer: 'Benar' },
-        { id: 'bs5', text: 'Lagu bertempo cepat dinyanyikan dengan pelan dan lambat.', answer: 'Salah' },
-    ];
-    const matchQuestions = [
-        { id: 'mt1', left: 'Kolase', options: ['Melipat kertas', 'Menempel potongan bahan', 'Menyusun batu kecil', 'Memukul alat musik', 'Melukis di kanvas'], answer: 'Menempel potongan bahan' },
-        { id: 'mt2', left: 'Origami', options: ['Melipat kertas', 'Menempel potongan bahan', 'Menyusun batu kecil', 'Memukul alat musik', 'Melukis di kanvas'], answer: 'Melipat kertas' },
-        { id: 'mt3', left: 'Mozaik', options: ['Melipat kertas', 'Menempel potongan bahan', 'Menyusun kepingan kecil', 'Memukul alat musik', 'Melukis di kanvas'], answer: 'Menyusun kepingan kecil' },
-        { id: 'mt4', left: 'Gendang', options: ['Ditiup', 'Dipetik', 'Dipukul', 'Ditekan', 'Digesek'], answer: 'Dipukul' },
-        { id: 'mt5', left: 'Seruling / Recorder', options: ['Ditiup', 'Dipetik', 'Dipukul', 'Ditekan', 'Digesek'], answer: 'Ditiup' },
-    ];
-    const isianQuestions = [
-        { id: 'is1', text: 'Seni melipat kertas menjadi berbagai bentuk disebut ...', answer: 'Origami', alt: ['origami'] },
-        { id: 'is2', text: 'Karya seni yang dibuat dengan menempel potongan bahan-bahan seperti kertas, kain, atau daun disebut ...', answer: 'Kolase', alt: ['kolase'] },
-        { id: 'is3', text: 'Gendang adalah alat musik yang dimainkan dengan cara ...', answer: 'Dipukul', alt: ['dipukul', 'pukul'] },
-        { id: 'is4', text: 'Karya seni yang terbuat dari kepingan kecil batu, kaca, atau keramik yang disusun menjadi gambar disebut ...', answer: 'Mozaik', alt: ['mozaik', 'mosaik'] },
-        { id: 'is5', text: 'Kecepatan irama lagu disebut ...', answer: 'Tempo', alt: ['tempo'] },
-    ];
-    const uraianQuestions = [
-        { id: 'ur1', text: 'Jelaskan perbedaan antara kolase dan mozaik! Berikan contoh bahan yang digunakan masing-masing!' },
-        { id: 'ur2', text: 'Sebutkan langkah-langkah membuat origami bentuk burung atau kapal (pilih salah satu)!' },
-        { id: 'ur3', text: 'Sebutkan 4 jenis alat musik beserta cara memainkannya!' },
-        { id: 'ur4', text: 'Apa yang kamu rasakan ketika menyanyi atau menari? Mengapa seni penting untuk dipelajari?' },
-        { id: 'ur5', text: 'Buatlah karya seni sederhana dari bahan alam yang ada di sekitarmu! Jelaskan bahan yang kamu gunakan dan cara membuatnya!' },
-    ];
+        const questions = [
+            // PILIHAN GANDA (1-10)
+            {
+                id: 1,
+                type: 'pg',
+                section: 'I. Pilihan Ganda (10 Soal)',
+                text: 'Kegiatan lisan untuk menyampaikan suatu kisah atau dongeng di hadapan teman-teman sekelas disebut ...',
+                options: ['Menulis', 'Membaca puisi', 'Bercerita', 'Melukis'],
+                answer: 2,
+                hint: 'Bercerita adalah kegiatan lisan untuk menyampaikan jalan cerita.'
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Pertunjukan teater atau kegiatan bercerita yang dimainkan oleh satu orang saja di depan penonton disebut ...',
+                options: ['Monolog', 'Dialog', 'Paduan suara', 'Tari kelompok'],
+                answer: 0,
+                hint: 'Monolog berasal dari bahasa Yunani yang berarti berbicara sendiri.'
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Bayangan atau gambaran di dalam pikiran kita mengenai suatu kejadian atau hal yang kita ciptakan sendiri disebut ...',
+                options: ['Fakta', 'Imajinasi', 'Berita', 'Kenyataan'],
+                answer: 1,
+                hint: 'Imajinasi adalah gambaran pikiran (rekaan).'
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Bagaimana cara menyenangkan yang dapat kita lakukan untuk meningkatkan kemampuan berimajinasi?',
+                options: ['Membaca buku cerita dongeng', 'Berteriak keras di jalan', 'Tidur seharian di kamar', 'Mencoret-coret tembok sekolah'],
+                answer: 0,
+                hint: 'Membaca buku cerita memperluas wawasan dan melatih otak membayangkan alur cerita.'
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Berikut ini adalah persiapan yang baik sesaat sebelum kamu tampil bercerita di depan kelas, kecuali ...',
+                options: ['Duduk dengan sikap sempurna', 'Memejamkan kedua mata sejenak', 'Menarik napas perlahan-lahan', 'Berlari-lari keliling kelas sambil berteriak'],
+                answer: 3,
+                hint: 'Berlari dan berteriak membuat konsentrasi hilang dan tubuh lelah.'
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Benda pendukung seperti sapu ijuk, pensil, atau penggaris yang dipakai saat memainkan peran teater disebut ...',
+                options: ['Panggung', 'Kostum', 'Properti / Alat bantu', 'Naskah'],
+                answer: 2,
+                hint: 'Properti teater adalah alat bantu atau benda yang dipakai pemeran untuk memperkuat akting.'
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Penjiwaan dari raut wajah dan mimik muka seorang penari agar tarian terlihat hidup dan bermakna dinamakan ...',
+                options: ['Ekspresi', 'Lafal', 'Intonasi', 'Properti'],
+                answer: 0,
+                hint: 'Ekspresi wajah mencerminkan perasaan (sedih, gembira, marah) dalam menari.'
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Gerakan tangan melambai, mengepal, dan melenggang termasuk dalam kelompok gerak dasar ...',
+                options: ['Kaki', 'Kepala', 'Tangan', 'Badan'],
+                answer: 2,
+                hint: 'Melambai dan melenggang dilakukan menggunakan tangan.'
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Tahapan latihan dalam gerak menari secara umum terdiri atas latihan pendahuluan, latihan inti, dan latihan ...',
+                options: ['Tambahan', 'Penutup', 'Pemanasan', 'Kelompok'],
+                answer: 1,
+                hint: 'Latihan diakhiri dengan pendinginan atau latihan penutup.'
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Gerakan tari yang digunakan untuk menyambungkan satu gerak dasar tari ke gerak dasar berikutnya disebut gerak ...',
+                options: ['Pokok', 'Inti', 'Penghubung', 'Pemanasan'],
+                answer: 2,
+                hint: 'Gerak penghubung berfungsi sebagai jembatan transisi antargerakan.'
+            },
+            // PILIHAN GANDA KOMPLEKS (11-15)
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'II. Pilihan Ganda Kompleks (5 Soal)',
+                text: 'Kegiatan apa saja yang tergolong efektif untuk melatih daya imajinasi anak? (Pilih semua jawaban yang benar)',
+                options: ['Membaca buku cerita atau dongeng sebelum tidur', 'Mendengarkan musik instrumental yang menenangkan', 'Menonton video animasi edukatif', 'Melihat dinding kosong tanpa berpikir'],
+                answer: [0, 1, 2],
+                hint: 'Membaca, mendengarkan musik, dan menonton animasi merangsang otak untuk membayangkan sesuatu.'
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Manakah hal yang sebaiknya dipersiapkan sebelum kita mulai berdiri untuk bercerita di depan kelas? (Pilih semua jawaban yang benar)',
+                options: ['Duduk rileks dengan sikap yang sempurna', 'Memejamkan kedua mata sejenak untuk fokus', 'Membayangkan terlebih dahulu cerita yang akan dibawakan', 'Mengobrol keras dengan teman sebangku'],
+                answer: [0, 1, 2],
+                hint: 'Menenangkan diri dengan duduk tegak, memejamkan mata, dan membayangkan cerita membantu fokus.'
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Alat bantu/properti apa saja yang bisa digunakan siswa kelas 2 saat memperagakan drama di kelas? (Pilih semua jawaban yang benar)',
+                options: ['Sapu ijuk kelas untuk tiang bendera/tongkat', 'Penggaris kayu untuk pedang mainan', 'Buku tulis untuk tameng pelindung', 'Kompor gas menyala asli dari dapur'],
+                answer: [0, 1, 2],
+                hint: 'Sapu, penggaris, dan buku tulis aman dipakai sebagai properti kreatif di kelas.'
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Manakah gerakan di bawah ini yang tergolong dalam gerak dasar tangan dalam seni tari tradisional? (Pilih semua jawaban yang benar)',
+                options: ['Melambai-lambai lembut', 'Melenggang bergantian kanan kiri', 'Berjalan jinjit di tempat', 'Mengacungkan ibu jari'],
+                answer: [0, 1],
+                hint: 'Melambai dan melenggang adalah gerak dasar tangan. Jinjit adalah gerak kaki.'
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Urutan tahapan latihan gerak teater atau tari yang benar meliputi latihan apa saja? (Pilih semua jawaban yang benar)',
+                options: ['Latihan pendahuluan (pemanasan)', 'Latihan inti (gerakan utama)', 'Latihan penutup (pendinginan)', 'Latihan tidur siang'],
+                answer: [0, 1, 2],
+                hint: 'Latihan tari yang baik terdiri dari pemanasan, inti, dan pendinginan/penutup.'
+            },
+            // BENAR ATAU SALAH (16-20)
+            {
+                id: 16,
+                type: 'bs',
+                section: 'III. Benar atau Salah (5 Soal)',
+                text: 'Bercerita di hadapan teman-teman sekelas dapat melatih keberanian mental dan kreativitas kita.',
+                answer: 'Benar',
+                hint: 'Tampil di depan umum meningkatkan rasa percaya diri anak sejak dini.'
+            },
+            {
+                id: 17,
+                type: 'bs',
+                text: 'Monolog adalah sebutan untuk pementasan cerita yang diperankan oleh banyak orang secara bersama-sama.',
+                answer: 'Salah',
+                hint: 'Monolog adalah pementasan tunggal yang dilakukan oleh satu orang saja.'
+            },
+            {
+                id: 18,
+                type: 'bs',
+                text: 'Imajinasi adalah gambaran dalam pikiran kita mengenai hal-hal yang tidak nyata atau rekaan saja.',
+                answer: 'Benar',
+                hint: 'Imajinasi didasarkan pada daya bayang atau khayalan pikiran.'
+            },
+            {
+                id: 19,
+                type: 'bs',
+                text: 'Ekspresi wajah seorang penari harus disesuaikan dengan isi tarian dan alunan musik pengiringnya.',
+                answer: 'Benar',
+                hint: 'Ekspresi harus seirama dengan tema tarian agar pesan tarian sampai kepada penonton.'
+            },
+            {
+                id: 20,
+                type: 'bs',
+                text: 'Gerak penghubung digunakan untuk menyambung gerak dasar satu dengan gerak dasar tari yang lain.',
+                answer: 'Benar',
+                hint: 'Gerak penghubung berguna untuk memperhalus perpindahan gerakan.'
+            },
+            // MEMASANGKAN (21-25)
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'IV. Memasangkan (5 Soal)',
+                text: 'Pasangkan istilah berikut dengan pengertian yang tepat: <b>Kegiatan bercerita seorang diri di depan penonton</b>',
+                options: ['Monolog', 'Imajinasi', 'Ekspresi', 'Gerak Penghubung', 'Properti'],
+                answer: 'Monolog',
+                hint: 'Monolog dikerjakan oleh pemeran tunggal.'
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan pengertian yang tepat: <b>Bayangan atau khayalan dalam pikiran tentang suatu hal</b>',
+                options: ['Monolog', 'Imajinasi', 'Ekspresi', 'Gerak Penghubung', 'Properti'],
+                answer: 'Imajinasi',
+                hint: 'Imajinasi adalah khayalan/gambaran pikiran.'
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan pengertian yang tepat: <b>Raut wajah penari yang mengekspresikan perasaan dari tarian</b>',
+                options: ['Monolog', 'Imajinasi', 'Ekspresi', 'Gerak Penghubung', 'Properti'],
+                answer: 'Ekspresi',
+                hint: 'Ekspresi berkaitan dengan mimik wajah.'
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan pengertian yang tepat: <b>Gerakan transisi untuk menyambung antargerak dasar tari</b>',
+                options: ['Monolog', 'Imajinasi', 'Ekspresi', 'Gerak Penghubung', 'Properti'],
+                answer: 'Gerak Penghubung',
+                hint: 'Berfungsi sebagai penghubung gerakan.'
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan pengertian yang tepat: <b>Alat bantu benda nyata yang digunakan saat bermain peran</b>',
+                options: ['Monolog', 'Imajinasi', 'Ekspresi', 'Gerak Penghubung', 'Properti'],
+                answer: 'Properti',
+                hint: 'Benda pembantu akting dinamakan properti.'
+            },
+            // ISIAN SINGKAT (26-30)
+            {
+                id: 26,
+                type: 'isian',
+                section: 'V. Isian Singkat (5 Soal)',
+                text: 'Kegiatan teater dasar berupa penyampaian kisah atau pengalaman sehari-hari secara lisan disebut ...',
+                answer: 'Bercerita',
+                alt: ['bercerita', 'cerita'],
+                hint: 'Penyampaian kisah secara lisan adalah bercerita.'
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Gambaran khayalan di dalam pikiran tentang sesuatu yang ingin kita ciptakan disebut daya ...',
+                answer: 'Imajinasi',
+                alt: ['imajinasi', 'khayalan'],
+                hint: 'Daya pikir rekaan disebut imajinasi.'
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Sebelum tampil bercerita di depan kelas, kita sebaiknya menarik napas dalam dan memejamkan kedua ...',
+                answer: 'Mata',
+                alt: ['mata'],
+                hint: 'Memejamkan mata melatih konsentrasi sebelum tampil.'
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Latihan gerak dalam menari dibagi menjadi latihan pendahuluan, latihan inti, dan latihan ...',
+                answer: 'Penutup',
+                alt: ['penutup', 'pendinginan'],
+                hint: 'Pendinginan disebut juga latihan penutup.'
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Gerakan tari melambai-lambai lembut dilakukan menggunakan anggota tubuh ...',
+                answer: 'Tangan',
+                alt: ['tangan'],
+                hint: 'Melambai dikerjakan menggunakan jari-jari tangan.'
+            },
+            // URAIAN (31-35)
+            {
+                id: 31,
+                type: 'uraian',
+                section: 'VI. Uraian (5 Soal)',
+                text: 'Jelaskan apa yang dimaksud dengan istilah monolog dalam pementasan seni teater!',
+                answer: 'Monolog adalah pementasan teater atau kegiatan bercerita yang dilakukan oleh satu orang saja (tunggal) di hadapan penonton tanpa adanya lawan bicara di panggung.'
+            },
+            {
+                id: 32,
+                type: 'uraian',
+                text: 'Sebutkan 3 cara menyenangkan yang dapat dilakukan oleh anak-anak untuk melatih kemampuan berimajinasi!',
+                answer: '1) Membaca buku dongeng atau cerita fantasi, 2) Mendengarkan alunan musik instrumental sambil menutup mata, 3) Menonton film/video animasi pendidikan.'
+            },
+            {
+                id: 33,
+                type: 'uraian',
+                text: 'Tuliskan secara urut langkah-langkah persiapan diri sebelum kamu berdiri di depan kelas untuk membawakan cerita!',
+                answer: '1) Duduk tenang dengan sikap sempurna, 2) Pejamkan kedua mata, 3) Tarik napas secara perlahan-lahan untuk menenangkan diri, 4) Bayangkan jalan cerita yang akan disampaikan.'
+            },
+            {
+                id: 34,
+                type: 'uraian',
+                text: 'Apa fungsi dari penggunaan gerak penghubung dalam menari tari tradisional?',
+                answer: 'Fungsi gerak penghubung adalah untuk menyambungkan gerak dasar satu dengan gerak dasar lainnya agar perpindahan gerakan terlihat halus, luwes, dan indah.'
+            },
+            {
+                id: 35,
+                type: 'uraian',
+                text: 'Mengapa penari harus menampilkan ekspresi wajah yang sesuai dengan isi tarian dan musik pengiringnya?',
+                answer: 'Agar tarian terlihat hidup, bermakna, dan penonton dapat merasakan serta memahami perasaan (sedih, gembira, atau gagah) yang ingin disampaikan lewat tarian tersebut.'
+            }
+        ];
 
-    const totalQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length + uraianQuestions.length;
-    const scoredQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length;
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
-    function render() {
-        let html = ''; let qNum = 1;
-        html += `<div class="section-title">📝 Pilihan Ganda <span class="info-tag">10 soal × 1 poin</span></div>`;
-        pgQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="options">`;
-            q.options.forEach(opt => { const val = opt.charAt(0); html += `<label class="option-label" id="opt-${q.id}-${val}"><input type="radio" name="${q.id}" value="${val}" onchange="onRadioChange('${q.id}','${val}')"> ${opt}</label>`; });
-            html += `</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✔️ Benar atau Salah <span class="info-tag">5 soal × 1 poin</span></div>`;
-        bsQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="bs-options"><button class="bs-btn" id="bs-benar-${q.id}" onclick="selectBS('${q.id}','Benar')">✅ Benar</button><button class="bs-btn" id="bs-salah-${q.id}" onclick="selectBS('${q.id}','Salah')">❌ Salah</button></div><input type="hidden" id="${q.id}" value=""><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">🔗 Tarik Garis (Pasangkan) <span class="info-tag">5 soal × 1 poin</span></div>`;
-        matchQuestions.forEach(q => {
-            let shuffled = [...q.options].sort(() => Math.random() - 0.5);
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> dengan keterangan yang tepat!</span></div><select class="match-select" id="${q.id}"><option value="">-- Pilih Jawaban --</option>${shuffled.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✏️ Isian Singkat <span class="info-tag">5 soal × 1 poin</span></div>`;
-        isianQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><input type="text" class="input-text" id="${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off"><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">📄 Uraian <span class="info-tag">5 soal — dijawab lengkap</span></div>`;
-        uraianQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><textarea class="input-text" id="${q.id}" placeholder="Tulis jawaban lengkap di sini..."></textarea><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        document.getElementById('question-container').innerHTML = html;
-        document.addEventListener('input', updateProgress);
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'bs') {
+                    inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label>
+                                  <label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                                 </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item">
+                            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                            <div class="options-group">${inputHtml}</div>
+                            <div class="feedback-box" id="fb-${q.id}"></div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'bs') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
         document.addEventListener('change', updateProgress);
-    }
-    function onRadioChange(qId, val) {
-        const q = pgQuestions.find(x => x.id === qId); if (!q) return;
-        q.options.map(o => o.charAt(0)).forEach(v => document.getElementById(`opt-${qId}-${v}`)?.classList.remove('selected'));
-        document.getElementById(`opt-${qId}-${val}`)?.classList.add('selected'); updateProgress();
-    }
-    function selectBS(qId, val) {
-        document.getElementById(`bs-benar-${qId}`).classList.remove('selected-benar');
-        document.getElementById(`bs-salah-${qId}`).classList.remove('selected-salah');
-        document.getElementById(qId).value = val;
-        val === 'Benar' ? document.getElementById(`bs-benar-${qId}`).classList.add('selected-benar') : document.getElementById(`bs-salah-${qId}`).classList.add('selected-salah');
-        updateProgress();
-    }
-    function updateProgress() {
-        let answered = 0;
-        pgQuestions.forEach(q => { if (document.querySelector(`[name="${q.id}"]:checked`)) answered++; });
-        bsQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        matchQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        isianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        uraianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        document.getElementById('progress-fill').style.width = `${(answered / totalQ) * 100}%`;
-    }
-    function normalize(s) { return s.toLowerCase().replace(/[-_.,!?']/g, '').trim(); }
-    function submitExam() {
-        let score = 0;
-        pgQuestions.forEach(q => {
-            const sel = document.querySelector(`[name="${q.id}"]:checked`); const fb = document.getElementById(`fb-${q.id}`);
-            q.options.map(o => o.charAt(0)).forEach(v => { const lbl = document.getElementById(`opt-${q.id}-${v}`); if (lbl) lbl.classList.remove('correct-opt','wrong-opt'); });
-            const cl = document.getElementById(`opt-${q.id}-${q.answer}`); if (cl) cl.classList.add('correct-opt');
-            if (sel && sel.value !== q.answer) { const wl = document.getElementById(`opt-${q.id}-${sel.value}`); if (wl) wl.classList.add('wrong-opt'); }
-            const ok = sel && sel.value === q.answer;
-            if (ok) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        bsQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            val === q.answer ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        matchQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            normalize(val) === normalize(q.answer) ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Pasangan: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        isianQuestions.forEach(q => {
-            const val = normalize(document.getElementById(q.id)?.value || ''); const fb = document.getElementById(`fb-${q.id}`);
-            const ans = normalize(q.answer);
-            let ok = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
-            if (q.alt) q.alt.forEach(a => { if (normalize(a) === val || val.includes(normalize(a))) ok = true; });
-            ok ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        uraianQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value?.trim(); const fb = document.getElementById(`fb-${q.id}`);
-            fb.className='feedback-box partial'; fb.innerHTML = val ? '📝 Jawaban dicatat. Penilaian oleh guru.' : '⚠️ Belum dijawab.'; fb.style.display='block';
-        });
-        const pct = Math.round((score / scoredQ) * 100);
-        document.getElementById('final-score').innerText = pct;
-        document.getElementById('score-detail').innerText = `Skor: ${score} dari ${scoredQ} soal`;
-        document.getElementById('score-board').style.display='block';
-        document.getElementById('footer-action').style.display='none';
-        document.getElementById('progress-fill').style.width='100%';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    render();
+        document.addEventListener('input', updateProgress);
+
+        function normalize(s) {
+            return s.toLowerCase().replace(/[-_.,!?']/g, '').trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'bs') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && sel.value === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && val.toLowerCase() === q.answer.toLowerCase()) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const val = normalize(document.querySelector(`[name="q${q.id}"]`).value || '');
+                    const ans = normalize(q.answer);
+                    let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                    if (q.alt) {
+                        q.alt.forEach(a => {
+                            if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true;
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 Periksa manual. Kunci jawaban perkiraan: <b>${q.answer}</b>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = Math.round((score / maxAuto) * 100);
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan ganda/kompleks/isian. Soal uraian diperiksa manual oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
     </script>
 </body>
 </html>

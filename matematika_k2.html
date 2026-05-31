@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STS Matematika Kelas 2 - SDIT Friends</title>
+    <title>ASAT Matematika Kelas 2 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #8e44ad; --primary-light: #9b59b6; --bg: #f5eef8; --success: #27ae60; --error: #e74c3c; --warning: #f39c12; --card-bg: #ffffff; --text: #2d3436; --border: #dfe6e9; }
+        :root {
+            --primary: #d35400;
+            --primary-light: #e67e22;
+            --bg: #fdf2e9;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
         .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
@@ -21,41 +31,34 @@
         .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
-        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; }
+        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
         .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
         .back-btn:hover { background: rgba(255,255,255,0.3); }
         .question-list { padding: 25px; }
-        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; }
-        .info-tag { display: inline-block; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 20px; font-size: 0.75em; margin-left: 8px; }
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
         .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
-        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(142,68,173,0.1); }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(211,84,0,0.1); }
         .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
-        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; display: flex; align-items: flex-start; }
-        .q-text-content { flex: 1; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        .option-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; }
-        .option-label:hover { border-color: var(--primary); background: #f5eef8; }
-        .option-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
-        .option-label.correct-opt { border-color: var(--success) !important; background: #d4edda !important; }
-        .option-label.wrong-opt { border-color: var(--error) !important; background: #f8d7da !important; }
-        .bs-options { display: flex; gap: 12px; margin-top: 5px; }
-        .bs-btn { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 1em; font-weight: 700; transition: all 0.2s; }
-        .bs-btn:hover { border-color: var(--primary); }
-        .bs-btn.selected-benar { border-color: var(--success); background: #d4edda; color: #155724; }
-        .bs-btn.selected-salah { border-color: var(--error); background: #f8d7da; color: #721c24; }
-        .match-select { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.9em; background: white; cursor: pointer; font-weight: 600; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; }
+        .data-box { background: #fdf2e9; border: 2px solid #f5cba7; border-radius: 10px; padding: 15px; margin: 10px 0 15px; font-weight: bold; text-align: center; font-size: 1.1em; letter-spacing: 2px; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; background: white; }
+        .radio-label:hover, .checkbox-label:hover { border-color: var(--primary); background: #fdf2e9; transform: translateX(5px); }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) { border-color: var(--primary); background: #fdf2e9; }
+        .match-select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.95em; background: white; cursor: pointer; font-weight: 600; }
         .match-select:focus { outline: none; border-color: var(--primary); }
         .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
-        .input-text:focus { outline: none; border-color: var(--primary); }
+        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(211,84,0,0.15); }
         textarea.input-text { resize: vertical; min-height: 90px; }
         .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
         .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
         .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
-        .partial { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
+        .manual { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
         .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
         .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(142,68,173,0.4); }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(211,84,0,0.4); }
     </style>
 </head>
 <body>
@@ -63,11 +66,11 @@
         <div class="header">
             <h1>➗ Matematika</h1>
             <p>SDIT Friends — Kelas 2</p>
-            <div class="badge">Sumatif Tengah Semester (STS)</div>
+            <div class="badge">Asesmen Sumatif Akhir Tahun (ASAT)</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="score-board" id="score-board">
-            <h2>📊 Nilai Kamu</h2>
+            <h2>📊 Hasil Ujian</h2>
             <div class="score-value" id="final-score">0</div>
             <div class="score-detail" id="score-detail"></div>
             <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
@@ -78,146 +81,436 @@
         </div>
     </div>
     <script>
-    const pgQuestions = [
-        // Pengukuran Berat
-        { id: 'pg1', text: 'Benda yang lebih berat dari 1 kg adalah ...', options: ['A. Sebuah penghapus', 'B. Sebuah pensil', 'C. Sebuah tas berisi buku', 'D. Sebuah karet gelang'], answer: 'C' },
-        { id: 'pg2', text: 'Ibu membeli 3 kg gula dan 2 kg tepung. Berapa kg berat belanjaan ibu seluruhnya?', options: ['A. 4 kg', 'B. 5 kg', 'C. 6 kg', 'D. 7 kg'], answer: 'B' },
-        { id: 'pg3', text: 'Berat sebuah semangka 4 kg. Berat sebuah nanas 2 kg. Selisih berat keduanya adalah ...', options: ['A. 2 kg', 'B. 3 kg', 'C. 6 kg', 'D. 8 kg'], answer: 'A' },
-        { id: 'pg4', text: 'Alat yang digunakan untuk mengukur berat benda adalah ...', options: ['A. Penggaris', 'B. Jam', 'C. Timbangan', 'D. Termometer'], answer: 'C' },
-        { id: 'pg5', text: '1 kg sama dengan ... gram', options: ['A. 10 gram', 'B. 100 gram', 'C. 500 gram', 'D. 1.000 gram'], answer: 'D' },
-        // Pengukuran Waktu
-        { id: 'pg6', text: 'Dalam satu minggu ada berapa hari?', options: ['A. 5 hari', 'B. 6 hari', 'C. 7 hari', 'D. 8 hari'], answer: 'C' },
-        { id: 'pg7', text: 'Dalam satu tahun ada berapa bulan?', options: ['A. 10 bulan', 'B. 11 bulan', 'C. 12 bulan', 'D. 13 bulan'], answer: 'C' },
-        { id: 'pg8', text: 'Jarum pendek jam menunjukkan angka 8 dan jarum panjang menunjukkan angka 12. Jam tersebut menunjukkan pukul ...', options: ['A. 07.00', 'B. 08.00', 'C. 08.30', 'D. 12.00'], answer: 'B' },
-        { id: 'pg9', text: 'Sani belajar dari pukul 07.00 sampai pukul 09.00. Berapa lama Sani belajar?', options: ['A. 1 jam', 'B. 2 jam', 'C. 3 jam', 'D. 4 jam'], answer: 'B' },
-        { id: 'pg10', text: 'Hari setelah Rabu adalah ...', options: ['A. Senin', 'B. Selasa', 'C. Kamis', 'D. Jumat'], answer: 'C' },
-    ];
-    const bsQuestions = [
-        { id: 'bs1', text: 'Berat 1 kg jeruk lebih berat daripada 500 gram jeruk.', answer: 'Benar' },
-        { id: 'bs2', text: 'Dalam satu bulan selalu ada 31 hari.', answer: 'Salah' },
-        { id: 'bs3', text: 'Pukul 06.30 artinya setengah tujuh pagi.', answer: 'Benar' },
-        { id: 'bs4', text: 'Hari Senin adalah hari pertama dalam seminggu.', answer: 'Benar' },
-        { id: 'bs5', text: '2 kg sama dengan 200 gram.', answer: 'Salah' },
-    ];
-    const matchQuestions = [
-        { id: 'mt1', left: 'Satu minggu', options: ['6 hari', '7 hari', '30 hari', '12 bulan', '24 jam'], answer: '7 hari' },
-        { id: 'mt2', left: 'Satu tahun', options: ['7 hari', '10 bulan', '12 bulan', '52 minggu', '365 jam'], answer: '12 bulan' },
-        { id: 'mt3', left: 'Satu hari', options: ['12 jam', '24 jam', '60 menit', '7 hari', '30 jam'], answer: '24 jam' },
-        { id: 'mt4', left: 'Pukul 07.30 dibaca', options: ['Tujuh lebih', 'Setengah delapan', 'Delapan kurang', 'Setengah tujuh', 'Jam tujuh'], answer: 'Setengah delapan' },
-        { id: 'mt5', left: '1 kg = ... gram', options: ['100', '500', '1.000', '2.000', '10.000'], answer: '1.000' },
-    ];
-    const isianQuestions = [
-        { id: 'is1', text: 'Ayah membeli 5 kg beras dan 3 kg gula. Berat belanjaan ayah seluruhnya adalah ... kg.', answer: '8', alt: ['8 kg', '8'] },
-        { id: 'is2', text: 'Dalam 2 minggu ada ... hari.', answer: '14', alt: ['14 hari', '14'] },
-        { id: 'is3', text: 'Dinda berangkat sekolah pukul 06.30 dan pulang pukul 12.30. Dinda di sekolah selama ... jam.', answer: '6', alt: ['6 jam', '6'] },
-        { id: 'is4', text: 'Bulan sesudah April adalah bulan ...', answer: 'Mei', alt: ['mei', 'MEI'] },
-        { id: 'is5', text: 'Berat badan Rudi 25 kg. Berat badan adiknya 18 kg. Selisih berat badan mereka adalah ... kg.', answer: '7', alt: ['7 kg', '7'] },
-    ];
-    const uraianQuestions = [
-        { id: 'ur1', text: 'Ibu pergi ke pasar pukul 06.00 dan pulang pukul 09.00.\na. Berapa lama ibu di pasar?\nb. Tunjukkan posisi jarum jam pukul 06.00 dan 09.00 dengan gambar atau kata-kata!' },
-        { id: 'ur2', text: 'Sebutkan nama-nama hari dalam satu minggu mulai dari Senin sampai Minggu secara berurutan!' },
-        { id: 'ur3', text: 'Timbangan menunjukkan berat sebuah tas adalah 3 kg dan berat sebuah kotak adalah 2 kg.\na. Benda mana yang lebih berat?\nb. Berapa kg jumlah berat keduanya?\nc. Berapa kg selisih berat keduanya?' },
-        { id: 'ur4', text: 'Sebuah toko buka setiap hari dari pukul 08.00 hingga pukul 17.00.\na. Berapa lama toko tersebut buka setiap harinya?\nb. Dalam satu minggu (7 hari), berapa totalnya jam toko buka?' },
-        { id: 'ur5', text: 'Jelaskan perbedaan antara jarum pendek dan jarum panjang pada jam! Bagaimana cara membaca jam yang menunjukkan pukul 10.30? Tuliskan penjelasanmu dengan lengkap.' },
-    ];
+        const questions = [
+            // PILIHAN GANDA (1-10)
+            {
+                id: 1,
+                type: 'pg',
+                section: 'I. Pilihan Ganda (10 Soal)',
+                text: 'Metode mencatat atau mengelompokkan data dengan menggunakan simbol garis lurus tegak dan miring (contoh: IIII) disebut diagram ...',
+                options: ['Tabel', 'Gambar', 'Turus', 'Lingkaran'],
+                answer: 2,
+                hint: 'Turus menggunakan garis tegak lurus untuk menghitung data satu per satu secara cepat.'
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Perhatikan kumpulan data nilai berikut:<div class="data-box">60, 80, 80, 90, 70</div>Berapa banyak seluruh siswa yang datanya dicatat di atas?',
+                options: ['3 siswa', '4 siswa', '5 siswa', '6 siswa'],
+                answer: 2,
+                hint: 'Hitung banyaknya nilai yang tertulis: 60 (1), 80 (2), 80 (3), 90 (4), 70 (5). Jadi ada 5 siswa.'
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Di dalam sebuah diagram piktogram buah kesukaan:<br>- Apel: 5 gambar buah<br>- Pisang: 2 gambar buah<br>Jika 1 gambar buah mewakili 1 siswa, berapakah jumlah siswa yang menyukai pisang?',
+                options: ['1 siswa', '2 siswa', '3 siswa', '5 siswa'],
+                answer: 1,
+                hint: 'Karena 1 gambar mewakili 1 siswa, maka 2 gambar pisang mewakili 2 siswa.'
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Berdasarkan data buah kesukaan pada soal nomor 3, buah apakah yang paling banyak disukai siswa?',
+                options: ['Pisang', 'Jeruk', 'Apel', 'Mangga'],
+                answer: 2,
+                hint: 'Apel memiliki 5 gambar (paling banyak), sedangkan pisang hanya 2 gambar.'
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Dalam diagram gambar penjualan sepeda motor, 1 gambar motor mewakili 2 motor asli. Jika hari Rabu terjual 3 gambar motor, berapakah motor asli yang terjual pada hari Rabu?',
+                options: ['3 motor', '5 motor', '6 motor', '8 motor'],
+                answer: 2,
+                hint: '3 gambar x 2 motor = 6 motor.'
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Pada diagram gambar penjualan motor sebelumnya:<br>- Rabu: 3 gambar motor<br>- Kamis: 2 gambar motor<br>Jika 1 gambar mewakili 2 motor asli, berapakah jumlah motor asli yang terjual pada hari Rabu dan Kamis?',
+                options: ['5 motor', '8 motor', '10 motor', '12 motor'],
+                answer: 2,
+                hint: 'Total gambar = 3 + 2 = 5 gambar. Total motor asli = 5 x 2 = 10 motor.'
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Berikut adalah data penjualan motor selama 3 hari:<br>- Rabu: 3 gambar motor<br>- Kamis: 2 gambar motor<br>- Jumat: 4 gambar motor<br>Hari apakah penjualan motor paling sedikit?',
+                options: ['Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+                answer: 1,
+                hint: 'Hari Kamis hanya memiliki 2 gambar motor (paling sedikit dibanding Rabu dan Jumat).'
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Berdasarkan data penjualan motor pada soal nomor 7, berapakah selisih gambar motor antara hari Jumat dan Kamis jika 1 gambar mewakili 1 motor?',
+                options: ['1 motor', '2 motor', '3 motor', '4 motor'],
+                answer: 1,
+                hint: 'Selisih = Hari Jumat (4) - Hari Kamis (2) = 2 motor.'
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Sebanyak 4 orang siswa menyukai kegiatan melukis. Jika kita ingin menyajikannya ke dalam diagram gambar dengan ketentuan 1 gambar orang mewakili 2 siswa, maka gambar orang yang harus digambar sebanyak ...',
+                options: ['1 gambar', '2 gambar', '4 gambar', '8 gambar'],
+                answer: 1,
+                hint: '4 siswa dibagi dengan skala (2 siswa per gambar) = 2 gambar orang.'
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Diberikan data nilai ulangan matematika siswa kelas 2:<br>- Nilai 60: diperoleh oleh 3 siswa<br>- Nilai 70: diperoleh oleh 5 siswa<br>- Nilai 80: diperoleh oleh 6 siswa<br>- Nilai 90: diperoleh oleh 4 siswa<br>Nilai manakah yang paling banyak diperoleh siswa (Modus)?',
+                options: ['Nilai 60', 'Nilai 70', 'Nilai 80', 'Nilai 90'],
+                answer: 2,
+                hint: 'Nilai 80 diperoleh oleh 6 siswa, yang merupakan jumlah terbanyak di antara nilai lainnya.'
+            },
+            // PILIHAN GANDA KOMPLEKS (11-15)
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'II. Pilihan Ganda Kompleks (5 Soal)',
+                text: 'Diberikan data alat musik yang dikuasai siswa:<br>- Piano: 8 siswa<br>- Biola: 6 siswa<br>- Gitar: 4 siswa<br>- Drum: 2 siswa<br>Alat musik apa saja yang dikuasai oleh kurang dari 5 siswa? (Pilih semua jawaban yang benar)',
+                options: ['Piano', 'Biola', 'Gitar', 'Drum'],
+                answer: [2, 3],
+                hint: 'Gitar dikuasai 4 siswa, Drum dikuasai 2 siswa. Keduanya kurang dari 5 siswa.'
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Berdasarkan data alat musik pada soal nomor 11, manakah pernyataan di bawah ini yang benar? (Pilih semua jawaban yang benar)',
+                options: ['Alat musik yang paling banyak dikuasai siswa adalah Piano.', 'Selisih siswa yang menguasai Biola dan Drum adalah 4 siswa.', 'Jumlah seluruh siswa yang datanya dicatat adalah 20 siswa.', 'Gitar adalah alat musik paling sedikit dikuasai.'],
+                answer: [0, 1, 2],
+                hint: 'Piano terbanyak (8). Selisih Biola dan Drum = 6 - 2 = 4. Jumlah total = 8 + 6 + 4 + 2 = 20 siswa.'
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah bentuk-bentuk penyajian data yang umum dipelajari di kelas 2? (Pilih semua jawaban yang benar)',
+                options: ['Tabel turus', 'Diagram gambar (Piktogram)', 'Tabel frekuensi/angka', 'Diagram lingkaran dengan persentase rumit'],
+                answer: [0, 1, 2],
+                hint: 'Tabel turus, diagram gambar, dan tabel frekuensi adalah materi diagram dasar kelas 2.'
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Diberikan data buah kesukaan siswa: Apel (5 anak), Jeruk (3 anak), Pisang (2 anak), Mangga (4 anak). Buah apa saja yang disukai oleh lebih dari 3 anak? (Pilih semua jawaban yang benar)',
+                options: ['Apel', 'Jeruk', 'Pisang', 'Mangga'],
+                answer: [0, 3],
+                hint: 'Apel disukai 5 anak dan Mangga disukai 4 anak (lebih dari 3 anak).'
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Diberikan data nilai matematika siswa: 60 (3 siswa), 70 (5 siswa), 80 (6 siswa), 90 (4 siswa), 100 (2 siswa). Kelompok nilai manakah yang jumlah siswanya merupakan bilangan genap? (Pilih semua jawaban yang benar)',
+                options: ['Nilai 70', 'Nilai 80', 'Nilai 90', 'Nilai 100'],
+                answer: [1, 2, 3],
+                hint: 'Nilai 80 (6 siswa), 90 (4 siswa), dan 100 (2 siswa) semuanya berjumlah genap.'
+            },
+            // BENAR ATAU SALAH (16-20)
+            {
+                id: 16,
+                type: 'bs',
+                section: 'III. Benar atau Salah (5 Soal)',
+                text: 'Satu gambar pada diagram piktogram hanya boleh mewakili 1 buah benda asli saja dan tidak boleh mewakili lebih.',
+                answer: 'Salah',
+                hint: 'Satu gambar dapat mewakili lebih dari 1 benda asli sesuai dengan keterangan skalanya (misal: 1 gambar mewakili 2 benda).'
+            },
+            {
+                id: 17,
+                type: 'bs',
+                text: 'Simbol turus IIIII digunakan untuk menyatakan jumlah data sebanyak 5.',
+                answer: 'Benar',
+                hint: 'Garis tegak berjumlah 4 yang dicoret miring dengan 1 garis melambangkan 5.'
+            },
+            {
+                id: 18,
+                type: 'bs',
+                text: 'Selisih antara dua kelompok data diperoleh dengan cara menjumlahkan kedua data tersebut.',
+                answer: 'Salah',
+                hint: 'Selisih dicari dengan mengurangi data yang lebih besar dengan data yang lebih kecil.'
+            },
+            {
+                id: 19,
+                type: 'bs',
+                text: 'Jika data peminjaman buku: Buku Cerita (3 buah) dan Buku Sejarah (7 buah), maka buku sejarah dipinjam lebih banyak dari buku cerita.',
+                answer: 'Benar',
+                hint: '7 buku sejarah lebih besar dari 3 buku cerita.'
+            },
+            {
+                id: 20,
+                type: 'bs',
+                text: 'Dari data warna kesukaan: Merah (4 anak), Kuning (3 anak), Hijau (2 anak), Biru (6 anak), warna Biru adalah warna yang paling disukai.',
+                answer: 'Benar',
+                hint: 'Warna Biru disukai oleh 6 anak, merupakan angka tertinggi di antara semua warna.'
+            },
+            // MEMASANGKAN (21-25)
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'IV. Memasangkan (5 Soal)',
+                text: 'Pasangkan simbol turus berikut dengan angka nilainya: <b>IIII</b>',
+                options: ['4', '5', '7', 'Modus', 'Piktogram'],
+                answer: '4',
+                hint: 'Simbol IIII terdiri dari 4 garis tegak, nilainya 4.'
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: 'Pasangkan simbol turus berikut dengan angka nilainya: <b>IIIII II</b>',
+                options: ['4', '5', '7', 'Modus', 'Piktogram'],
+                answer: '7',
+                hint: 'Turus ikat melambangkan 5 ditambah 2 garis terpisah, totalnya 7.'
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan pengertiannya: <b>Data yang memiliki jumlah frekuensi paling banyak diperoleh</b>',
+                options: ['4', '5', '7', 'Modus', 'Piktogram'],
+                answer: 'Modus',
+                hint: 'Modus adalah nilai atau data yang paling banyak diperoleh.'
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan pengertiannya: <b>Diagram yang menyajikan data menggunakan gambar untuk mewakili jumlah benda asli</b>',
+                options: ['4', '5', '7', 'Modus', 'Piktogram'],
+                answer: 'Piktogram',
+                hint: 'Piktogram disebut juga diagram gambar.'
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: 'Pasangkan simbol turus berikut dengan angka nilainya: <b>IIIII</b>',
+                options: ['4', '5', '7', 'Modus', 'Piktogram'],
+                answer: '5',
+                hint: 'Satu ikat turus berisi 5 garis.'
+            },
+            // ISIAN SINGKAT (26-30)
+            {
+                id: 26,
+                type: 'isian',
+                section: 'V. Isian Singkat (5 Soal)',
+                text: 'Jika 1 gambar bunga mewakili 2 pot bunga asli. Maka 5 gambar bunga mewakili ... pot bunga asli.',
+                answer: '10',
+                alt: ['10 pot', 'sepuluh'],
+                hint: '5 gambar x 2 pot bunga = 10 pot bunga asli.'
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Garis tegak lurus yang digunakan untuk mencatat dan menghitung data dengan mudah disebut ...',
+                answer: 'Turus',
+                alt: ['turus', 'tally'],
+                hint: 'Garis tersebut dinamakan turus.'
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Dari data warna kesukaan: Merah (4 anak), Kuning (3 anak), Hijau (2 anak), Biru (6 anak). Jumlah seluruh anak yang diwawancarai adalah ... anak.',
+                answer: '15',
+                alt: ['15 anak', 'limabelas'],
+                hint: 'Jumlah seluruh anak = 4 + 3 + 2 + 6 = 15 anak.'
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Berdasarkan data warna pada soal nomor 28, selisih antara anak yang menyukai warna Biru (6) dan Hijau (2) adalah ... anak.',
+                answer: '4',
+                alt: ['4 anak', 'empat'],
+                hint: 'Selisih = 6 - 2 = 4 anak.'
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Dari kumpulan nilai matematika: 80, 70, 90, 80, 80. Nilai yang paling banyak diperoleh siswa adalah nilai ...',
+                answer: '80',
+                alt: ['delapan puluh'],
+                hint: 'Nilai 80 muncul sebanyak 3 kali, paling sering dibanding lainnya.'
+            },
+            // URAIAN (31-35)
+            {
+                id: 31,
+                type: 'uraian',
+                section: 'VI. Uraian (5 Soal)',
+                text: 'Jelaskan apa yang dimaksud dengan diagram gambar (piktogram) dan bagaimana cara kita mengetahui nilai yang diwakili oleh gambar tersebut!',
+                answer: 'Diagram gambar (piktogram) adalah diagram yang menyajikan data menggunakan simbol atau gambar untuk mewakili jumlah benda asli. Cara mengetahuinya dengan melihat bagian "Keterangan" yang berisi skala nilai per gambar.'
+            },
+            {
+                id: 32,
+                type: 'uraian',
+                text: 'Di perpustakaan sekolah, dipinjam 6 buku pelajaran, 3 buku cerita rakyat, 7 buku sejarah, 5 komik anak, dan 8 novel anak. Hitunglah berapa jumlah seluruh buku yang dipinjam selain buku pelajaran! Tuliskan cara pengerjaannya!',
+                answer: 'Buku selain buku pelajaran adalah cerita rakyat (3), sejarah (7), komik (5), dan novel (8). Cara menghitung: 3 + 7 + 5 + 8 = 23 buku.'
+            },
+            {
+                id: 33,
+                type: 'uraian',
+                text: 'Gambarkan bentuk tabel turus sederhana dari data nilai ulangan harian matematika siswa kelas 2 berikut: 70, 80, 80, 90, 70, 80, 90, 80!',
+                answer: 'Tabel turus: Nilai 70 -> II (2), Nilai 80 -> IIII (4), Nilai 90 -> II (2).'
+            },
+            {
+                id: 34,
+                type: 'uraian',
+                text: 'Berdasarkan data alat musik yang dikuasai beberapa siswa: Piano (8 siswa), Biola (6 siswa), Gitar (4 siswa), Drum (2 siswa). Hitunglah jumlah seluruh siswa dalam data tersebut!',
+                answer: 'Total seluruh siswa = 8 + 6 + 4 + 2 = 20 siswa.'
+            },
+            {
+                id: 35,
+                type: 'uraian',
+                text: 'Jika 1 gambar bunga mewakili 5 pot bunga asli di sebuah toko taman. Jika terjual 3 gambar bunga pada hari Senin dan 4 gambar bunga pada hari Selasa, hitunglah total seluruh pot bunga asli yang terjual pada kedua hari tersebut!',
+                answer: 'Total gambar = 3 + 4 = 7 gambar. Total pot bunga asli = 7 gambar x 5 pot bunga = 35 pot bunga asli.'
+            }
+        ];
 
-    const totalQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length + uraianQuestions.length;
-    const scoredQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length;
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
-    function render() {
-        let html = ''; let qNum = 1;
-        html += `<div class="section-title">📝 Pilihan Ganda <span class="info-tag">10 soal × 1 poin</span></div>`;
-        pgQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="options">`;
-            q.options.forEach(opt => { const val = opt.charAt(0); html += `<label class="option-label" id="opt-${q.id}-${val}"><input type="radio" name="${q.id}" value="${val}" onchange="onRadioChange('${q.id}','${val}')"> ${opt}</label>`; });
-            html += `</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✔️ Benar atau Salah <span class="info-tag">5 soal × 1 poin</span></div>`;
-        bsQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="bs-options"><button class="bs-btn" id="bs-benar-${q.id}" onclick="selectBS('${q.id}','Benar')">✅ Benar</button><button class="bs-btn" id="bs-salah-${q.id}" onclick="selectBS('${q.id}','Salah')">❌ Salah</button></div><input type="hidden" id="${q.id}" value=""><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">🔗 Pasangkan yang Sesuai <span class="info-tag">5 soal × 1 poin</span></div>`;
-        matchQuestions.forEach(q => {
-            let shuffled = [...q.options].sort(() => Math.random() - 0.5);
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> → ?</span></div><select class="match-select" id="${q.id}"><option value="">-- Pilih Jawaban --</option>${shuffled.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✏️ Isian Singkat <span class="info-tag">5 soal × 1 poin</span></div>`;
-        isianQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><input type="text" class="input-text" id="${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off"><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">📄 Uraian <span class="info-tag">5 soal — dijawab lengkap</span></div>`;
-        uraianQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text.replace(/\n/g,'<br>')}</span></div><textarea class="input-text" id="${q.id}" placeholder="Tulis jawaban lengkap + cara penghitungan..."></textarea><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        document.getElementById('question-container').innerHTML = html;
-        document.addEventListener('input', updateProgress);
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'bs') {
+                    inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label>
+                                  <label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                                 </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item">
+                            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                            <div class="options-group">${inputHtml}</div>
+                            <div class="feedback-box" id="fb-${q.id}"></div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'bs') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
         document.addEventListener('change', updateProgress);
-    }
-    function onRadioChange(qId, val) {
-        const q = pgQuestions.find(x => x.id === qId); if (!q) return;
-        q.options.map(o => o.charAt(0)).forEach(v => document.getElementById(`opt-${qId}-${v}`)?.classList.remove('selected'));
-        document.getElementById(`opt-${qId}-${val}`)?.classList.add('selected'); updateProgress();
-    }
-    function selectBS(qId, val) {
-        document.getElementById(`bs-benar-${qId}`).classList.remove('selected-benar');
-        document.getElementById(`bs-salah-${qId}`).classList.remove('selected-salah');
-        document.getElementById(qId).value = val;
-        val === 'Benar' ? document.getElementById(`bs-benar-${qId}`).classList.add('selected-benar') : document.getElementById(`bs-salah-${qId}`).classList.add('selected-salah');
-        updateProgress();
-    }
-    function updateProgress() {
-        let answered = 0;
-        pgQuestions.forEach(q => { if (document.querySelector(`[name="${q.id}"]:checked`)) answered++; });
-        bsQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        matchQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        isianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        uraianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        document.getElementById('progress-fill').style.width = `${(answered / totalQ) * 100}%`;
-    }
-    function normalize(s) { return s.toLowerCase().replace(/[-_.,!?']/g, '').trim(); }
-    function submitExam() {
-        let score = 0;
-        pgQuestions.forEach(q => {
-            const sel = document.querySelector(`[name="${q.id}"]:checked`); const fb = document.getElementById(`fb-${q.id}`);
-            q.options.map(o => o.charAt(0)).forEach(v => { const lbl = document.getElementById(`opt-${q.id}-${v}`); if (lbl) lbl.classList.remove('correct-opt','wrong-opt'); });
-            const cl = document.getElementById(`opt-${q.id}-${q.answer}`); if (cl) cl.classList.add('correct-opt');
-            if (sel && sel.value !== q.answer) { const wl = document.getElementById(`opt-${q.id}-${sel.value}`); if (wl) wl.classList.add('wrong-opt'); }
-            const ok = sel && sel.value === q.answer;
-            if (ok) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        bsQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            val === q.answer ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        matchQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            normalize(val) === normalize(q.answer) ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        isianQuestions.forEach(q => {
-            const val = normalize(document.getElementById(q.id)?.value || ''); const fb = document.getElementById(`fb-${q.id}`);
-            const ans = normalize(q.answer);
-            let ok = val === ans;
-            if (q.alt) q.alt.forEach(a => { if (normalize(a) === val) ok = true; });
-            ok ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        uraianQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value?.trim(); const fb = document.getElementById(`fb-${q.id}`);
-            fb.className='feedback-box partial'; fb.innerHTML = val ? '📝 Jawaban dicatat. Penilaian oleh guru.' : '⚠️ Belum dijawab.'; fb.style.display='block';
-        });
-        const pct = Math.round((score / scoredQ) * 100);
-        document.getElementById('final-score').innerText = pct;
-        document.getElementById('score-detail').innerText = `Skor: ${score} dari ${scoredQ} soal`;
-        document.getElementById('score-board').style.display='block';
-        document.getElementById('footer-action').style.display='none';
-        document.getElementById('progress-fill').style.width='100%';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    render();
+        document.addEventListener('input', updateProgress);
+
+        function normalize(s) {
+            return s.toLowerCase().replace(/[-_.,!?']/g, '').trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'bs') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && sel.value === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && val.toLowerCase() === q.answer.toLowerCase()) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const val = normalize(document.querySelector(`[name="q${q.id}"]`).value || '');
+                    const ans = normalize(q.answer);
+                    let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                    if (q.alt) {
+                        q.alt.forEach(a => {
+                            if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true;
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 Periksa manual. Kunci jawaban perkiraan: <b>${q.answer}</b>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = Math.round((score / maxAuto) * 100);
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan ganda/kompleks/isian. Soal uraian diperiksa manual oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
     </script>
 </body>
 </html>

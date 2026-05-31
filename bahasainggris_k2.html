@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ujian B. Inggris Kelas 2 - SD DILARAF</title>
+    <title>ASAT B. Inggris Kelas 2 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -13,86 +12,353 @@
             --bg: #fdf0f5;
             --success: #27ae60;
             --error: #e74c3c;
+            --warning: #f39c12;
             --card-bg: #ffffff;
             --text: #2d3436;
             --border: #dfe6e9;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
-
         .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
-
         .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 30px; text-align: center; position: relative; overflow: hidden; }
         .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); animation: shimmer 8s infinite; }
         @keyframes shimmer { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } }
         .header h1 { margin: 0; font-size: 2em; font-weight: 800; position: relative; z-index: 1; }
         .header p { margin-top: 5px; opacity: 0.9; font-size: 1em; position: relative; z-index: 1; }
         .header .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.8em; margin-top: 8px; position: relative; z-index: 1; }
-
         .progress-bar { height: 6px; background: var(--border); position: sticky; top: 0; z-index: 100; }
         .progress-fill { height: 100%; background: linear-gradient(90deg, var(--success), #2ecc71); width: 0%; transition: width 0.5s ease; border-radius: 0 3px 3px 0; }
-
         .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
         .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
         .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
         .back-btn:hover { background: rgba(255,255,255,0.3); }
-
         .question-list { padding: 25px; }
-        .section-title { font-size: 0.85em; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin: 30px 0 15px; padding: 10px 15px; background: var(--bg); border-radius: 10px; border-left: 4px solid var(--primary); }
-        .question-item { margin-bottom: 25px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); transition: all 0.3s; background: #fafbfc; }
-        .q-number { display: inline-block; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; text-align: center; line-height: 32px; font-size: 0.85em; font-weight: 800; margin-right: 10px; }
-        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 12px; }
-
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
+        .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(232,67,147,0.1); }
+        .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; }
+        .reading-box { background: #fef9e7; border: 2px solid #f9e79f; border-radius: 10px; padding: 15px; margin: 10px 0 15px; line-height: 1.8; font-family: 'Georgia', serif; font-size: 0.95em; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; background: white; }
+        .radio-label:hover, .checkbox-label:hover { border-color: var(--primary); background: #fdf0f5; transform: translateX(5px); }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) { border-color: var(--primary); background: #fdf0f5; }
+        .match-select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.95em; background: white; cursor: pointer; font-weight: 600; }
+        .match-select:focus { outline: none; border-color: var(--primary); }
         .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
         .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(232,67,147,0.15); }
-
+        textarea.input-text { resize: vertical; min-height: 90px; }
         .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
         .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
         .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
-
+        .manual { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
         .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
         .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,67,147,0.4); }
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="header">
             <h1>🇬🇧 Bahasa Inggris</h1>
-            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 2</p>
-            <div class="badge">Asesmen Formatif Tengah Semester</div>
+            <p>SDIT Friends — Kelas 2</p>
+            <div class="badge">Asesmen Sumatif Akhir Tahun (ASAT)</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="score-board" id="score-board">
-            <h2>📊 Your Score</h2>
+            <h2>📊 Exam Results</h2>
             <div class="score-value" id="final-score">0</div>
-            <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
+            <div class="score-detail" id="score-detail"></div>
+            <a href="kelas2.html" class="back-btn">⬅ Back to Grade 2 Menu</a>
         </div>
         <div class="question-list" id="question-container"></div>
         <div class="footer-action" id="footer-action">
-            <button class="btn-submit" onclick="submitExam()">Submit ✅</button>
+            <button class="btn-submit" onclick="submitExam()">Submit Answers ✅</button>
         </div>
     </div>
     <script>
         const questions = [
-            // Unit 5 — I Like Wearing a T-Shirt (Clothes)
-            { id: 1, section: "Fill in — Unit 5: Clothes", text: "You wear _____ on your feet to walk. (Write in English)", answer: "shoes", hint: "Shoes are worn on feet.", alt: ["shoe", "sepatu"] },
-            { id: 2, text: "\"She is wearing a blue dress.\" What color is the dress?", answer: "blue", hint: "The sentence says 'a blue dress'.", alt: ["biru"] },
-            { id: 3, text: "\"Put on the shirt.\" What does 'put on' mean in Bahasa Indonesia?", answer: "memakai", hint: "'Put on' means to wear / memakai.", alt: ["pakai", "mengenakan", "memakai"] },
-            { id: 4, text: "Something you wear on your head is called a _____ (in English).", answer: "hat", hint: "It can also be a cap.", alt: ["cap", "topi"] },
-            { id: 5, text: "\"Take off the cap.\" Arti dari 'take off' adalah ...", answer: "melepas", hint: "'Take off' means melepas.", alt: ["lepas", "buka", "membuka"] },
-
-            // Unit 6 — The Toys Are in the Box (Rooms, Prepositions, Shapes)
-            { id: 6, section: "Fill in — Unit 6: Rooms & Prepositions", text: "The room where you sleep is called a _____ (in English).", answer: "bedroom", hint: "A bedroom (kamar tidur) is where you sleep.", alt: ["bed room", "kamar tidur"] },
-            { id: 7, text: "\"The ball is <b>in</b> the box.\" 'In' dalam Bahasa Indonesia artinya ...", answer: "di dalam", hint: "'In' means di dalam.", alt: ["didalam", "dalam"] },
-            { id: 8, text: "\"Put the book on the desk.\" 'Desk' dalam Bahasa Indonesia artinya ...", answer: "meja", hint: "Desk = meja tulis, tempat untuk belajar.", alt: ["meja tulis", "meja belajar"] },
-            { id: 9, text: "A shape that looks like an ice cream cone has _____ sides at the top. (Answer: what shape?)", answer: "cone", hint: "A cone is a shape like kerucut / es krim.", alt: ["kerucut"] },
-            { id: 10, text: "A shape like a love symbol ❤️ is called a _____ (in English).", answer: "heart", hint: "The love shape is called a heart.", alt: ["hati", "love"] }
+            // PILIHAN GANDA (1-10)
+            {
+                id: 1,
+                type: 'pg',
+                section: 'I. Pilihan Ganda (10 Soal)',
+                text: 'You wear _____ on your feet to protect them when you walk outside.',
+                options: ['a cap', 'a shirt', 'shoes', 'a tie'],
+                answer: 2,
+                hint: 'Shoes are worn on the feet.'
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: '"Take off the cap." What does the phrase "take off" mean in Bahasa Indonesia?',
+                options: ['Memakai', 'Melepas', 'Membeli', 'Mencuci'],
+                answer: 1,
+                hint: '"Take off" means melepas (buka), while "put on" means memakai.'
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'The room in the house where you sleep is called the ...',
+                options: ['kitchen', 'bathroom', 'garage', 'bedroom'],
+                answer: 3,
+                hint: 'A bedroom (kamar tidur) contains a bed for sleeping.'
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: '"The cat is sleeping under the table." The word "under" in Bahasa Indonesia means ...',
+                options: ['di atas', 'di dalam', 'di bawah', 'di samping'],
+                answer: 2,
+                hint: '"Under" means di bawah.'
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'A shape that looks like a love symbol ❤️ is called a ...',
+                options: ['circle', 'heart', 'triangle', 'cone'],
+                answer: 1,
+                hint: 'The love shape is called a heart.'
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Which wild animal has a very long neck and eats leaves from tall trees?',
+                options: ['monkey', 'elephant', 'giraffe', 'dolphin'],
+                answer: 2,
+                hint: 'A giraffe (jerapah) is famous for its long neck.'
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'If you see 19 parrots in a tree, what is the number "19" in English?',
+                options: ['nine', 'nineteen', 'ninety', 'twelve'],
+                answer: 1,
+                hint: '19 is written as nineteen.'
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Where do you go to see a doctor when you are sick?',
+                options: ['zoo', 'bank', 'hospital', 'playground'],
+                answer: 2,
+                hint: 'A hospital (rumah sakit) is a place to treat sick people.'
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'A place where you can borrow and read many books is called a ...',
+                options: ['post office', 'library', 'restaurant', 'bus stop'],
+                answer: 1,
+                hint: 'A library is perpustakaan.'
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Choose the correct action: Before you eat candies at home, you must ...',
+                options: ['Go to the shop', 'Pay the candies', 'Get some candies', 'Unwrap/Open the wrapper'],
+                answer: 3,
+                hint: 'You must open or unwrap the candy before eating it.'
+            },
+            // PILIHAN GANDA KOMPLEKS (11-15)
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'II. Pilihan Ganda Kompleks (5 Soal)',
+                text: 'Which items are clothes that you wear on your body? (Select all correct answers)',
+                options: ['a t-shirt', 'a dress', 'shoes', 'a shirt'],
+                answer: [0, 1, 3],
+                hint: 'T-shirt, dress, and shirt are worn on the body. Shoes are worn on the feet.'
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Which of the following are rooms inside a house? (Select all correct answers)',
+                options: ['bedroom', 'kitchen', 'library', 'bathroom'],
+                answer: [0, 1, 3],
+                hint: 'Bedroom, kitchen, and bathroom are standard rooms in a house.'
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Which words are prepositions of place? (Select all correct answers)',
+                options: ['in', 'on', 'behind', 'bed'],
+                answer: [0, 1, 2],
+                hint: 'In, on, and behind show position. Bed is a noun.'
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Which animals live at the zoo? (Select all correct answers)',
+                options: ['elephant', 'tiger', 'lion', 'cat'],
+                answer: [0, 1, 2],
+                hint: 'Elephants, tigers, and lions are zoo animals. Cats are common pets.'
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Which places are public buildings? (Select all correct answers)',
+                options: ['hospital', 'post office', 'school', 'bedroom'],
+                answer: [0, 1, 2],
+                hint: 'Hospital, post office, and school are public buildings.'
+            },
+            // BENAR ATAU SALAH (16-20)
+            {
+                id: 16,
+                type: 'bs',
+                section: 'III. Benar atau Salah (5 Soal)',
+                text: 'The phrase "Put on the shirt" means "Melepas baju" in Indonesian.',
+                answer: 'Salah',
+                hint: '"Put on" means memakai, while "Take off" means melepas.'
+            },
+            {
+                id: 17,
+                type: 'bs',
+                text: 'A triangle is a shape that has three sides.',
+                answer: 'Benar',
+                hint: 'A triangle (segitiga) has three corners and three sides.'
+            },
+            {
+                id: 18,
+                type: 'bs',
+                text: 'A playground is a room where you cook food.',
+                answer: 'Salah',
+                hint: 'You cook food in the kitchen. A playground is a place for children to play.'
+            },
+            {
+                id: 19,
+                type: 'bs',
+                text: 'An ostrich is a bird that cannot fly but can run very fast.',
+                answer: 'Benar',
+                hint: 'Ostriches (burung unta) are large flightless birds.'
+            },
+            {
+                id: 20,
+                type: 'bs',
+                text: 'The phrase "beside the shop" means "di samping toko".',
+                answer: 'Benar',
+                hint: '"Beside" means di samping.'
+            },
+            // MEMASANGKAN (21-25)
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'IV. Memasangkan (5 Soal)',
+                text: 'Match the room to its description: <b>The room where you sleep</b>',
+                options: ['bedroom', 'kitchen', 'bathroom', 'dining room', 'living room'],
+                answer: 'bedroom',
+                hint: 'A bedroom contains a bed for sleeping.'
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: 'Match the room to its description: <b>The room where you cook food</b>',
+                options: ['bedroom', 'kitchen', 'bathroom', 'dining room', 'living room'],
+                answer: 'kitchen',
+                hint: 'Kitchen is dapur.'
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: 'Match the room to its description: <b>The room where you take a bath</b>',
+                options: ['bedroom', 'kitchen', 'bathroom', 'dining room', 'living room'],
+                answer: 'bathroom',
+                hint: 'Bathroom is kamar mandi.'
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: 'Match the place to its description: <b>The place where you can see wild animals like tigers and lions</b>',
+                options: ['zoo', 'bank', 'school', 'hospital', 'library'],
+                answer: 'zoo',
+                hint: 'A zoo (kebun binatang) keeps wild animals.'
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: 'Match the place to its description: <b>The place where you borrow and read books</b>',
+                options: ['zoo', 'bank', 'school', 'hospital', 'library'],
+                answer: 'library',
+                hint: 'Library is perpustakaan.'
+            },
+            // ISIAN SINGKAT (26-30)
+            {
+                id: 26,
+                type: 'isian',
+                section: 'V. Fill in the Blanks (5 Soal)',
+                text: 'A shape that is round like a ball is called a ...',
+                answer: 'circle',
+                alt: ['round', 'lingkaran'],
+                hint: 'Circle is a round shape.'
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'The number "20" in English is ...',
+                answer: 'twenty',
+                alt: ['twenty'],
+                hint: '20 is twenty.'
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'The place where you wait for a bus is a bus ...',
+                answer: 'stop',
+                alt: ['bus stop', 'station'],
+                hint: 'Bus stop is tempat pemberhentian bus.'
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: '"Put on the cap." The Indonesian translation of "cap" is ...',
+                answer: 'topi',
+                alt: ['topi', 'peci'],
+                hint: 'Cap means topi.'
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'An animal that lives in the water and swims is a ...',
+                answer: 'fish',
+                alt: ['fish', 'dolphin'],
+                hint: 'Fish lives in water and swims.'
+            },
+            // URAIAN (31-35)
+            {
+                id: 31,
+                type: 'uraian',
+                section: 'VI. Short Essay (5 Soal)',
+                text: 'Write three items of clothing in English that you know!',
+                answer: 'Any three: shirt, t-shirt, dress, skirt, trousers, shoes, socks, hat, cap.'
+            },
+            {
+                id: 32,
+                type: 'uraian',
+                text: 'Explain the difference between a bedroom and a kitchen!',
+                answer: 'A bedroom is a room for sleeping, while a kitchen is a room for cooking food.'
+            },
+            {
+                id: 33,
+                type: 'uraian',
+                text: 'Translate these prepositions into Bahasa Indonesia: 1) on, 2) in, 3) under!',
+                answer: '1) on = di atas, 2) in = di dalam, 3) under = di bawah.'
+            },
+            {
+                id: 34,
+                type: 'uraian',
+                text: 'What are the four steps when buying candies at the shop? Write them in English!',
+                answer: '1) Go to the shop, 2) Get some candies, 3) Pay the candies, 4) Eat the candies.'
+            },
+            {
+                id: 35,
+                type: 'uraian',
+                text: 'Write three names of wild animals at the zoo that start with the letters "E", "G", and "Z"!',
+                answer: 'E = Elephant, G = Giraffe, Z = Zebra.'
+            }
         ];
 
         const container = document.getElementById('question-container');
@@ -105,42 +371,139 @@
                     currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'bs') {
+                    inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ True (Benar)</label>
+                                  <label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ False (Salah)</label>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                                    <option value="">-- Choose Answer --</option>
+                                    ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                                 </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Write your answer here..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Write complete answer here..." rows="3"></textarea>`;
+                }
                 html += `<div class="question-item">
-                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
-                    <input type="text" class="input-text" name="q${q.id}" placeholder="Write your answer here..." autocomplete="off">
-                    <div class="feedback-box" id="fb-${q.id}"></div>
-                </div>`;
+                            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                            <div class="options-group">${inputHtml}</div>
+                            <div class="feedback-box" id="fb-${q.id}"></div>
+                         </div>`;
             });
             container.innerHTML = html;
+            updateProgress();
         }
 
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                const el = document.querySelector(`[name="q${q.id}"]`);
-                if (el && el.value.trim()) answered++;
+                if (q.type === 'pg' || q.type === 'bs') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
             });
             document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
         }
 
+        document.addEventListener('change', updateProgress);
         document.addEventListener('input', updateProgress);
 
-        function normalize(s) { return s.toLowerCase().replace(/[-_.,]/g, '').trim(); }
+        function normalize(s) {
+            return s.toLowerCase().replace(/[-_.,!?']/g, '').trim();
+        }
 
         function submitExam() {
             let score = 0;
+            let maxAuto = 0;
+
             questions.forEach(q => {
                 const fb = document.getElementById(`fb-${q.id}`);
-                const val = normalize(document.querySelector(`[name="q${q.id}"]`).value);
-                const ans = normalize(q.answer);
-                let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
-                if (q.alt) { q.alt.forEach(a => { if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true; }); }
-                if (isCorrect) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Correct!'; }
-                else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Answer: <b>${q.answer}</b>. ${q.hint}`; }
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Correct!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Wrong. ${q.hint}`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Correct!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Wrong. ${q.hint}`;
+                    }
+                } else if (q.type === 'bs') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && sel.value === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Correct!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Wrong. ${q.hint}`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && val.toLowerCase() === q.answer.toLowerCase()) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Correct!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Wrong. Correct match: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const val = normalize(document.querySelector(`[name="q${q.id}"]`).value || '');
+                    const ans = normalize(q.answer);
+                    let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                    if (q.alt) {
+                        q.alt.forEach(a => {
+                            if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true;
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Correct!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Answer: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 Manual Grading. Expected key: <b>${q.answer}</b>`;
+                }
                 fb.style.display = 'block';
             });
-            const pct = Math.round((score / questions.length) * 100);
-            document.getElementById('final-score').innerText = pct;
+
+            const finalPct = Math.round((score / maxAuto) * 100);
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Correct ${score} out of ${maxAuto} auto-graded questions. Short essay questions are graded manually.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -150,5 +513,4 @@
         render();
     </script>
 </body>
-
 </html>

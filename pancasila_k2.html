@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STS Pancasila Kelas 2 - SDIT Friends</title>
+    <title>ASAT Pancasila Kelas 2 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #c0392b; --primary-light: #e74c3c; --bg: #fdf2f2; --success: #27ae60; --error: #e74c3c; --warning: #f39c12; --card-bg: #ffffff; --text: #2d3436; --border: #dfe6e9; }
+        :root {
+            --primary: #c0392b;
+            --primary-light: #e74c3c;
+            --bg: #fdf2f0;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
         .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
@@ -21,38 +31,30 @@
         .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
-        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; }
+        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
         .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
         .back-btn:hover { background: rgba(255,255,255,0.3); }
         .question-list { padding: 25px; }
-        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; }
-        .info-tag { display: inline-block; background: rgba(255,255,255,0.25); padding: 2px 10px; border-radius: 20px; font-size: 0.75em; margin-left: 8px; }
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
         .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
-        .question-item:hover { border-color: var(--primary); }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(192,57,43,0.1); }
         .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
-        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; display: flex; align-items: flex-start; }
-        .q-text-content { flex: 1; }
-        .options { display: flex; flex-direction: column; gap: 10px; }
-        .option-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; }
-        .option-label:hover { border-color: var(--primary); background: #fdf2f2; }
-        .option-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
-        .option-label.correct-opt { border-color: var(--success) !important; background: #d4edda !important; }
-        .option-label.wrong-opt { border-color: var(--error) !important; background: #f8d7da !important; }
-        .bs-options { display: flex; gap: 12px; margin-top: 5px; }
-        .bs-btn { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 1em; font-weight: 700; transition: all 0.2s; }
-        .bs-btn:hover { border-color: var(--primary); }
-        .bs-btn.selected-benar { border-color: var(--success); background: #d4edda; color: #155724; }
-        .bs-btn.selected-salah { border-color: var(--error); background: #f8d7da; color: #721c24; }
-        .match-select { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.9em; background: white; cursor: pointer; font-weight: 600; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; background: white; }
+        .radio-label:hover, .checkbox-label:hover { border-color: var(--primary); background: #fdf2f0; transform: translateX(5px); }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) { border-color: var(--primary); background: #fdf2f0; }
+        .match-select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.95em; background: white; cursor: pointer; font-weight: 600; }
         .match-select:focus { outline: none; border-color: var(--primary); }
         .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
-        .input-text:focus { outline: none; border-color: var(--primary); }
+        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(192,57,43,0.15); }
         textarea.input-text { resize: vertical; min-height: 90px; }
         .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
         .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
         .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
-        .partial { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
+        .manual { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
         .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
         .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
         .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,57,43,0.4); }
@@ -63,11 +65,11 @@
         <div class="header">
             <h1>🇮🇩 Pendidikan Pancasila</h1>
             <p>SDIT Friends — Kelas 2</p>
-            <div class="badge">Sumatif Tengah Semester (STS)</div>
+            <div class="badge">Asesmen Sumatif Akhir Tahun (ASAT)</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
         <div class="score-board" id="score-board">
-            <h2>📊 Nilai Kamu</h2>
+            <h2>📊 Hasil Ujian</h2>
             <div class="score-value" id="final-score">0</div>
             <div class="score-detail" id="score-detail"></div>
             <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
@@ -78,144 +80,436 @@
         </div>
     </div>
     <script>
-    const pgQuestions = [
-        { id: 'pg1', text: 'Indonesia memiliki banyak suku, agama, dan budaya. Keadaan ini disebut ...', options: ['A. Kesamaan', 'B. Keseragaman', 'C. Keberagaman', 'D. Kerukunan'], answer: 'C' },
-        { id: 'pg2', text: 'Jumlah agama yang diakui secara resmi di Indonesia ada ...', options: ['A. 4', 'B. 5', 'C. 6', 'D. 7'], answer: 'C' },
-        { id: 'pg3', text: 'Kitab suci agama Islam adalah ...', options: ['A. Injil', 'B. Alkitab', 'C. Weda', 'D. Al-Qur\'an'], answer: 'D' },
-        { id: 'pg4', text: 'Tempat ibadah agama Kristen adalah ...', options: ['A. Masjid', 'B. Pura', 'C. Gereja', 'D. Wihara'], answer: 'C' },
-        { id: 'pg5', text: 'Sikap kita terhadap teman yang berbeda agama seharusnya ...', options: ['A. Menjauhi mereka', 'B. Menghormati dan berteman baik', 'C. Mengolok-olok agamanya', 'D. Tidak mau bermain bersama'], answer: 'B' },
-        { id: 'pg6', text: 'Semboyan negara Indonesia yang artinya "Berbeda-beda tetapi tetap satu" adalah ...', options: ['A. Garuda Pancasila', 'B. Bhineka Tunggal Ika', 'C. Pancasila Sakti', 'D. Satu Nusa Satu Bangsa'], answer: 'B' },
-        { id: 'pg7', text: 'Tempat ibadah agama Buddha adalah ...', options: ['A. Pura', 'B. Gereja', 'C. Masjid', 'D. Wihara'], answer: 'D' },
-        { id: 'pg8', text: 'Hari raya agama Islam salah satunya adalah ...', options: ['A. Natal', 'B. Nyepi', 'C. Idul Fitri', 'D. Waisak'], answer: 'C' },
-        { id: 'pg9', text: 'Agama Hindu banyak dipeluk oleh masyarakat di pulau ...', options: ['A. Jawa', 'B. Bali', 'C. Kalimantan', 'D. Sulawesi'], answer: 'B' },
-        { id: 'pg10', text: 'Keberagaman yang ada di Indonesia seharusnya membuat kita ...', options: ['A. Saling bertengkar', 'B. Memisahkan diri', 'C. Saling menghormati', 'D. Merasa bangga sendiri'], answer: 'C' },
-    ];
-    const bsQuestions = [
-        { id: 'bs1', text: 'Indonesia memiliki enam agama yang diakui secara resmi.', answer: 'Benar' },
-        { id: 'bs2', text: 'Kita boleh mengolok-olok teman yang berbeda agama.', answer: 'Salah' },
-        { id: 'bs3', text: 'Bhinneka Tunggal Ika artinya berbeda-beda tetapi tetap satu.', answer: 'Benar' },
-        { id: 'bs4', text: 'Kitab suci agama Kristen dan Katolik adalah Al-Qur\'an.', answer: 'Salah' },
-        { id: 'bs5', text: 'Wihara adalah tempat ibadah umat Buddha.', answer: 'Benar' },
-    ];
-    const matchQuestions = [
-        { id: 'mt1', left: 'Agama Islam', options: ['Masjid', 'Gereja', 'Pura', 'Wihara', 'Klenteng'], answer: 'Masjid' },
-        { id: 'mt2', left: 'Agama Hindu', options: ['Masjid', 'Gereja', 'Pura', 'Wihara', 'Klenteng'], answer: 'Pura' },
-        { id: 'mt3', left: 'Agama Konghucu', options: ['Masjid', 'Gereja', 'Pura', 'Wihara', 'Klenteng'], answer: 'Klenteng' },
-        { id: 'mt4', left: 'Hari Raya Natal', options: ['Islam', 'Kristen/Katolik', 'Hindu', 'Buddha', 'Konghucu'], answer: 'Kristen/Katolik' },
-        { id: 'mt5', left: 'Hari Raya Nyepi', options: ['Islam', 'Kristen/Katolik', 'Hindu', 'Buddha', 'Konghucu'], answer: 'Hindu' },
-    ];
-    const isianQuestions = [
-        { id: 'is1', text: 'Semboyan negara Indonesia adalah ...', answer: 'Bhinneka Tunggal Ika', alt: ['bhineka tunggal ika', 'bhinneka tunggal ika'] },
-        { id: 'is2', text: 'Tempat ibadah agama Islam adalah ...', answer: 'Masjid', alt: ['masjid'] },
-        { id: 'is3', text: 'Kitab suci agama Islam adalah ...', answer: 'Al-Qur\'an', alt: ['alquran', 'al quran', 'quran'] },
-        { id: 'is4', text: 'Indonesia memiliki ... agama yang diakui secara resmi.', answer: '6', alt: ['enam'] },
-        { id: 'is5', text: 'Sikap menghargai dan menghormati perbedaan disebut sikap ...', answer: 'Toleransi', alt: ['toleransi'] },
-    ];
-    const uraianQuestions = [
-        { id: 'ur1', text: 'Sebutkan 6 agama yang diakui di Indonesia beserta tempat ibadahnya!' },
-        { id: 'ur2', text: 'Apa yang dimaksud dengan Bhinneka Tunggal Ika? Jelaskan artinya!' },
-        { id: 'ur3', text: 'Bagaimana sikapmu jika temanmu berbeda agama dengan kamu? Jelaskan!' },
-        { id: 'ur4', text: 'Sebutkan 3 contoh keberagaman yang ada di Indonesia!' },
-        { id: 'ur5', text: 'Mengapa kita harus saling menghormati perbedaan di antara sesama teman? Jelaskan!' },
-    ];
+        const questions = [
+            // PILIHAN GANDA (1-10)
+            {
+                id: 1,
+                type: 'pg',
+                section: 'I. Pilihan Ganda (10 Soal)',
+                text: 'Tindakan membuang sampah plastik atau limbah kotor langsung ke aliran sungai dapat mengakibatkan pencemaran/polusi ...',
+                options: ['Tanah', 'Air', 'Udara', 'Suara'],
+                answer: 1,
+                hint: 'Membuang sampah ke sungai mengotori air sungai dan mengganggu ekosistem air.'
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Kegiatan membakar sampah plastik di pekarangan rumah secara liar akan merusak kesehatan dan mencemari ...',
+                options: ['Air sungai', 'Tanah kebun', 'Udara bersih', 'Tanaman hias'],
+                answer: 2,
+                hint: 'Asap hasil pembakaran sampah menimbulkan polusi udara.'
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Sikap peduli lingkungan yang tepat untuk mengurangi polusi udara akibat asap kendaraan bermotor adalah ...',
+                options: ['Bepergian menggunakan mobil pribadi sendirian', 'Berjalan kaki atau naik sepeda untuk jarak yang dekat', 'Membiarkan mesin kendaraan menyala terus', 'Mempercepat laju kendaraan'],
+                answer: 1,
+                hint: 'Berjalan kaki atau bersepeda tidak menghasilkan asap emisi polusi udara.'
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Bagaimana cara terbaik agar lingkungan sekolah kita terhindar dari kuman penyakit dan tetap rapi?',
+                options: ['Melaksanakan kegiatan piket kelas dengan rutin', 'Meninggalkan bungkus jajan di kolong meja', 'Mencoret-coret dinding toilet sekolah', 'Membuang sampah ke halaman tetangga sekolah'],
+                answer: 0,
+                hint: 'Piket kelas rutin menjaga ruang kelas bersih dan nyaman.'
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Ketika melihat seorang teman sekelas membuang bungkus es krim di lantai teras kelas, sikapmu sebaiknya ...',
+                options: ['Membiarkannya saja karena bukan sampah kita', 'Melaporkannya langsung dengan marah-marah', 'Menasihati teman tersebut secara sopan agar membuangnya di tong sampah', 'Ikut membuang sampah di lantai teras'],
+                answer: 2,
+                hint: 'Saling menasihati dengan sopan menjaga kerukunan serta kebersihan sekolah.'
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Jika kamu melihat Lia sedang kesulitan membersihkan kaca jendela kelas sendirian, tindakanmu sebaiknya ...',
+                options: ['Mengganggunya agar Lia tidak bisa selesai', 'Ikut membantunya membersihkan kaca jendela', 'Menonton Lia dari bangku dengan santai', 'Meninggalkan Lia keluar kelas'],
+                answer: 1,
+                hint: 'Membantu teman yang kesusahan adalah bentuk gotong royong di sekolah.'
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Warga sekitar sekolah sedang tertimpa musibah banjir bandang. Sikap peduli sosial yang dapat dilakukan oleh sekolah adalah ...',
+                options: ['Menolak warga mendekati area sekolah', 'Menyediakan halaman sekolah sebagai tempat penampungan sementara dan bantuan makanan', 'Meliburkan sekolah dan acuh tak acuh', 'Meminta sumbangan paksa dari warga korban banjir'],
+                answer: 1,
+                hint: 'Sekolah dapat menolong warga sekitar dengan bantuan darurat/penampungan.'
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Membawa botol minum (tumblr) sendiri ke sekolah untuk menghindari pembelian air mineral botol plastik sekali pakai adalah contoh ...',
+                options: ['Reduce (Mengurangi sampah)', 'Reuse (Memakai kembali)', 'Recycle (Mendaur ulang)', 'Erosi (Kikis tanah)'],
+                answer: 0,
+                hint: 'Reduce berarti mengurangi potensi terbentuknya sampah plastik sekali pakai.'
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Membuat celengan lucu dari kaleng bekas wadah susu merupakan contoh penerapan pengolahan sampah ...',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Reboisasi'],
+                answer: 1,
+                hint: 'Reuse adalah menggunakan kembali barang bekas tanpa mengolah bentuk dasarnya.'
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Mengolah kembali sampah kertas koran bekas menjadi kertas baru yang indah di pabrik merupakan contoh ...',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Polusi'],
+                answer: 2,
+                hint: 'Recycle (daur ulang) adalah meleburkan barang bekas untuk dicetak menjadi barang baru.'
+            },
+            // PILIHAN GANDA KOMPLEKS (11-15)
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'II. Pilihan Ganda Kompleks (5 Soal)',
+                text: 'Tindakan manusia apa saja yang dapat merusak kelestarian lingkungan air di sekitar kita? (Pilih semua jawaban yang benar)',
+                options: ['Membuang sampah rumah tangga ke sungai', 'Membuang limbah cair pabrik langsung ke laut', 'Menanam pohon bakau di pesisir pantai', 'Mencuci baju menggunakan detergen berlebih di aliran sungai'],
+                answer: [0, 1, 3],
+                hint: 'Sampah, limbah pabrik, dan detergen mencemari air. Menanam pohon bakau justru menjaga pantai.'
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Manakah kegiatan di sekolah yang menunjukkan sikap peduli lingkungan sosial? (Pilih semua jawaban yang benar)',
+                options: ['Mengumpulkan uang sumbangan sukarela untuk korban banjir', 'Meminjamkan pensil secara sukarela kepada teman yang lupa membawa', 'Membantu menyapu kelas meskipun tidak sedang jadwal piket', 'Menertawakan teman yang jatuh terpeleset'],
+                answer: [0, 1, 2],
+                hint: 'Menolong korban banjir, meminjamkan alat tulis, dan membantu menyapu kelas adalah sikap terpuji.'
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah tindakan di bawah ini yang merupakan penerapan prinsip "Reduce" (Mengurangi sampah)? (Pilih semua jawaban yang benar)',
+                options: ['Membawa kotak makan sendiri saat membeli jajanan kantin', 'Menolak sedotan plastik saat membeli es teh manis', 'Membeli banyak minuman botol plastik setiap hari', 'Membawa kantong belanja ramah lingkungan saat ke pasar'],
+                answer: [0, 1, 3],
+                hint: 'Membawa wadah sendiri dan menolak sedotan plastik membantu mengurangi timbunan sampah.'
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Barang bekas apa saja yang dapat kita gunakan kembali (Reuse) untuk membuat wadah serbaguna atau pot di rumah? (Pilih semua jawaban yang benar)',
+                options: ['Kaleng bekas wadah wafer/susu', 'Botol plastik besar bekas air mineral', 'Kardus sepatu tebal yang kosong', 'Kertas tisu basah yang kotor'],
+                answer: [0, 1, 2],
+                hint: 'Kaleng, botol plastik, dan kardus dapat digunakan kembali. Tisu bekas kotor harus dibuang.'
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Apa saja manfaat yang kita dapatkan jika melakukan kerja sama membersihkan lingkungan rumah bersama tetangga? (Pilih semua jawaban yang benar)',
+                options: ['Pekerjaan membersihkan menjadi cepat selesai', 'Hubungan antar-tetangga menjadi semakin rukun dan erat', 'Lingkungan menjadi bersih, rapi, dan terhindar dari banjir', 'Warga menjadi sangat lelah dan saling bertengkar'],
+                answer: [0, 1, 2],
+                hint: 'Kerja sama (gotong royong) membawa kebaikan, kerukunan, dan kebersihan.'
+            },
+            // BENAR ATAU SALAH (16-20)
+            {
+                id: 16,
+                type: 'bs',
+                section: 'III. Benar atau Salah (5 Soal)',
+                text: 'Kegiatan Recycle (daur ulang) dilakukan dengan cara menimbun semua sampah di kebun belakang rumah.',
+                answer: 'Salah',
+                hint: 'Recycle adalah memproses kembali sampah menjadi bahan baku produk baru, bukan sekadar menimbunnya.'
+            },
+            {
+                id: 17,
+                type: 'bs',
+                text: 'Menasihati teman yang membuang sampah sembarangan harus dilakukan secara sopan dan tidak boleh dengan nada marah.',
+                answer: 'Benar',
+                hint: 'Kesopanan menjaga kedamaian dan membuat nasihat lebih mudah diterima.'
+            },
+            {
+                id: 18,
+                type: 'bs',
+                text: 'Gedung sekolah dapat dijadikan tempat mengungsi sementara bagi warga yang tertimpa bencana alam di sekitarnya.',
+                answer: 'Benar',
+                hint: 'Ini adalah wujud gotong royong dan kemanusiaan sekolah terhadap lingkungan sosialnya.'
+            },
+            {
+                id: 19,
+                type: 'bs',
+                text: 'Pencemaran/polusi tanah terjadi akibat pembuangan limbah kimia berbahaya dan sampah plastik secara sembarangan.',
+                answer: 'Benar',
+                hint: 'Plastik sulit terurai di tanah sehingga merusak kesuburan tanah.'
+            },
+            {
+                id: 20,
+                type: 'bs',
+                text: 'Kita tidak boleh menolong teman membersihkan kelas jika hari itu bukan merupakan jadwal piket kita.',
+                answer: 'Salah',
+                hint: 'Membantu teman piket adalah perbuatan mulia meskipun di luar jadwal kita.'
+            },
+            // MEMASANGKAN (21-25)
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'IV. Memasangkan (5 Soal)',
+                text: 'Pasangkan prinsip 3R berikut dengan pengertiannya: <b>Mengurangi penggunaan barang sekali pakai untuk meminimalkan sampah</b>',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Polusi Air', 'Polusi Udara'],
+                answer: 'Reduce',
+                hint: 'Reduce artinya mengurangi.'
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: 'Pasangkan prinsip 3R berikut dengan pengertiannya: <b>Menggunakan kembali barang bekas untuk fungsi lain yang bermanfaat</b>',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Polusi Air', 'Polusi Udara'],
+                answer: 'Reuse',
+                hint: 'Reuse artinya memakai kembali.'
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: 'Pasangkan prinsip 3R berikut dengan pengertiannya: <b>Mendaur ulang atau mengolah kembali sampah menjadi barang baru di pabrik</b>',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Polusi Air', 'Polusi Udara'],
+                answer: 'Recycle',
+                hint: 'Recycle artinya mendaur ulang.'
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: 'Pasangkan jenis pencemaran berikut dengan penyebabnya: <b>Disebabkan oleh asap tebal kendaraan bermotor dan pembakaran sampah plastik</b>',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Polusi Air', 'Polusi Udara'],
+                answer: 'Polusi Udara',
+                hint: 'Asap mencemari udara bersih.'
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: 'Pasangkan jenis pencemaran berikut dengan penyebabnya: <b>Disebabkan oleh pembuangan sampah rumah tangga dan zat detergen berlebih ke selokan/sungai</b>',
+                options: ['Reduce', 'Reuse', 'Recycle', 'Polusi Air', 'Polusi Udara'],
+                answer: 'Polusi Air',
+                hint: 'Sampah di perairan mengotori air.'
+            },
+            // ISIAN SINGKAT (26-30)
+            {
+                id: 26,
+                type: 'isian',
+                section: 'V. Isian Singkat (5 Soal)',
+                text: 'Membawa botol tumbler sendiri saat sekolah agar tidak membeli minuman botol plastik merupakan contoh ...',
+                answer: 'Reduce',
+                alt: ['reduce', 'mengurangi sampah'],
+                hint: 'Reduce bertujuan mengurangi sampah dari sumbernya.'
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Membuat pot tanaman hias dari botol bekas air mineral merupakan contoh tindakan ...',
+                answer: 'Reuse',
+                alt: ['reuse', 'menggunakan kembali', 'memakai kembali'],
+                hint: 'Menggunakan kembali botol bekas tanpa merusak bentuk dasarnya.'
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Saat melihat teman kelas sedang membersihkan papan tulis sendirian, sebaiknya kita ikut ...',
+                answer: 'Membantu',
+                alt: ['membantu', 'menolong'],
+                hint: 'Membantu meringankan beban teman.'
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Gotong royong membersihkan selokan membuat pekerjaan yang berat menjadi terasa lebih ...',
+                answer: 'Ringan',
+                alt: ['ringan', 'cepat selesai'],
+                hint: 'Gotong royong meringankan pekerjaan.'
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Polusi udara dapat dikurangi jika kita bepergian jarak dekat dengan cara ... kaki.',
+                answer: 'Berjalan',
+                alt: ['berjalan', 'jalan'],
+                hint: 'Berjalan kaki ramah lingkungan dan menyehatkan.'
+            },
+            // URAIAN (31-35)
+            {
+                id: 31,
+                type: 'uraian',
+                section: 'VI. Uraian (5 Soal)',
+                text: 'Jelaskan apa yang dimaksud dengan istilah pengolahan sampah 3R (Reduce, Reuse, dan Recycle)!',
+                answer: 'Reduce adalah mengurangi penggunaan barang sekali pakai agar tidak menjadi sampah. Reuse adalah menggunakan kembali barang bekas yang masih layak. Recycle adalah mendaur ulang sampah menjadi barang baru.'
+            },
+            {
+                id: 32,
+                type: 'uraian',
+                text: 'Tuliskan masing-masing 1 contoh tindakan nyata dari kegiatan Reduce, Reuse, dan Recycle di rumahmu!',
+                answer: 'Reduce: membawa tas belanja kain saat belanja. Reuse: membuat tempat pensil dari kaleng bekas susu. Recycle: menyisihkan botol kaca/plastik bekas untuk diberikan ke bank sampah/pabrik daur ulang.'
+            },
+            {
+                id: 33,
+                type: 'uraian',
+                text: 'Mengapa kita harus membiasakan diri untuk saling menolong dan bekerja sama menjaga kebersihan di lingkungan sekolah? Jelaskan!',
+                answer: 'Agar sekolah menjadi bersih, rapi, terhindar dari penyakit, proses belajar menjadi nyaman, pekerjaan menyapu cepat selesai, serta memupuk kerukunan antar-siswa.'
+            },
+            {
+                id: 34,
+                type: 'uraian',
+                text: 'Sebutkan 3 jenis pencemaran/polusi lingkungan yang disebabkan oleh tindakan buruk manusia beserta penyebabnya!',
+                answer: '1) Polusi air: membuang sampah/limbah ke sungai. 2) Polusi udara: membakar sampah plastik atau asap motor. 3) Polusi tanah: membuang sampah plastik/zat kimia berbahaya ke tanah.'
+            },
+            {
+                id: 35,
+                type: 'uraian',
+                text: 'Bagaimana cara dan sikap yang baik jika kamu melihat teman sekelasmu sengaja membuang sampah jajanan di bawah meja kelas?',
+                answer: 'Menasihatinya secara sopan dan lembut untuk mengambil sampah tersebut dan membuangnya ke dalam tong sampah kelas agar kelas tetap bersih.'
+            }
+        ];
 
-    const totalQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length + uraianQuestions.length;
-    const scoredQ = pgQuestions.length + bsQuestions.length + matchQuestions.length + isianQuestions.length;
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
-    function render() {
-        let html = ''; let qNum = 1;
-        html += `<div class="section-title">📝 Pilihan Ganda <span class="info-tag">10 soal × 1 poin</span></div>`;
-        pgQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="options">`;
-            q.options.forEach(opt => { const val = opt.charAt(0); html += `<label class="option-label" id="opt-${q.id}-${val}"><input type="radio" name="${q.id}" value="${val}" onchange="onRadioChange('${q.id}','${val}')"> ${opt}</label>`; });
-            html += `</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✔️ Benar atau Salah <span class="info-tag">5 soal × 1 poin</span></div>`;
-        bsQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><div class="bs-options"><button class="bs-btn" id="bs-benar-${q.id}" onclick="selectBS('${q.id}','Benar')">✅ Benar</button><button class="bs-btn" id="bs-salah-${q.id}" onclick="selectBS('${q.id}','Salah')">❌ Salah</button></div><input type="hidden" id="${q.id}" value=""><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">🔗 Tarik Garis (Pasangkan) <span class="info-tag">5 soal × 1 poin</span></div>`;
-        matchQuestions.forEach(q => {
-            let shuffled = [...q.options].sort(() => Math.random() - 0.5);
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">Pasangkan: <b>${q.left}</b> dengan yang tepat!</span></div><select class="match-select" id="${q.id}"><option value="">-- Pilih Jawaban --</option>${shuffled.map(o=>`<option value="${o}">${o}</option>`).join('')}</select><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">✏️ Isian Singkat <span class="info-tag">5 soal × 1 poin</span></div>`;
-        isianQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><input type="text" class="input-text" id="${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off"><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        html += `<div class="section-title">📄 Uraian <span class="info-tag">5 soal — dijawab lengkap</span></div>`;
-        uraianQuestions.forEach(q => {
-            html += `<div class="question-item"><div class="q-text"><span class="q-number">${qNum++}</span><span class="q-text-content">${q.text}</span></div><textarea class="input-text" id="${q.id}" placeholder="Tulis jawaban lengkap di sini..."></textarea><div class="feedback-box" id="fb-${q.id}"></div></div>`;
-        });
-        document.getElementById('question-container').innerHTML = html;
-        document.addEventListener('input', updateProgress);
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'bs') {
+                    inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label>
+                                  <label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                                 </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item">
+                            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                            <div class="options-group">${inputHtml}</div>
+                            <div class="feedback-box" id="fb-${q.id}"></div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'bs') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
         document.addEventListener('change', updateProgress);
-    }
-    function onRadioChange(qId, val) {
-        const q = pgQuestions.find(x => x.id === qId); if (!q) return;
-        q.options.map(o => o.charAt(0)).forEach(v => document.getElementById(`opt-${qId}-${v}`)?.classList.remove('selected'));
-        document.getElementById(`opt-${qId}-${val}`)?.classList.add('selected'); updateProgress();
-    }
-    function selectBS(qId, val) {
-        document.getElementById(`bs-benar-${qId}`).classList.remove('selected-benar');
-        document.getElementById(`bs-salah-${qId}`).classList.remove('selected-salah');
-        document.getElementById(qId).value = val;
-        val === 'Benar' ? document.getElementById(`bs-benar-${qId}`).classList.add('selected-benar') : document.getElementById(`bs-salah-${qId}`).classList.add('selected-salah');
-        updateProgress();
-    }
-    function updateProgress() {
-        let answered = 0;
-        pgQuestions.forEach(q => { if (document.querySelector(`[name="${q.id}"]:checked`)) answered++; });
-        bsQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        matchQuestions.forEach(q => { if (document.getElementById(q.id)?.value) answered++; });
-        isianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        uraianQuestions.forEach(q => { if (document.getElementById(q.id)?.value?.trim()) answered++; });
-        document.getElementById('progress-fill').style.width = `${(answered / totalQ) * 100}%`;
-    }
-    function normalize(s) { return s.toLowerCase().replace(/[-_.,!?']/g, '').trim(); }
-    function submitExam() {
-        let score = 0;
-        pgQuestions.forEach(q => {
-            const sel = document.querySelector(`[name="${q.id}"]:checked`); const fb = document.getElementById(`fb-${q.id}`);
-            q.options.map(o => o.charAt(0)).forEach(v => { const lbl = document.getElementById(`opt-${q.id}-${v}`); if (lbl) lbl.classList.remove('correct-opt','wrong-opt'); });
-            const cl = document.getElementById(`opt-${q.id}-${q.answer}`); if (cl) cl.classList.add('correct-opt');
-            if (sel && sel.value !== q.answer) { const wl = document.getElementById(`opt-${q.id}-${sel.value}`); if (wl) wl.classList.add('wrong-opt'); }
-            const ok = sel && sel.value === q.answer;
-            if (ok) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
-            else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Jawaban yang benar: <b>${q.answer}</b>`; }
-            fb.style.display='block';
-        });
-        bsQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            val === q.answer ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        matchQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value; const fb = document.getElementById(`fb-${q.id}`);
-            normalize(val) === normalize(q.answer) ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Pasangan: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        isianQuestions.forEach(q => {
-            const val = normalize(document.getElementById(q.id)?.value || ''); const fb = document.getElementById(`fb-${q.id}`);
-            const ans = normalize(q.answer);
-            let ok = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
-            if (q.alt) q.alt.forEach(a => { if (normalize(a) === val || val.includes(normalize(a))) ok = true; });
-            ok ? (score++, fb.className='feedback-box correct', fb.innerHTML='✅ Benar!') : (fb.className='feedback-box wrong', fb.innerHTML=`❌ Jawaban: <b>${q.answer}</b>`);
-            fb.style.display='block';
-        });
-        uraianQuestions.forEach(q => {
-            const val = document.getElementById(q.id)?.value?.trim(); const fb = document.getElementById(`fb-${q.id}`);
-            fb.className='feedback-box partial'; fb.innerHTML = val ? '📝 Jawaban dicatat. Penilaian oleh guru.' : '⚠️ Belum dijawab.'; fb.style.display='block';
-        });
-        const pct = Math.round((score / scoredQ) * 100);
-        document.getElementById('final-score').innerText = pct;
-        document.getElementById('score-detail').innerText = `Skor: ${score} dari ${scoredQ} soal`;
-        document.getElementById('score-board').style.display='block';
-        document.getElementById('footer-action').style.display='none';
-        document.getElementById('progress-fill').style.width='100%';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    render();
+        document.addEventListener('input', updateProgress);
+
+        function normalize(s) {
+            return s.toLowerCase().replace(/[-_.,!?']/g, '').trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'bs') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && sel.value === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && val.toLowerCase() === q.answer.toLowerCase()) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const val = normalize(document.querySelector(`[name="q${q.id}"]`).value || '');
+                    const ans = normalize(q.answer);
+                    let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                    if (q.alt) {
+                        q.alt.forEach(a => {
+                            if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true;
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 Periksa manual. Kunci jawaban perkiraan: <b>${q.answer}</b>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = Math.round((score / maxAuto) * 100);
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan ganda/kompleks/isian. Soal uraian diperiksa manual oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
     </script>
 </body>
 </html>
