@@ -474,7 +474,7 @@ function submitExam() {
             const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
             if (sel && sel.value === q.answer) { score++; fb.className='feedback-box correct'; fb.innerHTML='✅ Benar!'; }
             else { fb.className='feedback-box wrong'; fb.innerHTML=`❌ Salah. ${q.hint}`; }
-        } else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
+        } else if (q.type === 'memasangkan') { maxAuto++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
                 else if (q.type === 'isian') {
             maxAuto++;
             const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase();
