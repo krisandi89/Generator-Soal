@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian PAI Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #196f3d;
+            --primary-light: #27ae60;
+            --bg: #eafaf1;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #fff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: none;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.3s;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(25, 111, 61, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.4em;
+            direction: rtl;
+            text-align: right;
+            color: var(--primary);
+            line-height: 2;
+            background: #eafaf1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border: 1px solid #a9dfbf;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #eafaf1;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(25, 111, 61, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+
+            .arabic {
+                font-size: 1.2em;
+            }
+        }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☪️ Pendidikan Agama Islam</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Adab Keluarga)',
+                text: 'Lingkungan pertama tempat seseorang mendapatkan bimbingan, pembinaan, serta kasih sayang yang tulus adalah...',
+                options: ['Sekolah', 'Keluarga', 'Masyarakat', 'Tempat bermain'],
+                answer: 1,
+                hint: 'Keluarga adalah lingkungan pertama dan utama tempat anak tumbuh dan mendapatkan kasih sayang.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Sikap saling menyayangi, menghargai, dan menghormati di antara anggota keluarga akan melahirkan suasana...',
+                options: ['Kekacauan', 'Ketegangan', 'Rukun dan harmonis', 'Kecemburuan'],
+                answer: 2,
+                hint: 'Kasih sayang dan rasa saling menghargai melahirkan keharmonisan dan kerukunan dalam keluarga.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Salah satu contoh adab anak yang baik dan terpuji kepada orang tua di rumah adalah...',
+                options: ['Berbicara kasar saat meminta uang jajan', 'Membantah nasihat orang tua dengan nada keras', 'Berbicara dengan sopan dan mendengarkan nasihat mereka', 'Mengabaikan panggilan orang tua ketika sedang bermain game'],
+                answer: 2,
+                hint: 'Menghormati orang tua dilakukan dengan berbicara sopan dan mematuhi nasihat baik mereka.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Di dalam sebuah keluarga, tugas utama dan tanggung jawab ayah serta ibu terhadap anak-anak mereka adalah...',
+                options: ['Membiarkan anak bertingkah laku bebas tanpa batas', 'Merawat, mendidik, dan membimbing anak menuju kebaikan', 'Menuntut anak untuk bekerja mencari uang', 'Menyerahkan seluruh pendidikan anak kepada sekolah saja'],
+                answer: 1,
+                hint: 'Orang tua bertanggung jawab merawat, mendidik, dan membimbing anak agar menjadi anak saleh.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Dalam ajaran Islam, keluarga diposisikan sebagai tempat pendidikan awal bagi seorang anak, yang sering diistilahkan sebagai...',
+                options: ['Madrasatul Ula', 'Baitul Maal', 'Darul Arqam', 'Uswatun Hasanah'],
+                answer: 0,
+                hint: 'Madrasatul Ula berarti sekolah atau tempat pendidikan pertama bagi seorang anak.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Ketika kita ingin masuk ke kamar orang tua atau saat berjalan melewati orang yang lebih tua di rumah, adab sopan santun yang benar adalah...',
+                options: ['Langsung menerobos masuk tanpa bersuara', 'Berteriak memberi tahu kedatangan kita', 'Mengetuk pintu, mengucapkan salam, dan membungkukkan badan sedikit sebagai tanda permisi', 'Berlari kencang agar cepat sampai'],
+                answer: 2,
+                hint: 'Adab permisi dilakukan dengan mengetuk pintu, mengucap salam, dan menunjukkan sikap santun.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Sikap yang mencerminkan rasa syukur atas karunia keluarga yang baik dan rukun dari Allah SWT adalah...',
+                options: ['Selalu mengeluh karena keterbatasan fasilitas di rumah', 'Membantu orang tua dengan ikhlas dan menyayangi saudara', 'Bermusuhan dengan saudara kandung karena berebut mainan', 'Menuntut orang tua membeli barang-barang mewah'],
+                answer: 1,
+                hint: 'Membantu orang tua dan hidup rukun dengan saudara adalah bentuk syukur atas karunia keluarga.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Contoh nyata dari perilaku menjaga kerukunan di dalam rumah bersama anggota keluarga yang lain adalah...',
+                options: ['Membantu ibu membersihkan rumah dan berbagi makanan dengan saudara', 'Menyimpan semua makanan sendiri agar tidak diminta adik', 'Menyalahkan adik ketika terjadi kesalahan', 'Saling mendiamkan dan tidak mau berkomunikasi'],
+                answer: 0,
+                hint: 'Bekerja sama membersihkan rumah dan saling berbagi memupuk kebersamaan dan kerukunan.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Ayah dan ibu di rumah merupakan cerminan bagi anak-anaknya. Oleh karena itu, orang tua berperan sebagai...',
+                options: ['Musuh anak', 'Penonton saja', 'Teladan utama (uswatun hasanah) di rumah', 'Hakim yang kejam'],
+                answer: 2,
+                hint: 'Orang tua adalah teladan utama bagi anak-anaknya dalam perkataan maupun perbuatan.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Keluarga yang senantiasa menerapkan nilai-nilai agama dan rukun satu sama lain akan merasakan dampak...',
+                options: ['Ketakutan dan kecemasan dalam rumah', 'Ketenangan jiwa, kedamaian, dan kebahagiaan', 'Kejenuhan hidup bertetangga', 'Kesulitan dalam berteman di luar rumah'],
+                answer: 1,
+                hint: 'Penerapan nilai agama di rumah membawa kedamaian, ketenangan, dan keberkahan dari Allah.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks (Adab Tetangga)',
+                text: 'Di bawah ini yang merupakan adab yang baik dan terpuji terhadap tetangga di sekitar rumah kita adalah... (pilih semua yang benar)',
+                options: ['Menyapa dengan ramah dan tersenyum ketika bertemu', 'Membantu tetangga yang sedang mengalami kesulitan atau musibah', 'Menyalakan radio dengan volume keras pada malam hari', 'Mengirimkan makanan jika kita memiliki kelebihan makanan'],
+                answer: [0, 1, 3],
+                hint: 'Menyalakan radio dengan keras mengganggu kenyamanan tetangga dan harus dihindari.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Sikap atau perilaku yang harus kita hindari dalam menjalin hubungan bertetangga agar tidak terjadi perpecahan adalah... (pilih semua yang benar)',
+                options: ['Membicarakan aib atau kekurangan tetangga kepada orang lain', 'Membuang sampah di dekat area halaman rumah tetangga', 'Menjenguk tetangga yang sedang terbaring sakit', 'Mengambil buah dari pohon tetangga tanpa izin'],
+                answer: [0, 1, 3],
+                hint: 'Membicarakan aib, membuang sampah sembarangan, dan mengambil barang tanpa izin merusak hubungan baik.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Contoh tindakan nyata yang dapat menjaga kelangsungan hubungan harmonis dengan tetangga terdekat kita adalah... (pilih semua yang benar)',
+                options: ['Saling berbagi berkah atau oleh-oleh setelah bepergian', 'Mendoakan kebaikan untuk tetangga', 'Menutup diri rapat-rapat dan tidak mau tahu urusan sekitar', 'Menghormati perbedaan suku atau agama tetangga'],
+                answer: [0, 1, 3],
+                hint: 'Saling berbagi, mendoakan, dan menghormati perbedaan menguatkan tali silaturahmi antartetangga.',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Sesuai ajaran Islam, perilaku mulia yang sangat dianjurkan ketika kita berpapasan atau bertemu dengan tetangga di jalan adalah... (pilih semua yang benar)',
+                options: ['Menunjukkan wajah masam dan memalingkan muka', 'Tersenyum dengan tulus', 'Mengucapkan salam (Assalamualaikum)', 'Menyapa dengan ucapan yang sopan'],
+                answer: [1, 2, 3],
+                hint: 'Senyuman, salam, dan sapaan hangat adalah anjuran Islam yang mendatangkan pahala dan kedamaian.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Bentuk kepedulian sosial yang dapat kita tunjukkan kepada tetangga di lingkungan tempat tinggal kita adalah... (pilih semua yang benar)',
+                options: ['Ikut serta dalam kegiatan kerja bakti membersihkan lingkungan', 'Memberikan bantuan bahan makanan bagi tetangga yang membutuhkan', 'Mengabaikan tetangga yang meminta tolong darurat', 'Menawarkan bantuan tenaga saat tetangga sedang mengadakan acara hajatan'],
+                answer: [0, 1, 3],
+                hint: 'Ikut kerja bakti, memberi bantuan, dan membantu saat hajatan adalah wujud nyata kepedulian sosial.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Perilaku terpuji terhadap tetangga yang mendatangkan rida Allah SWT menurut ajaran agama Islam adalah... (pilih semua yang benar)',
+                options: ['Menghormati hak privasi dan ketenangan rumah tetangga', 'Bersabar ketika tetangga secara tidak sengaja mengganggu kita', 'Mendoakan keburukan agar tetangga pindah rumah', 'Memaafkan kesalahan tetangga yang meminta maaf'],
+                answer: [0, 1, 3],
+                hint: 'Islam melarang mendoakan keburukan bagi sesama Muslim, sebaliknya kita diajarkan sabar dan pemaaf.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Islam mengajarkan batasan tetangga yang harus kita jaga hak-haknya. Siapakah yang termasuk kategori tetangga menurut sabda sahabat Nabi? (pilih semua yang benar)',
+                options: ['Orang yang tinggal hingga 40 rumah di depan rumah kita', 'Orang yang tinggal hingga 40 rumah di belakang rumah kita', 'Orang yang tinggal hingga 40 rumah di samping kanan dan kiri kita', 'Hanya orang yang rumahnya menempel langsung dengan rumah kita'],
+                answer: [0, 1, 2],
+                hint: 'Tetangga dalam Islam mencakup 40 rumah dari segala arah (depan, belakang, kanan, dan kiri).',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Tindakan yang paling tepat dan cepat kita lakukan saat mendengar ada tetangga dekat yang mengalami musibah kematian atau kecelakaan adalah... (pilih semua yang benar)',
+                options: ['Segera mendatangi rumahnya untuk berbela sungkawa (taziah)', 'Membantu mengurus kebutuhan yang mendesak bagi keluarga korban', 'Menjadikannya bahan obrolan santai di media sosial', 'Menyumbangkan sebagian harta atau makanan untuk meringankan beban mereka'],
+                answer: [0, 1, 3],
+                hint: 'Bela sungkawa dan bantuan nyata sangat dianjurkan, sedangkan menjadikannya gosip adalah perbuatan tercela.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Menjaga kehormatan tetangga adalah hal penting. Perilaku manakah yang menunjukkan sikap menjaga rahasia dan aib tetangga? (pilih semua yang benar)',
+                options: ['Tidak menguping pembicaraan pribadi di dalam rumah tetangga', 'Menolak mendengarkan gosip buruk tentang tetangga kita', 'Menyebarkan rahasia tetangga di grup chat lingkungan', 'Menutup-nutupi kesalahan/aib tetangga yang tidak merugikan umum'],
+                answer: [0, 1, 3],
+                hint: 'Menyebarkan aib tetangga berdosa besar dan dilarang keras dalam agama Islam.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Hikmah atau keuntungan rohani maupun sosial dari membiasakan hidup rukun antartetangga di sekitar kita adalah... (pilih semua yang benar)',
+                options: ['Tercipta suasana lingkungan yang aman, damai, dan tenteram', 'Mendapatkan rida dan pahala dari Allah SWT', 'Memicu rasa saling mencurigai di antara warga', 'Memiliki banyak saudara yang siap menolong saat kita kesulitan'],
+                answer: [0, 1, 3],
+                hint: 'Hidup rukun melahirkan ketenteraman, pahala Allah, dan jalinan tolong-menolong yang erat.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Kisah Hijrah Nabi ke Madinah)',
+                text: "Pasangkan pernyataan berikut dengan nama kota tujuan hijrah Rasulullah SAW yang tepat: <b>Kota tujuan utama hijrah kaum Muslimin yang sebelumnya bernama Yatsrib</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Madinah',
+                hint: 'Madinah adalah kota tujuan hijrah yang sebelumnya bernama Yatsrib.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan sahabat setia Nabi yang tepat: <b>Sahabat setia yang mendampingi perjalanan hijrah Rasulullah SAW dan bersembunyi bersama di Gua Tsur</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Abu Bakar As-Siddiq',
+                hint: 'Abu Bakar As-Siddiq menemani Nabi secara langsung dalam perjalanan hijrah.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan nama kesepakatan bersejarah yang tepat: <b>Perjanjian ikrar kesetiaan antara penduduk Madinah dan Rasulullah SAW sebelum terjadinya hijrah besar-besaran</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Perjanjian Aqabah',
+                hint: 'Perjanjian Aqabah I dan II merupakan pintu masuk utama diterimanya dakwah Islam di Madinah.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan nama kelompok penentang yang tepat: <b>Kaum di Makkah yang selalu menghalangi, memusuhi, dan menyiksa kaum Muslimin karena menolak menyembah berhala</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Kaum Kafir Quraisy',
+                hint: 'Kaum Kafir Quraisy memusuhi dan menyiksa pengikut Islam di Makkah.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan pernyataan berikut dengan hikmah hijrah Nabi yang tepat: <b>Dampak positif atau hikmah utama setelah Rasulullah SAW menetap dan membangun masjid di kota Madinah</b>",
+                options: ['Madinah', 'Abu Bakar As-Siddiq', 'Perjanjian Aqabah', 'Kaum Kafir Quraisy', 'Dakwah berkembang pesat'],
+                answer: 'Dakwah berkembang pesat',
+                hint: 'Hijrah membawa hikmah besar berupa berdirinya negara Islam pertama dan meluasnya dakwah.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Kisah Hijrah & Salat Duha/Tahajud)',
+                text: 'Secara bahasa, kata hijrah memiliki arti...',
+                answer: 'berpindah',
+                hint: 'Hijrah berarti berpindah tempat atau meninggalkan keburukan menuju kebaikan.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Sahabat yang dengan berani menggantikan posisi tidur di ranjang Rasulullah SAW saat rumah beliau dikepung pemuda Quraisy adalah...',
+                answer: 'Ali bin Abi Thalib',
+                hint: 'Ali bin Abi Thalib menyamar tidur berselimut hijau milik Nabi untuk mengelabui pengepung.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Karena khawatir ajaran Islam akan semakin kuat, kaum kafir Quraisy menyusun rencana keji di Darun Nadwah untuk... Nabi Muhammad SAW.',
+                answer: 'membunuh',
+                hint: 'Kaum Quraisy merencanakan pembunuhan Nabi secara bersama-sama oleh perwakilan tiap kabilah.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Gua yang menjadi tempat persembunyian Nabi Muhammad SAW dan Abu Bakar dari kejaran musuh selama tiga hari di awal perjalanan hijrah adalah Gua...',
+                answer: 'Tsur',
+                hint: 'Nabi bersembunyi di Gua Tsur sebelum melanjutkan perjalanan ke arah Madinah.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Kaum Muslimin Madinah yang menyambut kedatangan rombongan muhajirin Makkah dengan senang hati disebut kaum...',
+                answer: 'Ansar',
+                hint: 'Ansar memiliki arti penolong, yaitu sebutan bagi penduduk asli Madinah yang memeluk Islam.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Melaksanakan ibadah salat sunah duha di pagi hari hukumnya adalah...',
+                answer: 'sunah',
+                hint: 'Salat sunah bermakna jika dikerjakan berpahala, jika ditinggalkan tidak berdosa.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Waktu pelaksanaan salat duha dimulai sejak matahari terbit setinggi tombak (pagi hari) sampai menjelang masuk waktu...',
+                answer: 'Zuhur',
+                hint: 'Salat duha berakhir ketika posisi matahari berada tepat di atas kepala (menjelang Zuhur).',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Salah satu syarat penting sebelum melaksanakan salat sunah tahajud di malam hari adalah harus... terlebih dahulu.',
+                answer: 'tidur',
+                hint: 'Salat tahajud dikerjakan pada malam hari sesudah terjaga dari tidur malam.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Waktu yang paling utama (afdal) untuk menunaikan salat tahajud adalah pada sepertiga malam yang...',
+                answer: 'terakhir',
+                hint: 'Sepertiga malam terakhir (sekitar pukul 02.00 hingga subuh) adalah waktu terkabulnya doa.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Jumlah rakaat paling sedikit dalam pelaksanaan salat tahajud adalah... rakaat.',
+                answer: '2',
+                hint: 'Salat tahajud dikerjakan dalam kelipatan dua rakaat dengan satu kali salam.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai (Salat Jumat)',
+                text: 'Jelaskan apa yang dimaksud dengan salat Jumat secara lengkap sesuai ketentuan syariat!',
+                answer: 'Salat Jumat adalah salat fardhu dua rakaat yang dilaksanakan secara berjamaah pada hari Jumat di waktu Zuhur, diawali dengan dua khotbah oleh seorang khatib, dan hukumnya wajib (fardhu ain) bagi laki-laki Muslim yang memenuhi syarat.',
+                hint: 'Sebutkan jumlah rakaat, waktu pelaksanaan, kewajiban khotbah, dan hukumnya.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Sebutkan 2 syarat sahnya pelaksanaan salat Jumat!',
+                answer: '1) Dilaksanakan pada waktu Zuhur, 2) Dilaksanakan di suatu tempat (masjid/lapangan pemukiman) secara berjamaah (minimal 40 orang menurut madzhab Syafi\'i), 3) Didahului dengan penyampaian dua khotbah oleh khatib.',
+                hint: 'Pikirkan tentang waktu pelaksanaan, jumlah jamaah, dan adanya khotbah.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Sebutkan 3 amalan sunah yang dianjurkan untuk dikerjakan sebelum kita mendatangi masjid untuk salat Jumat!',
+                answer: '1) Mandi sunah Jumat, 2) Memotong kuku dan merapikan kumis, 3) Memakai pakaian yang bersih dan disukai berwarna putih, 4) Memakai wewangian (non-alkohol), 5) Membaca Al-Quran (seperti surah Al-Kahfi) atau memperbanyak zikir.',
+                hint: 'Amalan sunah menyangkut kebersihan badan, pakaian, wewangian, dan zikir.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Sebutkan 3 syarat wajib bagi seseorang untuk menunaikan salat Jumat!',
+                answer: '1) Beragama Islam, 2) Baligh (sudah dewasa), 3) Berakal sehat (tidak gila), 4) Laki-laki, 5) Sehat jasmani (tidak sakit berat), 6) Menetap (mukim, bukan dalam perjalanan jauh/musafir).',
+                hint: 'Syarat wajib adalah kriteria seseorang terkena kewajiban salat Jumat.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan secara singkat dan runtut tata cara pelaksanaan ibadah salat Jumat dari awal masuk masjid hingga selesai!',
+                answer: '1) Masuk masjid dengan mendahulukan kaki kanan dan membaca doa, lalu salat sunah Tahiyatul Masjid. 2) Duduk tenang mendengarkan kumandang azan. 3) Mendengarkan dua khotbah Jumat yang disampaikan oleh khatib dengan khusyuk tanpa berbicara. 4) Melaksanakan salat Jumat berjamaah dua rakaat yang dipimpin imam setelah iqamah berkumandang. 5) Berzikir dan berdoa sesudah salat.',
+                hint: 'Urutkan mulai dari salat Tahiyatul Masjid, mendengarkan khotbah, hingga salat berjamaah.',
+            },
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
+                else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html; updateProgress();
+        }
+        function updateProgress() { let a = 0; questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) a++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) a++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) a++; } }); document.getElementById('progress-fill').style.width = `${(a / questions.length) * 100}%`; }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let s = 0, m = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
+                else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            document.getElementById('final-score').innerText = m > 0 ? Math.round((s / m) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${s} dari ${m} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block'; document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%'; window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>

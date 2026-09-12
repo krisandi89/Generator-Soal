@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Bahasa Indonesia Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c0392b;
+            --primary-light: #e74c3c;
+            --bg: #fdf2f0;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score-board h2 {
+            font-size: 1.3em;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .score-board .detail {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            background: #fafbfc;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+            line-height: 1.8;
+            font-family: 'Georgia', serif;
+        }
+
+        .infographic-box {
+            background: #eaf2f8;
+            border: 2px solid #85c1e9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+        }
+
+        .infographic-box h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .infographic-box ul {
+            padding-left: 20px;
+        }
+
+        .infographic-box li {
+            margin: 5px 0;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #fdedec;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(192, 57, 43, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+
+            .question-item {
+                padding: 15px;
+            }
+        }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 Bahasa Indonesia</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Tata Bahasa & Menulis Cerita)',
+                text: "Lengkapi kalimat rumpang berikut dengan kata hubung antarkalimat yang tepat: <br>'Cuaca di luar sangat terik. ... , adik tetap bermain layang-layang di lapangan.'",
+                options: ['Namun', 'Malah', 'Sehingga', 'Akibatnya'],
+                answer: 0,
+                hint: 'Kata hubung \'Namun\' digunakan untuk menghubungkan dua kalimat yang memiliki hubungan pertentangan.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Sebelum mulai menulis sebuah cerita utuh, langkah awal penting yang harus dipersiapkan penulis agar cerita runtut adalah...',
+                options: ['Membeli buku baru yang tebal', 'Membuat kerangka karangan (outline)', 'Menggambar sampul buku cerita', 'Mempublikasikan judul cerita di koran'],
+                answer: 1,
+                hint: 'Kerangka karangan berfungsi membimbing alur penulisan agar isi cerita sistematis dan terstruktur.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Kata hubung antarkalimat \'namun\' memiliki fungsi utama untuk menyatakan...',
+                options: ['Penambahan informasi baru', 'Sebab dan akibat kejadian', 'Pertentangan atau kebalikan dari kalimat sebelumnya', 'Urutan waktu kejadian'],
+                answer: 2,
+                hint: '\'Namun\' setara dengan kata \'akan tetapi\', yang menghubungkan gagasan bertolak belakang.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Langkah menyusun kerangka karangan dilakukan pada tahap...',
+                options: ['Sebelum menulis cerita', 'Sesudah mencetak cerita', 'Saat membacakan cerita di panggung', 'Setelah cerita selesai dinilai guru'],
+                answer: 0,
+                hint: 'Kerangka karangan dirancang di awal sebagai persiapan pra-menulis.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Penyajian informasi menggunakan kombinasi gambar ilustrasi dan teks ringkas disebut infografis. Mengapa infografis sangat mudah dipahami pembaca?',
+                options: ['Karena memiliki lembar halaman yang sangat banyak', 'Karena memadukan visual menarik dengan poin-poin penjelasan singkat', 'Karena tidak memuat teks informasi sama sekali', 'Karena menggunakan bahasa asing yang sulit dimengerti'],
+                answer: 1,
+                hint: 'Visualisasi grafis membantu otak memproses informasi lebih cepat daripada sekadar tulisan panjang.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Di bawah ini yang merupakan contoh kalimat berisi fakta (kejadian nyata yang dapat dibuktikan kebenarannya) adalah...',
+                options: ['Makanan khas rendang rasanya sangat enak bagi semua orang', 'Ibu kota Provinsi Jawa Barat terletak di Kota Bandung', 'Kota Jakarta mungkin akan diguyur hujan deras nanti malam', 'Gunung Semeru tampak sangat indah jika dilihat dari jauh'],
+                answer: 1,
+                hint: 'Letak ibu kota Jawa Barat di Bandung adalah fakta geografis mutlak. Poin lain mengandung unsur opini/perkiraan.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Di bawah ini yang tergolong kalimat opini (berupa pendapat atau tanggapan seseorang yang kebenarannya relatif) adalah...',
+                options: ['Presiden pertama Republik Indonesia adalah Ir. Soekarno', 'Bahasa resmi negara kita adalah bahasa Indonesia', 'Belajar bahasa Arab terasa lebih mudah daripada matematika', 'Candi Borobudur terletak di wilayah Provinsi Jawa Tengah'],
+                answer: 2,
+                hint: 'Mudah tidaknya suatu pelajaran bersifat subjektif (berbeda bagi tiap orang), sehingga termasuk kalimat opini.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: "Perhatikan teks berikut:<div class=\"reading-box\">Kancil sedang berjalan di pinggir hutan mencari makanan. Tiba-tiba ia melihat pohon mentimun yang berbuah lebat di seberang sungai. Namun, aliran sungai sangat deras dan dihuni banyak buaya lapar. Kancil pun memutar otak agar bisa menyeberang dengan aman.</div>Tokoh utama pada cuplikan teks cerita di atas adalah...",
+                options: ['Buaya', 'Petani', 'Kancil', 'Mentimun'],
+                answer: 2,
+                hint: 'Teks bercerita tentang aktivitas dan pemikiran Kancil sebagai fokus utama alur.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Berdasarkan teks bacaan Kancil di atas, apa masalah yang dihadapi oleh tokoh utama?',
+                options: ['Kancil tersesat di dalam hutan gelap', 'Mentimun yang dicarinya sudah busuk semua', 'Aliran sungai deras dan dijaga buaya sehingga ia sulit menyeberang', 'Kancil dikejar oleh harimau lapar'],
+                answer: 2,
+                hint: 'Masalah Kancil adalah ia ingin makan mentimun di seberang sungai tetapi terhalang aliran deras dan buaya.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Berdasarkan teks bacaan Kancil di atas, watak kancil digambarkan sebagai hewan yang...',
+                options: ['Pemalas', 'Cerdik / Pintar', 'Penakut', 'Sombong'],
+                answer: 1,
+                hint: 'Frasa \'memutar otak\' menunjukkan Kancil adalah tokoh yang cerdik mencari jalan keluar.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: "Perhatikan infografis tentang rasa bangga sebagai anak Indonesia berikut:<div class=\"infographic-box\"><h4>🇮🇩 Mengapa Aku Bangga Jadi Anak Indonesia?</h4><ul><li>Memiliki kekayaan budaya daerah yang sangat melimpah (tarian, alat musik, bahasa).</li><li>Memiliki keindahan alam pariwisata yang diakui dunia (Bali, Raja Ampat).</li><li>Memiliki bahasa persatuan bahasa Indonesia yang menyatukan beragam suku.</li><li>Penduduk Indonesia terkenal ramah, gemar menolong, dan menjunjung gotong royong.</li></ul></div>Berdasarkan infografis di atas, faktor apa saja yang membuat kita bangga menjadi bangsa Indonesia? (pilih semua yang benar)",
+                options: ['Keindahan alam pariwisata yang terkenal hingga ke penjuru dunia', 'Bahasa Indonesia sebagai bahasa persatuan yang menyatukan keberagaman', 'Masyarakat Indonesia terkenal memiliki sikap ramah dan gotong royong', 'Kekayaan budaya Indonesia yang sangat sedikit dan membosankan'],
+                answer: [0, 1, 2],
+                hint: 'Kekayaan budaya Indonesia melimpah dan menarik, bukan sedikit dan membosankan.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Sesuai isi infografis kebanggaan bangsa sebelumnya, sikap manakah yang membuktikan rasa bangga kita dalam kehidupan sehari-hari? (pilih semua yang benar)',
+                options: ['Mempelajari dan melestarikan tarian adat daerah sendiri', 'Berbahasa Indonesia yang sopan saat bertukar kabar dengan teman berbeda daerah', 'Menjaga kebersihan dan tidak merusak fasilitas tempat wisata alam', 'Mengejek tradisi budaya daerah lain'],
+                answer: [0, 1, 2],
+                hint: 'Mengejek kebudayaan lain bertolak belakang dengan sikap toleransi dan bangga tanah air.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah di antara kalimat berikut yang termasuk kalimat fakta? (pilih semua yang benar)',
+                options: ['Indonesia adalah negara kepulauan yang terdiri dari ribuan pulau.', 'Lagu kebangsaan Indonesia berjudul Indonesia Raya.', 'Semua anak kecil pasti menyukai rasa buah durian asli.', 'Pancasila terdiri dari lima dasar negara.'],
+                answer: [0, 1, 3],
+                hint: 'Tidak semua anak menyukai durian (sifatnya relatif/opini).',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Manakah kalimat di bawah ini yang dikategorikan sebagai kalimat opini? (pilih semua yang benar)',
+                options: ['Matematika merupakan mata pelajaran paling menyenangkan di sekolah.', 'Hari ini cuaca terasa sangat panas sekali di kotaku.', 'Proklamasi kemerdekaan dibacakan pada tahun 1945.', 'Menurut saya, baju adat kebaya tampak sangat anggun dipakai.'],
+                answer: [0, 1, 3],
+                hint: 'Tahun proklamasi 1945 adalah fakta sejarah mutlak. Kalimat lain adalah pendapat/opini.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Ciri-ciri utama yang membedakan kalimat fakta dari kalimat opini adalah... (pilih semua yang benar)',
+                options: ['Memiliki data akurat yang dapat dibuktikan kebenarannya', 'Bersifat subjektif atau berdasarkan selera pribadi', 'Berisi informasi nyata yang benar-benar terjadi', 'Biasanya menggunakan kata-kata seperti \'sepertinya\', \'menurut saya\', \'mungkin\''],
+                answer: [0, 2],
+                hint: 'Poin 1 dan 3 adalah ciri fakta, sedangkan 2 dan 4 adalah ciri opini.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: "Perhatikan teks cerita berikut:<div class=\"reading-box\">Budi adalah anak yang rajin. Setiap sore, ia selalu membantu ayahnya menyiram tanaman sayur di kebun belakang rumah. Berbeda dengan adiknya, Riko, yang selalu malas-malasan di kamar bermain game online tanpa memikirkan keadaan sekitar.</div>Berdasarkan kutipan teks cerita tersebut, watak Budi dan Riko yang benar adalah... (pilih semua yang benar)",
+                options: ['Budi memiliki watak rajin dan suka membantu', 'Riko memiliki watak malas dan kurang peduli sekitar', 'Budi berwatak pemarah dan tidak sabar', 'Riko adalah anak yang rajin membantu ibu'],
+                answer: [0, 1],
+                hint: 'Teks dengan jelas menyatakan Budi rajin membantu menyiram tanaman, sedangkan Riko malas-malasan.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Dalam suatu teks cerita, jenis watak tokoh dapat dibagi menjadi... (pilih semua yang benar)',
+                options: ['Protagonis (tokoh berwatak baik)', 'Antagonis (tokoh berwatak jahat/penentang)', 'Tritagonis (tokoh pembantu/penengah)', 'Karbonis (tokoh bayangan)'],
+                answer: [0, 1, 2],
+                hint: 'Protagonis, Antagonis, dan Tritagonis adalah pembagian tokoh berdasarkan watak/fungsi alur.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Manakah kata hubung antarkalimat di bawah ini yang menyatakan hubungan pertentangan? (pilih semua yang benar)',
+                options: ['Namun', 'Akan tetapi', 'Oleh karena itu', 'Sebaliknya'],
+                answer: [0, 1, 3],
+                hint: '\'Oleh karena itu\' digunakan untuk menyatakan hubungan sebab-akibat (kesimpulan).',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Tentukan hal-hal yang perlu diperhatikan ketika membaca nyaring suatu paragraf teks! (pilih semua yang benar)',
+                options: ['Kejelasan lafal pengucapan kata (artikulasi)', 'Intonasi nada suara tinggi rendah yang tepat', 'Tanda baca titik (.) dan koma (,) untuk jeda berhenti', 'Kecepatan membaca secepat mungkin tanpa jeda'],
+                answer: [0, 1, 2],
+                hint: 'Membaca terlalu cepat tanpa menghiraukan tanda baca membuat pendengar sulit memahami pesan.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Unsur-unsur pembentuk sebuah cerita (unsur intrinsik) terdiri atas... (pilih semua yang benar)',
+                options: ['Tokoh dan watak tokoh', 'Latar tempat dan latar waktu', 'Alur cerita (jalan cerita)', 'Jumlah harga cetak buku cerita'],
+                answer: [0, 1, 2],
+                hint: 'Harga cetak buku adalah unsur eksterior ekonomi, bukan unsur intrinsik cerita.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Istilah Karya Sastra)',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Sifat atau karakter pelaku di dalam cerita yang memengaruhi alur</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Watak',
+                hint: 'Watak/penokohan adalah sifat karakter pelaku.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Karangan narasi yang memaparkan rangkaian peristiwa secara runtut</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Cerita',
+                hint: 'Cerita adalah karangan narasi.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Pelaku atau pemeran yang menjalankan peristiwa di dalam cerita</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Tokoh',
+                hint: 'Tokoh adalah orang/pemeran cerita.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Tokoh penentang yang berwatak buruk, jahat, atau menimbulkan konflik</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Antagonis',
+                hint: 'Antagonis identik dengan penentang tokoh utama.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan istilah berikut dengan pengertiannya yang tepat: <b>Tokoh utama cerita yang berwatak baik dan disukai pembaca</b>",
+                options: ['Watak', 'Cerita', 'Tokoh', 'Antagonis', 'Protagonis'],
+                answer: 'Protagonis',
+                hint: 'Protagonis adalah pahlawan/pemeran utama yang baik.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat',
+                text: 'Tentukan Benar atau Salah: \'Menghargai keragaman tarian daerah merupakan bukti rasa bangga kita sebagai bangsa Indonesia.\'',
+                answer: 'Benar',
+                hint: 'Bangga tanah air ditunjukkan dengan menghormati keragaman budaya nusantara.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Kalimat langsung adalah kalimat yang menceritakan kembali ucapan orang lain secara tidak langsung.\'',
+                answer: 'Salah',
+                hint: 'Kalimat langsung adalah kalimat yang menirukan ucapan orang lain secara persis (apa adanya).',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Paragraf deduktif adalah paragraf yang gagasan utamanya terletak di akhir paragraf.\'',
+                answer: 'Salah',
+                hint: 'Paragraf deduktif memiliki kalimat utama di awal (depan) paragraf. Induktif di akhir.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Kata hubung antarkalimat ditulis setelah tanda baca titik (.) di awal kalimat baru, diikuti tanda koma (,).\'',
+                answer: 'Benar',
+                hint: 'Contoh penulisan: \'... . Namun, adik tetap pergi.\' (diikuti koma setelah kata hubung).',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Teks fiksi adalah tulisan ilmiah yang disusun berdasarkan data penelitian matematika.\'',
+                answer: 'Salah',
+                hint: 'Teks fiksi didasarkan pada imajinasi/rekaan penulis, bukan riset data ilmiah.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Paragraf yang letak ide pokok atau kalimat utamanya berada di awal paragraf disebut paragraf...',
+                answer: 'Deduktif',
+                hint: 'Deduktif = Depan (Awal).',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Paragraf yang letak ide pokok atau kalimat utamanya berada di akhir paragraf disebut paragraf...',
+                answer: 'Induktif',
+                hint: 'Induktif = Belakang (Akhir).',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Paragraf yang memiliki kalimat utama di awal sekaligus ditegaskan kembali di akhir paragraf disebut paragraf...',
+                answer: 'Campuran',
+                hint: 'Campuran (deduktif-induktif).',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Kalimat yang diucapkan secara langsung oleh pembicara dan ditandai oleh tanda petik dua (\'...\') disebut kalimat...',
+                answer: 'Langsung',
+                hint: 'Tanda petik dua (\'...\') adalah ciri khas utama kalimat langsung.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Kalimat yang melaporkan kembali ucapan orang lain tanpa meniru persis ucapan aslinya disebut kalimat...',
+                answer: 'Tidak Langsung',
+                hint: 'Kalimat tidak langsung tidak menggunakan tanda petik dua.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Sebutkan 3 hal penting yang harus kita perhatikan dan tunjukkan secara sopan ketika kita menyampaikan pendapat di depan kelas!',
+                answer: '1) Mengangkat tangan kanan terlebih dahulu sebelum berbicara. 2) Berbicara menggunakan kalimat yang sopan, santun, dan nada suara yang tenang (tidak berteriak). 3) Tidak memotong pembicaraan teman atau guru yang sedang berbicara. 4) Menghargai jika pendapat kita tidak disetujui.',
+                hint: 'Pikirkan etika kesopanan saat berdiskusi di dalam kelas.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Buatlah satu kalimat menggunakan kata hubung antarkalimat \'malah\' dan satu kalimat menggunakan \'akibatnya\'!',
+                answer: 'Malah: \'Dino tidak belajar ujian. Malah, ia bermain game hingga larut malam.\' Akibatnya: \'Andi malas mencuci tangan sebelum makan. Akibatnya, ia sakit perut.\'',
+                hint: 'Gunakan kedua kata hubung tersebut di awal kalimat baru setelah tanda titik.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan mendasar antara kalimat fakta dan kalimat opini serta berikan contohnya masing-masing 1!',
+                answer: 'Kalimat fakta adalah kalimat yang kebenarannya nyata dan dapat dibuktikan dengan data akurat (contoh: \'Presiden pertama Indonesia adalah Ir. Soekarno\'). Kalimat opini adalah kalimat berisi pendapat, perkiraan, atau perasaan subjektif seseorang (contoh: \'Matematika adalah pelajaran yang paling sulit\').',
+                hint: 'Bandingkan sifat kebenaran objektif (fakta) dengan subjektif (opini).',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: "Perhatikan teks cerita berikut:<div class=\"reading-box\">\"Jangan khawatir, Rara. Aku akan membantumu membawa tas belanjaan yang berat ini sampai ke rumahmu,\" kata Joni sambil tersenyum ramah dan segera mengambil alih beban tas dari tangan Rara yang lelah.</div>Jelaskan watak tokoh Joni berdasarkan kutipan di atas dan sebutkan bukti kalimatnya!",
+                answer: 'Watak Joni adalah suka menolong/baik hati dan ramah. Buktinya: Joni menawarkan bantuan dengan kalimat \'Aku akan membantumu membawa tas...\' dan ia bertindak ramah (\'tersenyum ramah\').',
+                hint: 'Cari sifat tokoh (suka menolong, ramah) dan tunjukkan kalimat pendukung di teks.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan penulisan antara kalimat langsung dan kalimat tidak langsung serta berikan contohnya masing-masing 1!',
+                answer: 'Kalimat langsung menggunakan tanda petik dua (\'...\') dan menirukan ucapan asli tokoh (contoh: Ibu berkata, \'Budi, cepat mandi!\'). Kalimat tidak langsung tidak menggunakan tanda petik dua dan biasanya menggunakan kata hubung \'bahwa\' atau \'agar\' (contoh: Ibu berkata bahwa Budi harus cepat mandi).',
+                hint: 'Fokus pada penggunaan tanda petik dua dan perubahan kata ganti orang.',
+            },
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`; }
+                else if (q.type === 'uraian') { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html; updateProgress();
+        }
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) answered++; } });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let score = 0, maxAuto = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { maxAuto++; const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value)); if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { maxAuto++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { maxAuto++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
+                else if (q.type === 'isian') { maxAuto++; const val = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (val === q.answer.toLowerCase()) { score++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            document.getElementById('final-score').innerText = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>

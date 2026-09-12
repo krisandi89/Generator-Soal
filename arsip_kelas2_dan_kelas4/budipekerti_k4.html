@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Budi Pekerti Kelas 4 - SD Dilaraf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #a569bd;
+            --bg: #f5eef8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #fff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            margin-top: 5px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .score-board {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: none;
+        }
+
+        .score-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .score-board .detail {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .question-list {
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding: 10px 15px;
+            background: var(--bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.3s;
+        }
+
+        .question-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.1);
+        }
+
+        .q-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+
+        .q-text {
+            font-size: 1em;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0 15px;
+            line-height: 1.8;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .radio-label,
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+        }
+
+        .radio-label:hover,
+        .checkbox-label:hover {
+            background: #f5eef8;
+            border-color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 12px;
+            transform: scale(1.3);
+            accent-color: var(--primary);
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .input-text:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.input-text {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid var(--success);
+        }
+
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid var(--error);
+        }
+
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid var(--warning);
+        }
+
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+
+            .question-list {
+                padding: 15px;
+            }
+        }
+    
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Nunito', sans-serif;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .match-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌿 Budi Pekerti</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 4 Al-Muhaimin</p>
+            <div class="badge">ASAT Semester 2 • 2025/2026</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <p class="detail" id="score-detail"></p>
+            <a href="kelas4.html" class="back-btn">⬅ Kembali ke Menu Kelas 4</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            {
+                id: 1,
+                type: 'pg',
+                section: 'Pilihan Ganda (Masalah Sosial & Teknologi)',
+                text: 'Mengapa kita harus senantiasa menjaga kebersihan dan kelestarian lingkungan di sekitar tempat tinggal kita?',
+                options: ['Agar dinilai kaya oleh tetangga', 'Mencegah timbulnya berbagai penyakit dan bencana banjir', 'Supaya rumah cepat rusak dan bisa dibangun baru', 'Agar lahan pemukiman menjadi sempit'],
+                answer: 1,
+                hint: 'Menjaga kebersihan mencegah sarang kuman penyakit dan menjaga kelancaran saluran air untuk menghindari banjir.',
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Keadaan atau fenomena di masyarakat yang tidak sesuai dengan nilai-nilai sosial dan mengganggu kenyamanan hidup bersama disebut...',
+                options: ['Solusi Sosial', 'Kerukunan Sosial', 'Masalah Sosial', 'Prestasi Sosial'],
+                answer: 2,
+                hint: 'Masalah sosial adalah kondisi negatif di masyarakat yang membutuhkan penanganan bersama.',
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Berikut ini yang merupakan contoh masalah sosial yang sering kita jumpai di wilayah perkotaan padat penduduk adalah...',
+                options: ['Udara pegunungan yang sejuk', 'Kemacetan lalu lintas dan sampah yang menumpuk', 'Sungai yang jernih dan banyak ikan', 'Masyarakat yang saling tolong-menolong'],
+                answer: 1,
+                hint: 'Kemacetan dan penumpukan sampah adalah masalah sosial perkotaan akibat populasi padat dan kurangnya kesadaran.',
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Penggunaan gawai (gadget) yang berlebihan pada anak-anak dapat menimbulkan kecanduan buruk, salah satu dampaknya adalah...',
+                options: ['Konsentrasi belajar meningkat tajam', 'Tubuh menjadi semakin bugar dan sehat', 'Menjadi malas bersosialisasi dan malas belajar', 'Hubungan dengan keluarga menjadi sangat erat'],
+                answer: 2,
+                hint: 'Kecanduan gawai membuat anak menjauh dari lingkungan nyata (antisosial) dan menurunkan minat belajar.',
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Alat komunikasi cetak yang diterbitkan setiap hari secara berkala untuk memuat berita-berita hangat terhangat disebut...',
+                options: ['Koran (Surat Kabar)', 'Radio', 'Televisi', 'Telepon Rumah'],
+                answer: 0,
+                hint: 'Koran adalah media informasi cetak berkala.',
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Dalam Islam, sebelum mempercayai atau menyebarkan suatu berita yang kita terima dari media sosial, kita wajib melakukan...',
+                options: ['Ghibah (menggunjing)', 'Tabayyun (mencari kejelasan fakta)', 'Fitnah (tuduhan palsu)', 'Taqlid (ikut-ikutan tanpa tahu)'],
+                answer: 1,
+                hint: 'Tabayyun adalah meneliti kebenaran suatu berita agar tidak merugikan orang lain akibat kabar bohong.',
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Sikap bermedia sosial yang bertentangan dengan ajaran Islam dan kesusilaan adalah...',
+                options: ['Menyebarkan ajakan gotong royong warga', 'Mengunggah konten pembelajaran yang bermanfaat', 'Menulis komentar kasar dan menyebarkan berita bohong (hoax)', 'Mengucapkan terima kasih atas informasi yang diberikan'],
+                answer: 2,
+                hint: 'Menulis komentar kasar dan menyebarkan kebohongan dilarang dalam agama.',
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Di bawah ini yang termasuk alat komunikasi elektronik satu arah yang menyajikan suara saja adalah...',
+                options: ['Handphone', 'Radio', 'Televisi', 'Laptop'],
+                answer: 1,
+                hint: 'Radio adalah media elektronik pemancar suara (audio) satu arah.',
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Salah satu adab penting dalam bermedia sosial agar aman dari kejahatan siber (cyber crime) adalah...',
+                options: ['Membagikan lokasi rumah dan PIN ATM di status', 'Menggunakan kata sandi yang kuat dan tidak membagikan informasi pribadi', 'Menceritakan seluruh rahasia keluarga di video live', 'Menerima semua permintaan pertemanan dari orang asing'],
+                answer: 1,
+                hint: 'Menjaga kerahasiaan kata sandi dan data pribadi adalah langkah pencegahan kejahatan internet.',
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Ketika melihat sampah menyumbat selokan di depan rumah kita, tindakan terpuji yang sebaiknya segera dilakukan adalah...',
+                options: ['Membiarkannya hingga terbawa banjir sendiri', 'Mengambil sampah tersebut dan membuangnya ke tempat sampah', 'Menyalahkan pemerintah karena tidak membersihkannya', 'Menimbunnya dengan tanah'],
+                answer: 1,
+                hint: 'Tindakan cepat memungut sampah adalah cerminan kepedulian lingkungan.',
+            },
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'Pilihan Ganda Kompleks',
+                text: 'Manakah di bawah ini yang merupakan dampak negatif dari tidak tertatanya sampah di lingkungan masyarakat? (pilih semua yang benar)',
+                options: ['Menimbulkan bau tidak sedap di sekitar pemukiman', 'Menjadi sarang nyamuk penular demam berdarah', 'Menyebabkan penyumbatan saluran air dan banjir saat hujan', 'Meningkatkan kesuburan tanah pemukiman secara alami'],
+                answer: [0, 1, 2],
+                hint: 'Sampah anorganik tidak menyuburkan tanah, melainkan mencemari tanah.',
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Tindakan apa saja yang dapat membantu mengurangi kemacetan lalu lintas di perkotaan? (pilih semua yang benar)',
+                options: ['Menggunakan transportasi umum seperti busway atau kereta', 'Bersepeda atau berjalan kaki untuk jarak dekat', 'Seluruh warga menggunakan mobil pribadi masing-masing', 'Bekerja sama mengatur tertib lalu lintas'],
+                answer: [0, 1, 3],
+                hint: 'Semua menggunakan kendaraan pribadi justru memperparah kemacetan.',
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah nilai-nilai Islam dalam adab bermedia sosial yang harus dipatuhi sesuai Al-Qur\'an? (pilih semua yang benar)',
+                options: ['Larangan menyebarkan fitnah dan gosip (namimah/ghibah)', 'Perintah berkata jujur dan lemah lembut (qaulan sadida)', 'Menganjurkan saling mencela jika berbeda pendapat', 'Kewajiban bertabayyun atas berita meragukan'],
+                answer: [0, 1, 3],
+                hint: 'Saling mencela dilarang keras dalam Islam.',
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Manakah sarana teknologi informasi modern yang banyak digunakan masyarakat saat ini untuk mencari berita secara cepat? (pilih semua yang benar)',
+                options: ['Portal berita internet', 'Aplikasi media sosial', 'Telegraf kuno', 'Televisi digital'],
+                answer: [0, 1, 3],
+                hint: 'Telegraf kuno sudah tidak umum digunakan masyarakat modern.',
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Di bawah ini yang merupakan ciri-ciri dari berita palsu atau hoax di internet adalah... (pilih semua yang benar)',
+                options: ['Menggunakan judul yang sangat heboh dan memicu kemarahan', 'Tidak mencantumkan sumber berita atau nama penulis yang jelas', 'Meminta pembaca untuk membagikan (share) pesan secara berantai', 'Menyajikan data riset resmi dari lembaga tepercaya'],
+                answer: [0, 1, 2],
+                hint: 'Data resmi dari lembaga tepercaya adalah ciri berita fakta, bukan hoax.',
+            },
+            {
+                id: 16,
+                type: 'pg_kompleks',
+                text: 'Dampak positif dari perkembangan teknologi komunikasi dan internet bagi dunia pendidikan adalah... (pilih semua yang benar)',
+                options: ['Memudahkan siswa mencari referensi materi belajar tambahan', 'Memungkinkan pelaksanaan pembelajaran jarak jauh (online)', 'Membuat siswa malas membaca buku fisik sama sekali', 'Menyediakan aplikasi perpustakaan digital gratis'],
+                answer: [0, 1, 3],
+                hint: 'Malas membaca buku adalah dampak negatif.',
+            },
+            {
+                id: 17,
+                type: 'pg_kompleks',
+                text: 'Bahaya fisik apa saja yang dapat ditimbulkan jika kita menggunakan laptop atau handphone dalam durasi terlalu lama tanpa istirahat? (pilih semua yang benar)',
+                options: ['Mata lelah, kering, dan penglihatan kabur', 'Nyeri pada bagian leher dan punggung akibat posisi membungkuk', 'Kebugaran fisik meningkat pesat', 'Gangguan pola tidur akibat radiasi layar gawai'],
+                answer: [0, 1, 3],
+                hint: 'Penggunaan gawai berlebih justru menurunkan kebugaran fisik.',
+            },
+            {
+                id: 18,
+                type: 'pg_kompleks',
+                text: 'Bagaimana cara bijak orang tua membimbing anak dalam menggunakan internet di rumah? (pilih semua yang benar)',
+                options: ['Membatasi durasi waktu bermain gawai (screen time)', 'Mendampingi anak saat berselancar di internet', 'Membebaskan anak mengakses situs apa saja tanpa pengawasan', 'Mengaktifkan fitur perlindungan anak (parental control) di aplikasi'],
+                answer: [0, 1, 3],
+                hint: 'Membebaskan akses tanpa pengawasan membahayakan keselamatan digital anak.',
+            },
+            {
+                id: 19,
+                type: 'pg_kompleks',
+                text: 'Berikut yang merupakan contoh perilaku perundungan dunia maya (cyberbullying) yang wajib kita hindari adalah... (pilih semua yang benar)',
+                options: ['Mengirim pesan ancaman atau makian ke akun orang lain', 'Meninggalkan komentar ejekan pada foto teman', 'Mengunggah foto aib teman tanpa izin untuk bahan lelucon', 'Mengirimkan ucapan selamat ulang tahun yang sopan'],
+                answer: [0, 1, 2],
+                hint: 'Ucapan selamat yang sopan adalah perilaku baik.',
+            },
+            {
+                id: 20,
+                type: 'pg_kompleks',
+                text: 'Dalam menjaga keamanan lingkungan pemukiman, teknologi apa saja yang dapat membantu tugas Satpam/warga? (pilih semua yang benar)',
+                options: ['Pemasangan kamera pemantau (CCTV) di titik rawan', 'Aplikasi grup pesan cepat warga untuk pelaporan darurat', 'Pemasangan sirene alarm otomatis di pos keamanan', 'Penggunaan kentongan bambu tradisional saja tanpa alat lain'],
+                answer: [0, 1, 2],
+                hint: 'CCTV, grup chat, dan alarm adalah bentuk bantuan teknologi modern untuk keamanan.',
+            },
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'Memasangkan (Sarana Komunikasi)',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Media cetak harian berisi berita tertulis dan iklan</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Koran',
+                hint: 'Koran adalah media cetak berita.',
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Gawai nirkabel genggam untuk telepon, berkirim pesan, dan akses internet</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Handphone',
+                hint: 'Handphone adalah telepon genggam/gawai cerdas.',
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Media elektronik audio-visual yang menayangkan gambar bergerak dan suara</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Televisi',
+                hint: 'Televisi menampilkan siaran audio-visual.',
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Media elektronik audio yang menyiarkan suara musik dan berita radio</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Radio',
+                hint: 'Radio memancarkan suara/audio.',
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: "Pasangkan alat komunikasi berikut dengan keterangannya yang tepat: <b>Jaringan komputer global penghubung informasi di seluruh penjuru dunia</b>",
+                options: ['Koran', 'Handphone', 'Televisi', 'Radio', 'Internet'],
+                answer: 'Internet',
+                hint: 'Internet menghubungkan jaringan global dunia.',
+            },
+            {
+                id: 26,
+                type: 'isian',
+                section: 'Isian Singkat (Benar/Salah & Singkatan)',
+                text: 'Tentukan Benar atau Salah: \'Menyebarkan berita fitnah tentang orang lain di sosial media diperbolehkan asal tujuannya bercanda.\'',
+                answer: 'Salah',
+                hint: 'Fitnah dan ghibah dilarang keras dalam Islam, baik bercanda maupun serius.',
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Membuang sampah plastik ke dalam selokan dapat menyebabkan saluran air mampet dan memicu banjir.\'',
+                answer: 'Benar',
+                hint: 'Plastik tidak terurai cepat dan menyumbat saluran drainase air.',
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Internet sehat adalah cara menggunakan internet secara aman tanpa melanggar hukum dan norma sosial.\'',
+                answer: 'Benar',
+                hint: 'Internet sehat bertujuan menjaga keselamatan pengguna secara etika dan hukum.',
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Gawai boleh digunakan sebelum tidur dalam keadaan lampu kamar dimatikan total.\'',
+                answer: 'Salah',
+                hint: 'Radiasi cahaya biru gawai di kamar gelap merusak kesehatan mata dan mengganggu siklus tidur.',
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Tentukan Benar atau Salah: \'Kemacetan lalu lintas hanya disebabkan oleh sedikitnya jumlah mobil pribadi di jalan raya.\'',
+                answer: 'Salah',
+                hint: 'Kemacetan disebabkan terlalu banyak kendaraan pribadi dan pelanggaran lalu lintas.',
+            },
+            {
+                id: 31,
+                type: 'isian',
+                text: 'Istilah pencarian kejelasan kebenaran suatu informasi/berita dalam Islam disebut...',
+                answer: 'Tabayyun',
+                hint: 'Tabayyun adalah meneliti kebenaran berita sebelum memercayainya.',
+            },
+            {
+                id: 32,
+                type: 'isian',
+                text: 'Perilaku merundung atau mengejek orang lain melalui media elektronik internet disebut...',
+                answer: 'Cyberbullying',
+                hint: 'Cyberbullying adalah perundungan dunia maya.',
+            },
+            {
+                id: 33,
+                type: 'isian',
+                text: 'Kondisi jalan raya yang dipenuhi antrean kendaraan melebihi kapasitas jalan disebut...',
+                answer: 'Kemacetan',
+                hint: 'Kemacetan lalu lintas.',
+            },
+            {
+                id: 34,
+                type: 'isian',
+                text: 'Informasi bohong yang sengaja disebarkan untuk menipu pembaca di internet diistilahkan...',
+                answer: 'Hoax',
+                hint: 'Hoax adalah berita palsu.',
+            },
+            {
+                id: 35,
+                type: 'isian',
+                text: 'Teknologi pemetaan satelit di handphone yang membantu menentukan arah jalan agar terhindar dari salah jalan adalah...',
+                answer: 'GPS',
+                hint: 'GPS (Global Positioning System) digunakan untuk navigasi arah jalan.',
+            },
+            {
+                id: 36,
+                type: 'uraian',
+                section: 'Uraian / Esai',
+                text: 'Sebutkan 3 cara praktis yang dapat kita lakukan bersama keluarga untuk menjaga kebersihan lingkungan rumah!',
+                answer: '1) Menyapu halaman rumah setiap hari dan mengepel lantai kamar. 2) Membuang sampah dapur ke tempat sampah luar dan memilah sampah basah/kering. 3) Menguras bak mandi secara teratur agar bebas dari jentik nyamuk. 4) Melakukan kerja bakti membersihkan selokan di depan rumah.',
+                hint: 'Pikirkan kegiatan pemeliharaan kebersihan di rumah dan sekitarnya.',
+            },
+            {
+                id: 37,
+                type: 'uraian',
+                text: 'Bagaimana cara kita menjaga keamanan rumah agar terhindar dari ancaman pencurian ketika hendak bepergian?',
+                answer: '1) Mengunci rapat semua pintu, jendela, dan pagar rumah. 2) Menyalakan lampu teras secukupnya agar rumah tidak tampak sepi di malam hari. 3) Melaporkan kepada Ketua RT atau menitipkan pesan kepada tetangga terdekat bahwa kita sedang bepergian. 4) Tidak meninggalkan barang berharga di tempat yang mudah terlihat.',
+                hint: 'Pikirkan tentang keamanan fisik pintu/pagar, pencahayaan, dan koordinasi dengan tetangga.',
+            },
+            {
+                id: 38,
+                type: 'uraian',
+                text: 'Jelaskan mengapa kemacetan lalu lintas merupakan masalah sosial dan sebutkan 2 solusinya!',
+                answer: 'Kemacetan adalah masalah sosial karena merugikan banyak orang, membuang waktu produktif, meningkatkan polusi udara, dan memicu tingkat stres pengendara. Solusinya: 1) Beralih menggunakan sarana transportasi umum (busway, kereta). 2) Menggunakan sistem pembatasan ganjil-genap kendaraan.',
+                hint: 'Jelaskan dampak kerugian kemacetan bagi masyarakat dan cara mengatasinya.',
+            },
+            {
+                id: 39,
+                type: 'uraian',
+                text: 'Sebutkan 3 dampak positif dan 3 dampak negatif dari perkembangan teknologi informasi dan komunikasi saat ini!',
+                answer: 'Dampak Positif: 1) Mempercepat pertukaran informasi secara global, 2) Mempermudah proses belajar online, 3) Mempermudah komunikasi jarak jauh. Dampak Negatif: 1) Meningkatkan kecanduan gawai, 2) Mempermudah penyebaran berita palsu (hoax), 3) Mengurangi interaksi sosial secara tatap muka (langsung).',
+                hint: 'Tuliskan 3 hal baik dan 3 hal buruk dari kemajuan teknologi.',
+            },
+            {
+                id: 40,
+                type: 'uraian',
+                text: 'Jelaskan manfaat keberadaan alat komunikasi dan sarana penyebaran informasi bagi kehidupan manusia modern!',
+                answer: 'Manfaatnya adalah membuat kehidupan menjadi lebih efisien karena kita dapat berkomunikasi secara instan tanpa terhalang jarak, mengakses ilmu pengetahuan terbaru dengan mudah, mendukung kegiatan ekonomi (jual beli online), serta membantu penyebaran informasi darurat (bencana alam) secara cepat.',
+                hint: 'Pikirkan kegunaannya dalam komunikasi jarak jauh, pendidikan, bisnis, dan kedaruratan.',
+            },
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) { currentSection = q.section; html += `<div class="section-title">${q.section}</div>`; }
+                let inputHtml = '';
+                if (q.type === 'pg') { q.options.forEach((opt, i) => { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'pg_kompleks') { q.options.forEach((opt, i) => { inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`; }); }
+                else if (q.type === 'bs') { inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label><label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`; }
+                else if (q.type === 'memasangkan') { inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()"><option value="">-- Pilih Jawaban --</option>${q.options.map(o=>`<option value="${o}">${o}</option>`).join('')}</select>`; }
+                else if (q.type === 'isian') { inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban..." autocomplete="off">`; }
+                else { inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap..." rows="3"></textarea>`; }
+                html += `<div class="question-item"><div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div><div class="options-group">${inputHtml}</div><div class="feedback-box" id="fb-${q.id}"></div></div>`;
+            });
+            container.innerHTML = html; updateProgress();
+        }
+        function updateProgress() { let a = 0; questions.forEach(q => { if (q.type === 'pg' || q.type === 'bs') { if (document.querySelector(`input[name="q${q.id}"]:checked`)) a++; } else if (q.type === 'pg_kompleks') { if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) a++; } else { const el = document.querySelector(`[name="q${q.id}"]`); if (el && el.value.trim()) a++; } }); document.getElementById('progress-fill').style.width = `${(a / questions.length) * 100}%`; }
+        document.addEventListener('change', updateProgress); document.addEventListener('input', updateProgress);
+        function submitExam() {
+            let s = 0, m = 0;
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && parseInt(sel.value) === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'pg_kompleks') { m++; const c = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(x => parseInt(x.value)); if (c.length === q.answer.length && c.every(v => q.answer.includes(v))) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'bs') { m++; const sel = document.querySelector(`input[name="q${q.id}"]:checked`); if (sel && sel.value === q.answer) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. ${q.hint}`; } }
+                else if (q.type === 'memasangkan') { m++; const sel = document.querySelector(`select[name="q${q.id}"]`); const val = sel ? sel.value.trim() : ''; if (val && val.toLowerCase() === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>`; } }
+                else if (q.type === 'isian') { m++; const v = document.querySelector(`[name="q${q.id}"]`).value.trim().toLowerCase(); if (v === q.answer.toLowerCase()) { s++; fb.className = 'feedback-box correct'; fb.innerHTML = '✅ Benar!'; } else { fb.className = 'feedback-box wrong'; fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`; } }
+                else { fb.className = 'feedback-box manual'; fb.innerHTML = `📝 Periksa manual. Kunci: <b>${q.answer}</b>`; }
+                fb.style.display = 'block';
+            });
+            document.getElementById('final-score').innerText = m > 0 ? Math.round((s / m) * 100) : 0;
+            document.getElementById('score-detail').innerText = `Benar ${s} dari ${m} soal. Soal uraian diperiksa manual.`;
+            document.getElementById('score-board').style.display = 'block'; document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%'; window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        render();
+    </script>
+</body>
+
+</html>

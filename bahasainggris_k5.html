@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Bahasa Inggris Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #e84393;
+            --primary-light: #fd79a8;
+            --bg: #fce4ec;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>🇬🇧 Bahasa Inggris</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Mother wants to bake a cake. She needs a ... of cooking oil.",
+        "options": [
+            "bottle",
+            "loaf",
+            "bunch",
+            "slice"
+        ],
+        "answer": 0,
+        "hint": "Liquid items like cooking oil, milk, and water are measured using 'bottle'."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Look at the list: carrots, potatoes, apples, and eggs. All of these food items belong to...",
+        "options": [
+            "Uncountable nouns",
+            "Countable nouns",
+            "Liquid nouns",
+            "Gas nouns"
+        ],
+        "answer": 1,
+        "hint": "Items that can be counted individually as units are countable nouns."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Which quantifier is the most appropriate for 'bread'?",
+        "options": [
+            "A bottle of bread",
+            "A loaf of bread",
+            "A can of bread",
+            "A kilo of tea"
+        ],
+        "answer": 1,
+        "hint": "Bread is commonly measured as 'a loaf of bread' or 'a slice of bread'."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "There isn't ... sugar left in the jar to make sweet iced tea.",
+        "options": [
+            "many",
+            "much",
+            "few",
+            "a"
+        ],
+        "answer": 1,
+        "hint": "Sugar is an uncountable noun, so we use 'much' in negative sentences."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Edo buys a ... of bananas and two ... of cabbage at the traditional vegetable stall.",
+        "options": [
+            "comb / heads",
+            "bunch / kilos",
+            "can / bars",
+            "bottle / loaves"
+        ],
+        "answer": 1,
+        "hint": "We say 'a bunch of bananas' and 'kilos of cabbage'."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Rearrange these jumbled words into a correct sentence:<br><b>market - at - buys - vegetables - Mrs. Sinta - the</b>",
+        "options": [
+            "Mrs. Sinta buys vegetables at the market.",
+            "Vegetables buys Mrs. Sinta at the market.",
+            "At the market Mrs. Sinta vegetables buys.",
+            "Buys Mrs. Sinta vegetables at the market."
+        ],
+        "answer": 0,
+        "hint": "Subject (Mrs. Sinta) + Verb (buys) + Object (vegetables) + Adverb of place (at the market)."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Father uses a sharp ... and a wooden ... to cut garlic and onions before cooking.",
+        "options": [
+            "spoon / pot",
+            "knife / cutting board",
+            "fork / blender",
+            "kettle / stove"
+        ],
+        "answer": 1,
+        "hint": "A knife is used to cut, and a cutting board is the wooden base to chop on."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Which kitchen utensil is specifically used for frying eggs and fish with oil?",
+        "options": [
+            "Frying pan",
+            "Kettle",
+            "Refrigerator",
+            "Oven"
+        ],
+        "answer": 0,
+        "hint": "A frying pan (wajan) is used for frying food on the stove."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Grandmother keeps fresh milk, vegetables, and meat cold in the ... so they do not spoil.",
+        "options": [
+            "Stove",
+            "Refrigerator",
+            "Microwave",
+            "Blender"
+        ],
+        "answer": 1,
+        "hint": "A refrigerator (kulkas) preserves perishable foods by keeping them chilled."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Which of the following items is an uncountable noun?",
+        "options": [
+            "Tomato",
+            "Rice",
+            "Cucumber",
+            "Egg"
+        ],
+        "answer": 1,
+        "hint": "Rice (beras/nasi) is a mass noun that cannot be counted as separate single units."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih Lebih Dari 1 Jawaban Benar)",
+        "text": "Which of the following grocery items are COUNTABLE nouns? (Choose 3 correct answers)",
+        "options": [
+            "Apples",
+            "Carrots",
+            "Potatoes",
+            "Cooking oil"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Apples, carrots, and potatoes can be counted (one apple, two carrots), while oil is uncountable."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Which of the following grocery items are UNCOUNTABLE nouns? (Choose 3 correct answers)",
+        "options": [
+            "Sugar",
+            "Flour",
+            "Milk",
+            "Tomatoes"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sugar, flour, and milk are uncountable substances. Tomatoes are countable."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Which pairs of quantifier and item are CORRECT? (Choose 3 correct answers)",
+        "options": [
+            "A bottle of mineral water",
+            "A can of soft drink",
+            "A bar of chocolate",
+            "A loaf of soup"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Soup is a liquid served in a bowl, not measured in loaves."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Which sentences correctly use 'much' or 'many'? (Choose 2 correct answers)",
+        "options": [
+            "There are many eggs in the basket.",
+            "How much water do you drink every day?",
+            "How many sugar do you need for the cake?",
+            "There is many rice on the plate."
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "'Many' is used for countable nouns (eggs), and 'much' is used for uncountable nouns (water)."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Which of the following items belong to VEGETABLES? (Choose 3 correct answers)",
+        "options": [
+            "Spinach",
+            "Cabbage",
+            "Cucumber",
+            "Cheese"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Spinach (bayam), cabbage (kubis), and cucumber (timun) are vegetables. Cheese is dairy."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Which of the following items are commonly found in the KITCHEN? (Choose 3 correct answers)",
+        "options": [
+            "Stove",
+            "Frying pan",
+            "Spatula",
+            "Pillow"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Stove, frying pan, and spatula are kitchen tools. A pillow belongs in the bedroom."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Which cooking action verbs are commonly used in the kitchen? (Choose 3 correct answers)",
+        "options": [
+            "Chop (memotong/mencincang)",
+            "Boil (merebus)",
+            "Stir (mengaduk)",
+            "Swim (berenang)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Chop, boil, and stir are culinary cooking verbs."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Read the text:<div class=\"reading-box\">Lina helps her mother in the kitchen. She slices two onions with a knife. Her mother boils water in a pot to cook chicken soup. Then, Lina prepares bowls and spoons on the dining table.</div>Based on the text, which statements are TRUE? (Choose 3 correct answers)",
+        "options": [
+            "Lina uses a knife to slice onions.",
+            "Mother uses a pot to boil water for chicken soup.",
+            "Lina prepares bowls and spoons on the table.",
+            "Mother is frying fish using a frying pan."
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Mother is boiling chicken soup in a pot, not frying fish."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Which phrases describe grocery products sold by weight (per kilogram)? (Choose 2 correct answers)",
+        "options": [
+            "Two kilos of beef",
+            "One kilo of potatoes",
+            "A slice of water",
+            "A bottle of garlic"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Meat and vegetables are commonly measured by kilograms."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Which kitchen items are used for eating or serving food? (Choose 2 correct answers)",
+        "options": [
+            "Fork and spoon",
+            "Plate and bowl",
+            "Gas stove",
+            "Kitchen sink"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Forks, spoons, plates, and bowls are tableware used for dining."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Match Items with Correct Descriptions)",
+        "text": "Match the kitchen utensil with its main function: <b>Frying pan</b>",
+        "options": [
+            "Used for frying food with oil on the stove",
+            "Used for boiling water and making tea",
+            "Used for cutting and chopping vegetables",
+            "Used for blending fruit into juice",
+            "Used for keeping food chilled and cold"
+        ],
+        "answer": "Used for frying food with oil on the stove",
+        "hint": "Frying pan is used for frying."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Match the kitchen utensil with its main function: <b>Kettle</b>",
+        "options": [
+            "Used for frying food with oil on the stove",
+            "Used for boiling water and making tea",
+            "Used for cutting and chopping vegetables",
+            "Used for blending fruit into juice",
+            "Used for keeping food chilled and cold"
+        ],
+        "answer": "Used for boiling water and making tea",
+        "hint": "Kettle (ceret) boils water."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Match the kitchen utensil with its main function: <b>Knife</b>",
+        "options": [
+            "Used for frying food with oil on the stove",
+            "Used for boiling water and making tea",
+            "Used for cutting and chopping vegetables",
+            "Used for blending fruit into juice",
+            "Used for keeping food chilled and cold"
+        ],
+        "answer": "Used for cutting and chopping vegetables",
+        "hint": "Knife has a sharp blade to cut."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Match the kitchen appliance with its main function: <b>Blender</b>",
+        "options": [
+            "Used for frying food with oil on the stove",
+            "Used for boiling water and making tea",
+            "Used for cutting and chopping vegetables",
+            "Used for blending fruit into juice",
+            "Used for keeping food chilled and cold"
+        ],
+        "answer": "Used for blending fruit into juice",
+        "hint": "Blender blends smoothies and juice."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Match the kitchen appliance with its main function: <b>Refrigerator</b>",
+        "options": [
+            "Used for frying food with oil on the stove",
+            "Used for boiling water and making tea",
+            "Used for cutting and chopping vegetables",
+            "Used for blending fruit into juice",
+            "Used for keeping food chilled and cold"
+        ],
+        "answer": "Used for keeping food chilled and cold",
+        "hint": "Refrigerator cools food and beverages."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Complete with the correct quantifier: Mother buys a ... of bread for breakfast.",
+        "answer": "Loaf",
+        "alt": [
+            "loaf",
+            "a loaf"
+        ],
+        "hint": "A loaf of bread."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Complete with the correct quantifier: Father drinks a cup of hot ... every morning.",
+        "answer": "Coffee (or Tea)",
+        "alt": [
+            "coffee",
+            "tea"
+        ],
+        "hint": "Hot coffee or hot tea."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Complete with 'much' or 'many': How ... carrots did you buy at the supermarket?",
+        "answer": "Many",
+        "alt": [
+            "many"
+        ],
+        "hint": "Carrots are countable, so use 'many'."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Complete with 'much' or 'many': There is too ... salt in this soup.",
+        "answer": "Much",
+        "alt": [
+            "much"
+        ],
+        "hint": "Salt is uncountable, so use 'much'."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "The kitchen utensil used for turning and lifting fried food in a pan is called a...",
+        "answer": "Spatula",
+        "alt": [
+            "spatula"
+        ],
+        "hint": "A flat kitchen tool with a long handle."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Translate into Indonesian: 'A bottle of syrup' means...",
+        "answer": "Sebotol sirup",
+        "alt": [
+            "sebotol sirup",
+            "satu botol sirup"
+        ],
+        "hint": "Bottle = botol."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Translate into English: 'Sekilo gula pasir' in English is a ... of sugar.",
+        "answer": "Kilo (or Kilogram)",
+        "alt": [
+            "kilo",
+            "kilogram"
+        ],
+        "hint": "A kilo of sugar."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "We boil water and cook soup in a deep metal pot called a...",
+        "answer": "Pot (or Pan)",
+        "alt": [
+            "pot",
+            "saucepan"
+        ],
+        "hint": "Panci in English is pot."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Rearrange into a proper sentence: (vegetables - eats - every - Dayat - day)",
+        "answer": "Dayat eats vegetables every day.",
+        "alt": [
+            "dayat eats vegetables every day",
+            "dayat eats vegetables every day."
+        ],
+        "hint": "Subject (Dayat) + verb (eats) + object (vegetables) + time (every day)."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "What kitchen tool is used to boil water until it whistles?",
+        "answer": "Kettle",
+        "alt": [
+            "kettle",
+            "a kettle"
+        ],
+        "hint": "Ceret atau teko air."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Explain the difference between countable nouns and uncountable nouns, and give 3 examples for each category!",
+        "answer": "<b>Countable nouns</b> are things that can be counted individually using numbers (they have singular and plural forms).<br>Examples: Apple (apples), egg (eggs), carrot (carrots).<br><br><b>Uncountable nouns</b> are substances, liquids, or mass concepts that cannot be counted as separate units (they do not have plural forms).<br>Examples: Rice, sugar, milk, water, cooking oil.",
+        "hint": "Define countable (can be counted) and uncountable (cannot be counted), and list 3 examples for each."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Write 3 complete English sentences using quantifiers: (1) a bottle of ..., (2) a loaf of ..., (3) a kilo of ...!",
+        "answer": "Example sentences:<br>1. <b>A bottle of</b>: My brother buys a bottle of orange juice.<br>2. <b>A loaf of</b>: Mother slices a loaf of white bread for breakfast.<br>3. <b>A kilo of</b>: We need a kilo of fresh potatoes to cook soup.",
+        "hint": "Make full grammatically correct sentences using the requested quantifier phrases."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Mention 5 kitchen utensils and tools that you can find in the kitchen along with their English names and meanings in Indonesian!",
+        "answer": "1. <b>Frying pan</b> = Wajan penggorengan<br>2. <b>Knife</b> = Pisau pemotong<br>3. <b>Cutting board</b> = Talenan kayu/plastik<br>4. <b>Stove</b> = Kompor memasak<br>5. <b>Pot</b> = Panci masak<br>(Other acceptable answers: Spatula = sodet/spatula, Kettle = ceret air, Refrigerator = kulkas, Blender = mesin pelumat).",
+        "hint": "List 5 kitchen items in English with accurate Indonesian translations."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Rearrange the following jumbled words into correct English sentences:<br>a. <b>much - is - in - the - bowl - how - there - soup - ?</b><br>b. <b>market - in - fresh - the - buys - sister - apples - my</b>",
+        "answer": "a. <b>How much soup is there in the bowl?</b><br>b. <b>My sister buys fresh apples in the market.</b>",
+        "hint": "Form a question for (a) and a declarative sentence for (b)."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Translate the following short paragraph into good Indonesian:<br><i>\"Every Sunday morning, Nina and her mother go shopping at the traditional market. They buy two kilos of fresh fish, a bunch of spinach, and three bottles of milk. After shopping, they cook a delicious lunch together in the kitchen.\"</i>",
+        "answer": "<b>Terjemahan dalam bahasa Indonesia:</b><br>\"Setiap Minggu pagi, Nina dan ibunya pergi berbelanja di pasar tradisional. Mereka membeli dua kilo ikan segar, seikat bayam, dan tiga botol susu. Setelah berbelanja, mereka memasak makan siang yang lezat bersama-sama di dapur.\"",
+        "hint": "Translate accurately into smooth, natural Indonesian."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

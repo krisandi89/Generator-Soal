@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASAT B. Indonesia Kelas 2 - SDIT Friends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2980b9;
+            --primary-light: #3498db;
+            --bg: #eaf2f8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding: 0; min-height: 100vh; }
+        .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 30px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); animation: shimmer 8s infinite; }
+        @keyframes shimmer { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(180deg); } }
+        .header h1 { margin: 0; font-size: 2em; font-weight: 800; position: relative; z-index: 1; }
+        .header p { margin-top: 5px; opacity: 0.9; font-size: 1em; position: relative; z-index: 1; }
+        .header .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 20px; font-size: 0.8em; margin-top: 8px; position: relative; z-index: 1; }
+        .progress-bar { height: 6px; background: var(--border); position: sticky; top: 0; z-index: 100; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--success), #2ecc71); width: 0%; transition: width 0.5s ease; border-radius: 0 3px 3px 0; }
+        .score-board { text-align: center; padding: 30px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; display: none; margin-bottom: 20px; border-radius: 0 0 20px 20px; animation: slideDown 0.6s ease; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        .score-board h2 { font-size: 1.3em; margin-bottom: 5px; }
+        .score-value { font-size: 4em; font-weight: 800; margin: 10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .score-detail { font-size: 0.95em; opacity: 0.9; margin-bottom: 5px; }
+        .back-btn { display: inline-block; margin-top: 15px; padding: 10px 25px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 25px; font-weight: 700; transition: all 0.3s; border: 2px solid rgba(255,255,255,0.4); }
+        .back-btn:hover { background: rgba(255,255,255,0.3); }
+        .question-list { padding: 25px; }
+        .section-title { font-size: 1em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin: 30px 0 15px; padding: 12px 18px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 12px; display: flex; align-items: center; gap: 8px; }
+        .question-item { margin-bottom: 22px; padding: 20px; border-radius: 12px; border: 2px solid var(--border); background: #fafbfc; transition: all 0.3s; }
+        .question-item:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(41,128,185,0.1); }
+        .q-number { display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; font-size: 0.85em; font-weight: 800; margin-right: 10px; flex-shrink: 0; }
+        .q-text { font-size: 1em; line-height: 1.7; margin-bottom: 14px; }
+        .reading-box { background: #fef9e7; border: 2px solid #f9e79f; border-radius: 10px; padding: 15px; margin: 10px 0 15px; line-height: 1.8; font-family: 'Georgia', serif; font-size: 0.95em; }
+        .options-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-label, .checkbox-label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; font-size: 0.95em; background: white; }
+        .radio-label:hover, .checkbox-label:hover { border-color: var(--primary); background: #eaf2f8; transform: translateX(5px); }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) { border-color: var(--primary); background: #eaf2f8; }
+        .match-select { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-family: 'Nunito', sans-serif; font-size: 0.95em; background: white; cursor: pointer; font-weight: 600; }
+        .match-select:focus { outline: none; border-color: var(--primary); }
+        .input-text { width: 100%; padding: 12px 15px; border: 2px solid var(--border); border-radius: 10px; font-size: 1em; font-family: 'Nunito', sans-serif; transition: border 0.3s; }
+        .input-text:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(41,128,185,0.15); }
+        textarea.input-text { resize: vertical; min-height: 90px; }
+        .feedback-box { margin-top: 12px; padding: 12px 15px; border-radius: 10px; display: none; font-size: 0.9em; font-weight: 600; }
+        .correct { background: #d4edda; color: #155724; border-left: 4px solid var(--success); }
+        .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid var(--error); }
+        .manual { background: #fff3cd; color: #856404; border-left: 4px solid var(--warning); }
+        .footer-action { background: var(--card-bg); padding: 20px; text-align: center; position: sticky; bottom: 0; border-top: 2px solid var(--border); }
+        .btn-submit { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; border: none; padding: 15px 50px; font-size: 1.1em; border-radius: 50px; cursor: pointer; font-weight: 800; transition: all 0.3s; }
+        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(41,128,185,0.4); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 Bahasa Indonesia</h1>
+            <p>SDIT Friends — Kelas 2</p>
+            <div class="badge">Asesmen Sumatif Akhir Tahun (ASAT)</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian</h2>
+            <div class="score-value" id="final-score">0</div>
+            <div class="score-detail" id="score-detail"></div>
+            <a href="kelas2.html" class="back-btn">⬅ Kembali ke Menu Kelas 2</a>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            // PILIHAN GANDA (1-10)
+            {
+                id: 1,
+                type: 'pg',
+                section: 'I. Pilihan Ganda (10 Soal)',
+                text: 'Orang yang pekerjaannya menjual berbagai macam barang dagangan di pasar disebut ...',
+                options: ['Pembeli', 'Pedagang', 'Satpam', 'Petani'],
+                answer: 1,
+                hint: 'Pedagang menjual barang dagangan, sedangkan pembeli yang membeli barang tersebut.'
+            },
+            {
+                id: 2,
+                type: 'pg',
+                text: 'Tempat bertemunya penjual dan pembeli untuk melakukan kegiatan jual beli disebut ...',
+                options: ['Rumah sakit', 'Sekolah', 'Pasar', 'Perpustakaan'],
+                answer: 2,
+                hint: 'Pasar adalah tempat umum untuk melakukan transaksi jual beli.'
+            },
+            {
+                id: 3,
+                type: 'pg',
+                text: 'Perhatikan cerita berikut untuk menjawab soal:<div class="reading-box"><b>Pergi ke Pasar Bersama Ibu</b><br>Pagi hari, Dina diajak ibu pergi ke pasar. Dina sangat senang karena ia suka melihat banyak barang di pasar. Ibu membeli sayur dan buah. Dina membantu membawa kantong belanja yang ringan. Dina dan ibu juga membantu seorang nenek yang kesulitan membawa barang.</div>Kapan Dina dan ibu pergi ke pasar?',
+                options: ['Siang hari', 'Sore hari', 'Malam hari', 'Pagi hari'],
+                answer: 3,
+                hint: 'Kalimat pertama teks menyatakan "Pagi hari, Dina diajak ibu pergi ke pasar."'
+            },
+            {
+                id: 4,
+                type: 'pg',
+                text: 'Berdasarkan teks di atas, barang apa saja yang dibeli oleh ibu di pasar?',
+                options: ['Buku dan pensil', 'Sayur dan buah', 'Baju dan sepatu', 'Ikan dan kue'],
+                answer: 1,
+                hint: 'Teks menyatakan "Ibu membeli sayur dan buah."'
+            },
+            {
+                id: 5,
+                type: 'pg',
+                text: 'Kalimat "Dina membantu membawa kantong belanja." termasuk jenis kalimat ...',
+                options: ['Kalimat pasif', 'Kalimat perintah', 'Kalimat tanya', 'Kalimat aktif'],
+                answer: 3,
+                hint: 'Kalimat aktif adalah kalimat yang subjeknya (Dina) melakukan suatu pekerjaan.'
+            },
+            {
+                id: 6,
+                type: 'pg',
+                text: 'Kata berimbuhan "mengucapkan" berasal dari kata dasar ...',
+                options: ['Ucap', 'Ngucap', 'Cap', 'Mengucap'],
+                answer: 0,
+                hint: 'Kata dasar dari mengucapkan adalah ucap, mendapat imbuhan me- dan -kan.'
+            },
+            {
+                id: 7,
+                type: 'pg',
+                text: 'Kalimat pasif biasanya menggunakan kata kerja yang diawali dengan imbuhan ...',
+                options: ['me-', 'ber-', 'di-', 'ter-'],
+                answer: 2,
+                hint: 'Kalimat pasif ditandai dengan kata kerja berimbuhan di- (contoh: dibaca, ditulis).'
+            },
+            {
+                id: 8,
+                type: 'pg',
+                text: 'Kumpulan dari beberapa baris kalimat dalam sebuah puisi disebut ...',
+                options: ['Bait', 'Larik', 'Paragraf', 'Amanat'],
+                answer: 0,
+                hint: 'Puisi ditulis dalam bentuk bait, dan tiap bait terdiri dari beberapa baris.'
+            },
+            {
+                id: 9,
+                type: 'pg',
+                text: 'Berikut ini adalah hal-hal yang harus diperhatikan saat membacakan puisi di depan kelas, kecuali ...',
+                options: ['Mengucapkan kata dengan lafal yang jelas', 'Membaca secepat mungkin tanpa jeda', 'Mempunyai intonasi suara yang tepat', 'Menunjukkan ekspresi wajah yang sesuai'],
+                answer: 1,
+                hint: 'Membaca puisi terlalu cepat membuat pendengar sulit memahami isi dan keindahan puisi.'
+            },
+            {
+                id: 10,
+                type: 'pg',
+                text: 'Raut muka atau mimik wajah yang kita tunjukkan saat membacakan puisi sesuai isi cerita disebut ...',
+                options: ['Lafal', 'Intonasi', 'Ekspresi', 'Amanat'],
+                answer: 2,
+                hint: 'Ekspresi mencerminkan perasaan dalam puisi (sedih, gembira, atau semangat).'
+            },
+            // PILIHAN GANDA KOMPLEKS (11-15)
+            {
+                id: 11,
+                type: 'pg_kompleks',
+                section: 'II. Pilihan Ganda Kompleks (5 Soal)',
+                text: 'Informasi apa saja yang terkandung di dalam sebuah puisi? (Pilih semua jawaban yang benar)',
+                options: ['Isi atau tema puisi', 'Amanat (pesan yang ingin disampaikan)', 'Harga kertas buku puisi', 'Nama penerbit buku'],
+                answer: [0, 1],
+                hint: 'Puisi mengandung isi/tema dan amanat/pesan bagi pembaca.'
+            },
+            {
+                id: 12,
+                type: 'pg_kompleks',
+                text: 'Manakah di antara sikap berikut yang perlu ditunjukkan saat membacakan puisi di depan kelas? (Pilih semua jawaban yang benar)',
+                options: ['Mengucapkan lafal secara jelas', 'Percaya diri dan tidak malu-malu', 'Membaca dengan wajah datar tanpa ekspresi', 'Menyesuaikan intonasi suara'],
+                answer: [0, 1, 3],
+                hint: 'Membaca puisi memerlukan lafal jelas, intonasi tepat, ekspresi yang pas, serta percaya diri.'
+            },
+            {
+                id: 13,
+                type: 'pg_kompleks',
+                text: 'Manakah langkah-langkah yang benar sebelum kita mulai menulis sebuah puisi? (Pilih semua jawaban yang benar)',
+                options: ['Menentukan tema dan judul puisi terlebih dahulu', 'Memilih kata-kata indah yang sesuai dengan tema', 'Menyalin puisi milik orang lain tanpa izin', 'Menyusun kata-kata menjadi baris-baris kalimat'],
+                answer: [0, 1, 3],
+                hint: 'Menulis puisi sendiri diawali menentukan tema/judul, memilih diksi indah, lalu menyusunnya.'
+            },
+            {
+                id: 14,
+                type: 'pg_kompleks',
+                text: 'Manakah kalimat di bawah ini yang tergolong kalimat aktif? (Pilih semua jawaban yang benar)',
+                options: ['Kakak menyiram tanaman bunga matahari.', 'Buku cerita dipinjam oleh Dina di perpustakaan.', 'Adik memakan kue bolu pandan.', 'Sampah plastik dikumpulkan oleh Budi.'],
+                answer: [0, 2],
+                hint: 'Kalimat aktif memiliki subjek yang melakukan pekerjaan (menyiram, memakan).'
+            },
+            {
+                id: 15,
+                type: 'pg_kompleks',
+                text: 'Manakah kalimat di bawah ini yang tergolong kalimat pasif? (Pilih semua jawaban yang benar)',
+                options: ['Ayah membaca koran pagi di teras.', 'Lantai teras disapu oleh ibu hingga bersih.', 'Sampah di selokan dibersihkan oleh warga.', 'Riko bersepeda di taman perumahan.'],
+                answer: [1, 2],
+                hint: 'Kalimat pasif ditandai dengan predikat menggunakan imbuhan di- (disapu, dibersihkan).'
+            },
+            // BENAR ATAU SALAH (16-20)
+            {
+                id: 16,
+                type: 'bs',
+                section: 'III. Benar atau Salah (5 Soal)',
+                text: 'Lafal adalah tinggi rendahnya nada suara saat kita membacakan bait puisi.',
+                answer: 'Salah',
+                hint: 'Lafal adalah cara mengucapkan huruf atau kata secara jelas. Tinggi rendah nada disebut intonasi.'
+            },
+            {
+                id: 17,
+                type: 'bs',
+                text: 'Intonasi adalah tinggi rendahnya nada saat mengucapkan kata atau membaca kalimat.',
+                answer: 'Benar',
+                hint: 'Intonasi membantu memberikan penekanan dan nada pada pembacaan puisi.'
+            },
+            {
+                id: 18,
+                type: 'bs',
+                text: 'Satu bait dalam sebuah puisi biasanya terdiri dari beberapa baris kalimat.',
+                answer: 'Benar',
+                hint: 'Bait adalah kumpulan baris/larik dalam puisi.'
+            },
+            {
+                id: 19,
+                type: 'bs',
+                text: 'Peribahasa "Ada udang di balik batu" memiliki arti ada maksud tersembunyi yang ingin dicapai.',
+                answer: 'Benar',
+                hint: 'Peribahasa tersebut menyatakan seseorang yang berbuat baik namun memiliki niat lain dibaliknya.'
+            },
+            {
+                id: 20,
+                type: 'bs',
+                text: 'Kalimat "Buku itu ditulis oleh penulis terkenal." adalah contoh kalimat aktif.',
+                answer: 'Salah',
+                hint: 'Kalimat ini menggunakan kata kerja "ditulis" sehingga merupakan kalimat pasif.'
+            },
+            // MEMASANGKAN (21-25)
+            {
+                id: 21,
+                type: 'memasangkan',
+                section: 'IV. Memasangkan (5 Soal)',
+                text: 'Pasangkan istilah berikut dengan arti yang tepat: <b>Cara mengucapkan kata atau kalimat secara jelas</b>',
+                options: ['Lafal', 'Intonasi', 'Ekspresi', 'Bait', 'Amanat'],
+                answer: 'Lafal',
+                hint: 'Lafal berhubungan dengan kejelasan pengucapan huruf/kata.'
+            },
+            {
+                id: 22,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan arti yang tepat: <b>Tinggi rendahnya nada suara saat berbicara atau membaca</b>',
+                options: ['Lafal', 'Intonasi', 'Ekspresi', 'Bait', 'Amanat'],
+                answer: 'Intonasi',
+                hint: 'Intonasi adalah lagu kalimat atau tinggi rendah nada.'
+            },
+            {
+                id: 23,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan arti yang tepat: <b>Raut muka atau mimik wajah yang sesuai dengan isi puisi</b>',
+                options: ['Lafal', 'Intonasi', 'Ekspresi', 'Bait', 'Amanat'],
+                answer: 'Ekspresi',
+                hint: 'Ekspresi mencerminkan penjiwaan/raut muka.'
+            },
+            {
+                id: 24,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan arti yang tepat: <b>Kumpulan baris dalam sebuah puisi</b>',
+                options: ['Lafal', 'Intonasi', 'Ekspresi', 'Bait', 'Amanat'],
+                answer: 'Bait',
+                hint: 'Bait merupakan kesatuan baris-baris dalam puisi.'
+            },
+            {
+                id: 25,
+                type: 'memasangkan',
+                text: 'Pasangkan istilah berikut dengan arti yang tepat: <b>Pesan baik yang ingin disampaikan penyair kepada pembaca</b>',
+                options: ['Lafal', 'Intonasi', 'Ekspresi', 'Bait', 'Amanat'],
+                answer: 'Amanat',
+                hint: 'Amanat adalah pesan moral dalam karya sastra.'
+            },
+            // ISIAN SINGKAT (26-30)
+            {
+                id: 26,
+                type: 'isian',
+                section: 'V. Isian Singkat (5 Soal)',
+                text: 'Kebalikan dari kalimat aktif adalah kalimat ...',
+                answer: 'Pasif',
+                alt: ['kalimat pasif'],
+                hint: 'Kalimat aktif pasangannya adalah kalimat pasif.'
+            },
+            {
+                id: 27,
+                type: 'isian',
+                text: 'Kata dasar dari kata berimbuhan "membantu" adalah ...',
+                options: [],
+                answer: 'Bantu',
+                alt: ['bantu'],
+                hint: 'Imbuhan mem- melebur dengan kata dasar bantu menjadi membantu.'
+            },
+            {
+                id: 28,
+                type: 'isian',
+                text: 'Sikap mental yang diperlukan agar berani membaca puisi di depan kelas adalah sikap ... diri.',
+                answer: 'Percaya',
+                alt: ['percaya diri', 'percaya'],
+                hint: 'Percaya diri membuat kita tampil mantap di depan orang banyak.'
+            },
+            {
+                id: 29,
+                type: 'isian',
+                text: 'Lengkapi peribahasa berikut: "Tong kosong nyaring ..."',
+                answer: 'Bunyinya',
+                alt: ['bunyinya'],
+                hint: 'Peribahasa lengkapnya adalah: Tong kosong nyaring bunyinya.'
+            },
+            {
+                id: 30,
+                type: 'isian',
+                text: 'Orang yang datang ke pasar untuk membeli barang-barang kebutuhan disebut ...',
+                answer: 'Pembeli',
+                alt: ['pembeli', 'pelanggan'],
+                hint: 'Pembeli melakukan pembelian barang dari pedagang.'
+            },
+            // URAIAN (31-35)
+            {
+                id: 31,
+                type: 'uraian',
+                section: 'VI. Uraian (5 Soal)',
+                text: 'Tuliskan satu contoh peribahasa Indonesia yang kamu ketahui beserta maknanya!',
+                answer: 'Contoh peribahasa: "Ada udang di balik batu" artinya ada maksud tersembunyi. Atau: "Tong kosong nyaring bunyinya" artinya orang yang banyak bicara biasanya tidak berilmu.'
+            },
+            {
+                id: 32,
+                type: 'uraian',
+                text: 'Jelaskan perbedaan antara kalimat aktif dan kalimat pasif! Berikan contohnya masing-masing satu!',
+                answer: 'Kalimat aktif adalah kalimat yang subjeknya melakukan tindakan (contoh: Dina membaca buku). Kalimat pasif adalah kalimat yang subjeknya dikenai tindakan (contoh: Buku dibaca Dina).'
+            },
+            {
+                id: 33,
+                type: 'uraian',
+                text: 'Sebutkan 3 hal penting yang perlu diperhatikan saat kamu membacakan puisi di hadapan teman-teman sekelasmu!',
+                answer: 'Tiga hal penting: 1) Lafal (pengucapan jelas), 2) Intonasi (tinggi rendah suara), 3) Ekspresi (raut wajah sesuai isi puisi).'
+            },
+            {
+                id: 34,
+                type: 'uraian',
+                text: 'Apa yang dimaksud dengan amanat dalam sebuah puisi? Jelaskan dengan singkat!',
+                answer: 'Amanat adalah pesan moral atau nasihat baik yang ingin disampaikan oleh penyair kepada pembaca melalui puisi.'
+            },
+            {
+                id: 35,
+                type: 'uraian',
+                text: 'Buatlah satu kalimat aktif menggunakan kata "menyiram" dan satu kalimat pasif menggunakan kata "dibuang"!',
+                answer: 'Kalimat aktif: "Adik menyiram tanaman bunga di kebun." Kalimat pasif: "Sampah plastik itu dibuang oleh Riko ke tong sampah."'
+            }
+        ];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> ${String.fromCharCode(65 + i)}. ${opt}</label>`;
+                    });
+                } else if (q.type === 'bs') {
+                    inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="Benar"> ✅ Benar</label>
+                                  <label class="radio-label"><input type="radio" name="q${q.id}" value="Salah"> ❌ Salah</label>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                                    <option value="">-- Pilih Jawaban --</option>
+                                    ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                                 </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" placeholder="Tulis jawaban di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" placeholder="Tulis jawaban lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item">
+                            <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                            <div class="options-group">${inputHtml}</div>
+                            <div class="feedback-box" id="fb-${q.id}"></div>
+                         </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'bs') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function normalize(s) {
+            return s.toLowerCase().replace(/[-_.,!?']/g, '').trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    if (checked.length === q.answer.length && checked.every(v => q.answer.includes(v))) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'bs') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && sel.value === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. ${q.hint}`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && val.toLowerCase() === q.answer.toLowerCase()) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Salah. Pasangan yang benar: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const val = normalize(document.querySelector(`[name="q${q.id}"]`).value || '');
+                    const ans = normalize(q.answer);
+                    let isCorrect = val === ans || val.includes(ans) || (ans.includes(val) && val.length > 2);
+                    if (q.alt) {
+                        q.alt.forEach(a => {
+                            if (normalize(a) === val || val.includes(normalize(a))) isCorrect = true;
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ Benar!';
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ Jawaban: <b>${q.answer}</b>. ${q.hint}`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 Periksa manual. Kunci jawaban perkiraan: <b>${q.answer}</b>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = Math.round((score / maxAuto) * 100);
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan ganda/kompleks/isian. Soal uraian diperiksa manual oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

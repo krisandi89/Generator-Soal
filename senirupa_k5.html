@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Seni Rupa Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #9b59b6;
+            --bg: #fbf7fc;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>🎨 Seni Rupa</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Unsur seni rupa yang paling sederhana, paling mendasar, dan merupakan unsur terkecil yang menjadi awal mula terbentuknya garis adalah...",
+        "options": [
+            "Bidang",
+            "Titik",
+            "Tekstur",
+            "Ruang"
+        ],
+        "answer": 1,
+        "hint": "Titik adalah unsur seni rupa paling kecil yang bila dihubungkan secara beruntun akan membentuk sebuah garis."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Kelompok warna pokok yang bukan merupakan hasil pencampuran dari warna-warna lainnya disebut warna primer. Tiga warna primer yang benar adalah...",
+        "options": [
+            "Merah, Hijau, Biru",
+            "Merah, Kuning, Biru",
+            "Kuning, Jingga, Ungu",
+            "Hitam, Putih, Abu-abu"
+        ],
+        "answer": 1,
+        "hint": "Tiga warna pokok / primer adalah Merah, Kuning, dan Biru."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Warna sekunder terbentuk dari percampuran dua warna primer dengan perbandingan seimbang. Percampuran antara warna merah dan biru akan menghasilkan warna...",
+        "options": [
+            "Jingga (Oranye)",
+            "Hijau",
+            "Ungu (Violet)",
+            "Cokelat"
+        ],
+        "answer": 2,
+        "hint": "Merah + Biru = Ungu; Merah + Kuning = Jingga; Kuning + Biru = Hijau."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Warna-warna yang letaknya saling berdampingan atau bersebelahan dalam lingkaran roda warna (seperti kuning, kuning-kehijauan, dan hijau) disebut warna...",
+        "options": [
+            "Analogus",
+            "Komplementer",
+            "Monokromatik",
+            "Primer"
+        ],
+        "answer": 0,
+        "hint": "Warna analogus adalah deretan warna yang bersebelahan dalam lingkaran warna sehingga tampak harmonis dan selaras."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Unsur seni rupa yang timbul akibat adanya perbedaan intensitas cahaya yang jatuh pada permukaan benda sehingga memberikan kesan tiga dimensi dan volume adalah...",
+        "options": [
+            "Gelap terang (Value)",
+            "Tekstur semu",
+            "Garis lengkung",
+            "Bidang geometris"
+        ],
+        "answer": 0,
+        "hint": "Unsur gelap terang menciptakan bayangan dan memberikan kesan kedalaman/tiga dimensi."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Pengulangan satu atau beberapa unsur seni rupa (seperti garis, bentuk, atau warna) secara teratur dan berkesinambungan sehingga menciptakan kesan gerak dinamakan...",
+        "options": [
+            "Proporsi",
+            "Ritme (Irama)",
+            "Keseimbangan",
+            "Kesatuan"
+        ],
+        "answer": 1,
+        "hint": "Ritme (irama) adalah prinsip seni rupa yang timbul karena adanya pengulangan teratur yang menuntun pandangan mata."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Jenis ritme yang terbentuk karena adanya perubahan unsur secara bertahap dan perlahan, misalnya gradasi dari bentuk kecil ke bentuk besar atau warna muda ke tua, disebut ritme...",
+        "options": [
+            "Repetisi",
+            "Transisi",
+            "Oposisi",
+            "Acak"
+        ],
+        "answer": 1,
+        "hint": "Ritme transisi menunjukkan perubahan/peralihan bertahap yang mengalir secara halus (gradasi)."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Perbandingan ukuran yang ideal, wajar, dan harmonis antara bagian-bagian objek dengan keseluruhan objek pada sebuah gambar disebut prinsip...",
+        "options": [
+            "Proporsi",
+            "Perspektif",
+            "Tekstur",
+            "Komposisi"
+        ],
+        "answer": 0,
+        "hint": "Proporsi mengatur keselarasan perbandingan ukuran fisik objek agar terlihat wajar dan proporsional."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Keseimbangan dalam seni rupa di mana susunan objek di bagian kanan dan kiri bidang gambar memiliki bentuk, ukuran, dan jarak yang sama persis seperti bayangan cermin dinamakan keseimbangan...",
+        "options": [
+            "Asimetris",
+            "Simetris",
+            "Radial",
+            "Bebas"
+        ],
+        "answer": 1,
+        "hint": "Keseimbangan simetris menghasilkan susunan cermin kembar antara sisi kanan dan kiri sehingga memberi kesan formal dan kokoh."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Alat tulis yang paling ideal digunakan untuk membuat sketsa awal saat menggambar tumbuhan sebelum diberi warna adalah...",
+        "options": [
+            "Pensil grafit (misal 2B)",
+            "Spidol permanen",
+            "Cat air basah",
+            "Pena tinta hitam"
+        ],
+        "answer": 0,
+        "hint": "Pensil grafit (2B atau HB) mudah dihapus dan menghasilkan goresan garis sketsa yang pas."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Manakah di antara pilihan berikut yang merupakan unsur-unsur dasar pembentuk karya seni rupa? (Pilih 3 jawaban benar)",
+        "options": [
+            "Titik dan garis",
+            "Bidang dan bentuk",
+            "Warna dan tekstur",
+            "Notasi tangga nada balok"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Titik, garis, bidang, bentuk, warna, dan tekstur adalah unsur rupa; sedangkan notasi nada adalah unsur seni musik."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Manakah warna-warna berikut yang tergolong ke dalam warna primer (warna dasar)? (Pilih 3 jawaban benar)",
+        "options": [
+            "Merah",
+            "Kuning",
+            "Biru",
+            "Hijau"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Merah, Kuning, dan Biru adalah warna primer murni. Hijau merupakan warna sekunder hasil campuran kuning dan biru."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Manakah pasangan pencampuran warna primer dan warna sekunder yang dihasilkan dengan benar? (Pilih 2 jawaban benar)",
+        "options": [
+            "Warna Merah dicampur Warna Kuning menghasilkan warna Jingga (Oranye)",
+            "Warna Kuning dicampur Warna Biru menghasilkan warna Hijau",
+            "Warna Merah dicampur Warna Biru menghasilkan warna Cokelat Tua",
+            "Warna Biru dicampur Warna Kuning menghasilkan warna Ungu"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Merah + Kuning = Jingga; Kuning + Biru = Hijau; Merah + Biru = Ungu."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Pernyataan yang tepat mengenai tekstur dalam seni rupa adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Tekstur nyata adalah tekstur yang apabila diraba dan dilihat memberikan kesan rabaan fisik yang sama (misal kulit kayu kasar)",
+            "Tekstur semu adalah tekstur yang terlihat bertekstur di mata tetapi saat diraba terasa halus/rata di kertas",
+            "Tekstur hanya bisa dibuat dengan bantuan komputer grafis saja",
+            "Tekstur tidak memiliki pengaruh apa pun terhadap keindahan karya seni rupa"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Tekstur dibedakan menjadi tekstur nyata (fisik) dan tekstur semu (kesan visual)."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Manakah manfaat penerapan prinsip ritme (irama) dalam pembuatan sebuah karya gambar dekoratif? (Pilih 3 jawaban benar)",
+        "options": [
+            "Menciptakan alur pandang mata dan kesan gerak dinamis",
+            "Membuat gambar terlihat hidup, menarik, dan tidak monoton",
+            "Menghadirkan keteraturan dan keselarasan visual",
+            "Menyebabkan gambar terlihat kacau dan tidak beraturan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ritme menciptakan kesan dinamis, keteraturan pola, dan daya tarik visual yang estetis."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Berikut ini merupakan jenis-jenis pola ritme dalam seni rupa adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Ritme pengulangan (Repetisi)",
+            "Ritme peralihan bertahap (Transisi)",
+            "Ritme pertentangan kontras (Oposisi)",
+            "Ritme isolasi terputus"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga jenis ritme utama: repetisi (pengulangan murni), transisi (gradasi), dan oposisi (kontras/pertentangan tajam)."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Penerapan prinsip proporsi yang benar pada saat menggambar tanaman bunga di dalam pot adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Ukuran daun dan bunga seimbang dengan ketebalan dan tinggi batang tanaman",
+            "Ukuran pot bunga sebanding dengan besarnya tanaman agar tampak kokoh dan wajar",
+            "Ukuran daun digambar sepuluh kali lebih besar daripada seluruh tanaman dan potnya",
+            "Ukuran bunga digambar sekecil titik jarum sehingga tidak terlihat sama sekali"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Proporsi memastikan keserasian ukuran bagian tanaman (daun, bunga, pot) agar tampil wajar dan harmonis."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Karakteristik dari keseimbangan simetris dalam karya seni rupa adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Memberikan kesan ketenangan, keteraturan formal, dan kekokohan yang stabil",
+            "Bentuk dan posisi objek di sisi kiri dan kanan merupakan cerminan persis",
+            "Sisi kanan dibuat sangat ramai sedangkan sisi kiri dibiarkan kosong melompong",
+            "Memberikan kesan yang sangat liar, kacau, dan tidak berpusat"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Keseimbangan simetris menata sisi kanan-kiri secara identik, memancarkan ketenangan formal dan kestabilan."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Pernyataan yang benar mengenai keseimbangan asimetris adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Bentuk objek di sisi kiri dan kanan tidak identik, tetapi bobot visualnya tetap terasa seimbang",
+            "Memberikan kesan visual yang dinamis, modern, dan tidak kaku",
+            "Wajib menggunakan garis cermin pemisah di bagian tengah gambar",
+            "Hanya boleh menggunakan warna hitam dan putih saja"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Keseimbangan asimetris tidak sama persis bentuknya, tetapi memiliki bobot optik seimbang dan terkesan luwes/dinamis."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Alat dan media yang dapat digunakan untuk memberi warna pada gambar objek tumbuhan adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Pensil warna",
+            "Krayon lilin (oil pastel)",
+            "Cat air",
+            "Penggaris besi"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pensil warna, krayon, dan cat air adalah alat pewarna; penggaris adalah alat ukur bantu."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Warna / Prinsip Seni Rupa dengan Kategori yang Tepat)",
+        "text": "Pasangkan warna berikut dengan kategorinya yang tepat: <b>Warna Merah</b>",
+        "options": [
+            "Warna Primer (Pokok)",
+            "Warna Sekunder (Campuran Merah + Biru)",
+            "Warna Sekunder (Campuran Kuning + Biru)",
+            "Warna Analogus (Bersebelahan)",
+            "Warna Netral"
+        ],
+        "answer": "Warna Primer (Pokok)",
+        "hint": "Merah merupakan salah satu dari tiga warna primer murni."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan warna berikut dengan kategorinya yang tepat: <b>Warna Hijau</b>",
+        "options": [
+            "Warna Primer (Pokok)",
+            "Warna Sekunder (Campuran Merah + Biru)",
+            "Warna Sekunder (Campuran Kuning + Biru)",
+            "Warna Analogus (Bersebelahan)",
+            "Warna Netral"
+        ],
+        "answer": "Warna Sekunder (Campuran Kuning + Biru)",
+        "hint": "Hijau didapat dari pencampuran warna primer kuning dan biru."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan warna berikut dengan kategorinya yang tepat: <b>Warna Ungu</b>",
+        "options": [
+            "Warna Primer (Pokok)",
+            "Warna Sekunder (Campuran Merah + Biru)",
+            "Warna Sekunder (Campuran Kuning + Biru)",
+            "Warna Analogus (Bersebelahan)",
+            "Warna Netral"
+        ],
+        "answer": "Warna Sekunder (Campuran Merah + Biru)",
+        "hint": "Ungu didapat dari pencampuran warna primer merah dan biru."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah seni rupa berikut dengan pengertiannya: <b>Ritme Oposisi</b>",
+        "options": [
+            "Pertentangan tajam antara unsur rupa kontras (misal garis lurus vs lengkung)",
+            "Pengulangan bentuk yang sama persis secara teratur",
+            "Peralihan ukuran bertahap dari kecil ke besar",
+            "Keseimbangan cermin antara sisi kanan dan kiri",
+            "Perbandingan ukuran ideal antar bagian objek"
+        ],
+        "answer": "Pertentangan tajam antara unsur rupa kontras (misal garis lurus vs lengkung)",
+        "hint": "Oposisi berarti pertentangan atau kontras tajam antar unsur."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah seni rupa berikut dengan pengertiannya: <b>Keseimbangan Simetris</b>",
+        "options": [
+            "Pertentangan tajam antara unsur rupa kontras (misal garis lurus vs lengkung)",
+            "Pengulangan bentuk yang sama persis secara teratur",
+            "Peralihan ukuran bertahap dari kecil ke besar",
+            "Keseimbangan cermin antara sisi kanan dan kiri",
+            "Perbandingan ukuran ideal antar bagian objek"
+        ],
+        "answer": "Keseimbangan cermin antara sisi kanan dan kiri",
+        "hint": "Simetris memiliki penataan objek yang sama persis di kedua sisi."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Unsur seni rupa yang paling kecil dan paling mendasar adalah...",
+        "answer": "Titik",
+        "alt": [
+            "titik",
+            "dot",
+            "unsur titik"
+        ],
+        "hint": "Bintik terkecil yang mengawali goresan."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Tiga warna pokok primer dalam seni rupa adalah merah, kuning, dan...",
+        "answer": "Biru",
+        "alt": [
+            "biru",
+            "warna biru"
+        ],
+        "hint": "Warna langit yang cerah di siang hari."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Warna sekunder yang dihasilkan dari pencampuran warna merah dan kuning adalah warna...",
+        "answer": "Jingga (atau Oranye)",
+        "alt": [
+            "jingga",
+            "oranye",
+            "orange"
+        ],
+        "hint": "Warna buah jeruk matang."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Deretan warna yang letaknya berdampingan atau bersebelahan dalam lingkaran warna disebut kelompok warna...",
+        "answer": "Analogus",
+        "alt": [
+            "analogus",
+            "warna analogus",
+            "analog"
+        ],
+        "hint": "Memberikan perpaduan warna yang harmonis dan seirama."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Sifat permukaan suatu benda (seperti kasar, halus, licin, atau bergelombang) dalam unsur seni rupa disebut...",
+        "answer": "Tekstur",
+        "alt": [
+            "tekstur",
+            "tekstur benda"
+        ],
+        "hint": "Dapat dirasakan melalui indra peraba dan penglihatan."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Prinsip pengulangan unsur seni rupa secara teratur dan berulang-ulang dinamakan irama atau...",
+        "answer": "Ritme",
+        "alt": [
+            "ritme",
+            "irama",
+            "rhythm"
+        ],
+        "hint": "Menghasilkan alur pandangan mata yang mengalir."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Ritme yang ditandai dengan perubahan bertahap dari kecil ke besar atau warna muda ke tua disebut ritme...",
+        "answer": "Transisi (gradasi)",
+        "alt": [
+            "transisi",
+            "ritme transisi",
+            "gradasi"
+        ],
+        "hint": "Peralihan berangsur-angsur yang halus."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Perbandingan ukuran yang serasi dan harmonis antara bagian objek dengan keseluruhan gambar disebut prinsip...",
+        "answer": "Proporsi",
+        "alt": [
+            "proporsi",
+            "prinsip proporsi"
+        ],
+        "hint": "Menghindari gambar tampak terlalu besar atau terlalu kecil secara tidak wajar."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Keseimbangan yang bagian kanan dan kirinya tidak sama persis namun tetap memiliki daya tarik visual yang setara dinamakan keseimbangan...",
+        "answer": "Asimetris",
+        "alt": [
+            "asimetris",
+            "keseimbangan asimetris",
+            "informal"
+        ],
+        "hint": "Lawan kata dari simetris."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Unsur seni rupa yang memberikan ilusi kedalaman, ruang, dan volume pada gambar sehingga tampak nyata adalah gelap-...",
+        "answer": "Terang",
+        "alt": [
+            "terang",
+            "gelap terang",
+            "gelap-terang"
+        ],
+        "hint": "Diciptakan melalui arsiran bayangan cahaya."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan dan jelaskan 6 unsur seni rupa yang membangun sebuah karya gambar!",
+        "answer": "Unsur seni rupa antara lain:<br>1. <b>Titik:</b> Unsur paling kecil dan mendasar dalam seni rupa.<br>2. <b>Garis:</b> Goresan atau batas dari suatu benda, bidang, atau ruang.<br>3. <b>Bidang:</b> Permukaan datar yang memiliki dimensi panjang dan lebar (2D).<br>4. <b>Bentuk:</b> Wujud objek yang memiliki volume atau ruang (3D), baik geometris maupun organis.<br>5. <b>Warna:</b> Kesan visual yang ditangkap indra penglihatan akibat pantulan cahaya (primer, sekunder, analogus).<br>6. <b>Gelap-Terang:</b> Tingkat kecerahan atau intensitas cahaya yang menciptakan kesan kedalaman dan volume.<br>(Unsur lainnya: Tekstur dan Ruang).",
+        "hint": "Sebutkan minimal 6 unsur (titik, garis, bidang, bentuk, warna, tekstur, gelap-terang) beserta penjelasannya."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan perbedaan antara warna primer dan warna sekunder, serta tuliskan proses terjadinya warna sekunder dari percampuran warna primer!",
+        "answer": "1. <b>Warna Primer:</b> Warna pokok atau warna dasar yang tidak dapat dihasilkan dari percampuran warna lainnya, yaitu <b>Merah, Kuning, dan Biru</b>.<br><br>2. <b>Warna Sekunder:</b> Warna yang terbentuk dari hasil pencampuran dua warna primer dengan takaran seimbang (1:1).<br>Proses pencampurannya:<br>- Merah + Kuning = <b>Jingga / Oranye</b><br>- Kuning + Biru = <b>Hijau</b><br>- Merah + Biru = <b>Ungu / Violet</b>",
+        "hint": "Jelaskan definisi primer vs sekunder serta ketiga formula pencampurannya."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Jelaskan apa yang dimaksud dengan prinsip 'Ritme (Irama)' dalam seni rupa dan sebutkan 3 macam jenis ritme beserta contohnya!",
+        "answer": "<b>Pengertian Ritme:</b> Ritme adalah prinsip pengulangan satu atau lebih unsur seni rupa secara teratur dan terencana sehingga menimbulkan kesan gerak visual yang harmonis.<br><br><b>3 Jenis Ritme:</b><br>1. <b>Ritme Repetisi (Pengulangan murni):</b> Pengulangan bentuk/garis yang sama persis dalam jarak teratur (misal: barisan tiang pagar atau motif batik yang berulang sama).<br>2. <b>Ritme Transisi (Peralihan/Gradasi):</b> Pengulangan dengan perubahan bertahap secara halus (misal: lingkaran dari ukuran kecil perlahan membesar, atau warna dari biru muda ke biru tua).<br>3. <b>Ritme Oposisi (Pertentangan/Kontras):</b> Pengulangan unsur yang bertentangan tajam (misal: perpotongan garis tegak vertikal dengan mendatar horizontal, atau bidang hitam berdampingan dengan putih).",
+        "hint": "Definisikan ritme lalu uraikan repetisi, transisi, dan oposisi."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Apakah yang dimaksud dengan prinsip 'Proporsi' dalam menggambar objek tumbuhan? Berikan contoh kesalahan proporsi yang sering terjadi pada saat menggambar pohon atau bunga!",
+        "answer": "<b>Pengertian Proporsi:</b> Proporsi adalah perbandingan ukuran yang wajar, serasi, dan harmonis antara bagian-bagian objek dengan keseluruhan bentuk objek.<br><br><b>Contoh dalam menggambar tumbuhan:</b> Bagian daun, tangkai, bunga, dan batang harus digambar dalam skala perbandingan yang seimbang secara alami.<br><br><b>Contoh kesalahan proporsi:</b><br>- Menggambar bunga berukuran raksasa padahal tangkai penopangnya sangat kecil tipis seperti seutas benang, sehingga tampak rapuh dan tidak wajar.<br>- Menggambar daun yang ukurannya jauh lebih besar daripada pohon induknya atau pot bunga penampungnya.",
+        "hint": "Jelaskan konsep proporsi ukuran dan sebutkan contoh perbandingan daun/bunga yang tidak seimbang."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Jelaskan perbedaan antara Keseimbangan Simetris dan Keseimbangan Asimetris dalam sebuah karya gambar, serta sebutkan kesan visual yang ditimbulkan oleh masing-masing keseimbangan tersebut!",
+        "answer": "1. <b>Keseimbangan Simetris:</b><br>- <b>Penataan:</b> Objek di sisi kanan dan sisi kiri (atau atas dan bawah) memiliki bentuk, ukuran, dan penempatan yang sama persis seperti cermin.<br>- <b>Kesan Visual:</b> Menghadirkan suasana yang tenang, formal, resmi, kokoh, dan berwibawa.<br><br>2. <b>Keseimbangan Asimetris:</b><br>- <b>Penataan:</b> Objek di sisi kanan dan sisi kiri berbeda bentuk dan posisinya, namun diatur sedemikian rupa sehingga bobot visualnya tetap terasa seimbang.<br>- <b>Kesan Visual:</b> Menghadirkan suasana yang dinamis, modern, hidup, luwes, dan tidak kaku.",
+        "hint": "Bandingkan penataan objek dan efek kesan visual (formal/tenang vs dinamis/luwes)."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

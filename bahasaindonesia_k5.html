@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Bahasa Indonesia Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #c0392b;
+            --primary-light: #e74c3c;
+            --bg: #fadbd8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>📖 Bahasa Indonesia</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perhatikan kalimat berikut: 'Ahmad selalu bertutur kata sopan dan menyapa siapa saja dengan ramah.' Kata sifat yang terdapat pada kalimat tersebut adalah...",
+        "options": [
+            "Ahmad dan bertutur",
+            "Sopan dan ramah",
+            "Menyapa dan siapa",
+            "Selalu dan kata"
+        ],
+        "answer": 1,
+        "hint": "Kata sifat (adjektiva) menerangkan keadaan atau watak seseorang, yaitu sopan dan ramah."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Kata dasar 'lukis' jika diberi imbuhan awalan pe- yang tepat akan berubah bentuk menjadi...",
+        "options": [
+            "Penlukis",
+            "Penyeluki",
+            "Pelukis",
+            "Penglukis"
+        ],
+        "answer": 2,
+        "hint": "Awalan pe- bertemu huruf l tetap menjadi pelukis (artinya orang yang pekerjaannya melukis)."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Kata 'hemat' memiliki arti yang berlawanan (antonim) dengan kata...",
+        "options": [
+            "Kikir",
+            "Cermat",
+            "Boros",
+            "Pelit"
+        ],
+        "answer": 2,
+        "hint": "Antonim adalah lawan kata. Lawan dari kata hemat adalah boros."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Pasangan kata di bawah ini yang merupakan pasangan kata bersinonim (memiliki arti yang sama/mirip) adalah...",
+        "options": [
+            "Rajin - Malas",
+            "Pintar - Pandai",
+            "Tinggi - Rendah",
+            "Terang - Gelap"
+        ],
+        "answer": 1,
+        "hint": "Pintar dan pandai adalah sinonim (persamaan kata)."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Kalimat berikut yang merupakan kalimat majemuk setara dengan hubungan situasi berlawanan (pertentangan) adalah...",
+        "options": [
+            "Budi rajin belajar setiap hari sehingga ia berhasil meraih peringkat pertama.",
+            "Rian ingin pergi bermain sepeda di taman, tetapi hujan turun sangat deras.",
+            "Ayah membaca koran dan ibu menyiapkan sarapan di dapur.",
+            "Dina tidak masuk sekolah kemarin karena sedang sakit demam."
+        ],
+        "answer": 1,
+        "hint": "Kata penghubung 'tetapi' menyatakan hubungan pertentangan antarklausa."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Perhatikan kalimat bermajas berikut: 'Suara petir yang menggelegar dahsyat itu terasa membelah angkasa raya.' Majas yang digunakan pada kalimat tersebut adalah...",
+        "options": [
+            "Majas Metafora",
+            "Majas Personifikasi",
+            "Majas Hiperbola",
+            "Majas Asosiasi"
+        ],
+        "answer": 2,
+        "hint": "Majas hiperbola menggunakan ungkapan yang melebih-lebihkan kenyataan secara dramatis (membelah angkasa raya)."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Perhatikan kalimat bermajas berikut: 'Angin malam berbisik lembut membelai dedaunan yang sedang terlelap tidur.' Majas yang digunakan pada kalimat tersebut adalah...",
+        "options": [
+            "Majas Personifikasi",
+            "Majas Hiperbola",
+            "Majas Metafora",
+            "Majas Ironi"
+        ],
+        "answer": 0,
+        "hint": "Majas personifikasi melekatkan sifat/perilaku manusia (berbisik, membelai, terlelap) pada benda mati/alam (angin dan daun)."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Buku yang berisi cerita khayalan, imajinasi, atau rekaan pengarang seperti dongeng, fabel, dan cerpen digolongkan ke dalam jenis buku...",
+        "options": [
+            "Buku nonfiksi",
+            "Buku fiksi",
+            "Buku ensiklopedia ilmiah",
+            "Buku kamus istilah"
+        ],
+        "answer": 1,
+        "hint": "Karya fiksi ditulis berdasarkan rekaan atau imajinasi kreatif penulis."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Daftar kata atau istilah penting yang disusun menurut abjad dan dilengkapi dengan nomor halaman tempat istilah itu ditemukan dalam buku disebut...",
+        "options": [
+            "Daftar Pustaka",
+            "Glosarium",
+            "Indeks",
+            "Kata Pengantar"
+        ],
+        "answer": 2,
+        "hint": "Indeks memuat daftar kata kunci penting beserta nomor halaman rujukannya."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Sebelum mulai menulis sebuah cerita utuh, langkah awal yang harus dilakukan penulis agar alur ceritanya runtut dan teratur adalah...",
+        "options": [
+            "Membeli kertas dan pulpen baru yang mahal",
+            "Menentukan tema dan membuat kerangka karangan (outline)",
+            "Mendesain sampul buku bergambar warna-warni",
+            "Menjual naskah tulisan ke penerbit buku"
+        ],
+        "answer": 1,
+        "hint": "Menentukan tema dan menyusun kerangka karangan adalah langkah persiapan utama dalam menulis cerita."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih Lebih Dari 1 Jawaban Benar)",
+        "text": "Pernyataan yang tepat mengenai ciri-ciri kata sifat (adjektiva) adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Dapat diawali dengan kata penguat seperti 'sangat', 'terlalu', atau 'amat'",
+            "Menjelaskan keadaan, watak, rasa, atau kondisi suatu benda/orang",
+            "Menunjukkan tindakan atau pekerjaan fisik seseorang",
+            "Selalu menunjukkan nama kota atau nama orang"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Kata sifat dapat digabung dengan kata sangat (sangat pandai) dan menerangkan keadaan."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Perubahan kata dasar saat diberi awalan pe- berikut yang BENAR adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "tari + pe- menjadi penari",
+            "tulis + pe- menjadi penulis",
+            "malas + pe- menjadi pemalas",
+            "sapu + pe- menjadi pensapu"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kata 'sapu' jika diberi awalan pe- menjadi 'penyapu' (huruf s luluh menjadi ny), bukan pensapu."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Pasangan kata di bawah ini yang merupakan pasangan antonim (lawan kata) yang tepat adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Jujur >< Bohong",
+            "Berani >< Takut",
+            "Subur >< Tandus",
+            "Gembira >< Bahagia"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Gembira dan bahagia adalah sinonim, sedangkan tiga pilihan lainnya adalah antonim."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Kata penghubung (konjungsi) yang tepat digunakan untuk membentuk kalimat majemuk setara dengan hubungan sebab-akibat adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Karena",
+            "Sehingga",
+            "Tetapi",
+            "Sedangkan"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "'Karena' dan 'sehingga' menyatakan hubungan sebab-akibat, sedangkan 'tetapi' dan 'sedangkan' menyatakan pertentangan."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Perhatikan teks cuplikan cerita berikut:<div class=\"reading-box\">Di sebuah desa terpencil, hiduplah Kakek Tulus yang senang membantu anak-anak belajar mengaji tanpa memungut biaya. Suatu sore, angin kencang merobohkan atap gubuk tempat mengajinya. Anak-anak dan warga desa segera bergotong royong memperbaiki gubuk tersebut.</div>Berdasarkan kutipan cerita tersebut, pernyataan yang BENAR adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Tokoh utama dalam cerita adalah Kakek Tulus",
+            "Watak Kakek Tulus adalah ikhlas, sabar, dan gemar menolong",
+            "Latar waktu pada peristiwa perobohan gubuk terjadi pada sore hari",
+            "Warga desa bersikap acuh tak acuh dan membiarkan gubuk rusak"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Warga desa bergotong royong membantu memperbaiki gubuk Kakek Tulus."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Unsur-unsur intrinsik yang membangun sebuah karya cerita narasi terdiri atas... (Pilih 3 jawaban benar)",
+        "options": [
+            "Tema dan amanat (pesan moral)",
+            "Tokoh dan penokohan (watak)",
+            "Latar (tempat, waktu, suasana) dan alur cerita",
+            "Biaya percetakan dan harga jual buku di toko"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Harga jual dan ongkos cetak buku adalah faktor ekstrinsik/ekonomi, bukan unsur intrinsik cerita."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Kalimat berikut yang mengandung majas metafora (ungkapan perbandingan langsung) adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Anak itu dikenal sebagai kutu buku karena tiada hari tanpa membaca.",
+            "Raja siang telah bangkit dari ufuk timur memancarkan sinarnya.",
+            "Pena itu menari-nari indah di atas lembaran kertas putih.",
+            "Keringatnya mengucur deras seperti air terjun Niagara."
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "'Kutu buku' (orang yang suka membaca) dan 'raja siang' (matahari) adalah contoh majas metafora."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Perbedaan yang tepat antara kalimat langsung dan kalimat tidak langsung adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Kalimat langsung menggunakan tanda baca petik dua ('...') untuk mengapit ucapan asli",
+            "Kalimat tidak langsung biasanya menggunakan kata tugas penghubung seperti 'bahwa' atau 'agar'",
+            "Kalimat langsung tidak pernah diucapkan oleh tokoh dalam cerita",
+            "Kalimat tidak langsung selalu ditulis persis sama persis dengan ucapan aslinya"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Tanda petik dua adalah ciri khas kalimat langsung, sedangkan konjungsi 'bahwa' adalah ciri kalimat tidak langsung."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Contoh karya literasi yang termasuk dalam kategori buku atau teks nonfiksi adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Buku pelajaran Ilmu Pengetahuan Alam dan Sosial (IPAS)",
+            "Buku biografi pahlawan nasional Bung Hatta",
+            "Ensiklopedia flora dan fauna nusantara",
+            "Cerita dongeng putri duyung dan istana ajaib"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Buku pelajaran, biografi, dan ensiklopedia disusun berdasarkan fakta dan riset nyata (nonfiksi)."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Bagian-bagian fisik dan kelengkapan yang umum terdapat pada sebuah buku adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Sampul depan (cover) yang memuat judul dan nama penulis",
+            "Daftar isi yang memuat urutan bab dan nomor halaman",
+            "Glosarium yang memuat daftar istilah khusus beserta artinya",
+            "Kamera foto digital yang terpasang di punggung buku"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sampul, daftar isi, halaman judul, isi bab, dan glosarium adalah komponen standar buku."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Pernyataan dengan Jawaban Tepat)",
+        "text": "Pasangkan contoh kalimat berikut dengan jenis majas yang digunakan: <b>'Dewi malam tersenyum menawan di balik awan mendung.'</b>",
+        "options": [
+            "Majas Personifikasi",
+            "Majas Metafora",
+            "Majas Hiperbola",
+            "Kalimat Majemuk Setara",
+            "Kalimat Langsung"
+        ],
+        "answer": "Majas Personifikasi",
+        "hint": "Bulan diumpamakan tersenyum seperti manusia."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan contoh kalimat berikut dengan jenis majas yang digunakan: <b>'Suara jeritan anak itu menggelegar mengguncang langit bumi.'</b>",
+        "options": [
+            "Majas Personifikasi",
+            "Majas Metafora",
+            "Majas Hiperbola",
+            "Kalimat Majemuk Setara",
+            "Kalimat Langsung"
+        ],
+        "answer": "Majas Hiperbola",
+        "hint": "Melebih-lebihkan suara sampai mengguncang langit bumi."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan contoh kalimat berikut dengan jenis majas yang digunakan: <b>'Bayi mungil itu adalah buah hati dan belahan jiwa orang tuanya.'</b>",
+        "options": [
+            "Majas Personifikasi",
+            "Majas Metafora",
+            "Majas Hiperbola",
+            "Kalimat Majemuk Setara",
+            "Kalimat Langsung"
+        ],
+        "answer": "Majas Metafora",
+        "hint": "Buah hati merupakan kiasan langsung untuk anak kesayangan."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah buku berikut dengan penjelasannya yang tepat: <b>Bagian buku yang memuat daftar kata-kata sulit beserta penjelasannya</b>",
+        "options": [
+            "Glosarium",
+            "Indeks",
+            "Daftar Pustaka",
+            "Kata Pengantar",
+            "Daftar Isi"
+        ],
+        "answer": "Glosarium",
+        "hint": "Glosarium adalah kamus kecil istilah dalam buku."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah buku berikut dengan penjelasannya yang tepat: <b>Daftar sumber rujukan buku atau referensi yang digunakan oleh penulis</b>",
+        "options": [
+            "Glosarium",
+            "Indeks",
+            "Daftar Pustaka",
+            "Kata Pengantar",
+            "Daftar Isi"
+        ],
+        "answer": "Daftar Pustaka",
+        "hint": "Daftar pustaka diletakkan di halaman akhir memuat rujukan buku/penulis."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kata dasar 'sapu' jika diberi imbuhan awalan pe- berubah menjadi kata...",
+        "answer": "Penyapu",
+        "alt": [
+            "penyapu"
+        ],
+        "hint": "Huruf s pada awal kata luluh menjadi ny: pe- + sapu = penyapu."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Persamaan arti kata antara dua kata yang berbeda bentuknya disebut...",
+        "answer": "Sinonim",
+        "alt": [
+            "sinonim",
+            "kata sinonim"
+        ],
+        "hint": "Contoh: cerdas bersinonim dengan pandai."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Perbedaan makna atau perlawanan arti kata antara dua kata disebut...",
+        "answer": "Antonim",
+        "alt": [
+            "antonim",
+            "kata antonim"
+        ],
+        "hint": "Contoh: rajin berantonim dengan malas."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Pesan moral atau nasihat kebaikan yang ingin disampaikan oleh pengarang kepada pembaca dalam cerita disebut...",
+        "answer": "Amanat",
+        "alt": [
+            "amanat",
+            "pesan moral",
+            "amanat cerita"
+        ],
+        "hint": "Nilai budi pekerti yang dapat dipetik dari alur cerita."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Gaya bahasa kiasan yang digunakan untuk memperindah susunan kalimat dalam karya sastra dinamakan...",
+        "answer": "Majas",
+        "alt": [
+            "majas",
+            "gaya bahasa"
+        ],
+        "hint": "Contoh majas: personifikasi, metafora, hiperbola."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Majas yang melebih-lebihkan sesuatu kenyataan hingga terkesan tidak masuk akal disebut majas...",
+        "answer": "Hiperbola",
+        "alt": [
+            "hiperbola",
+            "majas hiperbola"
+        ],
+        "hint": "Contoh: gedung pencakar langit itu tingginya menyentuh bintang."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Kalimat yang menirukan secara persis apa yang diucapkan oleh seseorang dan diapit tanda petik dua ('...') disebut kalimat...",
+        "answer": "Langsung",
+        "alt": [
+            "kalimat langsung",
+            "langsung"
+        ],
+        "hint": "Contoh: Ibu berkata, 'Ayo belajar!'"
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Buku yang memuat kisah dongeng hewan yang bertingkah laku seperti manusia disebut...",
+        "answer": "Fabel",
+        "alt": [
+            "fabel",
+            "cerita fabel"
+        ],
+        "hint": "Kisah kancil dan buaya adalah contoh fabel."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Lengkapilah kalimat rumpang berikut dengan konjungsi pertentangan yang tepat: 'Badan Danu terasa lelah, ... ia tetap menyelesaikan tugas piketnya.'",
+        "answer": "Tetapi (atau namun)",
+        "alt": [
+            "tetapi",
+            "namun",
+            "akan tetapi"
+        ],
+        "hint": "Hubungan berlawanan antara lelah dan tetap menyelesaikan tugas."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Bagian terluar buku yang berfungsi melindungi lembaran kertas isi buku dan memuat judul serta nama pengarang disebut...",
+        "answer": "Sampul (atau cover)",
+        "alt": [
+            "sampul",
+            "cover",
+            "kulit buku",
+            "sampul buku"
+        ],
+        "hint": "Terdapat sampul depan, sampul belakang, dan punggung buku."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan apa yang dimaksud dengan majas (gaya bahasa) dan sebutkan 3 jenis majas beserta penjelasan singkatnya!",
+        "answer": "<b>Majas</b> adalah gaya bahasa kiasan atau ungkapan indah yang digunakan penulis untuk memperkaya makna dan memperindah kalimat dalam karya sastra.<br><br>Tiga jenis majas:<br>1. <b>Majas Metafora</b>: Majas perbandingan langsung tanpa kata pembanding (contoh: anak emas, kutu buku).<br>2. <b>Majas Personifikasi</b>: Majas yang menggambarkan benda mati seolah-olah bernyawa dan berperilaku seperti manusia (contoh: angin berbisik lembut).<br>3. <b>Majas Hiperbola</b>: Majas yang melebih-lebihkan suatu kenyataan secara berlebihan (contoh: suaranya menggelegar membelah angkasa).",
+        "hint": "Uraikan definisi majas dan jelaskan metafora, personifikasi, serta hiperbola."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan perbedaan mendasar antara teks fiksi dan teks nonfiksi serta berikan masing-masing 2 contoh karyanya!",
+        "answer": "1. <b>Teks Fiksi</b>: Karya tulis yang dibuat berdasarkan imajinasi, khayalan, atau rekaan pengarang (tidak nyata).<br>Contoh: Cerpen, dongeng, fabel, novel.<br><br>2. <b>Teks Nonfiksi</b>: Karya tulis yang disusun berdasarkan data, fakta nyata, riset ilmiah, atau peristiwa yang benar-benar terjadi.<br>Contoh: Buku pelajaran, buku biografi tokoh, artikel berita koran, ensiklopedia.",
+        "hint": "Bandingkan sifat imajinasi (fiksi) dengan fakta nyata (nonfiksi) dan beri contohnya."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Uraikan perbedaan antara kalimat langsung dan kalimat tidak langsung, kemudian ubahlah kalimat langsung berikut menjadi kalimat tidak langsung:<br><b>Ibu guru berkata, \"Kalian harus rajin membaca buku setiap hari.\"</b>",
+        "answer": "<b>Perbedaan</b>: Kalimat langsung mengutip ucapan asli pembicara secara utuh dengan tanda petik dua ('...'), sedangkan kalimat tidak langsung menceritakan kembali ucapan orang lain dengan kata-kata sendiri tanpa tanda petik dua (menggunakan kata hubung 'bahwa' atau 'agar').<br><br><b>Perubahan kalimat</b>:<br>Ibu guru mengatakan bahwa kami harus rajin membaca buku setiap hari.",
+        "hint": "Jelaskan perbedaan tanda petik dua dan konjungsi bahwa, lalu ubah kalimat dengan kata ganti yang tepat."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Sebutkan dan jelaskan 4 tahapan utama dalam langkah-langkah menulis sebuah cerita!",
+        "answer": "Langkah-langkah menulis cerita:<br>1. <b>Menentukan Tema dan Judul</b>: Memilih gagasan utama cerita dan menentukan tema yang menarik.<br>2. <b>Menyusun Kerangka Karangan (Outline)</b>: Merancang alur cerita, tokoh, watak, dan latar agar penulisan runtut.<br>3. <b>Mengembangkan Draf Cerita</b>: Menuliskan kalimat demi kalimat cerita secara utuh dari awal sampai akhir.<br>4. <b>Menyunting (Editing)</b>: Membaca ulang dan memperbaiki kesalahan ejaan, tanda baca, pilihan kata, atau susunan kalimat.",
+        "hint": "Uraikan proses pra-menulis (tema & kerangka), penulisan draf, hingga penyuntingan."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Sebutkan 5 bagian kelengkapan yang umum terdapat di dalam sebuah buku nonfiksi beserta fungsinya!",
+        "answer": "Lima bagian kelengkapan buku:<br>1. <b>Sampul (Cover)</b>: Bagian luar pelindung buku yang memuat judul, nama pengarang, dan penerbit.<br>2. <b>Halaman Judul</b>: Halaman awal di dalam buku yang memuat judul lengkap dan informasi hak cipta.<br>3. <b>Kata Pengantar</b>: Prakata dari penulis mengenai ucapan syukur, gambaran isi buku, dan terima kasih.<br>4. <b>Daftar Isi</b>: Daftar bab, subbab, dan nomor halaman untuk mempermudah mencari materi.<br>5. <b>Glosarium</b>: Daftar istilah-istilah khusus dalam buku beserta penjelasannya.<br>(Atau Indeks / Daftar Pustaka).",
+        "hint": "Sebutkan komponen buku seperti sampul, daftar isi, glosarium, indeks, dan daftar pustaka."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

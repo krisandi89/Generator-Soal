@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS PJOK (Pendidikan Jasmani, Olahraga, dan Kesehatan) Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #d35400;
+            --primary-light: #e67e22;
+            --bg: #fef5e7;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>⚽ PJOK (Pendidikan Jasmani, Olahraga, dan Kesehatan)</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Pada aktivitas melempar bola, jenis lemparan yang lintasannya membentuk garis parabola melengkung ke atas dan cocok untuk operan jarak jauh adalah lemparan...",
+        "options": [
+            "Mendatar",
+            "Melambung",
+            "Menyusur tanah",
+            "Memantul"
+        ],
+        "answer": 1,
+        "hint": "Lemparan melambung diarahkan ke atas depan membentuk busur parabola tinggi agar menjangkau jarak yang jauh."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Untuk melatih kelincahan dan kemampuan mengubah arah gerak tubuh dengan cepat, variasi modifikasi lari yang paling tepat adalah...",
+        "options": [
+            "Lari jarak jauh 5 km",
+            "Lari santai (jogging)",
+            "Lari zig-zag (berkelok-kelok)",
+            "Jalan santai"
+        ],
+        "answer": 2,
+        "hint": "Lari zig-zag mengitari corong/rintangan melatih kelincahan dan respon perubahan arah gerak."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Perbedaan mendasar antara gerakan 'meloncat' dan 'melompat' dalam atletik terletak pada...",
+        "options": [
+            "Meloncat bertumpu pada satu kaki, sedangkan melompat bertumpu pada dua kaki",
+            "Meloncat bertumpu pada dua kaki, sedangkan melompat bertumpu pada satu kaki",
+            "Meloncat gerakannya ke belakang, sedangkan melompat ke depan",
+            "Tidak ada perbedaan sama sekali antara keduanya"
+        ],
+        "answer": 1,
+        "hint": "Melompat menggunakan tolakan SATU kaki tumpu, sedangkan meloncat menolakkan DUA kaki secara bersamaan."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Saat melakukan pendaratan setelah melompat atau meloncat, kedua lutut harus ditekuk (mengeper). Tujuan utama dari gerakan mengeper ini adalah...",
+        "options": [
+            "Meredam benturan tubuh dan mencegah cedera kaki",
+            "Agar pendaratan menimbulkan suara hentakan yang keras",
+            "Memudahkan badan langsung jatuh berguling",
+            "Menghemat tenaga agar tidak berkeringat"
+        ],
+        "answer": 0,
+        "hint": "Menekuk lutut (mengeper) berfungsi seperti pegas untuk meredam gaya benturan berat tubuh saat mendarat."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Dalam permainan sepak bola, bagian kaki yang paling sering digunakan untuk mengoper bola jarak pendek (passing) dengan tingkat akurasi yang tinggi adalah...",
+        "options": [
+            "Ujung jari kaki",
+            "Kaki bagian dalam",
+            "Tumit kaki",
+            "Kaki bagian luar"
+        ],
+        "answer": 1,
+        "hint": "Kaki bagian dalam memiliki bidang permukaan yang lebar dan datar sehingga operan lebih terarah dan akurat."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Berapakah jumlah pemain inti dari masing-masing regu dalam satu pertandingan sepak bola resmi?",
+        "options": [
+            "5 orang",
+            "6 orang",
+            "11 orang",
+            "12 orang"
+        ],
+        "answer": 2,
+        "hint": "Sepak bola dimainkan oleh 11 orang pemain inti di tiap regunya (kesebelasan)."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Teknik operan bola basket yang dilakukan setinggi dada lurus ke arah dada rekan satu tim dinamakan...",
+        "options": [
+            "Bounce pass",
+            "Chest pass",
+            "Overhead pass",
+            "Baseball pass"
+        ],
+        "answer": 1,
+        "hint": "Chest artinya dada; Chest pass adalah operan dada ke dada yang cepat dan bertenaga."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Gerakan memutar badan dengan salah satu kaki tetap menempel di lantai sebagai poros untuk melindungi bola dari rebutan lawan dalam bola basket disebut...",
+        "options": [
+            "Dribbling",
+            "Shooting",
+            "Pivot",
+            "Rebound"
+        ],
+        "answer": 2,
+        "hint": "Pivot adalah gerakan berputar dengan satu kaki poros tanpa menggeser tumpuannya."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Teknik menerima bola dalam permainan bola voli dengan merapatkan dan meluruskan kedua lengan ke depan bawah disebut teknik...",
+        "options": [
+            "Passing atas",
+            "Passing bawah",
+            "Smash",
+            "Service atas"
+        ],
+        "answer": 1,
+        "hint": "Passing bawah dilakukan dengan kedua lengan lurus rapat ke depan bawah untuk menyambut bola servis atau serangan lawan."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Pukulan keras, tajam, dan menukik melewati atas net ke bidang lapangan lawan dalam permainan bola voli bertujuan untuk mematikan lawan dan mencetak poin dinamakan...",
+        "options": [
+            "Smash (Spike)",
+            "Passing",
+            "Blocking",
+            "Servis bawah"
+        ],
+        "answer": 0,
+        "hint": "Smash (spike) adalah serangan utama berupa pukulan keras menukik ke bawah."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Manakah macam-macam variasi arah lemparan bola dalam permainan kasti atau olahraga lempar tangkap? (Pilih 3 jawaban benar)",
+        "options": [
+            "Lemparan bola melambung",
+            "Lemparan bola mendatar",
+            "Lemparan bola menyusur tanah",
+            "Lemparan bola zig-zag di udara"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga variasi dasar lemparan: melambung (jauh), mendatar (cepat setinggi dada), dan menyusur tanah."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Manakah bentuk modifikasi latihan lari yang efektif meningkatkan kelincahan, kecepatan, dan daya tahan tubuh? (Pilih 3 jawaban benar)",
+        "options": [
+            "Lari bolak-balik (shuttle run)",
+            "Lari zig-zag mengitari rintangan",
+            "Lari cepat jarak pendek (sprint)",
+            "Tidur santai di tepi lapangan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Shuttle run, lari zig-zag, dan sprint merupakan bentuk latihan fisik atletik lari yang terbukti meningkatkan kebugaran."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Contoh latihan yang menerapkan gerakan meloncat atau melompat dalam kehidupan sehari-hari dan olahraga adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Lompat tali (skipping)",
+            "Loncat katak melewati garis",
+            "Melompat melewati rintangan gawang kardus",
+            "Bermain catur duduk di kursi"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Skipping, loncat katak, dan lompat rintangan melatih kekuatan otot tungkai dan koordinasi kaki."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Manakah teknik dasar menendang bola dalam permainan sepak bola berdasarkan perkenaan bagian kakinya? (Pilih 3 jawaban benar)",
+        "options": [
+            "Menendang dengan kaki bagian dalam",
+            "Menendang dengan kaki bagian luar",
+            "Menendang dengan punggung kaki (kura-kura kaki)",
+            "Menendang dengan tempurung lutut"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga teknik menendang utama dalam sepak bola menggunakan kaki bagian dalam, luar, dan punggung kaki."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Tujuan dari gerakan menggiring bola (dribbling) dalam permainan sepak bola adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Mendekatkan bola ke arah gawang lawan untuk mencetak gol",
+            "Melewati dan mengecoh pemain bertahan lawan",
+            "Mengulur waktu tanpa tujuan permainan",
+            "Memberikan bola secara cuma-cuma kepada kiper lawan"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Dribbling digunakan untuk menguasai bola, melewati hadangan lawan, dan mendekati zona pertahanan musuh."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Manakah jenis-jenis operan bola (passing) dalam permainan bola basket? (Pilih 3 jawaban benar)",
+        "options": [
+            "Chest pass (operan setinggi dada)",
+            "Bounce pass (operan pantulan ke lantai)",
+            "Overhead pass (operan dari atas kepala)",
+            "Heading pass (operan sundulan kepala)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Dalam bola basket, operan tangan yang baku adalah chest pass, bounce pass, dan overhead pass."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Pernyataan yang benar tentang teknik dasar dribbling dalam permainan bola basket adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Bola dipantulkan ke lantai dengan mendorong menggunakan jari-jari satu tangan yang lentur",
+            "Pandangan mata tidak boleh hanya tertuju pada bola, melainkan harus melihat situasi lapangan",
+            "Boleh membawa bola berlari sejauh mungkin tanpa memantulkannya sama sekali",
+            "Kedua tangan boleh menepuk bola ke lantai secara bersamaan berulang kali saat berjalan"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Dribble dilakukan dengan mendorong bola satu tangan dan pandangan mengamati kawan serta lawan."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Teknik dasar yang ada dalam permainan bola voli antara lain meliputi... (Pilih 3 jawaban benar)",
+        "options": [
+            "Passing bawah dan passing atas",
+            "Servis bawah dan servis atas",
+            "Smash dan blocking (bendungan)",
+            "Menggiring bola dengan kaki di lapangan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Voli mengandalkan servis, passing, smash, dan blok dengan tangan; tidak ada dribble dengan kaki."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Manakah jumlah pemain inti tiap regu dari cabang olahraga bola besar berikut yang benar? (Pilih 3 jawaban benar)",
+        "options": [
+            "Sepak bola = 11 orang pemain tiap regu",
+            "Bola voli = 6 orang pemain tiap regu",
+            "Bola basket = 5 orang pemain tiap regu",
+            "Bola basket = 11 orang pemain tiap regu"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sepak bola 11 orang, bola voli 6 orang, dan bola basket 5 orang."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Sikap sportivitas yang wajib ditunjukkan saat bertanding olahraga adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Menghargai dan mematuhi keputusan wasit pertandingan",
+            "Menjabat tangan pemain lawan seusai pertandingan selesai",
+            "Menerima kekalahan dengan lapang dada dan mengevaluasi permainan",
+            "Mengejek dan memicu keributan dengan pendukung tim lawan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sportivitas mencakup patuh aturan wasit, respek kepada lawan, dan berjiwa ksatria menerima hasil laga."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Istilah Olahraga dengan Cabang Olahraganya yang Tepat)",
+        "text": "Pasangkan istilah teknik berikut dengan cabang olahraganya: <b>Chest Pass dan Pivot</b>",
+        "options": [
+            "Bola Basket",
+            "Bola Voli",
+            "Sepak Bola",
+            "Permainan Kasti",
+            "Atletik Lari"
+        ],
+        "answer": "Bola Basket",
+        "hint": "Chest pass dan pivot merupakan teknik dasar khas bola basket."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah teknik berikut dengan cabang olahraganya: <b>Passing Bawah dan Smash</b>",
+        "options": [
+            "Bola Basket",
+            "Bola Voli",
+            "Sepak Bola",
+            "Permainan Kasti",
+            "Atletik Lari"
+        ],
+        "answer": "Bola Voli",
+        "hint": "Passing bawah dan smash menukik melewati net adalah teknik bola voli."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah teknik berikut dengan cabang olahraganya: <b>Dribbling dan Heading (Menyundul)</b>",
+        "options": [
+            "Bola Basket",
+            "Bola Voli",
+            "Sepak Bola",
+            "Permainan Kasti",
+            "Atletik Lari"
+        ],
+        "answer": "Sepak Bola",
+        "hint": "Menyundul bola dengan dahi dan menggiring dengan kaki ada di sepak bola."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah teknik berikut dengan cabang olahraganya: <b>Lemparan Bola Melambung</b>",
+        "options": [
+            "Bola Basket",
+            "Bola Voli",
+            "Sepak Bola",
+            "Permainan Kasti",
+            "Atletik Lari"
+        ],
+        "answer": "Permainan Kasti",
+        "hint": "Teknik melempar bola kecil melambung kepada pemukul atau penjaga base dalam kasti."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan istilah latihan berikut dengan cabang olahraganya: <b>Shuttle Run dan Lari Zig-Zag</b>",
+        "options": [
+            "Bola Basket",
+            "Bola Voli",
+            "Sepak Bola",
+            "Permainan Kasti",
+            "Atletik Lari"
+        ],
+        "answer": "Atletik Lari",
+        "hint": "Modifikasi lari bolak-balik dan berkelok-kelok merupakan latihan atletik lari kelincahan."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Gerakan melompat menolakkan tubuh dengan menggunakan tumpuan ... kaki.",
+        "answer": "Satu kaki",
+        "alt": [
+            "satu",
+            "1",
+            "satu kaki",
+            "1 kaki"
+        ],
+        "hint": "Melompat (jump) menolak dengan satu kaki terkuat."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Gerakan meloncat menolakkan tubuh dengan menggunakan tumpuan ... kaki secara bersamaan.",
+        "answer": "Dua kaki",
+        "alt": [
+            "dua",
+            "2",
+            "dua kaki",
+            "2 kaki"
+        ],
+        "hint": "Meloncat (hop/leap) menggunakan kedua kaki secara serentak seperti katak."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Lari bolak-balik untuk mengukur dan melatih kelincahan serta kecepatan dinamakan lari...",
+        "answer": "Shuttle run",
+        "alt": [
+            "shuttle run",
+            "shutle run",
+            "lari bolak balik",
+            "lari bolak-balik"
+        ],
+        "hint": "Istilah bahasa Inggris untuk lari bolak-balik memindahkan balok/menyentuh garis."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Menyundul bola dalam sepak bola menggunakan bagian kepala yaitu tulang...",
+        "answer": "Dahi (kening)",
+        "alt": [
+            "dahi",
+            "kening",
+            "jidat",
+            "tulang dahi"
+        ],
+        "hint": "Bagian kepala depan yang keras dan rata agar arah sundulan terkontrol."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Jumlah pemain sepak bola dalam satu regu kesebelasan di lapangan pertandingan adalah ... orang.",
+        "answer": "11",
+        "alt": [
+            "11",
+            "sebelas",
+            "11 orang",
+            "sebelas orang"
+        ],
+        "hint": "Sering disebut regu kesebelasan."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Operan bola basket dengan memantulkan bola ke lantai terlebih dahulu dinamakan operan...",
+        "answer": "Bounce pass",
+        "alt": [
+            "bounce pass",
+            "bonce pass",
+            "pantul",
+            "operan pantul"
+        ],
+        "hint": "Bounce artinya memantul."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Jumlah pemain inti dalam satu tim pada pertandingan bola basket adalah ... orang.",
+        "answer": "5",
+        "alt": [
+            "5",
+            "lima",
+            "5 orang",
+            "lima orang"
+        ],
+        "hint": "Bermain 5 lawan 5 di lapangan basket."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Pukulan pembuka tanda dimulainya suatu reli dalam permainan bola voli disebut pukulan...",
+        "answer": "Servis (service)",
+        "alt": [
+            "servis",
+            "service",
+            "serve"
+        ],
+        "hint": "Dilakukan dari belakang garis batas lapangan voli."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Jumlah pemain dalam satu regu bola voli yang berada di lapangan adalah ... orang.",
+        "answer": "6",
+        "alt": [
+            "6",
+            "enam",
+            "6 orang",
+            "enam orang"
+        ],
+        "hint": "Setiap tim voli menurunkan 6 pemain inti."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Upaya membendung serangan smash lawan di depan net dalam permainan bola voli dinamakan...",
+        "answer": "Block (bendungan)",
+        "alt": [
+            "block",
+            "blocking",
+            "bendungan",
+            "blok"
+        ],
+        "hint": "Melompat sambil merentangkan kedua tangan ke atas net untuk menahan laju bola."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan 3 macam variasi arah lemparan bola dalam permainan lempar tangkap bola kasti serta sebutkan kegunaan masing-masing lemparan!",
+        "answer": "1. <b>Lemparan Melambung:</b> Arah bola dilempar ke atas depan membentuk lintasan parabola tinggi. Digunakan untuk mengoper bola jarak jauh kepada rekan satu regu.<br>2. <b>Lemparan Mendatar:</b> Arah bola dilempar lurus setinggi dada dengan kecepatan tinggi. Digunakan untuk operan jarak dekat hingga menengah yang cepat dan akurat.<br>3. <b>Lemparan Menyusur Tanah:</b> Arah bola dilempar menggelinding di permukaan tanah. Digunakan untuk melempar bola saat situasi tanah licin atau menyulitkan penangkapan lawan.",
+        "hint": "Jelaskan lemparan melambung, mendatar, dan menyusur tanah beserta fungsi arah jaraknya."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan perbedaan mendasar antara gerakan 'Melompat' dan 'Meloncat', serta bagaimana cara melakukan pendaratan yang aman agar terhindar dari cedera!",
+        "answer": "<b>Perbedaan:</b><br>- <b>Melompat:</b> Gerakan mendorong tubuh ke udara dengan tolakan menggunakan <b>SATU kaki</b> tumpu terkuat.<br>- <b>Meloncat:</b> Gerakan mendorong tubuh ke udara dengan tolakan menggunakan <b>DUA kaki</b> tumpu secara serentak.<br><br><b>Cara pendaratan aman:</b><br>Mendarat dengan kedua ujung kaki terlebih dahulu disusul tumit, badan sedikit condong ke depan, dan kedua lutut ditekuk/mengeper (fleksi) untuk meredam daya benturan.",
+        "hint": "Jelaskan tumpuan kaki (satu vs dua kaki) dan teknik mengeper saat mendarat."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Sebutkan dan jelaskan 3 teknik menendang bola dalam sepak bola berdasarkan bagian kaki yang mengenai bola!",
+        "answer": "1. <b>Menendang dengan Kaki Bagian Dalam:</b> Menghasilkan laju bola yang akurat dan terarah, sangat ideal untuk operan jarak pendek antarpemain.<br>2. <b>Menendang dengan Kaki Bagian Luar:</b> Menghasilkan operan atau tembakan yang efek lintasannya melengkung ke luar, berguna mengecoh hadangan lawan.<br>3. <b>Menendang dengan Punggung Kaki (Kura-kura kaki):</b> Menghasilkan tendangan yang sangat kencang, kuat, dan melesat lurus, biasa digunakan untuk tembakan langsung ke arah gawang (shooting).",
+        "hint": "Uraikan bagian kaki dalam, luar, dan punggung kaki beserta karakter laju bolanya."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Sebutkan dan jelaskan 3 macam teknik operan (passing) dalam permainan bola basket!",
+        "answer": "1. <b>Chest Pass:</b> Operan yang dilempar lurus setinggi dada menggunakan dorongan kedua tangan. Digunakan untuk umpan cepat tanpa halangan pemain lawan.<br>2. <b>Bounce Pass:</b> Operan yang dipantulkan ke lantai sekitar 2/3 jarak menuju rekan tim. Sangat efektif menerobos pertahanan lawan yang berpostur tinggi.<br>3. <b>Overhead Pass:</b> Operan yang dilempar dari atas kepala dengan kedua tangan. Digunakan untuk umpan jarak jauh atau meloloskan bola dari kawalan ketat penjaga lawan.",
+        "hint": "Jelaskan chest pass, bounce pass, dan overhead pass."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Jelaskan langkah-langkah yang benar saat melakukan gerakan 'Passing Bawah' dalam permainan bola voli!",
+        "answer": "Langkah melakukan passing bawah bola voli:<br>1. Berdiri dengan kedua kaki dibuka selebar bahu dan kedua lutut sedikit ditekuk (posisi siap).<br>2. Rapatkan dan luruskan kedua lengan ke depan bawah di antara kedua lutut, dengan kedua ibu jari saling sejajar dan mengunci.<br>3. Arahkan pandangan mata selalu tertuju pada arah datangnya bola.<br>4. Ketika bola sudah berada pada ketinggian yang pas, ayunkan kedua lengan ke atas depan dengan poros ayunan pada persendian bahu.<br>5. Perkenaan bola yang tepat adalah pada bagian atas pergelangan tangan (lengan bawah).",
+        "hint": "Uraikan posisi kaki dan lutut ditekuk, posisi lengan dirapatkan lurus, serta perkenaan di pergelangan tangan."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

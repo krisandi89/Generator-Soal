@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Bahasa Arab Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap'); .ar { font-family: 'Amiri', serif; font-size: 1.25em; font-weight: bold; direction: rtl; display: inline-block; padding: 0 4px; }
+        :root {
+            --primary: #009432;
+            --primary-light: #2ed573;
+            --bg: #f0fff4;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>🕌 Bahasa Arab</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Arti dari kosakata bahasa Arab <span class='ar'>أَنْفٌ</span> (anfun) adalah...",
+        "options": [
+            "Mata",
+            "Telinga",
+            "Hidung",
+            "Mulut"
+        ],
+        "answer": 2,
+        "hint": "<span class='ar'>أَنْفٌ</span> artinya hidung, sedangkan mata adalah <span class='ar'>عَيْنٌ</span> dan mulut adalah <span class='ar'>فَمٌ</span>."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Anggota tubuh yang digunakan untuk mendengar dalam bahasa Arab disebut...",
+        "options": [
+            "<span class='ar'>عَيْنٌ</span> (Ainun)",
+            "<span class='ar'>أُذُنٌ</span> (Udzunun)",
+            "<span class='ar'>لِسَانٌ</span> (Lisanun)",
+            "<span class='ar'>رِجْلٌ</span> (Rijlun)"
+        ],
+        "answer": 1,
+        "hint": "<span class='ar'>أُذُنٌ</span> (udzunun) artinya telinga."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Perhatikan kalimat berikut: <span class='ar'>نَنْظُرُ إِلَى الأَشْيَاءِ بِـ...</span> (Kita melihat berbagai benda dengan...). Kata yang tepat untuk melengkapi kalimat tersebut adalah...",
+        "options": [
+            "<span class='ar'>الْعَيْنِ</span>",
+            "<span class='ar'>الْأَنْفِ</span>",
+            "<span class='ar'>الْفَمِ</span>",
+            "<span class='ar'>الْأُذُنِ</span>"
+        ],
+        "answer": 0,
+        "hint": "Melihat (<span class='ar'>نَنْظُرُ</span>) dilakukan menggunakan mata (<span class='ar'>الْعَيْنِ</span>)."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Pola susunan kalimat dasar dalam bahasa Arab: Isim Isyarah + Isim + Na'at (Kata Tunjuk + Benda + Kata Sifat). Manakah pasangan yang tepat untuk kata <span class='ar'>رَأْسٌ</span> (kepala - mudzakkar)?",
+        "options": [
+            "<span class='ar'>هَذَا رَأْسٌ كَبِيرٌ</span>",
+            "<span class='ar'>هَذِهِ رَأْسٌ كَبِيرَةٌ</span>",
+            "<span class='ar'>هَذَا رَأْسٌ كَبِيرَةٌ</span>",
+            "<span class='ar'>هَذِهِ رَأْسٌ كَبِيرٌ</span>"
+        ],
+        "answer": 0,
+        "hint": "Kata <span class='ar'>رَأْسٌ</span> adalah mudzakkar (tidak diakhiri ta marbuthah), maka memakai isyarah <span class='ar'>هَذَا</span> dan na'at <span class='ar'>كَبِيرٌ</span>."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Anggota tubuh yang berpasangan (seperti kedua mata, telinga, tangan, kaki) dalam tata bahasa Arab dihukumi sebagai <b>muannats</b>. Kalimat yang benar untuk kata <span class='ar'>عَيْنٌ</span> (mata) adalah...",
+        "options": [
+            "<span class='ar'>هَذَا عَيْنٌ جَمِيلٌ</span>",
+            "<span class='ar'>هَذِهِ عَيْنٌ جَمِيلَةٌ</span>",
+            "<span class='ar'>هَذِهِ عَيْنٌ جَمِيلٌ</span>",
+            "<span class='ar'>هَذَا عَيْنٌ جَمِيلَةٌ</span>"
+        ],
+        "answer": 1,
+        "hint": "<span class='ar'>عَيْنٌ</span> dihukumi muannats majazi (karena berpasangan), sehingga menggunakan isyarah <span class='ar'>هَذِهِ</span> dan sifat berakhiran ta' marbuthoh <span class='ar'>جَمِيلَةٌ</span>."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Hewan yang memiliki belalai panjang dan bertubuh besar di kebun binatang disebut...",
+        "options": [
+            "<span class='ar'>أَسَدٌ</span>",
+            "<span class='ar'>فِيلٌ</span>",
+            "<span class='ar'>قِرْدٌ</span>",
+            "<span class='ar'>زَرَافَةٌ</span>"
+        ],
+        "answer": 1,
+        "hint": "<span class='ar'>فِيلٌ</span> (fiilun) artinya gajah."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Arti dari kata <span class='ar'>أَسَدٌ</span> (asadun) dalam kosakata kebun binatang adalah...",
+        "options": [
+            "Harimau",
+            "Singa",
+            "Serigala",
+            "Kucing"
+        ],
+        "answer": 1,
+        "hint": "<span class='ar'>أَسَدٌ</span> artinya singa (raja hutan), sedangkan harimau adalah <span class='ar'>نَمِرٌ</span>."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Perhatikan kata acak berikut: <span class='ar'>طَوِيلَةٌ - زَرَافَةٌ - هَذِهِ</span>. Susunan yang benar sesuai pola Isim Isyarah + Isim + Na'at adalah...",
+        "options": [
+            "<span class='ar'>زَرَافَةٌ طَوِيلَةٌ هَذِهِ</span>",
+            "<span class='ar'>طَوِيلَةٌ هَذِهِ زَرَافَةٌ</span>",
+            "<span class='ar'>هَذِهِ زَرَافَةٌ طَوِيلَةٌ</span>",
+            "<span class='ar'>هَذِهِ طَوِيلَةٌ زَرَافَةٌ</span>"
+        ],
+        "answer": 2,
+        "hint": "Urutan pola yang benar: Isim Isyarah (<span class='ar'>هَذِهِ</span>) + Isim (<span class='ar'>زَرَافَةٌ</span>) + Na'at (<span class='ar'>طَوِيلَةٌ</span>) = Ini jerapah yang tinggi."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Arti dari kalimat <span class='ar'>فِي حَدِيقَةِ الْحَيَوَانَاتِ قِرْدٌ نَشِيطٌ</span> adalah...",
+        "options": [
+            "Di kebun binatang ada monyet yang lincah",
+            "Di kebun binatang ada singa yang tidur",
+            "Di halaman rumah ada burung yang berkicau",
+            "Di sawah ada kerbau yang kuat"
+        ],
+        "answer": 0,
+        "hint": "<span class='ar'>قِرْدٌ نَشِيطٌ</span> artinya monyet/kera yang lincah/aktif."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Fungsi dari <span class='ar'>اللِّسَان</span> (al-lisaan) dalam kehidupan sehari-hari adalah...",
+        "options": [
+            "<span class='ar'>لِلْمَشْيِ</span> (untuk berjalan)",
+            "<span class='ar'>لِلْكَلَامِ وَالتَّذَوُّقِ</span> (untuk berbicara dan mengecap rasa)",
+            "<span class='ar'>لِلشَّمِّ</span> (untuk mencium bau)",
+            "<span class='ar'>لِلسَّمْعِ</span> (untuk mendengar suara)"
+        ],
+        "answer": 1,
+        "hint": "Lidah (<span class='ar'>اللِّسَان</span>) berfungsi untuk berbicara dan mengecap makanan."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Manakah di antara kosakata berikut yang termasuk anggota tubuh bagian kepala/wajah? (Pilih 3 jawaban benar)",
+        "options": [
+            "<span class='ar'>عَيْنٌ</span> (Mata)",
+            "<span class='ar'>أَنْفٌ</span> (Hidung)",
+            "<span class='ar'>فَمٌ</span> (Mulut)",
+            "<span class='ar'>رِجْلٌ</span> (Kaki)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Mata, hidung, dan mulut berada di kepala/wajah; sedangkan <span class='ar'>رِجْلٌ</span> adalah kaki."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Manakah anggota tubuh yang berpasangan dan dihukumi <b>muannats</b> dalam bahasa Arab? (Pilih 3 jawaban benar)",
+        "options": [
+            "<span class='ar'>يَدٌ</span> (Tangan)",
+            "<span class='ar'>أُذُنٌ</span> (Telinga)",
+            "<span class='ar'>عَيْنٌ</span> (Mata)",
+            "<span class='ar'>أَنْفٌ</span> (Hidung)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tangan (<span class='ar'>يَدٌ</span>), telinga (<span class='ar'>أُذُنٌ</span>), dan mata (<span class='ar'>عَيْنٌ</span>) berjumlah ganda sehingga muannats; sedangkan hidung tunggal (mudzakkar)."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Manakah kalimat berikut yang menggunakan pola <b>Isim Isyarah + Isim + Na'at</b> (Mudzakkar) dengan benar? (Pilih 2 jawaban benar)",
+        "options": [
+            "<span class='ar'>هَذَا وَجْهٌ جَمِيلٌ</span> (Ini wajah yang tampan)",
+            "<span class='ar'>هَذَا شَعْرٌ نَظِيفٌ</span> (Ini rambut yang bersih)",
+            "<span class='ar'>هَذَا يَدٌ قَوِيَّةٌ</span>",
+            "<span class='ar'>هَذِهِ أَنْفٌ صَغِيرٌ</span>"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "<span class='ar'>وَجْهٌ</span> dan <span class='ar'>شَعْرٌ</span> adalah mudzakkar sehingga memakai <span class='ar'>هَذَا</span> dan na'at tanpa ta' marbuthah."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Manakah kalimat berikut yang menggunakan kata tunjuk <b><span class='ar'>هَذِهِ</span></b> (Muannats) dengan tepat? (Pilih 2 jawaban benar)",
+        "options": [
+            "<span class='ar'>هَذِهِ يَدٌ قَوِيَّةٌ</span> (Ini tangan yang kuat)",
+            "<span class='ar'>هَذِهِ رِجْلٌ سَلِيمَةٌ</span> (Ini kaki yang sehat)",
+            "<span class='ar'>هَذِهِ فَمٌ وَاسِعٌ</span>",
+            "<span class='ar'>هَذِهِ رَأْسٌ كَبِيرٌ</span>"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "<span class='ar'>يَدٌ</span> dan <span class='ar'>رِجْلٌ</span> adalah anggota tubuh ganda (muannats) sehingga memakai <span class='ar'>هَذِهِ</span> dan sifat muannats."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Hewan-hewan buas karnivora yang ada di kebun binatang antara lain adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "<span class='ar'>أَسَدٌ</span> (Singa)",
+            "<span class='ar'>نَمِرٌ</span> (Harimau)",
+            "<span class='ar'>أَرْنَبٌ</span> (Kelinci)",
+            "<span class='ar'>فِيلٌ</span> (Gajah)"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "<span class='ar'>أَسَدٌ</span> (singa) dan <span class='ar'>نَمِرٌ</span> (harimau) adalah hewan buas pemakan daging."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Manakah kosakata hewan berikut yang termasuk hewan pemakan tumbuhan (herbivora)? (Pilih 3 jawaban benar)",
+        "options": [
+            "<span class='ar'>فِيلٌ</span> (Gajah)",
+            "<span class='ar'>زَرَافَةٌ</span> (Jerapah)",
+            "<span class='ar'>أَرْنَبٌ</span> (Kelinci)",
+            "<span class='ar'>تِمْسَاحٌ</span> (Buaya)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Gajah, jerapah, dan kelinci memakan rumput/daun/wortel, sedangkan buaya adalah karnivora."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Perhatikan pasangan kata bahasa Arab dan artinya. Manakah pasangan yang tepat? (Pilih 3 jawaban benar)",
+        "options": [
+            "<span class='ar'>بَطْنٌ</span> = Perut",
+            "<span class='ar'>صَدْرٌ</span> = Dada",
+            "<span class='ar'>أَسْنَانٌ</span> = Gigi",
+            "<span class='ar'>رِجْلٌ</span> = Telinga"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "<span class='ar'>رِجْلٌ</span> artinya kaki, bukan telinga."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Pernyataan yang benar mengenai penyesuaian sifat (Na'at) dengan kata benda (Isim/Man'ut) dalam bahasa Arab adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Jika benda mudzakkar (laki-laki/tanpa ta marbuthah), maka kata sifatnya juga harus mudzakkar",
+            "Jika benda muannats (perempuan/ada ta marbuthah/anggota tubuh berpasangan), kata sifatnya memakai ta marbuthah",
+            "Kata sifat posisinya selalu diletakkan sebelum kata bendanya",
+            "Semua anggota tubuh manusia dihukumi mudzakkar tanpa pengecualian"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Na'at (sifat) mengikuti man'ut (benda) dalam gender (mudzakkar/muannats), dan na'at diletakkan setelah isim."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Manakah hewan yang bisa terbang atau hidup di air dari kosakata kebun binatang berikut? (Pilih 2 jawaban benar)",
+        "options": [
+            "<span class='ar'>طَائِرٌ</span> (Burung)",
+            "<span class='ar'>سَمَكٌ</span> (Ikan)",
+            "<span class='ar'>جَمَلٌ</span> (Unta)",
+            "<span class='ar'>قِرْدٌ</span> (Kera)"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "<span class='ar'>طَائِرٌ</span> (burung terbang di udara) dan <span class='ar'>سَمَكٌ</span> (ikan berenang di air)."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Kalimat berikut yang menjelaskan aktivitas/fungsi anggota tubuh dengan benar adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "<span class='ar'>نَمْشِي بِالرِّجْلِ</span> (Kita berjalan dengan kaki)",
+            "<span class='ar'>نَشُمُّ بِالْأَنْفِ</span> (Kita mencium bau dengan hidung)",
+            "<span class='ar'>نَسْمَعُ بِالْفَمِ</span> (Kita mendengar dengan mulut)",
+            "<span class='ar'>نَكْتُبُ بِالْعَيْنِ</span> (Kita menulis dengan mata)"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Berjalan dengan kaki dan mencium aroma dengan hidung adalah pernyataan yang tepat."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Kosakata Arab dengan Artinya yang Tepat)",
+        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>أَنْفٌ</b>",
+        "options": [
+            "Hidung",
+            "Telinga",
+            "Mata",
+            "Kaki",
+            "Tangan"
+        ],
+        "answer": "Hidung",
+        "hint": "Anfun artinya hidung."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>عَيْنٌ</b>",
+        "options": [
+            "Hidung",
+            "Telinga",
+            "Mata",
+            "Kaki",
+            "Tangan"
+        ],
+        "answer": "Mata",
+        "hint": "'Ainun artinya mata."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>أُذُنٌ</b>",
+        "options": [
+            "Hidung",
+            "Telinga",
+            "Mata",
+            "Kaki",
+            "Tangan"
+        ],
+        "answer": "Telinga",
+        "hint": "Udzunun artinya telinga."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>يَدٌ</b>",
+        "options": [
+            "Hidung",
+            "Telinga",
+            "Mata",
+            "Kaki",
+            "Tangan"
+        ],
+        "answer": "Tangan",
+        "hint": "Yadun artinya tangan."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>رِجْلٌ</b>",
+        "options": [
+            "Hidung",
+            "Telinga",
+            "Mata",
+            "Kaki",
+            "Tangan"
+        ],
+        "answer": "Kaki",
+        "hint": "Rijlun artinya kaki."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bahasa Arab dari kata 'Kepala' adalah...",
+        "answer": "رَأْسٌ (Ra'sun)",
+        "alt": [
+            "ra'sun",
+            "ro'sun",
+            "rasun",
+            "raas",
+            "رأس",
+            "رَأْسٌ"
+        ],
+        "hint": "Huruf hijaiyahnya: ra - alif hamzah - sin."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Bahasa Arab dari kata 'Mulut' adalah...",
+        "answer": "فَمٌ (Famun)",
+        "alt": [
+            "famun",
+            "fam",
+            "فم",
+            "فَمٌ"
+        ],
+        "hint": "Terdiri dari huruf fa dan mim."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Kata tunjuk dekat untuk benda mudzakkar (laki-laki) dalam bahasa Arab adalah...",
+        "answer": "هَذَا (Hadza)",
+        "alt": [
+            "hadza",
+            "hadzaa",
+            "haadza",
+            "هذا",
+            "هَذَا"
+        ],
+        "hint": "Lawan kata dari <span class='ar'>هَذِهِ</span>."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Kata tunjuk dekat untuk benda muannats (perempuan) dalam bahasa Arab adalah...",
+        "answer": "هَذِهِ (Hadzihi)",
+        "alt": [
+            "hadzihi",
+            "hadzihii",
+            "haadzihi",
+            "هذه",
+            "هَذِهِ"
+        ],
+        "hint": "Digunakan untuk kata berakhiran ta' marbuthoh atau anggota tubuh ganda."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Lengkapilah kalimat berikut dengan kata sifat yang tepat: <span class='ar'>هَذَا أَنْفٌ ...</span> (bersih = nazhiifun)",
+        "answer": "نَظِيفٌ (Nazhiifun)",
+        "alt": [
+            "nazhiifun",
+            "nazhifun",
+            "nadzifun",
+            "bersih",
+            "نظيف",
+            "نَظِيفٌ"
+        ],
+        "hint": "Bentuk mudzakkar tanpa ta' marbuthah."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Lengkapilah kalimat berikut: <span class='ar'>هَذِهِ عَيْنٌ ...</span> (indah/cantik = jamiilatun)",
+        "answer": "جَمِيلَةٌ (Jamiilatun)",
+        "alt": [
+            "jamiilatun",
+            "jamilatun",
+            "cantik",
+            "indah",
+            "جميلة",
+            "جَمِيلَةٌ"
+        ],
+        "hint": "Bentuk muannats berakhiran ta' marbuthah."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Bahasa Arab dari sebutan tempat rekreasi 'Kebun Binatang' adalah <span class='ar'>حَدِيقَةُ ...</span>",
+        "answer": "الْحَيَوَانَاتِ (Al-Hayawaanaat)",
+        "alt": [
+            "al-hayawanat",
+            "al hayawanat",
+            "hayawanat",
+            "الـحيوانات",
+            "الْحَيَوَانَاتِ",
+            "حيوانات"
+        ],
+        "hint": "Taman tempat berbagai macam hewan."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Hewan berleher panjang di kebun binatang disebut <span class='ar'>زَرَافَةٌ</span>. Arti dari kata tersebut adalah...",
+        "answer": "Jerapah",
+        "alt": [
+            "jerapah",
+            "burung jerapah",
+            "hewan jerapah"
+        ],
+        "hint": "Mamalia tertinggi di darat dengan leher panjang."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Hewan padang pasir yang berpunuk dan tahan haus dalam bahasa Arab disebut...",
+        "answer": "جَمَلٌ (Jamalun)",
+        "alt": [
+            "jamalun",
+            "jamal",
+            "unta",
+            "جمل",
+            "جَمَلٌ"
+        ],
+        "hint": "Artinya adalah unta."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Bahasa Arab dari hewan 'Buaya' adalah...",
+        "answer": "تِمْسَاحٌ (Timsaahun)",
+        "alt": [
+            "timsaahun",
+            "timsah",
+            "timsahun",
+            "تمساح",
+            "تِمْسَاحٌ"
+        ],
+        "hint": "Reptil pemangsa air tawar bertubuh besar bergigi tajam."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Tuliskan 5 nama anggota tubuh manusia dalam bahasa Arab lengkap dengan artinya dalam bahasa Indonesia!",
+        "answer": "1. <span class='ar'>رَأْسٌ</span> (Ra'sun) = Kepala<br>2. <span class='ar'>عَيْنٌ</span> ('Ainun) = Mata<br>3. <span class='ar'>أَنْفٌ</span> (Anfun) = Hidung<br>4. <span class='ar'>فَمٌ</span> (Famun) = Mulut<br>5. <span class='ar'>يَدٌ</span> (Yadun) = Tangan (atau <span class='ar'>رِجْلٌ</span> = Kaki, <span class='ar'>أُذُنٌ</span> = Telinga).",
+        "hint": "Sebutkan minimal 5 kosakata anggota tubuh beserta arti Indonesianya."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan rumus/pola kalimat bahasa Arab untuk: <b>Isim Isyarah lil mufrad + Isim + Na'at</b> dan berikan 1 contoh untuk mudzakkar serta 1 contoh untuk muannats!",
+        "answer": "Pola kalimat ini tersusun dari:<br>1. <b>Isim Isyarah</b> (Kata tunjuk tunggal: <span class='ar'>هَذَا</span> untuk mudzakkar / <span class='ar'>هَذِهِ</span> untuk muannats)<br>2. <b>Isim</b> (Kata benda anggota tubuh / hewan)<br>3. <b>Na'at</b> (Kata sifat yang jenis gender-nya mengikuti isim).<br><br><b>Contoh:</b><br>- Mudzakkar: <span class='ar'>هَذَا أَنْفٌ جَمِيلٌ</span> (Ini hidung yang indah)<br>- Muannats: <span class='ar'>هَذِهِ عَيْنٌ جَمِيلَةٌ</span> (Ini mata yang indah).",
+        "hint": "Uraikan bagian pola Isyarah + Isim + Na'at dan contoh mudzakkar & muannats."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Susunlah kata-kata acak berikut menjadi kalimat yang baik dan benar sesuai pola tata bahasa Arab:<br>a. <span class='ar'>كَبِيرٌ - هَذَا - رَأْسٌ</span><br>b. <span class='ar'>قَوِيَّةٌ - هَذِهِ - يَدٌ</span><br>c. <span class='ar'>نَشِيطٌ - قِرْدٌ - ذَلِكَ</span>",
+        "answer": "a. <span class='ar'>هَذَا رَأْسٌ كَبِيرٌ</span> (Ini kepala yang besar)<br>b. <span class='ar'>هَذِهِ يَدٌ قَوِيَّةٌ</span> (Ini tangan yang kuat)<br>c. <span class='ar'>ذَلِكَ قِرْدٌ نَشِيطٌ</span> (Itu kera yang lincah)",
+        "hint": "Mulai dengan kata tunjuk (Isim Isyarah), lalu kata bendanya (Isim), diakhiri kata sifatnya (Na'at)."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Tuliskan 5 nama hewan di kebun binatang (<span class='ar'>حَدِيقَةُ الْحَيَوَانَاتِ</span>) dalam bahasa Arab beserta artinya!",
+        "answer": "1. <span class='ar'>أَسَدٌ</span> (Asadun) = Singa<br>2. <span class='ar'>فِيلٌ</span> (Fiilun) = Gajah<br>3. <span class='ar'>قِرْدٌ</span> (Qirdun) = Kera / Monyet<br>4. <span class='ar'>زَرَافَةٌ</span> (Zarafatun) = Jerapah<br>5. <span class='ar'>تِمْسَاحٌ</span> (Timsaahun) = Buaya (atau <span class='ar'>نَمِرٌ</span> = Harimau, <span class='ar'>جَمَلٌ</span> = Unta, <span class='ar'>طَائِرٌ</span> = Burung).",
+        "hint": "Tuliskan 5 nama hewan kebun binatang dalam bahasa Arab dan artinya."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Terjemahkan kalimat-kalimat bahasa Arab berikut ke dalam bahasa Indonesia yang baik dan benar:<br>a. <span class='ar'>أَنَا أَذْهَبُ إِلَى حَدِيقَةِ الْحَيَوَانَاتِ</span><br>b. <span class='ar'>فِي حَدِيقَةِ الْحَيَوَانَاتِ فِيلٌ كَبِيرٌ</span>",
+        "answer": "a. Saya pergi ke kebun binatang.<br>b. Di kebun binatang ada gajah yang besar.",
+        "hint": "Terjemahkan kata per kata: 'ana adzhabu' = saya pergi, 'fii' = di/di dalam."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

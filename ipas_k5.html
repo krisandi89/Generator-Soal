@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS IPAS (Ilmu Pengetahuan Alam dan Sosial) Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #27ae60;
+            --primary-light: #2ecc71;
+            --bg: #eafaf1;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>🌿 IPAS (Ilmu Pengetahuan Alam dan Sosial)</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Secara geografis, wilayah negara Indonesia terletak di antara dua benua dan dua samudra, yaitu...",
+        "options": [
+            "Benua Asia dan Benua Afrika, serta Samudra Atlantik dan Samudra Pasifik",
+            "Benua Asia dan Benua Australia, serta Samudra Hindia dan Samudra Pasifik",
+            "Benua Eropa dan Benua Asia, serta Samudra Arktik dan Samudra Hindia",
+            "Benua Australia dan Benua Amerika, serta Samudra Hindia dan Samudra Atlantik"
+        ],
+        "answer": 1,
+        "hint": "Indonesia diapit oleh Benua Asia di sebelah utara dan Australia di selatan, serta Samudra Pasifik di timur dan Hindia di barat."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Negara tetangga yang berbatasan darat langsung dengan wilayah negara Indonesia di bagian timur (Pulau Papua) adalah...",
+        "options": [
+            "Malaysia",
+            "Timor Leste",
+            "Papua Nugini",
+            "Filipina"
+        ],
+        "answer": 2,
+        "hint": "Di Pulau Papua, Indonesia berbatasan darat langsung dengan negara Papua Nugini."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Indonesia dijuluki sebagai negara maritim karena memiliki karakteristik geografis utama, yaitu...",
+        "options": [
+            "Sebagian besar wilayahnya terdiri atas gurun pasir yang tandus",
+            "Wilayah perairan/lautannya jauh lebih luas dibandingkan dengan wilayah daratannya",
+            "Dikelilingi oleh hamparan pegunungan salju abadi",
+            "Seluruh penduduknya tinggal di daerah dataran tinggi perbukitan"
+        ],
+        "answer": 1,
+        "hint": "Sekitar dua pertiga (2/3) luas wilayah kedaulatan Indonesia berupa bentangan perairan lautan yang kaya potensi."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Salah satu ciri utama negara agraris yang tercermin pada kondisi bangsa Indonesia adalah...",
+        "options": [
+            "Mayoritas mata pencaharian penduduknya bekerja di sektor pertanian dan perkebunan",
+            "Sebagian besar wilayahnya digunakan untuk pembuatan pelabuhan kapal selam",
+            "Tidak memiliki lahan tanah yang subur untuk ditanami",
+            "Semua bahan makanan pokok diimpor dari luar negeri"
+        ],
+        "answer": 0,
+        "hint": "Negara agraris memanfaatkan kesuburan tanah vulkanis dan iklim tropis untuk bercocok tanam menghasilkan bahan pangan."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Masyarakat yang bermukim di kawasan dataran tinggi pegunungan umumnya beradaptasi dengan mengembangkan mata pencaharian sebagai...",
+        "options": [
+            "Nelayan penangkap ikan cumi dan pembuat garam",
+            "Petani perkebunan teh, kopi, dan sayur-mayur hortikultura",
+            "Buruh pembuat kapal tongkang dan dermaga pelabuhan",
+            "Penyelam mutiara laut dalam"
+        ],
+        "answer": 1,
+        "hint": "Suhu udara yang sejuk dan tanah yang subur di dataran tinggi sangat ideal bagi perkebunan teh, kopi, kubis, dan wortel."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Tradisi pembagian dan pengaturan air irigasi sawah secara adil dan demokratis yang terkenal di Pulau Bali dinamakan...",
+        "options": [
+            "Ngaben",
+            "Subak",
+            "Larung Sesaji",
+            "Sekaten"
+        ],
+        "answer": 1,
+        "hint": "Subak adalah kearifan lokal sistem irigasi pertanian sawah berundak masyarakat Bali yang diakui dunia (UNESCO)."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Kegiatan ekonomi yang bertujuan menciptakan, mengolah, atau menghasilkan barang dan jasa baru yang bermanfaat dinamakan kegiatan...",
+        "options": [
+            "Konsumsi",
+            "Distribusi",
+            "Produksi",
+            "Investasi"
+        ],
+        "answer": 2,
+        "hint": "Produksi adalah aktivitas menghasilkan atau menambah nilai guna barang/jasa."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Pak Anton mengangkut hasil panen buah semangka dari kebun petani di desa menuju pedagang di pasar kota menggunakan truk. Kegiatan yang dilakukan Pak Anton tergolong kegiatan...",
+        "options": [
+            "Produksi",
+            "Distribusi",
+            "Konsumsi",
+            "Reboisasi"
+        ],
+        "answer": 1,
+        "hint": "Distribusi adalah kegiatan menyalurkan barang dari pihak produsen ke pihak konsumen/pasar."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Kota Jepara di Provinsi Jawa Tengah terkenal hingga ke mancanegara karena memiliki produk unggulan daerah berupa...",
+        "options": [
+            "Kerajinan ukiran mebel kayu jati",
+            "Kain tenun songket benang emas",
+            "Batu intan permata berlian",
+            "Hasil tambang minyak bumi mentah"
+        ],
+        "answer": 0,
+        "hint": "Jepara dijuluki kota ukir karena keahlian warganya memahat ukiran kayu jati berkualitas tinggi."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Perbandingan perkiraan luas perairan lautan Indonesia dibandingkan daratannya adalah sekitar...",
+        "options": [
+            "1/4 perairan dan 3/4 daratan",
+            "1/2 perairan dan 1/2 daratan",
+            "2/3 perairan dan 1/3 daratan",
+            "1/10 perairan dan 9/10 daratan"
+        ],
+        "answer": 2,
+        "hint": "Dari total wilayah Indonesia seluas 5,18 juta km², sekitar 3,25 juta km² (sekitar 2/3) merupakan lautan."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih Lebih Dari 1 Jawaban Benar)",
+        "text": "Keuntungan yang diperoleh bangsa Indonesia berkat letak geografisnya yang berada di jalur silang lalu lintas perdagangan dunia antara lain adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Mempermudah hubungan komunikasi dan interaksi perdagangan antarbangsa di dunia",
+            "Mendapat kemudahan dalam memperkenalkan keberagaman budaya nusantara ke kancah global",
+            "Terbukanya peluang kemajuan ekonomi pelabuhan internasional dan pariwisata",
+            "Menjadikan wilayah Indonesia terisolasi dan tertutup dari pergaulan internasional"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Posisi strategis jalur perdagangan memudahkan kerja sama internasional, ekonomi maritim, dan pertukaran budaya positif."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Berikut ini yang merupakan negara tetangga yang letaknya berbatasan langsung di sebelah utara wilayah darat atau laut Indonesia adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Malaysia",
+            "Singapura",
+            "Filipina",
+            "Australia"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Malaysia, Singapura, dan Filipina berada di sebelah utara Indonesia, sedangkan Australia berada di sebelah selatan."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Manakah pernyataan di bawah ini yang mencerminkan ciri-ciri fisik dan potensi negara maritim Indonesia? (Pilih 2 jawaban benar)",
+        "options": [
+            "Memiliki garis pantai yang sangat panjang serta ribuan pulau yang indah",
+            "Memiliki kekayaan biota laut melimpah seperti terumbu karang, ikan, rumput laut, dan udang",
+            "Seluruh daerahnya tidak memiliki akses aliran sungai dan laut",
+            "Tidak dapat memanfaatkan jalur transportasi kapal penyeberangan"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Indonesia memiliki garis pantai terpanjang kedua di dunia dan keanekaragaman hayati laut terkaya (Segitiga Terumbu Karang Dunia)."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Mata pencaharian masyarakat yang berkembang dan sangat cocok di wilayah pesisir pantai antara lain adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Nelayan penangkap ikan laut",
+            "Petani tambak udang dan bandeng",
+            "Petani pembuat garam tradisional",
+            "Pemetik daun teh dan kopi"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Perkebunan teh dan kopi berada di dataran tinggi, sedangkan nelayan, tambak, dan petani garam memanfaatkan air laut pesisir."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Tradisi dan upacara adat masyarakat pesisir di Indonesia sebagai bentuk rasa syukur atas rezeki hasil laut meliputi... (Pilih 2 jawaban benar)",
+        "options": [
+            "Upacara Larung Sesaji / Sedekah Laut di pesisir Pantai Jawa",
+            "Upacara Petik Laut oleh masyarakat nelayan Banyuwangi",
+            "Upacara bakar batu di pedalaman pegunungan Papua",
+            "Tradisi karapan sapi di ladang kering Madura"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Larung sesaji dan petik laut adalah tradisi ungkapan syukur masyarakat nelayan pesisir atas rezeki ikan laut."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Pernyataan yang tepat mengenai ketiga pelaku utama dalam rantai kegiatan ekonomi adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Produsen adalah pelaku yang menghasilkan barang atau menyediakan jasa",
+            "Distributor adalah pelaku yang bertugas menyalurkan barang dari produsen ke konsumen",
+            "Konsumen adalah pihak yang menggunakan atau menghabiskan nilai guna barang dan jasa",
+            "Konsumen selalu memproduksi sendiri seluruh barang yang mereka butuhkan sehari-hari"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga pelaku ekonomi adalah Produsen (penghasil), Distributor (penyalur), dan Konsumen (pemakai)."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Faktor-faktor yang sangat memengaruhi keragaman kegiatan ekonomi masyarakat di suatu daerah adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Kondisi alam dan ketersediaan sumber daya alam (SDA)",
+            "Kualitas keterampilan sumber daya manusia (SDM)",
+            "Kemajuan teknologi, modal, dan sarana transportasi",
+            "Bentuk rasi bintang di langit pada malam hari"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kegiatan ekonomi dipengaruhi oleh potensi alam, keahlian manusia, modal usaha, dan teknologi pendukung."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Pasangan produk unggulan daerah dan asal wilayahnya di Indonesia berikut yang tepat adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Kopi Gayo berasal dari Provinsi Aceh",
+            "Batik Tulis berasal dari Kota Solo dan Pekalongan",
+            "Kain Tenun Ikat berasal dari Nusa Tenggara Timur (NTT)",
+            "Rendang daging sapi asli berasal dari Papua Barat"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Rendang adalah makanan khas Minangkabau (Sumatera Barat), bukan Papua Barat."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Usaha ekonomi yang termasuk ke dalam sektor penyedia jasa (pelayanan) antara lain... (Pilih 3 jawaban benar)",
+        "options": [
+            "Pemandu wisata (tour guide)",
+            "Jasa dokter dan perawat di rumah sakit",
+            "Bengkel reparasi sepeda motor",
+            "Pabrik penggilingan padi"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pemandu wisata, dokter, dan montir bengkel menjual keahlian/tenaga (jasa), sedangkan pabrik menghasilkan beras (barang)."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Berikut ini pulau-pulau besar yang termasuk dalam wilayah kedaulatan Negara Kesatuan Republik Indonesia adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Pulau Sumatra",
+            "Pulau Kalimantan",
+            "Pulau Sulawesi",
+            "Pulau Madagaskar"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pulau Madagaskar berada di Benua Afrika, sedangkan lima pulau besar Indonesia adalah Sumatra, Jawa, Kalimantan, Sulawesi, dan Papua."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Pernyataan dengan Jawaban Tepat)",
+        "text": "Pasangkan daerah bentang alam berikut dengan jenis mata pencaharian dominan warganya: <b>Wilayah Pesisir Pantai Laut</b>",
+        "options": [
+            "Nelayan dan Petani Garam",
+            "Petani Padi Sawah dan Buruh Pabrik",
+            "Petani Perkebunan Teh dan Sayur",
+            "Penambang Belerang Kawah",
+            "Peternak Unta"
+        ],
+        "answer": "Nelayan dan Petani Garam",
+        "hint": "Dekat dengan laut dan tambak garam."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan daerah bentang alam berikut dengan jenis mata pencaharian dominan warganya: <b>Wilayah Dataran Rendah</b>",
+        "options": [
+            "Nelayan dan Petani Garam",
+            "Petani Padi Sawah dan Buruh Pabrik",
+            "Petani Perkebunan Teh dan Sayur",
+            "Penambang Belerang Kawah",
+            "Peternak Unta"
+        ],
+        "answer": "Petani Padi Sawah dan Buruh Pabrik",
+        "hint": "Pusat permukiman, industri, dan persawahan irigasi."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan daerah bentang alam berikut dengan jenis mata pencaharian dominan warganya: <b>Wilayah Dataran Tinggi Pegunungan</b>",
+        "options": [
+            "Nelayan dan Petani Garam",
+            "Petani Padi Sawah dan Buruh Pabrik",
+            "Petani Perkebunan Teh dan Sayur",
+            "Penambang Belerang Kawah",
+            "Peternak Unta"
+        ],
+        "answer": "Petani Perkebunan Teh dan Sayur",
+        "hint": "Suhu sejuk sangat cocok untuk sayuran dan tanaman teh."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan produk kerajinan/makanan khas berikut dengan daerah asalnya: <b>Kerajinan Ukir Mebel Kayu Jati</b>",
+        "options": [
+            "Jepara (Jawa Tengah)",
+            "Aceh (Sumatra)",
+            "Pekalongan (Jawa Tengah)",
+            "Nusa Tenggara Timur (NTT)",
+            "Padang (Sumatera Barat)"
+        ],
+        "answer": "Jepara (Jawa Tengah)",
+        "hint": "Terkenal sebagai kota ukir dunia."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan produk komoditas unggulan berikut dengan daerah asalnya: <b>Kopi Gayo Kualitas Ekspor</b>",
+        "options": [
+            "Jepara (Jawa Tengah)",
+            "Aceh (Sumatra)",
+            "Pekalongan (Jawa Tengah)",
+            "Nusa Tenggara Timur (NTT)",
+            "Padang (Sumatera Barat)"
+        ],
+        "answer": "Aceh (Sumatra)",
+        "hint": "Tumbuh subur di dataran tinggi Gayo di ujung barat nusantara."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Dua samudra besar yang mengapit kepulauan Indonesia adalah Samudra Hindia dan Samudra...",
+        "answer": "Pasifik",
+        "alt": [
+            "pasifik",
+            "samudra pasifik"
+        ],
+        "hint": "Terbentang di sebelah utara dan timur wilayah Indonesia."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Negara tetangga yang berada di sebelah selatan Indonesia dan merupakan benua terkecil di dunia adalah...",
+        "answer": "Australia",
+        "alt": [
+            "australia",
+            "benua australia"
+        ],
+        "hint": "Berada tepat di selatan Kepulauan Nusa Tenggara dan Pulau Jawa."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Sebutan bagi negara yang sebagian besar penduduknya bermata pencaharian di bidang pertanian dan perkebunan adalah negara...",
+        "answer": "Agraris",
+        "alt": [
+            "agraris",
+            "negara agraris"
+        ],
+        "hint": "Tanah subur dan iklim tropis mendukung pertanian rakyat."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Sebutan bagi negara yang memiliki wilayah perairan lautan luas dan pulau-pulau yang dihubungkan oleh perairan laut adalah negara...",
+        "answer": "Maritim",
+        "alt": [
+            "maritim",
+            "negara maritim"
+        ],
+        "hint": "Dua pertiga kedaulatannya berupa laut nusantara."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Orang atau badan usaha yang melakukan kegiatan membeli dan menggunakan barang hasil produksi untuk memenuhi kebutuhan hidup disebut...",
+        "answer": "Konsumen",
+        "alt": [
+            "konsumen"
+        ],
+        "hint": "Pihak pemakai barang/jasa akhir."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Kegiatan mengantarkan atau menyalurkan barang dagangan dari produsen agar sampai ke tangan konsumen disebut...",
+        "answer": "Distribusi",
+        "alt": [
+            "distribusi"
+        ],
+        "hint": "Melibatkan kurir, pedagang, dan sarana transportasi."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Sistem pengaturan pembagian air irigasi sawah tradisional yang sangat terkenal di Pulau Bali dinamakan sistem...",
+        "answer": "Subak",
+        "alt": [
+            "subak"
+        ],
+        "hint": "Kearifan lokal pengairan sawah terasering di Bali."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Kain tradisional bermotif indah asal Solo, Yogyakarta, dan Pekalongan yang telah diakui sebagai warisan budaya dunia oleh UNESCO adalah kain...",
+        "answer": "Batik",
+        "alt": [
+            "batik",
+            "kain batik"
+        ],
+        "hint": "Dibuat dengan teknik melukis lilin malam menggunakan canting."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Berdasarkan letak geografisnya, Indonesia memiliki iklim tropis yang memiliki dua musim bergantian, yaitu musim kemarau dan musim...",
+        "answer": "Hujan",
+        "alt": [
+            "hujan",
+            "musim hujan",
+            "penghujan"
+        ],
+        "hint": "Dipengaruhi oleh hembusan angin muson barat dan timur."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Petani garam di daerah pesisir pantai memanfaatkan bantuan energi panas dari sinar ... untuk menguapkan air laut di tambak garam.",
+        "answer": "Matahari",
+        "alt": [
+            "matahari",
+            "sinar matahari",
+            "surya"
+        ],
+        "hint": "Penguapan air laut menghasilkan kristal-kristal garam dapur."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan mengapa negara Indonesia disebut sebagai negara maritim dan sebutkan 2 ciri-ciri negara maritim!",
+        "answer": "Indonesia disebut sebagai negara maritim karena sebagian besar wilayahnya (sekitar dua pertiga atau 2/3) berupa lautan/perairan yang luas serta terdiri atas ribuan pulau yang dikelilingi laut.<br><br>Dua ciri negara maritim:<br>1. Memiliki wilayah laut yang sangat luas dengan kekayaan hayati laut yang melimpah.<br>2. Sebagian masyarakatnya bekerja dan menggantungkan mata pencaharian pada pemanfaatan laut (seperti nelayan, budidaya tambak, pelayaran).",
+        "hint": "Kaitkan perbandingan luas perairan dan pekerjaan masyarakat dengan pemanfaatan laut."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan mengapa negara Indonesia disebut sebagai negara agraris dan sebutkan 2 faktor alam yang mendukung pertanian di Indonesia!",
+        "answer": "Indonesia disebut sebagai negara agraris karena sebagian besar penduduknya bermata pencaharian di bidang pertanian, perkebunan, dan bercocok tanam menghasilkan bahan pangan.<br><br>Faktor alam pendukung:<br>1. Tanah yang subur berkat abu vulkanik letusan gunung berapi.<br>2. Beriklim tropis dengan curah hujan yang cukup dan sinar matahari bersinar sepanjang tahun.",
+        "hint": "Sebutkan mata pencaharian sebagian besar penduduk dan faktor kesuburan tanah serta iklim."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Uraikan 3 tahapan utama dalam proses kegiatan ekonomi beserta pengertian masing-masing tahapannya!",
+        "answer": "Tiga tahapan kegiatan ekonomi:<br>1. <b>Produksi</b>: Kegiatan menghasilkan atau membuat barang dan jasa untuk memenuhi kebutuhan manusia.<br>2. <b>Distribusi</b>: Kegiatan menyalurkan atau mengantarkan barang dan jasa dari pihak produsen ke pihak konsumen.<br>3. <b>Konsumsi</b>: Kegiatan menggunakan, memanfaatkan, atau menghabiskan nilai guna barang dan jasa.",
+        "hint": "Jelaskan pengertian produksi, distribusi, dan konsumsi secara teratur dan jelas."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Berikan 3 contoh jenis mata pencaharian masyarakat yang sangat dipengaruhi oleh kondisi geografis tempat tinggalnya!",
+        "answer": "1. <b>Masyarakat pesisir pantai</b>: Bekerja sebagai nelayan penangkap ikan, pembuat garam, dan budidaya tambak udang.<br>2. <b>Masyarakat dataran rendah</b>: Bekerja sebagai petani sawah padi, pedagang pasar, dan karyawan industri pabrik.<br>3. <b>Masyarakat dataran tinggi/pegunungan</b>: Bekerja sebagai petani perkebunan teh, kopi, sayuran hortikultura, dan pemandu wisata alam.",
+        "hint": "Sebutkan mata pencaharian di pesisir, dataran rendah, dan dataran tinggi."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Sebutkan 3 produk komoditas atau kerajinan unggulan khas daerah di Indonesia beserta nama daerah asalnya!",
+        "answer": "1. <b>Kerajinan Ukiran Kayu Jati</b> berasal dari Jepara (Jawa Tengah).<br>2. <b>Kain Tenun Ikat</b> berasal dari Nusa Tenggara Timur (NTT).<br>3. <b>Kain Batik Tulis</b> berasal dari Pekalongan, Solo, dan Yogyakarta.<br>4. <b>Kopi Arabika Gayo</b> berasal dari Aceh (Sumatra).<br>5. <b>Makanan Rendang</b> berasal dari Minangkabau / Padang (Sumatera Barat).",
+        "hint": "Tuliskan minimal 3 pasangan nama produk unggulan dan daerah asalnya di Indonesia."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Latihan Soal</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #ffeaa7;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .selection-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 20px;
+            width: 280px;
+            padding: 40px 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 10px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .school-name {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .class-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .btn-enter {
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        /* Styling Kelas 3 */
+        .card-k3 { border-top-color: #2ecc71; }
+        .card-k3 .icon { color: #27ae60; }
+        .card-k3 .btn-enter { background-color: #27ae60; }
+        
+        /* Styling Kelas 5 */
+        .card-k5 { border-top-color: #0984e3; }
+        .card-k5 .icon { color: #0984e3; }
+        .card-k5 .btn-enter { background-color: #0984e3; }
+
+        /* Styling Tombol Generator (Kecil di Bawah) */
+        .admin-card {
+            background: white;
+            border: 1px solid #dfe6e9;
+            padding: 10px 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #636e72;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            color: #2980b9;
+            border-color: #74b9ff;
+        }
+
+        footer {
+            margin-top: 50px;
+            color: #b2bec3;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎓 Portal Latihan Soal</h1>
+        <p>Silakan pilih kelas kamu untuk memulai belajar!</p>
+
+        <div class="selection-container">
+            <!-- Pilihan Kelas 3 -->
+            <a href="kelas3.html" class="class-card card-k3">
+                <div class="icon">🎈</div>
+                <div class="school-name">SDIT FREINDS</div>
+                <div class="class-title">Kelas 3</div>
+                <span class="btn-enter">Masuk Kelas ➜</span>
+            </a>
+
+            <!-- Pilihan Kelas 5 -->
+            <a href="kelas5.html" class="class-card card-k5">
+                <div class="icon">🚀</div>
+                <div class="school-name">SD DILARAF</div>
+                <div class="class-title">Kelas 5</div>
+                <span class="btn-enter">Masuk Kelas ➜</span>
+            </a>
+        </div>
+
+        <!-- Tombol Generator Kecil -->
+        <a href="generator.html" class="admin-card">
+            <span>⚙️</span>
+            <strong>Buat Soal (Guru)</strong>
+        </a>
+
+        <footer>
+            &copy; 2025 Portal Belajar Bersama
+        </footer>
+    </div>
+
+</body>
+</html>

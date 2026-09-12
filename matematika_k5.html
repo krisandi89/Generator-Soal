@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Matematika Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #2980b9;
+            --primary-light: #3498db;
+            --bg: #eaf2f8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>➗ Matematika</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Nama bilangan yang tepat dari lambang bilangan 74.528 adalah...",
+        "options": [
+            "Tujuh puluh empat ribu lima ratus dua puluh delapan",
+            "Tujuh puluh empat ribu lima ratus delapan puluh dua",
+            "Tujuh ratus empat ribu lima ratus dua puluh delapan",
+            "Tujuh puluh ribu empat ratus lima puluh delapan"
+        ],
+        "answer": 0,
+        "hint": "74 = tujuh puluh empat ribu, 5 = lima ratus, 28 = dua puluh delapan."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Pada bilangan 86.415, angka 6 menempati nilai tempat...",
+        "options": [
+            "Puluh ribuan",
+            "Ribuan",
+            "Ratusan",
+            "Puluhan"
+        ],
+        "answer": 1,
+        "hint": "8 = puluh ribuan, 6 = ribuan (nilainya 6.000), 4 = ratusan, 1 = puluhan, 5 = satuan."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Tanda perbandingan yang tepat untuk mengisi titik-titik pada 63.850 ... 63.805 adalah...",
+        "options": [
+            "< (Kurang dari)",
+            "> (Lebih dari)",
+            "= (Sama dengan)",
+            "≤ (Kurang dari sama dengan)"
+        ],
+        "answer": 1,
+        "hint": "Puluh ribuan, ribuan, dan ratusannya sama (63.8..), tetapi puluhan 5 lebih besar daripada 0, maka 63.850 > 63.805."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Hasil dari penjumlahan 34.785 + 28.460 adalah...",
+        "options": [
+            "62.245",
+            "63.145",
+            "63.245",
+            "64.245"
+        ],
+        "answer": 2,
+        "hint": "34.785 + 28.460 = 63.245."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Sebuah perpustakaan kota memiliki 45.320 buku bacaan. Bulan ini perpustakaan menerima kiriman sumbangan buku sebanyak 12.850 buku baru. Berapakah jumlah seluruh buku di perpustakaan sekarang?",
+        "options": [
+            "57.170 buku",
+            "58.170 buku",
+            "58.270 buku",
+            "59.170 buku"
+        ],
+        "answer": 1,
+        "hint": "45.320 + 12.850 = 58.170 buku."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Hasil dari pengurangan 75.200 - 38.645 adalah...",
+        "options": [
+            "36.555",
+            "36.655",
+            "37.555",
+            "37.655"
+        ],
+        "answer": 0,
+        "hint": "Gunakan teknik meminjam: 75.200 - 38.645 = 36.555."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Pak Rahmat memiliki persediaan 50.000 kg beras di gudang. Sebanyak 27.450 kg beras telah didistribusikan ke pasar tradisional. Berapa sisa beras yang masih ada di gudang Pak Rahmat?",
+        "options": [
+            "22.450 kg",
+            "22.550 kg",
+            "23.550 kg",
+            "24.550 kg"
+        ],
+        "answer": 1,
+        "hint": "50.000 - 27.450 = 22.550 kg."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Hasil perkalian dari 3.425 x 7 adalah...",
+        "options": [
+            "23.875",
+            "23.975",
+            "24.075",
+            "24.975"
+        ],
+        "answer": 1,
+        "hint": "3.425 x 7 = 23.975."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Hasil pembagian dari 14.400 : 6 adalah...",
+        "options": [
+            "2.300",
+            "2.400",
+            "2.500",
+            "2.600"
+        ],
+        "answer": 1,
+        "hint": "144 : 6 = 24, maka 14.400 : 6 = 2.400."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Perhatikan barisan pola bilangan berikut: 12, 18, 24, 30, ... Dua bilangan selanjutnya untuk melanjutkan pola tersebut adalah...",
+        "options": [
+            "34 dan 40",
+            "36 dan 42",
+            "36 dan 44",
+            "38 dan 44"
+        ],
+        "answer": 1,
+        "hint": "Pola bertambah 6 (+6): 30 + 6 = 36, lalu 36 + 6 = 42."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih Lebih Dari 1 Jawaban Benar)",
+        "text": "Diberikan bilangan 94.725. Pernyataan yang bernilai BENAR mengenai nilai tempat dan nilai angka dari bilangan tersebut adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Angka 9 menempati nilai tempat puluh ribuan dengan nilai 90.000",
+            "Angka 4 menempati nilai tempat ribuan dengan nilai 4.000",
+            "Angka 7 menempati nilai tempat ratusan dengan nilai 700",
+            "Angka 2 menempati nilai tempat satuan dengan nilai 2"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Angka 2 menempati nilai tempat puluhan (nilainya 20), sedangkan angka 5 yang menempati satuan."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Pernyataan perbandingan bilangan berikut yang bernilai BENAR adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "45.890 > 45.809",
+            "72.350 < 72.530",
+            "89.000 = 89.000",
+            "64.125 > 64.215"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pilihan ke-4 salah karena 64.125 lebih kecil daripada 64.215."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Urutan bilangan berikut dari yang TERBESAR ke yang TERKECIL yang benar adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "85.400; 82.900; 78.500; 75.200",
+            "90.100; 88.500; 84.300; 80.000",
+            "52.000; 58.000; 63.000; 70.000",
+            "43.500; 45.200; 42.100; 40.000"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Pilihan A dan B disusun turun dari nilai terbesar ke terkecil."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Operasi penjumlahan bilangan cacah berikut yang menghasilkan nilai 50.000 adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "28.500 + 21.500",
+            "35.250 + 14.750",
+            "24.000 + 25.000",
+            "41.200 + 9.900"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "28.500 + 21.500 = 50.000 dan 35.250 + 14.750 = 50.000."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Operasi hitung perkalian berikut yang hasilnya BENAR adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "425 x 12 = 5.100",
+            "650 x 8 = 5.200",
+            "1.200 x 5 = 6.000",
+            "250 x 20 = 4.000"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "250 x 20 seharusnya 5.000, bukan 4.000."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Hasil pembagian berikut yang tepat adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "18.000 : 9 = 2.000",
+            "35.000 : 7 = 5.000",
+            "48.000 : 6 = 7.000",
+            "24.000 : 4 = 8.000"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "48.000 : 6 = 8.000 (bukan 7.000), dan 24.000 : 4 = 6.000 (bukan 8.000)."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Perhatikan operasi hitung campuran: 25.000 + 5.000 x 4 - 10.000. Aturan urutan pengerjaan operasi yang tepat adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Operasi perkalian (5.000 x 4) harus dikerjakan terlebih dahulu menghasilkan 20.000",
+            "Setelah perkalian, operasi penjumlahan dan pengurangan dikerjakan urut dari kiri",
+            "Operasi penjumlahan (25.000 + 5.000) wajib dikerjakan lebih dulu dari perkalian",
+            "Hasil akhir dari operasi tersebut adalah 110.000"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Perkalian lebih kuat: 5.000 x 4 = 20.000. Lalu 25.000 + 20.000 - 10.000 = 35.000."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Pola bilangan turun berikut yang memiliki selisih atau beda -15 pada setiap sukunya adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "100, 85, 70, 55",
+            "90, 75, 60, 45",
+            "120, 100, 80, 60",
+            "80, 70, 60, 50"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Pilihan A: 100-15=85, 85-15=70, 70-15=55. Pilihan B: 90-15=75, 75-15=60, 60-15=45."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Sebuah pabrik roti mengemas kue bolu ke dalam kotak. Tiap kotak berisi 24 buah bolu. Jika pabrik membuat 35 kotak bolu, maka pernyataan yang benar adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Kalimat matematikanya adalah 35 x 24",
+            "Jumlah total bolu yang dikemas adalah 840 buah bolu",
+            "Jumlah total bolu yang dikemas adalah 720 buah bolu",
+            "Kalimat matematikanya adalah 35 + 24"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "35 x 24 = 840 buah bolu."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Ibu memiliki uang Rp90.000. Ibu membeli 3 kg apel seharga Rp20.000 per kg dan 2 kg jeruk seharga Rp12.000 per kg. Pernyataan yang benar adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Total uang yang dibayarkan ibu adalah Rp84.000",
+            "Sisa uang kembalian yang diterima ibu adalah Rp6.000",
+            "Harga seluruh apel adalah Rp50.000",
+            "Sisa uang ibu adalah Rp16.000"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Apel: 3 x 20.000 = 60.000. Jeruk: 2 x 12.000 = 24.000. Total belanja = 84.000. Sisa = 90.000 - 84.000 = Rp6.000."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Pernyataan dengan Jawaban Tepat)",
+        "text": "Pasangkan lambang bilangan berikut dengan nama bilangannya: <b>56.708</b>",
+        "options": [
+            "Lima puluh enam ribu tujuh ratus delapan",
+            "Enam puluh lima ribu delapan ratus tujuh",
+            "Tujuh puluh lima ribu enam ratus delapan puluh",
+            "Empat puluh delapan ribu lima ratus dua puluh",
+            "Sembilan puluh dua ribu empat ratus lima"
+        ],
+        "answer": "Lima puluh enam ribu tujuh ratus delapan",
+        "hint": "56 ribu + 708."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan lambang bilangan berikut dengan nama bilangannya: <b>65.807</b>",
+        "options": [
+            "Lima puluh enam ribu tujuh ratus delapan",
+            "Enam puluh lima ribu delapan ratus tujuh",
+            "Tujuh puluh lima ribu enam ratus delapan puluh",
+            "Empat puluh delapan ribu lima ratus dua puluh",
+            "Sembilan puluh dua ribu empat ratus lima"
+        ],
+        "answer": "Enam puluh lima ribu delapan ratus tujuh",
+        "hint": "65 ribu + 807."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan operasi hitung berikut dengan hasil perhitungannya yang tepat: <b>45.000 : 15</b>",
+        "options": [
+            "3.000",
+            "4.000",
+            "5.000",
+            "6.000",
+            "7.000"
+        ],
+        "answer": "3.000",
+        "hint": "45 : 15 = 3, maka 45.000 : 15 = 3.000."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan operasi hitung berikut dengan hasil perhitungannya yang tepat: <b>250 x 16</b>",
+        "options": [
+            "3.000",
+            "4.000",
+            "5.000",
+            "6.000",
+            "7.000"
+        ],
+        "answer": "4.000",
+        "hint": "250 x 4 = 1.000, 1.000 x 4 = 4.000."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan operasi hitung berikut dengan hasil perhitungannya yang tepat: <b>20.000 - 8.000 + 3.000 x 5</b>",
+        "options": [
+            "27.000",
+            "4.000",
+            "3.000",
+            "5.000",
+            "15.000"
+        ],
+        "answer": "27.000",
+        "hint": "3.000 x 5 = 15.000. Lalu 20.000 - 8.000 = 12.000. 12.000 + 15.000 = 27.000."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Lambang bilangan dari 'delapan puluh empat ribu dua ratus sembilan' ditulis angka...",
+        "answer": "84.209",
+        "alt": [
+            "84209",
+            "84.209"
+        ],
+        "hint": "84 di puluh ribuan/ribuan, 2 di ratusan, 0 di puluhan, 9 di satuan."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Pada bilangan 78.435, nilai angka dari angka 8 yang menempati tempat ribuan adalah...",
+        "answer": "8.000",
+        "alt": [
+            "8000",
+            "8.000",
+            "delapan ribu"
+        ],
+        "hint": "Angka 8 di nilai tempat ribuan bernilai 8.000."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Lengkapilah dengan tanda perbandingan (<, >, atau =): 71.450 ... 71.540",
+        "answer": "< (Kurang dari)",
+        "alt": [
+            "<",
+            "kurang dari",
+            "lebih kecil"
+        ],
+        "hint": "Ratusan 4 lebih kecil daripada 5."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Berapakah hasil penjumlahan dari 42.630 + 37.890?",
+        "answer": "80.520",
+        "alt": [
+            "80520",
+            "80.520"
+        ],
+        "hint": "42.630 + 37.890 = 80.520."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Berapakah hasil pengurangan dari 64.000 - 27.350?",
+        "answer": "36.650",
+        "alt": [
+            "36650",
+            "36.650"
+        ],
+        "hint": "64.000 - 27.350 = 36.650."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Berapakah hasil perkalian dari 1.250 x 8?",
+        "answer": "10.000",
+        "alt": [
+            "10000",
+            "10.000"
+        ],
+        "hint": "1.250 x 8 = 10.000."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Berapakah hasil pembagian dari 36.000 : 12?",
+        "answer": "3.000",
+        "alt": [
+            "3000",
+            "3.000"
+        ],
+        "hint": "36 : 12 = 3, tambahkan tiga nol di belakang = 3.000."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Hitunglah hasil operasi hitung campuran berikut: 15.000 + 4.000 x 3 =",
+        "answer": "27.000",
+        "alt": [
+            "27000",
+            "27.000"
+        ],
+        "hint": "Dahulukan perkalian: 4.000 x 3 = 12.000. Lalu 15.000 + 12.000 = 27.000."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Tentukan angka selanjutnya pada pola bilangan berikut: 15, 22, 29, 36, ...",
+        "answer": "43",
+        "alt": [
+            "43"
+        ],
+        "hint": "Pola bertambah 7 (+7): 36 + 7 = 43."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Tentukan angka selanjutnya pada pola bilangan turun berikut: 80, 72, 64, 56, ...",
+        "answer": "48",
+        "alt": [
+            "48"
+        ],
+        "hint": "Pola berkurang 8 (-8): 56 - 8 = 48."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Urutkan bilangan-bilangan berikut dari yang terbesar ke yang terkecil:<br><b>58.750; 58.075; 58.705; 58.570; 58.507</b>!",
+        "answer": "Urutan dari yang terbesar ke terkecil adalah:<br><b>58.750 > 58.705 > 58.570 > 58.507 > 58.075</b>",
+        "hint": "Bandingkan angka ribuan, ratusan, puluhan, dan satuannya secara cermat."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Sebuah koperasi sekolah memiliki modal awal sebesar Rp85.000. Pada minggu pertama dibelanjakan untuk membeli buku tulis sebesar Rp34.500 dan alat tulis sebesar Rp22.750. Berapa sisa uang kas koperasi sekolah tersebut sekarang?",
+        "answer": "Total pengeluaran = Rp34.500 + Rp22.750 = Rp57.250.<br>Sisa uang kas koperasi = Rp85.000 - Rp57.250 = <b>Rp27.750</b>.",
+        "hint": "Hitung jumlah belanja terlebih dahulu, kemudian kurangkan dari modal awal."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Di sebuah gudang terdapat 45 kardus mie instan. Setiap kardus berisi 40 bungkus mie. Mie tersebut akan disumbangkan kepada 10 panti asuhan sama banyak. Berapa bungkus mie instan yang diterima oleh setiap panti asuhan?",
+        "answer": "Langkah pengerjaan:<br>1. Total seluruh mie = 45 x 40 = 1.800 bungkus.<br>2. Bagian per panti asuhan = 1.800 : 10 = <b>180 bungkus mie instan</b>.",
+        "hint": "Kalikan jumlah kardus dengan isi per kardus, lalu bagi dengan jumlah panti asuhan."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Hitunglah hasil dari operasi hitung campuran berikut dengan menuliskan langkah-langkah pengerjaannya:<br><b>40.000 - 18.000 : 6 + 2.500 x 4</b>!",
+        "answer": "Langkah-langkah pengerjaan:<br>1. Kerjakan pembagian: 18.000 : 6 = 3.000<br>2. Kerjakan perkalian: 2.500 x 4 = 10.000<br>3. Hitung pengurangan dan penjumlahan dari kiri:<br>40.000 - 3.000 + 10.000 = 37.000 + 10.000 = <b>47.000</b>.",
+        "hint": "Dahulukan pembagian dan perkalian sebelum pengurangan dan penjumlahan."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Tentukan aturan pola bilangan berikut dan tentukan tiga bilangan selanjutnya:<br><b>5, 12, 19, 26, ..., ..., ...</b>!",
+        "answer": "Aturan pola bilangan adalah <b>bertambah 7 (+7)</b> pada setiap bilangan berikutnya.<br>Tiga bilangan selanjutnya:<br>1. 26 + 7 = <b>33</b><br>2. 33 + 7 = <b>40</b><br>3. 40 + 7 = <b>47</b><br>Sehingga barisannya menjadi: 5, 12, 19, 26, <b>33, 40, 47</b>.",
+        "hint": "Cari selisih antarsuku yang berdekatan (12-5=7), lalu tambahkan 7 ke suku terakhir secara berurutan."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

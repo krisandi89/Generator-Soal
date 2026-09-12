@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Pendidikan Agama Islam (PAI) Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #16a085;
+            --primary-light: #1abc9c;
+            --bg: #e8f8f5;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>📖 Pendidikan Agama Islam (PAI)</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Surat Al-Hujurat merupakan surat ke-49 di dalam mushaf Al-Qur'an. Kata 'Al-Hujurat' memiliki arti...",
+        "options": [
+            "Gua-gua",
+            "Kamar-kamar / bilik-bilik",
+            "Kaum yang menang",
+            "Pohon kurma"
+        ],
+        "answer": 1,
+        "hint": "Al-Hujurat bermakna kamar-kamar atau bilik-bilik rumah istri Nabi Muhammad SAW."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Berapakah jumlah keseluruhan ayat yang terdapat di dalam Surat Al-Hujurat?",
+        "options": [
+            "15 ayat",
+            "16 ayat",
+            "18 ayat",
+            "20 ayat"
+        ],
+        "answer": 2,
+        "hint": "Surat Al-Hujurat terdiri dari 18 ayat dan tergolong surat Madaniyyah."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Berdasarkan Surat Al-Hujurat ayat 13, tujuan utama Allah SWT menciptakan manusia berbangsa-bangsa dan bersuku-suku adalah untuk...",
+        "options": [
+            "Saling membanggakan kekayaan dan keturunan",
+            "Saling bersaing dan menguasai satu sama lain",
+            "Saling mengenal dan memahami (lita'arafu)",
+            "Menunjukkan suku mana yang paling hebat"
+        ],
+        "answer": 2,
+        "hint": "Potongan ayatnya berbunyi: لِتَعَارَفُوا (li ta'aarafuu) yang artinya 'agar kamu saling mengenal'."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Menurut firman Allah dalam QS Al-Hujurat ayat 13, manusia yang paling mulia di hadapan Allah SWT adalah orang yang...",
+        "options": [
+            "Paling tampan dan rupawan",
+            "Paling banyak harta dan kekayaannya",
+            "Paling bertakwa",
+            "Paling tinggi pangkat dan jabatannya"
+        ],
+        "answer": 2,
+        "hint": "إِنَّ أَكْرَمَكُمْ عِنْدَ اللَّهِ أَتْقَاكُمْ (Sesungguhnya yang paling mulia di antara kamu di sisi Allah ialah orang yang paling bertakwa)."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Asmaul Husna <b>Al-Qawiyyu</b> artinya bahwa Allah SWT Maha...",
+        "options": [
+            "Kuat / Perkasa",
+            "Menghidupkan",
+            "Membangkitkan",
+            "Mandiri / Berdiri Sendiri"
+        ],
+        "answer": 0,
+        "hint": "Al-Qawiyyu artinya Yang Maha Kuat dan Memiliki Kekuatan Sempurna yang tiada tertandingi."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Allah SWT mengurus dan mengatur seluruh alam semesta secara mandiri tanpa memerlukan bantuan dari siapapun. Hal ini mencerminkan sifat Asmaul Husna...",
+        "options": [
+            "Al-Mumit",
+            "Al-Ba'its",
+            "Al-Qayyum",
+            "Al-Muhyi"
+        ],
+        "answer": 2,
+        "hint": "Al-Qayyum artinya Maha Mandiri atau Berdiri Sendiri dalam mengurus segala urusan makhluk-Nya."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Allah SWT Maha Menghidupkan seluruh makhluk ciptaan-Nya dan menumbuhkan tanah yang tandus dengan curahan air hujan. Asmaul Husna yang sesuai dengan pernyataan ini adalah...",
+        "options": [
+            "Al-Muhyi",
+            "Al-Mumit",
+            "Al-Qawiyyu",
+            "Al-Ba'its"
+        ],
+        "answer": 0,
+        "hint": "Al-Muhyi artinya Yang Maha Menghidupkan."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Hari di mana seluruh umat manusia dibangkitkan dari alam kubur setelah terjadinya kiamat disebut Yaumul Ba'ats. Asmaul Husna Allah yang berkaitan erat dengan peristiwa ini adalah...",
+        "options": [
+            "Al-Qawiyyu",
+            "Al-Qayyum",
+            "Al-Ba'its",
+            "Al-Mumit"
+        ],
+        "answer": 2,
+        "hint": "Al-Ba'its artinya Yang Maha Membangkitkan."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Secara bahasa (etimologi), kata 'doa' berasal dari kata dalam bahasa Arab yang memiliki arti...",
+        "options": [
+            "Memuji dan menyucikan",
+            "Memanggil, meminta, atau memohon",
+            "Membaca dan merenungkan",
+            "Berjalan dan berusaha"
+        ],
+        "answer": 1,
+        "hint": "Doa secara bahasa bermakna memanggil (da'aa - yad'uu), memohon, atau meminta."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Rasulullah SAW bersabda mengenai kedudukan doa dalam Islam: <i>'Ad-du'aa-u mukhkhul 'ibaadah'</i>, yang bermakna bahwa doa adalah...",
+        "options": [
+            "Penghapus semua hutang manusia",
+            "Otak atau inti dari ibadah",
+            "Pelengkap syarat diterimanya puasa",
+            "Pembeda antara muslim dan orang musyrik"
+        ],
+        "answer": 1,
+        "hint": "Mukhkhun artinya otak atau saripati/inti dari ibadah."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Manakah pernyataan yang merupakan pesan pokok dalam QS Al-Hujurat ayat 13? (Pilih 3 jawaban benar)",
+        "options": [
+            "Manusia diciptakan dari seorang laki-laki (Adam) dan perempuan (Hawa)",
+            "Keragaman suku dan bangsa ditujukan agar saling mengenal dan bekerja sama",
+            "Kemuliaan sejati di sisi Allah dinilai dari ketakwaan, bukan suku atau harta",
+            "Kekuatan fisik dan keturunan bangsawan adalah penentu utama derajat di surga"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga poin pertama merupakan kandungan utama QS Al-Hujurat: 13."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Manusia diciptakan sebagai makhluk sosial. Perilaku terpuji yang mencerminkan pemahaman ini adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Saling tolong-menolong saat teman sedang kesusahan",
+            "Menghargai tradisi dan bahasa teman dari daerah lain",
+            "Menjaga kerukunan dan persaudaraan di lingkungan sekolah",
+            "Menutup diri dan enggan berteman dengan orang dari suku berbeda"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Makhluk sosial membutuhkan orang lain dan menjaga interaksi yang harmonis serta toleran."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Manakah contoh perilaku yang mencerminkan keteladanan terhadap Asmaul Husna <b>Al-Qawiyyu</b> (Maha Kuat)? (Pilih 2 jawaban benar)",
+        "options": [
+            "Menggunakan kekuatan tenaga untuk membantu orang tua dan membela teman yang dizalimi",
+            "Memiliki keteguhan hati dan tidak mudah putus asa saat menghadapi cobaan belajar",
+            "Menindas dan memukul teman yang lebih lemah badannya",
+            "Menyombongkan diri saat memenangkan lomba olahraga"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Kekuatan yang diteladani dari Al-Qawiyyu digunakan untuk kebaikan, ibadah, dan membela kebenaran."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Sikap yang mencerminkan keteladanan terhadap Asmaul Husna <b>Al-Qayyum</b> (Maha Mandiri) di lingkungan rumah dan sekolah adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Merapikan tempat tidur sendiri setelah bangun tidur",
+            "Menyiapkan buku pelajaran dan seragam sekolah tanpa selalu merepotkan ibu",
+            "Mengerjakan soal ulangan dengan jujur atas kemampuan diri sendiri",
+            "Menyuruh teman mengerjakan tugas sekolah milik kita"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Al-Qayyum menuntut kita menjadi pribadi yang mandiri, bertanggung jawab, dan tidak bergantung manja."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Hikmah dari mengimani Asmaul Husna <b>Al-Mumit</b> (Maha Mematikan) dalam kehidupan sehari-hari adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Menyadari bahwa kematian pasti datang sehingga rajin memperbanyak amal kebajikan",
+            "Tidak bersikap sombong terhadap kekayaan dan jabatan duniawi yang bersifat sementara",
+            "Merasa takut yang berlebihan hingga tidak mau beraktivitas apa pun",
+            "Menimbun harta sebanyak-banyaknya untuk dinikmati selamanya"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Al-Mumit mengingatkan kefanaan hidup sehingga memicu kita giat beramal dan rendah hati."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Manakah bukti-bukti kekuasaan Allah yang menunjukkan sifat <b>Al-Muhyi</b> (Maha Menghidupkan)? (Pilih 2 jawaban benar)",
+        "options": [
+            "Menghidupkan manusia dan hewan dari tiada menjadi ada di muka bumi",
+            "Menghidupkan tanah yang kering kerontang menjadi subur ditumbuhi pepohonan berkat air hujan",
+            "Menghancurkan gunung-gunung saat hari kiamat",
+            "Mencabut nyawa orang-orang yang sudah sampai ajalnya"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Menciptakan kehidupan pada janin dan menyuburkan bumi tandus adalah bukti nyata sifat Al-Muhyi."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Manakah di antara adab-adab berdoa kepada Allah SWT yang diajarkan oleh Rasulullah SAW? (Pilih 3 jawaban benar)",
+        "options": [
+            "Memulai doa dengan memuji Allah (tahmid) dan membaca shalawat kepada Nabi SAW",
+            "Menghadap ke arah kiblat dan mengangkat kedua belah tangan dengan penuh kerendahan hati",
+            "Berdoa dengan suara yang lembut, khusyuk, dan yakin akan dikabulkan oleh Allah",
+            "Berteriak keras dan memaksakan agar doa harus terkabul hari itu juga"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Berdoa dilakukan dengan adab sopan, lemah lembut, khusyuk, dan tidak tergesa-gesa."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Perilaku yang dilarang dalam Surat Al-Hujurat karena dapat merusak persaudaraan dan kerukunan sesama muslim adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Mengolok-olok atau memanggil orang lain dengan gelar/julukan yang buruk",
+            "Berprasangka buruk (su'udzan) tanpa bukti",
+            "Menggunjing dan membicarakan aib orang lain (ghibah)",
+            "Memberikan nasihat kebaikan dengan tutur kata yang santun"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Al-Hujurat melarang mengolok-olok (ayat 11), su'udzan, tajassus (mencari kesalahan), dan ghibah (ayat 12)."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Asmaul Husna berikut yang memiliki kaitan makna dengan peristiwa hari akhir / kiamat adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Al-Mumit (Maha Mematikan)",
+            "Al-Ba'its (Maha Membangkitkan)",
+            "Al-Alim (Maha Mengetahui)",
+            "As-Sami' (Maha Mendengar)"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Al-Mumit mematikan seluruh makhluk saat sangkakala pertama ditiup, dan Al-Ba'its membangkitkan mereka kembali dari kubur."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Berikut ini waktu-waktu yang mustajab (sangat baik dan utama) untuk memanjatkan doa kepada Allah SWT adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Di sepertiga malam yang terakhir saat salat tahajud",
+            "Di antara waktu adzan dan iqamah",
+            "Ketika sedang sujud dalam salat",
+            "Ketika sedang berjalan terburu-buru di pusat keramaian belanja"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sepertiga malam akhir, antara adzan-iqamah, dan saat sujud merupakan waktu paling mustajab untuk berdoa."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Asmaul Husna dengan Artinya yang Tepat)",
+        "text": "Pasangkan Asmaul Husna berikut dengan arti yang tepat: <b>Al-Qawiyyu</b>",
+        "options": [
+            "Maha Kuat / Perkasa",
+            "Maha Mandiri / Berdiri Sendiri",
+            "Maha Menghidupkan",
+            "Maha Mematikan",
+            "Maha Membangkitkan"
+        ],
+        "answer": "Maha Kuat / Perkasa",
+        "hint": "Al-Qawiyyu memiliki arti Maha Kuat."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan Asmaul Husna berikut dengan arti yang tepat: <b>Al-Qayyum</b>",
+        "options": [
+            "Maha Kuat / Perkasa",
+            "Maha Mandiri / Berdiri Sendiri",
+            "Maha Menghidupkan",
+            "Maha Mematikan",
+            "Maha Membangkitkan"
+        ],
+        "answer": "Maha Mandiri / Berdiri Sendiri",
+        "hint": "Al-Qayyum artinya Maha Berdiri Sendiri dan tidak memerlukan bantuan apa pun."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan Asmaul Husna berikut dengan arti yang tepat: <b>Al-Muhyi</b>",
+        "options": [
+            "Maha Kuat / Perkasa",
+            "Maha Mandiri / Berdiri Sendiri",
+            "Maha Menghidupkan",
+            "Maha Mematikan",
+            "Maha Membangkitkan"
+        ],
+        "answer": "Maha Menghidupkan",
+        "hint": "Al-Muhyi artinya Yang Maha Menghidupkan ciptaan-Nya."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan Asmaul Husna berikut dengan arti yang tepat: <b>Al-Mumit</b>",
+        "options": [
+            "Maha Kuat / Perkasa",
+            "Maha Mandiri / Berdiri Sendiri",
+            "Maha Menghidupkan",
+            "Maha Mematikan",
+            "Maha Membangkitkan"
+        ],
+        "answer": "Maha Mematikan",
+        "hint": "Al-Mumit artinya Yang Menetapkan kematian bagi semua makhluk hidup."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan Asmaul Husna berikut dengan arti yang tepat: <b>Al-Ba'its</b>",
+        "options": [
+            "Maha Kuat / Perkasa",
+            "Maha Mandiri / Berdiri Sendiri",
+            "Maha Menghidupkan",
+            "Maha Mematikan",
+            "Maha Membangkitkan"
+        ],
+        "answer": "Maha Membangkitkan",
+        "hint": "Al-Ba'its artinya Yang Membangkitkan manusia dari kubur pada hari kiamat."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Surat Al-Hujurat menempati urutan surat yang ke-...",
+        "answer": "49",
+        "alt": [
+            "49",
+            "empat puluh sembilan",
+            "ke-49"
+        ],
+        "hint": "Terletak di dalam Juz 26 Al-Qur'an."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Arti kata Al-Hujurat secara bahasa adalah bilik-bilik atau...",
+        "answer": "Kamar-kamar",
+        "alt": [
+            "kamar",
+            "kamar-kamar",
+            "kamar kamar"
+        ],
+        "hint": "Bilik tempat beristirahat istri-istri Nabi SAW."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Tujuan Allah menciptakan manusia bersuku-suku dan berbangsa-bangsa menurut QS Al-Hujurat: 13 adalah agar saling...",
+        "answer": "Mengenal (lita'arafu)",
+        "alt": [
+            "mengenal",
+            "saling mengenal",
+            "lita'arafu",
+            "ta'aruf"
+        ],
+        "hint": "Dari kata Arab 'ta'aruf' atau 'lita'arafuu'."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Standar atau ukuran kemuliaan seorang manusia di sisi Allah SWT adalah tingkat...",
+        "answer": "Ketakwaannya (takwa)",
+        "alt": [
+            "takwa",
+            "ketakwaan",
+            "ketakwaannya",
+            "ketaqwaan",
+            "taqwa"
+        ],
+        "hint": "Inna akramakum 'indallahi atqaakum."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Nama-nama Allah yang agung dan indah berjumlah 99 dikenal dengan istilah...",
+        "answer": "Asmaul Husna",
+        "alt": [
+            "asmaul husna",
+            "al-asmaul husna",
+            "asma'ul husna"
+        ],
+        "hint": "Asma' artinya nama-nama, Al-Husna artinya terbaik/terindah."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Asmaul Husna yang memiliki arti Maha Kuat dan tidak dapat dikalahkan oleh siapapun adalah...",
+        "answer": "Al-Qawiyyu",
+        "alt": [
+            "al-qawiyyu",
+            "al qawiyyu",
+            "al qawiy",
+            "alqawiyyu"
+        ],
+        "hint": "Dari kata quwwah yang berarti kekuatan."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Sifat Allah yang Maha Mandiri dan tidak memerlukan bantuan apa pun dari ciptaan-Nya adalah...",
+        "answer": "Al-Qayyum",
+        "alt": [
+            "al-qayyum",
+            "al qayyum",
+            "alqayyum"
+        ],
+        "hint": "Disebutkan dalam Ayat Kursi: 'Allahu laa ilaaha illaa Huwal Hayyul Qayyum'."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Ayat Al-Qur'an dalam Surat Ar-Rum ayat 50 berbunyi 'Fandzur ilaa aatsaari rahmatillaahi kaifa yuhyil ardha ba'da mautihaa', yang menunjukkan bukti sifat Allah yaitu Maha...",
+        "answer": "Menghidupkan (Al-Muhyi)",
+        "alt": [
+            "menghidupkan",
+            "al-muhyi",
+            "al muhyi",
+            "maha menghidupkan"
+        ],
+        "hint": "Allah menghidupkan bumi yang tadinya mati dengan turunnya air hujan."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Selain sebagai inti ibadah, hadits Nabi SAW menyebutkan bahwa doa juga merupakan 'senjata' bagi orang yang...",
+        "answer": "Beriman (Mukmin)",
+        "alt": [
+            "mukmin",
+            "beriman",
+            "muslim",
+            "orang beriman"
+        ],
+        "hint": "'Ad-du'aa-u silaahul mu'min' (Doa adalah senjata orang mukmin)."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Ketika kita memanjatkan doa, arah kiblat yang kita hadapkan merupakan salah satu bentuk pengamalan ... berdoa.",
+        "answer": "Adab (tata krama)",
+        "alt": [
+            "adab",
+            "adab berdoa",
+            "tata krama",
+            "etika"
+        ],
+        "hint": "Perilaku sopan santun dan tata krama saat memohon kepada Sang Pencipta."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan pesan pokok yang terkandung dalam Surat Al-Hujurat ayat 13 mengenai keragaman penciptaan manusia dan kedudukan manusia sebagai makhluk sosial!",
+        "answer": "Pesan pokok QS Al-Hujurat ayat 13:<br>1. Allah SWT menciptakan manusia berasal dari satu keturunan yang sama, yaitu laki-laki (Nabi Adam) dan perempuan (Hawa).<br>2. Allah menjadikan manusia berbangsa-bangsa dan bersuku-suku bukan untuk saling bermusuhan, melainkan agar saling mengenal (lita'arafu), tolong-menolong, dan bekerja sama.<br>3. Manusia adalah makhluk sosial yang tidak dapat hidup sendiri tanpa bantuan orang lain.<br>4. Di hadapan Allah SWT, semua manusia memiliki derajat yang sama; yang membedakan kemuliaannya hanyalah tingkat ketakwaannya.",
+        "hint": "Jelaskan asal penciptaan, tujuan keberagaman suku (lita'arafu), peran makhluk sosial, dan tolak ukur kemuliaan (ketakwaan)."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Sebutkan 5 Asmaul Husna yang telah kamu pelajari di bab ini beserta artinya masing-masing secara lengkap!",
+        "answer": "1. <b>Al-Qawiyyu</b>: Allah Maha Kuat / Perkasa.<br>2. <b>Al-Qayyum</b>: Allah Maha Mandiri / Berdiri Sendiri dalam mengurus makhluk-Nya.<br>3. <b>Al-Muhyi</b>: Allah Maha Menghidupkan.<br>4. <b>Al-Mumit</b>: Allah Maha Mematikan.<br>5. <b>Al-Ba'its</b>: Allah Maha Membangkitkan manusia dari kubur.",
+        "hint": "Tuliskan kelima nama indah Allah tersebut dengan artinya yang tepat."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Bagaimanakah cara kita meneladani sifat Asmaul Husna <b>Al-Qayyum</b> (Maha Mandiri) dan <b>Al-Qawiyyu</b> (Maha Kuat) dalam kehidupan sehari-hari di rumah dan sekolah?",
+        "answer": "1. <b>Meneladani Al-Qayyum (Maha Mandiri):</b><br>- Belajar menyiapkan perlengkapan sekolah dan merapikan kamar tidur sendiri tanpa merepotkan orang tua.<br>- Mandiri dalam menyelesaikan tugas dan pekerjaan rumah (PR) dengan jujur.<br><br>2. <b>Meneladani Al-Qawiyyu (Maha Kuat):</b><br>- Mempergunakan kekuatan badan dan akal untuk membantu sesama, membela teman yang dizalimi, dan giat beribadah.<br>- Memiliki keteguhan iman dan mental pantang menyerah saat menghadapi kesulitan belajar.",
+        "hint": "Uraikan masing-masing contoh nyata kemandirian dan pemanfaatan kekuatan untuk kebaikan."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Jelaskan pengertian 'Doa' baik secara bahasa maupun secara istilah syariat Islam!",
+        "answer": "1. <b>Secara Bahasa:</b> Doa berasal dari bahasa Arab <i>da'aa - yad'uu - du'aa-an</i> yang berarti memanggil, meminta, atau memohon.<br>2. <b>Secara Istilah:</b> Doa adalah permohonan seorang hamba kepada Allah SWT untuk memperoleh kebaikan, manfaat, serta perlindungan dari keburukan dengan dilandasi rasa tunduk, rendah hati, dan penuh pengharapan hanya kepada Allah SWT.",
+        "hint": "Sebutkan arti bahasa (memohon/meminta) dan definisi istilah syar'i permohonan hamba kepada Allah."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Sebutkan 4 adab yang baik dan benar ketika seseorang memanjatkan doa kepada Allah SWT!",
+        "answer": "Adab berdoa kepada Allah SWT antara lain:<br>1. Ikhlas dan bersuci (dalam keadaan berwudhu) serta menghadap kiblat.<br>2. Mengangkat kedua belah tangan setinggi dada dengan telapak tangan terbuka ke atas.<br>3. Memulai doa dengan memuji asma Allah (hamdalah/tahmid) dan bershalawat atas Nabi Muhammad SAW.<br>4. Membaca doa dengan suara lemah lembut, khusyuk, tenang, dan penuh harap (tidak berteriak-teriak).<br>5. Yakin dengan sepenuh hati bahwa Allah SWT Maha Mengabulkan doa hamba-Nya dan menutup doa dengan hamdalah.",
+        "hint": "Tuliskan minimal 4 tata krama atau adab saat berdoa kepada Allah."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

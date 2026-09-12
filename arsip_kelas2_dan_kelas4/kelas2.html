@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STS Kelas 2 - SDIT Friends</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            background-color: #f0fff4;
+            /* Background kehijauan soft untuk beda suasana */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #27ae60;
+            /* Warna Hijau Utama */
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #a8e6cf;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 40px;
+            text-align: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid #2ecc71;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 260px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 4px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.1));
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+
+        .btn-start {
+            display: inline-block;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: auto;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            background-color: #27ae60;
+            /* Default Hijau untuk Kelas 2 */
+        }
+
+        .btn-start:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Styling Kartu (Default Hijau untuk Kelas 2 agar beda tema) */
+        .card:hover {
+            border-color: #2ecc71;
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 60px;
+            color: #b2bec3;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .home-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .admin-link {
+            color: #b2bec3;
+            text-decoration: none;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="home-btn">⬅ Kembali ke Menu Utama</a>
+
+    <h1>🎈 ASAT Kelas 2 🎈</h1>
+    <div class="subtitle">SDIT Friends — Asesmen Sumatif Akhir Tahun (ASAT)</div>
+
+    <div class="card-container">
+        <!-- LINK MAPEL KELAS 2 (Format baru: _k2.html) -->
+
+        <a href="pancasila_k2.html" class="card">
+            <div class="card-icon">🇮🇩</div>
+            <div class="card-title">Pancasila</div>
+            <div class="card-desc">Menjaga Persatuan & Pengolahan Sampah (3R).</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="ipas_k2.html" class="card">
+            <div class="card-icon">🌿</div>
+            <div class="card-title">IPAS</div>
+            <div class="card-desc">Lingkungan Alam dan Buatan, Lingkungan Sehat.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="pai_k2.html" class="card">
+            <div class="card-icon">🌙</div>
+            <div class="card-title">PAI</div>
+            <div class="card-desc">Kisah Nabi Nuh A.S., Zikir & Doa setelah Salat.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="bahasaindonesia_k2.html" class="card">
+            <div class="card-icon">📖</div>
+            <div class="card-title">B. Indonesia</div>
+            <div class="card-desc">Membaca Pemahaman, Peribahasa & Puisi.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="matematika_k2.html" class="card">
+            <div class="card-icon">➗</div>
+            <div class="card-title">Matematika</div>
+            <div class="card-desc">Pengolahan Data & Membaca Berbagai Diagram.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="bahasainggris_k2.html" class="card">
+            <div class="card-icon">🇬🇧</div>
+            <div class="card-title">B. Inggris</div>
+            <div class="card-desc">Clothes, Prepositions, Rooms & Zoo Animals.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="bahasaarab_k2.html" class="card">
+            <div class="card-icon">🕌</div>
+            <div class="card-title">B. Arab</div>
+            <div class="card-desc">Anggota Tubuh dan Keluarga.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="budipekerti_k2.html" class="card">
+            <div class="card-icon">🤝</div>
+            <div class="card-title">Budi Pekerti</div>
+            <div class="card-desc">Sopan Santun dan Tolong Menolong.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="senibudaya_k2.html" class="card">
+            <div class="card-icon">🎨</div>
+            <div class="card-title">Seni Budaya</div>
+            <div class="card-desc">Bercerita & Berimajinasi (Seni Teater & Tari).</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="pjok_k2.html" class="card">
+            <div class="card-icon">🏀</div>
+            <div class="card-title">PJOK</div>
+            <div class="card-desc">Gerak Lokomotor dan Keseimbangan.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="tik_k2.html" class="card">
+            <div class="card-icon">💻</div>
+            <div class="card-title">TIK</div>
+            <div class="card-desc">Mengenal Bagian Komputer.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+
+        <a href="siroh_k2.html" class="card">
+            <div class="card-icon">📜</div>
+            <div class="card-title">Siroh N.</div>
+            <div class="card-desc">Kepemimpinan Nabi & Perjanjian Hudaibiyah.</div>
+            <span class="btn-start">Mulai!</span>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SDIT Friends</p>
+        <a href="generator.html" class="admin-link">⚙️ Login Guru</a>
+    </footer>
+
+</body>
+
+</html>

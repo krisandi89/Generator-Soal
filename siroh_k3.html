@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal Ulangan Siroh Nabawiyah Kelas 3 - SDIT Friends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --primary-light: #9b59b6;
+            --bg: #f5eaf7;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .btn-back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .btn-back-nav:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateX(-3px);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge-kisi {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 10px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            display: none;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            margin: 10px 0;
+        }
+        .score-msg {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action-res {
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-retry { background: white; color: var(--primary); }
+        .btn-retry:hover { background: #f1f2f6; transform: scale(1.03); }
+        .btn-back-menu { background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
+        .btn-back-menu:hover { background: rgba(0,0,0,0.3); }
+
+        .quiz-container {
+            padding: 25px 20px;
+        }
+        .q-card {
+            background: #fafbfc;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+        }
+        .q-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .q-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .q-num {
+            background: var(--primary);
+            color: white;
+            font-size: 0.85em;
+            font-weight: 800;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .q-title {
+            font-size: 1.05em;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #2c3e50;
+        }
+        .input-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: all 0.2s;
+            outline: none;
+            background: white;
+        }
+        .input-box:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .feedback {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            display: none;
+        }
+        .fb-correct {
+            background: #eafaf1;
+            color: #1b7a43;
+            border-left: 5px solid var(--success);
+        }
+        .fb-wrong {
+            background: #fdf2e9;
+            color: #b94a48;
+            border-left: 5px solid var(--error);
+        }
+        .fb-ans {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 4px;
+        }
+        .fb-hint {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .footer-submit {
+            text-align: center;
+            padding: 25px;
+            background: #ffffff;
+            border-top: 2px solid var(--border);
+            position: sticky;
+            bottom: 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            transition: all 0.2s;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas3.html" class="btn-back-nav">⬅ Menu Kelas 3</a>
+                <span style="font-size: 0.85em; opacity: 0.9;">15 Soal Esai</span>
+            </div>
+            <h1>📜 Siroh Nabawiyah</h1>
+            <p>SDIT Friends — Asesmen Formatif Tengah Semester (AFTS) Ganjil</p>
+            <div class="badge-kisi">📌 Perang Khaibar, Daging Beracun, Umratul Qadha & Fathu Makkah (Hal. 4-17)</div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <!-- Live Score Board -->
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Latihan Ulangan</h2>
+            <div class="score-val" id="score-val">0</div>
+            <div class="score-msg" id="score-msg"></div>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action-res btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas3.html" class="btn-action-res btn-back-menu">⬅ Kembali ke Menu Kelas 3</a>
+            </div>
+        </div>
+
+        <!-- Questions List -->
+        <div class="quiz-container" id="quiz-container"></div>
+
+        <!-- Submit Footer -->
+        <div class="footer-submit" id="footer-submit">
+            <button class="btn-submit" onclick="submitExam()" id="btnSubmit">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "text": "Berapa jumlah benteng besar yang dimiliki oleh kota Khaibar?",
+        "answer": "8 benteng",
+        "alt": [
+            "8",
+            "delapan",
+            "delapan benteng"
+        ],
+        "hint": "Khaibar memiliki 8 benteng besar yang kokoh dikelilingi kebun kurma yang luas."
+    },
+    {
+        "id": 2,
+        "text": "Mengapa Nabi Muhammad SAW dan kaum muslimin memerangi kaum Yahudi di Khaibar?",
+        "answer": "Karena kaum Yahudi Khaibar licik, berkhianat, dan menghasut Bani Quraizhah untuk mengkhianati Nabi Muhammad SAW",
+        "alt": [
+            "licik",
+            "khianat",
+            "berkhianat",
+            "menghasut",
+            "ancaman"
+        ],
+        "hint": "Penduduk Khaibar selalu memusuhi Islam dan mendorong Bani Quraizhah berkhianat."
+    },
+    {
+        "id": 3,
+        "text": "Siapakah pemimpin kaum munafik yang membocorkan rencana penyerangan kaum muslimin ke Khaibar?",
+        "answer": "Abdullah bin Ubay",
+        "alt": [
+            "abdullah bin ubay",
+            "abdullah bin ubai",
+            "ibnu ubay"
+        ],
+        "hint": "Abdullah bin Ubay adalah gembong kaum munafik di Madinah."
+    },
+    {
+        "id": 4,
+        "text": "Sebutkan salah satu nama benteng besar kaum Yahudi yang berhasil ditaklukkan oleh kaum muslimin!",
+        "answer": "Benteng Naim (atau Benteng Ash-Sha'b bin Mu'adz, Benteng Az-Zubair, Benteng Ubay, Benteng An-Nizar)",
+        "alt": [
+            "naim",
+            "ash-sha'b",
+            "zubair",
+            "ubay",
+            "an-nizar"
+        ],
+        "hint": "Di antaranya adalah Benteng Naim, Benteng Ash-Sha'b bin Mu'adz, Benteng Az-Zubair, Benteng Ubay, dan Benteng An-Nizar."
+    },
+    {
+        "id": 5,
+        "text": "Siapakah sahabat yang ditunjuk Nabi Muhammad SAW untuk memimpin pembagian hasil panen kebun Khaibar secara adil?",
+        "answer": "Abdullah bin Rawahah",
+        "alt": [
+            "abdullah bin rawahah",
+            "rawahah"
+        ],
+        "hint": "Abdullah bin Rawahah memimpin pengelolaan dan pembagian hasil kebun dengan sangat adil."
+    },
+    {
+        "id": 6,
+        "text": "Siapakah nama wanita Yahudi yang menyajikan daging paha domba beracun kepada Rasulullah SAW?",
+        "answer": "Zainab binti Al-Harits",
+        "alt": [
+            "zainab binti al-harits",
+            "zainab",
+            "zainab binti harits"
+        ],
+        "hint": "Zainab binti Al-Harits adalah istri dari Sallam bin Misykam."
+    },
+    {
+        "id": 7,
+        "text": "Bagaimana cara Nabi Muhammad SAW mengetahui bahwa daging domba yang disajikan telah dibubuhi racun?",
+        "answer": "Tulang domba tersebut mengabarkan kepada Nabi bahwa dagingnya disusupi racun (mukjizat atas izin Allah)",
+        "alt": [
+            "tulang",
+            "tulang berbicara",
+            "tulang mengabarkan",
+            "mukjizat"
+        ],
+        "hint": "Nabi bersabda: 'Tulang ini mengabarkan kepadaku bahwa daging disusupi racun.'"
+    },
+    {
+        "id": 8,
+        "text": "Siapakah sahabat Nabi yang meninggal dunia seketika setelah memakan daging domba beracun tersebut?",
+        "answer": "Bisyr bin Al-Barra",
+        "alt": [
+            "bisyr bin al-barra",
+            "bisyr",
+            "bisyir"
+        ],
+        "hint": "Bisyr bin Al-Barra bin Ma'rur ikut menyantap daging tersebut dan gugur sebagai syahid."
+    },
+    {
+        "id": 9,
+        "text": "Mengapa ibadah umrah pada Dzulqa'idah tahun 7 Hijriyah dinamakan 'Umrah Qadha'?",
+        "answer": "Karena merupakan umrah pengganti yang tertunda akibat Perjanjian Hudaibiyah pada tahun sebelumnya",
+        "alt": [
+            "tertunda",
+            "pengganti",
+            "perjanjian hudaibiyah",
+            "qadha"
+        ],
+        "hint": "Qadha artinya mengganti kewajiban yang tertunda di tahun ke-6 Hijriyah."
+    },
+    {
+        "id": 10,
+        "text": "Berapa jumlah jamaah kaum muslimin yang ikut serta dalam pelaksanaan Umrah Qadha?",
+        "answer": "2.000 orang (dua ribu orang)",
+        "alt": [
+            "2000",
+            "2.000",
+            "dua ribu"
+        ],
+        "hint": "Tercatat sebanyak 2.000 sahabat ikut serta selain wanita dan anak-anak."
+    },
+    {
+        "id": 11,
+        "text": "Mengapa Nabi Muhammad SAW memerintahkan jamaah untuk tawaf dengan berjalan cepat sebanyak 3 kali putaran?",
+        "answer": "Untuk menunjukkan kekuatan fisik kaum muslimin kepada kaum musyrikin Quraisy",
+        "alt": [
+            "kekuatan fisik",
+            "fisik",
+            "kuat",
+            "menunjukkan kekuatan"
+        ],
+        "hint": "Agar kaum Quraisy tahu bahwa kaum muslimin sehat, bugar, dan kuat."
+    },
+    {
+        "id": 12,
+        "text": "Berapa hari Nabi Muhammad SAW dan kaum muslimin berada di kota Makkah untuk melaksanakan Umrah Qadha?",
+        "answer": "3 hari (tiga hari)",
+        "alt": [
+            "3",
+            "3 hari",
+            "tiga",
+            "tiga hari"
+        ],
+        "hint": "Sesuai perjanjian Hudaibiyah, kaum muslimin hanya boleh berada di Makkah selama 3 hari."
+    },
+    {
+        "id": 13,
+        "text": "Pasukan sahabat siapakah yang terpaksa bertempur membela diri melawan Ikrimah bin Abi Jahl saat Fathu Makkah?",
+        "answer": "Khalid bin Walid",
+        "alt": [
+            "khalid bin walid",
+            "khalid"
+        ],
+        "hint": "Pasukan Khalid bin Walid diserang lebih dulu oleh kelompok Ikrimah sehingga terpaksa membalas untuk membela diri."
+    },
+    {
+        "id": 14,
+        "text": "Surat apakah dalam Al-Qur'an yang dibaca Nabi Muhammad SAW saat memasuki kota Makkah pada peristiwa Fathu Makkah?",
+        "answer": "Surat Al-Fath",
+        "alt": [
+            "al-fath",
+            "surat al fath",
+            "al fath"
+        ],
+        "hint": "Nabi Muhammad SAW menundukkan kepala dengan tawadhu sambil membaca Surat Al-Fath."
+    },
+    {
+        "id": 15,
+        "text": "Berapa jumlah berhala di sekeliling Ka'bah yang dihancurkan oleh Rasulullah SAW saat penaklukkan kota Makkah?",
+        "answer": "360 berhala",
+        "alt": [
+            "360",
+            "tiga ratus enam puluh",
+            "360 berhala"
+        ],
+        "hint": "Nabi menunjuk 360 berhala dengan busur panah sambil membacakan ayat Al-Isra ayat 81 hingga semua berhala tumbang."
+    }
+];
+
+        function renderQuestions() {
+            const container = document.getElementById('quiz-container');
+            let html = '';
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="q-card" id="qcard-${q.id}">
+                        <div class="q-header">
+                            <div class="q-num">${index + 1}</div>
+                            <div class="q-title">${q.text}</div>
+                        </div>
+                        <input type="text" 
+                               class="input-box" 
+                               name="q_${q.id}" 
+                               id="input-${q.id}" 
+                               placeholder="Tulis jawabanmu di sini..." 
+                               autocomplete="off"
+                               oninput="updateProgress()">
+                        <div class="feedback" id="fb-${q.id}"></div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                const val = document.getElementById(`input-${q.id}`).value.trim();
+                if (val.length > 0) answered++;
+            });
+            const pct = (answered / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
+        }
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function checkAnswer(userAns, q) {
+            const u = cleanString(userAns);
+            if (!u) return false;
+            
+            const target = cleanString(q.answer);
+            if (u === target || u.includes(target) || (target.length > 3 && target.includes(u))) {
+                return true;
+            }
+
+            if (q.alt && Array.isArray(q.alt)) {
+                for (let k of q.alt) {
+                    const cleanK = cleanString(k);
+                    if (u === cleanK || u.includes(cleanK) || (cleanK.length > 3 && cleanK.includes(u))) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function submitExam() {
+            let correctCount = 0;
+            let total = questions.length;
+
+            questions.forEach(q => {
+                const inputEl = document.getElementById(`input-${q.id}`);
+                const userVal = inputEl.value;
+                const fb = document.getElementById(`fb-${q.id}`);
+                const isCorrect = checkAnswer(userVal, q);
+
+                if (isCorrect) {
+                    correctCount++;
+                    fb.className = 'feedback fb-correct';
+                    fb.innerHTML = `
+                        <div>✅ <b>Masya Allah, Tepat Sekali!</b></div>
+                        <div class="fb-ans">Kunci Jawaban: ${q.answer}</div>
+                        <div class="fb-hint">💡 ${q.hint}</div>
+                    `;
+                } else {
+                    fb.className = 'feedback fb-wrong';
+                    fb.innerHTML = `
+                        <div>❌ <b>Perlu Dipelajari Lagi</b></div>
+                        <div class="fb-ans">Kunci Jawaban yang Benar: <b>${q.answer}</b></div>
+                        <div class="fb-hint">💡 Pembahasan: ${q.hint}</div>
+                    `;
+                }
+                fb.style.display = 'block';
+                inputEl.disabled = true;
+            });
+
+            const finalScore = Math.round((correctCount / total) * 100);
+            document.getElementById('score-val').innerText = finalScore;
+
+            let msg = '';
+            if (finalScore === 100) {
+                msg = `🌟 Masya Allah, Nilai Sempurna 100! Luar biasa hebat Musa, pertahankan prestasi ini ya! 🎉`;
+            } else if (finalScore >= 80) {
+                msg = `🎉 Hebat sekali Musa! Benar ${correctCount} dari ${total} soal. Sedikit lagi 100, pelajari kembali soal yang belum tepat ya!`;
+            } else if (finalScore >= 60) {
+                msg = `👍 Bagus Musa! Benar ${correctCount} dari ${total} soal. Ayo baca lagi materi dan pembahasannya lalu coba lagi ya!`;
+            } else {
+                msg = `💪 Semangat Musa! Benar ${correctCount} dari ${total} soal. Jangan menyerah, pelajari catatan buku tulis dan ulangi lagi latihannya!`;
+            }
+
+            document.getElementById('score-msg').innerText = msg;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-submit').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                const inputEl = document.getElementById(`input-${q.id}`);
+                inputEl.value = '';
+                inputEl.disabled = false;
+                const fb = document.getElementById(`fb-${q.id}`);
+                fb.style.display = 'none';
+                fb.innerHTML = '';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-submit').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        renderQuestions();
+    </script>
+</body>
+</html>

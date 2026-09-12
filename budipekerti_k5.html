@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Budi Pekerti Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #e67e22;
+            --primary-light: #f39c12;
+            --bg: #fef9e7;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>🤝 Budi Pekerti</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Salah satu bentuk wujud nyata dari sikap bangga menjadi anak bangsa Indonesia dalam kehidupan sehari-hari adalah...",
+        "options": [
+            "Lebih bangga menggunakan barang-barang impor buatan luar negeri",
+            "Mencintai dan gemar memakai pakaian batik buatan pengrajin lokal",
+            "Malu berbicara dengan bahasa daerah sendiri",
+            "Menganggap budaya asing lebih hebat dibandingkan budaya nusantara"
+        ],
+        "answer": 1,
+        "hint": "Memakai dan mencintai produk lokal seperti batik adalah bukti rasa bangga terhadap produk bangsa sendiri."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Sikap cinta tanah air dan kesediaan untuk mendahulukan kepentingan bangsa dan negara di atas kepentingan pribadi atau golongan dinamakan sikap...",
+        "options": [
+            "Individualisme",
+            "Nasionalisme",
+            "Egoisme",
+            "Konsumerisme"
+        ],
+        "answer": 1,
+        "hint": "Nasionalisme adalah paham kecintaan, kesetiaan, dan pengabdian yang tinggi terhadap tanah air bangsa."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Candi Borobudur yang terletak di Magelang, Jawa Tengah merupakan peninggalan sejarah bangsa Indonesia bercorak agama...",
+        "options": [
+            "Hindu",
+            "Buddha",
+            "Islam",
+            "Konghucu"
+        ],
+        "answer": 1,
+        "hint": "Candi Borobudur dibangun pada masa Dinasti Syailendra sebagai candi Buddha terbesar di dunia."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Ketika kita berkunjung ke tempat wisata cagar budaya atau museum sejarah, sikap menghargai peninggalan sejarah yang benar adalah...",
+        "options": [
+            "Mencoret-coret dinding candi untuk tanda kenangan",
+            "Menyentuh dan memindahkan benda cagar budaya sesuka hati",
+            "Menjaga kebersihan dan mematuhi tata tertib pemandu wisata",
+            "Membuang bungkus makanan sembarangan di area purbakala"
+        ],
+        "answer": 2,
+        "hint": "Menjaga kebersihan dan mematuhi aturan adalah cara terbaik melestarikan warisan leluhur bangsa."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Pahlawan wanita dari Jepara, Jawa Tengah yang gigih memperjuangkan hak pendidikan dan kesetaraan bagi kaum perempuan Indonesia adalah...",
+        "options": [
+            "Cut Nyak Dien",
+            "R.A. Kartini",
+            "Martha Christina Tiahahu",
+            "Dewi Sartika"
+        ],
+        "answer": 1,
+        "hint": "Raden Ajeng Kartini dikenal melalui kumpulan suratnya 'Habis Gelap Terbitlah Terang'."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Tokoh pahlawan nasional yang memimpin rakyat Jawa melawan penjajah Belanda dalam Perang Jawa (1825–1830) dengan taktik perang gerilya adalah...",
+        "options": [
+            "Pangeran Diponegoro",
+            "Tuanku Imam Bonjol",
+            "Sultan Hasanuddin",
+            "Pattimura"
+        ],
+        "answer": 0,
+        "hint": "Pangeran Diponegoro menentang penindasan Belanda dan pemasangan patok jalan di tanah leluhurnya."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Kerja sama adalah kegiatan yang dilakukan secara bersama-sama oleh dua orang atau lebih untuk mencapai...",
+        "options": [
+            "Keuntungan sepihak untuk ketua kelompok",
+            "Tujuan bersama demi kepentingan semua anggota",
+            "Pujian dari guru semata",
+            "Kemenangan dengan cara mencurangi tim lain"
+        ],
+        "answer": 1,
+        "hint": "Kerja sama bertujuan meraih hasil dan cita-cita bersama yang bermanfaat bagi semua pihak."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Permainan tradisional Indonesia yang sangat membutuhkan kerja sama dan kekompakan langkah kaki regu dengan sepasang papan kayu panjang adalah...",
+        "options": [
+            "Egrang",
+            "Bakiak / Terompah Panjang",
+            "Gasing",
+            "Layang-layang"
+        ],
+        "answer": 1,
+        "hint": "Bakiak beregu menguji keselarasan ayunan kaki agar para pemain tidak terjatuh bersamaan."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Manfaat utama yang langsung kita rasakan saat melakukan kerja sama dalam menyelesaikan pekerjaan berat adalah...",
+        "options": [
+            "Pekerjaan menjadi lebih lambat selesai",
+            "Pekerjaan berat terasa lebih ringan dan cepat selesai",
+            "Masing-masing orang merasa paling berjasa",
+            "Biaya yang dikeluarkan menjadi lebih boros"
+        ],
+        "answer": 1,
+        "hint": "'Berat sama dipikul, ringan sama dijinjing' bermakna pekerjaan berat jadi ringan bila digotong bersama."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Contoh perilaku kerja sama yang baik dan tepat di lingkungan sekolah adalah...",
+        "options": [
+            "Bekerja sama memberi contekan jawaban saat ujian ASTS berlangsung",
+            "Melaksanakan tugas regu piket membersihkan ruang kelas bersama teman",
+            "Menyembunyikan buku tugas milik teman sekelas",
+            "Mengeroyok teman saat bermain di halaman sekolah"
+        ],
+        "answer": 1,
+        "hint": "Kerja sama hanya boleh dilakukan dalam hal-hal positif seperti piket kebersihan kelas."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Manakah perilaku yang menunjukkan rasa cinta dan bangga terhadap kebudayaan bangsa Indonesia? (Pilih 3 jawaban benar)",
+        "options": [
+            "Mempelajari dan memainkan alat musik tradisional seperti angklung atau gamelan",
+            "Menggemari makanan khas nusantara seperti rendang, soto, dan gado-gado",
+            "Menggunakan bahasa Indonesia yang santun dalam pergaulan sehari-hari",
+            "Menganggap budaya daerah sendiri paling unggul dan menghina tarian suku lain"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Mempelajari alat musik tradisional, mencintai kuliner nusantara, dan berbahasa Indonesia yang baik adalah wujud kebanggaan bangsa."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Manakah benda atau bangunan bersejarah berikut yang termasuk contoh peninggalan masa kerajaan di Indonesia? (Pilih 3 jawaban benar)",
+        "options": [
+            "Candi Prambanan di Klaten dan Yogyakarta",
+            "Prasasti Ciaruteun peninggalan Kerajaan Tarumanegara",
+            "Masjid Agung Demak peninggalan Kesultanan Demak",
+            "Gedung pencakar langit modern di pusat kota"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Candi, prasasti kuno, dan masjid kesultanan adalah peninggalan bersejarah bernilai tinggi."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Bagaimanakah cara seorang pelajar menghargai jasa-jasa para pahlawan yang telah gugur memperjuangkan kemerdekaan? (Pilih 3 jawaban benar)",
+        "options": [
+            "Mendoakan arwah para pahlawan agar mendapat tempat mulia di sisi Tuhan Yang Maha Esa",
+            "Belajar dengan giat dan sungguh-sungguh demi kemajuan nusa dan bangsa",
+            "Mengikuti upacara bendera dengan khidmat dan tertib",
+            "Bermain game di ponsel saat lagu kebangsaan Indonesia Raya berkumandang"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Mendoakan, tekun belajar, dan khidmat saat upacara adalah bukti nyata menghargai jasa pahlawan."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Tokoh pahlawan nasional yang berasal dari luar Pulau Jawa antara lain adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Cut Nyak Dien (Aceh)",
+            "Kapitan Pattimura (Maluku)",
+            "Tuanku Imam Bonjol (Sumatera Barat)",
+            "Pangeran Diponegoro (Yogyakarta)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Cut Nyak Dien (Sumatera/Aceh), Pattimura (Maluku), dan Imam Bonjol (Sumatera Barat) berasal dari luar Jawa."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Sikap-sikap penting yang wajib dimiliki oleh setiap anggota agar kerja sama berjalan kompak dan berhasil adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Saling menghargai dan mendengarkan pendapat rekan sekelompok",
+            "Bertanggung jawab melaksanakan tugas bagian masing-masing",
+            "Memiliki semangat gotong royong dan pantang menyerah",
+            "Merasa diri paling pintar sehingga tidak mau mendengar orang lain"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Saling menghargai, tanggung jawab, dan gotong royong adalah kunci keberhasilan kerja sama."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Manakah contoh permainan tradisional yang melatih kekompakan, koordinasi, dan strategi kerja sama tim? (Pilih 3 jawaban benar)",
+        "options": [
+            "Gobak Sodor (Hadang)",
+            "Tarik Tambang",
+            "Bakiak Beregu",
+            "Bermain game online sendirian di kamar"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Gobak sodor, tarik tambang, dan bakiak adalah permainan rakyat yang membutuhkan kerja sama tim yang solid."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Penerapan kerja sama yang dapat kita lakukan bersama keluarga di rumah adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Membantu ibu mencuci piring dan membersihkan meja makan",
+            "Bersama ayah menyiram tanaman dan membersihkan halaman rumah",
+            "Membantu adik merapikan kembali mainan ke dalam wadahnya setelah bermain",
+            "Membiarkan kamar tidur berantakan agar dibersihkan oleh orang tua saja"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Membantu orang tua dan bekerja sama membersihkan rumah adalah kewajiban anak berbakti."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Mengapa kita tidak boleh melakukan tindakan vandalisme (mencoret-coret) pada peninggalan sejarah? (Pilih 2 jawaban benar)",
+        "options": [
+            "Dapat merusak keindahan dan keaslian cagar budaya peninggalan nenek moyang",
+            "Merupakan perbuatan melanggar hukum pelestarian cagar budaya nasional",
+            "Supaya peninggalan sejarah tersebut cepat roboh dan diganti baru",
+            "Karena mencoret nama sendiri di candi akan membuat seseorang terkenal di seluruh dunia"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Vandalisme merusak estetika dan nilai sejarah cagar budaya serta melanggar undang-undang cagar budaya."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Nilai-nilai luhur kepahlawanan yang harus kita warisi dalam kehidupan berbangsa antara lain... (Pilih 3 jawaban benar)",
+        "options": [
+            "Rela berkorban demi kepentingan yang lebih besar",
+            "Keberanian membela kebenaran dan keadilan",
+            "Pantang putus asa dan gigih pantang menyerah",
+            "Mementingkan kemewahan pribadi dan keluarga sendiri"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Rela berkorban, berani demi kebenaran, dan pantang menyerah adalah nilai abadi kepahlawanan."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Akibat negatif yang terjadi apabila dalam suatu kelompok tidak tercipta kerja sama yang baik adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Tujuan kelompok tidak akan pernah tercapai dengan maksimal",
+            "Sering terjadi perselisihan dan rasa saling menyalahkan antaranggota",
+            "Tugas terselesaikan dengan sangat cepat dan memuaskan",
+            "Suasana belajar kelompok terasa sangat menyenangkan dan akrab"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Tanpa kerja sama, tujuan gagal diraih dan muncul perpecahan antaranggota kelompok."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Peninggalan Sejarah dengan Daerah / Asalnya yang Tepat)",
+        "text": "Pasangkan peninggalan sejarah berikut dengan daerah lokasinya yang tepat: <b>Candi Borobudur</b>",
+        "options": [
+            "Magelang, Jawa Tengah",
+            "Bogor, Jawa Barat",
+            "Makassar, Sulawesi Selatan",
+            "Kudus, Jawa Tengah",
+            "Jakarta Pusat"
+        ],
+        "answer": "Magelang, Jawa Tengah",
+        "hint": "Candi megah peninggalan Dinasti Syailendra yang berada di Magelang Jawa Tengah."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan peninggalan sejarah berikut dengan daerah lokasinya yang tepat: <b>Prasasti Ciaruteun (Tapak Kaki Raja Purnawarman)</b>",
+        "options": [
+            "Magelang, Jawa Tengah",
+            "Bogor, Jawa Barat",
+            "Makassar, Sulawesi Selatan",
+            "Kudus, Jawa Tengah",
+            "Jakarta Pusat"
+        ],
+        "answer": "Bogor, Jawa Barat",
+        "hint": "Prasasti Kerajaan Tarumanegara yang ditemukan di Ciampea, Bogor."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan peninggalan sejarah berikut dengan daerah lokasinya yang tepat: <b>Benteng Fort Rotterdam</b>",
+        "options": [
+            "Magelang, Jawa Tengah",
+            "Bogor, Jawa Barat",
+            "Makassar, Sulawesi Selatan",
+            "Kudus, Jawa Tengah",
+            "Jakarta Pusat"
+        ],
+        "answer": "Makassar, Sulawesi Selatan",
+        "hint": "Benteng peninggalan Kerajaan Gowa-Tallo yang berada di pesisir Kota Makassar."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan peninggalan sejarah berikut dengan daerah lokasinya yang tepat: <b>Masjid Menara Kudus</b>",
+        "options": [
+            "Magelang, Jawa Tengah",
+            "Bogor, Jawa Barat",
+            "Makassar, Sulawesi Selatan",
+            "Kudus, Jawa Tengah",
+            "Jakarta Pusat"
+        ],
+        "answer": "Kudus, Jawa Tengah",
+        "hint": "Masjid unik berarsitektur akulturasi Hindu-Islam karya Sunan Kudus."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan peninggalan sejarah berikut dengan daerah lokasinya yang tepat: <b>Museum Nasional (Museum Gajah)</b>",
+        "options": [
+            "Magelang, Jawa Tengah",
+            "Bogor, Jawa Barat",
+            "Makassar, Sulawesi Selatan",
+            "Kudus, Jawa Tengah",
+            "Jakarta Pusat"
+        ],
+        "answer": "Jakarta Pusat",
+        "hint": "Museum sejarah dan purbakala terbesar di Indonesia yang terletak di Jl. Medan Merdeka Barat, Jakarta Pusat."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Semangat cinta tanah air dan pengabdian yang tulus terhadap bangsa dan negara Indonesia disebut sikap...",
+        "answer": "Nasionalisme (atau patriotisme)",
+        "alt": [
+            "nasionalisme",
+            "patriotisme",
+            "cinta tanah air"
+        ],
+        "hint": "Berasal dari kata nation (bangsa)."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Tindakan merusak atau mencoret-coret benda dan situs cagar budaya peninggalan sejarah dikenal dengan istilah perbuatan...",
+        "answer": "Vandalisme",
+        "alt": [
+            "vandalisme",
+            "vandalis",
+            "corat-coret"
+        ],
+        "hint": "Aksi perusakan karya seni atau peninggalan bersejarah secara tidak bermoral."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Hari Pahlawan diperingati oleh seluruh rakyat Indonesia setiap tahun pada tanggal...",
+        "answer": "10 November",
+        "alt": [
+            "10 november",
+            "sepuluh november",
+            "10 nopember"
+        ],
+        "hint": "Mengenang pertempuran heroik rakyat Surabaya pada 10 November 1945."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Pahlawan dari Maluku yang berjuang memimpin perlawanan bersenjata melawan Belanda di Benteng Duurstede adalah Kapitan...",
+        "answer": "Pattimura (Thomas Matulessy)",
+        "alt": [
+            "pattimura",
+            "kapitan pattimura",
+            "thomas matulessy"
+        ],
+        "hint": "Wajahnya diabadikan dalam pecahan uang kertas Rp 1.000 lama."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Tokoh pelopor pendidikan nasional Indonesia yang memiliki semboyan 'Tut Wuri Handayani' adalah Ki Hajar...",
+        "answer": "Dewantara",
+        "alt": [
+            "dewantara",
+            "dewantoro",
+            "ki hajar dewantara",
+            "soewardi soerjaningrat"
+        ],
+        "hint": "Pendiri perguruan Taman Siswa."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Bentuk kerja sama khas masyarakat Indonesia yang dilakukan secara sukarela untuk kepentingan bersama disebut...",
+        "answer": "Gotong royong",
+        "alt": [
+            "gotong royong",
+            "gotong-royong",
+            "kerja bakti"
+        ],
+        "hint": "Tradisi luhur tolong-menolong masyarakat nusantara."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Dalam pepatah tradisional, 'Berat sama dipikul, ringan sama ...'",
+        "answer": "Dijinjing",
+        "alt": [
+            "dijinjing",
+            "jinjing"
+        ],
+        "hint": "Menggambarkan indahnya berbagi beban dalam kerja sama."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Regu piket kebersihan kelas yang menyapu lantai, menghapus papan tulis, dan membuang sampah bersama-sama merupakan bentuk kerja sama di lingkungan...",
+        "answer": "Sekolah",
+        "alt": [
+            "sekolah",
+            "lingkungan sekolah",
+            "kelas"
+        ],
+        "hint": "Tempat menuntut ilmu formal sehari-hari."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Permainan tradisional tarik tambang mengajarkan nilai kekompakan, kekuatan, dan ... dalam satu tim regu.",
+        "answer": "Kerja sama",
+        "alt": [
+            "kerja sama",
+            "kerjasama",
+            "kekompakan",
+            "solidaritas"
+        ],
+        "hint": "Berjuang bersama-sama menarik tali tambang hingga garis batas."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Salah satu manfaat utama dari kerja sama adalah mempererat tali ... antar sesama teman.",
+        "answer": "Persaudaraan (atau persatuan / silaturahmi)",
+        "alt": [
+            "persaudaraan",
+            "persatuan",
+            "silaturahmi",
+            "pertemanan",
+            "kebersamaan"
+        ],
+        "hint": "Menjadikan hubungan pertemanan semakin rukun dan erat."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan apa yang dimaksud dengan sikap bangga menjadi bangsa Indonesia dan berikan 3 contoh perilakunya dalam kehidupan sehari-hari!",
+        "answer": "<b>Makna:</b> Sikap bangga menjadi bangsa Indonesia adalah perasaan kagum, menghargai, menjunjung tinggi, dan bersyukur atas segala identitas, kekayaan alam, kebudayaan, serta kemerdekaan bangsa Indonesia.<br><br><b>Contoh perilaku:</b><br>1. Menggunakan produk-produk buatan dalam negeri seperti kain batik dan kerajinan lokal.<br>2. Menggunakan bahasa Indonesia dengan baik, benar, dan santun serta melestarikan bahasa daerah.<br>3. Menghargai dan turut melestarikan kesenian daerah seperti tarian, lagu tradisional, dan rumah adat nusantara.<br>4. Berprestasi di bidang pendidikan, seni, atau olahraga yang mengharumkan nama Indonesia.",
+        "hint": "Jelaskan arti rasa bangga dan sebutkan 3 contoh konkret penerapannya."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Sebutkan 3 macam peninggalan sejarah di Indonesia beserta nama tempat atau daerah ditemukannya peninggalan tersebut!",
+        "answer": "1. <b>Candi Borobudur:</b> Candi Buddha peninggalan Dinasti Syailendra yang terletak di Magelang, Jawa Tengah.<br>2. <b>Prasasti Ciaruteun:</b> Prasasti batu berukir tapak kaki Raja Purnawarman peninggalan Kerajaan Tarumanegara yang ditemukan di Ciampea, Bogor, Jawa Barat.<br>3. <b>Benteng Fort Rotterdam:</b> Benteng peninggalan Kerajaan Gowa-Tallo yang berlokasi di Makassar, Sulawesi Selatan.<br>(Contoh lain: Masjid Menara Kudus di Jawa Tengah, Candi Prambanan di Klaten/Sleman, Museum Nasional di Jakarta).",
+        "hint": "Sebutkan nama peninggalan sejarah, jenisnya, dan lokasinya."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Sebagai generasi penerus bangsa, bagaimana cara kita menghargai dan melanjutkan perjuangan para pahlawan nasional yang telah berkorban demi kemerdekaan Indonesia?",
+        "answer": "Cara menghargai dan melanjutkan perjuangan pahlawan:<br>1. Belajar dengan tekun dan sungguh-sungguh agar menjadi generasi cerdas yang memajukan bangsa.<br>2. Mendoakan keselamatan dan ampunan bagi para pahlawan yang telah gugur.<br>3. Mengikuti upacara bendera dengan khidmat dan tertib serta memperingati Hari Pahlawan 10 November.<br>4. Menjaga kerukunan, persatuan, dan tidak membeda-bedakan suku maupun agama di antara sesama teman.",
+        "hint": "Uraikan komitmen belajar tekun, doa, menjaga persatuan, dan sikap cinta tanah air."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Apakah yang dimaksud dengan kerja sama? Jelaskan mengapa manusia selalu membutuhkan kerja sama dalam kehidupannya!",
+        "answer": "<b>Pengertian Kerja Sama:</b> Kerja sama adalah kegiatan atau usaha yang dilakukan oleh dua orang atau lebih secara bersama-sama untuk mencapai tujuan yang sama dengan dilandasi rasa saling membantu dan kekeluargaan.<br><br><b>Mengapa dibutuhkan:</b> Manusia adalah makhluk sosial yang memiliki keterbatasan dan tidak dapat hidup sendiri tanpa bantuan orang lain. Dengan kerja sama, kebutuhan hidup dapat terpenuhi, pekerjaan yang berat menjadi lebih ringan dan cepat selesai, serta terjalin rasa persaudaraan dan kebersamaan.",
+        "hint": "Jelaskan definisi kerja sama dan kodrat manusia sebagai makhluk sosial yang saling membutuhkan."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Sebutkan 3 contoh bentuk penerapan kerja sama di lingkungan sekolah dan jelaskan manfaat yang diperoleh dari kegiatan tersebut!",
+        "answer": "<b>Contoh penerapan kerja sama di sekolah:</b><br>1. Melaksanakan piket kebersihan kelas bersama regu piket (menyapu, mengepel, membuang sampah).<br>2. Berdiskusi dalam kerja kelompok untuk menyelesaikan tugas proyek atau eksperimen IPA bersama teman.<br>3. Gotong royong membersihkan halaman sekolah dan menanam pohon pada kegiatan Jumat Bersih.<br><br><b>Manfaat yang diperoleh:</b><br>- Ruang kelas dan lingkungan belajar menjadi bersih, nyaman, dan sehat.<br>- Tugas kelompok dapat selesai tepat waktu dengan hasil ide yang lebih kreatif.<br>- Mempererat tali persahabatan, melatih kepedulian, dan menumbuhkan rasa tanggung jawab bersama.",
+        "hint": "Uraikan 3 kegiatan kerja sama di sekolah beserta dampak positif/manfaatnya."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

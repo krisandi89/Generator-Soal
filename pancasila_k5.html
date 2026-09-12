@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTS Pendidikan Pancasila Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #0984e3;
+            --primary-light: #74b9ff;
+            --bg: #f0f8ff;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>🇮🇩 Pendidikan Pancasila</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASTS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Siapakah tokoh yang mengusulkan lima dasar negara pada tanggal 1 Juni 1945 yang kemudian diperingati sebagai Hari Lahir Pancasila?",
+        "options": [
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Ir. Soekarno",
+            "Drs. Mohammad Hatta"
+        ],
+        "answer": 2,
+        "hint": "Ir. Soekarno menyampaikan pidato rumusan lima dasar negara pada hari terakhir sidang pertama BPUPKI, 1 Juni 1945."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Pada tanggal 29 Mei 1945, Mr. Mohammad Yamin menyampaikan usulan dasar negara secara lisan. Poin pertama yang beliau usulkan adalah...",
+        "options": [
+            "Peri Kebangsaan",
+            "Peri Kemanusiaan",
+            "Peri Ketuhanan",
+            "Peri Kerakyatan"
+        ],
+        "answer": 0,
+        "hint": "Urutan rumusan lisan Moh. Yamin: Peri Kebangsaan, Peri Kemanusiaan, Peri Ketuhanan, Peri Kerakyatan, dan Kesejahteraan Rakyat."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Tokoh perumus dasar negara yang mengemukakan teori negara integralistik (persatuan dan kekeluargaan) pada tanggal 31 Mei 1945 adalah...",
+        "options": [
+            "Ir. Soekarno",
+            "Mr. Soepomo",
+            "K.H. Wachid Hasjim",
+            "Mr. A.A. Maramis"
+        ],
+        "answer": 1,
+        "hint": "Mr. Soepomo memaparkan paham negara integralistik dengan asas persatuan, kekeluargaan, dan keseimbangan lahir batin."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Selain dikenal sebagai tokoh perumus dasar negara dan negarawan, Mr. Mohammad Yamin juga memiliki keahlian besar di berbagai bidang, yaitu sebagai...",
+        "options": [
+            "Dokter dan arsitek bangunan",
+            "Sastrawan, sejarawan, dan ahli hukum",
+            "Panglima tentara dan pelaut tangguh",
+            "Pakar biologi dan pertanian"
+        ],
+        "answer": 1,
+        "hint": "Moh. Yamin adalah seorang sastrawan pelopor puisi modern, budayawan, sejarawan ulung, dan pakar hukum terkemuka."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "BPUPKI dibentuk oleh pemerintah Jepang pada tanggal 1 Maret 1945. Kepanjangan dari singkatan BPUPKI yang benar adalah...",
+        "options": [
+            "Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia",
+            "Badan Pembina Utama Persatuan Kemerdekaan Indonesia",
+            "Badan Penentu Usulan Proklamasi Kemerdekaan Indonesia",
+            "Barisan Pelopor Usaha Penegakan Kedaulatan Indonesia"
+        ],
+        "answer": 0,
+        "hint": "BPUPKI dalam bahasa Jepang disebut Dokuritsu Junbi Cosakai."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Tujuan utama dibentuknya BPUPKI oleh para tokoh bangsa Indonesia adalah untuk...",
+        "options": [
+            "Membantu tentara Jepang memenangkan Perang Asia Timur Raya",
+            "Menyelidiki dan mempersiapkan hal-hal penting terkait tata pemerintahan dan dasar negara Indonesia merdeka",
+            "Memilih calon presiden dan wakil presiden pertama Republik Indonesia",
+            "Menyusun strategi penyerangan terhadap markas tentara sekutu"
+        ],
+        "answer": 1,
+        "hint": "Tugas utama BPUPKI adalah mempelajari dan menyelidiki hal-hal penting bagi pembentukan negara merdeka."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Sidang resmi pertama BPUPKI diselenggarakan pada tanggal...",
+        "options": [
+            "29 Mei – 1 Juni 1945",
+            "10 – 17 Juli 1945",
+            "22 Juni 1945",
+            "17 – 18 Agustus 1945"
+        ],
+        "answer": 0,
+        "hint": "Sidang pertama berlangsung 29 Mei sampai 1 Juni 1945 dengan agenda utama merumuskan dasar negara."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Pancasila secara resmi disahkan sebagai dasar falsafah negara Republik Indonesia yang sah pada tanggal...",
+        "options": [
+            "1 Juni 1945",
+            "22 Juni 1945",
+            "17 Agustus 1945",
+            "18 Agustus 1945"
+        ],
+        "answer": 3,
+        "hint": "Pancasila disahkan oleh PPKI pada sidang tanggal 18 Agustus 1945 bersamaan dengan penetapan UUD 1945."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Siapakah tokoh yang dipercaya menjabat sebagai ketua BPUPKI selama masa persidangan?",
+        "options": [
+            "Ir. Soekarno",
+            "Drs. Mohammad Hatta",
+            "Dr. K.R.T. Radjiman Wedyodiningrat",
+            "Mr. Achmad Soebardjo"
+        ],
+        "answer": 2,
+        "hint": "Dr. Radjiman Wedyodiningrat memimpin sidang-sidang BPUPKI didampingi Ichibangase Yosio dan R.P. Soeroso."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Bung Karno pernah diasingkan oleh pemerintah kolonial Belanda ke sebuah daerah di mana beliau sering merenungkan nilai-nilai luhur Pancasila di bawah pohon sukun bercabang lima. Daerah pengasingan tersebut berada di Provinsi...",
+        "options": [
+            "Sumatera Barat (Bukittinggi)",
+            "Nusa Tenggara Timur (Ende, Flores)",
+            "Maluku (Banda Neira)",
+            "Jawa Tengah (Banyumas)"
+        ],
+        "answer": 1,
+        "hint": "Bung Karno diasingkan ke Ende di Pulau Flores, Provinsi Nusa Tenggara Timur (NTT) pada tahun 1934-1938."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih Lebih Dari 1 Jawaban Benar)",
+        "text": "Tiga tokoh bangsa yang secara resmi menyampaikan gagasan dan usulan dasar negara dalam sidang pertama BPUPKI adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Ir. Soekarno",
+            "Sutan Sjahrir"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga tokoh perumus dasar negara di sidang BPUPKI adalah Moh. Yamin, Soepomo, dan Soekarno."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Pernyataan berikut yang merupakan fakta sejarah yang benar mengenai perumusan Pancasila adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Pancasila digali dari nilai-nilai luhur, adat istiadat, dan kepribadian bangsa Indonesia sendiri",
+            "Panitia Sembilan berhasil merumuskan naskah Piagam Jakarta pada tanggal 22 Juni 1945",
+            "Pancasila meniru dasar negara penjajah Belanda secara utuh",
+            "BPUPKI dibentuk setelah Indonesia memproklamasikan kemerdekaannya"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Pancasila bersumber dari jati diri bangsa dan Piagam Jakarta disepakati oleh Panitia Sembilan pada 22 Juni 1945."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Siapakah di antara tokoh-tokoh bangsa berikut yang merupakan anggota dari Panitia Sembilan? (Pilih 3 jawaban benar)",
+        "options": [
+            "K.H. Wachid Hasjim",
+            "Mr. A.A. Maramis",
+            "H. Agus Salim",
+            "Dr. Radjiman Wedyodiningrat"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Anggota Panitia Sembilan: Soekarno, Hatta, Maramis, Abikoesno, Kahar Muzakkir, Agus Salim, Soebardjo, Wachid Hasjim, Moh. Yamin."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Sejarah penguraian lahirnya Pancasila terbagi ke dalam beberapa fase penting. Fase-fase tersebut meliputi... (Pilih 3 jawaban benar)",
+        "options": [
+            "Fase pemikiran/pembuahan nilai-nilai luhur (masa pergerakan dan pengasingan)",
+            "Fase perumusan (sidang BPUPKI dan Panitia Sembilan)",
+            "Fase pengesahan (sidang PPKI tanggal 18 Agustus 1945)",
+            "Fase penjajahan kembali oleh bangsa asing"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Proses lahirnya Pancasila melalui fase penggalian pemikiran, fase perumusan formal, dan fase pengesahan konstitusional."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Gagasan dasar negara yang diusulkan oleh Ir. Soekarno pada tanggal 1 Juni 1945 memuat prinsip... (Pilih 2 jawaban benar)",
+        "options": [
+            "Kebangsaan Indonesia dan Internasionalisme (Perikemanusiaan)",
+            "Mufakat atau Demokrasi serta Kesejahteraan Sosial",
+            "Negara monarki kekuasaan mutlak raja",
+            "Pemisahan agama dari urusan kenegaraan secara total"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Lima prinsip Soekarno: Kebangsaan, Internasionalisme, Mufakat/Demokrasi, Kesejahteraan Sosial, dan Ketuhanan yang berkebudayaan."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Pasangan simbol sila Pancasila berikut yang benar adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Sila ke-1 dilambangkan dengan Bintang",
+            "Sila ke-2 dilambangkan dengan Rantai Emas",
+            "Sila ke-4 dilambangkan dengan Kepala Banteng",
+            "Sila ke-5 dilambangkan dengan Pohon Beringin"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sila ke-3 adalah Pohon Beringin, sedangkan Sila ke-5 adalah Padi dan Kapas."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Sikap dan tindakan yang mencerminkan penerapan sila kedua Pancasila 'Kemanusiaan yang adil dan beradab' dalam kehidupan sehari-hari adalah... (Pilih 3 jawaban benar)",
+        "options": [
+            "Menjenguk dan mendoakan teman sekelas yang sedang sakit",
+            "Menggalang bantuan untuk korban bencana alam",
+            "Mengembangkan sikap tenggang rasa dan tidak semena-mena kepada orang lain",
+            "Memaksa teman untuk mengikuti agama yang kita yakini"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sila ke-2 mengajarkan kasih sayang, kemanusiaan, tolong-menolong, dan tidak semena-mena."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Tokoh-tokoh pendiri bangsa memiliki julukan kehormatan atas jasa besarnya. Pasangan tokoh dan julukannya yang tepat adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Ir. Soekarno dijuluki sebagai Bapak Proklamator Indonesia",
+            "Drs. Mohammad Hatta dijuluki sebagai Bapak Koperasi Indonesia",
+            "Mr. Mohammad Yamin dijuluki sebagai Bapak Kelautan Dunia",
+            "Mr. Soepomo dijuluki sebagai Bapak Pembangunan Nasional"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Bung Karno dan Bung Hatta adalah Dwi Tunggal Proklamator, Bung Hatta juga dinobatkan sebagai Bapak Koperasi."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Manakah nilai-nilai keteladanan dari para tokoh perumus Pancasila yang wajib kita contoh sebagai pelajar? (Pilih 3 jawaban benar)",
+        "options": [
+            "Mengutamakan kepentingan persatuan bangsa di atas kepentingan pribadi/golongan",
+            "Menghargai perbedaan pendapat dengan lapang dada saat bermusyawarah",
+            "Rela berkorban demi masa depan dan kemajuan bangsa",
+            "Memaksakan kehendak sendiri dalam setiap diskusi kelas"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Para perumus Pancasila menjunjung tinggi toleransi, persatuan, dan musyawarah mufakat."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Pernyataan yang tepat tentang hubungan antara simbol dan makna sila Pancasila adalah... (Pilih 2 jawaban benar)",
+        "options": [
+            "Rantai terdiri dari gelang bulat dan gelang persegi yang saling terkait melambangkan hubungan sesama manusia",
+            "Padi dan kapas melambangkan kebutuhan pokok pangan dan sandang menuju kemakmuran rakyat",
+            "Kepala banteng dipilih karena banteng merupakan hewan penyendiri yang tidak suka berkumpul",
+            "Bintang emas melambangkan kekuatan persenjataan perang tentara Indonesia"
+        ],
+        "answer": [
+            0,
+            1
+        ],
+        "hint": "Rantai melambangkan persatuan pria dan wanita saling membantu; Padi dan kapas melambangkan kemakmuran."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Pernyataan dengan Jawaban Tepat)",
+        "text": "Pasangkan usulan dasar negara berikut dengan pencetusnya yang tepat: <b>'Peri Kebangsaan, Peri Kemanusiaan, Peri Ketuhanan, Peri Kerakyatan, Kesejahteraan Rakyat'</b>",
+        "options": [
+            "Ir. Soekarno",
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Panitia Sembilan",
+            "Dr. Radjiman Wedyodiningrat"
+        ],
+        "answer": "Mr. Mohammad Yamin",
+        "hint": "Disampaikan pada pidato tanggal 29 Mei 1945."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan usulan dasar negara berikut dengan pencetusnya yang tepat: <b>'Persatuan, Kekeluargaan, Keseimbangan Lahir dan Batin, Musyawarah, Keadilan Rakyat'</b>",
+        "options": [
+            "Ir. Soekarno",
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Panitia Sembilan",
+            "Dr. Radjiman Wedyodiningrat"
+        ],
+        "answer": "Mr. Soepomo",
+        "hint": "Disampaikan pada pidato tanggal 31 Mei 1945 tentang negara integralistik."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan rumusan dasar negara berikut dengan pencetusnya yang tepat: <b>'Kebangsaan Indonesia, Internasionalisme atau Perikemanusiaan, Mufakat atau Demokrasi, Kesejahteraan Sosial, Ketuhanan yang Berkebudayaan'</b>",
+        "options": [
+            "Ir. Soekarno",
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Panitia Sembilan",
+            "Dr. Radjiman Wedyodiningrat"
+        ],
+        "answer": "Ir. Soekarno",
+        "hint": "Disampaikan pada tanggal 1 Juni 1945 dan dinamakan Pancasila."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan peristiwa penting berikut dengan perumusnya yang tepat: <b>Perumus naskah Piagam Jakarta (Jakarta Charter) pada 22 Juni 1945</b>",
+        "options": [
+            "Ir. Soekarno",
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Panitia Sembilan",
+            "Dr. Radjiman Wedyodiningrat"
+        ],
+        "answer": "Panitia Sembilan",
+        "hint": "Panitia kecil berjumlah sembilan tokoh yang dibentuk di luar sidang resmi BPUPKI."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan peran bersejarah berikut dengan tokoh yang tepat: <b>Ketua BPUPKI yang membuka dan memimpin jalannya sidang perumusan dasar negara</b>",
+        "options": [
+            "Ir. Soekarno",
+            "Mr. Mohammad Yamin",
+            "Mr. Soepomo",
+            "Panitia Sembilan",
+            "Dr. Radjiman Wedyodiningrat"
+        ],
+        "answer": "Dr. Radjiman Wedyodiningrat",
+        "hint": "Tokoh senior pergerakan Budi Utomo yang memimpin BPUPKI."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kata 'Pancasila' berasal dari bahasa Sanskerta, yaitu kata 'Panca' yang artinya lima, dan 'Sila' yang artinya...",
+        "answer": "Dasar (atau asas / aturan)",
+        "alt": [
+            "dasar",
+            "asas",
+            "prinsip",
+            "aturan"
+        ],
+        "hint": "Sila berarti batu sendi, alas, dasar, atau peraturan tingkah laku yang baik."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Hari Lahir Pancasila diperingati oleh seluruh bangsa Indonesia setiap tanggal...",
+        "answer": "1 Juni",
+        "alt": [
+            "1 juni",
+            "satu juni",
+            "tanggal 1 juni"
+        ],
+        "hint": "Merujuk pada pidato Bung Karno yang pertama kali memperkenalkan istilah Pancasila pada 1 Juni 1945."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Pohon peneduh tempat Bung Karno merenungkan butir-butir mutiara Pancasila saat diasingkan di Kota Ende adalah pohon...",
+        "answer": "Sukun",
+        "alt": [
+            "pohon sukun",
+            "sukun bercabang lima"
+        ],
+        "hint": "Pohon sukun bercabang lima di Taman Rendo, Ende, NTT."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Simbol pada perisai Garuda Pancasila yang melambangkan sila ketiga 'Persatuan Indonesia' adalah pohon...",
+        "answer": "Beringin",
+        "alt": [
+            "pohon beringin",
+            "beringin"
+        ],
+        "hint": "Pohon beringin memiliki akar tunjang yang kuat dan daun lebat tempat berteduh rakyat."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Badan yang mengesahkan Pancasila dan Undang-Undang Dasar 1945 pada tanggal 18 Agustus 1945 adalah singkatan dari...",
+        "answer": "PPKI (Panitia Persiapan Kemerdekaan Indonesia)",
+        "alt": [
+            "ppki",
+            "panitia persiapan kemerdekaan indonesia"
+        ],
+        "hint": "Dalam bahasa Jepang disebut Dokuritsu Junbi Inkai."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Sikap tidak membeda-bedakan teman, gemar menolong yang lemah, dan bertenggang rasa merupakan contoh pengamalan Pancasila sila ke-...",
+        "answer": "2 (Dua)",
+        "alt": [
+            "2",
+            "dua",
+            "kedua",
+            "sila ke-2",
+            "sila kedua"
+        ],
+        "hint": "Sila kedua: Kemanusiaan yang adil dan beradab."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Tuliskan tanggal dibacakannya usulan dasar negara oleh Mr. Mohammad Yamin pada sidang pertama BPUPKI!",
+        "answer": "29 Mei 1945",
+        "alt": [
+            "29 mei 1945",
+            "29 mei"
+        ],
+        "hint": "Hari pertama sidang resmi BPUPKI."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Naskah pembukaan dasar negara hasil kesepakatan Panitia Sembilan pada 22 Juni 1945 dinamakan...",
+        "answer": "Piagam Jakarta (Jakarta Charter)",
+        "alt": [
+            "piagam jakarta",
+            "jakarta charter"
+        ],
+        "hint": "Nama Piagam Jakarta diusulkan oleh Mr. Mohammad Yamin."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Lambang pada sila kelima Pancasila yang mencerminkan kecukupan pangan dan sandang bagi seluruh rakyat adalah padi dan...",
+        "answer": "Kapas",
+        "alt": [
+            "kapas",
+            "padi dan kapas"
+        ],
+        "hint": "Padi menghasilkan beras (makanan), kapas dipintal menjadi benang kain (pakaian)."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Selain di Ende Flores, kota di Pulau Sumatera yang menjadi tempat pengasingan Bung Karno oleh penjajah Belanda adalah...",
+        "answer": "Bengkulu",
+        "alt": [
+            "bengkulu",
+            "kota bengkulu",
+            "provinsi bengkulu"
+        ],
+        "hint": "Bung Karno diasingkan di Bengkulu pada tahun 1938 hingga 1942."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan nama 3 tokoh perumus Pancasila dan jelaskan tanggal masing-masing tokoh menyampaikan pidato usulan dasar negaranya di sidang BPUPKI!",
+        "answer": "1. Mr. Mohammad Yamin menyampaikan usulan dasar negara pada tanggal 29 Mei 1945.<br>2. Mr. Soepomo menyampaikan usulan dasar negara pada tanggal 31 Mei 1945.<br>3. Ir. Soekarno menyampaikan usulan dasar negara pada tanggal 1 Juni 1945.",
+        "hint": "Sebutkan nama lengkap ketiga tokoh beserta tanggal pidatonya secara urut kronologis."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Jelaskan tujuan utama dibentuknya BPUPKI dan sebutkan kepanjangan nama lembaganya!",
+        "answer": "Kepanjangan BPUPKI adalah Badan Penyelidik Usaha-Usaha Persiapan Kemerdekaan Indonesia. Tujuan utamanya adalah untuk menyelidiki, mempelajari, dan mempersiapkan hal-hal penting yang menyangkut tata pemerintahan, ekonomi, politik, dan perumusan dasar negara bagi Indonesia merdeka.",
+        "hint": "Uraikan kepanjangan BPUPKI serta tujuan mendasar pembentukannya menjelang kemerdekaan."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Sebutkan 5 anggota Panitia Sembilan yang berhasil merumuskan naskah Piagam Jakarta pada 22 Juni 1945!",
+        "answer": "Anggota Panitia Sembilan antara lain:<br>1. Ir. Soekarno (Ketua)<br>2. Drs. Mohammad Hatta (Wakil Ketua)<br>3. Mr. Mohammad Yamin<br>4. Mr. Achmad Soebardjo<br>5. Mr. A.A. Maramis<br>(Anggota lainnya: K.H. Wachid Hasjim, H. Agus Salim, Abikoesno Tjokrosoejoso, dan Abdoel Kahar Muzakkir).",
+        "hint": "Tuliskan minimal 5 nama tokoh pendiri bangsa yang tergabung dalam Panitia Sembilan."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Tuliskan secara lengkap bunyi kelima sila Pancasila beserta lambang simbolnya masing-masing!",
+        "answer": "1. Sila Pertama: Ketuhanan Yang Maha Esa (Simbol: Bintang Emas)<br>2. Sila Kedua: Kemanusiaan yang adil dan beradab (Simbol: Rantai Emas)<br>3. Sila Ketiga: Persatuan Indonesia (Simbol: Pohon Beringin)<br>4. Sila Keempat: Kerakyatan yang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan/perwakilan (Simbol: Kepala Banteng)<br>5. Sila Kelima: Keadilan sosial bagi seluruh rakyat Indonesia (Simbol: Padi dan Kapas)",
+        "hint": "Tuliskan sila ke-1 hingga ke-5 beserta simbol perisai Garuda Pancasila dengan benar."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Berikan 3 contoh penerapan nilai sila kedua Pancasila 'Kemanusiaan yang adil dan beradab' dalam kehidupan sehari-hari di lingkungan sekolah!",
+        "answer": "Contoh penerapan sila ke-2 di sekolah:<br>1. Menolong teman yang terjatuh atau tertimpa musibah tanpa pamrih.<br>2. Menjenguk dan mendoakan teman sekelas yang sedang sakit.<br>3. Bersikap ramah, sopan, dan tidak mengejek atau menindas (bullying) sesama teman.<br>4. Berbagi bekal makanan atau meminjamkan alat tulis kepada teman yang membutuhkan.",
+        "hint": "Fokus pada tindakan kasih sayang, kemanusiaan, tolong-menolong, dan penghormatan hak sesama teman."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

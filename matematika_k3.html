@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal Ulangan Matematika Kelas 3 - SDIT Friends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2980b9;
+            --primary-light: #3498db;
+            --bg: #eaf2f8;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 20px 10px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .btn-back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .btn-back-nav:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateX(-3px);
+        }
+        .header h1 {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge-kisi {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 10px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            display: none;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid rgba(0,0,0,0.1);
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            margin: 10px 0;
+        }
+        .score-msg {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action-res {
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-retry { background: white; color: var(--primary); }
+        .btn-retry:hover { background: #f1f2f6; transform: scale(1.03); }
+        .btn-back-menu { background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
+        .btn-back-menu:hover { background: rgba(0,0,0,0.3); }
+
+        .quiz-container {
+            padding: 25px 20px;
+        }
+        .q-card {
+            background: #fafbfc;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+        }
+        .q-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .q-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .q-num {
+            background: var(--primary);
+            color: white;
+            font-size: 0.85em;
+            font-weight: 800;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .q-title {
+            font-size: 1.05em;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #2c3e50;
+        }
+        .input-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: all 0.2s;
+            outline: none;
+            background: white;
+        }
+        .input-box:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .feedback {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            display: none;
+        }
+        .fb-correct {
+            background: #eafaf1;
+            color: #1b7a43;
+            border-left: 5px solid var(--success);
+        }
+        .fb-wrong {
+            background: #fdf2e9;
+            color: #b94a48;
+            border-left: 5px solid var(--error);
+        }
+        .fb-ans {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-top: 4px;
+        }
+        .fb-hint {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .footer-submit {
+            text-align: center;
+            padding: 25px;
+            background: #ffffff;
+            border-top: 2px solid var(--border);
+            position: sticky;
+            bottom: 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            transition: all 0.2s;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas3.html" class="btn-back-nav">⬅ Menu Kelas 3</a>
+                <span style="font-size: 0.85em; opacity: 0.9;">15 Soal Esai</span>
+            </div>
+            <h1>➗ Matematika</h1>
+            <p>SDIT Friends — Asesmen Formatif Tengah Semester (AFTS) Ganjil</p>
+            <div class="badge-kisi">📌 Bab 1: Bilangan Cacah s.d 1.000 & Bab 2: Operasi Hitung (Hal. 2-35)</div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <!-- Live Score Board -->
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Latihan Ulangan</h2>
+            <div class="score-val" id="score-val">0</div>
+            <div class="score-msg" id="score-msg"></div>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action-res btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas3.html" class="btn-action-res btn-back-menu">⬅ Kembali ke Menu Kelas 3</a>
+            </div>
+        </div>
+
+        <!-- Questions List -->
+        <div class="quiz-container" id="quiz-container"></div>
+
+        <!-- Submit Footer -->
+        <div class="footer-submit" id="footer-submit">
+            <button class="btn-submit" onclick="submitExam()" id="btnSubmit">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "text": "Tuliskan nama bilangan dari lambang bilangan 835!",
+        "answer": "Delapan ratus tiga puluh lima",
+        "alt": [
+            "delapan ratus tiga puluh lima"
+        ],
+        "hint": "8 ratusan, 3 puluhan, 5 satuan dibaca delapan ratus tiga puluh lima."
+    },
+    {
+        "id": 2,
+        "text": "Tuliskan lambang bilangan dari 'enam ratus sembilan belas'!",
+        "answer": "619",
+        "alt": [
+            "619"
+        ],
+        "hint": "Enam ratus (600) ditambah sembilan belas (19) ditulis 619."
+    },
+    {
+        "id": 3,
+        "text": "Pada bilangan 746, sebutkan nilai tempat dan nilai angka dari angka 4!",
+        "answer": "Nilai tempatnya adalah puluhan, dan nilainya 40",
+        "alt": [
+            "puluhan",
+            "40",
+            "puluhan dan 40"
+        ],
+        "hint": "Angka 7 di ratusan (700), 4 di puluhan (40), dan 6 di satuan (6)."
+    },
+    {
+        "id": 4,
+        "text": "Isilah titik-titik dengan tanda perbandingan yang tepat (<, >, atau =): 675 ... 657!",
+        "answer": "> (Lebih besar dari)",
+        "alt": [
+            ">",
+            "lebih besar",
+            "lebih besar dari"
+        ],
+        "hint": "Ratusannya sama (6), tetapi puluhannya 7 lebih besar dari 5, sehingga 675 > 657."
+    },
+    {
+        "id": 5,
+        "text": "Urutkan bilangan-bilangan berikut dari yang terkecil hingga terbesar: 520, 385, 610, 490!",
+        "answer": "385, 490, 520, 610",
+        "alt": [
+            "385, 490, 520, 610",
+            "385 490 520 610"
+        ],
+        "hint": "Bandingkan angka ratusannya: 385 < 490 < 520 < 610."
+    },
+    {
+        "id": 6,
+        "text": "Berapakah hasil penjumlahan dari 456 + 278?",
+        "answer": "734",
+        "alt": [
+            "734"
+        ],
+        "hint": "6 + 8 = 14 (tulis 4 simpan 1), 1 + 5 + 7 = 13 (tulis 3 simpan 1), 1 + 4 + 2 = 7. Hasilnya 734."
+    },
+    {
+        "id": 7,
+        "text": "Berapakah hasil pengurangan dari 742 - 385?",
+        "answer": "357",
+        "alt": [
+            "357"
+        ],
+        "hint": "Gunakan teknik meminjam: 12 - 5 = 7; 13 - 8 = 5; 6 - 3 = 3. Hasilnya 357."
+    },
+    {
+        "id": 8,
+        "text": "Sebuah peternakan menghasilkan 365 butir telur pada hari Sabtu dan 428 butir pada hari Minggu. Berapa jumlah seluruh telur tersebut?",
+        "answer": "793 butir telur",
+        "alt": [
+            "793",
+            "793 butir"
+        ],
+        "hint": "365 + 428 = 793 butir."
+    },
+    {
+        "id": 9,
+        "text": "Perpustakaan sekolah memiliki 650 buku cerita. Sebanyak 235 buku sedang dipinjam murid. Berapa sisa buku cerita yang masih ada di rak perpustakaan?",
+        "answer": "415 buku",
+        "alt": [
+            "415",
+            "415 buku"
+        ],
+        "hint": "650 - 235 = 415 buku."
+    },
+    {
+        "id": 10,
+        "text": "Ubahlah bentuk perkalian 5 x 7 ke dalam bentuk penjumlahan berulang dan tentukan hasilnya!",
+        "answer": "7 + 7 + 7 + 7 + 7 = 35",
+        "alt": [
+            "7+7+7+7+7=35",
+            "35",
+            "7 + 7 + 7 + 7 + 7"
+        ],
+        "hint": "5 x 7 artinya angka 7 dijumlahkan berulang sebanyak 5 kali, hasilnya 35."
+    },
+    {
+        "id": 11,
+        "text": "Ubahlah pembagian 32 : 8 ke dalam bentuk pengurangan berulang sampai habis dan tentukan hasilnya!",
+        "answer": "32 - 8 - 8 - 8 - 8 = 0, hasilnya 4",
+        "alt": [
+            "4",
+            "32-8-8-8-8=0",
+            "32 - 8 - 8 - 8 - 8 = 0"
+        ],
+        "hint": "Ada 4 kali pengurangan dengan angka 8 sampai menghasilkan 0, maka 32 : 8 = 4."
+    },
+    {
+        "id": 12,
+        "text": "Berapakah hasil dari perkalian 8 x 6?",
+        "answer": "48",
+        "alt": [
+            "48"
+        ],
+        "hint": "8 x 6 = 48."
+    },
+    {
+        "id": 13,
+        "text": "Berapakah hasil dari pembagian 54 : 9?",
+        "answer": "6",
+        "alt": [
+            "6"
+        ],
+        "hint": "9 x 6 = 54, maka 54 : 9 = 6."
+    },
+    {
+        "id": 14,
+        "text": "Ayah membeli 6 kotak donat. Setiap kotak berisi 8 buah donat. Berapa buah donat yang dibeli Ayah seluruhnya?",
+        "answer": "48 buah donat",
+        "alt": [
+            "48",
+            "48 buah",
+            "48 donat"
+        ],
+        "hint": "Kalimat matematika: 6 x 8 = 48 buah donat."
+    },
+    {
+        "id": 15,
+        "text": "Ibu memiliki 40 kue bolu yang akan dimasukkan sama banyak ke dalam 5 buah toples. Berapa kue bolu isi masing-masing toples?",
+        "answer": "8 kue bolu",
+        "alt": [
+            "8",
+            "8 kue",
+            "8 buah",
+            "8 bolu"
+        ],
+        "hint": "Kalimat matematika: 40 : 5 = 8 kue bolu per toples."
+    }
+];
+
+        function renderQuestions() {
+            const container = document.getElementById('quiz-container');
+            let html = '';
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="q-card" id="qcard-${q.id}">
+                        <div class="q-header">
+                            <div class="q-num">${index + 1}</div>
+                            <div class="q-title">${q.text}</div>
+                        </div>
+                        <input type="text" 
+                               class="input-box" 
+                               name="q_${q.id}" 
+                               id="input-${q.id}" 
+                               placeholder="Tulis jawabanmu di sini..." 
+                               autocomplete="off"
+                               oninput="updateProgress()">
+                        <div class="feedback" id="fb-${q.id}"></div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                const val = document.getElementById(`input-${q.id}`).value.trim();
+                if (val.length > 0) answered++;
+            });
+            const pct = (answered / questions.length) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
+        }
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function checkAnswer(userAns, q) {
+            const u = cleanString(userAns);
+            if (!u) return false;
+            
+            const target = cleanString(q.answer);
+            if (u === target || u.includes(target) || (target.length > 3 && target.includes(u))) {
+                return true;
+            }
+
+            if (q.alt && Array.isArray(q.alt)) {
+                for (let k of q.alt) {
+                    const cleanK = cleanString(k);
+                    if (u === cleanK || u.includes(cleanK) || (cleanK.length > 3 && cleanK.includes(u))) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function submitExam() {
+            let correctCount = 0;
+            let total = questions.length;
+
+            questions.forEach(q => {
+                const inputEl = document.getElementById(`input-${q.id}`);
+                const userVal = inputEl.value;
+                const fb = document.getElementById(`fb-${q.id}`);
+                const isCorrect = checkAnswer(userVal, q);
+
+                if (isCorrect) {
+                    correctCount++;
+                    fb.className = 'feedback fb-correct';
+                    fb.innerHTML = `
+                        <div>✅ <b>Masya Allah, Tepat Sekali!</b></div>
+                        <div class="fb-ans">Kunci Jawaban: ${q.answer}</div>
+                        <div class="fb-hint">💡 ${q.hint}</div>
+                    `;
+                } else {
+                    fb.className = 'feedback fb-wrong';
+                    fb.innerHTML = `
+                        <div>❌ <b>Perlu Dipelajari Lagi</b></div>
+                        <div class="fb-ans">Kunci Jawaban yang Benar: <b>${q.answer}</b></div>
+                        <div class="fb-hint">💡 Pembahasan: ${q.hint}</div>
+                    `;
+                }
+                fb.style.display = 'block';
+                inputEl.disabled = true;
+            });
+
+            const finalScore = Math.round((correctCount / total) * 100);
+            document.getElementById('score-val').innerText = finalScore;
+
+            let msg = '';
+            if (finalScore === 100) {
+                msg = `🌟 Masya Allah, Nilai Sempurna 100! Luar biasa hebat Musa, pertahankan prestasi ini ya! 🎉`;
+            } else if (finalScore >= 80) {
+                msg = `🎉 Hebat sekali Musa! Benar ${correctCount} dari ${total} soal. Sedikit lagi 100, pelajari kembali soal yang belum tepat ya!`;
+            } else if (finalScore >= 60) {
+                msg = `👍 Bagus Musa! Benar ${correctCount} dari ${total} soal. Ayo baca lagi materi dan pembahasannya lalu coba lagi ya!`;
+            } else {
+                msg = `💪 Semangat Musa! Benar ${correctCount} dari ${total} soal. Jangan menyerah, pelajari catatan buku tulis dan ulangi lagi latihannya!`;
+            }
+
+            document.getElementById('score-msg').innerText = msg;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-submit').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                const inputEl = document.getElementById(`input-${q.id}`);
+                inputEl.value = '';
+                inputEl.disabled = false;
+                const fb = document.getElementById(`fb-${q.id}`);
+                fb.style.display = 'none';
+                fb.innerHTML = '';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-submit').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        renderQuestions();
+    </script>
+</body>
+</html>
