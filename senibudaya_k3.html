@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Soal Ulangan Seni Budaya Kelas 3 - SDIT Friends</title>
+    <title>Latihan Soal Seni Budaya Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 820px;
+            max-width: 860px;
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: 20px;
@@ -47,7 +47,7 @@
             align-items: center;
             margin-bottom: 15px;
         }
-        .btn-back-nav {
+        .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -56,17 +56,17 @@
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.88em;
             font-weight: 700;
             transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
         }
-        .btn-back-nav:hover {
+        .back-btn-nav:hover {
             background: rgba(255,255,255,0.4);
             transform: translateX(-3px);
         }
         .header h1 {
-            font-size: 1.8em;
+            font-size: 1.85em;
             font-weight: 800;
             margin-bottom: 6px;
         }
@@ -74,10 +74,10 @@
             font-size: 0.95em;
             opacity: 0.95;
         }
-        .badge-kisi {
+        .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
@@ -85,7 +85,7 @@
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 8px;
+            height: 9px;
             background: #e2e8f0;
             position: sticky;
             top: 0;
@@ -99,412 +99,789 @@
         }
         .score-board {
             display: none;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 4px solid rgba(0,0,0,0.1);
-            animation: slideDown 0.5s ease;
+            border-bottom: 3px solid var(--border);
         }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .score-board h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
         .score-val {
-            font-size: 4em;
+            font-size: 3.8em;
             font-weight: 800;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            margin: 10px 0;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 5px 0;
         }
-        .score-msg {
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .score-detail {
+            font-size: 1.05em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
-        .btn-action-res {
-            padding: 10px 22px;
-            border-radius: 25px;
+        .btn-action {
+            padding: 10px 24px;
+            border-radius: 50px;
             font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9em;
             cursor: pointer;
             border: none;
+            text-decoration: none;
+            font-size: 0.92em;
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: #1e3c72;
         }
-        .btn-retry { background: white; color: var(--primary); }
-        .btn-retry:hover { background: #f1f2f6; transform: scale(1.03); }
-        .btn-back-menu { background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
-        .btn-back-menu:hover { background: rgba(0,0,0,0.3); }
-
-        .quiz-container {
+        .btn-action:hover {
+            background: #f1f2f6;
+            transform: translateY(-2px);
+        }
+        .question-list {
             padding: 25px 20px;
         }
-        .q-card {
-            background: #fafbfc;
-            border: 2px solid var(--border);
-            border-radius: 14px;
+        .section-title {
+            font-size: 0.98em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: white;
+            margin: 32px 0 16px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
             padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
             transition: all 0.2s;
         }
-        .q-card:hover {
-            border-color: var(--primary-light);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
-        .q-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-        .q-num {
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--primary);
             color: white;
-            font-size: 0.85em;
-            font-weight: 800;
             width: 32px;
             height: 32px;
             border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.03em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+        }
+        /* Benar Salah Styling */
+        .tf-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tf-label {
+            flex: 1;
+            min-width: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-        .q-title {
-            font-size: 1.05em;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
             font-weight: 700;
-            line-height: 1.5;
-            color: #2c3e50;
+            font-size: 0.98em;
+            transition: all 0.2s;
         }
-        .input-box {
+        .tf-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+        }
+        .tf-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+            color: var(--primary);
+        }
+        .tf-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        /* Match Select */
+        .match-box {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .match-premise {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 0.98em;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: #fdfefe;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid var(--border);
             border-radius: 10px;
-            font-size: 0.95em;
-            font-family: inherit;
-            transition: all 0.2s;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
             outline: none;
             background: white;
         }
-        .input-box:focus {
+        .input-text:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
         }
-        .feedback {
-            margin-top: 14px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 0.9em;
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
             line-height: 1.5;
-            display: none;
         }
-        .fb-correct {
-            background: #eafaf1;
-            color: #1b7a43;
+        .feedback-box {
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.93em;
+            line-height: 1.55;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
             border-left: 5px solid var(--success);
         }
-        .fb-wrong {
-            background: #fdf2e9;
-            color: #b94a48;
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
             border-left: 5px solid var(--error);
         }
-        .fb-ans {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-top: 4px;
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
         }
-        .fb-hint {
-            font-size: 0.85em;
-            color: #555;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        .footer-submit {
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
             text-align: center;
-            padding: 25px;
-            background: #ffffff;
-            border-top: 2px solid var(--border);
             position: sticky;
             bottom: 0;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.04);
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
         }
         .btn-submit {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
             border: none;
             padding: 14px 45px;
-            border-radius: 50px;
             font-size: 1.1em;
-            font-weight: 800;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            font-weight: 800;
             transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.25);
         }
-        .btn-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="nav-top">
-                <a href="kelas3.html" class="btn-back-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.9;">15 Soal Esai</span>
+                <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
             </div>
             <h1>🎨 Seni Budaya</h1>
-            <p>SDIT Friends — Asesmen Formatif Tengah Semester (AFTS) Ganjil</p>
-            <div class="badge-kisi">📌 Bab 1: Menggambar & Dekorasi, Bab 2: Unsur Musik (Hal. 3-34)</div>
+            <p>SDIT Friends — Kelas 3</p>
+            <div class="badge">Bab 1: Menggambar & Dekorasi, Bab 2: Unsur Musik (Hal. 3-34)</div>
         </div>
-
-        <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
-
-        <!-- Live Score Board -->
         <div class="score-board" id="score-board">
             <h2>📊 Hasil Latihan Ulangan</h2>
-            <div class="score-val" id="score-val">0</div>
-            <div class="score-msg" id="score-msg"></div>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action-res btn-retry">🔄 Coba Lagi</button>
-                <a href="kelas3.html" class="btn-action-res btn-back-menu">⬅ Kembali ke Menu Kelas 3</a>
+                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
-
-        <!-- Questions List -->
-        <div class="quiz-container" id="quiz-container"></div>
-
-        <!-- Submit Footer -->
-        <div class="footer-submit" id="footer-submit">
-            <button class="btn-submit" onclick="submitExam()" id="btnSubmit">Kumpulkan Jawaban ✅</button>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
         </div>
     </div>
 
     <script>
         const questions = [
-    {
-        "id": 1,
-        "text": "Apa yang dimaksud dengan 'proporsi' dalam prinsip menggambar rumah?",
-        "answer": "Ukuran perbandingan antara satu bagian benda dengan bagian benda lainnya (misalnya pintu dibuat lebih tinggi daripada jendela)",
-        "alt": [
-            "perbandingan",
-            "ukuran perbandingan",
-            "proporsi"
-        ],
-        "hint": "Proporsi membuat gambar terlihat wajar dan pas perbandingan ukurannya."
-    },
-    {
-        "id": 2,
-        "text": "Jelaskan perbedaan antara komposisi simetris dan komposisi asimetris dalam menata gambar!",
-        "answer": "Komposisi simetris meletakkan objek seimbang sama antara bagian kiri dan kanan, sedangkan komposisi asimetris posisi atau ukurannya berbeda tetapi tetap seimbang",
-        "alt": [
-            "kiri dan kanan",
-            "seimbang",
-            "sama",
-            "simetris"
-        ],
-        "hint": "Simetris tampak seperti cermin yang seimbang kembar antara kiri dan kanan."
-    },
-    {
-        "id": 3,
-        "text": "Disebut apakah susunan gambar di mana objek atau model utama diletakkan tepat di tengah-tengah bidang gambar?",
-        "answer": "Komposisi sentral",
-        "alt": [
-            "sentral",
-            "komposisi sentral"
-        ],
-        "hint": "Sentral berasal dari kata centre (pusat atau tengah)."
-    },
-    {
-        "id": 4,
-        "text": "Apa yang dimaksud dengan karya cerita bergambar atau 'komik'?",
-        "answer": "Karya seni rupa yang menggabungkan gambar ilustrasi dengan teks dialog cerita",
-        "alt": [
-            "cerita bergambar",
-            "gambar dan dialog",
-            "gambar dan teks"
-        ],
-        "hint": "Komik menyampaikan pesan atau cerita melalui perpaduan visual gambar dan balon kata."
-    },
-    {
-        "id": 5,
-        "text": "Apakah fungsi dari 'panel komik' dalam sebuah cerita komik?",
-        "answer": "Kotak yang membatasi ilustrasi dan teks dialog yang menyusun alur urutan cerita",
-        "alt": [
-            "kotak",
-            "alur cerita",
-            "membatasi gambar"
-        ],
-        "hint": "Alur cerita komik bergerak urut dari satu kotak panel ke panel berikutnya."
-    },
-    {
-        "id": 6,
-        "text": "Tempat untuk meletakkan kalimat dialog atau percakapan tokoh di dalam komik disebut ...",
-        "answer": "Balon kata",
-        "alt": [
-            "balon kata",
-            "balon ucapan"
-        ],
-        "hint": "Balon kata berbentuk lingkaran atau oval dengan ekor yang mengarah ke mulut tokoh."
-    },
-    {
-        "id": 7,
-        "text": "Apa perbedaan antara komik konvensional dengan komik montase?",
-        "answer": "Komik konvensional digambar sendiri menggunakan tangan/alat tulis, sedangkan komik montase dibuat dengan menempelkan potongan gambar dari majalah/koran bekas",
-        "alt": [
-            "digambar sendiri",
-            "menempel",
-            "potongan gambar",
-            "majalah"
-        ],
-        "hint": "Montase menggunakan teknik gunting dan tempel gambar yang sudah ada."
-    },
-    {
-        "id": 8,
-        "text": "Sifat permukaan suatu benda yang dapat dirasakan melalui indra penglihat dan indra peraba dinamakan ...",
-        "answer": "Tekstur",
-        "alt": [
-            "tekstur"
-        ],
-        "hint": "Tekstur permukaan bisa berupa halus, kasar, licin, atau bergelombang."
-    },
-    {
-        "id": 9,
-        "text": "Jelaskan apa yang dimaksud dengan 'tekstur nyata' dan berikan satu contoh bendanya!",
-        "answer": "Tekstur nyata adalah tekstur yang jika dilihat dan diraba memiliki kesan yang sama. Contohnya: permukaan batu kerikil atau kulit kayu yang kasar",
-        "alt": [
-            "kesan yang sama",
-            "batu",
-            "kerikil",
-            "kulit kayu",
-            "kasar"
-        ],
-        "hint": "Saat dilihat tampak kasar dan ketika diraba kulit tangan juga terasa kasar."
-    },
-    {
-        "id": 10,
-        "text": "Apakah yang dimaksud dengan gambar dekoratif?",
-        "answer": "Gambar hiasan berupa motif pola (seperti tumbuhan, hewan, atau geometris) untuk mempercantik permukaan suatu benda",
-        "alt": [
-            "gambar hiasan",
-            "menghias",
-            "motif",
-            "pola"
-        ],
-        "hint": "Contoh gambar dekoratif adalah motif hiasan pada jadwal pelajaran atau layang-layang."
-    },
-    {
-        "id": 11,
-        "text": "Apakah pengertian dari 'irama' di dalam seni musik?",
-        "answer": "Rangkaian bunyi teratur yang muncul secara berulang-ulang dalam sebuah lagu",
-        "alt": [
-            "bunyi teratur",
-            "teratur",
-            "berulang-ulang"
-        ],
-        "hint": "Irama membuat lantunan lagu terdengar indah dan harmonis."
-    },
-    {
-        "id": 12,
-        "text": "Cepat atau lambatnya ketukan sebuah lagu saat dinyanyikan atau dimainkan disebut ...",
-        "answer": "Tempo",
-        "alt": [
-            "tempo",
-            "ketukan"
-        ],
-        "hint": "Tempo diukur dengan ketukan per menit (BPM)."
-    },
-    {
-        "id": 13,
-        "text": "Sebutkan 3 tingkatan tempo yang biasa digunakan dalam membawakan sebuah lagu!",
-        "answer": "Tempo lambat, tempo sedang, dan tempo cepat",
-        "alt": [
-            "lambat, sedang, cepat",
-            "lambat",
-            "sedang",
-            "cepat"
-        ],
-        "hint": "Lagu pengantar tidur bertempo lambat, sedangkan lagu mars perjuangan bertempo cepat."
-    },
-    {
-        "id": 14,
-        "text": "Jelaskan perbedaan mendasar antara alat musik ritmis dan alat musik melodis!",
-        "answer": "Alat musik ritmis tidak menghasilkan nada (do, re, mi) dan berfungsi mengatur irama, sedangkan alat musik melodis dapat menghasilkan rangkaian nada melodi",
-        "alt": [
-            "tidak bernada",
-            "berirama",
-            "menghasilkan nada",
-            "melodi"
-        ],
-        "hint": "Drum dan marakas adalah ritmis, sedangkan pianika dan seruling adalah melodis."
-    },
-    {
-        "id": 15,
-        "text": "Sebutkan 2 contoh alat musik ritmis yang dimainkan dengan cara dipukul!",
-        "answer": "Rebana, kendang, drum, atau tamborin",
-        "alt": [
-            "rebana",
-            "kendang",
-            "drum",
-            "tamborin",
-            "tifa"
-        ],
-        "hint": "Alat-alat ini dipukul menggunakan tangan atau stik untuk memberi ketukan irama."
-    }
+        {
+                "id": 1,
+                "type": "pg",
+                "section": "I. Pilihan Ganda (10 Soal)",
+                "text": "Ukuran perbandingan yang serasi antara satu bagian benda dengan bagian benda lainnya dalam menggambar bangunan rumah dinamakan...",
+                "options": [
+                        "Proporsi",
+                        "Komposisi",
+                        "Tekstur",
+                        "Perspektif"
+                ],
+                "answer": 0,
+                "hint": "Proporsi adalah perbandingan ukuran yang wajar, misalnya pintu rumah dibuat lebih tinggi daripada jendela."
+        },
+        {
+                "id": 2,
+                "type": "pg",
+                "text": "Susunan atau tata letak penempatan keseluruhan objek gambar pada bidang kertas gambar dinamakan...",
+                "options": [
+                        "Sketsa",
+                        "Komposisi",
+                        "Pola ritme",
+                        "Gradasi"
+                ],
+                "answer": 1,
+                "hint": "Komposisi mengatur keseimbangan penataan objek gambar agar enak dan harmonis dipandang."
+        },
+        {
+                "id": 3,
+                "type": "pg",
+                "text": "Komik yang dibuat dengan teknik menggunting gambar-gambar dari koran, majalah, atau buku bekas lalu ditempelkan pada kertas disebut komik...",
+                "options": [
+                        "Digital",
+                        "Montase",
+                        "Karikatur",
+                        "Manga"
+                ],
+                "answer": 1,
+                "hint": "Komik montase memanfaatkan teknik gunting dan tempel gambar dari berbagai media cetak."
+        },
+        {
+                "id": 4,
+                "type": "pg",
+                "text": "Kotak atau gelembung yang berisi tulisan percakapan antartokoh dalam cerita komik dinamakan...",
+                "options": [
+                        "Panel komik",
+                        "Balon kata",
+                        "Sketsa dialog",
+                        "Garis tepi"
+                ],
+                "answer": 1,
+                "hint": "Balon kata memuat dialog atau suara batin tokoh komik."
+        },
+        {
+                "id": 5,
+                "type": "pg",
+                "text": "Nilai raba dan sifat dari permukaan suatu benda yang dapat dilihat dengan mata serta diraba dengan tangan dinamakan...",
+                "options": [
+                        "Tekstur",
+                        "Warna",
+                        "Bentuk",
+                        "Ruang"
+                ],
+                "answer": 0,
+                "hint": "Tekstur adalah sifat permukaan benda, seperti halus, kasar, licin, atau bergelombang."
+        },
+        {
+                "id": 6,
+                "type": "pg",
+                "text": "Permukaan tumpukan batu kerikil yang tampak kasar saat dilihat dan benar-benar terasa kasar saat diraba termasuk contoh tekstur...",
+                "options": [
+                        "Semu",
+                        "Nyata",
+                        "Buatan",
+                        "Maya"
+                ],
+                "answer": 1,
+                "hint": "Tekstur nyata memberikan kesan visual dan rasa rabaan fisik yang sama persis."
+        },
+        {
+                "id": 7,
+                "type": "pg",
+                "text": "Gambar hiasan dengan pola motif garis, flora (tumbuhan), atau fauna yang bertujuan memperindah permukaan benda disebut gambar...",
+                "options": [
+                        "Dekoratif",
+                        "Montase",
+                        "Karikatur",
+                        "Realis"
+                ],
+                "answer": 0,
+                "hint": "Gambar dekoratif berfungsi menghias permukaan benda seperti keramik, layang-layang, dan jadwal pelajaran."
+        },
+        {
+                "id": 8,
+                "type": "pg",
+                "text": "Ukuran cepat atau lambatnya birama suatu lagu saat dinyanyikan dinamakan...",
+                "options": [
+                        "Tempo",
+                        "Dinamika",
+                        "Nada",
+                        "Irama"
+                ],
+                "answer": 0,
+                "hint": "Tempo mengatur kecepatan ketukan lagu, ada tempo cepat (allegro), sedang (moderato), dan lambat (lento/adagio)."
+        },
+        {
+                "id": 9,
+                "type": "pg",
+                "text": "Alat musik yang berfungsi mengatur jalannya ketukan irama dan tidak memiliki susunan nada do-re-mi dinamakan alat musik...",
+                "options": [
+                        "Melodis",
+                        "Ritmis",
+                        "Harmonis",
+                        "Elektronik"
+                ],
+                "answer": 1,
+                "hint": "Alat musik ritmis menghasilkan ketukan dan irama tanpa tangga nada."
+        },
+        {
+                "id": 10,
+                "type": "pg",
+                "text": "Contoh alat musik ritmis tradisional yang dimainkan dengan cara dipukul menggunakan telapak tangan adalah...",
+                "options": [
+                        "Pianika",
+                        "Rebana / Gendang",
+                        "Rekorder",
+                        "Gitar"
+                ],
+                "answer": 1,
+                "hint": "Rebana dan gendang adalah contoh alat musik ritmis yang tidak bernada dan dimainkan dengan dipukul."
+        },
+        {
+                "id": 11,
+                "type": "pg_kompleks",
+                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
+                "text": "Prinsip-prinsip seni yang wajib diperhatikan saat menggambar bangunan rumah adalah...",
+                "options": [
+                        "Proporsi (perbandingan ukuran bagian bangunan)",
+                        "Komposisi (penataan letak ruang dan objek)",
+                        "Menjiplak karya orang lain tanpa izin",
+                        "Mengabaikan garis tepi dan kebersihan gambar"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Proporsi dan komposisi adalah dua prinsip utama dalam menggambar arsitektur dan benda."
+        },
+        {
+                "id": 12,
+                "type": "pg_kompleks",
+                "text": "Ciri khas yang terdapat pada sebuah lembaran komik cerita bergambar adalah...",
+                "options": [
+                        "Terdapat kotak-kotak pembatas adegan yang disebut panel",
+                        "Memiliki balon kata untuk menuliskan percakapan tokoh",
+                        "Hanya berisi tulisan tanpa gambar apa pun",
+                        "Selalu dicetak tanpa warna sama sekali"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Komik memadukan gambar ilustrasi dalam panel dan dialog dalam balon kata secara runtut."
+        },
+        {
+                "id": 13,
+                "type": "pg_kompleks",
+                "text": "Benda-benda di sekitar kita yang memiliki tekstur permukaan KASAR saat diraba adalah...",
+                "options": [
+                        "Kulit buah salak yang bersisik",
+                        "Batu kerikil dan aspal jalan",
+                        "Permukaan kaca jendela yang rata",
+                        "Permukaan kertas cermin"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Kulit salak dan batu kerikil bertekstur kasar. Kaca dan cermin bertekstur halus dan licin."
+        },
+        {
+                "id": 14,
+                "type": "pg_kompleks",
+                "text": "Alat musik di bawah ini yang tergolong ke dalam alat musik MELODIS (memiliki susunan nada tangga nada) adalah...",
+                "options": [
+                        "Pianika",
+                        "Rekorder (seruling tiup)",
+                        "Marakas",
+                        "Tamborin"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Pianika dan rekorder dapat memainkan melodi lagu (nada). Marakas dan tamborin adalah alat musik ritmis."
+        },
+        {
+                "id": 15,
+                "type": "pg_kompleks",
+                "text": "Benda-benda sehari-hari yang sering dihias menggunakan motif gambar dekoratif adalah...",
+                "options": [
+                        "Kertas layang-layang",
+                        "Kartu jadwal pelajaran sekolah",
+                        "Kaca spion mobil",
+                        "Layar proyektor kelas"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Gambar dekoratif sering digambar pada layang-layang, jadwal pelajaran, kain batik, atau kartu ucapan."
+        },
+        {
+                "id": 16,
+                "type": "benar_salah",
+                "section": "III. Benar atau Salah (5 Soal)",
+                "text": "Tekstur semu adalah tekstur benda yang tampak kasar pada lukisan/gambar, namun saat diraba permukaannya tetap terasa halus dan rata.",
+                "answer": "Benar",
+                "hint": "Tekstur semu hanya berupa ilusi optik pada gambar 2 dimensi."
+        },
+        {
+                "id": 17,
+                "type": "benar_salah",
+                "text": "Saat menggambar rumah yang proporsional, ukuran jendela biasanya digambar jauh lebih besar dan tinggi daripada pintu depan rumah.",
+                "answer": "Salah",
+                "hint": "Secara proporsional, pintu dibuat lebih tinggi daripada jendela agar manusia bisa melewatinya."
+        },
+        {
+                "id": 18,
+                "type": "benar_salah",
+                "text": "Gambar dekoratif dapat mempercantik tampilan suatu benda tanpa mengubah bentuk asli dari benda tersebut.",
+                "answer": "Benar",
+                "hint": "Gambar dekoratif berfungsi murni sebagai hiasan estetis untuk memperindah bidang."
+        },
+        {
+                "id": 19,
+                "type": "benar_salah",
+                "text": "Alat musik tamborin dan marakas adalah contoh alat musik melodis yang dapat membunyikan lagu bertangga nada lengkap.",
+                "answer": "Salah",
+                "hint": "Tamborin dan marakas adalah alat musik ritmis yang tidak memiliki tangga nada do-re-mi."
+        },
+        {
+                "id": 20,
+                "type": "benar_salah",
+                "text": "Tanda birama 4/4 dalam sebuah lagu menunjukkan bahwa dalam setiap ruas birama terdapat 4 ketukan.",
+                "answer": "Benar",
+                "hint": "Birama 4/4 memiliki hitungan 4 ketukan dalam setiap ruas lagu."
+        },
+        {
+                "id": 21,
+                "type": "memasangkan",
+                "section": "IV. Memasangkan (5 Soal)",
+                "premise": "Proporsi",
+                "text": "Konsep 'Proporsi' berpasangan dengan pengertian...",
+                "options": [
+                        "Perbandingan ukuran antartepi dan bagian benda",
+                        "Penataan susunan tata letak objek pada kertas",
+                        "Alat musik ritmis penghasil ketukan",
+                        "Alat musik melodis pengiring nada lagu",
+                        "Ukuran cepat lambatnya ketukan lagu"
+                ],
+                "answer": "Perbandingan ukuran antartepi dan bagian benda",
+                "hint": "Proporsi berkaitan dengan rasio perbandingan ukuran antarbagian."
+        },
+        {
+                "id": 22,
+                "type": "memasangkan",
+                "premise": "Komposisi",
+                "text": "Konsep 'Komposisi' berpasangan dengan pengertian...",
+                "options": [
+                        "Perbandingan ukuran antartepi dan bagian benda",
+                        "Penataan susunan tata letak objek pada kertas",
+                        "Alat musik ritmis penghasil ketukan",
+                        "Alat musik melodis pengiring nada lagu",
+                        "Ukuran cepat lambatnya ketukan lagu"
+                ],
+                "answer": "Penataan susunan tata letak objek pada kertas",
+                "hint": "Komposisi mengatur posisi, tata letak, dan keseimbangan objek."
+        },
+        {
+                "id": 23,
+                "type": "memasangkan",
+                "premise": "Gendang / Rebana",
+                "text": "Alat musik 'Gendang / Rebana' berpasangan dengan kategori...",
+                "options": [
+                        "Perbandingan ukuran antartepi dan bagian benda",
+                        "Penataan susunan tata letak objek pada kertas",
+                        "Alat musik ritmis penghasil ketukan",
+                        "Alat musik melodis pengiring nada lagu",
+                        "Ukuran cepat lambatnya ketukan lagu"
+                ],
+                "answer": "Alat musik ritmis penghasil ketukan",
+                "hint": "Gendang/rebana adalah alat musik ritmis tak bernada."
+        },
+        {
+                "id": 24,
+                "type": "memasangkan",
+                "premise": "Pianika / Rekorder",
+                "text": "Alat musik 'Pianika / Rekorder' berpasangan dengan kategori...",
+                "options": [
+                        "Perbandingan ukuran antartepi dan bagian benda",
+                        "Penataan susunan tata letak objek pada kertas",
+                        "Alat musik ritmis penghasil ketukan",
+                        "Alat musik melodis pengiring nada lagu",
+                        "Ukuran cepat lambatnya ketukan lagu"
+                ],
+                "answer": "Alat musik melodis pengiring nada lagu",
+                "hint": "Pianika dan rekorder memainkan susunan melodi lagu."
+        },
+        {
+                "id": 25,
+                "type": "memasangkan",
+                "premise": "Tempo Lagu",
+                "text": "Konsep 'Tempo Lagu' berpasangan dengan pengertian...",
+                "options": [
+                        "Perbandingan ukuran antartepi dan bagian benda",
+                        "Penataan susunan tata letak objek pada kertas",
+                        "Alat musik ritmis penghasil ketukan",
+                        "Alat musik melodis pengiring nada lagu",
+                        "Ukuran cepat lambatnya ketukan lagu"
+                ],
+                "answer": "Ukuran cepat lambatnya ketukan lagu",
+                "hint": "Tempo menentukan ritme kecepatan lagu."
+        },
+        {
+                "id": 26,
+                "type": "isian",
+                "section": "V. Isian Singkat (5 Soal)",
+                "text": "Kotak pembatas tempat menggambar adegan pada lembaran komik disebut ...",
+                "answer": "panel",
+                "alt": [
+                        "panel",
+                        "kotak panel",
+                        "frame"
+                ],
+                "hint": "Panel komik membatasi tiap adegan cerita."
+        },
+        {
+                "id": 27,
+                "type": "isian",
+                "text": "Gambar berpola motif yang bertujuan untuk menghias dan mempercantik permukaan bidang dinamakan gambar ...",
+                "answer": "dekoratif",
+                "alt": [
+                        "dekoratif",
+                        "ornamen"
+                ],
+                "hint": "Karya dekoratif mengutamakan keindahan hiasan."
+        },
+        {
+                "id": 28,
+                "type": "isian",
+                "text": "Tanda yang menunjukkan banyaknya jumlah ketukan di setiap ruas birama pada lagu disebut tanda ...",
+                "answer": "birama",
+                "alt": [
+                        "birama"
+                ],
+                "hint": "Contoh tanda birama adalah 2/4, 3/4, dan 4/4."
+        },
+        {
+                "id": 29,
+                "type": "isian",
+                "text": "Keras dan lembutnya bunyi yang dimainkan dalam lagu dinamakan ...",
+                "answer": "dinamika",
+                "alt": [
+                        "dinamika"
+                ],
+                "hint": "Dinamika memberi ekspresi kekuatan bunyi suara dalam lagu."
+        },
+        {
+                "id": 30,
+                "type": "isian",
+                "text": "Permukaan benda yang tidak memiliki gerigi, rata, dan licin saat diraba dikelompokkan ke dalam tekstur ...",
+                "answer": "halus",
+                "alt": [
+                        "halus",
+                        "licin"
+                ],
+                "hint": "Contoh tekstur halus adalah kertas gambar, cermin, dan sutra."
+        },
+        {
+                "id": 31,
+                "type": "uraian",
+                "section": "VI. Uraian / Esai (5 Soal)",
+                "text": "Jelaskan perbedaan mendasar antara 'tekstur nyata' dan 'tekstur semu' beserta contoh bendanya!",
+                "answer": "1. <b>Tekstur Nyata</b>: Sifat permukaan benda yang jika dilihat dan diraba memberikan kesan yang sama persis. Contohnya: Batu kerikil yang tampak kasar dan saat diraba benar-benar terasa kasar.<br><br>2. <b>Tekstur Semu</b>: Sifat permukaan benda yang tampak berbeda antara kesan penglihatan dan rabaan. Contohnya: Gambar lukisan dinding batu bata yang tampak kasar dan retak, namun saat diraba kertas gambarnya tetap licin dan halus.",
+                "hint": "Menjelaskan tekstur nyata (dilihat dan diraba sama) vs semu (dilihat berbeda dengan rabaan) serta contohnya."
+        },
+        {
+                "id": 32,
+                "type": "uraian",
+                "text": "Sebutkan langkah-langkah yang harus dilakukan untuk membuat komik cerita sederhana!",
+                "answer": "1. Menentukan tema atau cerita yang akan disampaikan.<br>2. Membuat garis kotak-kotak panel menggunakan penggaris di kertas gambar.<br>3. Menggambar sketsa karakter tokoh dan latar suasana cerita di setiap panel.<br>4. Menambahkan balon kata berisi kalimat percakapan tokoh.<br>5. Menebalkan garis gambar dengan spidol dan memberi warna yang menarik.",
+                "hint": "Langkah pembuatan komik: ide cerita, membuat panel, membuat sketsa, menambah balon kata, lalu mewarnai."
+        },
+        {
+                "id": 33,
+                "type": "uraian",
+                "text": "Apakah fungsi penting dari balon kata dalam sebuah cerita komik bergambar?",
+                "answer": "Fungsi balon kata adalah sebagai tempat untuk menuliskan teks dialog, percakapan antartokoh, maupun suara hati (monolog) tokoh komik, sehingga pembaca dapat memahami jalan cerita dan apa yang sedang dibicarakan oleh karakter di setiap panel komik.",
+                "hint": "Menjelaskan balon kata sebagai wadah dialog dan narasi ucapan karakter komik."
+        },
+        {
+                "id": 34,
+                "type": "uraian",
+                "text": "Jelaskan perbedaan antara alat musik ritmis dan alat musik melodis, serta sebutkan 2 contoh untuk masing-masingnya!",
+                "answer": "1. <b>Alat musik ritmis</b>: Alat musik yang tidak memiliki nada (tidak memiliki tangga nada do-re-mi) dan berfungsi sebagai pengatur tempo atau irama lagu. Contohnya: Marakas, Tamborin, dan Gendang.<br><br>2. <b>Alat musik melodis</b>: Alat musik yang menghasilkan nada atau susunan melodi lagu (do, re, mi, fa, sol, la, si). Contohnya: Pianika, Rekorder, dan Gitar.",
+                "hint": "Menjelaskan ritmis (tidak bernada, mengatur ketukan) dan melodis (memiliki nada pengiring lagu) beserta masing-masing 2 contoh."
+        },
+        {
+                "id": 35,
+                "type": "uraian",
+                "text": "Sebutkan 3 unsur seni rupa yang digunakan untuk membuat pola gambar dekoratif pada layang-layang atau jadwal pelajaran!",
+                "answer": "1. <b>Garis</b> (garis lurus, lengkung, bergelombang, atau zig-zag).<br>2. <b>Bidang / Bentuk</b> (lingkaran, segitiga, persegi, atau motif daun/bunga).<br>3. <b>Warna</b> (pemberian warna cerah yang serasi untuk memperindah tampilan hiasan).",
+                "hint": "Menyebutkan unsur seni rupa seperti titik, garis, bidang/bentuk, dan warna."
+        }
 ];
 
-        function renderQuestions() {
-            const container = document.getElementById('quiz-container');
+        function render() {
+            const container = document.getElementById('question-container');
             let html = '';
-            questions.forEach((q, index) => {
-                html += `
-                    <div class="q-card" id="qcard-${q.id}">
-                        <div class="q-header">
-                            <div class="q-num">${index + 1}</div>
-                            <div class="q-title">${q.text}</div>
-                        </div>
-                        <input type="text" 
-                               class="input-box" 
-                               name="q_${q.id}" 
-                               id="input-${q.id}" 
-                               placeholder="Tulis jawabanmu di sini..." 
-                               autocomplete="off"
-                               oninput="updateProgress()">
-                        <div class="feedback" id="fb-${q.id}"></div>
-                    </div>
-                `;
+            questions.forEach((q, idx) => {
+                if (q.section) {
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'benar_salah') {
+                    inputHtml = `<div class="tf-group">
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
+                    </div>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<div class="match-box">
+                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
+                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                            <option value="">-- Pilih Pasangan yang Tepat --</option>
+                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                        </select>
+                    </div>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
             });
             container.innerHTML = html;
+            updateProgress();
         }
 
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                const val = document.getElementById(`input-${q.id}`).value.trim();
-                if (val.length > 0) answered++;
+                if (q.type === 'pg' || q.type === 'benar_salah') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
             });
-            const pct = (answered / questions.length) * 100;
-            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
         }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
 
         function cleanString(str) {
             return (str || '')
@@ -514,94 +891,120 @@
                 .trim();
         }
 
-        function checkAnswer(userAns, q) {
-            const u = cleanString(userAns);
-            if (!u) return false;
-            
-            const target = cleanString(q.answer);
-            if (u === target || u.includes(target) || (target.length > 3 && target.includes(u))) {
-                return true;
-            }
-
-            if (q.alt && Array.isArray(q.alt)) {
-                for (let k of q.alt) {
-                    const cleanK = cleanString(k);
-                    if (u === cleanK || u.includes(cleanK) || (cleanK.length > 3 && cleanK.includes(u))) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         function submitExam() {
-            let correctCount = 0;
-            let total = questions.length;
+            let score = 0;
+            let maxAuto = 0;
 
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                const userVal = inputEl.value;
                 const fb = document.getElementById(`fb-${q.id}`);
-                const isCorrect = checkAnswer(userVal, q);
-
-                if (isCorrect) {
-                    correctCount++;
-                    fb.className = 'feedback fb-correct';
-                    fb.innerHTML = `
-                        <div>✅ <b>Masya Allah, Tepat Sekali!</b></div>
-                        <div class="fb-ans">Kunci Jawaban: ${q.answer}</div>
-                        <div class="fb-hint">💡 ${q.hint}</div>
-                    `;
-                } else {
-                    fb.className = 'feedback fb-wrong';
-                    fb.innerHTML = `
-                        <div>❌ <b>Perlu Dipelajari Lagi</b></div>
-                        <div class="fb-ans">Kunci Jawaban yang Benar: <b>${q.answer}</b></div>
-                        <div class="fb-hint">💡 Pembahasan: ${q.hint}</div>
-                    `;
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'benar_salah') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    const val = sel ? sel.value : '';
+                    if (val === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl ? inputEl.value : '');
+                    const target = cleanString(q.answer);
+                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
+                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
-                inputEl.disabled = true;
             });
 
-            const finalScore = Math.round((correctCount / total) * 100);
-            document.getElementById('score-val').innerText = finalScore;
-
-            let msg = '';
-            if (finalScore === 100) {
-                msg = `🌟 Masya Allah, Nilai Sempurna 100! Luar biasa hebat Musa, pertahankan prestasi ini ya! 🎉`;
-            } else if (finalScore >= 80) {
-                msg = `🎉 Hebat sekali Musa! Benar ${correctCount} dari ${total} soal. Sedikit lagi 100, pelajari kembali soal yang belum tepat ya!`;
-            } else if (finalScore >= 60) {
-                msg = `👍 Bagus Musa! Benar ${correctCount} dari ${total} soal. Ayo baca lagi materi dan pembahasannya lalu coba lagi ya!`;
-            } else {
-                msg = `💪 Semangat Musa! Benar ${correctCount} dari ${total} soal. Jangan menyerah, pelajari catatan buku tulis dan ulangi lagi latihannya!`;
-            }
-
-            document.getElementById('score-msg').innerText = msg;
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct + '%';
+            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
             document.getElementById('score-board').style.display = 'block';
-            document.getElementById('footer-submit').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function retryExam() {
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                inputEl.value = '';
-                inputEl.disabled = false;
+                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
                 const fb = document.getElementById(`fb-${q.id}`);
-                fb.style.display = 'none';
-                fb.innerHTML = '';
+                if (fb) fb.style.display = 'none';
             });
             document.getElementById('score-board').style.display = 'none';
-            document.getElementById('footer-submit').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'block';
             document.getElementById('progress-fill').style.width = '0%';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        renderQuestions();
+        render();
     </script>
 </body>
 </html>

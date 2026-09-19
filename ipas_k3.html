@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Soal Ulangan IPAS Kelas 3 - SDIT Friends</title>
+    <title>Latihan Soal IPAS (Ilmu Pengetahuan Alam & Sosial) Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 820px;
+            max-width: 860px;
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: 20px;
@@ -47,7 +47,7 @@
             align-items: center;
             margin-bottom: 15px;
         }
-        .btn-back-nav {
+        .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -56,17 +56,17 @@
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.88em;
             font-weight: 700;
             transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
         }
-        .btn-back-nav:hover {
+        .back-btn-nav:hover {
             background: rgba(255,255,255,0.4);
             transform: translateX(-3px);
         }
         .header h1 {
-            font-size: 1.8em;
+            font-size: 1.85em;
             font-weight: 800;
             margin-bottom: 6px;
         }
@@ -74,10 +74,10 @@
             font-size: 0.95em;
             opacity: 0.95;
         }
-        .badge-kisi {
+        .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
@@ -85,7 +85,7 @@
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 8px;
+            height: 9px;
             background: #e2e8f0;
             position: sticky;
             top: 0;
@@ -99,416 +99,793 @@
         }
         .score-board {
             display: none;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 4px solid rgba(0,0,0,0.1);
-            animation: slideDown 0.5s ease;
+            border-bottom: 3px solid var(--border);
         }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .score-board h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
         .score-val {
-            font-size: 4em;
+            font-size: 3.8em;
             font-weight: 800;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            margin: 10px 0;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 5px 0;
         }
-        .score-msg {
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .score-detail {
+            font-size: 1.05em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
-        .btn-action-res {
-            padding: 10px 22px;
-            border-radius: 25px;
+        .btn-action {
+            padding: 10px 24px;
+            border-radius: 50px;
             font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9em;
             cursor: pointer;
             border: none;
+            text-decoration: none;
+            font-size: 0.92em;
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: #1e3c72;
         }
-        .btn-retry { background: white; color: var(--primary); }
-        .btn-retry:hover { background: #f1f2f6; transform: scale(1.03); }
-        .btn-back-menu { background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
-        .btn-back-menu:hover { background: rgba(0,0,0,0.3); }
-
-        .quiz-container {
+        .btn-action:hover {
+            background: #f1f2f6;
+            transform: translateY(-2px);
+        }
+        .question-list {
             padding: 25px 20px;
         }
-        .q-card {
-            background: #fafbfc;
-            border: 2px solid var(--border);
-            border-radius: 14px;
+        .section-title {
+            font-size: 0.98em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: white;
+            margin: 32px 0 16px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
             padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
             transition: all 0.2s;
         }
-        .q-card:hover {
-            border-color: var(--primary-light);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
-        .q-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-        .q-num {
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--primary);
             color: white;
-            font-size: 0.85em;
-            font-weight: 800;
             width: 32px;
             height: 32px;
             border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.03em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+        }
+        /* Benar Salah Styling */
+        .tf-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tf-label {
+            flex: 1;
+            min-width: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-        .q-title {
-            font-size: 1.05em;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
             font-weight: 700;
-            line-height: 1.5;
-            color: #2c3e50;
+            font-size: 0.98em;
+            transition: all 0.2s;
         }
-        .input-box {
+        .tf-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+        }
+        .tf-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+            color: var(--primary);
+        }
+        .tf-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        /* Match Select */
+        .match-box {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .match-premise {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 0.98em;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: #fdfefe;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid var(--border);
             border-radius: 10px;
-            font-size: 0.95em;
-            font-family: inherit;
-            transition: all 0.2s;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
             outline: none;
             background: white;
         }
-        .input-box:focus {
+        .input-text:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
         }
-        .feedback {
-            margin-top: 14px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 0.9em;
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
             line-height: 1.5;
-            display: none;
         }
-        .fb-correct {
-            background: #eafaf1;
-            color: #1b7a43;
+        .feedback-box {
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.93em;
+            line-height: 1.55;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
             border-left: 5px solid var(--success);
         }
-        .fb-wrong {
-            background: #fdf2e9;
-            color: #b94a48;
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
             border-left: 5px solid var(--error);
         }
-        .fb-ans {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-top: 4px;
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
         }
-        .fb-hint {
-            font-size: 0.85em;
-            color: #555;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        .footer-submit {
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
             text-align: center;
-            padding: 25px;
-            background: #ffffff;
-            border-top: 2px solid var(--border);
             position: sticky;
             bottom: 0;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.04);
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
         }
         .btn-submit {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
             border: none;
             padding: 14px 45px;
-            border-radius: 50px;
             font-size: 1.1em;
-            font-weight: 800;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            font-weight: 800;
             transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.25);
         }
-        .btn-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="nav-top">
-                <a href="kelas3.html" class="btn-back-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.9;">15 Soal Esai</span>
+                <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
             </div>
-            <h1>🌿 IPAS</h1>
-            <p>SDIT Friends — Asesmen Formatif Tengah Semester (AFTS) Ganjil</p>
-            <div class="badge-kisi">📌 Bab 1: Pancaindra & Bab 2: Keluarga dan Tradisi (Hal. 2-30)</div>
+            <h1>🌿 IPAS (Ilmu Pengetahuan Alam & Sosial)</h1>
+            <p>SDIT Friends — Kelas 3</p>
+            <div class="badge">Bab 1: Pancaindra & Bab 2: Keluarga dan Tradisi (Hal. 2-30)</div>
         </div>
-
-        <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
-
-        <!-- Live Score Board -->
         <div class="score-board" id="score-board">
             <h2>📊 Hasil Latihan Ulangan</h2>
-            <div class="score-val" id="score-val">0</div>
-            <div class="score-msg" id="score-msg"></div>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action-res btn-retry">🔄 Coba Lagi</button>
-                <a href="kelas3.html" class="btn-action-res btn-back-menu">⬅ Kembali ke Menu Kelas 3</a>
+                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
-
-        <!-- Questions List -->
-        <div class="quiz-container" id="quiz-container"></div>
-
-        <!-- Submit Footer -->
-        <div class="footer-submit" id="footer-submit">
-            <button class="btn-submit" onclick="submitExam()" id="btnSubmit">Kumpulkan Jawaban ✅</button>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
         </div>
     </div>
 
     <script>
         const questions = [
-    {
-        "id": 1,
-        "text": "Sebutkan 5 macam alat indra (pancaindra) manusia beserta kegunaannya masing-masing!",
-        "answer": "Mata (melihat), telinga (mendengar), hidung (mencium/membau), lidah (mengecap rasa), dan kulit (meraba)",
-        "alt": [
-            "mata",
-            "telinga",
-            "hidung",
-            "lidah",
-            "kulit"
-        ],
-        "hint": "Kelima indra ini menerima rangsangan cahaya, suara, bau, rasa, dan sentuhan."
-    },
-    {
-        "id": 2,
-        "text": "Bagian mata yang berwarna (hitam/cokelat) dan berfungsi mengatur besar kecilnya pupil disebut ...",
-        "answer": "Iris",
-        "alt": [
-            "iris"
-        ],
-        "hint": "Iris memberi warna pada mata dan mengatur diameter pupil."
-    },
-    {
-        "id": 3,
-        "text": "Apa fungsi pupil pada bagian mata manusia?",
-        "answer": "Mengatur banyaknya jumlah cahaya yang masuk ke dalam mata",
-        "alt": [
-            "mengatur cahaya",
-            "banyaknya cahaya",
-            "masuknya cahaya"
-        ],
-        "hint": "Pupil akan mengecil saat cahaya terang dan membesar saat cahaya redup."
-    },
-    {
-        "id": 4,
-        "text": "Bagian mata terdalam yang mengandung sel-sel saraf penglihatan dan tempat jatuhnya bayangan benda disebut ...",
-        "answer": "Retina (selaput jala)",
-        "alt": [
-            "retina",
-            "selaput jala"
-        ],
-        "hint": "Bayangan difokuskan lensa dan ditangkap oleh retina sebelum dikirim ke otak."
-    },
-    {
-        "id": 5,
-        "text": "Sebutkan 2 bagian tubuh yang melindungi mata dari debu, kotoran, dan tetesan keringat!",
-        "answer": "Alis mata, kelopak mata, dan bulu mata",
-        "alt": [
-            "alis",
-            "bulu mata",
-            "kelopak mata"
-        ],
-        "hint": "Alis menahan keringat di dahi, sedangkan bulu mata menyaring debu di udara."
-    },
-    {
-        "id": 6,
-        "text": "Sebutkan 4 macam rasa dasar yang dapat dirasakan/dikecap oleh permukaan lidah manusia!",
-        "answer": "Manis, asin, asam, dan pahit",
-        "alt": [
-            "manis",
-            "asin",
-            "asam",
-            "pahit"
-        ],
-        "hint": "Papila pada lidah dapat mengecap rasa manis, asin, asam, dan pahit."
-    },
-    {
-        "id": 7,
-        "text": "Bagaimana cara yang benar untuk menjaga kesehatan dan kebersihan alat pendengaran (telinga)?",
-        "answer": "Membersihkan daun telinga secara teratur, tidak mengorek liang telinga dengan benda tajam/keras, dan menghindari suara bising",
-        "alt": [
-            "tidak mengorek",
-            "tidak suara keras",
-            "membersihkan daun telinga",
-            "hindari bising"
-        ],
-        "hint": "Mengorek telinga dapat merusak gendang telinga."
-    },
-    {
-        "id": 8,
-        "text": "Bagian alat indra apakah yang digunakan saat kamu memegang es batu dan merasakan sensasi dingin serta licin?",
-        "answer": "Kulit (indra peraba)",
-        "alt": [
-            "kulit",
-            "indra peraba"
-        ],
-        "hint": "Kulit peka terhadap rangsangan sentuhan, suhu (panas/dingin), kasar/halus, dan rasa nyeri."
-    },
-    {
-        "id": 9,
-        "text": "Siapa sajakah anggota keluarga yang termasuk ke dalam 'keluarga inti' (keluarga batih)?",
-        "answer": "Ayah, ibu, dan anak",
-        "alt": [
-            "ayah, ibu, anak",
-            "ayah ibu anak",
-            "orang tua dan anak"
-        ],
-        "hint": "Keluarga inti terdiri dari kepala keluarga, ibu rumah tangga, dan anak-anaknya."
-    },
-    {
-        "id": 10,
-        "text": "Sebutkan contoh anggota keluarga yang termasuk ke dalam 'keluarga besar'!",
-        "answer": "Kakek, nenek, paman, bibi, dan sepupu",
-        "alt": [
-            "kakek",
-            "nenek",
-            "paman",
-            "bibi",
-            "sepupu"
-        ],
-        "hint": "Keluarga besar mencakup sanak saudara dari garis keturunan ayah maupun ibu."
-    },
-    {
-        "id": 11,
-        "text": "Apa sebutan panggilan untuk saudara laki-laki dari ayah atau ibu kita?",
-        "answer": "Paman (atau Om / Pakde / Paklek)",
-        "alt": [
-            "paman",
-            "om",
-            "pakde",
-            "paklek"
-        ],
-        "hint": "Paman adalah adik atau kakak laki-laki dari orang tua kita."
-    },
-    {
-        "id": 12,
-        "text": "Apa manfaat dibuatnya bagan pohon silsilah keluarga?",
-        "answer": "Untuk mengetahui urutan garis keturunan, asal-usul, dan hubungan kekerabatan dalam keluarga",
-        "alt": [
-            "garis keturunan",
-            "asal-usul",
-            "hubungan keluarga",
-            "silsilah"
-        ],
-        "hint": "Silsilah memudahkan kita mengenal siapa kakek, nenek, orang tua, hingga anak dan cucu."
-    },
-    {
-        "id": 13,
-        "text": "Sebutkan 2 kewajiban atau tugas seorang anak di lingkungan rumah tangga!",
-        "answer": "Belajar dengan rajin, mematuhi nasihat orang tua, dan membantu merapikan tempat tidur/rumah",
-        "alt": [
-            "belajar",
-            "membantu orang tua",
-            "mematuhi",
-            "menghormati"
-        ],
-        "hint": "Anak berkewajiban berbakti kepada orang tua dan menjaga kebersihan rumah."
-    },
-    {
-        "id": 14,
-        "text": "Tuliskan 2 contoh tradisi atau kebiasaan baik yang dilakukan bersama keluarga besar saat hari raya!",
-        "answer": "Sungkeman saling memaafkan, berkumpul makan bersama, dan berziarah",
-        "alt": [
-            "sungkeman",
-            "makan bersama",
-            "silaturahmi",
-            "saling memaafkan"
-        ],
-        "hint": "Tradisi silaturahmi mempererat kasih sayang antaranggota keluarga."
-    },
-    {
-        "id": 15,
-        "text": "Mengapa setiap anggota keluarga harus mematuhi aturan dan tata tertib yang telah disepakati di rumah?",
-        "answer": "Agar kehidupan di rumah menjadi teratur, rukun, aman, tenteram, dan nyaman",
-        "alt": [
-            "rukun",
-            "tertib",
-            "teratur",
-            "damai",
-            "nyaman"
-        ],
-        "hint": "Aturan dibuat untuk kebaikan bersama seluruh penghuni rumah."
-    }
+        {
+                "id": 1,
+                "type": "pg",
+                "section": "I. Pilihan Ganda (10 Soal)",
+                "text": "Bagian mata yang berfungsi mengatur banyak sedikitnya cahaya yang masuk ke dalam bola mata adalah...",
+                "options": [
+                        "Retina",
+                        "Pupil",
+                        "Sklera",
+                        "Alis"
+                ],
+                "answer": 1,
+                "hint": "Pupil adalah lubang di tengah iris yang membesar saat gelap dan mengecil saat terang untuk mengatur intensitas cahaya."
+        },
+        {
+                "id": 2,
+                "type": "pg",
+                "text": "Alat indra pada tubuh manusia yang berfungsi untuk mendengarkan getaran bunyi dari lingkungan sekitar adalah...",
+                "options": [
+                        "Hidung",
+                        "Telinga",
+                        "Lidah",
+                        "Mata"
+                ],
+                "answer": 1,
+                "hint": "Telinga adalah organ pendengaran yang menangkap gelombang suara dan meneruskannya ke otak."
+        },
+        {
+                "id": 3,
+                "type": "pg",
+                "text": "Udara yang kita hirup melalui hidung disaring dari kotoran dan debu halus oleh...",
+                "options": [
+                        "Tulang hidung",
+                        "Rambut hidung dan selaput lendir",
+                        "Saraf pembau",
+                        "Pangkal tenggorokan"
+                ],
+                "answer": 1,
+                "hint": "Rambut-rambut halus (silia) dan lendir di dalam hidung berfungsi menyaring debu serta menghangatkan udara."
+        },
+        {
+                "id": 4,
+                "type": "pg",
+                "text": "Bintil-bintil kecil pada permukaan lidah yang bertugas sebagai reseptor pengecap rasa makanan dinamakan...",
+                "options": [
+                        "Papila",
+                        "Silia",
+                        "Pupil",
+                        "Kornea"
+                ],
+                "answer": 0,
+                "hint": "Papila mengandung saraf pengecap yang peka terhadap rasa manis, asin, asam, dan pahit."
+        },
+        {
+                "id": 5,
+                "type": "pg",
+                "text": "Lapisan kulit paling luar yang berfungsi sebagai benteng pelindung pertama tubuh dari kuman dan kotoran adalah...",
+                "options": [
+                        "Dermis",
+                        "Epidermis",
+                        "Jaringan lemak",
+                        "Kelenjar minyak"
+                ],
+                "answer": 1,
+                "hint": "Epidermis adalah lapisan kulit terluar yang senantiasa mengalami pergantian sel kulit mati."
+        },
+        {
+                "id": 6,
+                "type": "pg",
+                "text": "Bagian telinga berupa selaput tipis yang bergetar saat menangkap gelombang suara dinamakan...",
+                "options": [
+                        "Daun telinga",
+                        "Gendang telinga",
+                        "Rumah siput",
+                        "Saluran eustachius"
+                ],
+                "answer": 1,
+                "hint": "Gendang telinga (membran timpani) bergetar ketika gelombang suara menabraknya."
+        },
+        {
+                "id": 7,
+                "type": "pg",
+                "text": "Saudara kandung laki-laki dari ayah atau ibu kita panggil dengan sebutan keluarga...",
+                "options": [
+                        "Kakek",
+                        "Paman",
+                        "Bibi",
+                        "Sepupu"
+                ],
+                "answer": 1,
+                "hint": "Paman adalah sebutan untuk saudara laki-laki dari orang tua kita."
+        },
+        {
+                "id": 8,
+                "type": "pg",
+                "text": "Keluarga inti (keluarga batih) terdiri dari...",
+                "options": [
+                        "Kakek, nenek, dan paman",
+                        "Ayah, ibu, dan anak",
+                        "Paman, bibi, dan sepupu",
+                        "Tetangga dan teman sekolah"
+                ],
+                "answer": 1,
+                "hint": "Keluarga inti adalah unit terkecil dalam keluarga yang beranggotakan ayah, ibu, dan anak-anaknya."
+        },
+        {
+                "id": 9,
+                "type": "pg",
+                "text": "Saluran pada telinga yang berfungsi menjaga keseimbangan tekanan udara antara telinga tengah dan udara luar adalah...",
+                "options": [
+                        "Saluran Eustachius",
+                        "Koklea",
+                        "Tulang martil",
+                        "Daun telinga"
+                ],
+                "answer": 0,
+                "hint": "Saluran Eustachius menghubungkan rongga telinga tengah dengan bagian belakang hidung dan tenggorokan."
+        },
+        {
+                "id": 10,
+                "type": "pg",
+                "text": "Sikap yang paling tepat untuk menjaga keharmonisan dan kerukunan di dalam keluarga adalah...",
+                "options": [
+                        "Saling menyayangi, menghormati, dan membantu",
+                        "Berebut mainan dengan adik",
+                        "Membantah perkataan orang tua",
+                        "Hanya memikirkan keinginan diri sendiri"
+                ],
+                "answer": 0,
+                "hint": "Kerukunan keluarga tercipta jika setiap anggota keluarga saling menghormati dan bekerja sama."
+        },
+        {
+                "id": 11,
+                "type": "pg_kompleks",
+                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
+                "text": "Manakah di antara bagian-bagian berikut yang menyusun organ mata pada manusia?",
+                "options": [
+                        "Kornea",
+                        "Gendang telinga",
+                        "Retina",
+                        "Koklea"
+                ],
+                "answer": [
+                        0,
+                        2
+                ],
+                "hint": "Kornea dan retina adalah bagian mata. Gendang telinga dan koklea adalah bagian organ telinga."
+        },
+        {
+                "id": 12,
+                "type": "pg_kompleks",
+                "text": "Rasa-rasa dasar yang dapat dideteksi oleh ujung dan tepi papila lidah kita adalah...",
+                "options": [
+                        "Manis",
+                        "Asin",
+                        "Pedas (rasa panas/terbakar)",
+                        "Harum"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Manis dan asin adalah rasa dasar pengecap. Pedas adalah sensasi panas/nyeri pada saraf lidah, sedangkan harum adalah sensasi aroma bau."
+        },
+        {
+                "id": 13,
+                "type": "pg_kompleks",
+                "text": "Kebiasaan yang baik dan tepat untuk merawat kesehatan indra penglihatan kita adalah...",
+                "options": [
+                        "Membaca buku dengan penerangan lampu yang cukup terang",
+                        "Membaca buku sambil tiduran di tempat gelap",
+                        "Mengistirahatkan mata sejenak setelah melihat layar gawai (gadget)",
+                        "Melihat cahaya matahari langsung tanpa kacamata pelindung"
+                ],
+                "answer": [
+                        0,
+                        2
+                ],
+                "hint": "Membaca di tempat terang dan beristirahat dari layar gawai menjaga kesehatan retina dan otot mata."
+        },
+        {
+                "id": 14,
+                "type": "pg_kompleks",
+                "text": "Peran dan kewajiban seorang anak dalam kehidupan sehari-hari di rumah adalah...",
+                "options": [
+                        "Membantu merapikan tempat tidur dan mainan sendiri",
+                        "Belajar dengan rajin dan patuh pada nasihat orang tua",
+                        "Mencari nafkah untuk memenuhi kebutuhan keluarga",
+                        "Memerintah orang tua untuk melayani semua kebutuhan kita"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Kewajiban anak adalah berbakti, belajar, patuh, dan membantu pekerjaan ringan di rumah."
+        },
+        {
+                "id": 15,
+                "type": "pg_kompleks",
+                "text": "Siapakah yang termasuk dalam anggota keluarga besar (selain keluarga inti)?",
+                "options": [
+                        "Paman dan bibi",
+                        "Kakek dan nenek",
+                        "Ibu kandung",
+                        "Adik kandung"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Keluarga besar mencakup kakek, nenek, paman, bibi, dan sepupu."
+        },
+        {
+                "id": 16,
+                "type": "benar_salah",
+                "section": "III. Benar atau Salah (5 Soal)",
+                "text": "Pupil mata manusia akan mengecil saat berada di tempat yang sangat terang atau terpapar cahaya menyilaukan.",
+                "answer": "Benar",
+                "hint": "Pupil mengecil secara otomatis untuk mengurangi cahaya yang masuk agar retina tidak rusak."
+        },
+        {
+                "id": 17,
+                "type": "benar_salah",
+                "text": "Membersihkan kotoran telinga bagian dalam boleh menggunakan benda keras atau tajam seperti peniti.",
+                "answer": "Salah",
+                "hint": "Benda keras dan tajam dapat melukai saluran telinga dan merobek selaput gendang telinga."
+        },
+        {
+                "id": 18,
+                "type": "benar_salah",
+                "text": "Kulit manusia berfungsi sebagai indra peraba yang dapat merasakan rangsangan panas, dingin, tekanan, dan rasa sakit.",
+                "answer": "Benar",
+                "hint": "Pada lapisan kulit terdapat ujung-ujung saraf penerima rangsangan suhu, sentuhan, rabaan, dan nyeri."
+        },
+        {
+                "id": 19,
+                "type": "benar_salah",
+                "text": "Anak dari paman atau bibi kita memiliki hubungan kekerabatan yang disebut dengan sebutan keponakan.",
+                "answer": "Salah",
+                "hint": "Anak dari paman atau bibi disebut sepupu. Keponakan adalah anak dari saudara kandung kita."
+        },
+        {
+                "id": 20,
+                "type": "benar_salah",
+                "text": "Bagian telinga dalam yang memiliki bentuk menyerupai cangkang siput dan berisi cairan penerus getaran bunyi dinamakan koklea.",
+                "answer": "Benar",
+                "hint": "Koklea atau rumah siput mengubah getaran bunyi menjadi sinyal saraf ke otak."
+        },
+        {
+                "id": 21,
+                "type": "memasangkan",
+                "section": "IV. Memasangkan (5 Soal)",
+                "premise": "Mata",
+                "text": "Organ Mata berpasangan dengan fungsinya sebagai...",
+                "options": [
+                        "Indra Penglihatan",
+                        "Indra Pendengaran",
+                        "Indra Pembau / Penciuman",
+                        "Indra Pengecap",
+                        "Indra Peraba"
+                ],
+                "answer": "Indra Penglihatan",
+                "hint": "Mata adalah indra untuk melihat pemandangan dan benda sekitar."
+        },
+        {
+                "id": 22,
+                "type": "memasangkan",
+                "premise": "Telinga",
+                "text": "Organ Telinga berpasangan dengan fungsinya sebagai...",
+                "options": [
+                        "Indra Penglihatan",
+                        "Indra Pendengaran",
+                        "Indra Pembau / Penciuman",
+                        "Indra Pengecap",
+                        "Indra Peraba"
+                ],
+                "answer": "Indra Pendengaran",
+                "hint": "Telinga adalah organ untuk mendengar suara dan bunyi."
+        },
+        {
+                "id": 23,
+                "type": "memasangkan",
+                "premise": "Hidung",
+                "text": "Organ Hidung berpasangan dengan fungsinya sebagai...",
+                "options": [
+                        "Indra Penglihatan",
+                        "Indra Pendengaran",
+                        "Indra Pembau / Penciuman",
+                        "Indra Pengecap",
+                        "Indra Peraba"
+                ],
+                "answer": "Indra Pembau / Penciuman",
+                "hint": "Hidung berfungsi mencium aroma wangi maupun bau tak sedap."
+        },
+        {
+                "id": 24,
+                "type": "memasangkan",
+                "premise": "Lidah",
+                "text": "Organ Lidah berpasangan dengan fungsinya sebagai...",
+                "options": [
+                        "Indra Penglihatan",
+                        "Indra Pendengaran",
+                        "Indra Pembau / Penciuman",
+                        "Indra Pengecap",
+                        "Indra Peraba"
+                ],
+                "answer": "Indra Pengecap",
+                "hint": "Lidah berfungsi merasakan aneka cita rasa makanan dan minuman."
+        },
+        {
+                "id": 25,
+                "type": "memasangkan",
+                "premise": "Kulit",
+                "text": "Organ Kulit berpasangan dengan fungsinya sebagai...",
+                "options": [
+                        "Indra Penglihatan",
+                        "Indra Pendengaran",
+                        "Indra Pembau / Penciuman",
+                        "Indra Pengecap",
+                        "Indra Peraba"
+                ],
+                "answer": "Indra Peraba",
+                "hint": "Kulit berfungsi meraba permukaan kasar, halus, panas, dan dingin."
+        },
+        {
+                "id": 26,
+                "type": "isian",
+                "section": "V. Isian Singkat (5 Soal)",
+                "text": "Bagian selaput bola mata yang memiliki warna (seperti warna cokelat, hitam, atau biru) disebut ...",
+                "answer": "Iris",
+                "alt": [
+                        "iris",
+                        "selaput pelangi"
+                ],
+                "hint": "Iris berfungsi memberi pigmen warna pada mata dan mengatur diameter pupil."
+        },
+        {
+                "id": 27,
+                "type": "isian",
+                "text": "Sensasi rasa pahit paling peka dirasakan oleh saraf lidah yang berada pada bagian ...",
+                "answer": "pangkal",
+                "alt": [
+                        "pangkal",
+                        "belakang",
+                        "pangkal lidah",
+                        "bagian belakang"
+                ],
+                "hint": "Bagian pangkal atau belakang lidah paling sensitif terhadap rasa pahit."
+        },
+        {
+                "id": 28,
+                "type": "isian",
+                "text": "Bagan gambar yang menggambarkan hubungan garis keturunan anggota keluarga dari kakek hingga cucu disebut silsilah ...",
+                "answer": "keluarga",
+                "alt": [
+                        "keluarga",
+                        "pohon keluarga"
+                ],
+                "hint": "Silsilah keluarga membantu kita mengetahui garis keturunan asal-usul keluarga kita."
+        },
+        {
+                "id": 29,
+                "type": "isian",
+                "text": "Sosok pemimpin yang bertindak sebagai kepala keluarga dalam keluarga inti adalah ...",
+                "answer": "Ayah",
+                "alt": [
+                        "ayah",
+                        "bapak",
+                        "papa"
+                ],
+                "hint": "Ayah memimpin dan menafkahi keluarga dengan penuh kasih sayang."
+        },
+        {
+                "id": 30,
+                "type": "isian",
+                "text": "Mata kita akan berkedip secara otomatis jika ada debu mendekat. Gerakan cepat tanpa kita sadari ini disebut gerak ...",
+                "answer": "refleks",
+                "alt": [
+                        "refleks",
+                        "reflek"
+                ],
+                "hint": "Gerak refleks melindungi organ sensitif tubuh dari bahaya secara spontan."
+        },
+        {
+                "id": 31,
+                "type": "uraian",
+                "section": "VI. Uraian / Esai (5 Soal)",
+                "text": "Sebutkan kelima anggota pancaindra pada manusia beserta fungsi utamanya masing-masing!",
+                "answer": "1. Mata: untuk melihat (indra penglihatan).<br>2. Telinga: untuk mendengar (indra pendengaran).<br>3. Hidung: untuk mencium bau/aroma (indra pembau).<br>4. Lidah: untuk mengecap aneka rasa (indra pengecap).<br>5. Kulit: untuk meraba suhu dan permukaan benda (indra peraba).",
+                "hint": "Jawaban lengkap menyebutkan 5 indra: mata, telinga, hidung, lidah, dan kulit beserta fungsinya."
+        },
+        {
+                "id": 32,
+                "type": "uraian",
+                "text": "Mengapa kita tidak boleh membaca buku atau bermain gawai di ruangan yang gelap atau redup?",
+                "answer": "Karena di tempat yang gelap atau redup, otot mata harus bekerja ekstra keras untuk memfokuskan pandangan, sehingga pupil membesar terus-menerus. Hal ini dapat menyebabkan mata cepat lelah, perih, pusing, dan merusak kesehatan penglihatan.",
+                "hint": "Menjelaskan dampak buruk ruangan redup terhadap ketegangan otot mata dan kelelahan penglihatan."
+        },
+        {
+                "id": 33,
+                "type": "uraian",
+                "text": "Bagaimana cara merawat kebersihan dan kesehatan organ telinga dengan aman?",
+                "answer": "1. Membersihkan daun telinga luar menggunakan kain lembut atau handuk bersih yang dibasahi air hangat.<br>2. Tidak menusuk atau memasukkan benda tajam/keras ke dalam lubang telinga.<br>3. Menghindari mendengarkan musik atau suara bising dengan volume yang terlalu keras.",
+                "hint": "Menjelaskan cara membersihkan bagian luar, larangan benda tajam, dan menghindari suara bising."
+        },
+        {
+                "id": 34,
+                "type": "uraian",
+                "text": "Jelaskan apa yang dimaksud dengan silsilah keluarga dan apa manfaat kita mempelajarinya!",
+                "answer": "Silsilah keluarga adalah bagan atau susunan urutan garis keturunan dari sebuah keluarga secara turun-temurun. Manfaat mempelajarinya adalah agar kita mengenal asal-usul keluarga, mengetahui sebutan kekerabatan (kakek, nenek, paman, sepupu), serta mempererat tali persaudaraan.",
+                "hint": "Menjelaskan pengertian bagan keturunan dan manfaat mengenal hubungan persaudaraan keluarga."
+        },
+        {
+                "id": 35,
+                "type": "uraian",
+                "text": "Sebutkan 2 contoh kebiasaan baik atau tradisi positif yang sering dilakukan bersama keluarga di rumah!",
+                "answer": "1. Makan bersama di meja makan sambil berbincang hangat dengan orang tua dan saudara.<br>2. Bekerja bakti bersama membersihkan rumah dan merawat tanaman di hari libur.",
+                "hint": "Memberikan contoh konkret kebersamaan keluarga seperti makan bersama, beribadah, atau kerja bakti."
+        }
 ];
 
-        function renderQuestions() {
-            const container = document.getElementById('quiz-container');
+        function render() {
+            const container = document.getElementById('question-container');
             let html = '';
-            questions.forEach((q, index) => {
-                html += `
-                    <div class="q-card" id="qcard-${q.id}">
-                        <div class="q-header">
-                            <div class="q-num">${index + 1}</div>
-                            <div class="q-title">${q.text}</div>
-                        </div>
-                        <input type="text" 
-                               class="input-box" 
-                               name="q_${q.id}" 
-                               id="input-${q.id}" 
-                               placeholder="Tulis jawabanmu di sini..." 
-                               autocomplete="off"
-                               oninput="updateProgress()">
-                        <div class="feedback" id="fb-${q.id}"></div>
-                    </div>
-                `;
+            questions.forEach((q, idx) => {
+                if (q.section) {
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'benar_salah') {
+                    inputHtml = `<div class="tf-group">
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
+                    </div>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<div class="match-box">
+                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
+                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                            <option value="">-- Pilih Pasangan yang Tepat --</option>
+                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                        </select>
+                    </div>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
             });
             container.innerHTML = html;
+            updateProgress();
         }
 
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                const val = document.getElementById(`input-${q.id}`).value.trim();
-                if (val.length > 0) answered++;
+                if (q.type === 'pg' || q.type === 'benar_salah') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
             });
-            const pct = (answered / questions.length) * 100;
-            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
         }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
 
         function cleanString(str) {
             return (str || '')
@@ -518,94 +895,120 @@
                 .trim();
         }
 
-        function checkAnswer(userAns, q) {
-            const u = cleanString(userAns);
-            if (!u) return false;
-            
-            const target = cleanString(q.answer);
-            if (u === target || u.includes(target) || (target.length > 3 && target.includes(u))) {
-                return true;
-            }
-
-            if (q.alt && Array.isArray(q.alt)) {
-                for (let k of q.alt) {
-                    const cleanK = cleanString(k);
-                    if (u === cleanK || u.includes(cleanK) || (cleanK.length > 3 && cleanK.includes(u))) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         function submitExam() {
-            let correctCount = 0;
-            let total = questions.length;
+            let score = 0;
+            let maxAuto = 0;
 
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                const userVal = inputEl.value;
                 const fb = document.getElementById(`fb-${q.id}`);
-                const isCorrect = checkAnswer(userVal, q);
-
-                if (isCorrect) {
-                    correctCount++;
-                    fb.className = 'feedback fb-correct';
-                    fb.innerHTML = `
-                        <div>✅ <b>Masya Allah, Tepat Sekali!</b></div>
-                        <div class="fb-ans">Kunci Jawaban: ${q.answer}</div>
-                        <div class="fb-hint">💡 ${q.hint}</div>
-                    `;
-                } else {
-                    fb.className = 'feedback fb-wrong';
-                    fb.innerHTML = `
-                        <div>❌ <b>Perlu Dipelajari Lagi</b></div>
-                        <div class="fb-ans">Kunci Jawaban yang Benar: <b>${q.answer}</b></div>
-                        <div class="fb-hint">💡 Pembahasan: ${q.hint}</div>
-                    `;
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'benar_salah') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    const val = sel ? sel.value : '';
+                    if (val === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl ? inputEl.value : '');
+                    const target = cleanString(q.answer);
+                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
+                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
-                inputEl.disabled = true;
             });
 
-            const finalScore = Math.round((correctCount / total) * 100);
-            document.getElementById('score-val').innerText = finalScore;
-
-            let msg = '';
-            if (finalScore === 100) {
-                msg = `🌟 Masya Allah, Nilai Sempurna 100! Luar biasa hebat Musa, pertahankan prestasi ini ya! 🎉`;
-            } else if (finalScore >= 80) {
-                msg = `🎉 Hebat sekali Musa! Benar ${correctCount} dari ${total} soal. Sedikit lagi 100, pelajari kembali soal yang belum tepat ya!`;
-            } else if (finalScore >= 60) {
-                msg = `👍 Bagus Musa! Benar ${correctCount} dari ${total} soal. Ayo baca lagi materi dan pembahasannya lalu coba lagi ya!`;
-            } else {
-                msg = `💪 Semangat Musa! Benar ${correctCount} dari ${total} soal. Jangan menyerah, pelajari catatan buku tulis dan ulangi lagi latihannya!`;
-            }
-
-            document.getElementById('score-msg').innerText = msg;
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct + '%';
+            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
             document.getElementById('score-board').style.display = 'block';
-            document.getElementById('footer-submit').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function retryExam() {
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                inputEl.value = '';
-                inputEl.disabled = false;
+                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
                 const fb = document.getElementById(`fb-${q.id}`);
-                fb.style.display = 'none';
-                fb.innerHTML = '';
+                if (fb) fb.style.display = 'none';
             });
             document.getElementById('score-board').style.display = 'none';
-            document.getElementById('footer-submit').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'block';
             document.getElementById('progress-fill').style.width = '0%';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        renderQuestions();
+        render();
     </script>
 </body>
 </html>

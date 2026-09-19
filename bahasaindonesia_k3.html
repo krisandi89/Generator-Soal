@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Soal Ulangan Bahasa Indonesia Kelas 3 - SDIT Friends</title>
+    <title>Latihan Soal Bahasa Indonesia Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 820px;
+            max-width: 860px;
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: 20px;
@@ -47,7 +47,7 @@
             align-items: center;
             margin-bottom: 15px;
         }
-        .btn-back-nav {
+        .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -56,17 +56,17 @@
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.88em;
             font-weight: 700;
             transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
         }
-        .btn-back-nav:hover {
+        .back-btn-nav:hover {
             background: rgba(255,255,255,0.4);
             transform: translateX(-3px);
         }
         .header h1 {
-            font-size: 1.8em;
+            font-size: 1.85em;
             font-weight: 800;
             margin-bottom: 6px;
         }
@@ -74,10 +74,10 @@
             font-size: 0.95em;
             opacity: 0.95;
         }
-        .badge-kisi {
+        .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
@@ -85,7 +85,7 @@
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 8px;
+            height: 9px;
             background: #e2e8f0;
             position: sticky;
             top: 0;
@@ -99,414 +99,789 @@
         }
         .score-board {
             display: none;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 4px solid rgba(0,0,0,0.1);
-            animation: slideDown 0.5s ease;
+            border-bottom: 3px solid var(--border);
         }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .score-board h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
         .score-val {
-            font-size: 4em;
+            font-size: 3.8em;
             font-weight: 800;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            margin: 10px 0;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 5px 0;
         }
-        .score-msg {
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .score-detail {
+            font-size: 1.05em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
-        .btn-action-res {
-            padding: 10px 22px;
-            border-radius: 25px;
+        .btn-action {
+            padding: 10px 24px;
+            border-radius: 50px;
             font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9em;
             cursor: pointer;
             border: none;
+            text-decoration: none;
+            font-size: 0.92em;
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: #1e3c72;
         }
-        .btn-retry { background: white; color: var(--primary); }
-        .btn-retry:hover { background: #f1f2f6; transform: scale(1.03); }
-        .btn-back-menu { background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
-        .btn-back-menu:hover { background: rgba(0,0,0,0.3); }
-
-        .quiz-container {
+        .btn-action:hover {
+            background: #f1f2f6;
+            transform: translateY(-2px);
+        }
+        .question-list {
             padding: 25px 20px;
         }
-        .q-card {
-            background: #fafbfc;
-            border: 2px solid var(--border);
-            border-radius: 14px;
+        .section-title {
+            font-size: 0.98em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: white;
+            margin: 32px 0 16px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
             padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
             transition: all 0.2s;
         }
-        .q-card:hover {
-            border-color: var(--primary-light);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
-        .q-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-        .q-num {
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--primary);
             color: white;
-            font-size: 0.85em;
-            font-weight: 800;
             width: 32px;
             height: 32px;
             border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.03em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+        }
+        /* Benar Salah Styling */
+        .tf-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tf-label {
+            flex: 1;
+            min-width: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-        .q-title {
-            font-size: 1.05em;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
             font-weight: 700;
-            line-height: 1.5;
-            color: #2c3e50;
+            font-size: 0.98em;
+            transition: all 0.2s;
         }
-        .input-box {
+        .tf-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+        }
+        .tf-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+            color: var(--primary);
+        }
+        .tf-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        /* Match Select */
+        .match-box {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .match-premise {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 0.98em;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: #fdfefe;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid var(--border);
             border-radius: 10px;
-            font-size: 0.95em;
-            font-family: inherit;
-            transition: all 0.2s;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
             outline: none;
             background: white;
         }
-        .input-box:focus {
+        .input-text:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
         }
-        .feedback {
-            margin-top: 14px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 0.9em;
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
             line-height: 1.5;
-            display: none;
         }
-        .fb-correct {
-            background: #eafaf1;
-            color: #1b7a43;
+        .feedback-box {
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.93em;
+            line-height: 1.55;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
             border-left: 5px solid var(--success);
         }
-        .fb-wrong {
-            background: #fdf2e9;
-            color: #b94a48;
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
             border-left: 5px solid var(--error);
         }
-        .fb-ans {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-top: 4px;
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
         }
-        .fb-hint {
-            font-size: 0.85em;
-            color: #555;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        .footer-submit {
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
             text-align: center;
-            padding: 25px;
-            background: #ffffff;
-            border-top: 2px solid var(--border);
             position: sticky;
             bottom: 0;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.04);
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
         }
         .btn-submit {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
             border: none;
             padding: 14px 45px;
-            border-radius: 50px;
             font-size: 1.1em;
-            font-weight: 800;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            font-weight: 800;
             transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.25);
         }
-        .btn-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="nav-top">
-                <a href="kelas3.html" class="btn-back-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.9;">15 Soal Esai</span>
+                <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
             </div>
             <h1>📖 Bahasa Indonesia</h1>
-            <p>SDIT Friends — Asesmen Formatif Tengah Semester (AFTS) Ganjil</p>
-            <div class="badge-kisi">📌 Bab 1: Makhluk Hidup & Bab 2: Merawat Hewan dan Tumbuhan (Hal. 2-37)</div>
+            <p>SDIT Friends — Kelas 3</p>
+            <div class="badge">Bab 1: Makhluk Hidup & Bab 2: Merawat Hewan dan Tumbuhan (Hal. 2-37)</div>
         </div>
-
-        <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
-
-        <!-- Live Score Board -->
         <div class="score-board" id="score-board">
             <h2>📊 Hasil Latihan Ulangan</h2>
-            <div class="score-val" id="score-val">0</div>
-            <div class="score-msg" id="score-msg"></div>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action-res btn-retry">🔄 Coba Lagi</button>
-                <a href="kelas3.html" class="btn-action-res btn-back-menu">⬅ Kembali ke Menu Kelas 3</a>
+                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
-
-        <!-- Questions List -->
-        <div class="quiz-container" id="quiz-container"></div>
-
-        <!-- Submit Footer -->
-        <div class="footer-submit" id="footer-submit">
-            <button class="btn-submit" onclick="submitExam()" id="btnSubmit">Kumpulkan Jawaban ✅</button>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
         </div>
     </div>
 
     <script>
         const questions = [
-    {
-        "id": 1,
-        "text": "Jelaskan perbedaan antara pertumbuhan dan perkembangan pada manusia!",
-        "answer": "Pertumbuhan adalah pertambahan ukuran fisik (seperti tinggi dan berat badan), sedangkan perkembangan adalah proses menuju kedewasaan dan kematangan fungsi tubuh (seperti bisa berbicara, berjalan, dan berpikir)",
-        "alt": [
-            "fisik",
-            "tinggi",
-            "berat",
-            "dewasa",
-            "kematangan"
-        ],
-        "hint": "Pertumbuhan terlihat pada ukuran fisik badan, sedangkan perkembangan terlihat pada kemampuan dan kecerdasan."
-    },
-    {
-        "id": 2,
-        "text": "Sebutkan 3 ciri-ciri makhluk hidup yang membedakannya dengan benda mati!",
-        "answer": "Bernapas, bergerak, membutuhkan makan/minum, tumbuh, berkembang biak, dan peka terhadap rangsang",
-        "alt": [
-            "bernapas",
-            "bergerak",
-            "makan",
-            "tumbuh",
-            "berkembang biak"
-        ],
-        "hint": "Makhluk hidup memerlukan nutrisi, dapat bergerak aktif, dan memperbanyak keturunan."
-    },
-    {
-        "id": 3,
-        "text": "Apa arti dari istilah 'berkembang biak' pada hewan dan tumbuhan?",
-        "answer": "Menghasilkan keturunan atau anak agar jenisnya tetap lestari dan tidak punah",
-        "alt": [
-            "menghasilkan keturunan",
-            "punah",
-            "keturunan",
-            "anak",
-            "melestarikan"
-        ],
-        "hint": "Dengan berkembang biak, populasi makhluk hidup dapat terus bertahan di bumi."
-    },
-    {
-        "id": 4,
-        "text": "Apa yang dimaksud dengan 'ide pokok' atau gagasan utama dalam sebuah paragraf teks?",
-        "answer": "Pokok pikiran atau hal utama yang menjadi dasar pengembangan sebuah paragraf",
-        "alt": [
-            "pokok pikiran",
-            "gagasan utama",
-            "hal utama",
-            "pikiran utama"
-        ],
-        "hint": "Ide pokok biasanya termuat di dalam kalimat utama paragraf."
-    },
-    {
-        "id": 5,
-        "text": "Di bagian manakah saja kalimat utama dapat terletak di dalam suatu paragraf?",
-        "answer": "Di awal paragraf (deduktif), di akhir paragraf (induktif), atau di awal dan akhir paragraf (campuran)",
-        "alt": [
-            "awal",
-            "akhir",
-            "awal dan akhir"
-        ],
-        "hint": "Sebagian besar paragraf meletakkan kalimat utama pada kalimat pertama (di awal)."
-    },
-    {
-        "id": 6,
-        "text": "Kata-kata dalam Kamus Besar Bahasa Indonesia (KBBI) disusun secara teratur berdasarkan urutan ...",
-        "answer": "Abjad (alfabet dari huruf A sampai Z)",
-        "alt": [
-            "abjad",
-            "alfabet",
-            "a sampai z"
-        ],
-        "hint": "Penyusunan alfabetis memudahkan pencarian arti kata dasar."
-    },
-    {
-        "id": 7,
-        "text": "Buatlah satu contoh kalimat yang baik dan runtut menggunakan kata 'metamorfosis'!",
-        "answer": "Kupu-kupu mengalami metamorfosis sempurna dari telur, ulat, kepompong, hingga menjadi kupu-kupu",
-        "alt": [
-            "kupu-kupu",
-            "metamorfosis",
-            "sempurna",
-            "ulat"
-        ],
-        "hint": "Metamorfosis adalah perubahan bentuk tubuh makhluk hidup selama daur hidupnya."
-    },
-    {
-        "id": 8,
-        "text": "Kata tanya apa yang tepat digunakan untuk menanyakan waktu terjadinya sebuah peristiwa?",
-        "answer": "Kapan",
-        "alt": [
-            "kapan"
-        ],
-        "hint": "Kata tanya kapan dijawab dengan waktu (pagi, siang, jam, hari, tanggal, atau tahun)."
-    },
-    {
-        "id": 9,
-        "text": "Kata tanya apa yang digunakan untuk menanyakan cara, keadaan, atau proses terjadinya sesuatu?",
-        "answer": "Bagaimana",
-        "alt": [
-            "bagaimana"
-        ],
-        "hint": "Bagaimana digunakan untuk menanyakan proses atau penjelasan cara."
-    },
-    {
-        "id": 10,
-        "text": "Sebutkan 2 cara yang tepat dalam merawat tanaman agar tidak layu dan dapat tumbuh subur!",
-        "answer": "Menyiram tanaman dengan air secukupnya secara rutin dan meletakkannya di tempat yang mendapat cukup sinar matahari",
-        "alt": [
-            "menyiram",
-            "pupuk",
-            "sinar matahari",
-            "air"
-        ],
-        "hint": "Tanaman memerlukan air dan cahaya matahari untuk fotosintesis."
-    },
-    {
-        "id": 11,
-        "text": "Apa tujuan dari teks petunjuk atau teks prosedur?",
-        "answer": "Memberikan panduan, petunjuk, atau langkah-langkah dalam melakukan atau membuat sesuatu secara runtut",
-        "alt": [
-            "panduan",
-            "petunjuk",
-            "langkah-langkah",
-            "cara"
-        ],
-        "hint": "Teks prosedur menjelaskan langkah demi langkah agar pekerjaan berhasil dilakukan dengan benar."
-    },
-    {
-        "id": 12,
-        "text": "Siapakah yang disebut dengan 'narasumber' dalam kegiatan wawancara?",
-        "answer": "Orang yang dimintai keterangan atau yang memberikan informasi/menjawab pertanyaan dalam wawancara",
-        "alt": [
-            "pemberi informasi",
-            "orang yang diwawancarai",
-            "memberi informasi"
-        ],
-        "hint": "Pewawancara mengajukan pertanyaan, narasumber yang memberikan jawaban informasinya."
-    },
-    {
-        "id": 13,
-        "text": "Hal penting apa saja yang harus dipersiapkan sebelum kita melakukan wawancara kepada narasumber?",
-        "answer": "Menentukan topik wawancara, memilih narasumber yang tepat, dan menyusun daftar pertanyaan",
-        "alt": [
-            "daftar pertanyaan",
-            "pertanyaan",
-            "topik",
-            "narasumber"
-        ],
-        "hint": "Daftar pertanyaan disiapkan menggunakan kata tanya apa, siapa, di mana, kapan, mengapa, bagaimana."
-    },
-    {
-        "id": 14,
-        "text": "Perbaikilah penulisan huruf kapital dan tanda baca pada kalimat berikut: 'pada hari minggu beni dan ayah membersihkan kandang kelinci'",
-        "answer": "Pada hari Minggu, Beni dan Ayah membersihkan kandang kelinci.",
-        "alt": [
-            "pada hari minggu, beni dan ayah membersihkan kandang kelinci.",
-            "pada hari minggu"
-        ],
-        "hint": "Awal kalimat, nama hari (Minggu), dan nama orang (Beni) wajib huruf kapital, serta diakhiri tanda titik."
-    },
-    {
-        "id": 15,
-        "text": "Tanda baca apakah yang wajib digunakan untuk memisahkan unsur-unsur dalam suatu pemerincian atau pembilangan?",
-        "answer": "Tanda koma (,)",
-        "alt": [
-            "koma",
-            "tanda koma",
-            ","
-        ],
-        "hint": "Contoh: Ibu membeli apel, mangga, dan jeruk."
-    }
+        {
+                "id": 1,
+                "type": "pg",
+                "section": "I. Pilihan Ganda (10 Soal)",
+                "text": "Perbedaan utama antara makhluk hidup dengan benda mati di lingkungan sekitar kita adalah bahwa makhluk hidup...",
+                "options": [
+                        "Tidak memerlukan makanan dan air",
+                        "Bernapas, tumbuh, dan berkembang biak",
+                        "Tidak dapat bergerak sama sekali",
+                        "Bentuk dan ukurannya tidak pernah berubah"
+                ],
+                "answer": 1,
+                "hint": "Ciri makhluk hidup antara lain bernapas, bergerak, memerlukan makanan, tumbuh, dan berkembang biak."
+        },
+        {
+                "id": 2,
+                "type": "pg",
+                "text": "Gagasan pokok atau hal utama yang menjadi dasar pengembangan dalam sebuah paragraf bacaan dinamakan...",
+                "options": [
+                        "Kalimat penjelas",
+                        "Ide pokok / pikiran utama",
+                        "Judul cerita",
+                        "Amanat"
+                ],
+                "answer": 1,
+                "hint": "Ide pokok adalah inti pembicaraan yang tertuang di dalam kalimat utama suatu paragraf."
+        },
+        {
+                "id": 3,
+                "type": "pg",
+                "text": "Kata tanya yang tepat digunakan untuk menanyakan tempat berlangsungnya sebuah kegiatan atau peristiwa adalah...",
+                "options": [
+                        "Kapan",
+                        "Di mana",
+                        "Siapa",
+                        "Bagaimana"
+                ],
+                "answer": 1,
+                "hint": "Kata tanya 'di mana' dijawab dengan nama tempat atau lokasi kejadian."
+        },
+        {
+                "id": 4,
+                "type": "pg",
+                "text": "Kata tanya yang tepat untuk menanyakan sebab atau alasan terjadinya suatu hal adalah...",
+                "options": [
+                        "Mengapa",
+                        "Kapan",
+                        "Berapa",
+                        "Siapa"
+                ],
+                "answer": 0,
+                "hint": "Kata tanya 'mengapa' digunakan untuk menanyakan alasan dan biasanya dijawab dengan kata 'karena' atau 'sebab'."
+        },
+        {
+                "id": 5,
+                "type": "pg",
+                "text": "Kata-kata di dalam Kamus Besar Bahasa Indonesia (KBBI) disusun secara teratur berdasarkan urutan...",
+                "options": [
+                        "Panjang pendeknya kata",
+                        "Abjad (alfabet dari A sampai Z)",
+                        "Tahun penemuan kata",
+                        "Tingkat kesulitan kata"
+                ],
+                "answer": 1,
+                "hint": "KBBI disusun berurutan secara alfabetis dari huruf A hingga Z untuk memudahkan pencarian kata."
+        },
+        {
+                "id": 6,
+                "type": "pg",
+                "text": "Orang yang memberikan informasi atau menjawab pertanyaan dalam suatu kegiatan wawancara dinamakan...",
+                "options": [
+                        "Pewawancara",
+                        "Narasumber",
+                        "Penonton",
+                        "Notulis"
+                ],
+                "answer": 1,
+                "hint": "Pewawancara adalah orang yang bertanya, sedangkan narasumber adalah orang yang memberi informasi/jawaban."
+        },
+        {
+                "id": 7,
+                "type": "pg",
+                "text": "Tumbuhan memerlukan air, unsur hara dari tanah, dan cahaya matahari untuk melangsungkan proses...",
+                "options": [
+                        "Perkembangbiakan buatan",
+                        "Fotosintesis (membuat makanan)",
+                        "Metamorfosis",
+                        "Pernapasan insang"
+                ],
+                "answer": 1,
+                "hint": "Fotosintesis adalah proses tumbuhan hijau mengolah makanannya sendiri dengan bantuan cahaya matahari."
+        },
+        {
+                "id": 8,
+                "type": "pg",
+                "text": "Daun tanaman putri malu yang mengatup rapat saat disentuh membuktikan bahwa makhluk hidup memiliki ciri...",
+                "options": [
+                        "Memerlukan istirahat",
+                        "Peka terhadap rangsang (iritabilitas)",
+                        "Mengalami metamorfosis sempurna",
+                        "Tidak menyukai sinar matahari"
+                ],
+                "answer": 1,
+                "hint": "Menutupnya daun putri malu ketika terkena sentuhan membuktikan kepekaan terhadap rangsangan fisik."
+        },
+        {
+                "id": 9,
+                "type": "pg",
+                "text": "Teks bacaan yang memuat panduan atau tahapan melakukan sesuatu secara berurutan dan runtut dinamakan teks...",
+                "options": [
+                        "Dongeng",
+                        "Petunjuk / Prosedur",
+                        "Puisi",
+                        "Laporan fiksi"
+                ],
+                "answer": 1,
+                "hint": "Teks petunjuk atau prosedur memberikan arahan langkah demi langkah agar pekerjaan selesai dengan benar."
+        },
+        {
+                "id": 10,
+                "type": "pg",
+                "text": "Pada penulisan kalimat tanya yang benar, tanda baca yang wajib diletakkan di akhir kalimat adalah...",
+                "options": [
+                        "Tanda titik (.)",
+                        "Tanda seru (!)",
+                        "Tanda tanya (?)",
+                        "Tanda koma (,)"
+                ],
+                "answer": 2,
+                "hint": "Setiap kalimat pertanyaan harus diakhiri dengan tanda tanya (?)"
+        },
+        {
+                "id": 11,
+                "type": "pg_kompleks",
+                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
+                "text": "Manakah di antara pernyataan berikut yang merupakan ciri-ciri mutlak makhluk hidup?",
+                "options": [
+                        "Mengalami proses pertumbuhan (bertambah besar)",
+                        "Mampu berkembang biak menghasilkan keturunan",
+                        "Tidak memerlukan asupan cairan maupun makanan",
+                        "Dapat hidup selamanya tanpa bernapas"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Tumbuh dan berkembang biak adalah ciri khas makhluk hidup untuk kelangsungan hidupnya."
+        },
+        {
+                "id": 12,
+                "type": "pg_kompleks",
+                "text": "Langkah-langkah yang tepat dalam memelihara dan merawat hewan peliharaan di rumah adalah...",
+                "options": [
+                        "Memberikan makanan dan minuman yang bergizi secara teratur",
+                        "Membersihkan kandang hewan peliharaan secara berkala agar tetap higienis",
+                        "Membiarkan hewan peliharaan terkurung tanpa makan",
+                        "Menempatkan hewan di tempat kotor dan lembap"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Hewan peliharaan butuh nutrisi teratur dan kandang bersih agar terbebas dari penyakit."
+        },
+        {
+                "id": 13,
+                "type": "pg_kompleks",
+                "text": "Hal penting yang harus dipersiapkan sebelum kita melakukan kegiatan wawancara kepada narasumber adalah...",
+                "options": [
+                        "Menentukan topik wawancara dan memilih narasumber yang sesuai",
+                        "Menyusun daftar pertanyaan yang runtut dan jelas",
+                        "Langsung merekam tanpa izin narasumber",
+                        "Memotong pembicaraan narasumber saat sedang menjawab"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Persiapan wawancara meliputi penentuan topik, narasumber yang tepat, serta daftar pertanyaan yang baik."
+        },
+        {
+                "id": 14,
+                "type": "pg_kompleks",
+                "text": "Kata-kata tanya berikut ini yang digunakan untuk menanyakan waktu dan menanyakan nama orang adalah...",
+                "options": [
+                        "Kapan",
+                        "Siapa",
+                        "Mengapa",
+                        "Di mana"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "'Kapan' menanyakan waktu, dan 'Siapa' menanyakan tokoh/orang."
+        },
+        {
+                "id": 15,
+                "type": "pg_kompleks",
+                "text": "Tujuan dan manfaat dibuatnya teks petunjuk (prosedur) dalam buku atau kemasan barang adalah...",
+                "options": [
+                        "Membantu pembaca melakukan atau membuat sesuatu dengan langkah yang tepat",
+                        "Mencegah terjadinya kesalahan saat menggunakan suatu alat atau bahan",
+                        "Mempersulit pemakai dalam memahami cara kerja produk",
+                        "Menghilangkan informasi keselamatan produk"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Teks petunjuk memandu pembaca agar dapat menyelesaikan pekerjaan dengan aman dan benar."
+        },
+        {
+                "id": 16,
+                "type": "benar_salah",
+                "section": "III. Benar atau Salah (5 Soal)",
+                "text": "Ide pokok dalam sebuah paragraf selalu berada di tengah-tengah kalimat dan tidak pernah terletak di kalimat pertama.",
+                "answer": "Salah",
+                "hint": "Sebagian besar paragraf meletakkan ide pokok pada kalimat utama di awal paragraf (paragraf deduktif)."
+        },
+        {
+                "id": 17,
+                "type": "benar_salah",
+                "text": "Saat melakukan wawancara, kita wajib bertutur kata yang sopan, santun, dan tidak memotong penjelasan narasumber.",
+                "answer": "Benar",
+                "hint": "Sopan santun dan mendengarkan dengan seksama adalah etika utama saat mewawancarai narasumber."
+        },
+        {
+                "id": 18,
+                "type": "benar_salah",
+                "text": "Proses pertumbuhan pada anak ditandai dengan pertambahan fisik berupa bertambahnya tinggi badan dan berat badan.",
+                "answer": "Benar",
+                "hint": "Pertumbuhan adalah proses pertambahan ukuran volume, tinggi, dan bobot fisik makhluk hidup."
+        },
+        {
+                "id": 19,
+                "type": "benar_salah",
+                "text": "Kata tanya 'Bagaimana' berfungsi khusus untuk menanyakan total nominal harga atau jumlah barang.",
+                "answer": "Salah",
+                "hint": "Kata tanya untuk harga/jumlah adalah 'Berapa'. 'Bagaimana' digunakan untuk menanyakan keadaan atau cara."
+        },
+        {
+                "id": 20,
+                "type": "benar_salah",
+                "text": "Menyiram tanaman dengan air yang cukup secara rutin serta memberikan pupuk membantu tanaman tumbuh subur.",
+                "answer": "Benar",
+                "hint": "Air, cahaya matahari, dan unsur hara pupuk adalah kebutuhan utama tanaman agar tumbuh subur."
+        },
+        {
+                "id": 21,
+                "type": "memasangkan",
+                "section": "IV. Memasangkan (5 Soal)",
+                "premise": "Kata tanya 'Siapa'",
+                "text": "Kata tanya 'Siapa' berpasangan dengan fungsi menanyakan...",
+                "options": [
+                        "Orang / Tokoh pelaku",
+                        "Waktu terjadinya peristiwa",
+                        "Tempat terjadinya peristiwa",
+                        "Alasan atau penyebab",
+                        "Cara atau proses kerja"
+                ],
+                "answer": "Orang / Tokoh pelaku",
+                "hint": "'Siapa' menanyakan pelaku/orang."
+        },
+        {
+                "id": 22,
+                "type": "memasangkan",
+                "premise": "Kata tanya 'Kapan'",
+                "text": "Kata tanya 'Kapan' berpasangan dengan fungsi menanyakan...",
+                "options": [
+                        "Orang / Tokoh pelaku",
+                        "Waktu terjadinya peristiwa",
+                        "Tempat terjadinya peristiwa",
+                        "Alasan atau penyebab",
+                        "Cara atau proses kerja"
+                ],
+                "answer": "Waktu terjadinya peristiwa",
+                "hint": "'Kapan' menanyakan waktu (jam, hari, tanggal, musim)."
+        },
+        {
+                "id": 23,
+                "type": "memasangkan",
+                "premise": "Kata tanya 'Di mana'",
+                "text": "Kata tanya 'Di mana' berpasangan dengan fungsi menanyakan...",
+                "options": [
+                        "Orang / Tokoh pelaku",
+                        "Waktu terjadinya peristiwa",
+                        "Tempat terjadinya peristiwa",
+                        "Alasan atau penyebab",
+                        "Cara atau proses kerja"
+                ],
+                "answer": "Tempat terjadinya peristiwa",
+                "hint": "'Di mana' menanyakan lokasi atau tempat."
+        },
+        {
+                "id": 24,
+                "type": "memasangkan",
+                "premise": "Kata tanya 'Mengapa'",
+                "text": "Kata tanya 'Mengapa' berpasangan dengan fungsi menanyakan...",
+                "options": [
+                        "Orang / Tokoh pelaku",
+                        "Waktu terjadinya peristiwa",
+                        "Tempat terjadinya peristiwa",
+                        "Alasan atau penyebab",
+                        "Cara atau proses kerja"
+                ],
+                "answer": "Alasan atau penyebab",
+                "hint": "'Mengapa' menanyakan sebab akibat atau latar belakang kejadian."
+        },
+        {
+                "id": 25,
+                "type": "memasangkan",
+                "premise": "Kata tanya 'Bagaimana'",
+                "text": "Kata tanya 'Bagaimana' berpasangan dengan fungsi menanyakan...",
+                "options": [
+                        "Orang / Tokoh pelaku",
+                        "Waktu terjadinya peristiwa",
+                        "Tempat terjadinya peristiwa",
+                        "Alasan atau penyebab",
+                        "Cara atau proses kerja"
+                ],
+                "answer": "Cara atau proses kerja",
+                "hint": "'Bagaimana' menanyakan proses langkah, cara kerja, atau kondisi keadaan."
+        },
+        {
+                "id": 26,
+                "type": "isian",
+                "section": "V. Isian Singkat (5 Soal)",
+                "text": "Orang yang bertugas mengajukan pertanyaan kepada narasumber saat wawancara disebut ...",
+                "answer": "Pewawancara",
+                "alt": [
+                        "pewawancara"
+                ],
+                "hint": "Pewawancara menyusun dan menyampaikan pertanyaan untuk menggali informasi."
+        },
+        {
+                "id": 27,
+                "type": "isian",
+                "text": "Paragraf yang letak kalimat utamanya berada pada awal paragraf disebut paragraf ...",
+                "answer": "Deduktif",
+                "alt": [
+                        "deduktif"
+                ],
+                "hint": "Paragraf deduktif menyampaikan ide utama di awal, lalu diikuti penjelasan khusus."
+        },
+        {
+                "id": 28,
+                "type": "isian",
+                "text": "Perubahan bentuk tubuh makhluk hidup selama daur hidupnya (misalnya dari ulat menjadi kupu-kupu) dinamakan ...",
+                "answer": "Metamorfosis",
+                "alt": [
+                        "metamorfosis",
+                        "metamorfosa"
+                ],
+                "hint": "Metamorfosis adalah tahapan transformasi bentuk tubuh hewan dari telur hingga dewasa."
+        },
+        {
+                "id": 29,
+                "type": "isian",
+                "text": "Lawan kata (antonim) dari kata 'subur' pada tanah atau tanaman adalah ...",
+                "answer": "tandus",
+                "alt": [
+                        "tandus",
+                        "gersang",
+                        "kering",
+                        "layu"
+                ],
+                "hint": "Tanah yang tidak subur dan tidak dapat ditanami disebut tanah tandus atau gersang."
+        },
+        {
+                "id": 30,
+                "type": "isian",
+                "text": "Alat pernapasan utama pada ikan untuk menyaring oksigen di dalam air adalah ...",
+                "answer": "Insang",
+                "alt": [
+                        "insang"
+                ],
+                "hint": "Ikan bernapas menggunakan insang yang berbentuk lembaran tipis kemerahan."
+        },
+        {
+                "id": 31,
+                "type": "uraian",
+                "section": "VI. Uraian / Esai (5 Soal)",
+                "text": "Jelaskan perbedaan mendasar antara istilah 'pertumbuhan' dan 'perkembangan' pada manusia!",
+                "answer": "<b>Pertumbuhan</b> adalah proses pertambahan ukuran fisik tubuh yang dapat diukur dengan angka, seperti bertambah tinggi badan dan bertambah berat badan.<br><br>Sedangkan <b>perkembangan</b> adalah proses pematangan fungsi organ tubuh dan kemampuan seseorang, seperti dari merangkak menjadi bisa berjalan, berbicara, bernalar, dan berpikir mandiri.",
+                "hint": "Pertumbuhan terlihat pada ukuran fisik badan, sedangkan perkembangan terlihat pada kematangan kemampuan dan kecerdasan."
+        },
+        {
+                "id": 32,
+                "type": "uraian",
+                "text": "Sebutkan 3 ciri-ciri makhluk hidup yang membedakannya dengan benda mati beserta contoh tindakannya!",
+                "answer": "1. <b>Bernapas</b>: Manusia menghirup oksigen dan menghembuskan karbon dioksida.<br>2. <b>Membutuhkan makan dan minum</b>: Kucing makan ikan dan minum air untuk mendapatkan energi.<br>3. <b>Berkembang biak</b>: Burung bertelur untuk melestarikan keturunannya agar tidak punah.",
+                "hint": "Menyebutkan 3 ciri makhluk hidup (bernapas, makan/minum, bergerak, tumbuh, berkembang biak, atau peka rangsang) dilengkapi contohnya."
+        },
+        {
+                "id": 33,
+                "type": "uraian",
+                "text": "Buatlah 2 kalimat tanya yang sopan untuk menanyakan cara merawat tanaman bunga kepada seorang tukang kebun!",
+                "answer": "Contoh kalimat tanya:<br>1. 'Permisi Pak, berapa kali dalam sehari tanaman bunga mawar ini sebaiknya disiram air?'<br>2. 'Bagaimana cara membasmi hama ulat pada daun bunga ini tanpa merusak tanamannya, Pak?'",
+                "hint": "Membuat kalimat tanya dengan kata tanya yang relevan (kapan, berapa, bagaimana), bahasa yang sopan, dan diakhiri tanda tanya (?)."
+        },
+        {
+                "id": 34,
+                "type": "uraian",
+                "text": "Apakah tujuan dari dibuatnya teks petunjuk atau teks prosedur? Berikan satu contoh teks petunjuk yang pernah kamu temui!",
+                "answer": "Tujuan teks petunjuk adalah memberikan panduan atau langkah-langkah yang berurutan agar pembaca dapat melakukan, menggunakan, atau membuat sesuatu secara benar dan aman.<br>Contohnya: Petunjuk cara mencuci tangan dengan sabun yang benar, atau petunjuk cara menyeduh susu bubuk pada kemasan kaleng.",
+                "hint": "Menjelaskan tujuan sebagai panduan langkah teratur serta memberikan contoh nyata (misal resep, cara mencuci tangan, atau aturan pakai obat)."
+        },
+        {
+                "id": 35,
+                "type": "uraian",
+                "text": "Sebutkan 3 etika atau sikap yang baik saat kita melakukan wawancara kepada seorang narasumber!",
+                "answer": "1. Mengucapkan salam pembuka dan menyapa narasumber dengan ramah dan sopan.<br>2. Menyimak jawaban narasumber dengan seksama dan tidak memotong pembicaraannya.<br>3. Mengucapkan terima kasih atas waktu dan informasi berharga yang telah diberikan oleh narasumber.",
+                "hint": "Menyebutkan etika wawancara: salam, bahasa sopan, mendengarkan aktif, mencatat poin penting, dan berterima kasih."
+        }
 ];
 
-        function renderQuestions() {
-            const container = document.getElementById('quiz-container');
+        function render() {
+            const container = document.getElementById('question-container');
             let html = '';
-            questions.forEach((q, index) => {
-                html += `
-                    <div class="q-card" id="qcard-${q.id}">
-                        <div class="q-header">
-                            <div class="q-num">${index + 1}</div>
-                            <div class="q-title">${q.text}</div>
-                        </div>
-                        <input type="text" 
-                               class="input-box" 
-                               name="q_${q.id}" 
-                               id="input-${q.id}" 
-                               placeholder="Tulis jawabanmu di sini..." 
-                               autocomplete="off"
-                               oninput="updateProgress()">
-                        <div class="feedback" id="fb-${q.id}"></div>
-                    </div>
-                `;
+            questions.forEach((q, idx) => {
+                if (q.section) {
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'benar_salah') {
+                    inputHtml = `<div class="tf-group">
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
+                    </div>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<div class="match-box">
+                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
+                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                            <option value="">-- Pilih Pasangan yang Tepat --</option>
+                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                        </select>
+                    </div>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
             });
             container.innerHTML = html;
+            updateProgress();
         }
 
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                const val = document.getElementById(`input-${q.id}`).value.trim();
-                if (val.length > 0) answered++;
+                if (q.type === 'pg' || q.type === 'benar_salah') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
             });
-            const pct = (answered / questions.length) * 100;
-            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
         }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
 
         function cleanString(str) {
             return (str || '')
@@ -516,94 +891,120 @@
                 .trim();
         }
 
-        function checkAnswer(userAns, q) {
-            const u = cleanString(userAns);
-            if (!u) return false;
-            
-            const target = cleanString(q.answer);
-            if (u === target || u.includes(target) || (target.length > 3 && target.includes(u))) {
-                return true;
-            }
-
-            if (q.alt && Array.isArray(q.alt)) {
-                for (let k of q.alt) {
-                    const cleanK = cleanString(k);
-                    if (u === cleanK || u.includes(cleanK) || (cleanK.length > 3 && cleanK.includes(u))) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         function submitExam() {
-            let correctCount = 0;
-            let total = questions.length;
+            let score = 0;
+            let maxAuto = 0;
 
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                const userVal = inputEl.value;
                 const fb = document.getElementById(`fb-${q.id}`);
-                const isCorrect = checkAnswer(userVal, q);
-
-                if (isCorrect) {
-                    correctCount++;
-                    fb.className = 'feedback fb-correct';
-                    fb.innerHTML = `
-                        <div>✅ <b>Masya Allah, Tepat Sekali!</b></div>
-                        <div class="fb-ans">Kunci Jawaban: ${q.answer}</div>
-                        <div class="fb-hint">💡 ${q.hint}</div>
-                    `;
-                } else {
-                    fb.className = 'feedback fb-wrong';
-                    fb.innerHTML = `
-                        <div>❌ <b>Perlu Dipelajari Lagi</b></div>
-                        <div class="fb-ans">Kunci Jawaban yang Benar: <b>${q.answer}</b></div>
-                        <div class="fb-hint">💡 Pembahasan: ${q.hint}</div>
-                    `;
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'benar_salah') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    const val = sel ? sel.value : '';
+                    if (val === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl ? inputEl.value : '');
+                    const target = cleanString(q.answer);
+                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
+                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
-                inputEl.disabled = true;
             });
 
-            const finalScore = Math.round((correctCount / total) * 100);
-            document.getElementById('score-val').innerText = finalScore;
-
-            let msg = '';
-            if (finalScore === 100) {
-                msg = `🌟 Masya Allah, Nilai Sempurna 100! Luar biasa hebat Musa, pertahankan prestasi ini ya! 🎉`;
-            } else if (finalScore >= 80) {
-                msg = `🎉 Hebat sekali Musa! Benar ${correctCount} dari ${total} soal. Sedikit lagi 100, pelajari kembali soal yang belum tepat ya!`;
-            } else if (finalScore >= 60) {
-                msg = `👍 Bagus Musa! Benar ${correctCount} dari ${total} soal. Ayo baca lagi materi dan pembahasannya lalu coba lagi ya!`;
-            } else {
-                msg = `💪 Semangat Musa! Benar ${correctCount} dari ${total} soal. Jangan menyerah, pelajari catatan buku tulis dan ulangi lagi latihannya!`;
-            }
-
-            document.getElementById('score-msg').innerText = msg;
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct + '%';
+            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
             document.getElementById('score-board').style.display = 'block';
-            document.getElementById('footer-submit').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function retryExam() {
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                inputEl.value = '';
-                inputEl.disabled = false;
+                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
                 const fb = document.getElementById(`fb-${q.id}`);
-                fb.style.display = 'none';
-                fb.innerHTML = '';
+                if (fb) fb.style.display = 'none';
             });
             document.getElementById('score-board').style.display = 'none';
-            document.getElementById('footer-submit').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'block';
             document.getElementById('progress-fill').style.width = '0%';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        renderQuestions();
+        render();
     </script>
 </body>
 </html>

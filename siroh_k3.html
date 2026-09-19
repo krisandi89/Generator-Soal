@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Soal Ulangan Siroh Nabawiyah Kelas 3 - SDIT Friends</title>
+    <title>Latihan Soal Siroh Nabawiyah Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 820px;
+            max-width: 860px;
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: 20px;
@@ -47,7 +47,7 @@
             align-items: center;
             margin-bottom: 15px;
         }
-        .btn-back-nav {
+        .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -56,17 +56,17 @@
             text-decoration: none;
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.85em;
+            font-size: 0.88em;
             font-weight: 700;
             transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
         }
-        .btn-back-nav:hover {
+        .back-btn-nav:hover {
             background: rgba(255,255,255,0.4);
             transform: translateX(-3px);
         }
         .header h1 {
-            font-size: 1.8em;
+            font-size: 1.85em;
             font-weight: 800;
             margin-bottom: 6px;
         }
@@ -74,10 +74,10 @@
             font-size: 0.95em;
             opacity: 0.95;
         }
-        .badge-kisi {
+        .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
@@ -85,7 +85,7 @@
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 8px;
+            height: 9px;
             background: #e2e8f0;
             position: sticky;
             top: 0;
@@ -99,414 +99,795 @@
         }
         .score-board {
             display: none;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 4px solid rgba(0,0,0,0.1);
-            animation: slideDown 0.5s ease;
+            border-bottom: 3px solid var(--border);
         }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .score-board h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
         .score-val {
-            font-size: 4em;
+            font-size: 3.8em;
             font-weight: 800;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            margin: 10px 0;
+            color: #f1c40f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 5px 0;
         }
-        .score-msg {
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .score-detail {
+            font-size: 1.05em;
+            opacity: 0.95;
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
-        .btn-action-res {
-            padding: 10px 22px;
-            border-radius: 25px;
+        .btn-action {
+            padding: 10px 24px;
+            border-radius: 50px;
             font-weight: 700;
-            text-decoration: none;
-            font-size: 0.9em;
             cursor: pointer;
             border: none;
+            text-decoration: none;
+            font-size: 0.92em;
             transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            color: #1e3c72;
         }
-        .btn-retry { background: white; color: var(--primary); }
-        .btn-retry:hover { background: #f1f2f6; transform: scale(1.03); }
-        .btn-back-menu { background: rgba(0,0,0,0.2); color: white; border: 1px solid rgba(255,255,255,0.4); }
-        .btn-back-menu:hover { background: rgba(0,0,0,0.3); }
-
-        .quiz-container {
+        .btn-action:hover {
+            background: #f1f2f6;
+            transform: translateY(-2px);
+        }
+        .question-list {
             padding: 25px 20px;
         }
-        .q-card {
-            background: #fafbfc;
-            border: 2px solid var(--border);
-            border-radius: 14px;
+        .section-title {
+            font-size: 0.98em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: white;
+            margin: 32px 0 16px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
             padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
             transition: all 0.2s;
         }
-        .q-card:hover {
-            border-color: var(--primary-light);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
-        .q-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-        .q-num {
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--primary);
             color: white;
-            font-size: 0.85em;
-            font-weight: 800;
             width: 32px;
             height: 32px;
             border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.03em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+        }
+        /* Benar Salah Styling */
+        .tf-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .tf-label {
+            flex: 1;
+            min-width: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-        .q-title {
-            font-size: 1.05em;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            cursor: pointer;
             font-weight: 700;
-            line-height: 1.5;
-            color: #2c3e50;
+            font-size: 0.98em;
+            transition: all 0.2s;
         }
-        .input-box {
+        .tf-label:hover {
+            border-color: var(--primary);
+            background: #f8fbff;
+        }
+        .tf-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #eef6ff;
+            color: var(--primary);
+        }
+        .tf-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+        /* Match Select */
+        .match-box {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .match-premise {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 0.98em;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: #fdfefe;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
             width: 100%;
             padding: 12px 16px;
             border: 2px solid var(--border);
             border-radius: 10px;
-            font-size: 0.95em;
-            font-family: inherit;
-            transition: all 0.2s;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
             outline: none;
             background: white;
         }
-        .input-box:focus {
+        .input-text:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
         }
-        .feedback {
-            margin-top: 14px;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 0.9em;
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
             line-height: 1.5;
-            display: none;
         }
-        .fb-correct {
-            background: #eafaf1;
-            color: #1b7a43;
+        .feedback-box {
+            margin-top: 14px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.93em;
+            line-height: 1.55;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
             border-left: 5px solid var(--success);
         }
-        .fb-wrong {
-            background: #fdf2e9;
-            color: #b94a48;
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
             border-left: 5px solid var(--error);
         }
-        .fb-ans {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-top: 4px;
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
         }
-        .fb-hint {
-            font-size: 0.85em;
-            color: #555;
-            margin-top: 4px;
-            font-style: italic;
-        }
-
-        .footer-submit {
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
             text-align: center;
-            padding: 25px;
-            background: #ffffff;
-            border-top: 2px solid var(--border);
             position: sticky;
             bottom: 0;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.04);
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
         }
         .btn-submit {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
             border: none;
             padding: 14px 45px;
-            border-radius: 50px;
             font-size: 1.1em;
-            font-weight: 800;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            font-weight: 800;
             transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
         .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.25);
         }
-        .btn-submit:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="nav-top">
-                <a href="kelas3.html" class="btn-back-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.9;">15 Soal Esai</span>
+                <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
             </div>
             <h1>📜 Siroh Nabawiyah</h1>
-            <p>SDIT Friends — Asesmen Formatif Tengah Semester (AFTS) Ganjil</p>
-            <div class="badge-kisi">📌 Perang Khaibar, Daging Beracun, Umratul Qadha & Fathu Makkah (Hal. 4-17)</div>
+            <p>SDIT Friends — Kelas 3</p>
+            <div class="badge">Perang Khaibar, Daging Beracun, Umratul Qadha & Fathu Makkah (Hal. 4-17)</div>
         </div>
-
-        <!-- Progress Bar -->
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
-
-        <!-- Live Score Board -->
         <div class="score-board" id="score-board">
             <h2>📊 Hasil Latihan Ulangan</h2>
-            <div class="score-val" id="score-val">0</div>
-            <div class="score-msg" id="score-msg"></div>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action-res btn-retry">🔄 Coba Lagi</button>
-                <a href="kelas3.html" class="btn-action-res btn-back-menu">⬅ Kembali ke Menu Kelas 3</a>
+                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
-
-        <!-- Questions List -->
-        <div class="quiz-container" id="quiz-container"></div>
-
-        <!-- Submit Footer -->
-        <div class="footer-submit" id="footer-submit">
-            <button class="btn-submit" onclick="submitExam()" id="btnSubmit">Kumpulkan Jawaban ✅</button>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
         </div>
     </div>
 
     <script>
         const questions = [
-    {
-        "id": 1,
-        "text": "Berapa jumlah benteng besar yang dimiliki oleh kota Khaibar?",
-        "answer": "8 benteng",
-        "alt": [
-            "8",
-            "delapan",
-            "delapan benteng"
-        ],
-        "hint": "Khaibar memiliki 8 benteng besar yang kokoh dikelilingi kebun kurma yang luas."
-    },
-    {
-        "id": 2,
-        "text": "Mengapa Nabi Muhammad SAW dan kaum muslimin memerangi kaum Yahudi di Khaibar?",
-        "answer": "Karena kaum Yahudi Khaibar licik, berkhianat, dan menghasut Bani Quraizhah untuk mengkhianati Nabi Muhammad SAW",
-        "alt": [
-            "licik",
-            "khianat",
-            "berkhianat",
-            "menghasut",
-            "ancaman"
-        ],
-        "hint": "Penduduk Khaibar selalu memusuhi Islam dan mendorong Bani Quraizhah berkhianat."
-    },
-    {
-        "id": 3,
-        "text": "Siapakah pemimpin kaum munafik yang membocorkan rencana penyerangan kaum muslimin ke Khaibar?",
-        "answer": "Abdullah bin Ubay",
-        "alt": [
-            "abdullah bin ubay",
-            "abdullah bin ubai",
-            "ibnu ubay"
-        ],
-        "hint": "Abdullah bin Ubay adalah gembong kaum munafik di Madinah."
-    },
-    {
-        "id": 4,
-        "text": "Sebutkan salah satu nama benteng besar kaum Yahudi yang berhasil ditaklukkan oleh kaum muslimin!",
-        "answer": "Benteng Naim (atau Benteng Ash-Sha'b bin Mu'adz, Benteng Az-Zubair, Benteng Ubay, Benteng An-Nizar)",
-        "alt": [
-            "naim",
-            "ash-sha'b",
-            "zubair",
-            "ubay",
-            "an-nizar"
-        ],
-        "hint": "Di antaranya adalah Benteng Naim, Benteng Ash-Sha'b bin Mu'adz, Benteng Az-Zubair, Benteng Ubay, dan Benteng An-Nizar."
-    },
-    {
-        "id": 5,
-        "text": "Siapakah sahabat yang ditunjuk Nabi Muhammad SAW untuk memimpin pembagian hasil panen kebun Khaibar secara adil?",
-        "answer": "Abdullah bin Rawahah",
-        "alt": [
-            "abdullah bin rawahah",
-            "rawahah"
-        ],
-        "hint": "Abdullah bin Rawahah memimpin pengelolaan dan pembagian hasil kebun dengan sangat adil."
-    },
-    {
-        "id": 6,
-        "text": "Siapakah nama wanita Yahudi yang menyajikan daging paha domba beracun kepada Rasulullah SAW?",
-        "answer": "Zainab binti Al-Harits",
-        "alt": [
-            "zainab binti al-harits",
-            "zainab",
-            "zainab binti harits"
-        ],
-        "hint": "Zainab binti Al-Harits adalah istri dari Sallam bin Misykam."
-    },
-    {
-        "id": 7,
-        "text": "Bagaimana cara Nabi Muhammad SAW mengetahui bahwa daging domba yang disajikan telah dibubuhi racun?",
-        "answer": "Tulang domba tersebut mengabarkan kepada Nabi bahwa dagingnya disusupi racun (mukjizat atas izin Allah)",
-        "alt": [
-            "tulang",
-            "tulang berbicara",
-            "tulang mengabarkan",
-            "mukjizat"
-        ],
-        "hint": "Nabi bersabda: 'Tulang ini mengabarkan kepadaku bahwa daging disusupi racun.'"
-    },
-    {
-        "id": 8,
-        "text": "Siapakah sahabat Nabi yang meninggal dunia seketika setelah memakan daging domba beracun tersebut?",
-        "answer": "Bisyr bin Al-Barra",
-        "alt": [
-            "bisyr bin al-barra",
-            "bisyr",
-            "bisyir"
-        ],
-        "hint": "Bisyr bin Al-Barra bin Ma'rur ikut menyantap daging tersebut dan gugur sebagai syahid."
-    },
-    {
-        "id": 9,
-        "text": "Mengapa ibadah umrah pada Dzulqa'idah tahun 7 Hijriyah dinamakan 'Umrah Qadha'?",
-        "answer": "Karena merupakan umrah pengganti yang tertunda akibat Perjanjian Hudaibiyah pada tahun sebelumnya",
-        "alt": [
-            "tertunda",
-            "pengganti",
-            "perjanjian hudaibiyah",
-            "qadha"
-        ],
-        "hint": "Qadha artinya mengganti kewajiban yang tertunda di tahun ke-6 Hijriyah."
-    },
-    {
-        "id": 10,
-        "text": "Berapa jumlah jamaah kaum muslimin yang ikut serta dalam pelaksanaan Umrah Qadha?",
-        "answer": "2.000 orang (dua ribu orang)",
-        "alt": [
-            "2000",
-            "2.000",
-            "dua ribu"
-        ],
-        "hint": "Tercatat sebanyak 2.000 sahabat ikut serta selain wanita dan anak-anak."
-    },
-    {
-        "id": 11,
-        "text": "Mengapa Nabi Muhammad SAW memerintahkan jamaah untuk tawaf dengan berjalan cepat sebanyak 3 kali putaran?",
-        "answer": "Untuk menunjukkan kekuatan fisik kaum muslimin kepada kaum musyrikin Quraisy",
-        "alt": [
-            "kekuatan fisik",
-            "fisik",
-            "kuat",
-            "menunjukkan kekuatan"
-        ],
-        "hint": "Agar kaum Quraisy tahu bahwa kaum muslimin sehat, bugar, dan kuat."
-    },
-    {
-        "id": 12,
-        "text": "Berapa hari Nabi Muhammad SAW dan kaum muslimin berada di kota Makkah untuk melaksanakan Umrah Qadha?",
-        "answer": "3 hari (tiga hari)",
-        "alt": [
-            "3",
-            "3 hari",
-            "tiga",
-            "tiga hari"
-        ],
-        "hint": "Sesuai perjanjian Hudaibiyah, kaum muslimin hanya boleh berada di Makkah selama 3 hari."
-    },
-    {
-        "id": 13,
-        "text": "Pasukan sahabat siapakah yang terpaksa bertempur membela diri melawan Ikrimah bin Abi Jahl saat Fathu Makkah?",
-        "answer": "Khalid bin Walid",
-        "alt": [
-            "khalid bin walid",
-            "khalid"
-        ],
-        "hint": "Pasukan Khalid bin Walid diserang lebih dulu oleh kelompok Ikrimah sehingga terpaksa membalas untuk membela diri."
-    },
-    {
-        "id": 14,
-        "text": "Surat apakah dalam Al-Qur'an yang dibaca Nabi Muhammad SAW saat memasuki kota Makkah pada peristiwa Fathu Makkah?",
-        "answer": "Surat Al-Fath",
-        "alt": [
-            "al-fath",
-            "surat al fath",
-            "al fath"
-        ],
-        "hint": "Nabi Muhammad SAW menundukkan kepala dengan tawadhu sambil membaca Surat Al-Fath."
-    },
-    {
-        "id": 15,
-        "text": "Berapa jumlah berhala di sekeliling Ka'bah yang dihancurkan oleh Rasulullah SAW saat penaklukkan kota Makkah?",
-        "answer": "360 berhala",
-        "alt": [
-            "360",
-            "tiga ratus enam puluh",
-            "360 berhala"
-        ],
-        "hint": "Nabi menunjuk 360 berhala dengan busur panah sambil membacakan ayat Al-Isra ayat 81 hingga semua berhala tumbang."
-    }
+        {
+                "id": 1,
+                "type": "pg",
+                "section": "I. Pilihan Ganda (10 Soal)",
+                "text": "Kota Khaibar adalah wilayah perkebunan kurma yang sangat subur dan memiliki benteng-benteng pertahanan besar sebanyak...",
+                "options": [
+                        "3 benteng",
+                        "5 benteng",
+                        "8 benteng",
+                        "12 benteng"
+                ],
+                "answer": 2,
+                "hint": "Khaibar memiliki 8 benteng pertahanan yang kokoh dikelilingi kebun kurma yang luas."
+        },
+        {
+                "id": 2,
+                "type": "pg",
+                "text": "Peristiwa Perang Khaibar antara pasukan kaum muslimin melawan persekongkolan kaum Yahudi terjadi pada tahun...",
+                "options": [
+                        "5 Hijriyah",
+                        "7 Hijriyah",
+                        "8 Hijriyah",
+                        "9 Hijriyah"
+                ],
+                "answer": 1,
+                "hint": "Perang Khaibar berlangsung pada tahun ke-7 Hijriyah setelah Perjanjian Hudaibiyah."
+        },
+        {
+                "id": 3,
+                "type": "pg",
+                "text": "Siapakah pemimpin kaum munafik di Madinah yang secara rahasia membocorkan rencana pasukan Nabi Muhammad SAW kepada kaum Yahudi Khaibar?",
+                "options": [
+                        "Abu Sufyan",
+                        "Abdullah bin Ubay",
+                        "Musailamah Al-Kadzdzab",
+                        "Abu Jahal"
+                ],
+                "answer": 1,
+                "hint": "Abdullah bin Ubay bin Salul adalah gembong kaum munafik yang mengabarkan penyerangan ke Khaibar."
+        },
+        {
+                "id": 4,
+                "type": "pg",
+                "text": "Sahabat Nabi yang didoakan dan diludahi matanya yang sakit hingga sembuh total oleh Rasulullah SAW lalu memimpin penaklukan benteng Khaibar adalah...",
+                "options": [
+                        "Umar bin Khattab",
+                        "Abu Bakar Ash-Shiddiq",
+                        "Ali bin Abi Thalib",
+                        "Usman bin Affan"
+                ],
+                "answer": 2,
+                "hint": "Ali bin Abi Thalib menerima panji perang dari Nabi dan berhasil merobohkan pintu benteng Khaibar."
+        },
+        {
+                "id": 5,
+                "type": "pg",
+                "text": "Sahabat yang ditugaskan oleh Rasulullah SAW untuk memimpin taksiran dan pembagian hasil kebun kurma Khaibar secara adil adalah...",
+                "options": [
+                        "Abdullah bin Rawahah",
+                        "Khalid bin Walid",
+                        "Bilal bin Rabah",
+                        "Salman Al-Farisi"
+                ],
+                "answer": 0,
+                "hint": "Abdullah bin Rawahah memimpin pembagian hasil kebun 50:50 dengan kejujuran yang diakui orang Yahudi."
+        },
+        {
+                "id": 6,
+                "type": "pg",
+                "text": "Wanita Yahudi Khaibar yang menyajikan hidangan paha domba beracun kepada Rasulullah SAW bernama...",
+                "options": [
+                        "Hindun binti Utbah",
+                        "Zainab binti Al-Harits",
+                        "Shafiyah binti Huyay",
+                        "Ummu Jamil"
+                ],
+                "answer": 1,
+                "hint": "Zainab binti Al-Harits (istri Sallam bin Misykam) meracuni daging paha domba kesukaan Rasulullah SAW."
+        },
+        {
+                "id": 7,
+                "type": "pg",
+                "text": "Sahabat Nabi yang gugur sebagai syahid akibat menelan daging domba beracun tersebut adalah...",
+                "options": [
+                        "Bisyr bin Al-Barra",
+                        "Hamzah bin Abdul Muthalib",
+                        "Ja'far bin Abi Thalib",
+                        "Zaid bin Haritsah"
+                ],
+                "answer": 0,
+                "hint": "Bisyr bin Al-Barra bin Ma'rur langsung menelan daging tersebut dan meninggal dunia."
+        },
+        {
+                "id": 8,
+                "type": "pg",
+                "text": "Ibadah umrah pengganti yang dilaksanakan kaum muslimin ke Mekkah pada tahun ke-7 Hijriyah dinamakan...",
+                "options": [
+                        "Haji Wada'",
+                        "Umratul Qadha",
+                        "Umrah Hudaibiyah",
+                        "Umrah Sunnah"
+                ],
+                "answer": 1,
+                "hint": "Umratul Qadha dilaksanakan untuk mengganti ibadah umrah yang tertunda pada tahun sebelumnya."
+        },
+        {
+                "id": 9,
+                "type": "pg",
+                "text": "Peristiwa penaklukan kota Mekkah secara damai tanpa pertumpahan darah oleh Rasulullah SAW dinamakan peristiwa...",
+                "options": [
+                        "Fathu Makkah",
+                        "Perang Badar",
+                        "Perang Hunain",
+                        "Bai'at Aqabah"
+                ],
+                "answer": 0,
+                "hint": "Fathu Makkah terjadi pada tahun ke-8 Hijriyah saat kaum muslimin memasuki Mekkah dengan damai."
+        },
+        {
+                "id": 10,
+                "type": "pg",
+                "text": "Berapakah jumlah berhala di sekeliling Ka'bah yang dihancurkan oleh Rasulullah SAW saat peristiwa Fathu Makkah?",
+                "options": [
+                        "100 berhala",
+                        "250 berhala",
+                        "360 berhala",
+                        "500 berhala"
+                ],
+                "answer": 2,
+                "hint": "Terdapat 360 berhala di sekitar Ka'bah yang dirobohkan dengan tongkat Rasulullah SAW."
+        },
+        {
+                "id": 11,
+                "type": "pg_kompleks",
+                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
+                "text": "Nama-nama benteng besar milik kaum Yahudi di Khaibar yang berhasil ditaklukkan oleh pasukan kaum muslimin adalah...",
+                "options": [
+                        "Benteng Naim",
+                        "Benteng Az-Zubair",
+                        "Benteng Konstantinopel",
+                        "Benteng Karbala"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Benteng Naim, Az-Zubair, Ubay, An-Nizar, dan Ash-Sha'b bin Mu'adz adalah benteng-benteng di Khaibar."
+        },
+        {
+                "id": 12,
+                "type": "pg_kompleks",
+                "text": "Mukjizat dan peristiwa luar biasa yang dialami oleh Rasulullah SAW dalam rangkaian Perang Khaibar adalah...",
+                "options": [
+                        "Sembuhnya mata Ali bin Abi Thalib yang sedang sakit setelah diusap dan didoakan Nabi",
+                        "Tulang daging domba dapat berbicara atas izin Allah memberitahu adanya racun",
+                        "Keluarnya unta betina dari batu besar",
+                        "Tongkat yang berubah menjadi ular besar"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Mata Ali sembuh seketika, dan tulang domba memberi kabar mukjizat bahwa dagingnya dibubuhi racun."
+        },
+        {
+                "id": 13,
+                "type": "pg_kompleks",
+                "text": "Perjanjian damai dan pengelolaan kebun antara Rasulullah SAW dan penduduk Yahudi Khaibar menetapkan bahwa...",
+                "options": [
+                        "Kaum Yahudi tetap diizinkan menggarap perkebunan kurma mereka",
+                        "Hasil panen kurma dibagi secara adil sebesar 50 persen untuk muslimin dan 50 persen untuk penggarap",
+                        "Seluruh pohon kurma harus ditebang dan dibakar",
+                        "Semua penduduk Yahudi diusir tanpa boleh membawa makanan"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Nabi mengizinkan mereka menggarap kebun dengan sistem bagi hasil adil separuh (50:50)."
+        },
+        {
+                "id": 14,
+                "type": "pg_kompleks",
+                "text": "Fakta sejarah yang benar mengenai peristiwa ibadah Umratul Qadha adalah...",
+                "options": [
+                        "Dilaksanakan oleh sekitar 2.000 orang kaum muslimin",
+                        "Kaum muslimin melakukan lari-lari kecil (ramal) saat thawaf untuk mematahkan ejekan kaum Quraisy",
+                        "Kaum muslimin berperang sengit di dalam Masjidil Haram",
+                        "Kaum musyrik Quraisy melarang kaum muslimin masuk ke kota Mekkah"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Umratul Qadha diikuti 2.000 sahabat dengan damai selama 3 hari, dengan lari-lari kecil saat 3 putaran pertama thawaf."
+        },
+        {
+                "id": 15,
+                "type": "pg_kompleks",
+                "text": "Sikap teladan mulia Rasulullah SAW saat peristiwa penaklukan kota Mekkah (Fathu Makkah) adalah...",
+                "options": [
+                        "Memberikan pengampunan umum kepada seluruh penduduk Mekkah yang menyerah",
+                        "Menegaskan bahwa hari penaklukan adalah 'Yaumul Marhamah' (Hari Kasih Sayang)",
+                        "Melakukan balas dendam kepada orang-orang yang pernah menyakiti beliau",
+                        "Membumihanguskan seluruh rumah penduduk Mekkah"
+                ],
+                "answer": [
+                        0,
+                        1
+                ],
+                "hint": "Rasulullah memaafkan semua penduduk Mekkah dengan penuh kasih sayang tanpa dendam sedikit pun."
+        },
+        {
+                "id": 16,
+                "type": "benar_salah",
+                "section": "III. Benar atau Salah (5 Soal)",
+                "text": "Kaum Yahudi Khaibar diperangi oleh kaum muslimin karena mereka licik, berkhianat, dan menghasut suku-suku lain untuk memusuhi Islam.",
+                "answer": "Benar",
+                "hint": "Yahudi Khaibar menjadi pusat penghasut Perang Khandaq dan berkhianat kepada Nabi."
+        },
+        {
+                "id": 17,
+                "type": "benar_salah",
+                "text": "Rasulullah SAW melakukan balas dendam dan menghukum mati seluruh kaum musyrik Quraisy saat peristiwa Fathu Makkah.",
+                "answer": "Salah",
+                "hint": "Rasulullah SAW memaafkan mereka dengan sabdanya: 'Pergilah, kalian semua bebas!'"
+        },
+        {
+                "id": 18,
+                "type": "benar_salah",
+                "text": "Saat thawaf pada Umratul Qadha, kaum muslimin diperintahkan berlari-lari kecil (ramal) untuk memperlihatkan kebugaran dan kekuatan fisik mereka.",
+                "answer": "Benar",
+                "hint": "Ramal mematahkan desas-desus kaum Quraisy yang mengira pasukan muslimin lemah karena penyakit demam."
+        },
+        {
+                "id": 19,
+                "type": "benar_salah",
+                "text": "Sahabat Bisyr bin Al-Barra selamat dan tubuhnya kebal sehingga tidak terpengaruh oleh racun daging domba di Khaibar.",
+                "answer": "Salah",
+                "hint": "Bisyr bin Al-Barra gugur sebagai syahid akibat menelan daging yang mengandung racun pekat."
+        },
+        {
+                "id": 20,
+                "type": "benar_salah",
+                "text": "Peristiwa penaklukan Fathu Makkah terjadi pada tahun ke-8 Hijriyah dengan membawa pasukan kaum muslimin sebanyak 10.000 orang.",
+                "answer": "Benar",
+                "hint": "10.000 pasukan muslimin berbaris memasuki Mekkah dari berbagai penjuru dengan tertib dan damai."
+        },
+        {
+                "id": 21,
+                "type": "memasangkan",
+                "section": "IV. Memasangkan (5 Soal)",
+                "premise": "Perang Khaibar",
+                "text": "Peristiwa 'Perang Khaibar' berpasangan dengan tahun peristiwa...",
+                "options": [
+                        "Tahun 7 Hijriyah",
+                        "Ali bin Abi Thalib",
+                        "Zainab binti Al-Harits",
+                        "Tahun 8 Hijriyah",
+                        "Yaumul Marhamah (Hari Kasih Sayang)"
+                ],
+                "answer": "Tahun 7 Hijriyah",
+                "hint": "Perang Khaibar terjadi pada tahun 7 H."
+        },
+        {
+                "id": 22,
+                "type": "memasangkan",
+                "premise": "Panglima Penakluk Benteng Khaibar",
+                "text": "Panglima yang memegang panji penakluk Khaibar berpasangan dengan sosok...",
+                "options": [
+                        "Tahun 7 Hijriyah",
+                        "Ali bin Abi Thalib",
+                        "Zainab binti Al-Harits",
+                        "Tahun 8 Hijriyah",
+                        "Yaumul Marhamah (Hari Kasih Sayang)"
+                ],
+                "answer": "Ali bin Abi Thalib",
+                "hint": "Ali bin Abi Thalib memimpin penaklukan benteng Khaibar."
+        },
+        {
+                "id": 23,
+                "type": "memasangkan",
+                "premise": "Wanita Penyaji Daging Beracun",
+                "text": "Wanita penyaji hidangan paha domba beracun berpasangan dengan nama...",
+                "options": [
+                        "Tahun 7 Hijriyah",
+                        "Ali bin Abi Thalib",
+                        "Zainab binti Al-Harits",
+                        "Tahun 8 Hijriyah",
+                        "Yaumul Marhamah (Hari Kasih Sayang)"
+                ],
+                "answer": "Zainab binti Al-Harits",
+                "hint": "Zainab binti Al-Harits adalah istri Sallam bin Misykam."
+        },
+        {
+                "id": 24,
+                "type": "memasangkan",
+                "premise": "Peristiwa Fathu Makkah",
+                "text": "Peristiwa 'Fathu Makkah' berpasangan dengan tahun peristiwa...",
+                "options": [
+                        "Tahun 7 Hijriyah",
+                        "Ali bin Abi Thalib",
+                        "Zainab binti Al-Harits",
+                        "Tahun 8 Hijriyah",
+                        "Yaumul Marhamah (Hari Kasih Sayang)"
+                ],
+                "answer": "Tahun 8 Hijriyah",
+                "hint": "Fathu Makkah berlangsung pada bulan Ramadan tahun 8 H."
+        },
+        {
+                "id": 25,
+                "type": "memasangkan",
+                "premise": "Sebutan Hari Penaklukan Mekkah",
+                "text": "Sebutan mulia untuk hari penaklukan Mekkah berpasangan dengan...",
+                "options": [
+                        "Tahun 7 Hijriyah",
+                        "Ali bin Abi Thalib",
+                        "Zainab binti Al-Harits",
+                        "Tahun 8 Hijriyah",
+                        "Yaumul Marhamah (Hari Kasih Sayang)"
+                ],
+                "answer": "Yaumul Marhamah (Hari Kasih Sayang)",
+                "hint": "Yaumul Marhamah menegaskan bahwa Islam membawa perdamaian dan ampunan."
+        },
+        {
+                "id": 26,
+                "type": "isian",
+                "section": "V. Isian Singkat (5 Soal)",
+                "text": "Jumlah benteng pertahanan kokoh milik kaum Yahudi di kota Khaibar berjumlah ... benteng.",
+                "answer": "8",
+                "alt": [
+                        "8",
+                        "delapan",
+                        "8 benteng",
+                        "delapan benteng"
+                ],
+                "hint": "Ada 8 benteng pertahanan utama di Khaibar."
+        },
+        {
+                "id": 27,
+                "type": "isian",
+                "text": "Pemimpin kaum munafik yang membocorkan rahasia keberangkatan tentara Islam ke Khaibar adalah Abdullah bin ...",
+                "answer": "Ubay",
+                "alt": [
+                        "ubay",
+                        "ubay bin salul",
+                        "ubai"
+                ],
+                "hint": "Abdullah bin Ubay adalah tokoh munafik Madinah."
+        },
+        {
+                "id": 28,
+                "type": "isian",
+                "text": "Sahabat Nabi yang ditunjuk untuk membagi hasil kebun kurma Khaibar secara adil adalah Abdullah bin ...",
+                "answer": "Rawahah",
+                "alt": [
+                        "rawahah",
+                        "ar-rawahah"
+                ],
+                "hint": "Abdullah bin Rawahah membagi kebun dengan sangat jujur."
+        },
+        {
+                "id": 29,
+                "type": "isian",
+                "text": "Ibadah umrah pengganti yang dilakukan kaum muslimin pada tahun ke-7 Hijriyah dinamakan Umratul ...",
+                "answer": "Qadha",
+                "alt": [
+                        "qadha",
+                        "qada",
+                        "qodho"
+                ],
+                "hint": "Qadha bermakna mengganti yang tertunda."
+        },
+        {
+                "id": 30,
+                "type": "isian",
+                "text": "Banyaknya berhala yang dihancurkan di sekitar Ka'bah saat penaklukan Mekkah berjumlah ... buah.",
+                "answer": "360",
+                "alt": [
+                        "360",
+                        "tiga ratus enam puluh",
+                        "360 berhala"
+                ],
+                "hint": "360 patung dan berhala disingkirkan dari Ka'bah."
+        },
+        {
+                "id": 31,
+                "type": "uraian",
+                "section": "VI. Uraian / Esai (5 Soal)",
+                "text": "Mengapa Nabi Muhammad SAW dan pasukan muslimin memutuskan untuk memerangi kaum Yahudi di Khaibar?",
+                "answer": "Karena kaum Yahudi Khaibar bersikap licik dan terus berkhianat. Mereka menjadi otak penghasut yang membujuk suku Quraisy dan Bani Quraizhah untuk menyerang Madinah dalam Perang Khandaq, serta terus merencanakan perlawanan bersenjata untuk menghancurkan kaum muslimin.",
+                "hint": "Menjelaskan pengkhianatan Yahudi Khaibar dan peran mereka menghasut musuh dalam Perang Khandaq."
+        },
+        {
+                "id": 32,
+                "type": "uraian",
+                "text": "Bagaimana mukjizat yang dialami Rasulullah SAW saat mengetahui hidangan daging paha domba dari Zainab telah diracuni?",
+                "answer": "Setelah mengunyah sedikit daging tersebut, Rasulullah SAW langsung memuntahkannya karena tulang daging domba tersebut dapat berbicara atas izin Allah SWT dan mengabarkan: 'Wahai Rasulullah, sesungguhnya aku telah dibubuhi racun.'",
+                "hint": "Menjelaskan mukjizat tulang domba yang berbicara memberi tahu bahwa dagingnya beracun."
+        },
+        {
+                "id": 33,
+                "type": "uraian",
+                "text": "Mengapa Rasulullah SAW memerintahkan kaum muslimin untuk berlari-lari kecil (ramal) pada putaran awal thawaf saat Umratul Qadha?",
+                "answer": "Untuk memperlihatkan ketangkasan, kekuatan fisik, dan kegagahan kaum muslimin di hadapan orang-orang Quraisy yang menonton dari atas bukit, sekaligus mematahkan kabar bohong mereka yang mengira umat Islam lemah karena terserang demam Madinah.",
+                "hint": "Menjelaskan tujuan ramal untuk menunjukkan kekuatan fisik muslimin dan mematahkan ejekan musuh."
+        },
+        {
+                "id": 34,
+                "type": "uraian",
+                "text": "Jelaskan apa yang dimaksud dengan istilah 'Yaumul Marhamah' pada peristiwa Fathu Makkah!",
+                "answer": "'Yaumul Marhamah' memiliki arti 'Hari Kasih Sayang'. Rasulullah SAW menegaskan bahwa hari penaklukan Mekkah bukanlah hari untuk balas dendam atau pertumpahan darah, melainkan hari pengampunan agung di mana semua musuh yang menyerah diampuni dan diperlakukan dengan penuh kasih sayang.",
+                "hint": "Menjelaskan arti Yaumul Marhamah sebagai hari kasih sayang dan pengampunan damai tanpa balas dendam."
+        },
+        {
+                "id": 35,
+                "type": "uraian",
+                "text": "Sebutkan 2 keteladanan mulia yang dapat kita contoh dari akhlak Rasulullah SAW saat menaklukkan kota Mekkah!",
+                "answer": "1. <b>Sifat Pemaaf yang Agung</b>: Memaafkan orang-orang yang dahulu pernah menyakiti, mengusir, dan memerangi beliau tanpa menaruh rasa dendam sedikit pun.<br>2. <b>Sifat Rendah Hati (Tawadhu')</b>: Memasuki kota Mekkah dengan menundukkan kepala di atas punggung untanya karena rasa syukur dan tunduk yang mendalam kepada Allah SWT, bukan dengan kesombongan.",
+                "hint": "Menyebutkan keteladanan pemaaf tanpa dendam dan sikap rendah hati (tawadhu') di saat menang."
+        }
 ];
 
-        function renderQuestions() {
-            const container = document.getElementById('quiz-container');
+        function render() {
+            const container = document.getElementById('question-container');
             let html = '';
-            questions.forEach((q, index) => {
-                html += `
-                    <div class="q-card" id="qcard-${q.id}">
-                        <div class="q-header">
-                            <div class="q-num">${index + 1}</div>
-                            <div class="q-title">${q.text}</div>
-                        </div>
-                        <input type="text" 
-                               class="input-box" 
-                               name="q_${q.id}" 
-                               id="input-${q.id}" 
-                               placeholder="Tulis jawabanmu di sini..." 
-                               autocomplete="off"
-                               oninput="updateProgress()">
-                        <div class="feedback" id="fb-${q.id}"></div>
-                    </div>
-                `;
+            questions.forEach((q, idx) => {
+                if (q.section) {
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'benar_salah') {
+                    inputHtml = `<div class="tf-group">
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
+                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
+                    </div>`;
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<div class="match-box">
+                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
+                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                            <option value="">-- Pilih Pasangan yang Tepat --</option>
+                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                        </select>
+                    </div>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
             });
             container.innerHTML = html;
+            updateProgress();
         }
 
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                const val = document.getElementById(`input-${q.id}`).value.trim();
-                if (val.length > 0) answered++;
+                if (q.type === 'pg' || q.type === 'benar_salah') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
             });
-            const pct = (answered / questions.length) * 100;
-            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
         }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
 
         function cleanString(str) {
             return (str || '')
@@ -516,94 +897,120 @@
                 .trim();
         }
 
-        function checkAnswer(userAns, q) {
-            const u = cleanString(userAns);
-            if (!u) return false;
-            
-            const target = cleanString(q.answer);
-            if (u === target || u.includes(target) || (target.length > 3 && target.includes(u))) {
-                return true;
-            }
-
-            if (q.alt && Array.isArray(q.alt)) {
-                for (let k of q.alt) {
-                    const cleanK = cleanString(k);
-                    if (u === cleanK || u.includes(cleanK) || (cleanK.length > 3 && cleanK.includes(u))) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         function submitExam() {
-            let correctCount = 0;
-            let total = questions.length;
+            let score = 0;
+            let maxAuto = 0;
 
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                const userVal = inputEl.value;
                 const fb = document.getElementById(`fb-${q.id}`);
-                const isCorrect = checkAnswer(userVal, q);
-
-                if (isCorrect) {
-                    correctCount++;
-                    fb.className = 'feedback fb-correct';
-                    fb.innerHTML = `
-                        <div>✅ <b>Masya Allah, Tepat Sekali!</b></div>
-                        <div class="fb-ans">Kunci Jawaban: ${q.answer}</div>
-                        <div class="fb-hint">💡 ${q.hint}</div>
-                    `;
-                } else {
-                    fb.className = 'feedback fb-wrong';
-                    fb.innerHTML = `
-                        <div>❌ <b>Perlu Dipelajari Lagi</b></div>
-                        <div class="fb-ans">Kunci Jawaban yang Benar: <b>${q.answer}</b></div>
-                        <div class="fb-hint">💡 Pembahasan: ${q.hint}</div>
-                    `;
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'benar_salah') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    const val = sel ? sel.value : '';
+                    if (val === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl ? inputEl.value : '');
+                    const target = cleanString(q.answer);
+                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
+                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
-                inputEl.disabled = true;
             });
 
-            const finalScore = Math.round((correctCount / total) * 100);
-            document.getElementById('score-val').innerText = finalScore;
-
-            let msg = '';
-            if (finalScore === 100) {
-                msg = `🌟 Masya Allah, Nilai Sempurna 100! Luar biasa hebat Musa, pertahankan prestasi ini ya! 🎉`;
-            } else if (finalScore >= 80) {
-                msg = `🎉 Hebat sekali Musa! Benar ${correctCount} dari ${total} soal. Sedikit lagi 100, pelajari kembali soal yang belum tepat ya!`;
-            } else if (finalScore >= 60) {
-                msg = `👍 Bagus Musa! Benar ${correctCount} dari ${total} soal. Ayo baca lagi materi dan pembahasannya lalu coba lagi ya!`;
-            } else {
-                msg = `💪 Semangat Musa! Benar ${correctCount} dari ${total} soal. Jangan menyerah, pelajari catatan buku tulis dan ulangi lagi latihannya!`;
-            }
-
-            document.getElementById('score-msg').innerText = msg;
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct + '%';
+            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
             document.getElementById('score-board').style.display = 'block';
-            document.getElementById('footer-submit').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function retryExam() {
             questions.forEach(q => {
-                const inputEl = document.getElementById(`input-${q.id}`);
-                inputEl.value = '';
-                inputEl.disabled = false;
+                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
                 const fb = document.getElementById(`fb-${q.id}`);
-                fb.style.display = 'none';
-                fb.innerHTML = '';
+                if (fb) fb.style.display = 'none';
             });
             document.getElementById('score-board').style.display = 'none';
-            document.getElementById('footer-submit').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'block';
             document.getElementById('progress-fill').style.width = '0%';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        renderQuestions();
+        render();
     </script>
 </body>
 </html>
