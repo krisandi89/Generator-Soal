@@ -374,7 +374,7 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
             </div>
             <h1>📜 Siroh Nabawiyah</h1>
             <p>SDIT Friends — Kelas 3</p>
@@ -412,7 +412,7 @@
                     "Utsman bin Thalha"
                 ],
                 "hint": "Nabi Muhammad Saw. menyerahkan kembali kunci Ka'bah kepada Utsman bin Thalhah sebagai amanah.",
-                "section": "Isian Singkat (10 Soal)"
+                "section": "Isian Singkat (15 Soal)"
             },
             {
                 "id": 2,
@@ -522,6 +522,65 @@
                     "kota Madinah"
                 ],
                 "hint": "Kaum muslimin kembali ke Madinah. Nabi tetap mendoakan kaum Tsaqif agar menerima Islam."
+            },
+            {
+                "id": 11,
+                "type": "isian",
+                "text": "Nabi Muhammad Saw. berpidato pada hari ke-.... setelah penaklukan Makkah.",
+                "answer": "2",
+                "alt": [
+                    "dua",
+                    "kedua",
+                    "ke-2"
+                ],
+                "hint": "Dalam bacaan, Nabi Muhammad Saw. menyampaikan pidato pada hari kedua setelah penaklukan Makkah."
+            },
+            {
+                "id": 12,
+                "type": "isian",
+                "text": "Dalam bacaan Perang Hunain, panglima yang memimpin pasukan Hawazin bernama ....",
+                "answer": "Malik bin Auf An-Nasri",
+                "alt": [
+                    "Malik bin Auf",
+                    "Malik bin 'Auf",
+                    "Malik bin Auf an Nasri",
+                    "Malik bin ‘Auf An-Nasri"
+                ],
+                "hint": "Malik bin Auf An-Nasri memimpin pasukan Hawazin dalam Perang Hunain."
+            },
+            {
+                "id": 13,
+                "type": "isian",
+                "text": "Menurut bacaan, Nabi Muhammad Saw. menyiapkan .... orang pasukan untuk Perang Hunain.",
+                "answer": "12.000",
+                "alt": [
+                    "12000",
+                    "12 000",
+                    "12 ribu",
+                    "dua belas ribu"
+                ],
+                "hint": "Menurut bacaan, jumlah pasukan yang disiapkan Nabi untuk Perang Hunain adalah 12.000 orang."
+            },
+            {
+                "id": 14,
+                "type": "isian",
+                "text": "Di Thaif, kaum Tsaqif menutup pintu .... untuk melindungi diri dari serangan.",
+                "answer": "benteng",
+                "alt": [
+                    "benteng pertahanan",
+                    "benteng-benteng"
+                ],
+                "hint": "Kaum Tsaqif berlindung di balik benteng yang kokoh dan menutup pintunya."
+            },
+            {
+                "id": 15,
+                "type": "isian",
+                "text": "Nabi Muhammad Saw. mendoakan agar kaum Tsaqif memeluk agama ....",
+                "answer": "Islam",
+                "alt": [
+                    "agama Islam"
+                ],
+                "hint": "Dalam bacaan, kaum Tsaqif kemudian mengirim utusan untuk menyatakan keislaman mereka."
             }
         ];
 
@@ -679,7 +738,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

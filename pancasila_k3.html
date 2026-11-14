@@ -374,7 +374,7 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
             </div>
             <h1>🇮🇩 Pendidikan Pancasila</h1>
             <p>SDIT Friends — Kelas 3</p>
@@ -410,7 +410,7 @@
                     "tata tertib"
                 ],
                 "hint": "Aturan berlaku di rumah, sekolah, dan masyarakat untuk menciptakan ketertiban.",
-                "section": "Isian Singkat (10 Soal)"
+                "section": "Isian Singkat (15 Soal)"
             },
             {
                 "id": 2,
@@ -493,6 +493,67 @@
                     "kedisiplinan"
                 ],
                 "hint": "Mematuhi aturan melatih disiplin dan membantu menciptakan lingkungan yang nyaman."
+            },
+            {
+                "id": 11,
+                "type": "isian",
+                "text": "Lengkapilah kewajiban di rumah berikut. Sesudah makan, Adit membantu orang tua dengan .... piring kotornya sampai bersih.",
+                "answer": "mencuci",
+                "alt": [
+                    "membersihkan",
+                    "mencuci piring"
+                ],
+                "hint": "Mencuci piring sendiri setelah makan adalah contoh tanggung jawab di rumah."
+            },
+            {
+                "id": 12,
+                "type": "isian",
+                "text": "Buku perpustakaan yang selesai dipinjam harus kita .... ke perpustakaan.",
+                "answer": "kembalikan",
+                "alt": [
+                    "mengembalikan",
+                    "dikembalikan",
+                    "serahkan kembali"
+                ],
+                "hint": "Setiap peminjam wajib mengembalikan buku agar dapat dipinjam oleh orang lain."
+            },
+            {
+                "id": 13,
+                "type": "isian",
+                "text": "Ketika memakai lapangan sekolah bersama, kita perlu .... tempat bermain dengan teman agar semua mendapat bagian.",
+                "answer": "berbagi",
+                "alt": [
+                    "berbagi tempat",
+                    "bergantian",
+                    "membagi"
+                ],
+                "hint": "Berbagi tempat bermain membantu menjaga hak teman untuk memakai lapangan."
+            },
+            {
+                "id": 14,
+                "type": "isian",
+                "text": "Setelah jajan di sekolah, bungkus makanan harus dibuang ke ....",
+                "answer": "tempat sampah",
+                "alt": [
+                    "tong sampah",
+                    "bak sampah",
+                    "keranjang sampah"
+                ],
+                "hint": "Membuang sampah pada tempatnya adalah kewajiban untuk menjaga kebersihan sekolah."
+            },
+            {
+                "id": 15,
+                "type": "isian",
+                "text": "Sebelum naik bus, para penumpang berdiri berurutan dan menunggu giliran. Tindakan ini disebut ....",
+                "answer": "antre",
+                "alt": [
+                    "mengantre",
+                    "antri",
+                    "mengantri",
+                    "berbaris",
+                    "menunggu giliran"
+                ],
+                "hint": "Mengantre menjaga ketertiban dan menghormati giliran orang lain."
             }
         ];
 
@@ -650,7 +711,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

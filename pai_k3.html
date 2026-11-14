@@ -374,7 +374,7 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
             </div>
             <h1>🌙 Pendidikan Agama Islam (PAI)</h1>
             <p>SDIT Friends — Kelas 3</p>
@@ -412,7 +412,7 @@
                     "husnuzon"
                 ],
                 "hint": "Husnuzan berarti berbaik sangka terhadap ketentuan dan keputusan Allah Swt.",
-                "section": "Isian Singkat (10 Soal)"
+                "section": "Isian Singkat (15 Soal)"
             },
             {
                 "id": 2,
@@ -513,6 +513,60 @@
                     "Halimatus Sa'diyah"
                 ],
                 "hint": "Halimah Sa'diyah mengasuh Nabi Muhammad Saw. di desa pada masa kecil beliau."
+            },
+            {
+                "id": 11,
+                "type": "isian",
+                "text": "Makan pada malam hari sebelum terbit fajar sebagai persiapan puasa disebut ....",
+                "answer": "sahur",
+                "alt": [
+                    "makan sahur"
+                ],
+                "hint": "Sahur dilakukan sebelum terbit fajar. Mengakhirkan sahur termasuk amalan yang dianjurkan saat berpuasa."
+            },
+            {
+                "id": 12,
+                "type": "isian",
+                "text": "Saat matahari sudah terbenam, orang yang berpuasa dianjurkan untuk segera ....",
+                "answer": "berbuka",
+                "alt": [
+                    "berbuka puasa",
+                    "buka puasa"
+                ],
+                "hint": "Menyegerakan berbuka setelah matahari terbenam termasuk sunah puasa."
+            },
+            {
+                "id": 13,
+                "type": "isian",
+                "text": "Jika seseorang sengaja makan pada siang hari saat sedang berpuasa, puasanya menjadi ....",
+                "answer": "batal",
+                "alt": [
+                    "tidak sah"
+                ],
+                "hint": "Makan atau minum dengan sengaja termasuk hal yang membatalkan puasa."
+            },
+            {
+                "id": 14,
+                "type": "isian",
+                "text": "Berdiam diri di masjid untuk memperbanyak ibadah disebut ....",
+                "answer": "iktikaf",
+                "alt": [
+                    "i'tikaf",
+                    "itikaf"
+                ],
+                "hint": "Saat iktikaf, seseorang berdiam diri di masjid untuk beribadah, misalnya dengan berzikir dan membaca Al-Qur’an."
+            },
+            {
+                "id": 15,
+                "type": "isian",
+                "text": "Nama ayah Nabi Muhammad Saw. adalah ....",
+                "answer": "Abdullah",
+                "alt": [
+                    "Abdullah bin Abdul Muthalib",
+                    "Abdullah bin Abdul Muththalib",
+                    "Abdullah bin Abdul Muttalib"
+                ],
+                "hint": "Ayah Nabi Muhammad Saw. bernama Abdullah bin Abdul Muthalib."
             }
         ];
 
@@ -670,7 +724,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

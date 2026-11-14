@@ -374,7 +374,7 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
             </div>
             <h1>🌿 IPAS (Ilmu Pengetahuan Alam & Sosial)</h1>
             <p>SDIT Friends — Kelas 3</p>
@@ -407,7 +407,7 @@
                 "answer": "pertumbuhan",
                 "alt": [],
                 "hint": "Pertumbuhan ditandai bertambahnya ukuran tubuh, seperti tinggi dan berat badan.",
-                "section": "Isian Singkat (10 Soal)"
+                "section": "Isian Singkat (15 Soal)"
             },
             {
                 "id": 2,
@@ -490,6 +490,60 @@
                     "sinar matahari"
                 ],
                 "hint": "Cahaya matahari dibutuhkan tumbuhan dalam proses pembuatan makanan."
+            },
+            {
+                "id": 11,
+                "type": "isian",
+                "text": "Balita adalah singkatan dari ....",
+                "answer": "bawah lima tahun",
+                "alt": [
+                    "bawah 5 tahun",
+                    "di bawah lima tahun",
+                    "di bawah 5 tahun"
+                ],
+                "hint": "Balita adalah anak yang berusia di bawah lima tahun."
+            },
+            {
+                "id": 12,
+                "type": "isian",
+                "text": "Kupu-kupu mengalami metamorfosis .... karena melalui tahap kepompong.",
+                "answer": "sempurna",
+                "alt": [
+                    "metamorfosis sempurna"
+                ],
+                "hint": "Tahapan metamorfosis sempurna kupu-kupu adalah telur, ulat, kepompong, dan kupu-kupu dewasa."
+            },
+            {
+                "id": 13,
+                "type": "isian",
+                "text": "Perkembangbiakan tumbuhan melalui biji disebut perkembangbiakan ....",
+                "answer": "generatif",
+                "alt": [
+                    "perkembangbiakan generatif"
+                ],
+                "hint": "Perkembangbiakan generatif menghasilkan biji yang dapat tumbuh menjadi tumbuhan baru."
+            },
+            {
+                "id": 14,
+                "type": "isian",
+                "text": "Pisang dapat berkembang biak secara vegetatif. Anakan pisang yang tumbuh di dekat induknya disebut ....",
+                "answer": "tunas",
+                "alt": [
+                    "tunas pisang",
+                    "anakan",
+                    "anakan pisang"
+                ],
+                "hint": "Tunas tumbuh di dekat tanaman induk dan dapat berkembang menjadi pohon pisang baru."
+            },
+            {
+                "id": 15,
+                "type": "isian",
+                "text": "Langit tampak biru dan matahari bersinar terang. Keadaan ini menunjukkan cuaca ....",
+                "answer": "cerah",
+                "alt": [
+                    "cuaca cerah"
+                ],
+                "hint": "Cuaca cerah ditandai oleh sinar matahari yang terang dan langit yang tampak biru."
             }
         ];
 
@@ -647,7 +701,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

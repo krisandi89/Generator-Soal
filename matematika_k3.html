@@ -374,7 +374,7 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
             </div>
             <h1>➗ Matematika</h1>
             <p>SDIT Friends — Kelas 3</p>
@@ -409,7 +409,7 @@
                     "empat puluh dua"
                 ],
                 "hint": "6 × 7 = 7 + 7 + 7 + 7 + 7 + 7 = 42.",
-                "section": "Isian Singkat (10 Soal)"
+                "section": "Isian Singkat (15 Soal)"
             },
             {
                 "id": 2,
@@ -504,6 +504,63 @@
                     "enam buku"
                 ],
                 "hint": "Buku untuk setiap anak = 48 : 8 = 6 buku."
+            },
+            {
+                "id": 11,
+                "type": "isian",
+                "text": "Lengkapilah perkalian berikut: 9 × .... = 63.",
+                "answer": "7",
+                "alt": [
+                    "tujuh"
+                ],
+                "hint": "63 : 9 = 7, sehingga 9 × 7 = 63."
+            },
+            {
+                "id": 12,
+                "type": "isian",
+                "text": "Hasil dari 32 × 3 adalah ....",
+                "answer": "96",
+                "alt": [
+                    "sembilan puluh enam"
+                ],
+                "hint": "32 × 3 = (30 × 3) + (2 × 3) = 90 + 6 = 96."
+            },
+            {
+                "id": 13,
+                "type": "isian",
+                "text": "Pada pembagian 24 : 6, bilangan 24 dikurangi 6 berulang kali sampai menjadi 0. Pengurangan dilakukan sebanyak .... kali.",
+                "answer": "4",
+                "alt": [
+                    "empat",
+                    "4 kali",
+                    "empat kali"
+                ],
+                "hint": "24 − 6 − 6 − 6 − 6 = 0. Jadi, ada 4 kali pengurangan."
+            },
+            {
+                "id": 14,
+                "type": "isian",
+                "text": "Toko memiliki 7 kotak. Setiap kotak berisi 9 pensil. Jumlah pensil seluruhnya adalah .... batang.",
+                "answer": "63",
+                "alt": [
+                    "enam puluh tiga",
+                    "63 batang",
+                    "enam puluh tiga batang",
+                    "63 pensil"
+                ],
+                "hint": "Ada 7 kelompok berisi 9 pensil, jadi jumlahnya 7 × 9 = 63."
+            },
+            {
+                "id": 15,
+                "type": "isian",
+                "text": "Sebanyak 96 kue dibagi rata ke dalam 8 kotak. Setiap kotak berisi .... kue.",
+                "answer": "12",
+                "alt": [
+                    "dua belas",
+                    "12 kue",
+                    "dua belas kue"
+                ],
+                "hint": "96 : 8 = 12. Setiap kotak berisi 12 kue."
             }
         ];
 
@@ -661,7 +718,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

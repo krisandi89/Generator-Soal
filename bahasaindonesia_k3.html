@@ -374,7 +374,7 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
             </div>
             <h1>📖 Bahasa Indonesia</h1>
             <p>SDIT Friends — Kelas 3</p>
@@ -409,7 +409,7 @@
                     "kata serapan"
                 ],
                 "hint": "Kata serapan dapat berasal dari bahasa daerah maupun bahasa asing.",
-                "section": "Isian Singkat (10 Soal)"
+                "section": "Isian Singkat (15 Soal)"
             },
             {
                 "id": 2,
@@ -497,6 +497,57 @@
                 "answer": "menyimpan",
                 "alt": [],
                 "hint": "Predikat menjelaskan kegiatan subjek. Kegiatan Dona dalam kalimat tersebut adalah menyimpan."
+            },
+            {
+                "id": 11,
+                "type": "isian",
+                "text": "Kata “rampung” pada kalimat “Pekerjaan Dini sudah rampung” berarti ....",
+                "answer": "selesai",
+                "alt": [
+                    "sudah selesai",
+                    "tuntas"
+                ],
+                "hint": "Rampung berarti selesai atau tuntas."
+            },
+            {
+                "id": 12,
+                "type": "isian",
+                "text": "Bacalah kalimat “Rani membaca buku di teras.” Kata yang menjadi objek adalah ....",
+                "answer": "buku",
+                "alt": [],
+                "hint": "Objek menjawab pertanyaan “apa yang dibaca Rani?” Jawabannya adalah buku."
+            },
+            {
+                "id": 13,
+                "type": "isian",
+                "text": "Bacalah kalimat “Adi menyiram tanaman di halaman.” Keterangan tempatnya adalah ....",
+                "answer": "di halaman",
+                "alt": [
+                    "halaman"
+                ],
+                "hint": "Frasa “di halaman” menunjukkan tempat Adi menyiram tanaman."
+            },
+            {
+                "id": 14,
+                "type": "isian",
+                "text": "Bagian teks eksplanasi yang menguraikan urutan proses terjadinya peristiwa disebut ....",
+                "answer": "deretan penjelas",
+                "alt": [
+                    "deret penjelas",
+                    "bagian penjelas"
+                ],
+                "hint": "Deretan penjelas berisi tahapan atau penjelasan peristiwa yang dibahas."
+            },
+            {
+                "id": 15,
+                "type": "isian",
+                "text": "Bagian akhir teks eksplanasi yang merangkum informasi disebut ....",
+                "answer": "simpulan",
+                "alt": [
+                    "kesimpulan",
+                    "penutup"
+                ],
+                "hint": "Simpulan berisi kesimpulan dari informasi yang telah dijelaskan."
             }
         ];
 
@@ -654,7 +705,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
