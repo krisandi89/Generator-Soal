@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>➗ Matematika</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 1: Bilangan Cacah s.d 1.000 & Bab 2: Operasi Hitung (Hal. 2-35)</div>
+            <div class="badge">Bab 2: Perkalian dan Pembagian Bilangan Cacah (Hal. 38–50)</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,422 +400,112 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Lambang bilangan dari 'tujuh ratus empat puluh delapan' adalah...",
-                "options": [
-                        "748",
-                        "784",
-                        "478",
-                        "704"
+                "type": "isian",
+                "text": "Hasil dari 6 × 7 adalah ....",
+                "answer": "42",
+                "alt": [
+                    "empat puluh dua"
                 ],
-                "answer": 0,
-                "hint": "7 ratusan, 4 puluhan, dan 8 satuan ditulis 748."
-        },
-        {
+                "hint": "6 × 7 = 7 + 7 + 7 + 7 + 7 + 7 = 42.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Nama bilangan dari lambang bilangan 905 yang benar adalah...",
-                "options": [
-                        "Sembilan puluh lima",
-                        "Sembilan ratus lima",
-                        "Sembilan ratus lima puluh",
-                        "Sembilan ratus lima belas"
+                "type": "isian",
+                "text": "Hasil dari 8 × 9 adalah ....",
+                "answer": "72",
+                "alt": [
+                    "tujuh puluh dua"
                 ],
-                "answer": 1,
-                "hint": "Angka 9 menempati ratusan (sembilan ratus) dan angka 5 di satuan (lima), sehingga dibaca sembilan ratus lima."
-        },
-        {
+                "hint": "8 × 9 = 72."
+            },
+            {
                 "id": 3,
-                "type": "pg",
-                "text": "Pada bilangan 624, nilai tempat untuk angka 6 adalah...",
-                "options": [
-                        "Satuan",
-                        "Puluhan",
-                        "Ratusan",
-                        "Ribuan"
+                "type": "isian",
+                "text": "Penjumlahan 4 + 4 + 4 + 4 + 4 sama dengan 5 × 4. Hasilnya adalah ....",
+                "answer": "20",
+                "alt": [
+                    "dua puluh"
                 ],
-                "answer": 2,
-                "hint": "Pada bilangan 3 angka (ratusan-puluhan-satuan), angka paling depan menempati nilai tempat ratusan."
-        },
-        {
+                "hint": "Ada lima kelompok yang masing-masing berisi 4, sehingga 5 × 4 = 20."
+            },
+            {
                 "id": 4,
-                "type": "pg",
-                "text": "Nilai angka dari angka 7 pada bilangan 873 adalah...",
-                "options": [
-                        "7",
-                        "70",
-                        "700",
-                        "800"
+                "type": "isian",
+                "text": "Hasil dari 7 × 0 adalah ....",
+                "answer": "0",
+                "alt": [
+                    "nol"
                 ],
-                "answer": 1,
-                "hint": "Angka 7 berada pada tempat puluhan, sehingga bernilai 70."
-        },
-        {
+                "hint": "Bilangan apa pun yang dikalikan dengan 0 menghasilkan 0."
+            },
+            {
                 "id": 5,
-                "type": "pg",
-                "text": "Tanda perbandingan yang tepat untuk mengisi titik-titik pada: 582 ... 528 adalah...",
-                "options": [
-                        "< (lebih kecil dari)",
-                        "> (lebih besar dari)",
-                        "= (sama dengan)",
-                        "≠"
+                "type": "isian",
+                "text": "Lengkapilah sesuai sifat pertukaran perkalian: 6 × 8 = .... × 6.",
+                "answer": "8",
+                "alt": [
+                    "delapan"
                 ],
-                "answer": 1,
-                "hint": "Ratusannya sama (5), namun angka puluhannya 8 lebih besar dari 2, maka 582 > 528."
-        },
-        {
+                "hint": "Posisi bilangan dalam perkalian boleh ditukar: 6 × 8 = 8 × 6."
+            },
+            {
                 "id": 6,
-                "type": "pg",
-                "text": "Urutan bilangan 340, 290, 410, 370 mulai dari yang terkecil hingga terbesar adalah...",
-                "options": [
-                        "290, 340, 370, 410",
-                        "410, 370, 340, 290",
-                        "290, 370, 340, 410",
-                        "340, 290, 370, 410"
+                "type": "isian",
+                "text": "Hasil dari 23 × 3 adalah ....",
+                "answer": "69",
+                "alt": [
+                    "enam puluh sembilan"
                 ],
-                "answer": 0,
-                "hint": "Bandingkan angka ratusan dan puluhannya: 290 < 340 < 370 < 410."
-        },
-        {
+                "hint": "23 × 3 = (20 × 3) + (3 × 3) = 60 + 9 = 69."
+            },
+            {
                 "id": 7,
-                "type": "pg",
-                "text": "Hasil penjumlahan dari 345 + 238 adalah...",
-                "options": [
-                        "573",
-                        "583",
-                        "593",
-                        "683"
+                "type": "isian",
+                "text": "Hasil dari 56 : 7 adalah ....",
+                "answer": "8",
+                "alt": [
+                    "delapan"
                 ],
-                "answer": 1,
-                "hint": "5 + 8 = 13 (tulis 3 simpan 1). 1 + 4 + 3 = 8. 3 + 2 = 5. Hasilnya 583."
-        },
-        {
+                "hint": "56 : 7 = 8 karena 8 × 7 = 56."
+            },
+            {
                 "id": 8,
-                "type": "pg",
-                "text": "Hasil pengurangan dari 652 - 279 adalah...",
-                "options": [
-                        "373",
-                        "383",
-                        "473",
-                        "363"
+                "type": "isian",
+                "text": "Hasil dari 84 : 4 adalah ....",
+                "answer": "21",
+                "alt": [
+                    "dua puluh satu"
                 ],
-                "answer": 0,
-                "hint": "Gunakan teknik meminjam: 12 - 9 = 3; 14 - 7 = 7; 5 - 2 = 3. Hasilnya 373."
-        },
-        {
+                "hint": "84 : 4 = (80 : 4) + (4 : 4) = 20 + 1 = 21."
+            },
+            {
                 "id": 9,
-                "type": "pg",
-                "text": "Bentuk penjumlahan berulang dari kalimat perkalian 4 × 6 yang tepat adalah...",
-                "options": [
-                        "4 + 4 + 4 + 4 + 4 + 4",
-                        "6 + 6 + 6 + 6",
-                        "4 + 6",
-                        "6 × 4"
+                "type": "isian",
+                "text": "Ibu menyiapkan 6 kantong. Setiap kantong berisi 5 jeruk. Jumlah seluruh jeruk adalah .... buah.",
+                "answer": "30",
+                "alt": [
+                    "tiga puluh",
+                    "30 buah",
+                    "tiga puluh buah"
                 ],
-                "answer": 1,
-                "hint": "Perkalian 4 × 6 artinya terdapat 4 kelompok dari angka 6, yaitu: 6 + 6 + 6 + 6."
-        },
-        {
+                "hint": "Jumlah jeruk = 6 × 5 = 30 buah."
+            },
+            {
                 "id": 10,
-                "type": "pg",
-                "text": "Hasil pembagian dari 48 : 6 adalah...",
-                "options": [
-                        "6",
-                        "7",
-                        "8",
-                        "9"
-                ],
-                "answer": 2,
-                "hint": "Karena 8 × 6 = 48, maka hasil dari 48 : 6 = 8."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Bilangan-bilangan berikut yang nilainya LEBIH BESAR daripada 650 adalah...",
-                "options": [
-                        "672",
-                        "609",
-                        "705",
-                        "599"
-                ],
-                "answer": [
-                        0,
-                        2
-                ],
-                "hint": "672 dan 705 lebih besar dari 650. 609 dan 599 lebih kecil dari 650."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Manakah pasangan penjumlahan di bawah ini yang hasilnya sama persis dengan 500?",
-                "options": [
-                        "250 + 250",
-                        "320 + 180",
-                        "280 + 230",
-                        "410 + 110"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "250 + 250 = 500 dan 320 + 180 = 500. Sedangkan 280 + 230 = 510 dan 410 + 110 = 520."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Barisan bilangan di bawah ini yang menunjukkan pola bilangan loncat 5 yang teratur adalah...",
-                "options": [
-                        "105, 110, 115, 120",
-                        "250, 255, 260, 265",
-                        "300, 310, 320, 330",
-                        "400, 403, 406, 409"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Pilihan A dan B bertambah 5 pada tiap langkah. Pilihan C adalah loncat 10 dan D adalah loncat 3."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Operasi perkalian berikut yang menghasilkan nilai tepat 24 adalah...",
-                "options": [
-                        "3 × 8",
-                        "4 × 6",
-                        "5 × 5",
-                        "2 × 10"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "3 × 8 = 24 dan 4 × 6 = 24. Pilihan C = 25 dan D = 20."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Operasi pembagian berikut yang menghasilkan angka 7 adalah...",
-                "options": [
-                        "35 : 5",
-                        "42 : 6",
-                        "40 : 5",
-                        "36 : 4"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "35 : 5 = 7 dan 42 : 6 = 7. Sedangkan 40 : 5 = 8 dan 36 : 4 = 9."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Pada bilangan 409, angka 0 menempati nilai tempat puluhan.",
-                "answer": "Benar",
-                "hint": "Angka 4 pada ratusan, angka 0 pada puluhan, dan angka 9 pada satuan."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Bilangan 812 nilainya lebih kecil daripada bilangan 799.",
-                "answer": "Salah",
-                "hint": "812 lebih besar (>) daripada 799 karena angka ratusan 8 lebih besar dari 7."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Setiap bilangan berapapun jika dikalikan dengan angka nol (0) akan selalu menghasilkan nol (0).",
-                "answer": "Benar",
-                "hint": "Sifat perkalian dengan nol selalu menghasilkan 0, contohnya 7 × 0 = 0."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Operasi pembagian pada dasarnya merupakan proses penjumlahan yang dilakukan secara berulang-ulang.",
-                "answer": "Salah",
-                "hint": "Pembagian adalah proses pengurangan berulang sampai habis (0), sedangkan perkalian adalah penjumlahan berulang."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Hasil dari 450 + 250 nilainya sama dengan hasil dari 300 + 400, yaitu 700.",
-                "answer": "Benar",
-                "hint": "Kedua operasi hitung tersebut sama-sama menghasilkan nilai 700."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Hasil dari 350 + 150",
-                "text": "Hasil dari 350 + 150 berpasangan dengan nilai...",
-                "options": [
-                        "500",
-                        "475",
-                        "56",
-                        "6",
-                        "942"
-                ],
-                "answer": "500",
-                "hint": "350 + 150 = 500."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Hasil dari 800 - 325",
-                "text": "Hasil dari 800 - 325 berpasangan dengan nilai...",
-                "options": [
-                        "500",
-                        "475",
-                        "56",
-                        "6",
-                        "942"
-                ],
-                "answer": "475",
-                "hint": "800 - 325 = 475."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Hasil perkalian 7 × 8",
-                "text": "Hasil perkalian 7 × 8 berpasangan dengan nilai...",
-                "options": [
-                        "500",
-                        "475",
-                        "56",
-                        "6",
-                        "942"
-                ],
-                "answer": "56",
-                "hint": "7 × 8 = 56."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Hasil pembagian 54 : 9",
-                "text": "Hasil pembagian 54 : 9 berpasangan dengan nilai...",
-                "options": [
-                        "500",
-                        "475",
-                        "56",
-                        "6",
-                        "942"
-                ],
+                "type": "isian",
+                "text": "Sebanyak 48 buku dibagikan sama banyak kepada 8 anak. Setiap anak mendapat .... buku.",
                 "answer": "6",
-                "hint": "54 : 9 = 6."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "9 ratusan + 4 puluhan + 2 satuan",
-                "text": "9 ratusan + 4 puluhan + 2 satuan berpasangan dengan bilangan...",
-                "options": [
-                        "500",
-                        "475",
-                        "56",
-                        "6",
-                        "942"
-                ],
-                "answer": "942",
-                "hint": "900 + 40 + 2 = 942."
-        },
-        {
-                "id": 26,
-                "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Angka 8 pada lambang bilangan 584 mempunyai nilai angka sebesar ...",
-                "answer": "80",
                 "alt": [
-                        "80",
-                        "delapan puluh"
+                    "enam",
+                    "6 buku",
+                    "enam buku"
                 ],
-                "hint": "Angka 8 berada di tempat puluhan, sehingga bernilai 80."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "Berapakah hasil penjumlahan dari 524 + 189? ...",
-                "answer": "713",
-                "alt": [
-                        "713"
-                ],
-                "hint": "4+9=13 (simpan 1), 1+2+8=11 (simpan 1), 1+5+1=7. Hasilnya 713."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "Berapakah hasil pengurangan dari 800 - 346? ...",
-                "answer": "454",
-                "alt": [
-                        "454"
-                ],
-                "hint": "800 - 346 = 454."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Berapakah hasil perkalian dari 9 × 5? ...",
-                "answer": "45",
-                "alt": [
-                        "45",
-                        "empat puluh lima"
-                ],
-                "hint": "9 × 5 = 45."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "Ibu membeli 3 kotak pensil. Setiap kotak berisi 8 batang pensil. Berapakah jumlah seluruh pensil yang dibeli Ibu? ... batang",
-                "answer": "24",
-                "alt": [
-                        "24",
-                        "24 batang",
-                        "dua puluh empat"
-                ],
-                "hint": "3 kotak × 8 batang = 24 batang pensil."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Tuliskan nama bilangan dari lambang bilangan 673 dan uraikan nilai tempat serta nilai angkanya!",
-                "answer": "Nama bilangan: Enam ratus tujuh puluh tiga.<br>Uraian nilai tempat:<br>- Angka 6 menempati ratusan, nilainya 600.<br>- Angka 7 menempati puluhan, nilainya 70.<br>- Angka 3 menempati satuan, nilainya 3.<br>(Bentuk panjang: 600 + 70 + 3)",
-                "hint": "Menuliskan nama bilangan dengan benar dan menguraikan nilai tempat ratusan, puluhan, dan satuan beserta nilai angkanya."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Urutkan bilangan-bilangan acak berikut ini dari yang nilainya TERBESAR hingga TERKECIL: 450, 725, 390, 680, 510!",
-                "answer": "Urutan dari yang terbesar hingga terkecil adalah:<br><b>725, 680, 510, 450, 390</b>",
-                "hint": "Membandingkan angka ratusan: 725 > 680 > 510 > 450 > 390."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Pak Budi memanen 345 buah mangga pada hari Senin dan 280 buah mangga pada hari Selasa. Berapakah jumlah seluruh buah mangga yang berhasil dipanen oleh Pak Budi?",
-                "answer": "Kalimat matematika: 345 + 280<br>Perhitungan: 345 + 280 = 625 buah mangga.<br>Jadi, jumlah seluruh buah mangga yang dipanen Pak Budi adalah <b>625 buah</b>.",
-                "hint": "Menuliskan kalimat matematika penjumlahan dan menghitung dengan tepat 345 + 280 = 625."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Sebuah toko buku memiliki persediaan 720 buku tulis. Dalam waktu satu minggu, buku tersebut telah terjual sebanyak 385 buku. Berapakah sisa buku tulis yang belum terjual di toko tersebut?",
-                "answer": "Kalimat matematika: 720 - 385<br>Perhitungan: 720 - 385 = 335 buku.<br>Jadi, sisa buku tulis yang belum terjual di toko adalah <b>335 buku</b>.",
-                "hint": "Menuliskan kalimat pengurangan dan menghitung dengan teliti teknik meminjam: 720 - 385 = 335."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Ahmad mempunyai 36 butir kelereng. Seluruh kelereng tersebut akan dibagikan kepada 4 orang sahabatnya dengan jumlah yang sama banyak. Berapakah butir kelereng yang diterima oleh setiap anak? Tuliskan kalimat matematikanya!",
-                "answer": "Kalimat matematika: 36 : 4<br>Perhitungan: 36 : 4 = 9 butir kelereng.<br>Jadi, setiap sahabat Ahmad akan mendapatkan <b>9 butir kelereng</b>.",
-                "hint": "Menuliskan kalimat pembagian 36 : 4 dan menghitung hasilnya dengan benar yaitu 9 butir."
-        }
-];
+                "hint": "Buku untuk setiap anak = 48 : 8 = 6 buku."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -848,7 +538,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -885,9 +575,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -950,16 +643,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -977,7 +661,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

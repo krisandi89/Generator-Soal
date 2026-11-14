@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>🎨 Seni Budaya</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 1: Menggambar & Dekorasi, Bab 2: Unsur Musik (Hal. 3-34)</div>
+            <div class="badge">Bab 3: Gerak Tari dan Maknanya • Bab 4: Menirukan Karakter Tokoh (Hal. 41–71)</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,422 +400,97 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Ukuran perbandingan yang serasi antara satu bagian benda dengan bagian benda lainnya dalam menggambar bangunan rumah dinamakan...",
-                "options": [
-                        "Proporsi",
-                        "Komposisi",
-                        "Tekstur",
-                        "Perspektif"
+                "type": "isian",
+                "text": "Unsur utama dalam seni tari adalah ....",
+                "answer": "gerak",
+                "alt": [
+                    "gerakan",
+                    "gerak tubuh"
                 ],
-                "answer": 0,
-                "hint": "Proporsi adalah perbandingan ukuran yang wajar, misalnya pintu rumah dibuat lebih tinggi daripada jendela."
-        },
-        {
+                "hint": "Tari menggunakan gerak tubuh yang disusun sesuai irama.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Susunan atau tata letak penempatan keseluruhan objek gambar pada bidang kertas gambar dinamakan...",
-                "options": [
-                        "Sketsa",
-                        "Komposisi",
-                        "Pola ritme",
-                        "Gradasi"
+                "type": "isian",
+                "text": "Gerak tari yang hanya mengutamakan keindahan dan tidak memiliki makna tertentu disebut gerak ....",
+                "answer": "murni",
+                "alt": [
+                    "gerak murni"
                 ],
-                "answer": 1,
-                "hint": "Komposisi mengatur keseimbangan penataan objek gambar agar enak dan harmonis dipandang."
-        },
-        {
+                "hint": "Gerak murni dibuat untuk keindahan, bukan untuk menyampaikan makna tertentu."
+            },
+            {
                 "id": 3,
-                "type": "pg",
-                "text": "Komik yang dibuat dengan teknik menggunting gambar-gambar dari koran, majalah, atau buku bekas lalu ditempelkan pada kertas disebut komik...",
-                "options": [
-                        "Digital",
-                        "Montase",
-                        "Karikatur",
-                        "Manga"
+                "type": "isian",
+                "text": "Gerak tari yang memiliki makna, maksud, atau tujuan tertentu disebut gerak ....",
+                "answer": "maknawi",
+                "alt": [
+                    "gerak maknawi"
                 ],
-                "answer": 1,
-                "hint": "Komik montase memanfaatkan teknik gunting dan tempel gambar dari berbagai media cetak."
-        },
-        {
+                "hint": "Gerak maknawi menyampaikan pesan atau menggambarkan sesuatu."
+            },
+            {
                 "id": 4,
-                "type": "pg",
-                "text": "Kotak atau gelembung yang berisi tulisan percakapan antartokoh dalam cerita komik dinamakan...",
-                "options": [
-                        "Panel komik",
-                        "Balon kata",
-                        "Sketsa dialog",
-                        "Garis tepi"
-                ],
-                "answer": 1,
-                "hint": "Balon kata memuat dialog atau suara batin tokoh komik."
-        },
-        {
+                "type": "isian",
+                "text": "Proses menciptakan dan mengembangkan gerak tari dengan kreativitas serta imajinasi disebut ....",
+                "answer": "improvisasi",
+                "alt": [],
+                "hint": "Improvisasi gerak dapat dilakukan dengan meniru lalu mengembangkan gerakan."
+            },
+            {
                 "id": 5,
-                "type": "pg",
-                "text": "Nilai raba dan sifat dari permukaan suatu benda yang dapat dilihat dengan mata serta diraba dengan tangan dinamakan...",
-                "options": [
-                        "Tekstur",
-                        "Warna",
-                        "Bentuk",
-                        "Ruang"
-                ],
-                "answer": 0,
-                "hint": "Tekstur adalah sifat permukaan benda, seperti halus, kasar, licin, atau bergelombang."
-        },
-        {
+                "type": "isian",
+                "text": "Permainan dan tari rangku alu menggunakan beberapa batang .... yang digerakkan membuka dan menutup.",
+                "answer": "bambu",
+                "alt": [],
+                "hint": "Penari rangku alu melompat di sela-sela bambu mengikuti irama ketukannya."
+            },
+            {
                 "id": 6,
-                "type": "pg",
-                "text": "Permukaan tumpukan batu kerikil yang tampak kasar saat dilihat dan benar-benar terasa kasar saat diraba termasuk contoh tekstur...",
-                "options": [
-                        "Semu",
-                        "Nyata",
-                        "Buatan",
-                        "Maya"
+                "type": "isian",
+                "text": "Sifat atau watak seorang tokoh disebut ....",
+                "answer": "karakter",
+                "alt": [
+                    "karakter tokoh"
                 ],
-                "answer": 1,
-                "hint": "Tekstur nyata memberikan kesan visual dan rasa rabaan fisik yang sama persis."
-        },
-        {
+                "hint": "Karakter perlu dipahami agar gerak, suara, dan ekspresi sesuai dengan tokoh yang diperankan."
+            },
+            {
                 "id": 7,
-                "type": "pg",
-                "text": "Gambar hiasan dengan pola motif garis, flora (tumbuhan), atau fauna yang bertujuan memperindah permukaan benda disebut gambar...",
-                "options": [
-                        "Dekoratif",
-                        "Montase",
-                        "Karikatur",
-                        "Realis"
-                ],
-                "answer": 0,
-                "hint": "Gambar dekoratif berfungsi menghias permukaan benda seperti keramik, layang-layang, dan jadwal pelajaran."
-        },
-        {
+                "type": "isian",
+                "text": "Dongeng yang tokoh-tokohnya berupa hewan disebut ....",
+                "answer": "fabel",
+                "alt": [],
+                "hint": "Contoh fabel adalah cerita Kancil dan Harimau atau Kucing dan Kerbau."
+            },
+            {
                 "id": 8,
-                "type": "pg",
-                "text": "Ukuran cepat atau lambatnya birama suatu lagu saat dinyanyikan dinamakan...",
-                "options": [
-                        "Tempo",
-                        "Dinamika",
-                        "Nada",
-                        "Irama"
-                ],
-                "answer": 0,
-                "hint": "Tempo mengatur kecepatan ketukan lagu, ada tempo cepat (allegro), sedang (moderato), dan lambat (lento/adagio)."
-        },
-        {
+                "type": "isian",
+                "text": "Bermain peran dengan gerak tubuh dan ekspresi wajah tanpa berbicara disebut ....",
+                "answer": "pantomim",
+                "alt": [],
+                "hint": "Pantomim menyampaikan peran atau peristiwa melalui gerak dan ekspresi, tanpa kata-kata."
+            },
+            {
                 "id": 9,
-                "type": "pg",
-                "text": "Alat musik yang berfungsi mengatur jalannya ketukan irama dan tidak memiliki susunan nada do-re-mi dinamakan alat musik...",
-                "options": [
-                        "Melodis",
-                        "Ritmis",
-                        "Harmonis",
-                        "Elektronik"
-                ],
-                "answer": 1,
-                "hint": "Alat musik ritmis menghasilkan ketukan dan irama tanpa tangga nada."
-        },
-        {
+                "type": "isian",
+                "text": "Orang yang memainkan pantomim disebut ....",
+                "answer": "pantomimer",
+                "alt": [],
+                "hint": "Pantomimer memerankan tokoh menggunakan ekspresi wajah dan gerak tubuh."
+            },
+            {
                 "id": 10,
-                "type": "pg",
-                "text": "Contoh alat musik ritmis tradisional yang dimainkan dengan cara dipukul menggunakan telapak tangan adalah...",
-                "options": [
-                        "Pianika",
-                        "Rebana / Gendang",
-                        "Rekorder",
-                        "Gitar"
-                ],
-                "answer": 1,
-                "hint": "Rebana dan gendang adalah contoh alat musik ritmis yang tidak bernada dan dimainkan dengan dipukul."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Prinsip-prinsip seni yang wajib diperhatikan saat menggambar bangunan rumah adalah...",
-                "options": [
-                        "Proporsi (perbandingan ukuran bagian bangunan)",
-                        "Komposisi (penataan letak ruang dan objek)",
-                        "Menjiplak karya orang lain tanpa izin",
-                        "Mengabaikan garis tepi dan kebersihan gambar"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Proporsi dan komposisi adalah dua prinsip utama dalam menggambar arsitektur dan benda."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Ciri khas yang terdapat pada sebuah lembaran komik cerita bergambar adalah...",
-                "options": [
-                        "Terdapat kotak-kotak pembatas adegan yang disebut panel",
-                        "Memiliki balon kata untuk menuliskan percakapan tokoh",
-                        "Hanya berisi tulisan tanpa gambar apa pun",
-                        "Selalu dicetak tanpa warna sama sekali"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Komik memadukan gambar ilustrasi dalam panel dan dialog dalam balon kata secara runtut."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Benda-benda di sekitar kita yang memiliki tekstur permukaan KASAR saat diraba adalah...",
-                "options": [
-                        "Kulit buah salak yang bersisik",
-                        "Batu kerikil dan aspal jalan",
-                        "Permukaan kaca jendela yang rata",
-                        "Permukaan kertas cermin"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Kulit salak dan batu kerikil bertekstur kasar. Kaca dan cermin bertekstur halus dan licin."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Alat musik di bawah ini yang tergolong ke dalam alat musik MELODIS (memiliki susunan nada tangga nada) adalah...",
-                "options": [
-                        "Pianika",
-                        "Rekorder (seruling tiup)",
-                        "Marakas",
-                        "Tamborin"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Pianika dan rekorder dapat memainkan melodi lagu (nada). Marakas dan tamborin adalah alat musik ritmis."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Benda-benda sehari-hari yang sering dihias menggunakan motif gambar dekoratif adalah...",
-                "options": [
-                        "Kertas layang-layang",
-                        "Kartu jadwal pelajaran sekolah",
-                        "Kaca spion mobil",
-                        "Layar proyektor kelas"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Gambar dekoratif sering digambar pada layang-layang, jadwal pelajaran, kain batik, atau kartu ucapan."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Tekstur semu adalah tekstur benda yang tampak kasar pada lukisan/gambar, namun saat diraba permukaannya tetap terasa halus dan rata.",
-                "answer": "Benar",
-                "hint": "Tekstur semu hanya berupa ilusi optik pada gambar 2 dimensi."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Saat menggambar rumah yang proporsional, ukuran jendela biasanya digambar jauh lebih besar dan tinggi daripada pintu depan rumah.",
-                "answer": "Salah",
-                "hint": "Secara proporsional, pintu dibuat lebih tinggi daripada jendela agar manusia bisa melewatinya."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Gambar dekoratif dapat mempercantik tampilan suatu benda tanpa mengubah bentuk asli dari benda tersebut.",
-                "answer": "Benar",
-                "hint": "Gambar dekoratif berfungsi murni sebagai hiasan estetis untuk memperindah bidang."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Alat musik tamborin dan marakas adalah contoh alat musik melodis yang dapat membunyikan lagu bertangga nada lengkap.",
-                "answer": "Salah",
-                "hint": "Tamborin dan marakas adalah alat musik ritmis yang tidak memiliki tangga nada do-re-mi."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Tanda birama 4/4 dalam sebuah lagu menunjukkan bahwa dalam setiap ruas birama terdapat 4 ketukan.",
-                "answer": "Benar",
-                "hint": "Birama 4/4 memiliki hitungan 4 ketukan dalam setiap ruas lagu."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Proporsi",
-                "text": "Konsep 'Proporsi' berpasangan dengan pengertian...",
-                "options": [
-                        "Perbandingan ukuran antartepi dan bagian benda",
-                        "Penataan susunan tata letak objek pada kertas",
-                        "Alat musik ritmis penghasil ketukan",
-                        "Alat musik melodis pengiring nada lagu",
-                        "Ukuran cepat lambatnya ketukan lagu"
-                ],
-                "answer": "Perbandingan ukuran antartepi dan bagian benda",
-                "hint": "Proporsi berkaitan dengan rasio perbandingan ukuran antarbagian."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Komposisi",
-                "text": "Konsep 'Komposisi' berpasangan dengan pengertian...",
-                "options": [
-                        "Perbandingan ukuran antartepi dan bagian benda",
-                        "Penataan susunan tata letak objek pada kertas",
-                        "Alat musik ritmis penghasil ketukan",
-                        "Alat musik melodis pengiring nada lagu",
-                        "Ukuran cepat lambatnya ketukan lagu"
-                ],
-                "answer": "Penataan susunan tata letak objek pada kertas",
-                "hint": "Komposisi mengatur posisi, tata letak, dan keseimbangan objek."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Gendang / Rebana",
-                "text": "Alat musik 'Gendang / Rebana' berpasangan dengan kategori...",
-                "options": [
-                        "Perbandingan ukuran antartepi dan bagian benda",
-                        "Penataan susunan tata letak objek pada kertas",
-                        "Alat musik ritmis penghasil ketukan",
-                        "Alat musik melodis pengiring nada lagu",
-                        "Ukuran cepat lambatnya ketukan lagu"
-                ],
-                "answer": "Alat musik ritmis penghasil ketukan",
-                "hint": "Gendang/rebana adalah alat musik ritmis tak bernada."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Pianika / Rekorder",
-                "text": "Alat musik 'Pianika / Rekorder' berpasangan dengan kategori...",
-                "options": [
-                        "Perbandingan ukuran antartepi dan bagian benda",
-                        "Penataan susunan tata letak objek pada kertas",
-                        "Alat musik ritmis penghasil ketukan",
-                        "Alat musik melodis pengiring nada lagu",
-                        "Ukuran cepat lambatnya ketukan lagu"
-                ],
-                "answer": "Alat musik melodis pengiring nada lagu",
-                "hint": "Pianika dan rekorder memainkan susunan melodi lagu."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Tempo Lagu",
-                "text": "Konsep 'Tempo Lagu' berpasangan dengan pengertian...",
-                "options": [
-                        "Perbandingan ukuran antartepi dan bagian benda",
-                        "Penataan susunan tata letak objek pada kertas",
-                        "Alat musik ritmis penghasil ketukan",
-                        "Alat musik melodis pengiring nada lagu",
-                        "Ukuran cepat lambatnya ketukan lagu"
-                ],
-                "answer": "Ukuran cepat lambatnya ketukan lagu",
-                "hint": "Tempo menentukan ritme kecepatan lagu."
-        },
-        {
-                "id": 26,
                 "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Kotak pembatas tempat menggambar adegan pada lembaran komik disebut ...",
-                "answer": "panel",
-                "alt": [
-                        "panel",
-                        "kotak panel",
-                        "frame"
-                ],
-                "hint": "Panel komik membatasi tiap adegan cerita."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "Gambar berpola motif yang bertujuan untuk menghias dan mempercantik permukaan bidang dinamakan gambar ...",
-                "answer": "dekoratif",
-                "alt": [
-                        "dekoratif",
-                        "ornamen"
-                ],
-                "hint": "Karya dekoratif mengutamakan keindahan hiasan."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "Tanda yang menunjukkan banyaknya jumlah ketukan di setiap ruas birama pada lagu disebut tanda ...",
-                "answer": "birama",
-                "alt": [
-                        "birama"
-                ],
-                "hint": "Contoh tanda birama adalah 2/4, 3/4, dan 4/4."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Keras dan lembutnya bunyi yang dimainkan dalam lagu dinamakan ...",
-                "answer": "dinamika",
-                "alt": [
-                        "dinamika"
-                ],
-                "hint": "Dinamika memberi ekspresi kekuatan bunyi suara dalam lagu."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "Permukaan benda yang tidak memiliki gerigi, rata, dan licin saat diraba dikelompokkan ke dalam tekstur ...",
-                "answer": "halus",
-                "alt": [
-                        "halus",
-                        "licin"
-                ],
-                "hint": "Contoh tekstur halus adalah kertas gambar, cermin, dan sutra."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Jelaskan perbedaan mendasar antara 'tekstur nyata' dan 'tekstur semu' beserta contoh bendanya!",
-                "answer": "1. <b>Tekstur Nyata</b>: Sifat permukaan benda yang jika dilihat dan diraba memberikan kesan yang sama persis. Contohnya: Batu kerikil yang tampak kasar dan saat diraba benar-benar terasa kasar.<br><br>2. <b>Tekstur Semu</b>: Sifat permukaan benda yang tampak berbeda antara kesan penglihatan dan rabaan. Contohnya: Gambar lukisan dinding batu bata yang tampak kasar dan retak, namun saat diraba kertas gambarnya tetap licin dan halus.",
-                "hint": "Menjelaskan tekstur nyata (dilihat dan diraba sama) vs semu (dilihat berbeda dengan rabaan) serta contohnya."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Sebutkan langkah-langkah yang harus dilakukan untuk membuat komik cerita sederhana!",
-                "answer": "1. Menentukan tema atau cerita yang akan disampaikan.<br>2. Membuat garis kotak-kotak panel menggunakan penggaris di kertas gambar.<br>3. Menggambar sketsa karakter tokoh dan latar suasana cerita di setiap panel.<br>4. Menambahkan balon kata berisi kalimat percakapan tokoh.<br>5. Menebalkan garis gambar dengan spidol dan memberi warna yang menarik.",
-                "hint": "Langkah pembuatan komik: ide cerita, membuat panel, membuat sketsa, menambah balon kata, lalu mewarnai."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Apakah fungsi penting dari balon kata dalam sebuah cerita komik bergambar?",
-                "answer": "Fungsi balon kata adalah sebagai tempat untuk menuliskan teks dialog, percakapan antartokoh, maupun suara hati (monolog) tokoh komik, sehingga pembaca dapat memahami jalan cerita dan apa yang sedang dibicarakan oleh karakter di setiap panel komik.",
-                "hint": "Menjelaskan balon kata sebagai wadah dialog dan narasi ucapan karakter komik."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Jelaskan perbedaan antara alat musik ritmis dan alat musik melodis, serta sebutkan 2 contoh untuk masing-masingnya!",
-                "answer": "1. <b>Alat musik ritmis</b>: Alat musik yang tidak memiliki nada (tidak memiliki tangga nada do-re-mi) dan berfungsi sebagai pengatur tempo atau irama lagu. Contohnya: Marakas, Tamborin, dan Gendang.<br><br>2. <b>Alat musik melodis</b>: Alat musik yang menghasilkan nada atau susunan melodi lagu (do, re, mi, fa, sol, la, si). Contohnya: Pianika, Rekorder, dan Gitar.",
-                "hint": "Menjelaskan ritmis (tidak bernada, mengatur ketukan) dan melodis (memiliki nada pengiring lagu) beserta masing-masing 2 contoh."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Sebutkan 3 unsur seni rupa yang digunakan untuk membuat pola gambar dekoratif pada layang-layang atau jadwal pelajaran!",
-                "answer": "1. <b>Garis</b> (garis lurus, lengkung, bergelombang, atau zig-zag).<br>2. <b>Bidang / Bentuk</b> (lingkaran, segitiga, persegi, atau motif daun/bunga).<br>3. <b>Warna</b> (pemberian warna cerah yang serasi untuk memperindah tampilan hiasan).",
-                "hint": "Menyebutkan unsur seni rupa seperti titik, garis, bidang/bentuk, dan warna."
-        }
-];
+                "text": "Percakapan antartokoh dalam sebuah cerita atau pertunjukan disebut ....",
+                "answer": "dialog",
+                "alt": [],
+                "hint": "Dialog disampaikan dengan suara, emosi, dan gerak tubuh yang sesuai karakter tokoh."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -848,7 +523,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -885,9 +560,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -950,16 +628,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -977,7 +646,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

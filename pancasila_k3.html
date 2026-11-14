@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>🇮🇩 Pendidikan Pancasila</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 1: Makna dan Penerapan Sila Pancasila (Hal. 2-27)</div>
+            <div class="badge">Bab 2: Kewajiban dan Hak dalam Melaksanakan Aturan (Hal. 40–61)</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,429 +400,101 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Simbol sila pertama Pancasila, 'Ketuhanan Yang Maha Esa', dilambangkan dengan gambar...",
-                "options": [
-                        "Rantai emas",
-                        "Bintang emas",
-                        "Pohon beringin",
-                        "Kepala banteng"
+                "type": "isian",
+                "text": "Ketentuan yang harus dipatuhi agar kehidupan menjadi tertib disebut ....",
+                "answer": "aturan",
+                "alt": [
+                    "peraturan",
+                    "tata tertib"
                 ],
-                "answer": 1,
-                "hint": "Bintang emas bersudut lima berlatar hitam melambangkan sila pertama Ketuhanan Yang Maha Esa."
-        },
-        {
+                "hint": "Aturan berlaku di rumah, sekolah, dan masyarakat untuk menciptakan ketertiban.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Bunyi dari sila kedua Pancasila yang benar adalah...",
-                "options": [
-                        "Ketuhanan Yang Maha Esa",
-                        "Kemanusiaan yang adil dan beradab",
-                        "Persatuan Indonesia",
-                        "Keadilan sosial bagi seluruh rakyat Indonesia"
-                ],
-                "answer": 1,
-                "hint": "Sila ke-2 berbunyi 'Kemanusiaan yang adil dan beradab' dengan lambang mata rantai emas."
-        },
-        {
+                "type": "isian",
+                "text": "Sesuatu yang harus kita laksanakan dengan penuh tanggung jawab disebut ....",
+                "answer": "kewajiban",
+                "alt": [],
+                "hint": "Kewajiban adalah hal yang harus dilakukan, seperti belajar dan menjaga kebersihan."
+            },
+            {
                 "id": 3,
-                "type": "pg",
-                "text": "Pohon beringin pada perisai Garuda Pancasila melambangkan sila...",
-                "options": [
-                        "Pertama",
-                        "Kedua",
-                        "Ketiga",
-                        "Keempat"
-                ],
-                "answer": 2,
-                "hint": "Pohon beringin melambangkan tempat berteduh dan persatuan seluruh rakyat Indonesia (Sila ke-3: Persatuan Indonesia)."
-        },
-        {
+                "type": "isian",
+                "text": "Mendapat kasih sayang dari orang tua merupakan contoh .... anak di rumah.",
+                "answer": "hak",
+                "alt": [],
+                "hint": "Kasih sayang orang tua, makanan sehat, dan tempat tinggal merupakan contoh hak anak."
+            },
+            {
                 "id": 4,
-                "type": "pg",
-                "text": "Kegiatan musyawarah untuk menentukan ketua kelas di sekolah merupakan pengamalan Pancasila sila ke-...",
-                "options": [
-                        "Kedua",
-                        "Ketiga",
-                        "Keempat",
-                        "Kelima"
+                "type": "isian",
+                "text": "Mengerjakan tugas sampai selesai merupakan sikap bertanggung ....",
+                "answer": "jawab",
+                "alt": [
+                    "tanggung jawab"
                 ],
-                "answer": 2,
-                "hint": "Sila ke-4 menekankan pentingnya musyawarah untuk mencapai mufakat dalam mengambil keputusan bersama."
-        },
-        {
+                "hint": "Melaksanakan kewajiban dengan sungguh-sungguh menunjukkan tanggung jawab."
+            },
+            {
                 "id": 5,
-                "type": "pg",
-                "text": "Semboyan persatuan bangsa yang dicengkeram oleh kedua kaki burung Garuda Pancasila berbunyi...",
-                "options": [
-                        "Tut Wuri Handayani",
-                        "Bhinneka Tunggal Ika",
-                        "Ing Ngarsa Sung Tuladha",
-                        "Indonesia Bersatu"
+                "type": "isian",
+                "text": "Aturan di rumah harus dipatuhi oleh seluruh anggota ....",
+                "answer": "keluarga",
+                "alt": [
+                    "anggota keluarga"
                 ],
-                "answer": 1,
-                "hint": "Semboyan Bhinneka Tunggal Ika bermakna berbeda-beda tetapi tetap satu jua."
-        },
-        {
+                "hint": "Semua anggota keluarga perlu mematuhi aturan yang berlaku di rumah."
+            },
+            {
                 "id": 6,
-                "type": "pg",
-                "text": "Membagi regu piket kebersihan kelas dengan adil dan rata adalah contoh penerapan Pancasila sila ke-...",
-                "options": [
-                        "Pertama",
-                        "Kedua",
-                        "Ketiga",
-                        "Kelima"
+                "type": "isian",
+                "text": "Aturan kelas sebaiknya dibuat melalui kesepakatan ....",
+                "answer": "bersama",
+                "alt": [
+                    "kesepakatan bersama"
                 ],
-                "answer": 3,
-                "hint": "Sila ke-5 'Keadilan sosial bagi seluruh rakyat Indonesia' mengajarkan kita bersikap adil dan tidak membeda-bedakan."
-        },
-        {
+                "hint": "Semua warga kelas diberi kesempatan menyampaikan pendapat dan menyepakati aturan bersama."
+            },
+            {
                 "id": 7,
-                "type": "pg",
-                "text": "Sikap yang tepat saat melihat teman yang berbeda agama sedang menjalankan ibadahnya adalah...",
-                "options": [
-                        "Mengajaknya bermain dengan paksa",
-                        "Menghormati dan tidak mengganggunya",
-                        "Berbicara keras di dekatnya",
-                        "Menyuruhnya berhenti beribadah"
-                ],
-                "answer": 1,
-                "hint": "Sila pertama mengajarkan toleransi dan saling menghargai kebebasan beribadah setiap pemeluk agama."
-        },
-        {
+                "type": "isian",
+                "text": "Agar tidak mengganggu pelajaran, siswa harus datang ke sekolah tepat ....",
+                "answer": "waktu",
+                "alt": [],
+                "hint": "Datang tepat waktu membuat kegiatan belajar dimulai dengan tertib."
+            },
+            {
                 "id": 8,
-                "type": "pg",
-                "text": "Menolong teman yang terjatuh dari sepeda di halaman sekolah merupakan wujud pengamalan sila...",
-                "options": [
-                        "Pertama",
-                        "Kedua",
-                        "Ketiga",
-                        "Keempat"
-                ],
-                "answer": 1,
-                "hint": "Tolong-menolong, saling mengasihi sesama manusia, dan empati merupakan nilai luhur sila ke-2."
-        },
-        {
+                "type": "isian",
+                "text": "Ketika guru menjelaskan, kita perlu mendengarkan agar tidak mengganggu .... teman untuk belajar.",
+                "answer": "hak",
+                "alt": [],
+                "hint": "Setiap siswa mempunyai hak untuk belajar dengan nyaman dan mendengar penjelasan guru."
+            },
+            {
                 "id": 9,
-                "type": "pg",
-                "text": "Jumlah helai bulu pada leher burung Garuda Pancasila melambangkan...",
-                "options": [
-                        "Tanggal kemerdekaan (17 helai)",
-                        "Bulan kemerdekaan (8 helai)",
-                        "Tahun kemerdekaan Indonesia (45 helai)",
-                        "Jumlah sila Pancasila (5 helai)"
+                "type": "isian",
+                "text": "Warga bersama-sama membersihkan selokan dan jalan dalam kegiatan kerja ....",
+                "answer": "bakti",
+                "alt": [
+                    "kerja bakti"
                 ],
-                "answer": 2,
-                "hint": "Bulu pada leher Garuda berjumlah 45 helai, melambangkan tahun kemerdekaan 1945."
-        },
-        {
+                "hint": "Kerja bakti merupakan kegiatan bersama untuk menjaga kebersihan lingkungan masyarakat."
+            },
+            {
                 "id": 10,
-                "type": "pg",
-                "text": "Rasa bangga mengenakan batik dan mencintai produk buatan bangsa sendiri mencerminkan pengamalan sila...",
-                "options": [
-                        "Kedua",
-                        "Ketiga",
-                        "Keempat",
-                        "Kelima"
-                ],
-                "answer": 1,
-                "hint": "Bangga dengan kebudayaan dan produk dalam negeri merupakan wujud cinta tanah air (Sila ke-3)."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Manakah pernyataan berikut yang mencerminkan pengamalan sila pertama Pancasila?",
-                "options": [
-                        "Berdoa dengan sungguh-sungguh sebelum dan sesudah belajar",
-                        "Menghormati teman yang berbeda agama saat beribadah",
-                        "Memaksakan agama kita kepada teman sekelas",
-                        "Menolak berteman dengan orang yang berbeda keyakinan"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Pengamalan sila ke-1 meliputi ketaatan beribadah, berdoa, serta toleransi antarumat beragama."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Perilaku yang menunjukkan pengamalan sila kedua Pancasila di lingkungan sekolah adalah...",
-                "options": [
-                        "Menjenguk teman sekelas yang sedang sakit",
-                        "Mengejek kekurangan teman saat bermain",
-                        "Berbicara dengan tutur kata yang sopan dan santun kepada guru dan teman",
-                        "Mengambil barang milik teman tanpa izin"
-                ],
-                "answer": [
-                        0,
-                        2
-                ],
-                "hint": "Sila ke-2 mengutamakan sikap peduli, saling menghargai martabat sesama, dan beradab dalam bertutur kata."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Tindakan yang dapat mempererat persatuan dan kesatuan sesuai sila ketiga Pancasila adalah...",
-                "options": [
-                        "Mengikuti upacara bendera hari Senin dengan tertib dan khidmat",
-                        "Bekerja sama membersihkan kelas tanpa membedakan suku asal teman",
-                        "Hanya mau berteman dengan teman yang berasal dari daerah yang sama",
-                        "Meremehkan tarian adat dari suku lain"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Sila ke-3 mengajarkan kebersamaan, rukun antarsuku, dan rasa cinta pada tanah air."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Sikap musyawarah yang baik dan benar sesuai pengamalan sila keempat Pancasila adalah...",
-                "options": [
-                        "Mendengarkan dan menghargai pendapat teman saat berdiskusi",
-                        "Menerima keputusan bersama hasil musyawarah dengan lapang dada",
-                        "Marah-marah jika usulan kita tidak disetujui",
-                        "Meninggalkan ruangan saat musyawarah sedang berlangsung"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Musyawarah menuntut sikap saling menghargai pendapat orang lain dan menerima mufakat bersama secara ikhlas."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Sikap hidup hemat dan adil yang sesuai dengan nilai-nilai sila kelima Pancasila adalah...",
-                "options": [
-                        "Menyisihkan sebagian uang jajan untuk ditabung",
-                        "Tidak bergaya hidup boros atau berfoya-foya",
-                        "Membeli mainan mahal setiap hari agar dipuji",
-                        "Menghabiskan uang saku untuk jajan berlebihan"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Sila ke-5 menghargai kerja keras, menganjurkan sikap hemat, rajin menabung, dan menjauhi perilaku boros."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Simbol sila keempat Pancasila pada perisai burung Garuda adalah gambar Kepala Banteng.",
-                "answer": "Benar",
-                "hint": "Kepala banteng melambangkan hewan sosial yang suka berkumpul, mencerminkan musyawarah."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Memaksakan kehendak kita kepada orang lain saat berdiskusi kelompok merupakan sikap yang sesuai dengan nilai-nilai Pancasila.",
-                "answer": "Salah",
-                "hint": "Memaksakan kehendak bertentangan dengan sila ke-4 yang mengutamakan musyawarah dan menghargai pendapat orang lain."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Mata rantai emas yang saling berkait pada lambang sila kedua melambangkan hubungan antarmanusia yang saling bersatu dan tolong-menolong.",
-                "answer": "Benar",
-                "hint": "Mata rantai bulat dan persegi yang saling terikat melambangkan pria dan wanita yang saling membutuhkan dan bersatu kokoh."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Kita hanya wajib bersikap adil kepada teman yang memiliki suku atau agama yang sama dengan kita saja.",
-                "answer": "Salah",
-                "hint": "Sikap adil harus diberikan kepada semua orang tanpa membeda-bedakan latar belakang suku, ras, atau agama."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Jumlah bulu pada ekor burung Garuda Pancasila berjumlah 8 helai, yang melambangkan bulan Agustus (bulan ke-8 kemerdekaan Indonesia).",
-                "answer": "Benar",
-                "hint": "8 helai bulu pada ekor melambangkan bulan kemerdekaan Republik Indonesia (Agustus)."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Sila ke-1: Ketuhanan Yang Maha Esa",
-                "text": "Sila ke-1: Ketuhanan Yang Maha Esa berpasangan dengan simbol...",
-                "options": [
-                        "Bintang Emas",
-                        "Rantai Emas",
-                        "Pohon Beringin",
-                        "Kepala Banteng",
-                        "Padi dan Kapas"
-                ],
-                "answer": "Bintang Emas",
-                "hint": "Bintang emas merupakan simbol sila pertama Pancasila."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Sila ke-2: Kemanusiaan yang Adil dan Beradab",
-                "text": "Sila ke-2: Kemanusiaan yang Adil dan Beradab berpasangan dengan simbol...",
-                "options": [
-                        "Bintang Emas",
-                        "Rantai Emas",
-                        "Pohon Beringin",
-                        "Kepala Banteng",
-                        "Padi dan Kapas"
-                ],
-                "answer": "Rantai Emas",
-                "hint": "Rantai emas merupakan simbol sila kedua Pancasila."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Sila ke-3: Persatuan Indonesia",
-                "text": "Sila ke-3: Persatuan Indonesia berpasangan dengan simbol...",
-                "options": [
-                        "Bintang Emas",
-                        "Rantai Emas",
-                        "Pohon Beringin",
-                        "Kepala Banteng",
-                        "Padi dan Kapas"
-                ],
-                "answer": "Pohon Beringin",
-                "hint": "Pohon beringin merupakan lambang sila ketiga Pancasila."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Sila ke-4: Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan",
-                "text": "Sila ke-4: Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan... berpasangan dengan simbol...",
-                "options": [
-                        "Bintang Emas",
-                        "Rantai Emas",
-                        "Pohon Beringin",
-                        "Kepala Banteng",
-                        "Padi dan Kapas"
-                ],
-                "answer": "Kepala Banteng",
-                "hint": "Kepala banteng merupakan simbol sila keempat Pancasila."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Sila ke-5: Keadilan Sosial bagi Seluruh Rakyat Indonesia",
-                "text": "Sila ke-5: Keadilan Sosial bagi Seluruh Rakyat Indonesia berpasangan dengan simbol...",
-                "options": [
-                        "Bintang Emas",
-                        "Rantai Emas",
-                        "Pohon Beringin",
-                        "Kepala Banteng",
-                        "Padi dan Kapas"
-                ],
-                "answer": "Padi dan Kapas",
-                "hint": "Padi dan kapas melambangkan pangan dan sandang untuk keadilan sosial seluruh rakyat."
-        },
-        {
-                "id": 26,
                 "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Arti dari semboyan Bhinneka Tunggal Ika adalah berbeda-beda tetapi tetap ...",
-                "answer": "satu jua",
+                "text": "Kebiasaan mematuhi aturan dan melakukan kegiatan tepat waktu menunjukkan sikap ....",
+                "answer": "disiplin",
                 "alt": [
-                        "satu",
-                        "satu jua",
-                        "satu juga",
-                        "tetap satu"
+                    "kedisiplinan"
                 ],
-                "hint": "Meskipun memiliki keberagaman suku, bahasa, dan agama, bangsa Indonesia tetap bersatu."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "Dasar negara dan pedoman hidup bangsa Republik Indonesia adalah ...",
-                "answer": "Pancasila",
-                "alt": [
-                        "pancasila"
-                ],
-                "hint": "Pancasila terdiri dari panca (lima) dan sila (dasar)."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "Burung yang dijadikan lambang negara Republik Indonesia adalah burung ...",
-                "answer": "Garuda",
-                "alt": [
-                        "garuda",
-                        "garuda pancasila",
-                        "burung garuda"
-                ],
-                "hint": "Garuda melambangkan kekuatan dan kebesaran bangsa Indonesia."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Menabung dan tidak bergaya hidup boros merupakan contoh pengamalan Pancasila sila ke- ...",
-                "answer": "5",
-                "alt": [
-                        "lima",
-                        "5",
-                        "kelima",
-                        "ke-5",
-                        "ke 5"
-                ],
-                "hint": "Sila kelima memuat butir bersikap hemat dan tidak menggunakan hak milik untuk hal-hal yang bersifat pemborosan."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "Hasil keputusan bersama yang telah disepakati dalam musyawarah harus kita laksanakan dengan penuh rasa ...",
-                "answer": "tanggung jawab",
-                "alt": [
-                        "tanggung jawab",
-                        "ikhlas",
-                        "tanggungjawab"
-                ],
-                "hint": "Setiap peserta musyawarah bertanggung jawab mematuhi dan menjalankan mufakat bersama."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Sebutkan 3 contoh penerapan nilai-nilai sila pertama Pancasila dalam kehidupan sehari-hari di rumah!",
-                "answer": "1. Berdoa sebelum dan sesudah makan atau tidur.<br>2. Menjalankan ibadah tepat waktu bersama keluarga.<br>3. Menghormati orang tua dan saudara yang sedang menjalankan ibadah.",
-                "hint": "Jawaban memuat kegiatan keagamaan, doa harian, dan rasa syukur kepada Tuhan di lingkungan rumah."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Mengapa kita tidak boleh membeda-bedakan teman berdasarkan suku atau warna kulit saat bermain bersama?",
-                "answer": "Karena semua manusia memiliki derajat yang sama sebagai ciptaan Tuhan. Membeda-bedakan teman dapat menimbulkan pertengkaran dan merusak kerukunan serta persatuan bangsa sesuai nilai luhur Pancasila.",
-                "hint": "Menekankan pentingnya persatuan, kesetaraan derajat manusia, dan mencegah perselisihan antarteman."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Jelaskan makna lambang pohon beringin pada sila ketiga Pancasila!",
-                "answer": "Pohon beringin memiliki akar tunjang yang kokoh dan dedaunan yang lebat, yang bermakna sebagai tempat berteduh yang aman dan menyatukan seluruh rakyat Indonesia yang beragam suku dan budayanya dalam satu naungan Negara Kesatuan Republik Indonesia.",
-                "hint": "Pohon beringin melambangkan naungan persatuan yang kokoh bagi seluruh rakyat Indonesia."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Apa yang harus kita lakukan jika pendapat atau usulan yang kita sampaikan tidak terpilih dalam musyawarah kelas?",
-                "answer": "Kita harus bersikap lapang dada, tidak boleh marah atau kecewa, serta tetap menghormati dan mendukung keputusan bersama yang telah disepakati demi kepentingan seluruh warga kelas.",
-                "hint": "Menekankan sikap lapang dada, menghargai pendapat orang lain, dan menjunjung tinggi mufakat."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Sebutkan 2 contoh sikap adil yang dapat kamu lakukan di sekolah!",
-                "answer": "1. Membagi giliran bermain secara merata tanpa pilih kasih.<br>2. Menjalankan piket kelas bersama sesuai jadwal pembagian tugas.",
-                "hint": "Jawaban mencakup pembagian tugas yang merata, tidak memihak, dan menghargai hak teman."
-        }
-];
+                "hint": "Mematuhi aturan melatih disiplin dan membantu menciptakan lingkungan yang nyaman."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -855,7 +527,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -892,9 +564,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -957,16 +632,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -984,7 +650,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

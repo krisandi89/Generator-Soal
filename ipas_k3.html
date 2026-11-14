@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>🌿 IPAS (Ilmu Pengetahuan Alam & Sosial)</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 1: Pancaindra & Bab 2: Keluarga dan Tradisi (Hal. 2-30)</div>
+            <div class="badge">Bab 3: Siklus Hidup Manusia • Bab 4: Siklus Hidup Makhluk Hidup dan Cuaca (Hal. 42–66)</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,426 +400,98 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Bagian mata yang berfungsi mengatur banyak sedikitnya cahaya yang masuk ke dalam bola mata adalah...",
-                "options": [
-                        "Retina",
-                        "Pupil",
-                        "Sklera",
-                        "Alis"
-                ],
-                "answer": 1,
-                "hint": "Pupil adalah lubang di tengah iris yang membesar saat gelap dan mengecil saat terang untuk mengatur intensitas cahaya."
-        },
-        {
+                "type": "isian",
+                "text": "Tinggi badan Musa bertambah dari 125 cm menjadi 130 cm. Pertambahan ukuran tubuh ini disebut ....",
+                "answer": "pertumbuhan",
+                "alt": [],
+                "hint": "Pertumbuhan ditandai bertambahnya ukuran tubuh, seperti tinggi dan berat badan.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Alat indra pada tubuh manusia yang berfungsi untuk mendengarkan getaran bunyi dari lingkungan sekitar adalah...",
-                "options": [
-                        "Hidung",
-                        "Telinga",
-                        "Lidah",
-                        "Mata"
-                ],
-                "answer": 1,
-                "hint": "Telinga adalah organ pendengaran yang menangkap gelombang suara dan meneruskannya ke otak."
-        },
-        {
+                "type": "isian",
+                "text": "Bayi yang semula belum dapat berjalan kemudian mampu berjalan mengalami ....",
+                "answer": "perkembangan",
+                "alt": [],
+                "hint": "Perkembangan ditandai perubahan kemampuan atau fungsi tubuh menuju kematangan."
+            },
+            {
                 "id": 3,
-                "type": "pg",
-                "text": "Udara yang kita hirup melalui hidung disaring dari kotoran dan debu halus oleh...",
-                "options": [
-                        "Tulang hidung",
-                        "Rambut hidung dan selaput lendir",
-                        "Saraf pembau",
-                        "Pangkal tenggorokan"
+                "type": "isian",
+                "text": "Masa peralihan dari anak-anak menuju dewasa disebut masa ....",
+                "answer": "remaja",
+                "alt": [
+                    "masa remaja"
                 ],
-                "answer": 1,
-                "hint": "Rambut-rambut halus (silia) dan lendir di dalam hidung berfungsi menyaring debu serta menghangatkan udara."
-        },
-        {
+                "hint": "Urutan tahap kehidupan manusia meliputi bayi, balita, anak-anak, remaja, dewasa, dan lansia."
+            },
+            {
                 "id": 4,
-                "type": "pg",
-                "text": "Bintil-bintil kecil pada permukaan lidah yang bertugas sebagai reseptor pengecap rasa makanan dinamakan...",
-                "options": [
-                        "Papila",
-                        "Silia",
-                        "Pupil",
-                        "Kornea"
-                ],
-                "answer": 0,
-                "hint": "Papila mengandung saraf pengecap yang peka terhadap rasa manis, asin, asam, dan pahit."
-        },
-        {
+                "type": "isian",
+                "text": "Lansia merupakan singkatan dari ....",
+                "answer": "lanjut usia",
+                "alt": [],
+                "hint": "Lansia berarti lanjut usia. Pada tahap ini, rambut dapat beruban dan kemampuan tubuh mulai menurun."
+            },
+            {
                 "id": 5,
-                "type": "pg",
-                "text": "Lapisan kulit paling luar yang berfungsi sebagai benteng pelindung pertama tubuh dari kuman dan kotoran adalah...",
-                "options": [
-                        "Dermis",
-                        "Epidermis",
-                        "Jaringan lemak",
-                        "Kelenjar minyak"
+                "type": "isian",
+                "text": "Lengkapilah siklus hidup kupu-kupu: telur → ulat → .... → kupu-kupu dewasa.",
+                "answer": "kepompong",
+                "alt": [
+                    "pupa"
                 ],
-                "answer": 1,
-                "hint": "Epidermis adalah lapisan kulit terluar yang senantiasa mengalami pergantian sel kulit mati."
-        },
-        {
+                "hint": "Kupu-kupu mengalami metamorfosis sempurna yang melalui tahap pupa atau kepompong."
+            },
+            {
                 "id": 6,
-                "type": "pg",
-                "text": "Bagian telinga berupa selaput tipis yang bergetar saat menangkap gelombang suara dinamakan...",
-                "options": [
-                        "Daun telinga",
-                        "Gendang telinga",
-                        "Rumah siput",
-                        "Saluran eustachius"
+                "type": "isian",
+                "text": "Belalang muda yang menetas dari telur dan bentuknya mirip belalang dewasa disebut ....",
+                "answer": "nimfa",
+                "alt": [
+                    "nympha"
                 ],
-                "answer": 1,
-                "hint": "Gendang telinga (membran timpani) bergetar ketika gelombang suara menabraknya."
-        },
-        {
+                "hint": "Siklus hidup belalang adalah telur, nimfa, lalu belalang dewasa, tanpa tahap kepompong."
+            },
+            {
                 "id": 7,
-                "type": "pg",
-                "text": "Saudara kandung laki-laki dari ayah atau ibu kita panggil dengan sebutan keluarga...",
-                "options": [
-                        "Kakek",
-                        "Paman",
-                        "Bibi",
-                        "Sepupu"
-                ],
-                "answer": 1,
-                "hint": "Paman adalah sebutan untuk saudara laki-laki dari orang tua kita."
-        },
-        {
+                "type": "isian",
+                "text": "Biji yang mulai tumbuh dan mengeluarkan akar serta tunas menjadi ....",
+                "answer": "kecambah",
+                "alt": [],
+                "hint": "Siklus hidup tumbuhan dari biji berlanjut menjadi kecambah, tumbuhan muda, lalu tumbuhan dewasa."
+            },
+            {
                 "id": 8,
-                "type": "pg",
-                "text": "Keluarga inti (keluarga batih) terdiri dari...",
-                "options": [
-                        "Kakek, nenek, dan paman",
-                        "Ayah, ibu, dan anak",
-                        "Paman, bibi, dan sepupu",
-                        "Tetangga dan teman sekolah"
-                ],
-                "answer": 1,
-                "hint": "Keluarga inti adalah unit terkecil dalam keluarga yang beranggotakan ayah, ibu, dan anak-anaknya."
-        },
-        {
+                "type": "isian",
+                "text": "Penanaman kembali hutan yang gundul untuk memulihkan lingkungan disebut ....",
+                "answer": "reboisasi",
+                "alt": [],
+                "hint": "Reboisasi membantu memulihkan hutan dan menjaga habitat hewan serta tumbuhan."
+            },
+            {
                 "id": 9,
-                "type": "pg",
-                "text": "Saluran pada telinga yang berfungsi menjaga keseimbangan tekanan udara antara telinga tengah dan udara luar adalah...",
-                "options": [
-                        "Saluran Eustachius",
-                        "Koklea",
-                        "Tulang martil",
-                        "Daun telinga"
+                "type": "isian",
+                "text": "Langit dipenuhi awan gelap sehingga sinar matahari tertutup. Keadaan cuaca tersebut disebut ....",
+                "answer": "mendung",
+                "alt": [
+                    "cuaca mendung"
                 ],
-                "answer": 0,
-                "hint": "Saluran Eustachius menghubungkan rongga telinga tengah dengan bagian belakang hidung dan tenggorokan."
-        },
-        {
+                "hint": "Cuaca mendung ditandai awan gelap yang menutupi sinar matahari."
+            },
+            {
                 "id": 10,
-                "type": "pg",
-                "text": "Sikap yang paling tepat untuk menjaga keharmonisan dan kerukunan di dalam keluarga adalah...",
-                "options": [
-                        "Saling menyayangi, menghormati, dan membantu",
-                        "Berebut mainan dengan adik",
-                        "Membantah perkataan orang tua",
-                        "Hanya memikirkan keinginan diri sendiri"
-                ],
-                "answer": 0,
-                "hint": "Kerukunan keluarga tercipta jika setiap anggota keluarga saling menghormati dan bekerja sama."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Manakah di antara bagian-bagian berikut yang menyusun organ mata pada manusia?",
-                "options": [
-                        "Kornea",
-                        "Gendang telinga",
-                        "Retina",
-                        "Koklea"
-                ],
-                "answer": [
-                        0,
-                        2
-                ],
-                "hint": "Kornea dan retina adalah bagian mata. Gendang telinga dan koklea adalah bagian organ telinga."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Rasa-rasa dasar yang dapat dideteksi oleh ujung dan tepi papila lidah kita adalah...",
-                "options": [
-                        "Manis",
-                        "Asin",
-                        "Pedas (rasa panas/terbakar)",
-                        "Harum"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Manis dan asin adalah rasa dasar pengecap. Pedas adalah sensasi panas/nyeri pada saraf lidah, sedangkan harum adalah sensasi aroma bau."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Kebiasaan yang baik dan tepat untuk merawat kesehatan indra penglihatan kita adalah...",
-                "options": [
-                        "Membaca buku dengan penerangan lampu yang cukup terang",
-                        "Membaca buku sambil tiduran di tempat gelap",
-                        "Mengistirahatkan mata sejenak setelah melihat layar gawai (gadget)",
-                        "Melihat cahaya matahari langsung tanpa kacamata pelindung"
-                ],
-                "answer": [
-                        0,
-                        2
-                ],
-                "hint": "Membaca di tempat terang dan beristirahat dari layar gawai menjaga kesehatan retina dan otot mata."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Peran dan kewajiban seorang anak dalam kehidupan sehari-hari di rumah adalah...",
-                "options": [
-                        "Membantu merapikan tempat tidur dan mainan sendiri",
-                        "Belajar dengan rajin dan patuh pada nasihat orang tua",
-                        "Mencari nafkah untuk memenuhi kebutuhan keluarga",
-                        "Memerintah orang tua untuk melayani semua kebutuhan kita"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Kewajiban anak adalah berbakti, belajar, patuh, dan membantu pekerjaan ringan di rumah."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Siapakah yang termasuk dalam anggota keluarga besar (selain keluarga inti)?",
-                "options": [
-                        "Paman dan bibi",
-                        "Kakek dan nenek",
-                        "Ibu kandung",
-                        "Adik kandung"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Keluarga besar mencakup kakek, nenek, paman, bibi, dan sepupu."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Pupil mata manusia akan mengecil saat berada di tempat yang sangat terang atau terpapar cahaya menyilaukan.",
-                "answer": "Benar",
-                "hint": "Pupil mengecil secara otomatis untuk mengurangi cahaya yang masuk agar retina tidak rusak."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Membersihkan kotoran telinga bagian dalam boleh menggunakan benda keras atau tajam seperti peniti.",
-                "answer": "Salah",
-                "hint": "Benda keras dan tajam dapat melukai saluran telinga dan merobek selaput gendang telinga."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Kulit manusia berfungsi sebagai indra peraba yang dapat merasakan rangsangan panas, dingin, tekanan, dan rasa sakit.",
-                "answer": "Benar",
-                "hint": "Pada lapisan kulit terdapat ujung-ujung saraf penerima rangsangan suhu, sentuhan, rabaan, dan nyeri."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Anak dari paman atau bibi kita memiliki hubungan kekerabatan yang disebut dengan sebutan keponakan.",
-                "answer": "Salah",
-                "hint": "Anak dari paman atau bibi disebut sepupu. Keponakan adalah anak dari saudara kandung kita."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Bagian telinga dalam yang memiliki bentuk menyerupai cangkang siput dan berisi cairan penerus getaran bunyi dinamakan koklea.",
-                "answer": "Benar",
-                "hint": "Koklea atau rumah siput mengubah getaran bunyi menjadi sinyal saraf ke otak."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Mata",
-                "text": "Organ Mata berpasangan dengan fungsinya sebagai...",
-                "options": [
-                        "Indra Penglihatan",
-                        "Indra Pendengaran",
-                        "Indra Pembau / Penciuman",
-                        "Indra Pengecap",
-                        "Indra Peraba"
-                ],
-                "answer": "Indra Penglihatan",
-                "hint": "Mata adalah indra untuk melihat pemandangan dan benda sekitar."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Telinga",
-                "text": "Organ Telinga berpasangan dengan fungsinya sebagai...",
-                "options": [
-                        "Indra Penglihatan",
-                        "Indra Pendengaran",
-                        "Indra Pembau / Penciuman",
-                        "Indra Pengecap",
-                        "Indra Peraba"
-                ],
-                "answer": "Indra Pendengaran",
-                "hint": "Telinga adalah organ untuk mendengar suara dan bunyi."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Hidung",
-                "text": "Organ Hidung berpasangan dengan fungsinya sebagai...",
-                "options": [
-                        "Indra Penglihatan",
-                        "Indra Pendengaran",
-                        "Indra Pembau / Penciuman",
-                        "Indra Pengecap",
-                        "Indra Peraba"
-                ],
-                "answer": "Indra Pembau / Penciuman",
-                "hint": "Hidung berfungsi mencium aroma wangi maupun bau tak sedap."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Lidah",
-                "text": "Organ Lidah berpasangan dengan fungsinya sebagai...",
-                "options": [
-                        "Indra Penglihatan",
-                        "Indra Pendengaran",
-                        "Indra Pembau / Penciuman",
-                        "Indra Pengecap",
-                        "Indra Peraba"
-                ],
-                "answer": "Indra Pengecap",
-                "hint": "Lidah berfungsi merasakan aneka cita rasa makanan dan minuman."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Kulit",
-                "text": "Organ Kulit berpasangan dengan fungsinya sebagai...",
-                "options": [
-                        "Indra Penglihatan",
-                        "Indra Pendengaran",
-                        "Indra Pembau / Penciuman",
-                        "Indra Pengecap",
-                        "Indra Peraba"
-                ],
-                "answer": "Indra Peraba",
-                "hint": "Kulit berfungsi meraba permukaan kasar, halus, panas, dan dingin."
-        },
-        {
-                "id": 26,
                 "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Bagian selaput bola mata yang memiliki warna (seperti warna cokelat, hitam, atau biru) disebut ...",
-                "answer": "Iris",
+                "text": "Tumbuhan memerlukan cahaya dari .... untuk membantu membuat makanan.",
+                "answer": "matahari",
                 "alt": [
-                        "iris",
-                        "selaput pelangi"
+                    "sinar matahari"
                 ],
-                "hint": "Iris berfungsi memberi pigmen warna pada mata dan mengatur diameter pupil."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "Sensasi rasa pahit paling peka dirasakan oleh saraf lidah yang berada pada bagian ...",
-                "answer": "pangkal",
-                "alt": [
-                        "pangkal",
-                        "belakang",
-                        "pangkal lidah",
-                        "bagian belakang"
-                ],
-                "hint": "Bagian pangkal atau belakang lidah paling sensitif terhadap rasa pahit."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "Bagan gambar yang menggambarkan hubungan garis keturunan anggota keluarga dari kakek hingga cucu disebut silsilah ...",
-                "answer": "keluarga",
-                "alt": [
-                        "keluarga",
-                        "pohon keluarga"
-                ],
-                "hint": "Silsilah keluarga membantu kita mengetahui garis keturunan asal-usul keluarga kita."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Sosok pemimpin yang bertindak sebagai kepala keluarga dalam keluarga inti adalah ...",
-                "answer": "Ayah",
-                "alt": [
-                        "ayah",
-                        "bapak",
-                        "papa"
-                ],
-                "hint": "Ayah memimpin dan menafkahi keluarga dengan penuh kasih sayang."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "Mata kita akan berkedip secara otomatis jika ada debu mendekat. Gerakan cepat tanpa kita sadari ini disebut gerak ...",
-                "answer": "refleks",
-                "alt": [
-                        "refleks",
-                        "reflek"
-                ],
-                "hint": "Gerak refleks melindungi organ sensitif tubuh dari bahaya secara spontan."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Sebutkan kelima anggota pancaindra pada manusia beserta fungsi utamanya masing-masing!",
-                "answer": "1. Mata: untuk melihat (indra penglihatan).<br>2. Telinga: untuk mendengar (indra pendengaran).<br>3. Hidung: untuk mencium bau/aroma (indra pembau).<br>4. Lidah: untuk mengecap aneka rasa (indra pengecap).<br>5. Kulit: untuk meraba suhu dan permukaan benda (indra peraba).",
-                "hint": "Jawaban lengkap menyebutkan 5 indra: mata, telinga, hidung, lidah, dan kulit beserta fungsinya."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Mengapa kita tidak boleh membaca buku atau bermain gawai di ruangan yang gelap atau redup?",
-                "answer": "Karena di tempat yang gelap atau redup, otot mata harus bekerja ekstra keras untuk memfokuskan pandangan, sehingga pupil membesar terus-menerus. Hal ini dapat menyebabkan mata cepat lelah, perih, pusing, dan merusak kesehatan penglihatan.",
-                "hint": "Menjelaskan dampak buruk ruangan redup terhadap ketegangan otot mata dan kelelahan penglihatan."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Bagaimana cara merawat kebersihan dan kesehatan organ telinga dengan aman?",
-                "answer": "1. Membersihkan daun telinga luar menggunakan kain lembut atau handuk bersih yang dibasahi air hangat.<br>2. Tidak menusuk atau memasukkan benda tajam/keras ke dalam lubang telinga.<br>3. Menghindari mendengarkan musik atau suara bising dengan volume yang terlalu keras.",
-                "hint": "Menjelaskan cara membersihkan bagian luar, larangan benda tajam, dan menghindari suara bising."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Jelaskan apa yang dimaksud dengan silsilah keluarga dan apa manfaat kita mempelajarinya!",
-                "answer": "Silsilah keluarga adalah bagan atau susunan urutan garis keturunan dari sebuah keluarga secara turun-temurun. Manfaat mempelajarinya adalah agar kita mengenal asal-usul keluarga, mengetahui sebutan kekerabatan (kakek, nenek, paman, sepupu), serta mempererat tali persaudaraan.",
-                "hint": "Menjelaskan pengertian bagan keturunan dan manfaat mengenal hubungan persaudaraan keluarga."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Sebutkan 2 contoh kebiasaan baik atau tradisi positif yang sering dilakukan bersama keluarga di rumah!",
-                "answer": "1. Makan bersama di meja makan sambil berbincang hangat dengan orang tua dan saudara.<br>2. Bekerja bakti bersama membersihkan rumah dan merawat tanaman di hari libur.",
-                "hint": "Memberikan contoh konkret kebersamaan keluarga seperti makan bersama, beribadah, atau kerja bakti."
-        }
-];
+                "hint": "Cahaya matahari dibutuhkan tumbuhan dalam proses pembuatan makanan."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -852,7 +524,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -889,9 +561,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -954,16 +629,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -981,7 +647,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

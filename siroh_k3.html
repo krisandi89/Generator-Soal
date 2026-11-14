@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>📜 Siroh Nabawiyah</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Perang Khaibar, Daging Beracun, Umratul Qadha & Fathu Makkah (Hal. 4-17)</div>
+            <div class="badge">Pemegang Kunci Ka'bah, Pidato setelah Penaklukan Makkah, Perang Hunain, dan Perang Thaif (Hal. 20–33)</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,428 +400,130 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Kota Khaibar adalah wilayah perkebunan kurma yang sangat subur dan memiliki benteng-benteng pertahanan besar sebanyak...",
-                "options": [
-                        "3 benteng",
-                        "5 benteng",
-                        "8 benteng",
-                        "12 benteng"
+                "type": "isian",
+                "text": "Sahabat yang mendapat amanah dari Nabi Muhammad Saw. untuk memegang kunci Ka'bah bernama ....",
+                "answer": "Utsman bin Thalhah",
+                "alt": [
+                    "Usman bin Thalhah",
+                    "Utsman bin Talhah",
+                    "Usman bin Talhah",
+                    "Utsman bin Thalha"
                 ],
-                "answer": 2,
-                "hint": "Khaibar memiliki 8 benteng pertahanan yang kokoh dikelilingi kebun kurma yang luas."
-        },
-        {
+                "hint": "Nabi Muhammad Saw. menyerahkan kembali kunci Ka'bah kepada Utsman bin Thalhah sebagai amanah.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Peristiwa Perang Khaibar antara pasukan kaum muslimin melawan persekongkolan kaum Yahudi terjadi pada tahun...",
-                "options": [
-                        "5 Hijriyah",
-                        "7 Hijriyah",
-                        "8 Hijriyah",
-                        "9 Hijriyah"
-                ],
-                "answer": 1,
-                "hint": "Perang Khaibar berlangsung pada tahun ke-7 Hijriyah setelah Perjanjian Hudaibiyah."
-        },
-        {
-                "id": 3,
-                "type": "pg",
-                "text": "Siapakah pemimpin kaum munafik di Madinah yang secara rahasia membocorkan rencana pasukan Nabi Muhammad SAW kepada kaum Yahudi Khaibar?",
-                "options": [
-                        "Abu Sufyan",
-                        "Abdullah bin Ubay",
-                        "Musailamah Al-Kadzdzab",
-                        "Abu Jahal"
-                ],
-                "answer": 1,
-                "hint": "Abdullah bin Ubay bin Salul adalah gembong kaum munafik yang mengabarkan penyerangan ke Khaibar."
-        },
-        {
-                "id": 4,
-                "type": "pg",
-                "text": "Sahabat Nabi yang didoakan dan diludahi matanya yang sakit hingga sembuh total oleh Rasulullah SAW lalu memimpin penaklukan benteng Khaibar adalah...",
-                "options": [
-                        "Umar bin Khattab",
-                        "Abu Bakar Ash-Shiddiq",
-                        "Ali bin Abi Thalib",
-                        "Usman bin Affan"
-                ],
-                "answer": 2,
-                "hint": "Ali bin Abi Thalib menerima panji perang dari Nabi dan berhasil merobohkan pintu benteng Khaibar."
-        },
-        {
-                "id": 5,
-                "type": "pg",
-                "text": "Sahabat yang ditugaskan oleh Rasulullah SAW untuk memimpin taksiran dan pembagian hasil kebun kurma Khaibar secara adil adalah...",
-                "options": [
-                        "Abdullah bin Rawahah",
-                        "Khalid bin Walid",
-                        "Bilal bin Rabah",
-                        "Salman Al-Farisi"
-                ],
-                "answer": 0,
-                "hint": "Abdullah bin Rawahah memimpin pembagian hasil kebun 50:50 dengan kejujuran yang diakui orang Yahudi."
-        },
-        {
-                "id": 6,
-                "type": "pg",
-                "text": "Wanita Yahudi Khaibar yang menyajikan hidangan paha domba beracun kepada Rasulullah SAW bernama...",
-                "options": [
-                        "Hindun binti Utbah",
-                        "Zainab binti Al-Harits",
-                        "Shafiyah binti Huyay",
-                        "Ummu Jamil"
-                ],
-                "answer": 1,
-                "hint": "Zainab binti Al-Harits (istri Sallam bin Misykam) meracuni daging paha domba kesukaan Rasulullah SAW."
-        },
-        {
-                "id": 7,
-                "type": "pg",
-                "text": "Sahabat Nabi yang gugur sebagai syahid akibat menelan daging domba beracun tersebut adalah...",
-                "options": [
-                        "Bisyr bin Al-Barra",
-                        "Hamzah bin Abdul Muthalib",
-                        "Ja'far bin Abi Thalib",
-                        "Zaid bin Haritsah"
-                ],
-                "answer": 0,
-                "hint": "Bisyr bin Al-Barra bin Ma'rur langsung menelan daging tersebut dan meninggal dunia."
-        },
-        {
-                "id": 8,
-                "type": "pg",
-                "text": "Ibadah umrah pengganti yang dilaksanakan kaum muslimin ke Mekkah pada tahun ke-7 Hijriyah dinamakan...",
-                "options": [
-                        "Haji Wada'",
-                        "Umratul Qadha",
-                        "Umrah Hudaibiyah",
-                        "Umrah Sunnah"
-                ],
-                "answer": 1,
-                "hint": "Umratul Qadha dilaksanakan untuk mengganti ibadah umrah yang tertunda pada tahun sebelumnya."
-        },
-        {
-                "id": 9,
-                "type": "pg",
-                "text": "Peristiwa penaklukan kota Mekkah secara damai tanpa pertumpahan darah oleh Rasulullah SAW dinamakan peristiwa...",
-                "options": [
-                        "Fathu Makkah",
-                        "Perang Badar",
-                        "Perang Hunain",
-                        "Bai'at Aqabah"
-                ],
-                "answer": 0,
-                "hint": "Fathu Makkah terjadi pada tahun ke-8 Hijriyah saat kaum muslimin memasuki Mekkah dengan damai."
-        },
-        {
-                "id": 10,
-                "type": "pg",
-                "text": "Berapakah jumlah berhala di sekeliling Ka'bah yang dihancurkan oleh Rasulullah SAW saat peristiwa Fathu Makkah?",
-                "options": [
-                        "100 berhala",
-                        "250 berhala",
-                        "360 berhala",
-                        "500 berhala"
-                ],
-                "answer": 2,
-                "hint": "Terdapat 360 berhala di sekitar Ka'bah yang dirobohkan dengan tongkat Rasulullah SAW."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Nama-nama benteng besar milik kaum Yahudi di Khaibar yang berhasil ditaklukkan oleh pasukan kaum muslimin adalah...",
-                "options": [
-                        "Benteng Naim",
-                        "Benteng Az-Zubair",
-                        "Benteng Konstantinopel",
-                        "Benteng Karbala"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Benteng Naim, Az-Zubair, Ubay, An-Nizar, dan Ash-Sha'b bin Mu'adz adalah benteng-benteng di Khaibar."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Mukjizat dan peristiwa luar biasa yang dialami oleh Rasulullah SAW dalam rangkaian Perang Khaibar adalah...",
-                "options": [
-                        "Sembuhnya mata Ali bin Abi Thalib yang sedang sakit setelah diusap dan didoakan Nabi",
-                        "Tulang daging domba dapat berbicara atas izin Allah memberitahu adanya racun",
-                        "Keluarnya unta betina dari batu besar",
-                        "Tongkat yang berubah menjadi ular besar"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Mata Ali sembuh seketika, dan tulang domba memberi kabar mukjizat bahwa dagingnya dibubuhi racun."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Perjanjian damai dan pengelolaan kebun antara Rasulullah SAW dan penduduk Yahudi Khaibar menetapkan bahwa...",
-                "options": [
-                        "Kaum Yahudi tetap diizinkan menggarap perkebunan kurma mereka",
-                        "Hasil panen kurma dibagi secara adil sebesar 50 persen untuk muslimin dan 50 persen untuk penggarap",
-                        "Seluruh pohon kurma harus ditebang dan dibakar",
-                        "Semua penduduk Yahudi diusir tanpa boleh membawa makanan"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Nabi mengizinkan mereka menggarap kebun dengan sistem bagi hasil adil separuh (50:50)."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Fakta sejarah yang benar mengenai peristiwa ibadah Umratul Qadha adalah...",
-                "options": [
-                        "Dilaksanakan oleh sekitar 2.000 orang kaum muslimin",
-                        "Kaum muslimin melakukan lari-lari kecil (ramal) saat thawaf untuk mematahkan ejekan kaum Quraisy",
-                        "Kaum muslimin berperang sengit di dalam Masjidil Haram",
-                        "Kaum musyrik Quraisy melarang kaum muslimin masuk ke kota Mekkah"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Umratul Qadha diikuti 2.000 sahabat dengan damai selama 3 hari, dengan lari-lari kecil saat 3 putaran pertama thawaf."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Sikap teladan mulia Rasulullah SAW saat peristiwa penaklukan kota Mekkah (Fathu Makkah) adalah...",
-                "options": [
-                        "Memberikan pengampunan umum kepada seluruh penduduk Mekkah yang menyerah",
-                        "Menegaskan bahwa hari penaklukan adalah 'Yaumul Marhamah' (Hari Kasih Sayang)",
-                        "Melakukan balas dendam kepada orang-orang yang pernah menyakiti beliau",
-                        "Membumihanguskan seluruh rumah penduduk Mekkah"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Rasulullah memaafkan semua penduduk Mekkah dengan penuh kasih sayang tanpa dendam sedikit pun."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Kaum Yahudi Khaibar diperangi oleh kaum muslimin karena mereka licik, berkhianat, dan menghasut suku-suku lain untuk memusuhi Islam.",
-                "answer": "Benar",
-                "hint": "Yahudi Khaibar menjadi pusat penghasut Perang Khandaq dan berkhianat kepada Nabi."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Rasulullah SAW melakukan balas dendam dan menghukum mati seluruh kaum musyrik Quraisy saat peristiwa Fathu Makkah.",
-                "answer": "Salah",
-                "hint": "Rasulullah SAW memaafkan mereka dengan sabdanya: 'Pergilah, kalian semua bebas!'"
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Saat thawaf pada Umratul Qadha, kaum muslimin diperintahkan berlari-lari kecil (ramal) untuk memperlihatkan kebugaran dan kekuatan fisik mereka.",
-                "answer": "Benar",
-                "hint": "Ramal mematahkan desas-desus kaum Quraisy yang mengira pasukan muslimin lemah karena penyakit demam."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Sahabat Bisyr bin Al-Barra selamat dan tubuhnya kebal sehingga tidak terpengaruh oleh racun daging domba di Khaibar.",
-                "answer": "Salah",
-                "hint": "Bisyr bin Al-Barra gugur sebagai syahid akibat menelan daging yang mengandung racun pekat."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Peristiwa penaklukan Fathu Makkah terjadi pada tahun ke-8 Hijriyah dengan membawa pasukan kaum muslimin sebanyak 10.000 orang.",
-                "answer": "Benar",
-                "hint": "10.000 pasukan muslimin berbaris memasuki Mekkah dari berbagai penjuru dengan tertib dan damai."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Perang Khaibar",
-                "text": "Peristiwa 'Perang Khaibar' berpasangan dengan tahun peristiwa...",
-                "options": [
-                        "Tahun 7 Hijriyah",
-                        "Ali bin Abi Thalib",
-                        "Zainab binti Al-Harits",
-                        "Tahun 8 Hijriyah",
-                        "Yaumul Marhamah (Hari Kasih Sayang)"
-                ],
-                "answer": "Tahun 7 Hijriyah",
-                "hint": "Perang Khaibar terjadi pada tahun 7 H."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Panglima Penakluk Benteng Khaibar",
-                "text": "Panglima yang memegang panji penakluk Khaibar berpasangan dengan sosok...",
-                "options": [
-                        "Tahun 7 Hijriyah",
-                        "Ali bin Abi Thalib",
-                        "Zainab binti Al-Harits",
-                        "Tahun 8 Hijriyah",
-                        "Yaumul Marhamah (Hari Kasih Sayang)"
-                ],
+                "type": "isian",
+                "text": "Sahabat yang membawa kunci Ka'bah dan menanyakan pemegangnya kepada Nabi Muhammad Saw. adalah ....",
                 "answer": "Ali bin Abi Thalib",
-                "hint": "Ali bin Abi Thalib memimpin penaklukan benteng Khaibar."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Wanita Penyaji Daging Beracun",
-                "text": "Wanita penyaji hidangan paha domba beracun berpasangan dengan nama...",
-                "options": [
-                        "Tahun 7 Hijriyah",
-                        "Ali bin Abi Thalib",
-                        "Zainab binti Al-Harits",
-                        "Tahun 8 Hijriyah",
-                        "Yaumul Marhamah (Hari Kasih Sayang)"
-                ],
-                "answer": "Zainab binti Al-Harits",
-                "hint": "Zainab binti Al-Harits adalah istri Sallam bin Misykam."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Peristiwa Fathu Makkah",
-                "text": "Peristiwa 'Fathu Makkah' berpasangan dengan tahun peristiwa...",
-                "options": [
-                        "Tahun 7 Hijriyah",
-                        "Ali bin Abi Thalib",
-                        "Zainab binti Al-Harits",
-                        "Tahun 8 Hijriyah",
-                        "Yaumul Marhamah (Hari Kasih Sayang)"
-                ],
-                "answer": "Tahun 8 Hijriyah",
-                "hint": "Fathu Makkah berlangsung pada bulan Ramadan tahun 8 H."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Sebutan Hari Penaklukan Mekkah",
-                "text": "Sebutan mulia untuk hari penaklukan Mekkah berpasangan dengan...",
-                "options": [
-                        "Tahun 7 Hijriyah",
-                        "Ali bin Abi Thalib",
-                        "Zainab binti Al-Harits",
-                        "Tahun 8 Hijriyah",
-                        "Yaumul Marhamah (Hari Kasih Sayang)"
-                ],
-                "answer": "Yaumul Marhamah (Hari Kasih Sayang)",
-                "hint": "Yaumul Marhamah menegaskan bahwa Islam membawa perdamaian dan ampunan."
-        },
-        {
-                "id": 26,
-                "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Jumlah benteng pertahanan kokoh milik kaum Yahudi di kota Khaibar berjumlah ... benteng.",
-                "answer": "8",
                 "alt": [
-                        "8",
-                        "delapan",
-                        "8 benteng",
-                        "delapan benteng"
+                    "Ali",
+                    "Ali bin Abi Talib"
                 ],
-                "hint": "Ada 8 benteng pertahanan utama di Khaibar."
-        },
-        {
-                "id": 27,
+                "hint": "Ali bin Abi Thalib membawa kunci Ka'bah sebelum Nabi menyerahkannya kepada Utsman bin Thalhah."
+            },
+            {
+                "id": 3,
                 "type": "isian",
-                "text": "Pemimpin kaum munafik yang membocorkan rahasia keberangkatan tentara Islam ke Khaibar adalah Abdullah bin ...",
-                "answer": "Ubay",
+                "text": "Dalam pidato setelah penaklukan, Nabi Muhammad Saw. menegaskan kesucian kota ....",
+                "answer": "Makkah",
                 "alt": [
-                        "ubay",
-                        "ubay bin salul",
-                        "ubai"
+                    "Mekah",
+                    "Mekkah",
+                    "kota Makkah",
+                    "kota Mekah"
                 ],
-                "hint": "Abdullah bin Ubay adalah tokoh munafik Madinah."
-        },
-        {
-                "id": 28,
+                "hint": "Nabi Muhammad Saw. menegaskan bahwa Makkah adalah kota suci yang harus dijaga keamanannya."
+            },
+            {
+                "id": 4,
                 "type": "isian",
-                "text": "Sahabat Nabi yang ditunjuk untuk membagi hasil kebun kurma Khaibar secara adil adalah Abdullah bin ...",
-                "answer": "Rawahah",
+                "text": "Dalam materi pidato tersebut, tumbuhan yang dikecualikan dari larangan menebang karena dimanfaatkan penduduk Makkah adalah ....",
+                "answer": "Idzkhar",
                 "alt": [
-                        "rawahah",
-                        "ar-rawahah"
+                    "Idzkhir",
+                    "Idkhir",
+                    "Idkhar"
                 ],
-                "hint": "Abdullah bin Rawahah membagi kebun dengan sangat jujur."
-        },
-        {
-                "id": 29,
+                "hint": "Menurut materi, Idzkhar masih boleh diambil karena dimanfaatkan penduduk Makkah untuk keperluan rumah."
+            },
+            {
+                "id": 5,
                 "type": "isian",
-                "text": "Ibadah umrah pengganti yang dilakukan kaum muslimin pada tahun ke-7 Hijriyah dinamakan Umratul ...",
-                "answer": "Qadha",
+                "text": "Nabi Muhammad Saw. bersama Umar bin Khattab membaiat penduduk Makkah yang masuk Islam di Bukit ....",
+                "answer": "Shafa",
                 "alt": [
-                        "qadha",
-                        "qada",
-                        "qodho"
+                    "Safa",
+                    "Shofa",
+                    "Bukit Shafa",
+                    "Bukit Safa"
                 ],
-                "hint": "Qadha bermakna mengganti yang tertunda."
-        },
-        {
-                "id": 30,
+                "hint": "Bukit Shafa menjadi tempat pembaiatan penduduk Makkah yang masuk Islam."
+            },
+            {
+                "id": 6,
                 "type": "isian",
-                "text": "Banyaknya berhala yang dihancurkan di sekitar Ka'bah saat penaklukan Mekkah berjumlah ... buah.",
-                "answer": "360",
+                "text": "Pertempuran melawan kaum Hawazin di sebuah lembah setelah penaklukan Makkah disebut Perang ....",
+                "answer": "Hunain",
                 "alt": [
-                        "360",
-                        "tiga ratus enam puluh",
-                        "360 berhala"
+                    "Perang Hunain",
+                    "Hunayn"
                 ],
-                "hint": "360 patung dan berhala disingkirkan dari Ka'bah."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Mengapa Nabi Muhammad SAW dan pasukan muslimin memutuskan untuk memerangi kaum Yahudi di Khaibar?",
-                "answer": "Karena kaum Yahudi Khaibar bersikap licik dan terus berkhianat. Mereka menjadi otak penghasut yang membujuk suku Quraisy dan Bani Quraizhah untuk menyerang Madinah dalam Perang Khandaq, serta terus merencanakan perlawanan bersenjata untuk menghancurkan kaum muslimin.",
-                "hint": "Menjelaskan pengkhianatan Yahudi Khaibar dan peran mereka menghasut musuh dalam Perang Khandaq."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Bagaimana mukjizat yang dialami Rasulullah SAW saat mengetahui hidangan daging paha domba dari Zainab telah diracuni?",
-                "answer": "Setelah mengunyah sedikit daging tersebut, Rasulullah SAW langsung memuntahkannya karena tulang daging domba tersebut dapat berbicara atas izin Allah SWT dan mengabarkan: 'Wahai Rasulullah, sesungguhnya aku telah dibubuhi racun.'",
-                "hint": "Menjelaskan mukjizat tulang domba yang berbicara memberi tahu bahwa dagingnya beracun."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Mengapa Rasulullah SAW memerintahkan kaum muslimin untuk berlari-lari kecil (ramal) pada putaran awal thawaf saat Umratul Qadha?",
-                "answer": "Untuk memperlihatkan ketangkasan, kekuatan fisik, dan kegagahan kaum muslimin di hadapan orang-orang Quraisy yang menonton dari atas bukit, sekaligus mematahkan kabar bohong mereka yang mengira umat Islam lemah karena terserang demam Madinah.",
-                "hint": "Menjelaskan tujuan ramal untuk menunjukkan kekuatan fisik muslimin dan mematahkan ejekan musuh."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Jelaskan apa yang dimaksud dengan istilah 'Yaumul Marhamah' pada peristiwa Fathu Makkah!",
-                "answer": "'Yaumul Marhamah' memiliki arti 'Hari Kasih Sayang'. Rasulullah SAW menegaskan bahwa hari penaklukan Mekkah bukanlah hari untuk balas dendam atau pertumpahan darah, melainkan hari pengampunan agung di mana semua musuh yang menyerah diampuni dan diperlakukan dengan penuh kasih sayang.",
-                "hint": "Menjelaskan arti Yaumul Marhamah sebagai hari kasih sayang dan pengampunan damai tanpa balas dendam."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Sebutkan 2 keteladanan mulia yang dapat kita contoh dari akhlak Rasulullah SAW saat menaklukkan kota Mekkah!",
-                "answer": "1. <b>Sifat Pemaaf yang Agung</b>: Memaafkan orang-orang yang dahulu pernah menyakiti, mengusir, dan memerangi beliau tanpa menaruh rasa dendam sedikit pun.<br>2. <b>Sifat Rendah Hati (Tawadhu')</b>: Memasuki kota Mekkah dengan menundukkan kepala di atas punggung untanya karena rasa syukur dan tunduk yang mendalam kepada Allah SWT, bukan dengan kesombongan.",
-                "hint": "Menyebutkan keteladanan pemaaf tanpa dendam dan sikap rendah hati (tawadhu') di saat menang."
-        }
-];
+                "hint": "Kaum muslimin menghadapi pasukan Hawazin dalam Perang Hunain."
+            },
+            {
+                "id": 7,
+                "type": "isian",
+                "text": "Harta rampasan perang dalam kisah Perang Hunain disebut ....",
+                "answer": "ghanimah",
+                "alt": [
+                    "ganimah",
+                    "ghonimah",
+                    "gonimah"
+                ],
+                "hint": "Ghanimah berarti harta rampasan perang. Dalam bacaan, pasukan muslimin mendapat ghanimah setelah menang di Hunain."
+            },
+            {
+                "id": 8,
+                "type": "isian",
+                "text": "Sahabat yang menyeru pasukan Anshar dan Muhajirin agar kembali saat Perang Hunain adalah ....",
+                "answer": "Al-Abbas",
+                "alt": [
+                    "Abbas",
+                    "al Abbas",
+                    "Abbas bin Abdul Muththalib",
+                    "Abbas bin Abdul Muthalib",
+                    "Al-Abbas bin Abdul Muththalib"
+                ],
+                "hint": "Al-Abbas memanggil kembali pasukan yang mundur agar berkumpul dan bertahan."
+            },
+            {
+                "id": 9,
+                "type": "isian",
+                "text": "Sahabat yang diutus Nabi Muhammad Saw. untuk memimpin pasukan menuju Thaif adalah ....",
+                "answer": "Khalid bin Walid",
+                "alt": [
+                    "Khalid",
+                    "Khalid bin al-Walid",
+                    "Khalid bin Al Walid"
+                ],
+                "hint": "Dalam kisah Perang Thaif, Nabi Muhammad Saw. mengutus Khalid bin Walid memimpin pasukan."
+            },
+            {
+                "id": 10,
+                "type": "isian",
+                "text": "Setelah mengakhiri pengepungan Thaif, Nabi Muhammad Saw. dan kaum muslimin kembali ke kota ....",
+                "answer": "Madinah",
+                "alt": [
+                    "Medinah",
+                    "kota Madinah"
+                ],
+                "hint": "Kaum muslimin kembali ke Madinah. Nabi tetap mendoakan kaum Tsaqif agar menerima Islam."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -854,7 +556,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -891,9 +593,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -956,16 +661,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -983,7 +679,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

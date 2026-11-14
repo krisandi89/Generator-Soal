@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>📖 Bahasa Indonesia</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 1: Makhluk Hidup & Bab 2: Merawat Hewan dan Tumbuhan (Hal. 2-37)</div>
+            <div class="badge">Bab 3: Kata Serapan, Ide Pokok, Ringkasan, Teks Eksplanasi, dan Kalimat Efektif</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,422 +400,105 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Perbedaan utama antara makhluk hidup dengan benda mati di lingkungan sekitar kita adalah bahwa makhluk hidup...",
-                "options": [
-                        "Tidak memerlukan makanan dan air",
-                        "Bernapas, tumbuh, dan berkembang biak",
-                        "Tidak dapat bergerak sama sekali",
-                        "Bentuk dan ukurannya tidak pernah berubah"
+                "type": "isian",
+                "text": "Kata bahasa Indonesia yang diambil dari bahasa lain disebut kata ....",
+                "answer": "serapan",
+                "alt": [
+                    "kata serapan"
                 ],
-                "answer": 1,
-                "hint": "Ciri makhluk hidup antara lain bernapas, bergerak, memerlukan makanan, tumbuh, dan berkembang biak."
-        },
-        {
+                "hint": "Kata serapan dapat berasal dari bahasa daerah maupun bahasa asing.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Gagasan pokok atau hal utama yang menjadi dasar pengembangan dalam sebuah paragraf bacaan dinamakan...",
-                "options": [
-                        "Kalimat penjelas",
-                        "Ide pokok / pikiran utama",
-                        "Judul cerita",
-                        "Amanat"
-                ],
-                "answer": 1,
-                "hint": "Ide pokok adalah inti pembicaraan yang tertuang di dalam kalimat utama suatu paragraf."
-        },
-        {
+                "type": "isian",
+                "text": "Kamus Besar Bahasa Indonesia biasa disingkat ....",
+                "answer": "KBBI",
+                "alt": [],
+                "hint": "KBBI dapat digunakan untuk mencari makna kata dalam bahasa Indonesia."
+            },
+            {
                 "id": 3,
-                "type": "pg",
-                "text": "Kata tanya yang tepat digunakan untuk menanyakan tempat berlangsungnya sebuah kegiatan atau peristiwa adalah...",
-                "options": [
-                        "Kapan",
-                        "Di mana",
-                        "Siapa",
-                        "Bagaimana"
+                "type": "isian",
+                "text": "Lengkapilah kalimat dengan kata yang tepat: Es batu yang dibiarkan di tempat panas akan berubah menjadi air. Es batu itu ....",
+                "answer": "mencair",
+                "alt": [
+                    "meleleh"
                 ],
-                "answer": 1,
-                "hint": "Kata tanya 'di mana' dijawab dengan nama tempat atau lokasi kejadian."
-        },
-        {
+                "hint": "Mencair adalah perubahan wujud dari padat menjadi cair, seperti es menjadi air."
+            },
+            {
                 "id": 4,
-                "type": "pg",
-                "text": "Kata tanya yang tepat untuk menanyakan sebab atau alasan terjadinya suatu hal adalah...",
-                "options": [
-                        "Mengapa",
-                        "Kapan",
-                        "Berapa",
-                        "Siapa"
+                "type": "isian",
+                "text": "Hal utama yang menjadi dasar penulisan suatu paragraf disebut ....",
+                "answer": "ide pokok",
+                "alt": [
+                    "gagasan pokok",
+                    "gagasan utama",
+                    "pokok pikiran",
+                    "pikiran utama"
                 ],
-                "answer": 0,
-                "hint": "Kata tanya 'mengapa' digunakan untuk menanyakan alasan dan biasanya dijawab dengan kata 'karena' atau 'sebab'."
-        },
-        {
+                "hint": "Ide pokok merupakan inti pembahasan suatu paragraf."
+            },
+            {
                 "id": 5,
-                "type": "pg",
-                "text": "Kata-kata di dalam Kamus Besar Bahasa Indonesia (KBBI) disusun secara teratur berdasarkan urutan...",
-                "options": [
-                        "Panjang pendeknya kata",
-                        "Abjad (alfabet dari A sampai Z)",
-                        "Tahun penemuan kata",
-                        "Tingkat kesulitan kata"
+                "type": "isian",
+                "text": "Ide tambahan yang menjelaskan atau melengkapi ide pokok disebut ide ....",
+                "answer": "pendukung",
+                "alt": [
+                    "ide pendukung",
+                    "penjelas",
+                    "ide penjelas"
                 ],
-                "answer": 1,
-                "hint": "KBBI disusun berurutan secara alfabetis dari huruf A hingga Z untuk memudahkan pencarian kata."
-        },
-        {
+                "hint": "Ide pendukung memberikan uraian atau informasi tambahan tentang ide pokok."
+            },
+            {
                 "id": 6,
-                "type": "pg",
-                "text": "Orang yang memberikan informasi atau menjawab pertanyaan dalam suatu kegiatan wawancara dinamakan...",
-                "options": [
-                        "Pewawancara",
-                        "Narasumber",
-                        "Penonton",
-                        "Notulis"
+                "type": "isian",
+                "text": "Penyajian singkat suatu teks panjang yang tetap memuat informasi penting disebut ....",
+                "answer": "ringkasan",
+                "alt": [
+                    "rangkuman"
                 ],
-                "answer": 1,
-                "hint": "Pewawancara adalah orang yang bertanya, sedangkan narasumber adalah orang yang memberi informasi/jawaban."
-        },
-        {
+                "hint": "Ringkasan disusun dari informasi penting dalam teks asli."
+            },
+            {
                 "id": 7,
-                "type": "pg",
-                "text": "Tumbuhan memerlukan air, unsur hara dari tanah, dan cahaya matahari untuk melangsungkan proses...",
-                "options": [
-                        "Perkembangbiakan buatan",
-                        "Fotosintesis (membuat makanan)",
-                        "Metamorfosis",
-                        "Pernapasan insang"
+                "type": "isian",
+                "text": "Teks yang menjelaskan proses terjadinya suatu peristiwa, misalnya proses penguapan air, disebut teks ....",
+                "answer": "eksplanasi",
+                "alt": [
+                    "teks eksplanasi"
                 ],
-                "answer": 1,
-                "hint": "Fotosintesis adalah proses tumbuhan hijau mengolah makanannya sendiri dengan bantuan cahaya matahari."
-        },
-        {
+                "hint": "Teks eksplanasi menjelaskan proses atau peristiwa berdasarkan fakta secara berurutan."
+            },
+            {
                 "id": 8,
-                "type": "pg",
-                "text": "Daun tanaman putri malu yang mengatup rapat saat disentuh membuktikan bahwa makhluk hidup memiliki ciri...",
-                "options": [
-                        "Memerlukan istirahat",
-                        "Peka terhadap rangsang (iritabilitas)",
-                        "Mengalami metamorfosis sempurna",
-                        "Tidak menyukai sinar matahari"
-                ],
-                "answer": 1,
-                "hint": "Menutupnya daun putri malu ketika terkena sentuhan membuktikan kepekaan terhadap rangsangan fisik."
-        },
-        {
+                "type": "isian",
+                "text": "Bagian awal teks eksplanasi yang memperkenalkan topik disebut ....",
+                "answer": "pernyataan umum",
+                "alt": [],
+                "hint": "Teks eksplanasi memiliki bagian pernyataan umum, deretan penjelas, dan simpulan."
+            },
+            {
                 "id": 9,
-                "type": "pg",
-                "text": "Teks bacaan yang memuat panduan atau tahapan melakukan sesuatu secara berurutan dan runtut dinamakan teks...",
-                "options": [
-                        "Dongeng",
-                        "Petunjuk / Prosedur",
-                        "Puisi",
-                        "Laporan fiksi"
-                ],
-                "answer": 1,
-                "hint": "Teks petunjuk atau prosedur memberikan arahan langkah demi langkah agar pekerjaan selesai dengan benar."
-        },
-        {
+                "type": "isian",
+                "text": "Bacalah kalimat: “Dona menyimpan minuman di kulkas.” Subjek pada kalimat tersebut adalah ....",
+                "answer": "Dona",
+                "alt": [],
+                "hint": "Dona adalah pelaku kegiatan, sehingga menjadi subjek kalimat."
+            },
+            {
                 "id": 10,
-                "type": "pg",
-                "text": "Pada penulisan kalimat tanya yang benar, tanda baca yang wajib diletakkan di akhir kalimat adalah...",
-                "options": [
-                        "Tanda titik (.)",
-                        "Tanda seru (!)",
-                        "Tanda tanya (?)",
-                        "Tanda koma (,)"
-                ],
-                "answer": 2,
-                "hint": "Setiap kalimat pertanyaan harus diakhiri dengan tanda tanya (?)"
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Manakah di antara pernyataan berikut yang merupakan ciri-ciri mutlak makhluk hidup?",
-                "options": [
-                        "Mengalami proses pertumbuhan (bertambah besar)",
-                        "Mampu berkembang biak menghasilkan keturunan",
-                        "Tidak memerlukan asupan cairan maupun makanan",
-                        "Dapat hidup selamanya tanpa bernapas"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Tumbuh dan berkembang biak adalah ciri khas makhluk hidup untuk kelangsungan hidupnya."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Langkah-langkah yang tepat dalam memelihara dan merawat hewan peliharaan di rumah adalah...",
-                "options": [
-                        "Memberikan makanan dan minuman yang bergizi secara teratur",
-                        "Membersihkan kandang hewan peliharaan secara berkala agar tetap higienis",
-                        "Membiarkan hewan peliharaan terkurung tanpa makan",
-                        "Menempatkan hewan di tempat kotor dan lembap"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Hewan peliharaan butuh nutrisi teratur dan kandang bersih agar terbebas dari penyakit."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Hal penting yang harus dipersiapkan sebelum kita melakukan kegiatan wawancara kepada narasumber adalah...",
-                "options": [
-                        "Menentukan topik wawancara dan memilih narasumber yang sesuai",
-                        "Menyusun daftar pertanyaan yang runtut dan jelas",
-                        "Langsung merekam tanpa izin narasumber",
-                        "Memotong pembicaraan narasumber saat sedang menjawab"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Persiapan wawancara meliputi penentuan topik, narasumber yang tepat, serta daftar pertanyaan yang baik."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Kata-kata tanya berikut ini yang digunakan untuk menanyakan waktu dan menanyakan nama orang adalah...",
-                "options": [
-                        "Kapan",
-                        "Siapa",
-                        "Mengapa",
-                        "Di mana"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "'Kapan' menanyakan waktu, dan 'Siapa' menanyakan tokoh/orang."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Tujuan dan manfaat dibuatnya teks petunjuk (prosedur) dalam buku atau kemasan barang adalah...",
-                "options": [
-                        "Membantu pembaca melakukan atau membuat sesuatu dengan langkah yang tepat",
-                        "Mencegah terjadinya kesalahan saat menggunakan suatu alat atau bahan",
-                        "Mempersulit pemakai dalam memahami cara kerja produk",
-                        "Menghilangkan informasi keselamatan produk"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Teks petunjuk memandu pembaca agar dapat menyelesaikan pekerjaan dengan aman dan benar."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Ide pokok dalam sebuah paragraf selalu berada di tengah-tengah kalimat dan tidak pernah terletak di kalimat pertama.",
-                "answer": "Salah",
-                "hint": "Sebagian besar paragraf meletakkan ide pokok pada kalimat utama di awal paragraf (paragraf deduktif)."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Saat melakukan wawancara, kita wajib bertutur kata yang sopan, santun, dan tidak memotong penjelasan narasumber.",
-                "answer": "Benar",
-                "hint": "Sopan santun dan mendengarkan dengan seksama adalah etika utama saat mewawancarai narasumber."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Proses pertumbuhan pada anak ditandai dengan pertambahan fisik berupa bertambahnya tinggi badan dan berat badan.",
-                "answer": "Benar",
-                "hint": "Pertumbuhan adalah proses pertambahan ukuran volume, tinggi, dan bobot fisik makhluk hidup."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Kata tanya 'Bagaimana' berfungsi khusus untuk menanyakan total nominal harga atau jumlah barang.",
-                "answer": "Salah",
-                "hint": "Kata tanya untuk harga/jumlah adalah 'Berapa'. 'Bagaimana' digunakan untuk menanyakan keadaan atau cara."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Menyiram tanaman dengan air yang cukup secara rutin serta memberikan pupuk membantu tanaman tumbuh subur.",
-                "answer": "Benar",
-                "hint": "Air, cahaya matahari, dan unsur hara pupuk adalah kebutuhan utama tanaman agar tumbuh subur."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Kata tanya 'Siapa'",
-                "text": "Kata tanya 'Siapa' berpasangan dengan fungsi menanyakan...",
-                "options": [
-                        "Orang / Tokoh pelaku",
-                        "Waktu terjadinya peristiwa",
-                        "Tempat terjadinya peristiwa",
-                        "Alasan atau penyebab",
-                        "Cara atau proses kerja"
-                ],
-                "answer": "Orang / Tokoh pelaku",
-                "hint": "'Siapa' menanyakan pelaku/orang."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Kata tanya 'Kapan'",
-                "text": "Kata tanya 'Kapan' berpasangan dengan fungsi menanyakan...",
-                "options": [
-                        "Orang / Tokoh pelaku",
-                        "Waktu terjadinya peristiwa",
-                        "Tempat terjadinya peristiwa",
-                        "Alasan atau penyebab",
-                        "Cara atau proses kerja"
-                ],
-                "answer": "Waktu terjadinya peristiwa",
-                "hint": "'Kapan' menanyakan waktu (jam, hari, tanggal, musim)."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Kata tanya 'Di mana'",
-                "text": "Kata tanya 'Di mana' berpasangan dengan fungsi menanyakan...",
-                "options": [
-                        "Orang / Tokoh pelaku",
-                        "Waktu terjadinya peristiwa",
-                        "Tempat terjadinya peristiwa",
-                        "Alasan atau penyebab",
-                        "Cara atau proses kerja"
-                ],
-                "answer": "Tempat terjadinya peristiwa",
-                "hint": "'Di mana' menanyakan lokasi atau tempat."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Kata tanya 'Mengapa'",
-                "text": "Kata tanya 'Mengapa' berpasangan dengan fungsi menanyakan...",
-                "options": [
-                        "Orang / Tokoh pelaku",
-                        "Waktu terjadinya peristiwa",
-                        "Tempat terjadinya peristiwa",
-                        "Alasan atau penyebab",
-                        "Cara atau proses kerja"
-                ],
-                "answer": "Alasan atau penyebab",
-                "hint": "'Mengapa' menanyakan sebab akibat atau latar belakang kejadian."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Kata tanya 'Bagaimana'",
-                "text": "Kata tanya 'Bagaimana' berpasangan dengan fungsi menanyakan...",
-                "options": [
-                        "Orang / Tokoh pelaku",
-                        "Waktu terjadinya peristiwa",
-                        "Tempat terjadinya peristiwa",
-                        "Alasan atau penyebab",
-                        "Cara atau proses kerja"
-                ],
-                "answer": "Cara atau proses kerja",
-                "hint": "'Bagaimana' menanyakan proses langkah, cara kerja, atau kondisi keadaan."
-        },
-        {
-                "id": 26,
                 "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Orang yang bertugas mengajukan pertanyaan kepada narasumber saat wawancara disebut ...",
-                "answer": "Pewawancara",
-                "alt": [
-                        "pewawancara"
-                ],
-                "hint": "Pewawancara menyusun dan menyampaikan pertanyaan untuk menggali informasi."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "Paragraf yang letak kalimat utamanya berada pada awal paragraf disebut paragraf ...",
-                "answer": "Deduktif",
-                "alt": [
-                        "deduktif"
-                ],
-                "hint": "Paragraf deduktif menyampaikan ide utama di awal, lalu diikuti penjelasan khusus."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "Perubahan bentuk tubuh makhluk hidup selama daur hidupnya (misalnya dari ulat menjadi kupu-kupu) dinamakan ...",
-                "answer": "Metamorfosis",
-                "alt": [
-                        "metamorfosis",
-                        "metamorfosa"
-                ],
-                "hint": "Metamorfosis adalah tahapan transformasi bentuk tubuh hewan dari telur hingga dewasa."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Lawan kata (antonim) dari kata 'subur' pada tanah atau tanaman adalah ...",
-                "answer": "tandus",
-                "alt": [
-                        "tandus",
-                        "gersang",
-                        "kering",
-                        "layu"
-                ],
-                "hint": "Tanah yang tidak subur dan tidak dapat ditanami disebut tanah tandus atau gersang."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "Alat pernapasan utama pada ikan untuk menyaring oksigen di dalam air adalah ...",
-                "answer": "Insang",
-                "alt": [
-                        "insang"
-                ],
-                "hint": "Ikan bernapas menggunakan insang yang berbentuk lembaran tipis kemerahan."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Jelaskan perbedaan mendasar antara istilah 'pertumbuhan' dan 'perkembangan' pada manusia!",
-                "answer": "<b>Pertumbuhan</b> adalah proses pertambahan ukuran fisik tubuh yang dapat diukur dengan angka, seperti bertambah tinggi badan dan bertambah berat badan.<br><br>Sedangkan <b>perkembangan</b> adalah proses pematangan fungsi organ tubuh dan kemampuan seseorang, seperti dari merangkak menjadi bisa berjalan, berbicara, bernalar, dan berpikir mandiri.",
-                "hint": "Pertumbuhan terlihat pada ukuran fisik badan, sedangkan perkembangan terlihat pada kematangan kemampuan dan kecerdasan."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Sebutkan 3 ciri-ciri makhluk hidup yang membedakannya dengan benda mati beserta contoh tindakannya!",
-                "answer": "1. <b>Bernapas</b>: Manusia menghirup oksigen dan menghembuskan karbon dioksida.<br>2. <b>Membutuhkan makan dan minum</b>: Kucing makan ikan dan minum air untuk mendapatkan energi.<br>3. <b>Berkembang biak</b>: Burung bertelur untuk melestarikan keturunannya agar tidak punah.",
-                "hint": "Menyebutkan 3 ciri makhluk hidup (bernapas, makan/minum, bergerak, tumbuh, berkembang biak, atau peka rangsang) dilengkapi contohnya."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Buatlah 2 kalimat tanya yang sopan untuk menanyakan cara merawat tanaman bunga kepada seorang tukang kebun!",
-                "answer": "Contoh kalimat tanya:<br>1. 'Permisi Pak, berapa kali dalam sehari tanaman bunga mawar ini sebaiknya disiram air?'<br>2. 'Bagaimana cara membasmi hama ulat pada daun bunga ini tanpa merusak tanamannya, Pak?'",
-                "hint": "Membuat kalimat tanya dengan kata tanya yang relevan (kapan, berapa, bagaimana), bahasa yang sopan, dan diakhiri tanda tanya (?)."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Apakah tujuan dari dibuatnya teks petunjuk atau teks prosedur? Berikan satu contoh teks petunjuk yang pernah kamu temui!",
-                "answer": "Tujuan teks petunjuk adalah memberikan panduan atau langkah-langkah yang berurutan agar pembaca dapat melakukan, menggunakan, atau membuat sesuatu secara benar dan aman.<br>Contohnya: Petunjuk cara mencuci tangan dengan sabun yang benar, atau petunjuk cara menyeduh susu bubuk pada kemasan kaleng.",
-                "hint": "Menjelaskan tujuan sebagai panduan langkah teratur serta memberikan contoh nyata (misal resep, cara mencuci tangan, atau aturan pakai obat)."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Sebutkan 3 etika atau sikap yang baik saat kita melakukan wawancara kepada seorang narasumber!",
-                "answer": "1. Mengucapkan salam pembuka dan menyapa narasumber dengan ramah dan sopan.<br>2. Menyimak jawaban narasumber dengan seksama dan tidak memotong pembicaraannya.<br>3. Mengucapkan terima kasih atas waktu dan informasi berharga yang telah diberikan oleh narasumber.",
-                "hint": "Menyebutkan etika wawancara: salam, bahasa sopan, mendengarkan aktif, mencatat poin penting, dan berterima kasih."
-        }
-];
+                "text": "Bacalah kalimat: “Dona menyimpan minuman di kulkas.” Kata yang menjadi predikat adalah ....",
+                "answer": "menyimpan",
+                "alt": [],
+                "hint": "Predikat menjelaskan kegiatan subjek. Kegiatan Dona dalam kalimat tersebut adalah menyimpan."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -848,7 +531,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -885,9 +568,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -950,16 +636,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -977,7 +654,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';

@@ -374,11 +374,11 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">10 Soal Isian</span>
             </div>
             <h1>🌙 Pendidikan Agama Islam (PAI)</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 1: Surah Al-'Alaq 1-5 & Bab 2: Sifat Allah & Asmaulhusna (Hal. 3-30)</div>
+            <div class="badge">Bab 3: Husnuzan • Bab 4: Puasa Ramadan • Bab 5: Masa Kanak-Kanak Nabi Muhammad Saw.</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
@@ -400,427 +400,121 @@
 
     <script>
         const questions = [
-        {
+            {
                 "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Wahyu pertama dari Allah SWT yang diterima oleh Nabi Muhammad SAW adalah Surah...",
-                "options": [
-                        "Al-Fatihah ayat 1-7",
-                        "Al-'Alaq ayat 1-5",
-                        "Al-Ikhlas ayat 1-4",
-                        "An-Nas ayat 1-6"
+                "type": "isian",
+                "text": "Berprasangka baik kepada Allah Swt. disebut ....",
+                "answer": "husnuzan",
+                "alt": [
+                    "husnudzan",
+                    "husnuzhan",
+                    "husnuzhon",
+                    "husnuzon"
                 ],
-                "answer": 1,
-                "hint": "Surah Al-'Alaq ayat 1-5 adalah wahyu pertama penanda kerasulan Nabi Muhammad SAW."
-        },
-        {
+                "hint": "Husnuzan berarti berbaik sangka terhadap ketentuan dan keputusan Allah Swt.",
+                "section": "Isian Singkat (10 Soal)"
+            },
+            {
                 "id": 2,
-                "type": "pg",
-                "text": "Di manakah tempat Nabi Muhammad SAW pertama kali menerima wahyu Al-Qur'an saat sedang bertahannuts (beribadah)?",
-                "options": [
-                        "Masjidil Haram",
-                        "Gua Tsur",
-                        "Gua Hira",
-                        "Padang Arafah"
+                "type": "isian",
+                "text": "Lawan dari husnuzan adalah berburuk sangka, yang disebut ....",
+                "answer": "suuzan",
+                "alt": [
+                    "suudzan",
+                    "su'uzan",
+                    "suuzon",
+                    "suudzon"
                 ],
-                "answer": 2,
-                "hint": "Nabi Muhammad SAW menerima wahyu pertama di Gua Hira di puncak Jabal Nur."
-        },
-        {
+                "hint": "Suuzan berarti berburuk sangka dan dapat merusak persaudaraan."
+            },
+            {
                 "id": 3,
-                "type": "pg",
-                "text": "Malaikat yang diutus oleh Allah SWT untuk menyampaikan wahyu kepada Nabi Muhammad SAW adalah Malaikat...",
-                "options": [
-                        "Mikail",
-                        "Israfil",
-                        "Jibril",
-                        "Izrail"
+                "type": "isian",
+                "text": "Berbaik sangka kepada Allah Swt. termasuk akhlak ....",
+                "answer": "terpuji",
+                "alt": [
+                    "akhlak terpuji"
                 ],
-                "answer": 2,
-                "hint": "Malaikat Jibril 'alaihissalam bertugas menyampaikan wahyu kepada para nabi dan rasul."
-        },
-        {
+                "hint": "Husnuzan termasuk akhlak terpuji yang perlu diterapkan sehari-hari."
+            },
+            {
                 "id": 4,
-                "type": "pg",
-                "text": "Kata pertama dalam Surah Al-'Alaq berbunyi 'Iqra'', yang memiliki arti...",
-                "options": [
-                        "Tulislah",
-                        "Bacalah",
-                        "Dengarkanlah",
-                        "Hafalkanlah"
-                ],
-                "answer": 1,
-                "hint": "'Iqra'' bermakna 'Bacalah!', perintah utama untuk belajar, membaca tanda kebesaran Allah, dan mencari ilmu."
-        },
-        {
+                "type": "isian",
+                "text": "Bagi muslim yang memenuhi syarat wajib puasa, hukum berpuasa pada bulan Ramadan adalah ....",
+                "answer": "wajib",
+                "alt": [],
+                "hint": "Puasa Ramadan wajib bagi muslim yang memenuhi syarat wajib puasa."
+            },
+            {
                 "id": 5,
-                "type": "pg",
-                "text": "Berdasarkan Surah Al-'Alaq ayat ke-2, manusia diciptakan oleh Allah SWT dari...",
-                "options": [
-                        "Tanah liat",
-                        "Segumpal darah ('alaq)",
-                        "Cahaya",
-                        "Api yang menyala"
+                "type": "isian",
+                "text": "Puasa dimulai sejak terbit ....",
+                "answer": "fajar",
+                "alt": [
+                    "terbit fajar",
+                    "fajar sadiq",
+                    "fajar shadiq"
                 ],
-                "answer": 1,
-                "hint": "Ayat ke-2 berbunyi: 'Khalaqal insaana min 'alaq' (Dia telah menciptakan manusia dari segumpal darah)."
-        },
-        {
+                "hint": "Orang yang berpuasa menahan diri dari hal yang membatalkan puasa sejak terbit fajar."
+            },
+            {
                 "id": 6,
-                "type": "pg",
-                "text": "Sifat wajib bagi Allah SWT yang artinya 'Maha Esa atau Tunggal dan tiada sekutu bagi-Nya' adalah...",
-                "options": [
-                        "Wujud",
-                        "Qidam",
-                        "Wahdaniyah",
-                        "Hayat"
+                "type": "isian",
+                "text": "Waktu berpuasa berakhir ketika matahari ....",
+                "answer": "terbenam",
+                "alt": [
+                    "tenggelam"
                 ],
-                "answer": 2,
-                "hint": "Wahdaniyah artinya Maha Esa. Allah adalah Tuhan Yang Maha Tunggal tanpa sekutu."
-        },
-        {
+                "hint": "Puasa berlangsung dari terbit fajar sampai matahari terbenam."
+            },
+            {
                 "id": 7,
-                "type": "pg",
-                "text": "Sifat mustahil bagi Allah SWT yang merupakan lawan kata dari sifat Wujud (Maha Ada) adalah...",
-                "options": [
-                        "'Adam (Tidak Ada)",
-                        "Huduts (Baru)",
-                        "Fana (Binasa)",
-                        "Jahlun (Bodoh)"
+                "type": "isian",
+                "text": "Salah satu rukun puasa yang dilakukan dalam hati pada malam hari sebelum fajar adalah ....",
+                "answer": "niat",
+                "alt": [
+                    "niat puasa",
+                    "berniat"
                 ],
-                "answer": 0,
-                "hint": "Mustahil bagi Allah bersifat 'Adam (tidak ada), karena Allah wajib bersifat Wujud (ada)."
-        },
-        {
+                "hint": "Niat berpuasa Ramadan dilakukan pada malam hari sebelum fajar."
+            },
+            {
                 "id": 8,
-                "type": "pg",
-                "text": "Asmaul Husna 'Al-Wahhab' memiliki arti bahwa Allah SWT adalah...",
-                "options": [
-                        "Maha Merajai",
-                        "Maha Mengetahui",
-                        "Maha Pemberi Karunia",
-                        "Maha Melihat"
+                "type": "isian",
+                "text": "Ibu Nabi Muhammad Saw. bernama ....",
+                "answer": "Aminah",
+                "alt": [
+                    "Siti Aminah",
+                    "Aminah binti Wahab",
+                    "Aminah binti Wahb"
                 ],
-                "answer": 2,
-                "hint": "Al-Wahhab artinya Allah Maha Pemberi tanpa mengharapkan imbalan kepada seluruh makhluk-Nya."
-        },
-        {
+                "hint": "Nabi Muhammad Saw. lahir dari seorang ibu bernama Aminah."
+            },
+            {
                 "id": 9,
-                "type": "pg",
-                "text": "Sifat mustahil bagi Allah 'Fana' memiliki arti...",
-                "options": [
-                        "Kekal",
-                        "Binasa atau rusak",
-                        "Bisu",
-                        "Buta"
+                "type": "isian",
+                "text": "Tahun kelahiran Nabi Muhammad Saw. dikenal sebagai Tahun ....",
+                "answer": "Gajah",
+                "alt": [
+                    "tahun gajah"
                 ],
-                "answer": 1,
-                "hint": "Fana artinya binasa atau hancur. Mustahil bagi Allah binasa karena Allah Maha Kekal (Baqa')."
-        },
-        {
+                "hint": "Pada tahun itu, pasukan bergajah yang dipimpin Abrahah datang untuk menyerang Ka'bah."
+            },
+            {
                 "id": 10,
-                "type": "pg",
-                "text": "Sifat wajib bagi Allah 'Qidam' memiliki arti bahwa Allah SWT...",
-                "options": [
-                        "Maha Ada terdahulu tanpa permulaan",
-                        "Maha Mendengar segala suara",
-                        "Maha Kuasa atas segala hal",
-                        "Membutuhkan bantuan malaikat"
-                ],
-                "answer": 0,
-                "hint": "Qidam artinya terdahulu, ada sebelum segala alam semesta tercipta dan tanpa diawali permulaan."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Manakah di antara sifat-sifat berikut yang tergolong ke dalam Sifat Wajib bagi Allah SWT?",
-                "options": [
-                        "Wujud (Ada)",
-                        "Baqa' (Kekal)",
-                        "Huduts (Ada yang menciptakan)",
-                        "Mautun (Mati)"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Wujud dan Baqa' adalah sifat wajib bagi Allah. Huduts dan Mautun adalah sifat mustahil."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Pesan-pesan mulia yang terkandung dalam Surah Al-'Alaq ayat 1-5 adalah...",
-                "options": [
-                        "Perintah untuk senantiasa membaca, belajar, dan menuntut ilmu",
-                        "Mengingatkan manusia bahwa Allah yang menciptakan manusia dan mengajarinya dengan pena",
-                        "Larangan untuk bertanya kepada guru",
-                        "Anjuran untuk bermalas-malasan dalam belajar"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Surah Al-'Alaq menekankan pentingnya membaca, belajar dengan pena, dan mengagungkan Allah Sang Pencipta."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Pasangan Asmaul Husna beserta artinya yang tepat di bawah ini adalah...",
-                "options": [
-                        "Al-'Alim artinya Maha Mengetahui",
-                        "As-Sami' artinya Maha Mendengar",
-                        "Al-Basir artinya Maha Tuli",
-                        "Al-Wahhab artinya Maha Membutuhkan Bantuan"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Al-'Alim adalah Maha Mengetahui dan As-Sami' adalah Maha Mendengar."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Sikap sehari-hari yang mencerminkan keteladanan dari Asmaul Husna Al-Wahhab (Maha Pemberi) adalah...",
-                "options": [
-                        "Senang berbagi makanan dan meminjamkan alat tulis kepada teman yang membutuhkan",
-                        "Menyisihkan uang saku untuk berinfak dan bersedekah secara ikhlas",
-                        "Meminta bayaran saat menolong teman yang terjatuh",
-                        "Menyimpan semua makanan sendiri dan menolak berbagi"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Meneladani Al-Wahhab diwujudkan dengan gemar memberi, bersedekah, dan ikhlas membantu sesama."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "Manakah di bawah ini yang merupakan Sifat Mustahil (tidak mungkin ada) pada Allah SWT?",
-                "options": [
-                        "Jahlun (Bodoh / Tidak Tahu)",
-                        "Mautun (Mati / Mengalami Kematian)",
-                        "Hayat (Hidup Kekal)",
-                        "Kalam (Berfirman)"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Jahlun dan Mautun adalah sifat mustahil bagi Allah. Hayat dan Kalam adalah sifat wajib."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "Nabi Muhammad SAW menerima wahyu pertama berupa Surah Al-'Alaq ayat 1-5 pada saat berusia 40 tahun.",
-                "answer": "Benar",
-                "hint": "Rasulullah diangkat menjadi nabi dan rasul saat menerima wahyu pertama di Gua Hira pada usia 40 tahun."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "Jumlah Sifat Wajib bagi Allah SWT yang wajib dipelajari dan diyakini oleh setiap muslim berjumlah 20 sifat.",
-                "answer": "Benar",
-                "hint": "Ada 20 sifat wajib bagi Allah, mulai dari Wujud hingga Kaunuhu Mutakalliman."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "Sifat Jaiz bagi Allah SWT bermakna bahwa Allah bebas berkehendak menciptakan segala sesuatu atau tidak menciptakannya sesuai kehendak-Nya.",
-                "answer": "Benar",
-                "hint": "Sifat jaiz bagi Allah adalah kebebasan mutlak berbuat sesuatu yang mungkin atau meninggalkannya."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Allah SWT membutuhkan bantuan dari makhluk lain agar dapat mengatur dan memelihara seluruh alam semesta.",
-                "answer": "Salah",
-                "hint": "Allah bersifat Qiyamuhu Binafsihi (berdiri sendiri) dan mustahil membutuhkan bantuan ciptaan-Nya."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Pena (al-qalam) yang disebutkan dalam Surah Al-'Alaq merupakan sarana penting yang diajarkan Allah kepada manusia untuk mencatat dan menyebarkan ilmu pengetahuan.",
-                "answer": "Benar",
-                "hint": "'Allama bil qalam: Allah mengajar manusia dengan perantaraan pena."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Sifat Wujud",
-                "text": "Sifat Wujud bagi Allah berpasangan dengan artinya...",
-                "options": [
-                        "Maha Ada",
-                        "Maha Kekal",
-                        "Maha Mengetahui",
-                        "Maha Melihat",
-                        "Maha Pemberi Karunia"
-                ],
-                "answer": "Maha Ada",
-                "hint": "Wujud artinya Maha Ada."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Sifat Baqa'",
-                "text": "Sifat Baqa' bagi Allah berpasangan dengan artinya...",
-                "options": [
-                        "Maha Ada",
-                        "Maha Kekal",
-                        "Maha Mengetahui",
-                        "Maha Melihat",
-                        "Maha Pemberi Karunia"
-                ],
-                "answer": "Maha Kekal",
-                "hint": "Baqa' artinya Maha Kekal dan tidak akan pernah binasa."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Asmaul Husna Al-'Alim",
-                "text": "Asmaul Husna Al-'Alim berpasangan dengan artinya...",
-                "options": [
-                        "Maha Ada",
-                        "Maha Kekal",
-                        "Maha Mengetahui",
-                        "Maha Melihat",
-                        "Maha Pemberi Karunia"
-                ],
-                "answer": "Maha Mengetahui",
-                "hint": "Al-'Alim artinya Maha Mengetahui segala rahasia langit dan bumi."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Asmaul Husna Al-Bashir",
-                "text": "Asmaul Husna Al-Bashir berpasangan dengan artinya...",
-                "options": [
-                        "Maha Ada",
-                        "Maha Kekal",
-                        "Maha Mengetahui",
-                        "Maha Melihat",
-                        "Maha Pemberi Karunia"
-                ],
-                "answer": "Maha Melihat",
-                "hint": "Al-Bashir artinya Maha Melihat segala perbuatan manusia."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Asmaul Husna Al-Wahhab",
-                "text": "Asmaul Husna Al-Wahhab berpasangan dengan artinya...",
-                "options": [
-                        "Maha Ada",
-                        "Maha Kekal",
-                        "Maha Mengetahui",
-                        "Maha Melihat",
-                        "Maha Pemberi Karunia"
-                ],
-                "answer": "Maha Pemberi Karunia",
-                "hint": "Al-Wahhab artinya Maha Pemberi Karunia dan nikmat yang berlimpah."
-        },
-        {
-                "id": 26,
                 "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Surah Al-'Alaq tergolong surah Makkiyah karena diturunkan kepada Nabi Muhammad SAW di kota ...",
-                "answer": "Mekkah",
+                "text": "Perempuan yang mengasuh Nabi Muhammad Saw. di desa ketika beliau masih kecil bernama ....",
+                "answer": "Halimah Sa'diyah",
                 "alt": [
-                        "mekkah",
-                        "makkah"
+                    "Halimah",
+                    "Halimah Sadiyah",
+                    "Halimah As-Sa'diyah",
+                    "Halimatus Sadiyah",
+                    "Halimatus Sa'diyah"
                 ],
-                "hint": "Ayat-ayat yang diturunkan sebelum hijrah ke Madinah disebut ayat Makkiyah."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "Gua tempat Rasulullah SAW menerima wahyu pertama Al-Qur'an bernama Gua ...",
-                "answer": "Hira",
-                "alt": [
-                        "hira",
-                        "hira'"
-                ],
-                "hint": "Gua Hira terletak di Jabal Nur, sekitar 6 km sebelah utara Mekkah."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "Lawan kata (sifat mustahil) dari sifat wajib Allah 'Al-Hayat' (Maha Hidup) adalah sifat ...",
-                "answer": "Mautun",
-                "alt": [
-                        "mautun",
-                        "maut",
-                        "mati"
-                ],
-                "hint": "Mautun artinya mati. Allah Maha Hidup kekal dan tidak pernah mati."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Allah SWT Maha Mendengar segala bisikan doa hamba-Nya karena Allah memiliki sifat As-...",
-                "answer": "Sami'",
-                "alt": [
-                        "sami'",
-                        "sami",
-                        "as-sami'",
-                        "as sami",
-                        "as-sami"
-                ],
-                "hint": "As-Sami' adalah Asmaul Husna yang berarti Maha Mendengar."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "Nama-nama yang teramat mulia, baik, dan agung bagi Allah SWT disebut dengan istilah Asmaul ...",
-                "answer": "Husna",
-                "alt": [
-                        "husna",
-                        "al-husna"
-                ],
-                "hint": "Asmaul Husna berjumlah 99 nama keagungan Allah SWT."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Ceritakan secara singkat peristiwa ketika Nabi Muhammad SAW menerima wahyu pertama di Gua Hira!",
-                "answer": "Pada malam 17 Ramadan saat Nabi berusia 40 tahun, beliau sedang beribadah di Gua Hira. Tiba-tiba Malaikat Jibril datang membawa wahyu dan berkata 'Iqra'!' (Bacalah). Nabi menjawab 'Aku tidak bisa membaca'. Malaikat Jibril mendekap Nabi hingga tiga kali lalu membimbing Nabi membaca Surah Al-'Alaq ayat 1-5. Peristiwa agung ini menjadi awal diutusnya Nabi Muhammad SAW sebagai Rasulullah.",
-                "hint": "Menceritakan kedatangan Malaikat Jibril di Gua Hira, perintah Iqra' (bacalah), dan turunnya Surah Al-'Alaq ayat 1-5."
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Tuliskan arti dalam bahasa Indonesia dari Surah Al-'Alaq ayat 1 dan 2!",
-                "answer": "<b>Ayat 1:</b> 'Bacalah dengan (menyebut) nama Tuhanmu yang menciptakan!'<br><b>Ayat 2:</b> 'Dia telah menciptakan manusia dari segumpal darah.'",
-                "hint": "Arti ayat 1: Bacalah dengan nama Tuhanmu yang menciptakan. Ayat 2: Dia telah menciptakan manusia dari segumpal darah."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Jelaskan perbedaan antara sifat wajib, sifat mustahil, dan sifat jaiz bagi Allah SWT!",
-                "answer": "1. <b>Sifat Wajib</b>: Sifat-sifat yang pasti dan mutlak ada pada keagungan Allah SWT (berjumlah 20 sifat).<br>2. <b>Sifat Mustahil</b>: Sifat-sifat yang tidak mungkin dan mustahil ada pada Allah SWT (lawan dari sifat wajib).<br>3. <b>Sifat Jaiz</b>: Sifat kebebasan bagi Allah untuk boleh melakukan sesuatu yang mungkin atau tidak melakukannya sesuai kehendak-Nya.",
-                "hint": "Menjelaskan arti sifat wajib (pasti ada), sifat mustahil (tidak mungkin ada), dan sifat jaiz (boleh berbuat atau tidak)."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Mengapa setiap umat Islam diperintahkan untuk rajin membaca dan menuntut ilmu pengetahuan sebagaimana pesan Surah Al-'Alaq?",
-                "answer": "Karena dengan membaca dan menuntut ilmu, pikiran manusia menjadi terbuka, kita dapat mengenal kebesaran Allah SWT, membedakan mana perbuatan yang benar dan salah, serta ilmu pengetahuan membuat hidup manusia menjadi lebih maju dan bermanfaat bagi banyak orang.",
-                "hint": "Menjelaskan manfaat menuntut ilmu: mengenal Allah, membedakan benar dan salah, serta memajukan kehidupan manusia."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "Sebutkan 2 contoh perilaku sehari-hari di sekolah yang menunjukkan keteladanan dari Asmaul Husna Al-'Alim (Maha Mengetahui)!",
-                "answer": "1. Selalu jujur saat mengerjakan ujian ulangan tanpa mencontek, karena sadar Allah selalu mengetahui segala perbuatan kita.<br>2. Rajin belajar, membaca buku, dan bertanya kepada guru demi menambah ilmu pengetahuan yang bermanfaat.",
-                "hint": "Meneladani Al-'Alim dengan sikap jujur (sadar Allah Maha Melihat/Mengetahui) dan giat menuntut ilmu."
-        }
-];
+                "hint": "Halimah Sa'diyah mengasuh Nabi Muhammad Saw. di desa pada masa kecil beliau."
+            }
+        ];
 
         function render() {
             const container = document.getElementById('question-container');
@@ -853,7 +547,7 @@
                         </select>
                     </div>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -890,9 +584,12 @@
 
         function cleanString(str) {
             return (str || '')
+                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/[’‘]/g, "'")
                 .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -955,16 +652,7 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
-                        q.alt.forEach(a => {
-                            const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
-                                isCorrect = true;
-                            }
-                        });
-                    }
+                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -982,7 +670,7 @@
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
             document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian. Setiap jawaban benar bernilai 10 poin.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
