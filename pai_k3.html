@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Soal Pendidikan Agama Islam (PAI) Kelas 3 - SDIT Friends</title>
+    <title>Latihan Soal PAI Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #00b894;
             --primary-light: #55efc4;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>🌙 Pendidikan Agama Islam (PAI)</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 3: Husnuzan • Bab 4: Puasa Ramadan • Bab 5: Masa Kanak-Kanak Nabi Muhammad Saw.</div>
+            <div class="badge">Sifat Allah, Husnuzan, Puasa Ramadan & Masa Kecil Nabi • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,181 +378,563 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Berprasangka baik kepada Allah Swt. disebut ....",
-                "answer": "husnuzan",
-                "alt": [
-                    "husnudzan",
-                    "husnuzhan",
-                    "husnuzhon",
-                    "husnuzon"
-                ],
-                "hint": "Husnuzan berarti berbaik sangka terhadap ketentuan dan keputusan Allah Swt.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Lawan dari husnuzan adalah berburuk sangka, yang disebut ....",
-                "answer": "suuzan",
-                "alt": [
-                    "suudzan",
-                    "su'uzan",
-                    "suuzon",
-                    "suudzon"
-                ],
-                "hint": "Suuzan berarti berburuk sangka dan dapat merusak persaudaraan."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Berbaik sangka kepada Allah Swt. termasuk akhlak ....",
-                "answer": "terpuji",
-                "alt": [
-                    "akhlak terpuji"
-                ],
-                "hint": "Husnuzan termasuk akhlak terpuji yang perlu diterapkan sehari-hari."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Bagi muslim yang memenuhi syarat wajib puasa, hukum berpuasa pada bulan Ramadan adalah ....",
-                "answer": "wajib",
-                "alt": [],
-                "hint": "Puasa Ramadan wajib bagi muslim yang memenuhi syarat wajib puasa."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Puasa dimulai sejak terbit ....",
-                "answer": "fajar",
-                "alt": [
-                    "terbit fajar",
-                    "fajar sadiq",
-                    "fajar shadiq"
-                ],
-                "hint": "Orang yang berpuasa menahan diri dari hal yang membatalkan puasa sejak terbit fajar."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Waktu berpuasa berakhir ketika matahari ....",
-                "answer": "terbenam",
-                "alt": [
-                    "tenggelam"
-                ],
-                "hint": "Puasa berlangsung dari terbit fajar sampai matahari terbenam."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Salah satu rukun puasa yang dilakukan dalam hati pada malam hari sebelum fajar adalah ....",
-                "answer": "niat",
-                "alt": [
-                    "niat puasa",
-                    "berniat"
-                ],
-                "hint": "Niat berpuasa Ramadan dilakukan pada malam hari sebelum fajar."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Ibu Nabi Muhammad Saw. bernama ....",
-                "answer": "Aminah",
-                "alt": [
-                    "Siti Aminah",
-                    "Aminah binti Wahab",
-                    "Aminah binti Wahb"
-                ],
-                "hint": "Nabi Muhammad Saw. lahir dari seorang ibu bernama Aminah."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Tahun kelahiran Nabi Muhammad Saw. dikenal sebagai Tahun ....",
-                "answer": "Gajah",
-                "alt": [
-                    "tahun gajah"
-                ],
-                "hint": "Pada tahun itu, pasukan bergajah yang dipimpin Abrahah datang untuk menyerang Ka'bah."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Perempuan yang mengasuh Nabi Muhammad Saw. di desa ketika beliau masih kecil bernama ....",
-                "answer": "Halimah Sa'diyah",
-                "alt": [
-                    "Halimah",
-                    "Halimah Sadiyah",
-                    "Halimah As-Sa'diyah",
-                    "Halimatus Sadiyah",
-                    "Halimatus Sa'diyah"
-                ],
-                "hint": "Halimah Sa'diyah mengasuh Nabi Muhammad Saw. di desa pada masa kecil beliau."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Makan pada malam hari sebelum terbit fajar sebagai persiapan puasa disebut ....",
-                "answer": "sahur",
-                "alt": [
-                    "makan sahur"
-                ],
-                "hint": "Sahur dilakukan sebelum terbit fajar. Mengakhirkan sahur termasuk amalan yang dianjurkan saat berpuasa."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Saat matahari sudah terbenam, orang yang berpuasa dianjurkan untuk segera ....",
-                "answer": "berbuka",
-                "alt": [
-                    "berbuka puasa",
-                    "buka puasa"
-                ],
-                "hint": "Menyegerakan berbuka setelah matahari terbenam termasuk sunah puasa."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Jika seseorang sengaja makan pada siang hari saat sedang berpuasa, puasanya menjadi ....",
-                "answer": "batal",
-                "alt": [
-                    "tidak sah"
-                ],
-                "hint": "Makan atau minum dengan sengaja termasuk hal yang membatalkan puasa."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Berdiam diri di masjid untuk memperbanyak ibadah disebut ....",
-                "answer": "iktikaf",
-                "alt": [
-                    "i'tikaf",
-                    "itikaf"
-                ],
-                "hint": "Saat iktikaf, seseorang berdiam diri di masjid untuk beribadah, misalnya dengan berzikir dan membaca Al-Qur’an."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Nama ayah Nabi Muhammad Saw. adalah ....",
-                "answer": "Abdullah",
-                "alt": [
-                    "Abdullah bin Abdul Muthalib",
-                    "Abdullah bin Abdul Muththalib",
-                    "Abdullah bin Abdul Muttalib"
-                ],
-                "hint": "Ayah Nabi Muhammad Saw. bernama Abdullah bin Abdul Muthalib."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Surah Al-Alaq termasuk golongan surah Makkiyah yang terdiri atas .... ayat.",
+        "options": [
+            "15 ayat",
+            "19 ayat",
+            "11 ayat",
+            "7 ayat"
+        ],
+        "answer": 1,
+        "hint": "QS Al-Alaq terdiri atas 19 ayat dan lima ayat pertamanya adalah wahyu pertama."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Asmaul Husna <b>Al-Wahhab</b> memiliki arti bahwa Allah Swt. adalah Maha ....",
+        "options": [
+            "Mengetahui",
+            "Pemberi Karunia",
+            "Melihat",
+            "Mendengar"
+        ],
+        "answer": 1,
+        "hint": "Al-Wahhab artinya Maha Pemberi karunia kepada seluruh makhluk-Nya."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Sifat wajib Allah Swt. <b>Qidam</b> berarti 'Terdahulu', sedangkan lawan atau sifat mustahilnya adalah ....",
+        "options": [
+            "Adam (Tiada)",
+            "Hudus (Baru/ada permulaan)",
+            "Fana (Rusak/binasa)",
+            "Mumasalatul lil hawadisi"
+        ],
+        "answer": 1,
+        "hint": "Wujud ↔ Adam; Qidam ↔ Hudus; Baqa' ↔ Fana."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Secara bahasa, kata <b>Husnuzan</b> berasal dari bahasa Arab yaitu <i>husnu</i> (baik) dan <i>zan</i> yang artinya ....",
+        "options": [
+            "Berbicara",
+            "Prasangka",
+            "Berjanji",
+            "Marah"
+        ],
+        "answer": 1,
+        "hint": "Husnuzan berarti berprasangka baik, sedangkan suuzan berarti berprasangka buruk."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Apabila mendengar kabar yang belum tentu kebenarannya mengenai seorang teman, sikap yang diperintahkan dalam QS Al-Hujurat ayat 6 adalah <i>tabayun</i>, artinya ....",
+        "options": [
+            "Langsung menyebarkannya ke teman lain",
+            "Meneliti dan memeriksa kebenaran berita terlebih dahulu",
+            "Mempercayai begitu saja tanpa bertanya",
+            "Membicarakan kejelekannya dari belakang"
+        ],
+        "answer": 1,
+        "hint": "Tabayun artinya mencari kejelasan dan meneliti kebenaran berita sebelum bertindak."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Kewajiban berpuasa pada bulan Ramadan dijelaskan Allah Swt. di dalam Al-Qur'an surah ....",
+        "options": [
+            "Al-Baqarah ayat 183",
+            "Al-Fil ayat 1–5",
+            "Al-Alaq ayat 1–5",
+            "Al-Ikhlas ayat 1–4"
+        ],
+        "answer": 0,
+        "hint": "QS Al-Baqarah/2: 183 mewajibkan orang beriman berpuasa agar bertakwa."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Salah satu rukun puasa yang wajib dilakukan sebelum terbit fajar agar puasa sah adalah ....",
+        "options": [
+            "Membayar zakat fitrah",
+            "Membaca niat berpuasa pada malam hari",
+            "Salat Tarawih berjamaah",
+            "Berbuka dengan kurma manis"
+        ],
+        "answer": 1,
+        "hint": "Dua rukun puasa adalah niat di malam hari dan menahan diri dari hal yang membatalkan puasa."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Berikut ini waktu yang <b>diharamkan</b> bagi umat Islam untuk berpuasa adalah ....",
+        "options": [
+            "Senin dan Kamis",
+            "Hari Raya Idulfitri (1 Syawal), Iduladha (10 Zulhijah), dan Hari Tasyrik (11–13 Zulhijah)",
+            "Bulan Ramadan",
+            "Tanggal 10 Muharam"
+        ],
+        "answer": 1,
+        "hint": "Umat Islam diharamkan berpuasa pada 1 Syawal, 10 Zulhijah, dan 11–13 Zulhijah."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Nabi Muhammad saw. lahir di Kota Makkah pada hari Senin, 12 Rabiulawal tahun 571 Masehi yang dikenal dengan sebutan ....",
+        "options": [
+            "Tahun Hijriah",
+            "Tahun Gajah",
+            "Tahun Kemenangan",
+            "Tahun Baru"
+        ],
+        "answer": 1,
+        "hint": "Disebut Tahun Gajah karena bertepatan dengan peristiwa pasukan bergajah Raja Abrahah."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Ibu susu yang mengasuh Nabi Muhammad saw. di pedesaan Bani Sa'ad hingga berusia 4 tahun adalah ....",
+        "options": [
+            "Siti Aminah",
+            "Halimah Sa'diyah",
+            "Ummu Aiman",
+            "Siti Khadijah"
+        ],
+        "answer": 1,
+        "hint": "Nabi disusui oleh Tsuwaibah sebentar lalu diasuh Halimah Sa'diyah."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah huruf-huruf hijaiyah yang termasuk <b>huruf Qalqalah</b>!",
+        "options": [
+            "ق (Qaf) dan ط (Tha)",
+            "ب (Ba) dan ج (Jim)",
+            "د (Dal)",
+            "م (Mim) dan ن (Nun)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Huruf Qalqalah ada 5: ق ط ب ج د (disingkat baju di toko)."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pasangan Sifat Wajib Allah Swt. beserta artinya yang benar!",
+        "options": [
+            "Wujud = Ada",
+            "Baqa' = Kekal",
+            "Mukhalafatul lil hawadisi = Berbeda dengan makhluk",
+            "Qudrat = Lemah tidak berdaya"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Qudrat artinya Mahakuasa."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh perilaku <b>Husnuzan</b> kepada Allah Swt., diri sendiri, dan sesama!",
+        "options": [
+            "Bersyukur atas nikmat dan sabar ketika diuji Allah Swt.",
+            "Berani mencoba, percaya diri, dan pantang menyerah (QS Yusuf: 87)",
+            "Tidak mudah menuduh teman dan mau memaafkan kesalahan tetangga",
+            "Selalu mengeluh dan menyalahkan takdir saat gagal"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Husnuzan melahirkan rasa syukur, optimis/pantang menyerah, dan persaudaraan."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Di dalam QS Al-Hujurat ayat 12, pilihlah tiga perbuatan buruk yang dilarang oleh Allah Swt.!",
+        "options": [
+            "Banyak berprasangka buruk (suuzan)",
+            "Mencari-cari kesalahan orang lain (tajassus)",
+            "Menggunjing atau membicarakan aib sesama (ghibah)",
+            "Bersedekah kepada anak yatim"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "QS Al-Hujurat/49: 12 melarang suuzan, tajassus, dan ghibah."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah yang termasuk <b>syarat wajib</b> puasa Ramadan!",
+        "options": [
+            "Beragama Islam",
+            "Balig (cukup umur)",
+            "Berakal sehat dan mampu melaksanakannya",
+            "Harus memiliki kendaraan mewah"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Syarat wajib puasa adalah Islam, balig, berakal, dan mampu."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah hal-hal yang termasuk <b>sunah puasa</b> di bulan Ramadan!",
+        "options": [
+            "Mengakhirkan makan sahur sebelum imsak dan menyegerakan berbuka",
+            "Membaca doa berbuka puasa dan berbuka dengan yang manis",
+            "Melaksanakan salat Tarawih, tadarus Al-Qur'an, dan bersedekah",
+            "Tidur terus seharian sambil meninggalkan salat wajib"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sunah puasa menambah pahala Ramadan, sedangkan meninggalkan salat wajib berdosa."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah hal-hal yang dapat <b>membatalkan puasa</b>!",
+        "options": [
+            "Makan dan minum dengan sengaja di siang hari",
+            "Muntah dengan sengaja",
+            "Keluar darah haid atau nifas serta murtad",
+            "Berkumur secukupnya saat berwudu tanpa tertelan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Makan/minum sengaja, muntah sengaja, haid/nifas, dan murtad membatalkan puasa."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah perbuatan yang dapat <b>mengurangi atau menghilangkan pahala</b> orang yang berpuasa!",
+        "options": [
+            "Berbohong (berkata dusta)",
+            "Menggunjing (ghibah) dan memfitnah",
+            "Mengadu domba dan berkata kasar/caci maki",
+            "Membaca Al-Qur'an setelah salat Subuh"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Dusta, ghibah, dan caci maki merusak pahala puasa."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah gambaran kondisi masyarakat Arab sebelum Islam datang (zaman jahiliah)!",
+        "options": [
+            "Menyembah berhala, bintang, dan api padahal dahulu mengikuti tauhid Nabi Ibrahim",
+            "Hidup dalam kabilah-kabilah yang sering berperang",
+            "Bermatapencaharian berdagang, bertani di oasis, dan beternak",
+            "Sudah mengenal komputer dan kereta api cepat"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Masyarakat Arab jahiliah tinggal berkabilah di Jazirah Arab, berdagang/beternak, dan menyembah berhala."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah peristiwa dan sifat teladan Nabi Muhammad saw. pada masa kanak-kanak!",
+        "options": [
+            "Dibersihkan dadanya oleh Malaikat Jibril pada usia 4 tahun",
+            "Diasuh kakek Abdul Muthalib (6–8 tahun) lalu paman Abu Thalib",
+            "Hidup mandiri dengan menggembalakan kambing serta jujur dan sabar",
+            "Gemar bermalas-malasan dan bertengkar dengan teman"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sejak kecil Nabi Muhammad saw. jujur, sabar, mandiri menggembalakan kambing, dan dapat dipercaya."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh atau istilah Islam berikut dengan keterangannya: <b>Halimah Sa'diyah</b>",
+        "options": [
+            "Ibu susu yang mengasuh Nabi Muhammad saw. hingga usia 4 tahun",
+            "Kakek yang mengasuh Nabi Muhammad saw. setelah ibunya wafat",
+            "Asmaul Husna yang artinya Allah Maha Pemberi karunia",
+            "Meneliti kebenaran suatu berita agar terhindar dari fitnah",
+            "Malam penuh kemuliaan pada 10 hari terakhir bulan Ramadan"
+        ],
+        "answer": "Ibu susu yang mengasuh Nabi Muhammad saw. hingga usia 4 tahun",
+        "hint": "Halimah Sa'diyah merawat Nabi di desa Bani Sa'ad."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh atau istilah Islam berikut dengan keterangannya: <b>Abdul Muthalib</b>",
+        "options": [
+            "Ibu susu yang mengasuh Nabi Muhammad saw. hingga usia 4 tahun",
+            "Kakek yang mengasuh Nabi Muhammad saw. setelah ibunya wafat",
+            "Asmaul Husna yang artinya Allah Maha Pemberi karunia",
+            "Meneliti kebenaran suatu berita agar terhindar dari fitnah",
+            "Malam penuh kemuliaan pada 10 hari terakhir bulan Ramadan"
+        ],
+        "answer": "Kakek yang mengasuh Nabi Muhammad saw. setelah ibunya wafat",
+        "hint": "Abdul Muthalib adalah kakek Nabi Muhammad saw."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh atau istilah Islam berikut dengan keterangannya: <b>Al-Wahhab</b>",
+        "options": [
+            "Ibu susu yang mengasuh Nabi Muhammad saw. hingga usia 4 tahun",
+            "Kakek yang mengasuh Nabi Muhammad saw. setelah ibunya wafat",
+            "Asmaul Husna yang artinya Allah Maha Pemberi karunia",
+            "Meneliti kebenaran suatu berita agar terhindar dari fitnah",
+            "Malam penuh kemuliaan pada 10 hari terakhir bulan Ramadan"
+        ],
+        "answer": "Asmaul Husna yang artinya Allah Maha Pemberi karunia",
+        "hint": "Al-Wahhab artinya Allah Maha Pemberi karunia."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh atau istilah Islam berikut dengan keterangannya: <b>Tabayun</b>",
+        "options": [
+            "Ibu susu yang mengasuh Nabi Muhammad saw. hingga usia 4 tahun",
+            "Kakek yang mengasuh Nabi Muhammad saw. setelah ibunya wafat",
+            "Asmaul Husna yang artinya Allah Maha Pemberi karunia",
+            "Meneliti kebenaran suatu berita agar terhindar dari fitnah",
+            "Malam penuh kemuliaan pada 10 hari terakhir bulan Ramadan"
+        ],
+        "answer": "Meneliti kebenaran suatu berita agar terhindar dari fitnah",
+        "hint": "Tabayun merupakan lawan dari langsung berprasangka buruk."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh atau istilah Islam berikut dengan keterangannya: <b>Lailatulqadar</b>",
+        "options": [
+            "Ibu susu yang mengasuh Nabi Muhammad saw. hingga usia 4 tahun",
+            "Kakek yang mengasuh Nabi Muhammad saw. setelah ibunya wafat",
+            "Asmaul Husna yang artinya Allah Maha Pemberi karunia",
+            "Meneliti kebenaran suatu berita agar terhindar dari fitnah",
+            "Malam penuh kemuliaan pada 10 hari terakhir bulan Ramadan"
+        ],
+        "answer": "Malam penuh kemuliaan pada 10 hari terakhir bulan Ramadan",
+        "hint": "Pada 10 malam terakhir Ramadan umat Islam beri'tikaf meraih Lailatulqadar."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Asmaul Husna <b>Al-Kabir</b> memiliki arti Allah Maha ....",
+        "answer": "Besar",
+        "alt": [
+            "Maha Besar"
+        ],
+        "hint": "Al-Kabir berarti Allah Mahabesar."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Lawan dari sifat wajib Allah <i>Baqa'</i> (Kekal) adalah sifat mustahil ....",
+        "answer": "Fana",
+        "alt": [
+            "rusak",
+            "binasa"
+        ],
+        "hint": "Allah bersifat Baqa' (Kekal), mustahil bersifat Fana (rusak/binasa)."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Berprasangka baik dalam ajaran Islam disebut ....",
+        "answer": "husnuzan",
+        "alt": [
+            "husnudzon"
+        ],
+        "hint": "Husnuzan berarti berprasangka baik; suuzan berarti berprasangka buruk."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Menjalankan puasa di bulan Ramadan merupakan rukun Islam yang ke-....",
+        "answer": "4",
+        "alt": [
+            "empat"
+        ],
+        "hint": "Syahadat (1), Salat (2), Zakat (3), Puasa (4), Haji (5)."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Salat sunah malam yang khusus dikerjakan pada bulan Ramadan setelah salat Isya disebut salat ....",
+        "answer": "Tarawih",
+        "alt": [
+            "salat tarawih"
+        ],
+        "hint": "Salat Tarawih dikerjakan 8 atau 20 rakaat lalu ditutup 3 rakaat Witir."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Berdiam diri di masjid untuk beribadah dan mendekatkan diri kepada Allah pada sepuluh hari terakhir Ramadan disebut ....",
+        "answer": "iktikaf",
+        "alt": [
+            "i'tikaf",
+            "itikaf"
+        ],
+        "hint": "I'tikaf dilakukan di masjid pada 10 hari terakhir Ramadan."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Raja dari Yaman yang memimpin pasukan bergajah hendak menghancurkan Ka'bah bernama Raja ....",
+        "answer": "Abrahah",
+        "alt": [
+            "Raja Abrahah"
+        ],
+        "hint": "Raja Abrahah dan pasukannya dihancurkan burung Ababil sebagaimana kisah QS Al-Fil."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Burung yang diutus Allah Swt. membawa batu kerikil panas dari neraka untuk menghancurkan pasukan gajah dalam QS Al-Fil adalah burung ....",
+        "answer": "Ababil",
+        "alt": [
+            "burung Ababil"
+        ],
+        "hint": "Kisah burung Ababil termaktub dalam QS Al-Fil ayat 1–5."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Ibunda Nabi Muhammad saw. (Siti Aminah) wafat ketika perjalanan pulang dari berziarah ke makam ayahnya di sebuah desa bernama ....",
+        "answer": "Abwa",
+        "alt": [
+            "Desa Abwa"
+        ],
+        "hint": "Siti Aminah wafat di Desa Abwa saat Nabi Muhammad saw. berusia 6 tahun dan ditemani Ummu Aiman."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Allah bebas menentukan atau berbuat sesuatu sesuai kehendak-Nya disebut sifat .... Allah.",
+        "answer": "jaiz",
+        "alt": [
+            "sifat jaiz"
+        ],
+        "hint": "Sifat jaiz Allah adalah kebebasan memilih berbuat atau tidak berbuat sesuatu."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan pengertian Sifat Wajib, Sifat Mustahil, dan Sifat Jaiz bagi Allah Swt. beserta 1 contohnya masing-masing!",
+        "answer": "1) Sifat Wajib: sifat yang pasti dimiliki Allah (contoh: Wujud = Ada, Qidam = Terdahulu). 2) Sifat Mustahil: sifat yang tidak mungkin dimiliki Allah (contoh: Adam = Tiada, Fana = Rusak). 3) Sifat Jaiz: Allah bebas memilih dan menentukan perbuatan-Nya sesuai kehendak-Nya.",
+        "hint": "Skor penuh jika membedakan ketiganya dengan benar dan memberi contoh."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan 3 penerapan perilaku Husnuzan (berprasangka baik): kepada Allah Swt., kepada diri sendiri, dan kepada sesama!",
+        "answer": "1) Kepada Allah: selalu bersyukur, bertawakal, dan tidak berputus asa saat diberi ujian. 2) Kepada diri sendiri: percaya diri, gigih belajar, dan pantang menyerah meraih cita-cita. 3) Kepada sesama: berbaik sangka pada keluarga/teman, bertabayun sebelum menyebar berita, dan tidak menggunjing.",
+        "hint": "Mencakup ketiga sasaran husnuzan beserta contoh sikap nyata."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 2 rukun puasa Ramadan dan 4 hal yang dapat membatalkan puasa!",
+        "answer": "Rukun puasa: (1) Niat pada malam hari; (2) Menahan diri dari makan, minum, dan segala pembatal sejak terbit fajar hingga terbenam matahari. Yang membatalkan puasa: makan/minum dengan sengaja, muntah dengan sengaja, keluar haid/nifas, dan murtad (hilang akal).",
+        "hint": "2 rukun puasa tepat + 4 hal pembatal puasa."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 4 sunah saat berpuasa Ramadan dan tuliskan hikmah melaksanakan puasa Ramadan!",
+        "answer": "Sunah puasa: mengakhirkan sahur, menyegerakan berbuka, membaca doa berbuka, berbuka dengan makanan manis, salat Tarawih, tadarus Al-Qur'an, dan bersedekah. Hikmah puasa: melatih jujur dan sabar, menumbuhkan rasa syukur dan kepedulian sosial, serta menyehatkan tubuh.",
+        "hint": "Minimal 4 sunah puasa dan minimal 2 hikmah puasa."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Ceritakan secara singkat kisah masa kanak-kanak Nabi Muhammad saw. mulai dari pengasuhan Halimah Sa'diyah hingga diasuh oleh paman Abu Thalib!",
+        "answer": "Setelah lahir (12 Rabiulawal Tahun Gajah / 571 M), Nabi disusui dan diasuh Halimah Sa'diyah di desa hingga usia 4 tahun (saat dadanya dibersihkan Malaikat Jibril). Usia 6 tahun ibunya Siti Aminah wafat di Desa Abwa sehingga beliau diasuh kakek Abdul Muthalib hingga usia 8 tahun, lalu diasuh pamannya Abu Thalib. Nabi tumbuh mandiri sebagai penggembala kambing yang jujur dan sabar.",
+        "hint": "Menyebut urutan pengasuh (Aminah, Halimah Sa'diyah, Abdul Muthalib, Abu Thalib) dan keteladanan Nabi."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -583,25 +943,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -618,7 +969,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -638,12 +989,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -678,18 +1026,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -706,7 +1042,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -717,14 +1062,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -733,7 +1078,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

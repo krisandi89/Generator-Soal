@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Soal Pendidikan Pancasila Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #0984e3;
             --primary-light: #74b9ff;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>🇮🇩 Pendidikan Pancasila</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 2: Kewajiban dan Hak dalam Melaksanakan Aturan (Hal. 40–61)</div>
+            <div class="badge">Bab 1 & Bab 2: Pancasila, Aturan, Kewajiban & Hak • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,168 +378,564 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Ketentuan yang harus dipatuhi agar kehidupan menjadi tertib disebut ....",
-                "answer": "aturan",
-                "alt": [
-                    "peraturan",
-                    "tata tertib"
-                ],
-                "hint": "Aturan berlaku di rumah, sekolah, dan masyarakat untuk menciptakan ketertiban.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Sesuatu yang harus kita laksanakan dengan penuh tanggung jawab disebut ....",
-                "answer": "kewajiban",
-                "alt": [],
-                "hint": "Kewajiban adalah hal yang harus dilakukan, seperti belajar dan menjaga kebersihan."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Mendapat kasih sayang dari orang tua merupakan contoh .... anak di rumah.",
-                "answer": "hak",
-                "alt": [],
-                "hint": "Kasih sayang orang tua, makanan sehat, dan tempat tinggal merupakan contoh hak anak."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Mengerjakan tugas sampai selesai merupakan sikap bertanggung ....",
-                "answer": "jawab",
-                "alt": [
-                    "tanggung jawab"
-                ],
-                "hint": "Melaksanakan kewajiban dengan sungguh-sungguh menunjukkan tanggung jawab."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Aturan di rumah harus dipatuhi oleh seluruh anggota ....",
-                "answer": "keluarga",
-                "alt": [
-                    "anggota keluarga"
-                ],
-                "hint": "Semua anggota keluarga perlu mematuhi aturan yang berlaku di rumah."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Aturan kelas sebaiknya dibuat melalui kesepakatan ....",
-                "answer": "bersama",
-                "alt": [
-                    "kesepakatan bersama"
-                ],
-                "hint": "Semua warga kelas diberi kesempatan menyampaikan pendapat dan menyepakati aturan bersama."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Agar tidak mengganggu pelajaran, siswa harus datang ke sekolah tepat ....",
-                "answer": "waktu",
-                "alt": [],
-                "hint": "Datang tepat waktu membuat kegiatan belajar dimulai dengan tertib."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Ketika guru menjelaskan, kita perlu mendengarkan agar tidak mengganggu .... teman untuk belajar.",
-                "answer": "hak",
-                "alt": [],
-                "hint": "Setiap siswa mempunyai hak untuk belajar dengan nyaman dan mendengar penjelasan guru."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Warga bersama-sama membersihkan selokan dan jalan dalam kegiatan kerja ....",
-                "answer": "bakti",
-                "alt": [
-                    "kerja bakti"
-                ],
-                "hint": "Kerja bakti merupakan kegiatan bersama untuk menjaga kebersihan lingkungan masyarakat."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Kebiasaan mematuhi aturan dan melakukan kegiatan tepat waktu menunjukkan sikap ....",
-                "answer": "disiplin",
-                "alt": [
-                    "kedisiplinan"
-                ],
-                "hint": "Mematuhi aturan melatih disiplin dan membantu menciptakan lingkungan yang nyaman."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Lengkapilah kewajiban di rumah berikut. Sesudah makan, Adit membantu orang tua dengan .... piring kotornya sampai bersih.",
-                "answer": "mencuci",
-                "alt": [
-                    "membersihkan",
-                    "mencuci piring"
-                ],
-                "hint": "Mencuci piring sendiri setelah makan adalah contoh tanggung jawab di rumah."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Buku perpustakaan yang selesai dipinjam harus kita .... ke perpustakaan.",
-                "answer": "kembalikan",
-                "alt": [
-                    "mengembalikan",
-                    "dikembalikan",
-                    "serahkan kembali"
-                ],
-                "hint": "Setiap peminjam wajib mengembalikan buku agar dapat dipinjam oleh orang lain."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Ketika memakai lapangan sekolah bersama, kita perlu .... tempat bermain dengan teman agar semua mendapat bagian.",
-                "answer": "berbagi",
-                "alt": [
-                    "berbagi tempat",
-                    "bergantian",
-                    "membagi"
-                ],
-                "hint": "Berbagi tempat bermain membantu menjaga hak teman untuk memakai lapangan."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Setelah jajan di sekolah, bungkus makanan harus dibuang ke ....",
-                "answer": "tempat sampah",
-                "alt": [
-                    "tong sampah",
-                    "bak sampah",
-                    "keranjang sampah"
-                ],
-                "hint": "Membuang sampah pada tempatnya adalah kewajiban untuk menjaga kebersihan sekolah."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Sebelum naik bus, para penumpang berdiri berurutan dan menunggu giliran. Tindakan ini disebut ....",
-                "answer": "antre",
-                "alt": [
-                    "mengantre",
-                    "antri",
-                    "mengantri",
-                    "berbaris",
-                    "menunggu giliran"
-                ],
-                "hint": "Mengantre menjaga ketertiban dan menghormati giliran orang lain."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hari lahir Pancasila diperingati bangsa Indonesia setiap tanggal ....",
+        "options": [
+            "17 Agustus",
+            "1 Juni",
+            "20 Mei",
+            "10 November"
+        ],
+        "answer": 1,
+        "hint": "Ir. Soekarno menyampaikan pidato tentang Pancasila pada 1 Juni 1945."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Tokoh yang mengusulkan nama 'Pancasila' untuk dasar negara Indonesia pada sidang BPUPKI adalah ....",
+        "options": [
+            "Moh. Yamin",
+            "Mr. Soepomo",
+            "Ir. Soekarno",
+            "Drs. Moh. Hatta"
+        ],
+        "answer": 2,
+        "hint": "Nama Pancasila diusulkan oleh Ir. Soekarno pada 1 Juni 1945."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Sila pertama Pancasila yang berbunyi 'Ketuhanan Yang Maha Esa' mengajarkan kita untuk ....",
+        "options": [
+            "Menyayangi sesama manusia saja",
+            "Percaya kepada Tuhan, taat beribadah, dan bertoleransi antarumat beragama",
+            "Rajin menabung di bank",
+            "Bermain sepanjang hari bersama teman"
+        ],
+        "answer": 1,
+        "hint": "Makna sila ke-1 adalah bertakwa kepada Tuhan Yang Maha Esa dan saling menghormati antaragama."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Contoh pengamalan sila kedua Pancasila di lingkungan sekolah adalah ....",
+        "options": [
+            "Menghormati teman yang beribadah sesuai agamanya",
+            "Menolong teman yang terjatuh dan tidak membeda-bedakan teman",
+            "Mengikuti upacara bendera dengan khidmat",
+            "Memilih ketua kelas lewat pemungutan suara"
+        ],
+        "answer": 1,
+        "hint": "Menolong teman dan tidak membeda-bedakan mencerminkan Kemanusiaan yang Adil dan Beradab."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perhatikan bacaan berikut:<div class=\"reading-box\"><b>Bacaan Singkat:</b><br>Hari Senin pagi, kelas 3 SDIT Friends mengadakan musyawarah untuk membuat kesepakatan aturan kelas. Bu Guru mengingatkan tiga hal penting dalam membuat aturan: sesuai dengan tempatnya, merupakan hasil kesepakatan bersama seluruh warga kelas, dan setelah dibuat wajib dipatuhi bersama agar kelas menjadi tertib dan nyaman.</div>Aturan yang telah dibuat dan disepakati bersama oleh seluruh anggota wajib ....",
+        "options": [
+            "Diabaikan jika sulit dilakukan",
+            "Dipatuhi oleh semua anggota",
+            "Ditulis lalu disimpan di laci",
+            "Diberlakukan hanya untuk ketua kelas"
+        ],
+        "answer": 1,
+        "hint": "Salah satu ciri kesepakatan aturan adalah setelah dibuat wajib dipatuhi bersama."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Sesuatu yang harus kita kerjakan dan laksanakan dengan penuh tanggung jawab disebut ....",
+        "options": [
+            "Hak",
+            "Kewajiban",
+            "Hadiah",
+            "Keinginan"
+        ],
+        "answer": 1,
+        "hint": "Kewajiban adalah sesuatu yang harus dilakukan dengan tanggung jawab."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Setelah melaksanakan kewajiban membersihkan rumah, hak yang pantas diperoleh anak di rumah adalah ....",
+        "options": [
+            "Mendapat tempat tinggal yang bersih, nyaman, dan kasih sayang orang tua",
+            "Disuruh bekerja mencari nafkah",
+            "Tidak perlu belajar lagi selamanya",
+            "Mendapat hukuman dari orang tua"
+        ],
+        "answer": 0,
+        "hint": "Hak anak di rumah antara lain mendapat rumah yang nyaman, makanan sehat, dan kasih sayang."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Berikut ini yang merupakan kewajiban siswa di perpustakaan sekolah adalah ....",
+        "options": [
+            "Berteriak dan berlarian di antara rak buku",
+            "Menjaga ketenangan dan mengembalikan buku tepat waktu",
+            "Mencoret-coret buku cerita bergambar",
+            "Membawa pulang buku tanpa izin petugas"
+        ],
+        "answer": 1,
+        "hint": "Di perpustakaan, kita wajib menjaga ketenangan dan merawat buku yang dipinjam."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perhatikan gambar di bawah ini!<div class=\"svg-box\"><svg width=\"420\" height=\"145\" viewBox=\"0 0 420 145\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"0\" y=\"0\" width=\"420\" height=\"145\" rx=\"10\" fill=\"#eef7ff\"/>\n  <rect x=\"0\" y=\"112\" width=\"420\" height=\"33\" fill=\"#636e72\"/>\n  <line x1=\"20\" y1=\"128\" x2=\"70\" y2=\"128\" stroke=\"#ffeaa7\" stroke-width=\"4\" stroke-dasharray=\"14 10\"/>\n  <line x1=\"110\" y1=\"128\" x2=\"180\" y2=\"128\" stroke=\"#ffeaa7\" stroke-width=\"4\" stroke-dasharray=\"14 10\"/>\n  <line x1=\"220\" y1=\"128\" x2=\"290\" y2=\"128\" stroke=\"#ffeaa7\" stroke-width=\"4\" stroke-dasharray=\"14 10\"/>\n  <rect x=\"18\" y=\"28\" width=\"95\" height=\"84\" rx=\"8\" fill=\"#0984e3\"/>\n  <rect x=\"26\" y=\"40\" width=\"78\" height=\"32\" rx=\"4\" fill=\"#dff9fb\"/>\n  <text x=\"65\" y=\"61\" font-size=\"11\" font-weight=\"bold\" fill=\"#0984e3\" text-anchor=\"middle\">HALTE BUS</text>\n  <rect x=\"135\" y=\"60\" width=\"14\" height=\"30\" rx=\"4\" fill=\"#fdcb6e\"/><circle cx=\"142\" cy=\"50\" r=\"8\" fill=\"#ffeaa7\"/>\n  <rect x=\"165\" y=\"60\" width=\"14\" height=\"30\" rx=\"4\" fill=\"#00b894\"/><circle cx=\"172\" cy=\"50\" r=\"8\" fill=\"#ffeaa7\"/>\n  <rect x=\"195\" y=\"60\" width=\"14\" height=\"30\" rx=\"4\" fill=\"#e17055\"/><circle cx=\"202\" cy=\"50\" r=\"8\" fill=\"#ffeaa7\"/>\n  <rect x=\"245\" y=\"38\" width=\"150\" height=\"66\" rx=\"10\" fill=\"#fdcb6e\" stroke=\"#e17055\" stroke-width=\"2\"/>\n  <rect x=\"255\" y=\"48\" width=\"35\" height=\"22\" rx=\"3\" fill=\"#dff9fb\"/>\n  <rect x=\"298\" y=\"48\" width=\"35\" height=\"22\" rx=\"3\" fill=\"#dff9fb\"/>\n  <rect x=\"342\" y=\"48\" width=\"40\" height=\"22\" rx=\"3\" fill=\"#dff9fb\"/>\n  <circle cx=\"278\" cy=\"106\" r=\"11\" fill=\"#2d3436\"/><circle cx=\"362\" cy=\"106\" r=\"11\" fill=\"#2d3436\"/>\n  <text x=\"210\" y=\"20\" font-size=\"12\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">Penumpang Berbaris Menunggu Bus di Halte</text>\n</svg></div>Sikap baik yang ditunjukkan para penumpang sesuai aturan di tempat umum adalah ....",
+        "options": [
+            "Berebut naik lebih dulu",
+            "Mengantre dengan tertib sebelum naik bus",
+            "Berdiri di tengah jalan raya",
+            "Membuang sampah di halte"
+        ],
+        "answer": 1,
+        "hint": "Mengantre dengan tertib di halte menjaga keamanan dan kenyamanan bersama."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Salah satu manfaat mematuhi aturan lalu lintas dan aturan di masyarakat adalah ....",
+        "options": [
+            "Menimbulkan kemacetan di jalan",
+            "Menciptakan kehidupan yang aman, tertib, dan rukun",
+            "Membuat warga sering bertengkar",
+            "Mengganggu ketenangan tetangga"
+        ],
+        "answer": 1,
+        "hint": "Mematuhi aturan membuat lingkungan aman, damai, tertib, dan rukun."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah tokoh-tokoh yang termasuk perumus dasar negara dalam sidang BPUPKI!",
+        "options": [
+            "Mr. Moh. Yamin",
+            "Mr. Soepomo",
+            "Ir. Soekarno",
+            "Pangeran Diponegoro"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tiga tokoh perumus dasar negara adalah Moh. Yamin, Soepomo, dan Soekarno."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah karakter teladan para tokoh perumus Pancasila yang patut kita tiru!",
+        "options": [
+            "Rela berkorban demi bangsa",
+            "Mementingkan persatuan dan kesatuan",
+            "Gemar bermusyawarah dan cinta tanah air",
+            "Memaksakan kehendak kepada orang lain"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Para perumus memiliki sikap rela berkorban, cinta persatuan, musyawarah, dan cinta tanah air."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah tokoh-tokoh yang menjadi anggota Panitia Sembilan!",
+        "options": [
+            "Ir. Soekarno dan Drs. Moh. Hatta",
+            "H. Agus Salim dan A.A. Maramis",
+            "K.H. Wachid Hasyim dan Ahmad Soebardjo",
+            "Ki Hajar Dewantara dan R.A. Kartini"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Panitia Sembilan antara lain Soekarno, Hatta, Agus Salim, A.A. Maramis, Wachid Hasyim, dan Ahmad Soebardjo."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh kewajiban anak di rumah!",
+        "options": [
+            "Merapikan mainan dan tempat tidur setelah digunakan",
+            "Membantu orang tua menyapu atau mencuci piring",
+            "Menghormati dan mematuhi nasihat ayah dan ibu",
+            "Mendapatkan uang jajan yang sangat banyak setiap jam"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Merapikan mainan, membantu orang tua, dan menghormati orang tua adalah kewajiban anak di rumah."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh hak yang diterima anak di rumah!",
+        "options": [
+            "Mendapat makanan sehat dan bergizi",
+            "Mendapat kasih sayang dan perlindungan orang tua",
+            "Mendapat waktu belajar dan bermain",
+            "Mengerjakan seluruh pekerjaan rumah sendirian"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Anak berhak mendapat makanan sehat, kasih sayang, perlindungan, serta waktu belajar dan bermain."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah yang termasuk warga sekolah!",
+        "options": [
+            "Guru dan Kepala Sekolah",
+            "Siswa / peserta didik",
+            "Satpam dan petugas kebersihan sekolah",
+            "Pedagang di pasar kota"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Warga sekolah meliputi kepala sekolah, guru, siswa, satpam, dan petugas kebersihan."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh aturan tertulis maupun tidak tertulis yang wajib dipatuhi siswa di sekolah!",
+        "options": [
+            "Datang ke sekolah tepat waktu dan memakai seragam rapi",
+            "Melaksanakan piket kebersihan kelas sesuai jadwal",
+            "Berbicara sopan dan memberi salam kepada guru",
+            "Membuang sampah di laci meja teman"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Datang tepat waktu, piket, dan bersikap sopan kepada guru merupakan aturan di sekolah."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh kewajiban warga di lingkungan masyarakat!",
+        "options": [
+            "Mengikuti kerja bakti membersihkan lingkungan",
+            "Membuang sampah di tempat sampah",
+            "Menghormati tetangga yang berbeda agama dan suku",
+            "Menutup jalan umum untuk kepentingan pribadi tanpa izin"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kerja bakti, menjaga kebersihan, dan saling menghormati merupakan kewajiban warga masyarakat."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh hak warga di masyarakat!",
+        "options": [
+            "Menggunakan fasilitas umum seperti taman dan jalan raya",
+            "Memperoleh dokumen kependudukan seperti KTP atau akta kelahiran",
+            "Menikmati lingkungan yang bersih dan aman",
+            "Merusak rambu lalu lintas di persimpangan jalan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Warga berhak menikmati fasilitas umum, dokumen kependudukan, dan lingkungan yang aman."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah akibat yang terjadi jika aturan di rumah atau sekolah tidak dipatuhi!",
+        "options": [
+            "Lingkungan menjadi kotor dan berantakan",
+            "Timbul perselisihan atau pertengkaran antaranggota",
+            "Kegiatan belajar menjadi terganggu dan tidak nyaman",
+            "Semua orang merasa senang dan bangga"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Melanggar aturan menyebabkan kekacauan, lingkungan kotor, dan rasa tidak nyaman."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tempat berikut dengan aturan kewajiban yang tepat: <b>Halte atau transportasi umum</b>",
+        "options": [
+            "Mengantre dengan tertib sebelum naik kendaraan",
+            "Mengembalikan buku pinjaman tepat waktu",
+            "Merapikan mainan dan membersihkan kamar tidur",
+            "Menyeberang di zebra cross saat lampu hijau pejalan kaki",
+            "Ikut kerja bakti membersihkan selokan warga"
+        ],
+        "answer": "Mengantre dengan tertib sebelum naik kendaraan",
+        "hint": "Di halte kita harus mengantre dengan tertib."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tempat berikut dengan aturan kewajiban yang tepat: <b>Perpustakaan sekolah</b>",
+        "options": [
+            "Mengantre dengan tertib sebelum naik kendaraan",
+            "Mengembalikan buku pinjaman tepat waktu",
+            "Merapikan mainan dan membersihkan kamar tidur",
+            "Menyeberang di zebra cross saat lampu hijau pejalan kaki",
+            "Ikut kerja bakti membersihkan selokan warga"
+        ],
+        "answer": "Mengembalikan buku pinjaman tepat waktu",
+        "hint": "Di perpustakaan, buku pinjaman wajib dijaga dan dikembalikan tepat waktu."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tempat berikut dengan aturan kewajiban yang tepat: <b>Kamar tidur dan ruang bermain di rumah</b>",
+        "options": [
+            "Mengantre dengan tertib sebelum naik kendaraan",
+            "Mengembalikan buku pinjaman tepat waktu",
+            "Merapikan mainan dan membersihkan kamar tidur",
+            "Menyeberang di zebra cross saat lampu hijau pejalan kaki",
+            "Ikut kerja bakti membersihkan selokan warga"
+        ],
+        "answer": "Merapikan mainan dan membersihkan kamar tidur",
+        "hint": "Setelah bermain di rumah, kita berkewajiban merapikan mainan dan kamar."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tempat berikut dengan aturan kewajiban yang tepat: <b>Jalan raya yang ramai kendaraan</b>",
+        "options": [
+            "Mengantre dengan tertib sebelum naik kendaraan",
+            "Mengembalikan buku pinjaman tepat waktu",
+            "Merapikan mainan dan membersihkan kamar tidur",
+            "Menyeberang di zebra cross saat lampu hijau pejalan kaki",
+            "Ikut kerja bakti membersihkan selokan warga"
+        ],
+        "answer": "Menyeberang di zebra cross saat lampu hijau pejalan kaki",
+        "hint": "Menyeberang di zebra cross menjaga keselamatan di jalan raya."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tempat berikut dengan aturan kewajiban yang tepat: <b>Lingkungan RT / Masyarakat sekitar</b>",
+        "options": [
+            "Mengantre dengan tertib sebelum naik kendaraan",
+            "Mengembalikan buku pinjaman tepat waktu",
+            "Merapikan mainan dan membersihkan kamar tidur",
+            "Menyeberang di zebra cross saat lampu hijau pejalan kaki",
+            "Ikut kerja bakti membersihkan selokan warga"
+        ],
+        "answer": "Ikut kerja bakti membersihkan selokan warga",
+        "hint": "Kerja bakti menjaga kebersihan lingkungan merupakan kewajiban di masyarakat."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Lambang negara Republik Indonesia berbentuk burung ....",
+        "answer": "Garuda Pancasila",
+        "alt": [
+            "Garuda"
+        ],
+        "hint": "Lambang negara kita adalah Garuda Pancasila."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Hari lahir Pancasila diperingati setiap tanggal ....",
+        "answer": "1 Juni",
+        "alt": [
+            "1 Juni 1945"
+        ],
+        "hint": "Setiap 1 Juni diperingati sebagai Hari Lahir Pancasila."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Aturan tertulis yang berlaku di lingkungan sekolah disebut ....",
+        "answer": "tata tertib",
+        "alt": [
+            "tata tertib sekolah"
+        ],
+        "hint": "Aturan tertulis di sekolah disebut tata tertib."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kewajiban dan hak harus dilaksanakan secara seimbang. Kewajiban dikerjakan terlebih dahulu baru kita menerima ....",
+        "answer": "hak",
+        "alt": [
+            "hak kita"
+        ],
+        "hint": "Dahulukan kewajiban sebelum menuntut hak."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Menjaga kebersihan ruang kelas secara bergiliran sesuai jadwal kelompok disebut kegiatan ....",
+        "answer": "piket kelas",
+        "alt": [
+            "piket"
+        ],
+        "hint": "Regu piket kelas menjaga kebersihan kelas setiap hari."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Sila pertama Pancasila berlambangkan gambar ....",
+        "answer": "bintang",
+        "alt": [
+            "bintang emas"
+        ],
+        "hint": "Bintang emas melambangkan Ketuhanan Yang Maha Esa."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Salah satu kewajiban warga negara dewasa dalam membantu pembangunan fasilitas umum adalah membayar ....",
+        "answer": "pajak",
+        "alt": [
+            "membayar pajak"
+        ],
+        "hint": "Pajak digunakan negara untuk membangun jalan, sekolah, dan fasilitas umum."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kepala sekolah, guru, siswa, satpam, dan penjaga sekolah bersama-sama disebut sebagai ....",
+        "answer": "warga sekolah",
+        "alt": [
+            "masyarakat sekolah"
+        ],
+        "hint": "Semua orang yang beraktivitas di sekolah disebut warga sekolah."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Untuk menyelesaikan masalah bersama dan membuat kesepakatan aturan kelas, sebaiknya dilakukan dengan cara ....",
+        "answer": "musyawarah",
+        "alt": [
+            "bermusyawarah",
+            "diskusi"
+        ],
+        "hint": "Musyawarah sesuai dengan nilai sila ke-4 Pancasila."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Apabila ada teman yang terjatuh saat bermain di halaman sekolah, sikap yang sesuai dengan sila kedua adalah segera ....",
+        "answer": "menolongnya",
+        "alt": [
+            "menolong",
+            "membantu",
+            "membantunya"
+        ],
+        "hint": "Menolong teman yang kesulitan mencerminkan kemanusiaan yang adil dan beradab."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 3 tokoh perumus dasar negara pada sidang BPUPKI beserta 3 karakter teladan mereka yang harus kita tiru!",
+        "answer": "Tokoh perumus: (1) Mr. Moh. Yamin, (2) Mr. Soepomo, dan (3) Ir. Soekarno. Karakter teladan: rela berkorban, mementingkan persatuan dan kesatuan, gemar bermusyawarah, serta cinta tanah air.",
+        "hint": "Skor penuh jika menyebut ketiga tokoh dan minimal 3 karakter teladannya."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Tuliskan 3 hal penting yang harus diperhatikan saat membuat kesepakatan aturan!",
+        "answer": "1) Aturan dibuat sesuai dengan tempatnya; 2) Aturan dibuat berdasarkan kesepakatan bersama seluruh anggota; 3) Setelah disepakati, aturan wajib dipatuhi bersama.",
+        "hint": "Memuat: sesuai tempat, hasil kesepakatan bersama, dan wajib dipatuhi."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan perbedaan antara kewajiban dan hak, lalu berikan masing-masing 2 contohnya di rumah!",
+        "answer": "Kewajiban adalah sesuatu yang harus dilakukan dengan tanggung jawab (contoh: merapikan mainan, membantu orang tua mencuci piring). Hak adalah sesuatu yang layak diterima setelah melaksanakan kewajiban (contoh: mendapat makanan sehat, kasih sayang orang tua).",
+        "hint": "Harus jelas definisi kewajiban vs hak serta 2 contoh masing-masing di rumah."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 3 kewajiban dan 2 hak siswa di sekolah!",
+        "answer": "Kewajiban di sekolah: datang tepat waktu, memakai seragam rapi, melaksanakan piket kelas, mendengarkan guru. Hak di sekolah: mendapat pelajaran dari guru, mendapat nilai hasil belajar, menggunakan fasilitas kelas dan perpustakaan.",
+        "hint": "Minimal 3 kewajiban dan 2 hak siswa di sekolah yang logis dan sesuai tata tertib."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Apa akibatnya jika warga masyarakat tidak mau mematuhi aturan kerja bakti dan membuang sampah sembarangan? Jelaskan solusinya!",
+        "answer": "Akibatnya lingkungan menjadi kotor, bau tidak sedap, selokan tersumbat hingga banjir, dan warga tidak nyaman. Solusinya dengan musyawarah warga, membuat jadwal kerja bakti rutin, serta menyediakan tempat sampah terpilah dan mematuhi aturan bersama.",
+        "hint": "Menguraikan dampak buruk pelanggaran aturan dan solusi musyawarah/disiplin."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -570,25 +944,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -605,7 +970,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -625,12 +990,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -665,18 +1027,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -693,7 +1043,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -704,14 +1063,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -720,7 +1079,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

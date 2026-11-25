@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Soal Seni Budaya Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #d35400;
             --primary-light: #e67e22;
-            --bg: #fff3e0;
+            --bg: #fef5e7;
             --success: #27ae60;
             --error: #e74c3c;
             --warning: #f39c12;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>🎨 Seni Budaya</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 3: Gerak Tari dan Maknanya • Bab 4: Menirukan Karakter Tokoh (Hal. 41–71)</div>
+            <div class="badge">Unsur Rupa & Musik, Gerak Tari & Karakter Tokoh • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,157 +378,561 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Unsur utama dalam seni tari adalah ....",
-                "answer": "gerak",
-                "alt": [
-                    "gerakan",
-                    "gerak tubuh"
-                ],
-                "hint": "Tari menggunakan gerak tubuh yang disusun sesuai irama.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Gerak tari yang hanya mengutamakan keindahan dan tidak memiliki makna tertentu disebut gerak ....",
-                "answer": "murni",
-                "alt": [
-                    "gerak murni"
-                ],
-                "hint": "Gerak murni dibuat untuk keindahan, bukan untuk menyampaikan makna tertentu."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Gerak tari yang memiliki makna, maksud, atau tujuan tertentu disebut gerak ....",
-                "answer": "maknawi",
-                "alt": [
-                    "gerak maknawi"
-                ],
-                "hint": "Gerak maknawi menyampaikan pesan atau menggambarkan sesuatu."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Proses menciptakan dan mengembangkan gerak tari dengan kreativitas serta imajinasi disebut ....",
-                "answer": "improvisasi",
-                "alt": [],
-                "hint": "Improvisasi gerak dapat dilakukan dengan meniru lalu mengembangkan gerakan."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Permainan dan tari rangku alu menggunakan beberapa batang .... yang digerakkan membuka dan menutup.",
-                "answer": "bambu",
-                "alt": [],
-                "hint": "Penari rangku alu melompat di sela-sela bambu mengikuti irama ketukannya."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Sifat atau watak seorang tokoh disebut ....",
-                "answer": "karakter",
-                "alt": [
-                    "karakter tokoh"
-                ],
-                "hint": "Karakter perlu dipahami agar gerak, suara, dan ekspresi sesuai dengan tokoh yang diperankan."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Dongeng yang tokoh-tokohnya berupa hewan disebut ....",
-                "answer": "fabel",
-                "alt": [],
-                "hint": "Contoh fabel adalah cerita Kancil dan Harimau atau Kucing dan Kerbau."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Bermain peran dengan gerak tubuh dan ekspresi wajah tanpa berbicara disebut ....",
-                "answer": "pantomim",
-                "alt": [],
-                "hint": "Pantomim menyampaikan peran atau peristiwa melalui gerak dan ekspresi, tanpa kata-kata."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Orang yang memainkan pantomim disebut ....",
-                "answer": "pantomimer",
-                "alt": [],
-                "hint": "Pantomimer memerankan tokoh menggunakan ekspresi wajah dan gerak tubuh."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Percakapan antartokoh dalam sebuah cerita atau pertunjukan disebut ....",
-                "answer": "dialog",
-                "alt": [],
-                "hint": "Dialog disampaikan dengan suara, emosi, dan gerak tubuh yang sesuai karakter tokoh."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Gerak tari yang menirukan gerakan hewan, tumbuhan, atau benda disebut gerak ....",
-                "answer": "imitatif",
-                "alt": [
-                    "gerak imitatif"
-                ],
-                "hint": "Gerak imitatif meniru gerak hewan, tumbuhan, benda, atau peristiwa alam."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Gerak tari yang menirukan kegiatan sehari-hari manusia disebut gerak ....",
-                "answer": "mimitif",
-                "alt": [
-                    "gerak mimitif"
-                ],
-                "hint": "Gerak mimitif dapat meniru gerak orang yang sedang bekerja, seperti petani yang mencangkul."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Garis yang dilalui atau dibentuk oleh penari ketika menari disebut pola ....",
-                "answer": "lantai",
-                "alt": [
-                    "pola lantai"
-                ],
-                "hint": "Pola lantai mengatur jalur gerak atau formasi penari."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Benda pendukung yang digunakan pemain saat tampil, misalnya topeng atau tongkat, disebut ....",
-                "answer": "properti",
-                "alt": [
-                    "alat peraga",
-                    "properti pertunjukan",
-                    "properti panggung"
-                ],
-                "hint": "Properti membantu pemain memperjelas tokoh, gerak, atau adegan yang ditampilkan."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Raut wajah yang menunjukkan perasaan tokoh, seperti gembira atau sedih, disebut ....",
-                "answer": "ekspresi",
-                "alt": [
-                    "ekspresi wajah",
-                    "mimik",
-                    "mimik wajah"
-                ],
-                "hint": "Ekspresi wajah membantu penonton memahami perasaan tokoh saat bermain peran."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perbandingan ukuran antara bagian yang satu dengan bagian lain pada sebuah gambar agar terlihat wajar disebut ....",
+        "options": [
+            "Proporsi",
+            "Tekstur",
+            "Komik",
+            "Interval"
+        ],
+        "answer": 0,
+        "hint": "Proporsi menjaga keseimbangan ukuran bagian gambar (misal ukuran kepala dan tubuh)."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Tekstur permukaan benda yang ketika dilihat tampak kasar tetapi saat diraba sebenarnya rata dan halus (misalnya gambar kulit pohon) disebut tekstur ....",
+        "options": [
+            "Nyata",
+            "Semu / maya",
+            "Berlubang",
+            "Keras"
+        ],
+        "answer": 1,
+        "hint": "Tekstur semu hanya terasa lewat penglihatan mata, berbeda dengan tekstur nyata saat disentuh."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Jarak antara nada <b>do</b> ke nada <b>fa</b> pada tangga nada disebut interval ....",
+        "options": [
+            "Prim",
+            "Sekon",
+            "Kuart",
+            "Oktaf"
+        ],
+        "answer": 2,
+        "hint": "Urutan interval: 1=prim (do-do), 2=sekon (do-re), 3=terts (do-mi), 4=kuart (do-fa)."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Suara hujan turun, petir menggelegar, dan kicau burung termasuk jenis bunyi ....",
+        "options": [
+            "Buatan",
+            "Alam",
+            "Elektronik",
+            "Rekaman"
+        ],
+        "answer": 1,
+        "hint": "Bunyi yang berasal dari peristiwa alam atau makhluk hidup disebut bunyi alam."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Unsur utama dan paling pokok di dalam seni tari adalah ....",
+        "options": [
+            "Kostum mewah",
+            "Gerak",
+            "Panggung tinggi",
+            "Lampu warna-warni"
+        ],
+        "answer": 1,
+        "hint": "Tari adalah ekspresi jiwa manusia melalui gerak yang indah dan berirama."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Gerak tari yang sengaja diciptakan murni untuk keindahan tanpa mengandung arti atau maksud khusus (contohnya <i>ngruji</i> dan <i>agem</i>) disebut gerak ....",
+        "options": [
+            "Maknawi",
+            "Murni",
+            "Wantah",
+            "Pantomim"
+        ],
+        "answer": 1,
+        "hint": "Gerak murni mengutamakan keindahan visual; gerak maknawi memiliki arti tertentu."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Gerak tari maknawi yang menirukan gerakan hewan atau tumbuhan (seperti Tari Kupu-Kupu dan Tari Merak) disebut gerak ....",
+        "options": [
+            "Imitatif",
+            "Mimitif",
+            "Lontang",
+            "Diagonal"
+        ],
+        "answer": 0,
+        "hint": "Imitatif = meniru alam/hewan/tumbuhan; Mimitif = meniru kegiatan manusia."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Permainan tradisional berkelompok menggunakan bilah bambu yang dimainkan saat musim panen dan berasal dari Flores (NTT) adalah ....",
+        "options": [
+            "Egrang",
+            "Rangku Alu",
+            "Congkak",
+            "Yoyo"
+        ],
+        "answer": 1,
+        "hint": "Rangku Alu menggunakan bambu yang digerakkan berirama dari Manggarai, Flores, NTT."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Pertunjukan teater atau seni peran yang hanya menggunakan ekspresi wajah dan gerak tubuh tanpa mengucapkan kata-kata disebut ....",
+        "options": [
+            "Fabel",
+            "Pantomim",
+            "Balon kata",
+            "Deklamasi"
+        ],
+        "answer": 1,
+        "hint": "Pemainnya disebut pantomimer; mereka bercerita tanpa berbicara."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Cerita dongeng fiksi yang tokoh-tokohnya berupa hewan yang dapat berbicara dan bertingkah seperti manusia (contohnya Kancil dan Harimau) disebut ....",
+        "options": [
+            "Komik",
+            "Fabel",
+            "Berita",
+            "Biografi"
+        ],
+        "answer": 1,
+        "hint": "Fabel menggunakan hewan sebagai tokoh cerita untuk menyampaikan pesan moral."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah unsur-unsur seni rupa yang terdapat pada sebuah gambar dekoratif!",
+        "options": [
+            "Titik dan garis",
+            "Bidang atau bentuk",
+            "Warna dan tekstur",
+            "Interval nada dan tempo"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Lima unsur gambar dekoratif: titik, garis, bidang/bentuk, warna, dan tekstur."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah alat musik yang termasuk kelompok <b>alat musik ritmis</b> (tidak bernada, pengatur irama)!",
+        "options": [
+            "Kendang dan drum",
+            "Tamborin dan simbal tangan",
+            "Marakas",
+            "Pianika dan piano"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pianika dan piano adalah alat musik melodis karena memiliki tangga nada."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pasangan nama tarian daerah dan asal provinsinya yang tepat!",
+        "options": [
+            "Tari Bungong Jeumpa berasal dari Aceh",
+            "Tari Piring berasal dari Sumatera Barat",
+            "Tari Kupu-Kupu berasal dari Bali",
+            "Tari Panarat berasal dari Papua"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tari Panarat (tema pemetik teh) berasal dari Jawa Barat."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh gerak tari yang termasuk <b>gerak murni</b>!",
+        "options": [
+            "Gerak ngruji atau ngrayung pada jari tangan",
+            "Gerak agem dalam tari Bali",
+            "Gerak lontang kembar",
+            "Gerak meniru petani menanam padi"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ngruji, agem, dan lontang kembar bersifat estetis murni tanpa makna cerita."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah permainan tradisional yang biasa dimainkan secara <b>berkelompok</b>!",
+        "options": [
+            "Cublak-cublak suweng dan injit-injit semut",
+            "Engklek dan lompat tali",
+            "Rangku alu dengan bilah bambu",
+            "Memainkan yoyo sendirian di kamar"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Yoyo, gasing, dan egrang dapat dimainkan secara individu; engklek, congkak, dan rangku alu berkelompok."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah bentuk-bentuk <b>pola lantai</b> yang dipelajari dalam seni tari!",
+        "options": [
+            "Pola lantai garis lurus horizontal",
+            "Pola lantai garis lurus segi empat",
+            "Pola lantai garis lengkung ke depan",
+            "Pola lantai lingkaran bawah tanah"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pola lantai tari terdiri dari garis lurus (horizontal, segi empat) dan garis lengkung."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah hal-hal yang perlu diperhatikan untuk menirukan <b>dialog karakter tokoh</b> dalam seni peran!",
+        "options": [
+            "Intonasi atau tinggi-rendah suara",
+            "Ekspresi emosi (senang, marah, sedih)",
+            "Gerak tubuh dan mimik wajah yang sesuai watak",
+            "Membaca secepat mungkin tanpa titik dan koma"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Menirukan karakter membutuhkan olah suara, penghayatan emosi, dan gerak tubuh."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah aspek yang termasuk <b>latar belakang karakter tokoh</b> dalam sebuah cerita!",
+        "options": [
+            "Usia dan jenis kelamin",
+            "Suku/ras dan agama",
+            "Pekerjaan atau kedudukan tokoh",
+            "Warna kertas halaman belakang buku"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Latar belakang tokoh meliputi usia, ras, agama, dan pekerjaan."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah benda yang dapat digunakan sebagai <b>properti pendukung</b> saat memerankan karakter tokoh di panggung!",
+        "options": [
+            "Topeng karakter hewan",
+            "Kostum sesuai tokoh cerita",
+            "Tongkat atau properti tangan lain",
+            "Meja makan beton di dapur rumah"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Topeng, kostum, dan tongkat adalah properti panggung yang lazim digunakan."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah langkah-langkah persiapan yang wajib dilakukan sebelum pementasan seni peran atau drama!",
+        "options": [
+            "Memilih naskah atau cerita yang akan dimainkan",
+            "Menentukan pembagian peran pemain",
+            "Berlatih dialog/gerak serta menyiapkan kostum dan properti",
+            "Langsung tampil ke panggung tanpa membaca cerita"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Empat langkah persiapan: memilih cerita, menentukan pemain, berlatih, dan menyiapkan kostum/properti."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tarian/permainan tradisi berikut dengan daerah asalnya: <b>Tari Bungong Jeumpa</b>",
+        "options": [
+            "Aceh",
+            "Sumatera Barat",
+            "Bali",
+            "Jawa Barat",
+            "Flores, Nusa Tenggara Timur"
+        ],
+        "answer": "Aceh",
+        "hint": "Bungong Jeumpa berarti bunga cempaka dari Aceh."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tarian/permainan tradisi berikut dengan daerah asalnya: <b>Tari Piring</b>",
+        "options": [
+            "Aceh",
+            "Sumatera Barat",
+            "Bali",
+            "Jawa Barat",
+            "Flores, Nusa Tenggara Timur"
+        ],
+        "answer": "Sumatera Barat",
+        "hint": "Tari Piring adalah tarian khas Minangkabau, Sumatera Barat."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tarian/permainan tradisi berikut dengan daerah asalnya: <b>Tari Kupu-Kupu</b>",
+        "options": [
+            "Aceh",
+            "Sumatera Barat",
+            "Bali",
+            "Jawa Barat",
+            "Flores, Nusa Tenggara Timur"
+        ],
+        "answer": "Bali",
+        "hint": "Tari Kupu-Kupu diciptakan di Bali dengan gerak menirukan kupu-kupu terbang."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tarian/permainan tradisi berikut dengan daerah asalnya: <b>Tari Panarat (pemetik teh)</b>",
+        "options": [
+            "Aceh",
+            "Sumatera Barat",
+            "Bali",
+            "Jawa Barat",
+            "Flores, Nusa Tenggara Timur"
+        ],
+        "answer": "Jawa Barat",
+        "hint": "Tari Panarat menggambarkan kehidupan masyarakat perkebunan teh di Jawa Barat."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tarian/permainan tradisi berikut dengan daerah asalnya: <b>Permainan Tari Bambu Rangku Alu</b>",
+        "options": [
+            "Aceh",
+            "Sumatera Barat",
+            "Bali",
+            "Jawa Barat",
+            "Flores, Nusa Tenggara Timur"
+        ],
+        "answer": "Flores, Nusa Tenggara Timur",
+        "hint": "Rangku Alu berasal dari Flores, Nusa Tenggara Timur."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kotak-kotak gambar ilustrasi yang tersusun berurutan membentuk cerita dalam komik disebut ....",
+        "answer": "panel",
+        "alt": [
+            "panel komik"
+        ],
+        "hint": "Komik tersusun atas panel gambar dan balon kata."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Alat musik yang memiliki tangga nada dan dapat membunyikan melodi lagu (seperti pianika) disebut alat musik ....",
+        "answer": "melodis",
+        "alt": [
+            "alat musik melodis"
+        ],
+        "hint": "Pianika merupakan alat musik melodis; kendang merupakan alat musik ritmis."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Gerak keseharian manusia sebelum diperindah menjadi gerakan tari disebut gerak ....",
+        "answer": "wantah",
+        "alt": [
+            "gerak wantah"
+        ],
+        "hint": "Gerak biasa sehari-hari (berjalan, menyapu) disebut gerak wantah."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kemampuan menciptakan dan mengembangkan gerakan tari baru secara spontan tanpa rencana sebelumnya setelah meniru gerak disebut ....",
+        "answer": "improvisasi",
+        "alt": [
+            "improvisasi gerak"
+        ],
+        "hint": "Tahap improvisasi meliputi meniru dan mengembangkan gerak."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Gerak tari maknawi yang menirukan kegiatan manusia seperti gerakan membatik atau <i>ulap-ulap</i> disebut gerak ....",
+        "answer": "mimitif",
+        "alt": [
+            "gerak mimitif"
+        ],
+        "hint": "Mimitif meniru manusia; imitatif meniru alam/hewan/tumbuhan."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pertunjukan drama tanpa kata-kata yang mengandalkan raut wajah dan gerak tubuh dilakukan oleh seorang pemain bernama ....",
+        "answer": "pantomimer",
+        "alt": [
+            "pantomim"
+        ],
+        "hint": "Pelaku seni pantomim disebut pantomimer."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Sifat atau watak yang dimiliki seorang tokoh dalam cerita (misalnya penyabar, jujur, atau pemarah) disebut ....",
+        "answer": "karakter",
+        "alt": [
+            "watak"
+        ],
+        "hint": "Karakter menggambarkan sifat/watak tokoh cerita."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Tari Kuda Lumping atau Jaran Kepang berasal dari kota Semarang di provinsi ....",
+        "answer": "Jawa Tengah",
+        "alt": [
+            "Jateng"
+        ],
+        "hint": "Tari Kuda Lumping/Jaran Kepang berasal dari Jawa Tengah."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kelompok pemain musik yang terdiri atas beberapa jenis alat musik gamelan Jawa atau Sunda disebut ansambel / grup ....",
+        "answer": "gamelan",
+        "alt": [
+            "karawitan"
+        ],
+        "hint": "Contoh grup musik: band, gamelan, dan orkestra."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Ruang berbentuk gelembung tempat menuliskan ucapan tokoh di dalam komik disebut ....",
+        "answer": "balon kata",
+        "alt": [
+            "balon dialog"
+        ],
+        "hint": "Ucapan tokoh komik diletakkan di dalam balon kata."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 5 unsur gambar dekoratif dan jelaskan perbedaan antara tekstur nyata dengan tekstur semu!",
+        "answer": "5 unsur gambar dekoratif: titik, garis, bidang/bentuk, warna, dan tekstur. Tekstur nyata adalah tekstur yang terlihat kasar dan saat diraba pun terasa kasar (misal kulit kayu asli). Tekstur semu terlihat bertekstur kasar/berpola di gambar, namun terasa halus saat diraba (misal lukisan batu bata).",
+        "hint": "5 unsur lengkap + perbedaan tekstur nyata vs semu."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan perbedaan alat musik ritmis dan alat musik melodis beserta 3 contoh alat musik ritmis!",
+        "answer": "Alat musik ritmis tidak memiliki nada dan berfungsi mengatur irama/ketukan (contoh: kendang, drum, tamborin, marakas, simbal tangan). Alat musik melodis memiliki tangga nada untuk membunyikan melodi lagu (contoh: pianika).",
+        "hint": "Perbedaan nada/irama jelas dan 3 contoh ritmis benar."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan perbedaan antara gerak murni dengan gerak maknawi (imitatif dan mimitif) dalam seni tari beserta contohnya!",
+        "answer": "Gerak murni adalah gerak tari yang mengutamakan keindahan tanpa makna cerita (contoh: ngruji, agem, lontang kembar). Gerak maknawi adalah gerak yang memiliki makna/arti: imitatif meniru alam/hewan/tumbuhan (contoh: Tari Kupu-Kupu/Kelinci) dan mimitif meniru kegiatan manusia (contoh: Tari Batik/ulap-ulap).",
+        "hint": "Membedakan murni, imitatif, dan mimitif disertai contoh."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 3 contoh pola lantai dalam tari dan jelaskan apa kegunaan pola lantai bagi para penari!",
+        "answer": "Contoh pola lantai: (1) Garis lurus horizontal; (2) Garis lurus segi empat; (3) Garis lengkung ke depan. Kegunaannya agar formasi penari rapi, kompak, tidak bertabrakan, dan tarian terlihat lebih indah.",
+        "hint": "Menyebut 3 pola lantai dan fungsi kerapian/keindahan formasi."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 4 tahap persiapan yang harus dilakukan sebelum kamu bersama teman-teman mementaskan cerita fabel!",
+        "answer": "1) Memilih cerita fabel yang akan dipentaskan; 2) Menentukan para pemain dan pembagian watak tokohnya; 3) Melakukan latihan suara, ekspresi, dan gerak tubuh bersama; 4) Menyiapkan kostum dan properti pendukung seperti topeng atau tongkat.",
+        "hint": "4 langkah persiapan pentas berurutan dan lengkap."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -559,25 +941,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -594,7 +967,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -614,12 +987,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -654,18 +1024,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -682,7 +1040,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -693,14 +1060,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -709,7 +1076,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

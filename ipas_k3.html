@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Soal IPAS (Ilmu Pengetahuan Alam & Sosial) Kelas 3 - SDIT Friends</title>
+    <title>Latihan Soal IPAS Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #27ae60;
             --primary-light: #2ecc71;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>🌿 IPAS (Ilmu Pengetahuan Alam & Sosial)</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 3: Siklus Hidup Manusia • Bab 4: Siklus Hidup Makhluk Hidup dan Cuaca (Hal. 42–66)</div>
+            <div class="badge">Bab 1–4: Alat Indra, Siklus Hidup Makhluk Hidup & Cuaca • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,158 +378,564 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Tinggi badan Musa bertambah dari 125 cm menjadi 130 cm. Pertambahan ukuran tubuh ini disebut ....",
-                "answer": "pertumbuhan",
-                "alt": [],
-                "hint": "Pertumbuhan ditandai bertambahnya ukuran tubuh, seperti tinggi dan berat badan.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Bayi yang semula belum dapat berjalan kemudian mampu berjalan mengalami ....",
-                "answer": "perkembangan",
-                "alt": [],
-                "hint": "Perkembangan ditandai perubahan kemampuan atau fungsi tubuh menuju kematangan."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Masa peralihan dari anak-anak menuju dewasa disebut masa ....",
-                "answer": "remaja",
-                "alt": [
-                    "masa remaja"
-                ],
-                "hint": "Urutan tahap kehidupan manusia meliputi bayi, balita, anak-anak, remaja, dewasa, dan lansia."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Lansia merupakan singkatan dari ....",
-                "answer": "lanjut usia",
-                "alt": [],
-                "hint": "Lansia berarti lanjut usia. Pada tahap ini, rambut dapat beruban dan kemampuan tubuh mulai menurun."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Lengkapilah siklus hidup kupu-kupu: telur → ulat → .... → kupu-kupu dewasa.",
-                "answer": "kepompong",
-                "alt": [
-                    "pupa"
-                ],
-                "hint": "Kupu-kupu mengalami metamorfosis sempurna yang melalui tahap pupa atau kepompong."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Belalang muda yang menetas dari telur dan bentuknya mirip belalang dewasa disebut ....",
-                "answer": "nimfa",
-                "alt": [
-                    "nympha"
-                ],
-                "hint": "Siklus hidup belalang adalah telur, nimfa, lalu belalang dewasa, tanpa tahap kepompong."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Biji yang mulai tumbuh dan mengeluarkan akar serta tunas menjadi ....",
-                "answer": "kecambah",
-                "alt": [],
-                "hint": "Siklus hidup tumbuhan dari biji berlanjut menjadi kecambah, tumbuhan muda, lalu tumbuhan dewasa."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Penanaman kembali hutan yang gundul untuk memulihkan lingkungan disebut ....",
-                "answer": "reboisasi",
-                "alt": [],
-                "hint": "Reboisasi membantu memulihkan hutan dan menjaga habitat hewan serta tumbuhan."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Langit dipenuhi awan gelap sehingga sinar matahari tertutup. Keadaan cuaca tersebut disebut ....",
-                "answer": "mendung",
-                "alt": [
-                    "cuaca mendung"
-                ],
-                "hint": "Cuaca mendung ditandai awan gelap yang menutupi sinar matahari."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Tumbuhan memerlukan cahaya dari .... untuk membantu membuat makanan.",
-                "answer": "matahari",
-                "alt": [
-                    "sinar matahari"
-                ],
-                "hint": "Cahaya matahari dibutuhkan tumbuhan dalam proses pembuatan makanan."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Balita adalah singkatan dari ....",
-                "answer": "bawah lima tahun",
-                "alt": [
-                    "bawah 5 tahun",
-                    "di bawah lima tahun",
-                    "di bawah 5 tahun"
-                ],
-                "hint": "Balita adalah anak yang berusia di bawah lima tahun."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Kupu-kupu mengalami metamorfosis .... karena melalui tahap kepompong.",
-                "answer": "sempurna",
-                "alt": [
-                    "metamorfosis sempurna"
-                ],
-                "hint": "Tahapan metamorfosis sempurna kupu-kupu adalah telur, ulat, kepompong, dan kupu-kupu dewasa."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Perkembangbiakan tumbuhan melalui biji disebut perkembangbiakan ....",
-                "answer": "generatif",
-                "alt": [
-                    "perkembangbiakan generatif"
-                ],
-                "hint": "Perkembangbiakan generatif menghasilkan biji yang dapat tumbuh menjadi tumbuhan baru."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Pisang dapat berkembang biak secara vegetatif. Anakan pisang yang tumbuh di dekat induknya disebut ....",
-                "answer": "tunas",
-                "alt": [
-                    "tunas pisang",
-                    "anakan",
-                    "anakan pisang"
-                ],
-                "hint": "Tunas tumbuh di dekat tanaman induk dan dapat berkembang menjadi pohon pisang baru."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Langit tampak biru dan matahari bersinar terang. Keadaan ini menunjukkan cuaca ....",
-                "answer": "cerah",
-                "alt": [
-                    "cuaca cerah"
-                ],
-                "hint": "Cuaca cerah ditandai oleh sinar matahari yang terang dan langit yang tampak biru."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Alat indra pada manusia yang berfungsi untuk mengecap rasa manis, asin, asam, dan pahit adalah ....",
+        "options": [
+            "Hidung",
+            "Telinga",
+            "Lidah",
+            "Kulit"
+        ],
+        "answer": 2,
+        "hint": "Lidah adalah indra pengecap empat rasa utama."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Kemampuan kelelawar dan lumba-lumba mendeteksi mangsa serta arah menggunakan pantulan gelombang bunyi disebut ....",
+        "options": [
+            "Fotosintesis",
+            "Ekolokasi",
+            "Metamorfosis",
+            "Hibernasi"
+        ],
+        "answer": 1,
+        "hint": "Kelelawar dan lumba-lumba memiliki sistem ekolokasi (pantulan suara)."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Keluarga yang hanya terdiri atas ayah, ibu, dan anak disebut ....",
+        "options": [
+            "Keluarga besar",
+            "Keluarga inti",
+            "Warga masyarakat",
+            "Tetangga dekat"
+        ],
+        "answer": 1,
+        "hint": "Keluarga inti terdiri dari ayah, ibu, dan anak; kakek/nenek/paman termasuk keluarga besar."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perbedaan antara pertumbuhan dan perkembangan pada manusia yang tepat adalah ....",
+        "options": [
+            "Pertumbuhan berupa bertambahnya tinggi dan berat badan, sedangkan perkembangan berupa pematangan fungsi tubuh dan kemampuan",
+            "Pertumbuhan hanya terjadi saat tidur",
+            "Perkembangan dapat diukur dengan timbangan",
+            "Pertumbuhan sama dengan rambut beruban"
+        ],
+        "answer": 0,
+        "hint": "Pertumbuhan bersifat terukur (tinggi/berat), sedangkan perkembangan adalah pematangan fungsi organ (misalnya mulai bisa berjalan)."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Tahap pertumbuhan manusia pada usia 11–20 tahun yang ditandai perubahan fisik (pubertas) dan perubahan suara disebut masa ....",
+        "options": [
+            "Balita",
+            "Anak-anak",
+            "Remaja",
+            "Lansia"
+        ],
+        "answer": 2,
+        "hint": "Usia sekitar 11–20 tahun adalah masa remaja dengan ciri pubertas."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perhatikan diagram daur hidup hewan berikut!<div class=\"svg-box\"><svg width=\"450\" height=\"160\" viewBox=\"0 0 450 160\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"0\" y=\"0\" width=\"450\" height=\"160\" rx=\"10\" fill=\"#f3fcf6\"/>\n  <rect x=\"14\" y=\"42\" width=\"84\" height=\"72\" rx=\"10\" fill=\"#ffffff\" stroke=\"#27ae60\" stroke-width=\"2\"/>\n  <ellipse cx=\"56\" cy=\"70\" rx=\"8\" ry=\"11\" fill=\"#f1c40f\" stroke=\"#d35400\" stroke-width=\"1.5\"/>\n  <text x=\"56\" y=\"102\" font-size=\"11\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">1. Telur</text>\n  <text x=\"108\" y=\"82\" font-size=\"18\" font-weight=\"bold\" fill=\"#27ae60\">→</text>\n  <rect x=\"126\" y=\"42\" width=\"84\" height=\"72\" rx=\"10\" fill=\"#ffffff\" stroke=\"#27ae60\" stroke-width=\"2\"/>\n  <path d=\"M142 74 Q152 62 162 74 Q172 62 182 74 Q190 66 196 74\" fill=\"none\" stroke=\"#2ecc71\" stroke-width=\"7\" stroke-linecap=\"round\"/>\n  <text x=\"168\" y=\"102\" font-size=\"11\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">2. Ulat (Larva)</text>\n  <text x=\"220\" y=\"82\" font-size=\"18\" font-weight=\"bold\" fill=\"#27ae60\">→</text>\n  <rect x=\"238\" y=\"42\" width=\"84\" height=\"72\" rx=\"10\" fill=\"#ffffff\" stroke=\"#27ae60\" stroke-width=\"2\"/>\n  <ellipse cx=\"280\" cy=\"70\" rx=\"11\" ry=\"18\" fill=\"#a29bfe\" stroke=\"#6c5ce7\" stroke-width=\"2\"/>\n  <text x=\"280\" y=\"102\" font-size=\"11\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">3. [ X ]</text>\n  <text x=\"332\" y=\"82\" font-size=\"18\" font-weight=\"bold\" fill=\"#27ae60\">→</text>\n  <rect x=\"350\" y=\"42\" width=\"86\" height=\"72\" rx=\"10\" fill=\"#ffffff\" stroke=\"#27ae60\" stroke-width=\"2\"/>\n  <ellipse cx=\"383\" cy=\"68\" rx=\"10\" ry=\"13\" fill=\"#fd79a8\"/>\n  <ellipse cx=\"403\" cy=\"68\" rx=\"10\" ry=\"13\" fill=\"#fd79a8\"/>\n  <line x1=\"393\" y1=\"54\" x2=\"393\" y2=\"83\" stroke=\"#2d3436\" stroke-width=\"3\"/>\n  <text x=\"393\" y=\"102\" font-size=\"11\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">4. Kupu-kupu</text>\n  <text x=\"225\" y=\"24\" font-size=\"13\" font-weight=\"bold\" fill=\"#1e8449\" text-anchor=\"middle\">Metamorfosis Sempurna Kupu-Kupu</text>\n</svg></div>Tahap yang ditunjukkan huruf [ X ] pada metamorfosis sempurna kupu-kupu adalah ....",
+        "options": [
+            "Berudu",
+            "Nimfa",
+            "Pupa (kepompong)",
+            "Katak berekor"
+        ],
+        "answer": 2,
+        "hint": "Urutan kupu-kupu: Telur → Ulat (Larva) → Kepompong (Pupa) → Kupu-kupu dewasa."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hewan berikut ini yang mengalami metamorfosis tidak sempurna (tanpa melalui tahap pupa/kepompong) adalah ....",
+        "options": [
+            "Kupu-kupu dan nyamuk",
+            "Belalang dan kecoak",
+            "Katak dan lalat",
+            "Ayam dan kucing"
+        ],
+        "answer": 1,
+        "hint": "Belalang dan kecoak bermetamorfosis tidak sempurna: telur → nimfa → dewasa."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hewan yang TIDAK mengalami metamorfosis dalam siklus hidupnya karena bentuk anaknya sudah mirip induknya adalah ....",
+        "options": [
+            "Katak",
+            "Kupu-kupu",
+            "Ayam dan kucing",
+            "Nyamuk"
+        ],
+        "answer": 2,
+        "hint": "Ayam, bebek, kucing, dan kura-kura tidak mengalami metamorfosis."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Tumbuhan kentang berkembang biak secara vegetatif alami menggunakan bagian ....",
+        "options": [
+            "Umbi akar",
+            "Umbi batang",
+            "Umbi lapis",
+            "Geragih"
+        ],
+        "answer": 1,
+        "hint": "Kentang berkembang biak dengan umbi batang, sedangkan bawang merah dengan umbi lapis."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Cahaya matahari pada cuaca cerah sangat dibutuhkan tumbuhan hijau untuk melakukan proses ....",
+        "options": [
+            "Fotosintesis",
+            "Migrasi",
+            "Ekolokasi",
+            "Metamorfosis"
+        ],
+        "answer": 0,
+        "hint": "Tumbuhan menyerap cahaya matahari untuk membuat makanan melalui fotosintesis."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pasangan alat indra manusia dan fungsinya yang benar!",
+        "options": [
+            "Mata untuk melihat benda dan warna",
+            "Telinga untuk mendengar suara",
+            "Hidung untuk mencium berbagai bau",
+            "Kulit untuk mendengar bunyi pantulan"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kulit berfungsi sebagai indra peraba, bukan pendengar."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah anggota yang termasuk dalam kelompok keluarga besar!",
+        "options": [
+            "Kakek dan nenek",
+            "Paman dan bibi",
+            "Sepupu",
+            "Ayah dan ibu kandung saja tanpa kerabat"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Keluarga besar mencakup kakek, nenek, paman, bibi, dan sepupu."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh tradisi atau budaya gotong royong dan kebersamaan di Indonesia!",
+        "options": [
+            "Upacara adat daerah",
+            "Kerja bakti / gotong royong warga",
+            "Lomba memeriahkan Hari Kemerdekaan 17 Agustus",
+            "Menonton televisi sendirian di kamar"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Upacara adat, gotong royong, dan lomba 17 Agustus merupakan bagian dari tradisi budaya masyarakat."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah ciri-ciri tahap lanjut usia (lansia >50 tahun) pada siklus hidup manusia!",
+        "options": [
+            "Rambut mulai memutih atau beruban",
+            "Kulit menjadi keriput",
+            "Kekuatan fisik mulai menurun",
+            "Baru belajar minum ASI dan belum bergigi"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ciri lansia antara lain beruban, kulit keriput, dan kekuatan tubuh menurun."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pernyataan yang benar tentang peran anggota keluarga inti!",
+        "options": [
+            "Ayah berperan sebagai pemimpin keluarga, mencari nafkah, dan mendidik anak",
+            "Ibu berperan mendidik anak dan mengurus rumah tangga serta dapat bekerja",
+            "Anak wajib menghormati orang tua dan belajar dengan tekun",
+            "Anak kecil bertugas mencari nafkah utama keluarga"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ayah, ibu, dan anak memiliki peran masing-masing untuk menjaga keharmonisan keluarga."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah hewan yang mengalami metamorfosis sempurna!",
+        "options": [
+            "Kupu-kupu",
+            "Katak",
+            "Nyamuk dan lalat",
+            "Belalang dan kucing"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kupu-kupu, katak, nyamuk, lalat, dan lebah mengalami metamorfosis sempurna."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh perkembangbiakan vegetatif alami tumbuhan yang benar!",
+        "options": [
+            "Pisang berkembang biak dengan tunas",
+            "Stroberi berkembang biak dengan geragih",
+            "Jahe berkembang biak dengan rimpang",
+            "Apel hanya berkembang biak dengan daun jatuh"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pisang bertunas, stroberi bergeragih, dan jahe berimpang."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah upaya pelestarian makhluk hidup agar hewan dan tumbuhan langka tidak punah!",
+        "options": [
+            "Menjaga habitat alami seperti taman nasional dan suaka margasatwa",
+            "Melakukan reboisasi dan penanaman hutan mangrove",
+            "Melakukan penangkaran hewan langka seperti harimau dan cenderawasih",
+            "Menebang pohon hutan secara liar terus-menerus"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pelestarian dilakukan melalui taman nasional, suaka margasatwa, reboisasi, dan penangkaran."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pengaruh perubahan cuaca terhadap hewan dan tumbuhan!",
+        "options": [
+            "Burung bermigrasi ke tempat hangat saat musim dingin",
+            "Akar tumbuhan menyerap air hujan untuk bertahan hidup",
+            "Hewan mencari sumber air atau berteduh saat kemarau panas",
+            "Batu di sungai bertambah besar karena makan daun"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Cuaca memengaruhi migrasi burung, ketersediaan air minum hewan, dan air bagi akar tumbuhan."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah perlengkapan yang tepat digunakan manusia saat menghadapi musim hujan dan musim kemarau!",
+        "options": [
+            "Payung dan jas hujan saat cuaca hujan",
+            "Topi dan pakaian tipis menyerap keringat saat cuaca panas/kemarau",
+            "Jaket hangat saat udara dingin sehabis hujan lebat",
+            "Jas hujan tebal di tengah terik matahari siang untuk berjemur"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pakaian dan perlengkapan disesuaikan dengan kondisi cuaca cerah, mendung, atau hujan."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tumbuhan berikut dengan cara perkembangbiakan vegetatif alaminya: <b>Pohon Pisang</b>",
+        "options": [
+            "Tunas",
+            "Geragih (stolon)",
+            "Rimpang (rizoma)",
+            "Umbi lapis",
+            "Spora"
+        ],
+        "answer": "Tunas",
+        "hint": "Pisang dan bambu berkembang biak dengan tunas."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tumbuhan berikut dengan cara perkembangbiakan vegetatif alaminya: <b>Stroberi</b>",
+        "options": [
+            "Tunas",
+            "Geragih (stolon)",
+            "Rimpang (rizoma)",
+            "Umbi lapis",
+            "Spora"
+        ],
+        "answer": "Geragih (stolon)",
+        "hint": "Stroberi dan rumput teki berkembang biak dengan geragih."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tumbuhan berikut dengan cara perkembangbiakan vegetatif alaminya: <b>Jahe dan Kunyit</b>",
+        "options": [
+            "Tunas",
+            "Geragih (stolon)",
+            "Rimpang (rizoma)",
+            "Umbi lapis",
+            "Spora"
+        ],
+        "answer": "Rimpang (rizoma)",
+        "hint": "Jahe, kunyit, dan lengkuas berkembang biak dengan akar rimpang."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tumbuhan berikut dengan cara perkembangbiakan vegetatif alaminya: <b>Bawang Merah dan Bawang Putih</b>",
+        "options": [
+            "Tunas",
+            "Geragih (stolon)",
+            "Rimpang (rizoma)",
+            "Umbi lapis",
+            "Spora"
+        ],
+        "answer": "Umbi lapis",
+        "hint": "Bawang merah dan bawang putih memiliki umbi yang berlapis-lapis."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tumbuhan berikut dengan cara perkembangbiakan vegetatif alaminya: <b>Tumbuhan Paku dan Lumut</b>",
+        "options": [
+            "Tunas",
+            "Geragih (stolon)",
+            "Rimpang (rizoma)",
+            "Umbi lapis",
+            "Spora"
+        ],
+        "answer": "Spora",
+        "hint": "Tumbuhan paku dan lumut berkembang biak menggunakan spora."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Tahap kepompong pada metamorfosis kupu-kupu disebut juga fase ....",
+        "answer": "pupa",
+        "alt": [
+            "kepompong"
+        ],
+        "hint": "Urutannya: telur → larva → pupa → imago (dewasa)."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pada siklus hidup katak, berudu yang hidup di air bernapas menggunakan ....",
+        "answer": "insang",
+        "alt": [
+            "insangnya"
+        ],
+        "hint": "Berudu bernapas dengan insang, sedangkan katak dewasa dengan paru-paru dan kulit."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Anak kecoak atau belalang muda yang baru menetas dari telur disebut ....",
+        "answer": "nimfa",
+        "alt": [
+            "hewan muda"
+        ],
+        "hint": "Pada metamorfosis tidak sempurna, telur menetas menjadi nimfa."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Perkembangbiakan tumbuhan secara tidak kawin (tanpa biji, melainkan dari bagian tubuh induk seperti tunas atau setek) disebut perkembangbiakan ....",
+        "answer": "vegetatif",
+        "alt": [
+            "secara vegetatif"
+        ],
+        "hint": "Perkembangbiakan tanpa biji disebut vegetatif; dengan biji disebut generatif."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Singkong dapat diperbanyak oleh petani dengan cara memotong batangnya lalu menancapkan ke tanah, yang disebut ....",
+        "answer": "setek batang",
+        "alt": [
+            "stek batang",
+            "setek",
+            "stek"
+        ],
+        "hint": "Singkong diperbanyak dengan cara setek batang."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Kawasan pelestarian khusus untuk melindungi hewan langka di habitat aslinya disebut ....",
+        "answer": "suaka margasatwa",
+        "alt": [
+            "suaka marga satwa"
+        ],
+        "hint": "Suaka margasatwa melindungi satwa langka; cagar alam melindungi tumbuhan/ekosistem."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pada usia 0–1 tahun, manusia berada pada tahap .... dengan makanan utama berupa ASI.",
+        "answer": "bayi",
+        "alt": [
+            "tahap bayi",
+            "masa bayi"
+        ],
+        "hint": "Tahap pertama setelah lahir adalah bayi."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bagian lidah mampu merasakan empat rasa utama, yaitu manis, asin, asam, dan ....",
+        "answer": "pahit",
+        "alt": [
+            "rasa pahit"
+        ],
+        "hint": "Empat rasa dasar pengecapan: manis, asin, asam, pahit."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Saat dua tim sedang bertanding tarik tambang atau sepak bola, interaksi sosial yang terjadi adalah antarkelompok, sedangkan ibu menasihati anaknya seorang diri merupakan interaksi individu dengan ....",
+        "answer": "individu",
+        "alt": [
+            "perorangan"
+        ],
+        "hint": "Satu orang berbicara dengan satu orang lainnya adalah interaksi individu dengan individu."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Penanaman kembali hutan yang gundul maupun penanaman pohon bakau (mangrove) di pesisir pantai disebut kegiatan ....",
+        "answer": "reboisasi",
+        "alt": [
+            "penghijauan"
+        ],
+        "hint": "Reboisasi menjaga habitat hewan dan mencegah abrasi serta banjir."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan perbedaan antara pertumbuhan dan perkembangan pada manusia serta berikan masing-masing satu contoh!",
+        "answer": "Pertumbuhan adalah bertambahnya ukuran tubuh seperti tinggi, panjang, dan berat badan yang dapat diukur angka (contoh: tinggi badan siswa naik dari 120 cm menjadi 126 cm). Perkembangan adalah perubahan pematangan fungsi organ dan kemampuan tubuh (contoh: bayi mulai belajar merangkak lalu berjalan).",
+        "hint": "Skor penuh jika membedakan ukuran fisik vs fungsi/kemampuan beserta contoh."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 6 tahap siklus hidup manusia secara berurutan beserta 1 ciri singkat tiap tahap!",
+        "answer": "1) Bayi (0-1 th): minum ASI, belum tumbuh gigi; 2) Balita (1-5 th): mulai berjalan dan berbicara; 3) Anak-anak (6-10 th): sekolah dasar, gigi susu berganti; 4) Remaja (11-20 th): masa pubertas; 5) Dewasa (21-50 th): bekerja dan berkeluarga; 6) Lansia (>50 th): rambut beruban dan kulit keriput.",
+        "hint": "Skor penuh jika urutan dan ciri 6 tahap lengkap."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan perbedaan metamorfosis sempurna pada kupu-kupu dan metamorfosis tidak sempurna pada belalang!",
+        "answer": "Metamorfosis sempurna pada kupu-kupu melewati 4 tahap termasuk kepompong (telur → ulat/larva → pupa/kepompong → kupu-kupu dewasa), bentuk larva jauh berbeda dari induknya. Metamorfosis tidak sempurna pada belalang melewati 3 tahap tanpa pupa (telur → nimfa → belalang dewasa), bentuk nimfa sudah mirip induknya namun belum bersayap.",
+        "hint": "Menyebut jumlah tahap, ada/tidaknya pupa, serta perbedaan bentuk larva vs nimfa."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 3 upaya pelestarian makhluk hidup agar hewan dan tumbuhan langka tidak punah!",
+        "answer": "1) Melindungi habitat asli melalui taman nasional, cagar alam, dan suaka margasatwa; 2) Melakukan reboisasi hutan dan menanam mangrove; 3) Melakukan penangkaran hewan langka seperti harimau sumatra dan burung cenderawasih serta mengedukasi masyarakat.",
+        "hint": "Minimal 3 upaya pelestarian yang tepat."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 3 jenis interaksi sosial manusia di lingkungan keluarga atau masyarakat beserta contohnya!",
+        "answer": "1) Interaksi individu dengan individu (contoh: seorang siswa menyapa gurunya); 2) Interaksi individu dengan kelompok (contoh: guru mengajar seluruh siswa di kelas); 3) Interaksi kelompok dengan kelompok (contoh: dua tim bertanding sepak bola antarkelas).",
+        "hint": "Ketiga jenis interaksi dan contohnya benar."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -560,25 +944,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -595,7 +970,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -615,12 +990,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -655,18 +1027,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -683,7 +1043,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -694,14 +1063,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -710,7 +1079,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

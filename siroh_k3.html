@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Soal Siroh Nabawiyah Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #8e44ad;
             --primary-light: #9b59b6;
-            --bg: #f5eaf7;
+            --bg: #fbf7fc;
             --success: #27ae60;
             --error: #e74c3c;
             --warning: #f39c12;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>📜 Siroh Nabawiyah</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Pemegang Kunci Ka'bah, Pidato setelah Penaklukan Makkah, Perang Hunain, dan Perang Thaif (Hal. 20–33)</div>
+            <div class="badge">Kunci Ka'bah, Fathu Makkah, Perang Hunain & Perang Thaif • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,195 +378,566 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Sahabat yang mendapat amanah dari Nabi Muhammad Saw. untuk memegang kunci Ka'bah bernama ....",
-                "answer": "Utsman bin Thalhah",
-                "alt": [
-                    "Usman bin Thalhah",
-                    "Utsman bin Talhah",
-                    "Usman bin Talhah",
-                    "Utsman bin Thalha"
-                ],
-                "hint": "Nabi Muhammad Saw. menyerahkan kembali kunci Ka'bah kepada Utsman bin Thalhah sebagai amanah.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Sahabat yang membawa kunci Ka'bah dan menanyakan pemegangnya kepada Nabi Muhammad Saw. adalah ....",
-                "answer": "Ali bin Abi Thalib",
-                "alt": [
-                    "Ali",
-                    "Ali bin Abi Talib"
-                ],
-                "hint": "Ali bin Abi Thalib membawa kunci Ka'bah sebelum Nabi menyerahkannya kepada Utsman bin Thalhah."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Dalam pidato setelah penaklukan, Nabi Muhammad Saw. menegaskan kesucian kota ....",
-                "answer": "Makkah",
-                "alt": [
-                    "Mekah",
-                    "Mekkah",
-                    "kota Makkah",
-                    "kota Mekah"
-                ],
-                "hint": "Nabi Muhammad Saw. menegaskan bahwa Makkah adalah kota suci yang harus dijaga keamanannya."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Dalam materi pidato tersebut, tumbuhan yang dikecualikan dari larangan menebang karena dimanfaatkan penduduk Makkah adalah ....",
-                "answer": "Idzkhar",
-                "alt": [
-                    "Idzkhir",
-                    "Idkhir",
-                    "Idkhar"
-                ],
-                "hint": "Menurut materi, Idzkhar masih boleh diambil karena dimanfaatkan penduduk Makkah untuk keperluan rumah."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Nabi Muhammad Saw. bersama Umar bin Khattab membaiat penduduk Makkah yang masuk Islam di Bukit ....",
-                "answer": "Shafa",
-                "alt": [
-                    "Safa",
-                    "Shofa",
-                    "Bukit Shafa",
-                    "Bukit Safa"
-                ],
-                "hint": "Bukit Shafa menjadi tempat pembaiatan penduduk Makkah yang masuk Islam."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Pertempuran melawan kaum Hawazin di sebuah lembah setelah penaklukan Makkah disebut Perang ....",
-                "answer": "Hunain",
-                "alt": [
-                    "Perang Hunain",
-                    "Hunayn"
-                ],
-                "hint": "Kaum muslimin menghadapi pasukan Hawazin dalam Perang Hunain."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Harta rampasan perang dalam kisah Perang Hunain disebut ....",
-                "answer": "ghanimah",
-                "alt": [
-                    "ganimah",
-                    "ghonimah",
-                    "gonimah"
-                ],
-                "hint": "Ghanimah berarti harta rampasan perang. Dalam bacaan, pasukan muslimin mendapat ghanimah setelah menang di Hunain."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Sahabat yang menyeru pasukan Anshar dan Muhajirin agar kembali saat Perang Hunain adalah ....",
-                "answer": "Al-Abbas",
-                "alt": [
-                    "Abbas",
-                    "al Abbas",
-                    "Abbas bin Abdul Muththalib",
-                    "Abbas bin Abdul Muthalib",
-                    "Al-Abbas bin Abdul Muththalib"
-                ],
-                "hint": "Al-Abbas memanggil kembali pasukan yang mundur agar berkumpul dan bertahan."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Sahabat yang diutus Nabi Muhammad Saw. untuk memimpin pasukan menuju Thaif adalah ....",
-                "answer": "Khalid bin Walid",
-                "alt": [
-                    "Khalid",
-                    "Khalid bin al-Walid",
-                    "Khalid bin Al Walid"
-                ],
-                "hint": "Dalam kisah Perang Thaif, Nabi Muhammad Saw. mengutus Khalid bin Walid memimpin pasukan."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Setelah mengakhiri pengepungan Thaif, Nabi Muhammad Saw. dan kaum muslimin kembali ke kota ....",
-                "answer": "Madinah",
-                "alt": [
-                    "Medinah",
-                    "kota Madinah"
-                ],
-                "hint": "Kaum muslimin kembali ke Madinah. Nabi tetap mendoakan kaum Tsaqif agar menerima Islam."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Nabi Muhammad Saw. berpidato pada hari ke-.... setelah penaklukan Makkah.",
-                "answer": "2",
-                "alt": [
-                    "dua",
-                    "kedua",
-                    "ke-2"
-                ],
-                "hint": "Dalam bacaan, Nabi Muhammad Saw. menyampaikan pidato pada hari kedua setelah penaklukan Makkah."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Dalam bacaan Perang Hunain, panglima yang memimpin pasukan Hawazin bernama ....",
-                "answer": "Malik bin Auf An-Nasri",
-                "alt": [
-                    "Malik bin Auf",
-                    "Malik bin 'Auf",
-                    "Malik bin Auf an Nasri",
-                    "Malik bin ‘Auf An-Nasri"
-                ],
-                "hint": "Malik bin Auf An-Nasri memimpin pasukan Hawazin dalam Perang Hunain."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Menurut bacaan, Nabi Muhammad Saw. menyiapkan .... orang pasukan untuk Perang Hunain.",
-                "answer": "12.000",
-                "alt": [
-                    "12000",
-                    "12 000",
-                    "12 ribu",
-                    "dua belas ribu"
-                ],
-                "hint": "Menurut bacaan, jumlah pasukan yang disiapkan Nabi untuk Perang Hunain adalah 12.000 orang."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Di Thaif, kaum Tsaqif menutup pintu .... untuk melindungi diri dari serangan.",
-                "answer": "benteng",
-                "alt": [
-                    "benteng pertahanan",
-                    "benteng-benteng"
-                ],
-                "hint": "Kaum Tsaqif berlindung di balik benteng yang kokoh dan menutup pintunya."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Nabi Muhammad Saw. mendoakan agar kaum Tsaqif memeluk agama ....",
-                "answer": "Islam",
-                "alt": [
-                    "agama Islam"
-                ],
-                "hint": "Dalam bacaan, kaum Tsaqif kemudian mengirim utusan untuk menyatakan keislaman mereka."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Sahabat yang berjalan menghampiri Nabi Muhammad saw. di masjid sambil membawa kunci Ka'bah setelah Fathu Makkah adalah ....",
+        "options": [
+            "Abu Bakar ash-Shiddiq",
+            "Ali bin Abi Thalib",
+            "Khalid bin Walid",
+            "Zaid bin Tsabit"
+        ],
+        "answer": 1,
+        "hint": "Ali bin Abi Thalib membawa kunci Ka'bah, lalu Nabi menyerahkannya kembali kepada pemegangnya yang berhak."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Siapakah tokoh yang dipanggil langsung oleh Nabi Muhammad saw. untuk menerima kunci Ka'bah secara abadi seraya bersabda: <i>'Inilah kuncimu, wahai ....'</i>?",
+        "options": [
+            "Utsman bin Affan",
+            "Utsman bin Thalhah",
+            "Ikrimah bin Abi Jahl",
+            "Suhail bin Amr"
+        ],
+        "answer": 1,
+        "hint": "Utsman bin Thalhah dan keturunannya diamanahi memegang kunci Ka'bah secara turun-temurun."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Dalam pidato Nabi Muhammad saw. pada hari kedua penaklukan Makkah, beliau melarang memotong pohon dan rumput di Tanah Haram, KECUALI satu jenis pohon yang dimintakan izin oleh Al-Abbas yaitu ....",
+        "options": [
+            "Pohon Kurma",
+            "Pohon Idzkhar",
+            "Pohon Zaitun",
+            "Pohon Tin"
+        ],
+        "answer": 1,
+        "hint": "Pohon Idzkhar diizinkan karena dibutuhkan penduduk Makkah sebagai tiang dan bahan bangunan rumah."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Setelah menaklukkan Kota Makkah, Nabi Muhammad saw. dan Umar bin Khattab menerima baiat penduduk Makkah untuk masuk Islam di atas ....",
+        "options": [
+            "Bukit Uhud",
+            "Bukit Shafa",
+            "Gua Tsur",
+            "Lembah Hunain"
+        ],
+        "answer": 1,
+        "hint": "Pembaiatan penduduk Makkah dilaksanakan di Bukit Shafa."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Siapakah panglima besar yang memimpin gabungan pasukan kaum Hawazin dan kaum Tsaqif dalam Perang Hunain?",
+        "options": [
+            "Abu Sufyan",
+            "Malik bin Auf An-Nasri",
+            "Ikrimah bin Abi Jahl",
+            "Shafwan bin Umayyah"
+        ],
+        "answer": 1,
+        "hint": "Malik bin Auf An-Nasri mengerahkan kaum Hawazin dan Tsaqif untuk menyerang kaum muslimin."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Berapa jumlah seluruh pasukan kaum muslimin yang diberangkatkan Nabi Muhammad saw. menuju medan Perang Hunain?",
+        "options": [
+            "3.000 pasukan",
+            "10.000 pasukan",
+            "12.000 pasukan",
+            "20.000 pasukan"
+        ],
+        "answer": 2,
+        "hint": "Pasukan muslim berjumlah 12.000 orang (10.000 Anshar + 2.000 Muhajirin)."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Mengapa pasukan muslim sempat lari kocar-kacir pada awal pertempuran di lembah Hunain (Tihamah)?",
+        "options": [
+            "Karena kehabisan makanan",
+            "Karena merasa bangga dengan jumlah pasukan yang besar lalu disergap mendadak saat keremangan subuh",
+            "Karena turun salju lebat",
+            "Karena diperintahkan pulang ke Madinah"
+        ],
+        "answer": 1,
+        "hint": "Sebagian merasa bangga dengan jumlah 12.000 pasukan (QS At-Taubah: 25), lalu panik saat disergap panah di lembah."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Paman Nabi Muhammad saw. yang memiliki suara lantang dan berseru memanggil kaum Anshar serta Muhajirin agar kembali berkumpul di medan Perang Hunain adalah ....",
+        "options": [
+            "Hamzah bin Abdul Muththalib",
+            "Abbas bin Abdul Muththalib",
+            "Abu Thalib",
+            "Sa'ad bin Abi Waqqas"
+        ],
+        "answer": 1,
+        "hint": "Atas perintah Nabi, Abbas bin Abdul Muththalib menyeru para sahabat hingga mereka kembali berbaris rapi."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Dalam Perang Thaif, siapakah panglima perang yang diutus Nabi Muhammad saw. untuk memimpin pasukan mengepung benteng Kota Thaif?",
+        "options": [
+            "Khalid bin Walid",
+            "Ali bin Abi Thalib",
+            "Abu Bakar ash-Shiddiq",
+            "Bilal bin Rabah"
+        ],
+        "answer": 0,
+        "hint": "Nabi mengutus Khalid bin Walid memimpin pasukan pengepungan Kota Thaif."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Ketika pengepungan Thaif diakhiri dan ada sahabat yang meminta agar kaum Tsaqif didoakan celaka, sikap Nabi Muhammad saw. adalah ....",
+        "options": [
+            "Mengabulkan doa kebinasaan tersebut",
+            "Menolak mendoakan celaka dan justru mendoakan kaum Tsaqif mendapat hidayah masuk Islam",
+            "Membakar kebun anggur Thaif",
+            "Menghukum seluruh tawanan"
+        ],
+        "answer": 1,
+        "hint": "Nabi mendoakan kebaikan dan hidayah untuk kaum Tsaqif karena melihat mereka kaum yang cerdas dan cerdik."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah isi larangan dalam pidato Nabi Muhammad saw. setelah Penaklukan Makkah demi menjaga kesucian Tanah Haram!",
+        "options": [
+            "Dilarang menumpahkan darah dan berperang di Makkah",
+            "Dilarang memotong rumput dan menebang pepohonan (kecuali Idzkhar)",
+            "Dilarang membawa pergi binatang buruan dan memungut barang jatuh kecuali untuk diumumkan",
+            "Wajib membawa pulang batu Ka'bah sebagai oleh-oleh"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pidato Nabi menjaga keamanan nyawa, hewan, tumbuhan, dan barang milik orang di Makkah."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah tokoh-tokoh pemuka Quraisy yang berbaiat masuk Islam di Bukit Shafa bersama Nabi Muhammad saw.!",
+        "options": [
+            "Al-Harits bin Hisyam dan Suhail bin Amr",
+            "Ikrimah bin Abi Jahl",
+            "Shafwan bin Umayyah dan Hindun binti Utbah",
+            "Raja Abrahah dari Yaman"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Al-Harits, Suhail, Ikrimah, Shafwan, dan Hindun binti Utbah masuk Islam setelah Fathu Makkah."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah rincian kekuatan pasukan kaum muslimin saat menghadapi Perang Hunain!",
+        "options": [
+            "10.000 pasukan dari kaum Anshar",
+            "2.000 pasukan dari penduduk Makkah / Muhajirin",
+            "Diperkuat 100 prajurit berbaju besi (zirah)",
+            "Hanya terdiri dari 313 orang seperti Perang Badar"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Total pasukan 12.000 (10.000 + 2.000) dengan 100 prajurit berbaju zirah."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah sahabat dan kerabat yang TETAP TEGUH bertahan mendampingi Nabi Muhammad saw. di lembah Hunain saat pasukan lain mundur!",
+        "options": [
+            "Abu Bakar, Umar bin Khattab, dan Ali bin Abi Thalib",
+            "Al-Abbas beserta putranya Al-Fadhl dan Qutsam",
+            "Abu Sufyan bin al-Harits dan putranya Ja'far",
+            "Malik bin Auf An-Nasri"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Abu Bakar, Umar, Ali, Abbas, Abu Sufyan bin Harits, Ja'far, Al-Fadhl, dan Qutsam bertahan bersama Nabi."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah fakta sejarah yang benar tentang kemenangan kaum muslimin pada Perang Hunain!",
+        "options": [
+            "Sebanyak 70 orang dari pihak Hawazin tewas dalam pertempuran",
+            "Kaum muslimin memperoleh ghanimah (harta rampasan) yang sangat melimpah",
+            "Nabi mengembalikan tawanan perempuan dan anak-anak kepada suku Hawazin yang masuk Islam",
+            "Seluruh sahabat gugur dan tidak ada yang tersisa"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Allah menurunkan ketenangan hingga kaum muslimin menang dan mendapat banyak ghanimah."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pernyataan yang benar mengenai jalannya Perang Thaif!",
+        "options": [
+            "Sisa pasukan Tsaqif berlindung di dalam benteng Kota Thaif yang kokoh",
+            "Kaum Tsaqif menembakkan panah dari balik benteng sehingga 12 sahabat gugur",
+            "Pengepungan berlangsung sekitar 20 hari (dalam riwayat lain 40 hari)",
+            "Kaum Tsaqif langsung menyerah dalam waktu satu jam tanpa benteng"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Benteng Thaif sangat kokoh, pengepungan berlangsung berpekan-pekan dan 12 sahabat gugur."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah alasan mengapa Nabi Muhammad saw. bersikap penuh kasih sayang dan mengakhiri pengepungan Kota Thaif dengan doa kebaikan!",
+        "options": [
+            "Karena Nabi melihat kaum Tsaqif adalah masyarakat yang cerdas dan cerdik",
+            "Nabi mendoakan agar Allah menganugerahkan hidayah Islam kepada kaum Tsaqif",
+            "Benar saja, tidak lama kemudian delegasi kaum Tsaqif datang ke Madinah menyatakan masuk Islam",
+            "Karena pasukan muslim takut tidak bisa kembali ke Madinah"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Doa lembut Nabi Muhammad saw. dikabulkan Allah dengan datangnya delegasi Thaif memeluk Islam."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah hikmah keteladanan Nabi Muhammad saw. dalam peristiwa penyerahan kunci Ka'bah kepada Utsman bin Thalhah!",
+        "options": [
+            "Menjaga sifat amanah dengan mengembalikan hak kepada ahlinya",
+            "Tidak bersikap dendam meskipun dahulu pernah dilarang masuk Ka'bah",
+            "Berlaku adil bahkan terhadap orang yang baru masuk Islam",
+            "Merebut kunci Ka'bah untuk disimpan sendiri"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Nabi memberi contoh agung tentang amanah, keadilan, dan sikap pemaaf."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pelajaran penting (ibrah) dari Perang Hunain berdasarkan QS At-Taubah ayat 25!",
+        "options": [
+            "Jumlah pasukan yang banyak tidak menjamin kemenangan tanpa pertolongan Allah",
+            "Umat Islam tidak boleh bersikap sombong (takabur)",
+            "Ketenangan dan pertolongan Allah hanya datang ketika kembali beriman dan bersatu",
+            "Pasukan kecil tidak perlu menaati perintah pemimpin"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "QS At-Taubah: 25 mengingatkan agar tidak bangga diri terhadap jumlah yang banyak."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah urutan peristiwa sejarah Islam dalam buku Siroh kelas 3 dari awal hingga akhir yang tepat!",
+        "options": [
+            "Fathu Makkah, penyerahan kunci Ka'bah kepada Utsman bin Thalhah, dan pidato kesucian Makkah",
+            "Pembaiatan penduduk Makkah di Bukit Shafa lalu persiapan menghadapi Hawazin & Tsaqif di Hunain",
+            "Kemenangan Perang Hunain lalu pengepungan Kota Thaif dan kembali ke Madinah",
+            "Perang Thaif terjadi sebelum kelahiran Nabi di Makkah"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Urutan: Fathu Makkah → Kunci Ka'bah & Pidato → Baiat Shafa → Perang Hunain → Perang Thaif → Kembali ke Madinah."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh sejarah Islam berikut dengan perannya: <b>Utsman bin Thalhah</b>",
+        "options": [
+            "Pemegang kunci Ka'bah yang diberi amanah abadi oleh Nabi saw.",
+            "Panglima pasukan gabungan Hawazin dan Tsaqif di Hunain",
+            "Paman Nabi yang menyeru pasukan Anshar dan Muhajirin kembali bertempur",
+            "Panglima yang diutus Nabi memimpin pengepungan benteng Thaif",
+            "Tokoh Quraisy yang berbaiat masuk Islam di Bukit Shafa"
+        ],
+        "answer": "Pemegang kunci Ka'bah yang diberi amanah abadi oleh Nabi saw.",
+        "hint": "Kunci Ka'bah diamanahkan kembali kepada Utsman bin Thalhah."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh sejarah Islam berikut dengan perannya: <b>Malik bin Auf An-Nasri</b>",
+        "options": [
+            "Pemegang kunci Ka'bah yang diberi amanah abadi oleh Nabi saw.",
+            "Panglima pasukan gabungan Hawazin dan Tsaqif di Hunain",
+            "Paman Nabi yang menyeru pasukan Anshar dan Muhajirin kembali bertempur",
+            "Panglima yang diutus Nabi memimpin pengepungan benteng Thaif",
+            "Tokoh Quraisy yang berbaiat masuk Islam di Bukit Shafa"
+        ],
+        "answer": "Panglima pasukan gabungan Hawazin dan Tsaqif di Hunain",
+        "hint": "Malik bin Auf An-Nasri memimpin pasukan Hawazin dan Tsaqif."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh sejarah Islam berikut dengan perannya: <b>Abbas bin Abdul Muththalib</b>",
+        "options": [
+            "Pemegang kunci Ka'bah yang diberi amanah abadi oleh Nabi saw.",
+            "Panglima pasukan gabungan Hawazin dan Tsaqif di Hunain",
+            "Paman Nabi yang menyeru pasukan Anshar dan Muhajirin kembali bertempur",
+            "Panglima yang diutus Nabi memimpin pengepungan benteng Thaif",
+            "Tokoh Quraisy yang berbaiat masuk Islam di Bukit Shafa"
+        ],
+        "answer": "Paman Nabi yang menyeru pasukan Anshar dan Muhajirin kembali bertempur",
+        "hint": "Suara lantang Abbas menyatukan kembali pasukan muslim."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh sejarah Islam berikut dengan perannya: <b>Khalid bin Walid</b>",
+        "options": [
+            "Pemegang kunci Ka'bah yang diberi amanah abadi oleh Nabi saw.",
+            "Panglima pasukan gabungan Hawazin dan Tsaqif di Hunain",
+            "Paman Nabi yang menyeru pasukan Anshar dan Muhajirin kembali bertempur",
+            "Panglima yang diutus Nabi memimpin pengepungan benteng Thaif",
+            "Tokoh Quraisy yang berbaiat masuk Islam di Bukit Shafa"
+        ],
+        "answer": "Panglima yang diutus Nabi memimpin pengepungan benteng Thaif",
+        "hint": "Khalid bin Walid ditugaskan mengepung benteng Thaif."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan tokoh sejarah Islam berikut dengan perannya: <b>Ikrimah bin Abi Jahl</b>",
+        "options": [
+            "Pemegang kunci Ka'bah yang diberi amanah abadi oleh Nabi saw.",
+            "Panglima pasukan gabungan Hawazin dan Tsaqif di Hunain",
+            "Paman Nabi yang menyeru pasukan Anshar dan Muhajirin kembali bertempur",
+            "Panglima yang diutus Nabi memimpin pengepungan benteng Thaif",
+            "Tokoh Quraisy yang berbaiat masuk Islam di Bukit Shafa"
+        ],
+        "answer": "Tokoh Quraisy yang berbaiat masuk Islam di Bukit Shafa",
+        "hint": "Ikrimah bin Abi Jahl termasuk pemuka Quraisy yang berbaiat di Bukit Shafa."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pemegang kunci Ka'bah yang dipanggil Nabi Muhammad saw. setelah penaklukan Makkah bernama ....",
+        "answer": "Utsman bin Thalhah",
+        "alt": [
+            "Usman bin Thalhah"
+        ],
+        "hint": "Nama lengkapnya Utsman bin Thalhah."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Satu-satunya jenis tumbuhan yang diperbolehkan untuk ditebang di Makkah atas usulan Al-Abbas karena digunakan untuk bahan rumah adalah pohon ....",
+        "answer": "Idzkhar",
+        "alt": [
+            "pohon idzkhar",
+            "idkhar"
+        ],
+        "hint": "Pohon Idzkhar sering digunakan sebagai bahan atap/tiang rumah penduduk Makkah."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Tempat Nabi Muhammad saw. dan Umar bin Khattab membaiat penduduk Makkah yang masuk Islam adalah Bukit ....",
+        "answer": "Shafa",
+        "alt": [
+            "Bukit Shafa",
+            "Safa"
+        ],
+        "hint": "Pembaiatan penduduk Makkah berlangsung di Bukit Shafa."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Dalam Perang Hunain, kaum Hawazin bersekutu dengan kaum .... untuk menyerang Makkah.",
+        "answer": "Tsaqif",
+        "alt": [
+            "kaum tsaqif",
+            "saqif"
+        ],
+        "hint": "Suku Hawazin dan Tsaqif bersatu di bawah komando Malik bin Auf."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Jumlah pasukan musuh (kaum Hawazin dan Tsaqif) yang berkumpul di Perang Hunain sebanyak .... orang.",
+        "answer": "20.000",
+        "alt": [
+            "20000",
+            "dua puluh ribu"
+        ],
+        "hint": "Pasukan musuh berjumlah 20.000 orang, sedangkan muslimin 12.000 orang."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pada Perang Hunain, dari 12.000 pasukan kaum muslimin terdapat .... prajurit yang mengenakan baju besi (baju zirah).",
+        "answer": "100",
+        "alt": [
+            "seratus"
+        ],
+        "hint": "Tercatat 100 prajurit kaum muslimin mengenakan baju zirah."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Harta rampasan perang yang melimpah setelah kemenangan kaum muslimin di Perang Hunain disebut ....",
+        "answer": "ghanimah",
+        "alt": [
+            "gonimah"
+        ],
+        "hint": "Harta rampasan setelah memenangkan pertempuran disebut ghanimah."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Lembah Hunain berada di kawasan wilayah bernama ....",
+        "answer": "Tihamah",
+        "alt": [
+            "lembah Tihamah"
+        ],
+        "hint": "Pasukan kaum muslimin disergap di sebuah lembah di wilayah Tihamah."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Selama pengepungan Kota Thaif, tercatat sebanyak .... orang sahabat Nabi yang gugur sebagai syuhada terkena panah musuh.",
+        "answer": "12",
+        "alt": [
+            "dua belas",
+            "12 sahabat"
+        ],
+        "hint": "12 sahabat gugur akibat hujan anak panah dari balik benteng Thaif."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Setelah mengakhiri pengepungan benteng Thaif, Nabi Muhammad saw. membawa pasukannya pulang kembali menuju Kota ....",
+        "answer": "Madinah",
+        "alt": [
+            "Kota Madinah"
+        ],
+        "hint": "Nabi saw. kembali ke Madinah dan tidak lama kemudian delegasi Thaif datang masuk Islam."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Mengapa Nabi Muhammad saw. tetap menyerahkan kunci Ka'bah kepada Utsman bin Thalhah? Nilai teladan apa yang dapat kita petik?",
+        "answer": "Karena Utsman bin Thalhah memang pemegang kunci Ka'bah yang sah secara turun-temurun. Nabi saw. mencontohkan sifat amanah, adil, dan tidak pendendam dengan memberikan hak kepada pemiliknya walaupun dahulu Utsman sempat memusuhi Nabi sebelum Fathu Makkah.",
+        "hint": "Menekankan sikap amanah, adil, dan pemaaf Nabi Muhammad saw."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan 4 aturan menjaga kesucian Kota Makkah yang disampaikan Nabi Muhammad saw. dalam pidatonya setelah Penaklukan Makkah, serta jelaskan pengecualian untuk pohon Idzkhar!",
+        "answer": "1) Tidak boleh menumpahkan darah atau berperang; 2) Tidak boleh memotong rumput; 3) Tidak boleh menebang pohon; 4) Tidak boleh membawa pergi binatang buruan dan tidak memungut barang jatuh kecuali untuk diumumkan. Pengecualian diberikan untuk pohon Idzkhar atas permintaan Al-Abbas karena digunakan warga Makkah sebagai tiang dan bahan rumah.",
+        "hint": "Minimal 4 larangan pidato + alasan pengecualian pohon Idzkhar."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan mengapa pasukan muslimin sempat tercerai-berai pada awal Perang Hunain, siapa yang memanggil mereka kembali, dan pelajaran apa yang terkandung di dalamnya?",
+        "answer": "Pasukan muslimin sempat bangga dengan jumlah mereka yang besar (12.000 orang), lalu kaget disergap hujan panah musuh di keremangan subuh lembah Hunain. Nabi tetap teguh bersama segelintir sahabat (Abu Bakar, Umar, Ali, Abbas, dll.), lalu Abbas menyeru kaum Anshar dan Muhajirin hingga kembali bersatu dan menang. Pelajarannya: tidak boleh sombong dan selalu bergantung pada pertolongan Allah.",
+        "hint": "Menjelaskan penyebab kekacauan awal, peran Abbas, serta pelajaran iman (QS At-Taubah: 25)."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Bagaimana sikap bijaksana Nabi Muhammad saw. terhadap tawanan perempuan, anak-anak, dan harta ghanimah suku Hawazin setelah Perang Hunain?",
+        "answer": "Setelah para pemuka Hawazin datang menyatakan masuk Islam dan meminta keringanan, Nabi Muhammad saw. mengembalikan para tawanan perempuan dan anak-anak serta harta rampasan kepada mereka dengan penuh kasih sayang agar hati mereka semakin mantap memeluk Islam.",
+        "hint": "Menjelaskan pengembalian tawanan dan harta dengan penuh kasih sayang."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Ceritakan secara singkat strategi Perang Thaif dan mengapa Nabi Muhammad saw. justru mendoakan kebaikan bagi kaum Tsaqif saat pengepungan dihentikan?",
+        "answer": "Kaum Tsaqif berlindung di benteng Thaif yang kokoh. Nabi mengutus Khalid bin Walid mengepung sekitar 20 hari dan banyak sahabat terkena panah (12 gugur). Nabi menghentikan pengepungan, kembali ke Madinah, dan menolak mendoakan kebinasaan—justru mendoakan kaum Tsaqif agar mendapat hidayah masuk Islam karena mereka kaum yang cerdas dan cerdik. Doa itu pun terkabul.",
+        "hint": "Mencakup benteng kokoh, pengepungan Khalid bin Walid, dan doa hidayah Nabi."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -597,25 +946,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -632,7 +972,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -652,12 +992,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -692,18 +1029,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -720,7 +1045,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -731,14 +1065,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -747,7 +1081,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

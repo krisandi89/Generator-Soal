@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Soal Matematika Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #2980b9;
             --primary-light: #3498db;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>➗ Matematika</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 2: Perkalian dan Pembagian Bilangan Cacah (Hal. 38–50)</div>
+            <div class="badge">Bilangan Cacah, Perkalian, Pembagian, Operasi Campuran & Uang • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,175 +378,568 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Hasil dari 6 × 7 adalah ....",
-                "answer": "42",
-                "alt": [
-                    "empat puluh dua"
-                ],
-                "hint": "6 × 7 = 7 + 7 + 7 + 7 + 7 + 7 = 42.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Hasil dari 8 × 9 adalah ....",
-                "answer": "72",
-                "alt": [
-                    "tujuh puluh dua"
-                ],
-                "hint": "8 × 9 = 72."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Penjumlahan 4 + 4 + 4 + 4 + 4 sama dengan 5 × 4. Hasilnya adalah ....",
-                "answer": "20",
-                "alt": [
-                    "dua puluh"
-                ],
-                "hint": "Ada lima kelompok yang masing-masing berisi 4, sehingga 5 × 4 = 20."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Hasil dari 7 × 0 adalah ....",
-                "answer": "0",
-                "alt": [
-                    "nol"
-                ],
-                "hint": "Bilangan apa pun yang dikalikan dengan 0 menghasilkan 0."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Lengkapilah sesuai sifat pertukaran perkalian: 6 × 8 = .... × 6.",
-                "answer": "8",
-                "alt": [
-                    "delapan"
-                ],
-                "hint": "Posisi bilangan dalam perkalian boleh ditukar: 6 × 8 = 8 × 6."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Hasil dari 23 × 3 adalah ....",
-                "answer": "69",
-                "alt": [
-                    "enam puluh sembilan"
-                ],
-                "hint": "23 × 3 = (20 × 3) + (3 × 3) = 60 + 9 = 69."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Hasil dari 56 : 7 adalah ....",
-                "answer": "8",
-                "alt": [
-                    "delapan"
-                ],
-                "hint": "56 : 7 = 8 karena 8 × 7 = 56."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Hasil dari 84 : 4 adalah ....",
-                "answer": "21",
-                "alt": [
-                    "dua puluh satu"
-                ],
-                "hint": "84 : 4 = (80 : 4) + (4 : 4) = 20 + 1 = 21."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Ibu menyiapkan 6 kantong. Setiap kantong berisi 5 jeruk. Jumlah seluruh jeruk adalah .... buah.",
-                "answer": "30",
-                "alt": [
-                    "tiga puluh",
-                    "30 buah",
-                    "tiga puluh buah"
-                ],
-                "hint": "Jumlah jeruk = 6 × 5 = 30 buah."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Sebanyak 48 buku dibagikan sama banyak kepada 8 anak. Setiap anak mendapat .... buku.",
-                "answer": "6",
-                "alt": [
-                    "enam",
-                    "6 buku",
-                    "enam buku"
-                ],
-                "hint": "Buku untuk setiap anak = 48 : 8 = 6 buku."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Lengkapilah perkalian berikut: 9 × .... = 63.",
-                "answer": "7",
-                "alt": [
-                    "tujuh"
-                ],
-                "hint": "63 : 9 = 7, sehingga 9 × 7 = 63."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Hasil dari 32 × 3 adalah ....",
-                "answer": "96",
-                "alt": [
-                    "sembilan puluh enam"
-                ],
-                "hint": "32 × 3 = (30 × 3) + (2 × 3) = 90 + 6 = 96."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Pada pembagian 24 : 6, bilangan 24 dikurangi 6 berulang kali sampai menjadi 0. Pengurangan dilakukan sebanyak .... kali.",
-                "answer": "4",
-                "alt": [
-                    "empat",
-                    "4 kali",
-                    "empat kali"
-                ],
-                "hint": "24 − 6 − 6 − 6 − 6 = 0. Jadi, ada 4 kali pengurangan."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Toko memiliki 7 kotak. Setiap kotak berisi 9 pensil. Jumlah pensil seluruhnya adalah .... batang.",
-                "answer": "63",
-                "alt": [
-                    "enam puluh tiga",
-                    "63 batang",
-                    "enam puluh tiga batang",
-                    "63 pensil"
-                ],
-                "hint": "Ada 7 kelompok berisi 9 pensil, jadi jumlahnya 7 × 9 = 63."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Sebanyak 96 kue dibagi rata ke dalam 8 kotak. Setiap kotak berisi .... kue.",
-                "answer": "12",
-                "alt": [
-                    "dua belas",
-                    "12 kue",
-                    "dua belas kue"
-                ],
-                "hint": "96 : 8 = 12. Setiap kotak berisi 12 kue."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Pada bilangan cacah <b>3.475</b>, angka 4 menempati nilai tempat ....",
+        "options": [
+            "Ribuan",
+            "Ratusan",
+            "Puluhan",
+            "Satuan"
+        ],
+        "answer": 1,
+        "hint": "3 = ribuan, 4 = ratusan, 7 = puluhan, 5 = satuan."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Bentuk penjumlahan berulang 6 + 6 + 6 + 6 dalam kalimat perkalian yang benar adalah ....",
+        "options": [
+            "6 × 4",
+            "4 × 6",
+            "4 + 6",
+            "6 × 6"
+        ],
+        "answer": 1,
+        "hint": "Ada 4 kelompok yang masing-masing berisi 6, jadi ditulis 4 × 6 = 24."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hasil dari perkalian bersusun <b>23 × 3</b> adalah ....",
+        "options": [
+            "59",
+            "66",
+            "69",
+            "79"
+        ],
+        "answer": 2,
+        "hint": "3×3 = 9 satuan; 3×20 = 60 puluhan; jumlah = 69."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Berdasarkan sifat pertukaran (komutatif) pada perkalian, nilai <b>7 × 9</b> sama dengan ....",
+        "options": [
+            "7 + 9",
+            "9 × 7",
+            "9 : 7",
+            "7 × 7"
+        ],
+        "answer": 1,
+        "hint": "Sifat komutatif: a × b = b × a, sehingga 7 × 9 = 9 × 7 = 63."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Ibu memiliki 24 kue dan dibagikan ke dalam 4 kotak sama banyak. Pengurangan berulang untuk 24 : 4 sampai habis menghasilkan .... kue tiap kotak.",
+        "options": [
+            "4",
+            "5",
+            "6",
+            "8"
+        ],
+        "answer": 2,
+        "hint": "24 - 4 - 4 - 4 - 4 - 4 - 4 = 0 (6 kali pengurangan), jadi 24 : 4 = 6."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hasil pembagian dengan cara bersusun (porogapit) dari <b>75 : 3</b> adalah ....",
+        "options": [
+            "15",
+            "20",
+            "25",
+            "35"
+        ],
+        "answer": 2,
+        "hint": "7 : 3 = 2 sisa 1 (puluhan); turunkan 5 menjadi 15 : 3 = 5. Jadi 25."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hasil dari operasi hitung campuran <b>8 × (98 - 75)</b> adalah ....",
+        "options": [
+            "164",
+            "174",
+            "184",
+            "204"
+        ],
+        "answer": 2,
+        "hint": "Kerjakan tanda kurung dahulu: 98 - 75 = 23, lalu 8 × 23 = 184."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Alat tukar yang sah dalam transaksi jual beli berupa uang kertas dan uang logam termasuk jenis uang ....",
+        "options": [
+            "Uang giral",
+            "Uang kartal",
+            "Kartu hadiah",
+            "Cek kosong"
+        ],
+        "answer": 1,
+        "hint": "Uang kartal adalah uang tunai berbentuk kertas dan logam yang diedarkan bank sentral."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Nilai mata uang yang ditulis <b>Rp52.000,00</b> dibaca ....",
+        "options": [
+            "Lima puluh dua rupiah",
+            "Lima ratus dua puluh ribu rupiah",
+            "Lima puluh dua ribu rupiah",
+            "Lima ribu dua ratus rupiah"
+        ],
+        "answer": 2,
+        "hint": "Rp52.000,00 dibaca lima puluh dua ribu rupiah."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Hasil dari <b>2.450 + 1.325</b> adalah ....",
+        "options": [
+            "3.675",
+            "3.775",
+            "3.875",
+            "3.765"
+        ],
+        "answer": 1,
+        "hint": "2.450 + 1.325 = 3.775."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pasangan perkalian yang menghasilkan bilangan <b>18</b>!",
+        "options": [
+            "1 × 18",
+            "2 × 9",
+            "3 × 6",
+            "4 × 5"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "1×18 = 18, 2×9 = 18, dan 3×6 = 18; sedangkan 4×5 = 20."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pasangan perkalian yang tepat jika diketahui total bunga di dalam vas adalah <b>64</b> tangkai!",
+        "options": [
+            "8 vas berisi masing-masing 8 tangkai",
+            "4 vas berisi masing-masing 16 tangkai",
+            "2 vas berisi masing-masing 32 tangkai",
+            "6 vas berisi masing-masing 10 tangkai"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "8×8 = 64, 4×16 = 64, 2×32 = 64."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah aturan urutan pengerjaan operasi hitung campuran yang benar!",
+        "options": [
+            "Operasi di dalam tanda kurung (...) dikerjakan terlebih dahulu",
+            "Perkalian (×) dan pembagian (:) setara, dikerjakan urut dari kiri",
+            "Penjumlahan (+) dan pengurangan (-) setara, dikerjakan sesudah perkalian/pembagian",
+            "Penjumlahan selalu dikerjakan sebelum tanda kurung"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Urutan: 1) Tanda kurung, 2) × dan : dari kiri, 3) + dan - dari kiri."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah hasil pembagian porogapit yang benar!",
+        "options": [
+            "64 : 2 = 32",
+            "76 : 4 = 19",
+            "90 : 6 = 15",
+            "42 : 3 = 12"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "64:2=32, 76:4=19, 90:6=15. Sementara 42:3 = 14 (bukan 12)."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pernyataan yang benar tentang perkalian dengan bilangan 0 dan sifat pertukaran!",
+        "options": [
+            "Semua bilangan dikali 0 hasilnya 0",
+            "8 × 5 hasilnya sama dengan 5 × 8",
+            "12 × 1 hasilnya tetap 12",
+            "9 × 0 hasilnya adalah 9"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Bilangan berapa pun dikalikan 0 hasilnya selalu 0."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pernyataan yang benar tentang bilangan ribuan <b>4.250</b> dan <b>4.520</b>!",
+        "options": [
+            "4.250 lebih kecil daripada 4.520 (4.250 < 4.520)",
+            "Pada 4.250, angka 2 menempati nilai tempat ratusan",
+            "Jika diurutkan dari terbesar menjadi 4.520, 4.250",
+            "4.250 sama dengan 4.520"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ratusan pada 4.520 (500) lebih besar daripada ratusan pada 4.250 (200)."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh mata uang Rupiah yang termasuk <b>uang kartal</b>!",
+        "options": [
+            "Uang kertas Rp50.000,00",
+            "Uang kertas Rp20.000,00",
+            "Uang logam Rp1.000,00 dan Rp500,00",
+            "Cek dan giro bank"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Uang kertas dan uang logam adalah uang kartal; cek dan giro adalah uang giral."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Ani ingin membeli buku cerita seharga <b>Rp35.500,00</b> dengan uang pas. Pilihlah kombinasi uang yang nilainya tepat Rp35.500,00!",
+        "options": [
+            "1 lembar Rp20.000 + 1 lembar Rp10.000 + 1 lembar Rp5.000 + 1 koin Rp500",
+            "3 lembar Rp10.000 + 5 lembar Rp1.000 + 1 koin Rp500",
+            "7 lembar Rp5.000 + 1 koin Rp500",
+            "3 lembar Rp10.000 + 1 lembar Rp5.000"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Pilihan A, B, dan C semuanya berjumlah tepat Rp35.500,00."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah operasi hitung campuran yang hasilnya bernilai <b>25</b>!",
+        "options": [
+            "75 - 25 × 2",
+            "(100 - 25) : 3",
+            "5 × 8 - 15",
+            "100 : 4 + 30"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "75 - 50 = 25; 75 : 3 = 25; 40 - 15 = 25. Sementara 100 : 4 + 30 = 55."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Di toko bunga terdapat Vas A (3 ikat × 6 bunga mawar) dan Vas B (2 ikat × 9 bunga melati). Pilihlah pernyataan AKM yang benar!",
+        "options": [
+            "Jumlah bunga pada Vas A adalah 18 tangkai",
+            "Jumlah bunga pada Vas B sama banyak dengan Vas A",
+            "Total bunga di kedua vas adalah 36 tangkai",
+            "Vas B memiliki lebih sedikit bunga dibanding Vas A"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Vas A = 3×6 = 18; Vas B = 2×9 = 18; totalnya 36 tangkai."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan hitung perkalian berikut dengan hasil yang tepat: <b>29 × 2</b>",
+        "options": [
+            "58",
+            "32",
+            "55",
+            "100",
+            "Tiga puluh lima ribu lima ratus rupiah"
+        ],
+        "answer": "58",
+        "hint": "29 × 2 = 58."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan hitung pembagian berikut dengan hasil yang tepat: <b>96 : 3</b>",
+        "options": [
+            "58",
+            "32",
+            "55",
+            "100",
+            "Tiga puluh lima ribu lima ratus rupiah"
+        ],
+        "answer": "32",
+        "hint": "96 : 3 = 32."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan operasi campuran berikut dengan hasil yang tepat: <b>100 : 4 + 30</b>",
+        "options": [
+            "58",
+            "32",
+            "55",
+            "100",
+            "Tiga puluh lima ribu lima ratus rupiah"
+        ],
+        "answer": "55",
+        "hint": "100 : 4 = 25, lalu 25 + 30 = 55."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan operasi campuran berikut dengan hasil yang tepat: <b>25 × (32 : 8)</b>",
+        "options": [
+            "58",
+            "32",
+            "55",
+            "100",
+            "Tiga puluh lima ribu lima ratus rupiah"
+        ],
+        "answer": "100",
+        "hint": "32 : 8 = 4, lalu 25 × 4 = 100."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan penulisan uang berikut dengan cara membacanya: <b>Rp35.500,00</b>",
+        "options": [
+            "58",
+            "32",
+            "55",
+            "100",
+            "Tiga puluh lima ribu lima ratus rupiah"
+        ],
+        "answer": "Tiga puluh lima ribu lima ratus rupiah",
+        "hint": "Rp35.500,00 dibaca tiga puluh lima ribu lima ratus rupiah."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Hasil dari perkalian <b>15 × 5</b> adalah ....",
+        "answer": "75",
+        "alt": [
+            "tujuh puluh lima"
+        ],
+        "hint": "15 × 5 = 75."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Hasil dari pembagian <b>65 : 5</b> adalah ....",
+        "answer": "13",
+        "alt": [
+            "tiga belas"
+        ],
+        "hint": "65 : 5 = 13."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Hasil dari <b>8 × (98 - 75)</b> adalah ....",
+        "answer": "184",
+        "alt": [
+            "seratus delapan puluh empat"
+        ],
+        "hint": "98 - 75 = 23; 8 × 23 = 184."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Hasil dari <b>75 - 25 × 2</b> adalah ....",
+        "answer": "25",
+        "alt": [
+            "dua puluh lima"
+        ],
+        "hint": "Kerjakan kali dahulu: 25 × 2 = 50, lalu 75 - 50 = 25."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Lambang bilangan yang tersusun atas 4 ribuan, 2 ratusan, 0 puluhan, dan 9 satuan adalah ....",
+        "answer": "4.209",
+        "alt": [
+            "4209"
+        ],
+        "hint": "4 ribuan + 2 ratusan + 0 puluhan + 9 satuan = 4.209."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Ibu membeli 90 buah permen dan memasukkannya ke dalam 6 toples sama banyak. Setiap toples berisi .... permen.",
+        "answer": "15",
+        "alt": [
+            "15 permen",
+            "lima belas"
+        ],
+        "hint": "90 : 6 = 15 permen."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Berdasarkan pembagian 54 : 6, hasil yang tepat adalah ....",
+        "answer": "9",
+        "alt": [
+            "sembilan"
+        ],
+        "hint": "6 × 9 = 54, jadi 54 : 6 = 9."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Penulisan nilai uang 'lima puluh tujuh ribu dua ratus lima puluh rupiah' dalam angka Rupiah yang baku adalah ....",
+        "answer": "Rp57.250,00",
+        "alt": [
+            "57250",
+            "57.250",
+            "Rp 57.250,00",
+            "Rp57.250"
+        ],
+        "hint": "Ditulis Rp57.250,00 tanpa spasi setelah Rp."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Perhatikan gambar pecahan uang berikut!<div class=\"svg-box\"><svg width=\"450\" height=\"125\" viewBox=\"0 0 450 125\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"0\" y=\"0\" width=\"450\" height=\"125\" rx=\"10\" fill=\"#f2f8fd\"/>\n  <rect x=\"18\" y=\"24\" width=\"145\" height=\"72\" rx=\"6\" fill=\"#74b9ff\" stroke=\"#0984e3\" stroke-width=\"2\"/>\n  <text x=\"90\" y=\"56\" font-size=\"16\" font-weight=\"bold\" fill=\"#0c2461\" text-anchor=\"middle\">Rp50.000</text>\n  <text x=\"90\" y=\"76\" font-size=\"10\" fill=\"#0c2461\" text-anchor=\"middle\">1 Lembar</text>\n  <rect x=\"178\" y=\"24\" width=\"145\" height=\"72\" rx=\"6\" fill=\"#55efc4\" stroke=\"#00b894\" stroke-width=\"2\"/>\n  <text x=\"250\" y=\"56\" font-size=\"16\" font-weight=\"bold\" fill=\"#006266\" text-anchor=\"middle\">Rp20.000</text>\n  <text x=\"250\" y=\"76\" font-size=\"10\" fill=\"#006266\" text-anchor=\"middle\">1 Lembar</text>\n  <circle cx=\"362\" cy=\"60\" r=\"24\" fill=\"#dfe6e9\" stroke=\"#636e72\" stroke-width=\"2\"/>\n  <text x=\"362\" y=\"64\" font-size=\"10\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">Rp1.000</text>\n  <circle cx=\"416\" cy=\"60\" r=\"24\" fill=\"#dfe6e9\" stroke=\"#636e72\" stroke-width=\"2\"/>\n  <text x=\"416\" y=\"64\" font-size=\"10\" font-weight=\"bold\" fill=\"#2d3436\" text-anchor=\"middle\">Rp1.000</text>\n</svg></div>Total jumlah uang di atas seluruhnya adalah ....",
+        "answer": "Rp72.000,00",
+        "alt": [
+            "72000",
+            "72.000",
+            "Rp72.000",
+            "Rp 72.000,00"
+        ],
+        "hint": "50.000 + 20.000 + 1.000 + 1.000 = Rp72.000,00."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Alat pembayaran nontunai seperti cek, kartu debit, dan transfer rekening termasuk jenis uang ....",
+        "answer": "giral",
+        "alt": [
+            "uang giral"
+        ],
+        "hint": "Uang giral berbentuk surat berharga atau saldo perbankan seperti cek dan giro."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Perpustakaan sekolah memiliki 2.340 buku cerita dan menerima sumbangan lagi sebanyak 1.285 buku. Berapakah jumlah buku cerita seluruhnya sekarang? Tunjukkan cara bersusun pendeknya!",
+        "answer": "2.340 + 1.285 = 3.625 buku. (Satuan: 0+5=5; Puluhan: 4+8=12 tulis 2 simpan 1; Ratusan: 1+3+2=6; Ribuan: 2+1=3).",
+        "hint": "Skor penuh jika menunjukkan cara bersusun dan hasil akhir 3.625 buku."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Hitunglah hasil dari <b>76 : 4</b> dengan langkah pembagian bersusun (porogapit)!",
+        "answer": "1) 7 puluhan : 4 = 1 sisa 3 (tulis 1 di atas, 1×4=4, 7-4=3). 2) Turunkan angka 6 menjadi 36. 3) 36 : 4 = 9 (tulis 9 di atas, 9×4=36, 36-36=0). Jadi 76 : 4 = 19.",
+        "hint": "Menjelaskan langkah pembagian puluhan lalu satuan hingga hasil 19."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Ayah membeli 4 kotak pensil warna. Setiap kotak berisi 12 pensil. Seluruh pensil tersebut dibagikan sama banyak kepada 6 anak. Berapa banyak pensil yang diterima setiap anak? Tuliskan kalimat matematikanya!",
+        "answer": "Kalimat matematika: (4 × 12) : 6 = 48 : 6 = 8 pensil. Jadi setiap anak menerima 8 batang pensil.",
+        "hint": "Menuliskan operasi campuran (4 × 12) : 6 dan hasil akhir 8 pensil."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Hitunglah hasil operasi hitung campuran berikut: <b>120 - 15 × 4 + (36 : 6)</b>!",
+        "answer": "1) Tanda kurung: 36 : 6 = 6. 2) Perkalian: 15 × 4 = 60. 3) Dari kiri ke kanan: 120 - 60 + 6 = 60 + 6 = 66.",
+        "hint": "Urutan pengerjaan kurung dan perkalian harus benar hingga menghasilkan 66."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Musa membawa uang 1 lembar Rp50.000,00 dan 1 lembar Rp10.000,00 ke toko buku. Ia membeli tas kecil seharga Rp35.500,00 dan penggaris seharga Rp4.500,00. Berapa sisa uang kembalian Musa?",
+        "answer": "Total uang Musa = Rp50.000 + Rp10.000 = Rp60.000,00. Total belanja = Rp35.500 + Rp4.500 = Rp40.000,00. Kembalian = Rp60.000 - Rp40.000 = Rp20.000,00.",
+        "hint": "Menghitung total uang, total belanja, dan sisa uang Rp20.000,00."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -577,25 +948,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -612,7 +974,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -632,12 +994,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -672,18 +1031,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -700,7 +1047,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -711,14 +1067,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -727,7 +1083,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

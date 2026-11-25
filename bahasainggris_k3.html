@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Soal English Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #e84393;
             --primary-light: #fd79a8;
-            --bg: #fff0f6;
+            --bg: #fce4ec;
             --success: #27ae60;
             --error: #e74c3c;
             --warning: #f39c12;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">35 Soal Lengkap</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>🇬🇧 English</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Unit 1: It's Nice to See You & Unit 2: I Like Playing Video Games</div>
+            <div class="badge">Unit 1 & 2: Greetings, Numbers, Apologies, Hobbies & Origami • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,427 +378,564 @@
 
     <script>
         const questions = [
-        {
-                "id": 1,
-                "type": "pg",
-                "section": "I. Pilihan Ganda (10 Soal)",
-                "text": "Jessica: 'Hello, I'm Jessica. What's your name?'<br>Hana: '...'",
-                "options": [
-                        "I'm nine years old.",
-                        "My name's Hana.",
-                        "I'm sorry, I'm late.",
-                        "It's okay."
-                ],
-                "answer": 1,
-                "hint": "Ketika seseorang menanyakan 'What's your name?', respon yang tepat adalah menyebutkan nama: 'My name's Hana'."
-        },
-        {
-                "id": 2,
-                "type": "pg",
-                "text": "When a new friend says 'Nice to meet you', the best and polite response is...",
-                "options": [
-                        "Nice to meet you, too.",
-                        "I don't know.",
-                        "Goodbye, see you.",
-                        "No problem."
-                ],
-                "answer": 0,
-                "hint": "'Nice to meet you' (senang berkenalan denganmu) dijawab dengan 'Nice to meet you, too' (senang berkenalan denganmu juga)."
-        },
-        {
-                "id": 3,
-                "type": "pg",
-                "text": "Kevin: 'How old are you, Kadek?'<br>Kadek: '... (9 tahun)'",
-                "options": [
-                        "I'm seven.",
-                        "I'm eight.",
-                        "I'm nine.",
-                        "I'm ten."
-                ],
-                "answer": 2,
-                "hint": "Angka 9 dalam bahasa Inggris adalah 'nine', jadi jawabannya 'I'm nine'."
-        },
-        {
-                "id": 4,
-                "type": "pg",
-                "text": "Sinta comes to the classroom after the bell rings. What should she say politely to Ms. Bertha?",
-                "options": [
-                        "Thank you, Ms. Bertha.",
-                        "I'm sorry, Ms. Bertha. I'm late.",
-                        "Nice to meet you, Ms. Bertha.",
-                        "Goodbye, Ms. Bertha."
-                ],
-                "answer": 1,
-                "hint": "Saat datang terlambat ke kelas, kita mengucapkan permintaan maaf: 'I'm sorry, I'm late' (Maaf Bu, saya terlambat)."
-        },
-        {
-                "id": 5,
-                "type": "pg",
-                "text": "Ahmad says: 'I'm sorry, I lost your pencil.'<br>What should Budi say to accept the apology?",
-                "options": [
-                        "It's okay. / It's alright.",
-                        "My name is Budi.",
-                        "Nice to meet you.",
-                        "I like swimming."
-                ],
-                "answer": 0,
-                "hint": "Untuk memaafkan teman yang meminta maaf karena menghilangkan pensil, kita menjawab 'It's okay' atau 'It's alright'."
-        },
-        {
-                "id": 6,
-                "type": "pg",
-                "text": "Look at the hobby word: 'memancing' in Indonesian. What is the correct English word for this hobby?",
-                "options": [
-                        "Swimming",
-                        "Fishing",
-                        "Cooking",
-                        "Dancing"
-                ],
-                "answer": 1,
-                "hint": "'Fishing' artinya memancing ikan di kolam atau sungai."
-        },
-        {
-                "id": 7,
-                "type": "pg",
-                "text": "Budi loves water and goes to the swimming pool every Sunday. His favorite hobby is...",
-                "options": [
-                        "Reading",
-                        "Travelling",
-                        "Swimming",
-                        "Singing"
-                ],
-                "answer": 2,
-                "hint": "Berenang di kolam renang dalam bahasa Inggris adalah 'swimming'."
-        },
-        {
-                "id": 8,
-                "type": "pg",
-                "text": "What is the meaning of the English phrase 'playing the violin' in Indonesian?",
-                "options": [
-                        "Bermain gitar",
-                        "Bermain drum",
-                        "Bermain biola",
-                        "Bermain seruling"
-                ],
-                "answer": 2,
-                "hint": "'Violin' adalah alat musik gesek yang berarti 'biola'."
-        },
-        {
-                "id": 9,
-                "type": "pg",
-                "text": "According to the reading text, what is 'Origami'?",
-                "options": [
-                        "A traditional dance from Indonesia",
-                        "An art of folding paper from Japan",
-                        "A musical instrument from England",
-                        "A video game on the computer"
-                ],
-                "answer": 1,
-                "hint": "Origami is an art of folding paper from Japan (seni melipat kertas dari Jepang)."
-        },
-        {
-                "id": 10,
-                "type": "pg",
-                "text": "Based on the story 'A Good Friend', what does a good friend do?",
-                "options": [
-                        "Leaves you alone when you are sad",
-                        "Stays by your side in good and bad times",
-                        "Laughs at your mistakes",
-                        "Takes your notebook without asking"
-                ],
-                "answer": 1,
-                "hint": "A good friend is there when you need him/her and stays by your side in good and bad times."
-        },
-        {
-                "id": 11,
-                "type": "pg_kompleks",
-                "section": "II. Pilihan Ganda Kompleks (5 Soal)",
-                "text": "Which of the following phrases are polite expressions used when introducing yourself to a new friend?",
-                "options": [
-                        "Hello, my name is Jessica.",
-                        "Nice to meet you.",
-                        "Give me your pencil now!",
-                        "Go away from here!"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "'Hello, my name is...' dan 'Nice to meet you' adalah ungkapan sopan saat berkenalan."
-        },
-        {
-                "id": 12,
-                "type": "pg_kompleks",
-                "text": "Which of the following activities are sports or active outdoor hobbies?",
-                "options": [
-                        "Playing futsal",
-                        "Swimming in the pool",
-                        "Sleeping on the sofa",
-                        "Eating chocolate"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "'Playing futsal' dan 'swimming' adalah aktivitas olahraga dan hobi yang menyehatkan fisik."
-        },
-        {
-                "id": 13,
-                "type": "pg_kompleks",
-                "text": "Which school objects are mentioned in the Unit 1 classroom chant?",
-                "options": [
-                        "Ruler",
-                        "Rubber (eraser)",
-                        "Motorcycle",
-                        "Helicopter"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Ruler (penggaris), rubber (penghapus), dan book (buku) adalah benda perlengkapan sekolah dalam chant Unit 1."
-        },
-        {
-                "id": 14,
-                "type": "pg_kompleks",
-                "text": "Which expressions are polite responses when someone says 'I'm sorry' to you?",
-                "options": [
-                        "It's alright.",
-                        "No problem, it's okay.",
-                        "I will never talk to you again.",
-                        "You are very bad."
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "'It's alright' dan 'No problem, it's okay' adalah cara yang ramah dan memaafkan saat menerima permohonan maaf."
-        },
-        {
-                "id": 15,
-                "type": "pg_kompleks",
-                "text": "According to the reading text about Origami, why is origami a good hobby for children?",
-                "options": [
-                        "It can make us creative",
-                        "It can improve our motor and thinking skills",
-                        "It needs expensive electronic machines",
-                        "It is a very dangerous game"
-                ],
-                "answer": [
-                        0,
-                        1
-                ],
-                "hint": "Origami melatih kreativitas (creative) serta kemampuan motorik dan berpikir (motor and thinking skills)."
-        },
-        {
-                "id": 16,
-                "type": "benar_salah",
-                "section": "III. Benar atau Salah (5 Soal)",
-                "text": "The English question 'How old are you?' is used to ask about someone's name.",
-                "answer": "Salah",
-                "hint": "'How old are you?' digunakan untuk menanyakan umur/usia. Menanyakan nama menggunakan 'What's your name?'."
-        },
-        {
-                "id": 17,
-                "type": "benar_salah",
-                "text": "In the song 'Ten Little Indians', the number that comes after eight is nine.",
-                "answer": "Benar",
-                "hint": "Urutan angka dalam lagu: seven, eight, nine, ten."
-        },
-        {
-                "id": 18,
-                "type": "benar_salah",
-                "text": "The English word 'cooking' means 'memasak makanan di dapur' in Indonesian.",
-                "answer": "Benar",
-                "hint": "'Cooking' adalah kata kerja berakhiran -ing yang berarti memasak."
-        },
-        {
-                "id": 19,
-                "type": "benar_salah",
-                "text": "Shaking hands (bersalaman) is a polite and friendly action when we greet and meet a new friend.",
-                "answer": "Benar",
-                "hint": "Bersalaman (shake hands) adalah tindakan ramah dan sopan saat berkenalan."
-        },
-        {
-                "id": 20,
-                "type": "benar_salah",
-                "text": "Origami is an art of folding paper that originally comes from the country of Japan.",
-                "answer": "Benar",
-                "hint": "Origami adalah seni melipat kertas tradisional yang berasal dari Jepang (Japan)."
-        },
-        {
-                "id": 21,
-                "type": "memasangkan",
-                "section": "IV. Memasangkan (5 Soal)",
-                "premise": "Dancing",
-                "text": "The hobby 'Dancing' pairs with its Indonesian meaning...",
-                "options": [
-                        "Menari",
-                        "Membaca buku",
-                        "Menyanyikan lagu",
-                        "Bermain bola basket",
-                        "Bepergian / Jalan-jalan"
-                ],
-                "answer": "Menari",
-                "hint": "'Dancing' artinya menari."
-        },
-        {
-                "id": 22,
-                "type": "memasangkan",
-                "premise": "Reading a book",
-                "text": "The hobby 'Reading a book' pairs with its Indonesian meaning...",
-                "options": [
-                        "Menari",
-                        "Membaca buku",
-                        "Menyanyikan lagu",
-                        "Bermain bola basket",
-                        "Bepergian / Jalan-jalan"
-                ],
-                "answer": "Membaca buku",
-                "hint": "'Reading a book' artinya membaca buku."
-        },
-        {
-                "id": 23,
-                "type": "memasangkan",
-                "premise": "Singing a song",
-                "text": "The activity 'Singing a song' pairs with its Indonesian meaning...",
-                "options": [
-                        "Menari",
-                        "Membaca buku",
-                        "Menyanyikan lagu",
-                        "Bermain bola basket",
-                        "Bepergian / Jalan-jalan"
-                ],
-                "answer": "Menyanyikan lagu",
-                "hint": "'Singing a song' artinya menyanyikan sebuah lagu."
-        },
-        {
-                "id": 24,
-                "type": "memasangkan",
-                "premise": "Playing basketball",
-                "text": "The sport 'Playing basketball' pairs with its Indonesian meaning...",
-                "options": [
-                        "Menari",
-                        "Membaca buku",
-                        "Menyanyikan lagu",
-                        "Bermain bola basket",
-                        "Bepergian / Jalan-jalan"
-                ],
-                "answer": "Bermain bola basket",
-                "hint": "'Playing basketball' artinya bermain bola basket."
-        },
-        {
-                "id": 25,
-                "type": "memasangkan",
-                "premise": "Travelling",
-                "text": "The hobby 'Travelling' pairs with its Indonesian meaning...",
-                "options": [
-                        "Menari",
-                        "Membaca buku",
-                        "Menyanyikan lagu",
-                        "Bermain bola basket",
-                        "Bepergian / Jalan-jalan"
-                ],
-                "answer": "Bepergian / Jalan-jalan",
-                "hint": "'Travelling' artinya jalan-jalan atau bepergian berwisata."
-        },
-        {
-                "id": 26,
-                "type": "isian",
-                "section": "V. Isian Singkat (5 Soal)",
-                "text": "Fill in the missing word: 'Hello, my ... is Jessica.'",
-                "answer": "name",
-                "alt": [
-                        "name",
-                        "name's"
-                ],
-                "hint": "Kalimat perkenalan: 'My name is...' (Nama saya adalah...)."
-        },
-        {
-                "id": 27,
-                "type": "isian",
-                "text": "What number comes between seven and nine? Write the number in English word! ...",
-                "answer": "eight",
-                "alt": [
-                        "eight",
-                        "8"
-                ],
-                "hint": "Angka 8 dalam bahasa Inggris ditulis 'eight'."
-        },
-        {
-                "id": 28,
-                "type": "isian",
-                "text": "In the sentence 'I'm sorry, I'm late', what is the Indonesian meaning of the word 'late'? ...",
-                "answer": "terlambat",
-                "alt": [
-                        "terlambat",
-                        "telat"
-                ],
-                "hint": "'Late' artinya terlambat atau telat."
-        },
-        {
-                "id": 29,
-                "type": "isian",
-                "text": "Complete the polite expression: 'Nice to meet you, ...'",
-                "answer": "too",
-                "alt": [
-                        "too"
-                ],
-                "hint": "Lanjutan jawaban: 'Nice to meet you, too' (Senang berjumpa denganmu juga)."
-        },
-        {
-                "id": 30,
-                "type": "isian",
-                "text": "What is the English word for 'berenang' (in -ing form)? ...",
-                "answer": "swimming",
-                "alt": [
-                        "swimming"
-                ],
-                "hint": "Berenang ditulis 'swimming' dengan huruf 'm' ganda."
-        },
-        {
-                "id": 31,
-                "type": "uraian",
-                "section": "VI. Uraian / Esai (5 Soal)",
-                "text": "Arrange the jumbled words into a correct interrogative sentence: [ name - What - your - is - ? ]",
-                "answer": "<b>What is your name?</b><br>(atau: <b>What's your name?</b>)",
-                "hint": "Susunan kalimat tanya perkenalan: What + is + your + name + ?"
-        },
-        {
-                "id": 32,
-                "type": "uraian",
-                "text": "Translate this sentence into good and correct Indonesian: 'I like dancing and playing basketball.'",
-                "answer": "<b>'Saya suka menari dan bermain bola basket.'</b><br>(atau: 'Aku suka menari dan bermain basket.')",
-                "hint": "I = Saya/Aku, like = suka, dancing = menari, and = dan, playing basketball = bermain bola basket."
-        },
-        {
-                "id": 33,
-                "type": "uraian",
-                "text": "Write 2 polite English sentences that you can say when introducing yourself to a new classmate at school!",
-                "answer": "Contoh jawaban:<br>1. 'Hello, my name is [Nama Kamu].'<br>2. 'I am nine years old.' (atau: 'Nice to meet you.')",
-                "hint": "Menuliskan kalimat perkenalan nama ('Hello, my name is...') dan usia ('I am nine years old') atau salam ('Nice to meet you')."
-        },
-        {
-                "id": 34,
-                "type": "uraian",
-                "text": "Based on the reading text about Origami, mention 2 kinds of animal shapes that we can make by folding origami paper!",
-                "answer": "We can make: <b>a bird</b> (burung), <b>a frog</b> (katak), or <b>a butterfly</b> (kupu-kupu).",
-                "hint": "Menyebutkan 2 contoh hewan dari teks: bird (burung), frog (katak), atau butterfly (kupu-kupu)."
-        },
-        {
-                "id": 35,
-                "type": "uraian",
-                "text": "What is a 'good friend' according to the short story in Unit 1? Explain in English or Indonesian!",
-                "answer": "A good friend is someone who is always there when you need him or her, and stays by your side in good and bad times.<br><i>(Teman yang baik adalah teman yang selalu ada saat kita membutuhkannya, serta setia mendampingi kita dalam keadaan senang maupun susah.)</i>",
-                "hint": "Menjelaskan teman yang baik selalu ada saat dibutuhkan dan setia di waktu senang maupun susah."
-        }
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Look at the greeting dialogue:<br><b>Dina:</b> 'Hello, I am Dina. What is your name?'<br><b>Rama:</b> 'Hi Dina! .... Rama.'",
+        "options": [
+            "You are",
+            "My name is",
+            "Nice to meet",
+            "Goodbye"
+        ],
+        "answer": 1,
+        "hint": "'My name is ...' is used to tell someone your name."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "<b>Siti:</b> 'Nice to meet you, Beni!'<br><b>Beni:</b> '....'",
+        "options": [
+            "I'm nine years old",
+            "Nice to meet you, too",
+            "Thank you for the pencil",
+            "See you yesterday"
+        ],
+        "answer": 1,
+        "hint": "We reply 'Nice to meet you' with 'Nice to meet you, too'."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "<b>Teacher:</b> 'How old are you, Musa?'<br><b>Musa:</b> '....'",
+        "options": [
+            "I'm nine years old",
+            "My name is Musa",
+            "It is a red ruler",
+            "I'm sorry"
+        ],
+        "answer": 0,
+        "hint": "'How old are you?' asks about age, so answer with your age (e.g., 'I'm nine years old')."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "In the song <i>Ten Little Indians</i>, what number comes right after <b>seven</b>?",
+        "options": [
+            "Six",
+            "Eight",
+            "Nine",
+            "Five"
+        ],
+        "answer": 1,
+        "hint": "Counting in English: six, seven, eight, nine, ten."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Lani accidentally comes late to class. What should she say politely to the teacher?",
+        "options": [
+            "Give me a ball!",
+            "I'm sorry, I'm late.",
+            "How old are you?",
+            "I like swimming."
+        ],
+        "answer": 1,
+        "hint": "When we make a mistake or arrive late, we say 'I'm sorry, I'm late.'"
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "<b>Tono:</b> 'I'm sorry I lost your pencil.'<br><b>Udin:</b> '.... Be careful next time!'",
+        "options": [
+            "It's okay",
+            "Yes, I am",
+            "Goodbye",
+            "Nice to see you"
+        ],
+        "answer": 0,
+        "hint": "'It's okay' or 'It's alright' is a polite response to an apology."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Which object is used to erase pencil mistakes on paper?",
+        "options": [
+            "Ruler",
+            "Rubber",
+            "Spin top",
+            "Ball"
+        ],
+        "answer": 1,
+        "hint": "A rubber (eraser) is used to erase pencil marks."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Bima brings a fishing rod and goes to the lake every Sunday morning. His hobby is ....",
+        "options": [
+            "Cooking",
+            "Fishing",
+            "Dancing",
+            "Watching a movie"
+        ],
+        "answer": 1,
+        "hint": "Using a fishing rod at the lake means his hobby is fishing."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "<div class=\"reading-box\"><b>Read the text carefully!</b><br><b>Origami</b><br>Origami is the art of paper folding from Japan. Making origami makes us creative. It also improves our motor skills and thinking skills. Origami is fun and cheap because we only need paper. From one square piece of paper, we can make a bird, a frog, or a butterfly.</div>Where does the art of origami come from?",
+        "options": [
+            "Indonesia",
+            "Japan",
+            "England",
+            "Malaysia"
+        ],
+        "answer": 1,
+        "hint": "The text says: 'Origami is the art of paper folding from Japan.'"
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "<b>Ayu:</b> 'Do you like reading a book?'<br><b>Mira:</b> '...., I read storybooks every day!'",
+        "options": [
+            "Yes, I do",
+            "No, I don't",
+            "Yes, I am",
+            "I'm eight"
+        ],
+        "answer": 0,
+        "hint": "Answer 'Do you like ...?' positively with 'Yes, I do.'"
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Choose the polite expressions we use when greeting or meeting someone in Unit 1!",
+        "options": [
+            "Say hi / Hello!",
+            "Shake hands politely",
+            "Nice to see you!",
+            "Close the door angrily"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "We say hi, shake hands, and say 'Nice to see you' when meeting friends."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Choose the English classroom objects studied in Unit 1!",
+        "options": [
+            "Ruler and pencil",
+            "Book and crayon",
+            "Rubber (eraser)",
+            "Swimming pool"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ruler, pencil, book, crayon, and rubber are classroom objects."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Choose the toys mentioned in Unit 1 vocabulary!",
+        "options": [
+            "Ball",
+            "Doll",
+            "Yoyo and spin top",
+            "Blackboard"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Ball, doll, yoyo, and spin top are toys."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Choose the polite responses to someone's apology!",
+        "options": [
+            "It's alright.",
+            "It's okay.",
+            "Never mind. Don't do it next time.",
+            "Go away now!"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "'It's alright', 'It's okay', and 'Never mind' are kind responses."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Choose the indoor or music-related hobbies from Unit 2!",
+        "options": [
+            "Playing the violin",
+            "Playing the piano",
+            "Singing and dancing",
+            "Fishing in the deep river"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Playing violin, piano, singing, and dancing are musical hobbies."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Choose the outdoor or sports hobbies in Unit 2!",
+        "options": [
+            "Playing futsal",
+            "Playing basketball",
+            "Swimming and fishing",
+            "Cooking soup in the kitchen"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Futsal, basketball, swimming, and fishing are active/outdoor hobbies."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "According to the <b>Origami</b> text above, choose the true statements!",
+        "options": [
+            "Origami makes us creative",
+            "Origami improves our motor skills and thinking skills",
+            "We only need square paper, so it is cheap",
+            "We need expensive scissors and heavy glue"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "The text states origami is cheap, uses only paper, and builds creativity, motor, and thinking skills."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "According to the <b>Origami</b> text, what shapes can we fold from one square piece of paper?",
+        "options": [
+            "A bird",
+            "A frog",
+            "A butterfly",
+            "A real elephant"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "The passage mentions making a bird, a frog, or a butterfly."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Which sentences are grammatically CORRECT in English?",
+        "options": [
+            "I like playing futsal.",
+            "She likes reading a book.",
+            "He likes swimming.",
+            "I like play swim."
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Use 'like / likes + Verb-ing' to talk about hobbies."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Which actions show being <b>A Good Friend</b>?",
+        "options": [
+            "Forgiving a friend who says sorry",
+            "Sharing pencils or crayons kindly",
+            "Saying 'thank you' and 'please'",
+            "Breaking a friend's toy on purpose"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "A good friend is kind, shares, forgives, and speaks politely."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Match the English expression or hobby with its Indonesian meaning: <b>I'm sorry, I'm late</b>",
+        "options": [
+            "Maaf, saya datang terlambat",
+            "Tidak apa-apa",
+            "Senang bertemu denganmu",
+            "Bermain biola",
+            "Bepergian / jalan-jalan"
+        ],
+        "answer": "Maaf, saya datang terlambat",
+        "hint": "Used to apologize when arriving late."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Match the English expression or hobby with its Indonesian meaning: <b>It's alright</b>",
+        "options": [
+            "Maaf, saya datang terlambat",
+            "Tidak apa-apa",
+            "Senang bertemu denganmu",
+            "Bermain biola",
+            "Bepergian / jalan-jalan"
+        ],
+        "answer": "Tidak apa-apa",
+        "hint": "It's alright means tidak apa-apa."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Match the English expression or hobby with its Indonesian meaning: <b>Nice to meet you</b>",
+        "options": [
+            "Maaf, saya datang terlambat",
+            "Tidak apa-apa",
+            "Senang bertemu denganmu",
+            "Bermain biola",
+            "Bepergian / jalan-jalan"
+        ],
+        "answer": "Senang bertemu denganmu",
+        "hint": "Greeting phrase when meeting someone."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Match the English expression or hobby with its Indonesian meaning: <b>Playing the violin</b>",
+        "options": [
+            "Maaf, saya datang terlambat",
+            "Tidak apa-apa",
+            "Senang bertemu denganmu",
+            "Bermain biola",
+            "Bepergian / jalan-jalan"
+        ],
+        "answer": "Bermain biola",
+        "hint": "Violin means biola in Indonesian."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Match the English expression or hobby with its Indonesian meaning: <b>Travelling</b>",
+        "options": [
+            "Maaf, saya datang terlambat",
+            "Tidak apa-apa",
+            "Senang bertemu denganmu",
+            "Bermain biola",
+            "Bepergian / jalan-jalan"
+        ],
+        "answer": "Bepergian / jalan-jalan",
+        "hint": "Travelling means visiting new places / bepergian."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Translate into English: 'Lima' = ....",
+        "answer": "five",
+        "alt": [
+            "Five"
+        ],
+        "hint": "1 one, 2 two, 3 three, 4 four, 5 five."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Complete the greeting: 'What is your ....?' — 'My name is Budi.'",
+        "answer": "name",
+        "alt": [
+            "your name"
+        ],
+        "hint": "'What is your name?' asks for someone's name."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "If someone is 10 years old, they say: 'I am .... years old.' (write in English word)",
+        "answer": "ten",
+        "alt": [
+            "Ten",
+            "10"
+        ],
+        "hint": "The number 10 in English is 'ten'."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Write the English word for <b>'penggaris'</b>: ....",
+        "answer": "ruler",
+        "alt": [
+            "a ruler"
+        ],
+        "hint": "Penggaris = ruler; penghapus = rubber."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Write the English word for <b>'gasing'</b> (a spinning toy): ....",
+        "answer": "spin top",
+        "alt": [
+            "spinning top"
+        ],
+        "hint": "Gasing in Unit 1 is 'spin top'."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Complete the apology: 'I am .... I broke your crayon.'",
+        "answer": "sorry",
+        "alt": [
+            "so sorry"
+        ],
+        "hint": "Say 'I am sorry' to apologize."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Write the hobby in English: Rina loves making delicious food in the kitchen. Her hobby is ....",
+        "answer": "cooking",
+        "alt": [
+            "Cooking"
+        ],
+        "hint": "Memasak in English is 'cooking'."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Write the hobby in English: Edo goes to the cinema with his family. He likes watching a ....",
+        "answer": "movie",
+        "alt": [
+            "film",
+            "movies"
+        ],
+        "hint": "'Watching a movie' means menonton film."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "What material do we need to make origami according to the text? Only ....",
+        "answer": "paper",
+        "alt": [
+            "square paper",
+            "a piece of paper"
+        ],
+        "hint": "Origami is the art of paper folding."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Arrange the words into a correct sentence: <b>like / I / swimming / pool / the / in</b> -> ....",
+        "answer": "I like swimming in the pool",
+        "alt": [
+            "I like swimming in the pool."
+        ],
+        "hint": "Start with the subject 'I' followed by 'like swimming ...'."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Write a short dialogue (4 lines) between two new friends meeting for the first time, asking each other's name and age!",
+        "answer": "A: Hello, what's your name? B: Hi, my name is Musa. Nice to meet you! A: Nice to meet you, too. How old are you? B: I'm nine years old.",
+        "hint": "Must include greeting, name, 'Nice to meet you', and age."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Write 2 short apology dialogues: one for coming late to class, and one for losing a friend's rubber/eraser!",
+        "answer": "1) Student: I'm sorry, I'm late, Teacher. Teacher: It's alright. Don't be late next time. 2) Ani: I'm sorry I lost your rubber. Sinta: It's okay, Ani. Let's buy a new one.",
+        "hint": "Each dialogue should have an apology and a polite response."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Mention 5 hobbies you learned in Unit 2 in English and write their Indonesian meanings!",
+        "answer": "1) Fishing = memancing; 2) Cooking = memasak; 3) Swimming = berenang; 4) Reading a book = membaca buku; 5) Playing the violin = bermain biola (or singing, dancing, travelling, playing futsal/basketball).",
+        "hint": "Any 5 Unit 2 hobbies spelled properly with correct translations."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Based on the <b>Origami</b> text, answer these two questions in English:<br>a) What skills does origami improve?<br>b) Why is origami fun and cheap?",
+        "answer": "a) Origami improves our motor skills, thinking skills, and makes us creative. b) It is fun and cheap because we only need a square piece of paper to fold shapes like a bird, frog, or butterfly.",
+        "hint": "Answers directly reflect the Origami reading text."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Write 3 sentences in English telling about your favorite hobbies using 'I like ...'!",
+        "answer": "Example: 1) I like reading a story book in the evening. 2) I like swimming on Sunday morning. 3) I like playing futsal with my friends.",
+        "hint": "Three grammatically correct sentences using 'I like + V-ing'."
+    }
 ];
 
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -829,23 +944,14 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
                     inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
@@ -864,7 +970,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -921,18 +1027,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -950,11 +1044,11 @@
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
                     const target = cleanString(q.answer);
-                    let isCorrect = (val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val))));
-                    if (!isCorrect && q.alt && Array.isArray(q.alt)) {
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
                         q.alt.forEach(a => {
                             const altClean = cleanString(a);
-                            if (val !== '' && (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val)))) {
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
                                 isCorrect = true;
                             }
                         });
@@ -969,14 +1063,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Skor Otomatis: Benar ${score} dari ${maxAuto} butir soal (PG, PG Kompleks, B/S, Memasangkan, Isian). 5 butir soal Uraian dinilai mandiri dengan panduan kunci jawaban guru.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -985,7 +1079,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);

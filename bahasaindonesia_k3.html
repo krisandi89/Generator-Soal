@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan Soal Bahasa Indonesia Kelas 3 - SDIT Friends</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         :root {
             --primary: #c0392b;
             --primary-light: #e74c3c;
@@ -22,17 +24,16 @@
             font-family: 'Nunito', sans-serif;
             background: var(--bg);
             color: var(--text);
-            padding: 20px 10px;
+            padding: 0;
             min-height: 100vh;
         }
         .container {
-            max-width: 860px;
+            max-width: 850px;
             margin: 0 auto;
             background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             overflow: hidden;
-            border: 2px solid var(--border);
         }
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
@@ -45,30 +46,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .back-btn-nav {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.88em;
+            font-size: 0.85em;
             font-weight: 700;
-            transition: all 0.2s;
             border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
         }
         .back-btn-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateX(-3px);
+            background: rgba(255,255,255,0.35);
         }
         .header h1 {
-            font-size: 1.85em;
+            font-size: 2em;
             font-weight: 800;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .header p {
             font-size: 0.95em;
@@ -77,86 +77,91 @@
         .badge {
             display: inline-block;
             background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.82em;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px dashed rgba(255,255,255,0.6);
         }
         .progress-bar {
-            height: 9px;
-            background: #e2e8f0;
+            height: 7px;
+            background: var(--border);
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
+            background: linear-gradient(90deg, var(--success), #2ecc71);
             width: 0%;
             transition: width 0.3s ease;
         }
         .score-board {
-            display: none;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--border);
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
         }
-        .score-board h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .score-val {
-            font-size: 3.8em;
+            font-size: 4em;
             font-weight: 800;
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin: 5px 0;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         .score-detail {
-            font-size: 1.05em;
+            font-size: 1em;
             opacity: 0.95;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
         .score-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
         .btn-action {
+            display: inline-block;
             padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
+            background: rgba(255,255,255,0.2);
+            color: white;
             text-decoration: none;
-            font-size: 0.92em;
+            border-radius: 25px;
+            font-weight: 700;
             transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: white;
-            color: #1e3c72;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
         }
         .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
             background: #f1f2f6;
-            transform: translateY(-2px);
+            color: var(--primary);
         }
         .question-list {
             padding: 25px 20px;
         }
         .section-title {
-            font-size: 0.98em;
+            font-size: 0.95em;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 1px;
             color: white;
-            margin: 32px 0 16px;
+            margin: 30px 0 15px;
             padding: 12px 18px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             border-radius: 12px;
@@ -193,11 +198,34 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.12);
         }
         .q-text {
-            font-size: 1.03em;
+            font-size: 1.02em;
             line-height: 1.65;
             margin-bottom: 14px;
             font-weight: 600;
             color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
         .options-group {
             display: flex;
@@ -219,7 +247,7 @@
         }
         .radio-label:hover, .checkbox-label:hover {
             border-color: var(--primary);
-            background: #f8fbff;
+            background: #f0f8ff;
             transform: translateX(4px);
         }
         .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
@@ -230,56 +258,7 @@
         }
         .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
             border-color: var(--primary);
-            background: #eef6ff;
-        }
-        /* Benar Salah Styling */
-        .tf-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .tf-label {
-            flex: 1;
-            min-width: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 18px;
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            background: white;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.98em;
-            transition: all 0.2s;
-        }
-        .tf-label:hover {
-            border-color: var(--primary);
-            background: #f8fbff;
-        }
-        .tf-label:has(input:checked) {
-            border-color: var(--primary);
-            background: #eef6ff;
-            color: var(--primary);
-        }
-        .tf-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-        }
-        /* Match Select */
-        .match-box {
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-        }
-        .match-premise {
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 0.98em;
+            background: #f0f8ff;
         }
         .match-select {
             width: 100%;
@@ -288,7 +267,7 @@
             border-radius: 10px;
             font-family: 'Nunito', sans-serif;
             font-size: 0.95em;
-            background: #fdfefe;
+            background: white;
             cursor: pointer;
             font-weight: 600;
             outline: none;
@@ -300,7 +279,7 @@
         }
         .input-text {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             border: 2px solid var(--border);
             border-radius: 10px;
             font-size: 0.98em;
@@ -316,15 +295,14 @@
         textarea.input-text {
             resize: vertical;
             min-height: 85px;
-            line-height: 1.5;
         }
         .feedback-box {
             margin-top: 14px;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: 10px;
             display: none;
-            font-size: 0.93em;
-            line-height: 1.55;
+            font-size: 0.92em;
+            line-height: 1.5;
             font-weight: 600;
         }
         .correct {
@@ -374,21 +352,21 @@
         <div class="header">
             <div class="nav-top">
                 <a href="kelas3.html" class="back-btn-nav">⬅ Menu Kelas 3</a>
-                <span style="font-size: 0.85em; opacity: 0.95;">15 Soal Isian</span>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
             </div>
             <h1>📖 Bahasa Indonesia</h1>
             <p>SDIT Friends — Kelas 3</p>
-            <div class="badge">Bab 3: Kata Serapan, Ide Pokok, Ringkasan, Teks Eksplanasi, dan Kalimat Efektif</div>
+            <div class="badge">Wawancara, Kata Baku, Kata Serapan, Eksplanasi & S-P-O-K • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Latihan Ulangan</h2>
+            <h2>📊 Hasil Latihan Soal</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
-                <button onclick="retryExam()" class="btn-action">🔄 Coba Lagi</button>
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
                 <a href="kelas3.html" class="btn-action">⬅ Kembali ke Menu Kelas 3</a>
             </div>
         </div>
@@ -400,162 +378,558 @@
 
     <script>
         const questions = [
-            {
-                "id": 1,
-                "type": "isian",
-                "text": "Kata bahasa Indonesia yang diambil dari bahasa lain disebut kata ....",
-                "answer": "serapan",
-                "alt": [
-                    "kata serapan"
-                ],
-                "hint": "Kata serapan dapat berasal dari bahasa daerah maupun bahasa asing.",
-                "section": "Isian Singkat (15 Soal)"
-            },
-            {
-                "id": 2,
-                "type": "isian",
-                "text": "Kamus Besar Bahasa Indonesia biasa disingkat ....",
-                "answer": "KBBI",
-                "alt": [],
-                "hint": "KBBI dapat digunakan untuk mencari makna kata dalam bahasa Indonesia."
-            },
-            {
-                "id": 3,
-                "type": "isian",
-                "text": "Lengkapilah kalimat dengan kata yang tepat: Es batu yang dibiarkan di tempat panas akan berubah menjadi air. Es batu itu ....",
-                "answer": "mencair",
-                "alt": [
-                    "meleleh"
-                ],
-                "hint": "Mencair adalah perubahan wujud dari padat menjadi cair, seperti es menjadi air."
-            },
-            {
-                "id": 4,
-                "type": "isian",
-                "text": "Hal utama yang menjadi dasar penulisan suatu paragraf disebut ....",
-                "answer": "ide pokok",
-                "alt": [
-                    "gagasan pokok",
-                    "gagasan utama",
-                    "pokok pikiran",
-                    "pikiran utama"
-                ],
-                "hint": "Ide pokok merupakan inti pembahasan suatu paragraf."
-            },
-            {
-                "id": 5,
-                "type": "isian",
-                "text": "Ide tambahan yang menjelaskan atau melengkapi ide pokok disebut ide ....",
-                "answer": "pendukung",
-                "alt": [
-                    "ide pendukung",
-                    "penjelas",
-                    "ide penjelas"
-                ],
-                "hint": "Ide pendukung memberikan uraian atau informasi tambahan tentang ide pokok."
-            },
-            {
-                "id": 6,
-                "type": "isian",
-                "text": "Penyajian singkat suatu teks panjang yang tetap memuat informasi penting disebut ....",
-                "answer": "ringkasan",
-                "alt": [
-                    "rangkuman"
-                ],
-                "hint": "Ringkasan disusun dari informasi penting dalam teks asli."
-            },
-            {
-                "id": 7,
-                "type": "isian",
-                "text": "Teks yang menjelaskan proses terjadinya suatu peristiwa, misalnya proses penguapan air, disebut teks ....",
-                "answer": "eksplanasi",
-                "alt": [
-                    "teks eksplanasi"
-                ],
-                "hint": "Teks eksplanasi menjelaskan proses atau peristiwa berdasarkan fakta secara berurutan."
-            },
-            {
-                "id": 8,
-                "type": "isian",
-                "text": "Bagian awal teks eksplanasi yang memperkenalkan topik disebut ....",
-                "answer": "pernyataan umum",
-                "alt": [],
-                "hint": "Teks eksplanasi memiliki bagian pernyataan umum, deretan penjelas, dan simpulan."
-            },
-            {
-                "id": 9,
-                "type": "isian",
-                "text": "Bacalah kalimat: “Dona menyimpan minuman di kulkas.” Subjek pada kalimat tersebut adalah ....",
-                "answer": "Dona",
-                "alt": [],
-                "hint": "Dona adalah pelaku kegiatan, sehingga menjadi subjek kalimat."
-            },
-            {
-                "id": 10,
-                "type": "isian",
-                "text": "Bacalah kalimat: “Dona menyimpan minuman di kulkas.” Kata yang menjadi predikat adalah ....",
-                "answer": "menyimpan",
-                "alt": [],
-                "hint": "Predikat menjelaskan kegiatan subjek. Kegiatan Dona dalam kalimat tersebut adalah menyimpan."
-            },
-            {
-                "id": 11,
-                "type": "isian",
-                "text": "Kata “rampung” pada kalimat “Pekerjaan Dini sudah rampung” berarti ....",
-                "answer": "selesai",
-                "alt": [
-                    "sudah selesai",
-                    "tuntas"
-                ],
-                "hint": "Rampung berarti selesai atau tuntas."
-            },
-            {
-                "id": 12,
-                "type": "isian",
-                "text": "Bacalah kalimat “Rani membaca buku di teras.” Kata yang menjadi objek adalah ....",
-                "answer": "buku",
-                "alt": [],
-                "hint": "Objek menjawab pertanyaan “apa yang dibaca Rani?” Jawabannya adalah buku."
-            },
-            {
-                "id": 13,
-                "type": "isian",
-                "text": "Bacalah kalimat “Adi menyiram tanaman di halaman.” Keterangan tempatnya adalah ....",
-                "answer": "di halaman",
-                "alt": [
-                    "halaman"
-                ],
-                "hint": "Frasa “di halaman” menunjukkan tempat Adi menyiram tanaman."
-            },
-            {
-                "id": 14,
-                "type": "isian",
-                "text": "Bagian teks eksplanasi yang menguraikan urutan proses terjadinya peristiwa disebut ....",
-                "answer": "deretan penjelas",
-                "alt": [
-                    "deret penjelas",
-                    "bagian penjelas"
-                ],
-                "hint": "Deretan penjelas berisi tahapan atau penjelasan peristiwa yang dibahas."
-            },
-            {
-                "id": 15,
-                "type": "isian",
-                "text": "Bagian akhir teks eksplanasi yang merangkum informasi disebut ....",
-                "answer": "simpulan",
-                "alt": [
-                    "kesimpulan",
-                    "penutup"
-                ],
-                "hint": "Simpulan berisi kesimpulan dari informasi yang telah dijelaskan."
-            }
-        ];
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Karangan yang menggambarkan suatu objek, tempat, atau benda secara jelas sehingga pembaca seolah-olah melihat dan merasakannya sendiri disebut teks ....",
+        "options": [
+            "Deskripsi",
+            "Eksplanasi",
+            "Wawancara",
+            "Pengumuman"
+        ],
+        "answer": 0,
+        "hint": "Teks deskripsi menggambarkan objek secara terperinci sesuai pancaindra."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Kegiatan tanya jawab antara dua pihak untuk memperoleh informasi atau keterangan mengenai suatu topik disebut ....",
+        "options": [
+            "Pidato",
+            "Wawancara",
+            "Mendongeng",
+            "Membaca puisi"
+        ],
+        "answer": 1,
+        "hint": "Wawancara mempertemukan pewawancara dan narasumber."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Manakah kelompok kata berikut yang seluruhnya merupakan <b>kata baku</b> sesuai KBBI?",
+        "options": [
+            "Apotik, antri, ijin",
+            "Apotek, antre, izin",
+            "Moderen, resiko, bis",
+            "Fikir, hakekat, telor"
+        ],
+        "answer": 1,
+        "hint": "Bentuk bakunya adalah apotek, antre, izin, modern, risiko, bus, pikir, hakikat, dan telur."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Untuk mengetahui arti atau makna kata baku seperti 'wujud', 'suhu', dan 'mencair' secara resmi dalam bahasa Indonesia, kita mencarinya di ....",
+        "options": [
+            "Buku resep masakan",
+            "Kamus Besar Bahasa Indonesia (KBBI)",
+            "Kumpulan pantun jenaka",
+            "Peta buta"
+        ],
+        "answer": 1,
+        "hint": "KBBI adalah kamus resmi rujukan makna dan kebakuan kata bahasa Indonesia."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Kata serapan dari bahasa daerah Kalimantan yang berarti perahu kecil bermotor dengan bunyi khas 'ting-ting' adalah ....",
+        "options": [
+            "Gerobak",
+            "Tampah",
+            "Ketinting",
+            "Kenceng"
+        ],
+        "answer": 2,
+        "hint": "Ketinting (Kalimantan) adalah perahu kecil bermotor tempel."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Gagasan utama atau inti pembahasan yang menjadi dasar pengembangan sebuah paragraf disebut ....",
+        "options": [
+            "Ide pokok",
+            "Kalimat tanya",
+            "Kata serapan",
+            "Daftar pustaka"
+        ],
+        "answer": 0,
+        "hint": "Ide pokok merupakan gagasan utama paragraf, sedangkan penjelasnya disebut ide pendukung."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Teks yang menjelaskan proses terjadinya suatu peristiwa alam atau fenomena secara urut, ilmiah, dan faktual disebut teks ....",
+        "options": [
+            "Dongeng",
+            "Eksplanasi",
+            "Pantun",
+            "Puisi bebas"
+        ],
+        "answer": 1,
+        "hint": "Teks eksplanasi menjelaskan proses 'mengapa' dan 'bagaimana' peristiwa terjadi secara urut dan ilmiah."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Bacalah teks berikut:<div class=\"reading-box\"><b>Bacalah teks berikut!</b><br><b>Mobil Tenaga Surya, Teknologi Ramah Lingkungan</b><br>Mobil tenaga surya tidak menggunakan bahan bakar minyak (BBM), melainkan memanfaatkan cahaya matahari melalui panel surya di bagian atapnya. Energi panas matahari diubah menjadi energi listrik untuk menggerakkan mesin mobil. Selain hemat energi, mobil tenaga surya tidak menghasilkan asap knalpot sehingga tidak mencemari udara dan sangat ramah lingkungan.</div>Ide pokok paragraf pada bacaan tersebut adalah ....",
+        "options": [
+            "Mobil biasa menggunakan bensin",
+            "Mobil tenaga surya memanfaatkan cahaya matahari dan ramah lingkungan",
+            "Atap mobil berwarna biru gelap",
+            "Jalan raya menjadi macet di pagi hari"
+        ],
+        "answer": 1,
+        "hint": "Seluruh kalimat membahas cara kerja mobil tenaga surya dan sifatnya yang ramah lingkungan."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Perhatikan kalimat berikut: <i>'Adik membaca buku cerita di teras rumah.'</i> Kata <b>'buku cerita'</b> pada kalimat tersebut menduduki fungsi ....",
+        "options": [
+            "Subjek (S)",
+            "Predikat (P)",
+            "Objek (O)",
+            "Keterangan (K)"
+        ],
+        "answer": 2,
+        "hint": "Adik (S) + membaca (P) + buku cerita (O) + di teras rumah (K tempat)."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Manakah kalimat berikut yang sudah merupakan <b>kalimat efektif</b>?",
+        "options": [
+            "Para siswa-siswa sedang belajar kelompok di kelas.",
+            "Semua anak-anak berkumpul di halaman.",
+            "Siswa kelas 3 membaca buku cerita dengan tertib.",
+            "Agar supaya sehat, kita harus rajin olahraga."
+        ],
+        "answer": 2,
+        "hint": "Kalimat efektif hemat kata (tidak berulang seperti 'para siswa-siswa' atau 'agar supaya')."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah ciri-ciri makhluk hidup yang dipelajari pada tema awal Bahasa Indonesia!",
+        "options": [
+            "Bernapas dan memerlukan makan serta minum",
+            "Tumbuh menjadi lebih besar dan berkembang biak",
+            "Bergerak menanggapi rangsang",
+            "Tidak pernah membutuhkan udara atau air sama sekali"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Makhluk hidup bernapas, makan/minum, tumbuh, berkembang biak, dan bergerak."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah bagian-bagian yang harus tercantum dalam laporan hasil wawancara!",
+        "options": [
+            "Latar belakang, tujuan, dan topik wawancara",
+            "Waktu, tempat, nama pewawancara, dan nama narasumber",
+            "Hasil wawancara dan simpulan",
+            "Daftar harga jajanan di kantin"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Laporan wawancara memuat latar belakang, tujuan, topik, waktu/tempat, pihak wawancara, hasil, dan simpulan."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah kata-kata berikut yang penulisan ejaannya SUDAH BAKU!",
+        "options": [
+            "Dahulu dan pikir",
+            "Bus dan telur",
+            "Aktivitas dan hafal",
+            "Hakekat dan apotik"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kata bakunya: dahulu, pikir, bus, telur, aktivitas, hafal (bukan hakekat/apotik)."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh kata serapan dari bahasa daerah beserta artinya yang tepat!",
+        "options": [
+            "Tampah (Jawa): wadah bundar anyaman bambu untuk menampi beras",
+            "Kenceng (Bali): wadah cekung dari logam untuk menanak nasi",
+            "Ketinting (Kalimantan): perahu kecil bermotor",
+            "Laptop (Sunda): piring kayu tradisional"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Tampah, kenceng, dan ketinting adalah kata serapan dari bahasa daerah Indonesia."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah pernyataan yang benar mengenai ciri-ciri ide pokok dan ide pendukung!",
+        "options": [
+            "Ide pokok hanya ada satu dalam setiap paragraf",
+            "Ide pokok menjadi inti yang dijelaskan kalimat-kalimat lain",
+            "Ide pendukung berisi perincian atau contoh untuk menjelaskan ide pokok",
+            "Ide pendukung tidak ada hubungannya dengan ide pokok"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Satu paragraf memiliki satu ide pokok yang dijelaskan oleh beberapa ide pendukung."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Berdasarkan teks <b>Mobil Tenaga Surya</b> di atas, pilihlah pernyataan yang benar!",
+        "options": [
+            "Mobil tenaga surya menggunakan panel surya di atapnya",
+            "Energi matahari diubah menjadi energi listrik",
+            "Mobil tenaga surya tidak menghasilkan asap knalpot",
+            "Mobil tenaga surya memakai bensin dalam jumlah sangat besar"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Panel surya mengubah cahaya matahari menjadi listrik tanpa asap knalpot."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah syarat-syarat sebuah kalimat dapat dikatakan sebagai <b>kalimat efektif</b>!",
+        "options": [
+            "Hemat kata (tidak boros atau mengulang makna)",
+            "Menggunakan kata baku yang sesuai ejaan",
+            "Logis (masuk akal) dan memiliki struktur jelas (S-P-O-K)",
+            "Harus terdiri dari minimal lima puluh kata"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Kalimat efektif harus hemat kata, baku, logis, dan berstruktur S-P-O-K yang jelas."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah tiga bagian struktur penyusun sebuah <b>teks eksplanasi</b>!",
+        "options": [
+            "Pernyataan umum (pembuka/topik umum)",
+            "Deretan penjelas (urutan sebab-akibat/proses)",
+            "Interpretasi atau simpulan",
+            "Daftar pemeran tokoh dongeng"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Struktur teks eksplanasi: pernyataan umum, deretan penjelas, dan simpulan/penutup."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Pilihlah contoh peristiwa perubahan wujud benda pada bacaan 'Es Batu yang Hilang dalam Segelas Es Sirup'!",
+        "options": [
+            "Es batu berwujud padat sebelum dimasukkan ke gelas",
+            "Suhu minuman yang lebih hangat membuat es batu menyerap panas",
+            "Es batu mencair (meleleh) berubah menjadi air (cair)",
+            "Es batu berubah menjadi batu kerikil di dasar gelas"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Es batu (padat) mencair menjadi air karena pengaruh suhu hangat."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Perhatikan kalimat: <i>'Ibu memasak sayur bayam di dapur pada pagi hari.'</i> Pilihlah analisis pola kalimat S-P-O-K yang benar!",
+        "options": [
+            "'Ibu' adalah Subjek (S)",
+            "'memasak' adalah Predikat (P)",
+            "'sayur bayam' adalah Objek (O)",
+            "'di dapur pada pagi hari' adalah Subjek (S)"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "'di dapur pada pagi hari' merupakan unsur Keterangan tempat dan waktu."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan istilah bahasa Indonesia berikut dengan maknanya: <b>Pewawancara</b>",
+        "options": [
+            "Orang yang mengajukan pertanyaan dalam wawancara",
+            "Orang yang dimintai keterangan atau informasi",
+            "Gagasan utama yang menjadi inti paragraf",
+            "Teks yang menjelaskan proses fenomena secara ilmiah",
+            "Wadah logam dari Bali untuk menanak nasi"
+        ],
+        "answer": "Orang yang mengajukan pertanyaan dalam wawancara",
+        "hint": "Pewawancara adalah pihak yang bertanya."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan istilah bahasa Indonesia berikut dengan maknanya: <b>Narasumber</b>",
+        "options": [
+            "Orang yang mengajukan pertanyaan dalam wawancara",
+            "Orang yang dimintai keterangan atau informasi",
+            "Gagasan utama yang menjadi inti paragraf",
+            "Teks yang menjelaskan proses fenomena secara ilmiah",
+            "Wadah logam dari Bali untuk menanak nasi"
+        ],
+        "answer": "Orang yang dimintai keterangan atau informasi",
+        "hint": "Narasumber adalah pihak yang menjawab atau memberi informasi."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan istilah bahasa Indonesia berikut dengan maknanya: <b>Ide Pokok</b>",
+        "options": [
+            "Orang yang mengajukan pertanyaan dalam wawancara",
+            "Orang yang dimintai keterangan atau informasi",
+            "Gagasan utama yang menjadi inti paragraf",
+            "Teks yang menjelaskan proses fenomena secara ilmiah",
+            "Wadah logam dari Bali untuk menanak nasi"
+        ],
+        "answer": "Gagasan utama yang menjadi inti paragraf",
+        "hint": "Ide pokok menjadi inti pembahasan suatu paragraf."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan istilah bahasa Indonesia berikut dengan maknanya: <b>Teks Eksplanasi</b>",
+        "options": [
+            "Orang yang mengajukan pertanyaan dalam wawancara",
+            "Orang yang dimintai keterangan atau informasi",
+            "Gagasan utama yang menjadi inti paragraf",
+            "Teks yang menjelaskan proses fenomena secara ilmiah",
+            "Wadah logam dari Bali untuk menanak nasi"
+        ],
+        "answer": "Teks yang menjelaskan proses fenomena secara ilmiah",
+        "hint": "Eksplanasi menjelaskan proses terjadinya fenomena alam atau sosial."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pilih pasangan yang tepat)",
+        "text": "Pasangkan istilah bahasa Indonesia berikut dengan maknanya: <b>Kenceng</b>",
+        "options": [
+            "Orang yang mengajukan pertanyaan dalam wawancara",
+            "Orang yang dimintai keterangan atau informasi",
+            "Gagasan utama yang menjadi inti paragraf",
+            "Teks yang menjelaskan proses fenomena secara ilmiah",
+            "Wadah logam dari Bali untuk menanak nasi"
+        ],
+        "answer": "Wadah logam dari Bali untuk menanak nasi",
+        "hint": "Kenceng adalah kata serapan bahasa Bali."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pihak yang memberikan informasi atau menjawab pertanyaan dalam wawancara disebut ....",
+        "answer": "narasumber",
+        "alt": [
+            "nara sumber",
+            "informan"
+        ],
+        "hint": "Narasumber adalah sumber informasi saat wawancara."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bentuk kata baku dari 'apotik' sesuai KBBI adalah ....",
+        "answer": "apotek",
+        "alt": [],
+        "hint": "Yang baku adalah 'apotek', bukan 'apotik'."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bentuk kata baku dari 'antri' adalah ....",
+        "answer": "antre",
+        "alt": [],
+        "hint": "Kata bakunya 'antre', dengan imbuhan mengantre."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bentuk kata baku dari 'resiko' adalah ....",
+        "answer": "risiko",
+        "alt": [],
+        "hint": "Penulisan yang baku adalah 'risiko'."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bagian pertama dalam struktur teks eksplanasi yang memperkenalkan topik secara umum disebut ....",
+        "answer": "pernyataan umum",
+        "alt": [
+            "pembuka"
+        ],
+        "hint": "Struktur teks eksplanasi diawali dengan pernyataan umum."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Bagian teks eksplanasi yang menjelaskan urutan proses atau sebab-akibat peristiwa disebut ....",
+        "answer": "deretan penjelas",
+        "alt": [
+            "isi"
+        ],
+        "hint": "Deretan penjelas memaparkan proses terjadinya fenomena secara urut."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Perubahan wujud benda dari padat menjadi cair karena menyerap panas seperti es batu dalam sirup disebut ....",
+        "answer": "mencair",
+        "alt": [
+            "meleleh"
+        ],
+        "hint": "Padat menjadi cair disebut mencair (meleleh)."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pada kalimat <i>'Ayah menanam pohon mangga di kebun'</i>, kata <b>'menanam'</b> menduduki jabatan ....",
+        "answer": "predikat",
+        "alt": [
+            "P"
+        ],
+        "hint": "Kata kerja yang menunjukkan tindakan subjek disebut Predikat (P)."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Pada kalimat <i>'Siti membaca buku di perpustakaan'</i>, frasa <b>'di perpustakaan'</b> menduduki jabatan ....",
+        "answer": "keterangan",
+        "alt": [
+            "keterangan tempat",
+            "K"
+        ],
+        "hint": "'di perpustakaan' menunjukkan keterangan tempat."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Penyajian singkat dari suatu teks bacaan panjang dengan mengambil ide-ide pokoknya tanpa mengubah makna disebut ....",
+        "answer": "ringkasan",
+        "alt": [
+            "meringkas",
+            "rangkuman"
+        ],
+        "hint": "Ringkasan menyederhanakan bacaan dengan tetap mempertahankan ide pokoknya."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Sebutkan minimal 5 bagian penting yang harus ada di dalam laporan hasil wawancara!",
+        "answer": "1) Latar belakang; 2) Tujuan wawancara; 3) Topik wawancara; 4) Waktu dan tempat; 5) Nama pewawancara dan narasumber; 6) Hasil wawancara; 7) Simpulan.",
+        "hint": "Menyebut minimal 5 bagian laporan wawancara secara tepat."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Ubahlah dua kalimat tidak efektif berikut menjadi kalimat efektif dengan kata baku:<br>a) Para tamu-tamu dipersilakan masuk ke ruang rapat.<br>b) Pasien sedang mengantri obat di apotik.",
+        "answer": "a) Para tamu dipersilakan masuk ke ruang rapat. (atau: Tamu-tamu dipersilakan masuk ke ruang rapat.) b) Pasien sedang mengantre obat di apotek.",
+        "hint": "Menghilangkan pengulangan kata jamak dan mengganti antre/apotek menjadi baku."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan 2 ciri teks eksplanasi dan tuliskan 3 bagian strukturnya secara urut!",
+        "answer": "Ciri teks eksplanasi: (1) Informasi disampaikan secara urut berdasarkan proses/sebab-akibat; (2) Bersifat ilmiah dan faktual (berdasarkan kenyataan). Strukturnya: 1. Pernyataan Umum, 2. Deretan Penjelas, 3. Simpulan/Interpretasi.",
+        "hint": "Memuat 2 ciri dan 3 bagian struktur secara berurutan."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Buatlah 2 kalimat efektif lengkap yang memiliki pola <b>Subjek (S) - Predikat (P) - Objek (O) - Keterangan (K)</b> dengan tema menjaga lingkungan atau teknologi ramah lingkungan, lalu tandai tiap unsurnya!",
+        "answer": "Contoh 1: Musa (S) menanam (P) bibit mangrove (O) di tepi pantai (K). Contoh 2: Para siswa (S) membuang (P) sampah plastik (O) di tempat sampah terpilah (K).",
+        "hint": "Setiap kalimat harus lengkap S, P, O, dan K serta ditandai fungsinya."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Berdasarkan teks 'Mobil Tenaga Surya, Teknologi Ramah Lingkungan' di atas, tuliskan sebuah ringkasan singkat sepanjang 2–3 kalimat dengan bahasamu sendiri!",
+        "answer": "Mobil tenaga surya adalah kendaraan ramah lingkungan yang memanfaatkan cahaya matahari melalui panel surya di atapnya sebagai pengganti BBM. Energi panas matahari diubah menjadi listrik untuk menggerakkan mesin tanpa menghasilkan asap knalpot sehingga tidak mencemari udara.",
+        "hint": "Ringkasan memuat ide pokok teks tanpa keluar dari isi bacaan."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
 
         function render() {
-            const container = document.getElementById('question-container');
             let html = '';
             questions.forEach((q, idx) => {
-                if (q.section) {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
                     html += `<div class="section-title">${q.section}</div>`;
                 }
                 let inputHtml = '';
@@ -564,25 +938,16 @@
                         inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
                 } else if (q.type === 'pg_kompleks') {
-                    inputHtml += `<div style="font-size:0.85em; color:#7f8c8d; margin-bottom:6px; font-weight:700;">📌 <i>Pilih lebih dari satu jawaban yang benar:</i></div>`;
                     q.options.forEach((opt, i) => {
                         inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
                     });
-                } else if (q.type === 'benar_salah') {
-                    inputHtml = `<div class="tf-group">
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Benar"> <span>🟢 Benar</span></label>
-                        <label class="tf-label"><input type="radio" name="q${q.id}" value="Salah"> <span>🔴 Salah</span></label>
-                    </div>`;
                 } else if (q.type === 'memasangkan') {
-                    inputHtml = `<div class="match-box">
-                        <div class="match-premise">Pasangkan pernyataan: <b>"${q.premise || q.text}"</b></div>
-                        <select class="match-select" name="q${q.id}" onchange="updateProgress()">
-                            <option value="">-- Pilih Pasangan yang Tepat --</option>
-                            ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
-                        </select>
-                    </div>`;
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
                 } else if (q.type === 'isian') {
-                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" aria-label="Jawaban soal ${idx + 1}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
                 } else if (q.type === 'uraian') {
                     inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
                 }
@@ -599,7 +964,7 @@
         function updateProgress() {
             let answered = 0;
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'benar_salah') {
+                if (q.type === 'pg') {
                     if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
                 } else if (q.type === 'pg_kompleks') {
                     if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
@@ -619,12 +984,9 @@
 
         function cleanString(str) {
             return (str || '')
-                .normalize('NFKC')
                 .toLowerCase()
-                .replace(/[’‘]/g, "'")
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
                 .replace(/\s+/g, ' ')
-                .trim()
-                .replace(/[.!?]+$/, '')
                 .trim();
         }
 
@@ -659,18 +1021,6 @@
                         const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
                         fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
                     }
-                } else if (q.type === 'benar_salah') {
-                    maxAuto++;
-                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
-                    const val = sel ? sel.value : '';
-                    if (val === q.answer) {
-                        score++;
-                        fb.className = 'feedback-box correct';
-                        fb.innerHTML = '✅ <b>Tepat Sekali!</b> Pernyataan ini memang <b>' + q.answer + '</b>. ' + (q.hint || '');
-                    } else {
-                        fb.className = 'feedback-box wrong';
-                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Pernyataan ini seharusnya: <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
-                    }
                 } else if (q.type === 'memasangkan') {
                     maxAuto++;
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
@@ -687,7 +1037,16 @@
                     maxAuto++;
                     const inputEl = document.querySelector(`[name="q${q.id}"]`);
                     const val = cleanString(inputEl ? inputEl.value : '');
-                    const isCorrect = val !== '' && [q.answer, ...(q.alt || [])].some(a => val === cleanString(a));
+                    const target = cleanString(q.answer);
+                    let isCorrect = val !== '' && (val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val)));
+                    if (val !== '' && q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
                     if (isCorrect) {
                         score++;
                         fb.className = 'feedback-box correct';
@@ -698,14 +1057,14 @@
                     }
                 } else if (q.type === 'uraian') {
                     fb.className = 'feedback-box manual';
-                    fb.innerHTML = `📝 <b>Model Kunci Jawaban:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Penilaian: ${q.hint || ''}</i>`;
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
                 }
                 fb.style.display = 'block';
             });
 
             const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
-            document.getElementById('final-score').innerText = finalPct + '%';
-            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal isian.`;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
             document.getElementById('score-board').style.display = 'block';
             document.getElementById('footer-action').style.display = 'none';
             document.getElementById('progress-fill').style.width = '100%';
@@ -714,7 +1073,7 @@
 
         function retryExam() {
             questions.forEach(q => {
-                if (q.type === 'pg' || q.type === 'pg_kompleks' || q.type === 'benar_salah') {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
                     document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
                 } else if (q.type === 'memasangkan') {
                     const sel = document.querySelector(`select[name="q${q.id}"]`);
