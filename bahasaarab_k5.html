@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTS Bahasa Arab Kelas 5 - SD Dilaraf Islamic School</title>
+    <title>ASAS Bahasa Arab Kelas 5 - SD Dilaraf Islamic School</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -213,6 +213,20 @@
             line-height: 1.75;
             font-size: 0.95em;
         }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
         .options-group {
             display: flex;
             flex-direction: column;
@@ -342,13 +356,13 @@
             </div>
             <h1>🕌 Bahasa Arab</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
-            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+            <div class="badge">Asesmen Sumatif Akhir Semester (ASAS) 2026/2027 • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Ujian ASTS</h2>
+            <h2>📊 Hasil Ujian ASAS</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
@@ -368,546 +382,520 @@
         "id": 1,
         "type": "pg",
         "section": "I. Pilihan Ganda (10 Soal)",
-        "text": "Arti dari kosakata bahasa Arab <span class='ar'>أَنْفٌ</span> (anfun) adalah...",
+        "text": "Arti dari kosakata ruangan <span class='ar'>غُرْفَةُ الاِسْتِقْبَالِ</span> (ghurfatul istiqbaal) adalah...",
         "options": [
-            "Mata",
-            "Telinga",
-            "Hidung",
-            "Mulut"
+            "Ruang tidur",
+            "Ruang tamu",
+            "Ruang makan",
+            "Dapur"
         ],
-        "answer": 2,
-        "hint": "<span class='ar'>أَنْفٌ</span> artinya hidung, sedangkan mata adalah <span class='ar'>عَيْنٌ</span> dan mulut adalah <span class='ar'>فَمٌ</span>."
+        "answer": 1,
+        "hint": "<span class='ar'>غُرْفَةُ الاِسْتِقْبَالِ</span> berarti ruang tamu (tempat menerima tamu)."
     },
     {
         "id": 2,
         "type": "pg",
-        "text": "Anggota tubuh yang digunakan untuk mendengar dalam bahasa Arab disebut...",
+        "text": "Ruangan di rumah yang digunakan untuk belajar dan mengerjakan tugas sekolah dalam bahasa Arab disebut...",
         "options": [
-            "<span class='ar'>عَيْنٌ</span> (Ainun)",
-            "<span class='ar'>أُذُنٌ</span> (Udzunun)",
-            "<span class='ar'>لِسَانٌ</span> (Lisanun)",
-            "<span class='ar'>رِجْلٌ</span> (Rijlun)"
+            "<span class='ar'>غُرْفَةُ الْمُذَاكَرَةِ</span>",
+            "<span class='ar'>غُرْفَةُ النَّوْمِ</span>",
+            "<span class='ar'>الْمَطْبَخُ</span>",
+            "<span class='ar'>الْحَمَّامُ</span>"
         ],
-        "answer": 1,
-        "hint": "<span class='ar'>أُذُنٌ</span> (udzunun) artinya telinga."
+        "answer": 0,
+        "hint": "<span class='ar'>غُرْفَةُ الْمُذَاكَرَةِ</span> (ghurfatul mudzaakarah) berarti ruang belajar."
     },
     {
         "id": 3,
         "type": "pg",
-        "text": "Perhatikan kalimat berikut: <span class='ar'>نَنْظُرُ إِلَى الأَشْيَاءِ بِـ...</span> (Kita melihat berbagai benda dengan...). Kata yang tepat untuk melengkapi kalimat tersebut adalah...",
+        "text": "Perhatikan kalimat tanya rumpang berikut: <span class='ar'>... هَذِهِ؟ هَذِهِ أَرِيكَةٌ.</span> Kata tanya yang tepat untuk menanyakan benda tersebut adalah...",
         "options": [
-            "<span class='ar'>الْعَيْنِ</span>",
-            "<span class='ar'>الْأَنْفِ</span>",
-            "<span class='ar'>الْفَمِ</span>",
-            "<span class='ar'>الْأُذُنِ</span>"
+            "<span class='ar'>مَنْ</span> (Man)",
+            "<span class='ar'>مَا</span> (Maa)",
+            "<span class='ar'>مَتَى</span> (Mataa)",
+            "<span class='ar'>كَمْ</span> (Kam)"
         ],
-        "answer": 0,
-        "hint": "Melihat (<span class='ar'>نَنْظُرُ</span>) dilakukan menggunakan mata (<span class='ar'>الْعَيْنِ</span>)."
+        "answer": 1,
+        "hint": "Untuk menanyakan nama benda mati dalam bahasa Arab digunakan kata tanya <span class='ar'>مَا</span> (apa)."
     },
     {
         "id": 4,
         "type": "pg",
-        "text": "Pola susunan kalimat dasar dalam bahasa Arab: Isim Isyarah + Isim + Na'at (Kata Tunjuk + Benda + Kata Sifat). Manakah pasangan yang tepat untuk kata <span class='ar'>رَأْسٌ</span> (kepala - mudzakkar)?",
+        "text": "Lengkapilah kalimat tanya sederhana berikut: <span class='ar'>أَيْنَ الْمِصْبَاحُ؟ الْمِصْبَاحُ ... الْمَكْتَبِ.</span> (Di mana lampu? Lampu berada di atas meja).",
         "options": [
-            "<span class='ar'>هَذَا رَأْسٌ كَبِيرٌ</span>",
-            "<span class='ar'>هَذِهِ رَأْسٌ كَبِيرَةٌ</span>",
-            "<span class='ar'>هَذَا رَأْسٌ كَبِيرَةٌ</span>",
-            "<span class='ar'>هَذِهِ رَأْسٌ كَبِيرٌ</span>"
+            "<span class='ar'>عَلَى</span>",
+            "<span class='ar'>تَحْتَ</span>",
+            "<span class='ar'>وَرَاءَ</span>",
+            "<span class='ar'>مِنْ</span>"
         ],
         "answer": 0,
-        "hint": "Kata <span class='ar'>رَأْسٌ</span> adalah mudzakkar (tidak diakhiri ta marbuthah), maka memakai isyarah <span class='ar'>هَذَا</span> dan na'at <span class='ar'>كَبِيرٌ</span>."
+        "hint": "<span class='ar'>عَلَى</span> berarti di atas (menempel pada permukaan meja)."
     },
     {
         "id": 5,
         "type": "pg",
-        "text": "Anggota tubuh yang berpasangan (seperti kedua mata, telinga, tangan, kaki) dalam tata bahasa Arab dihukumi sebagai <b>muannats</b>. Kalimat yang benar untuk kata <span class='ar'>عَيْنٌ</span> (mata) adalah...",
+        "text": "Pernyataan: <span class='ar'>فِي غُرْفَةِ الاِسْتِقْبَالِ أَرِيكَةٌ وَمِنْضَدَةٌ وَزَهْرِيَّةٌ</span> berarti di ruang tamu terdapat sofa, meja kecil, dan vas bunga. Tentukan kebenaran pernyataan tersebut!",
         "options": [
-            "<span class='ar'>هَذَا عَيْنٌ جَمِيلٌ</span>",
-            "<span class='ar'>هَذِهِ عَيْنٌ جَمِيلَةٌ</span>",
-            "<span class='ar'>هَذِهِ عَيْنٌ جَمِيلٌ</span>",
-            "<span class='ar'>هَذَا عَيْنٌ جَمِيلَةٌ</span>"
+            "Benar",
+            "Salah"
         ],
-        "answer": 1,
-        "hint": "<span class='ar'>عَيْنٌ</span> dihukumi muannats majazi (karena berpasangan), sehingga menggunakan isyarah <span class='ar'>هَذِهِ</span> dan sifat berakhiran ta' marbuthoh <span class='ar'>جَمِيلَةٌ</span>."
+        "answer": 0,
+        "hint": "<span class='ar'>أَرِيكَةٌ</span> = sofa, <span class='ar'>مِنْضَدَةٌ</span> = meja, <span class='ar'>زَهْرِيَّةٌ</span> = vas bunga."
     },
     {
         "id": 6,
         "type": "pg",
-        "text": "Hewan yang memiliki belalai panjang dan bertubuh besar di kebun binatang disebut...",
+        "text": "Pernyataan: <span class='ar'>هَذَا زَهْرِيَّةٌ جَمِيلٌ</span> adalah susunan <i>isim isyarah</i> dan <i>na'at wa man'ut</i> yang tepat. Tentukan kebenaran pernyataan tersebut!",
         "options": [
-            "<span class='ar'>أَسَدٌ</span>",
-            "<span class='ar'>فِيلٌ</span>",
-            "<span class='ar'>قِرْدٌ</span>",
-            "<span class='ar'>زَرَافَةٌ</span>"
+            "Benar",
+            "Salah"
         ],
         "answer": 1,
-        "hint": "<span class='ar'>فِيلٌ</span> (fiilun) artinya gajah."
+        "hint": "Salah! Kata <span class='ar'>زَهْرِيَّةٌ</span> berakhiran ta' marbuthah (muannats), seharusnya <span class='ar'>هَذِهِ زَهْرِيَّةٌ جَمِيلَةٌ</span>."
     },
     {
         "id": 7,
         "type": "pg",
-        "text": "Arti dari kata <span class='ar'>أَسَدٌ</span> (asadun) dalam kosakata kebun binatang adalah...",
+        "text": "Perhatikan kalimat berikut: <span class='ar'>هَلْ فِي غُرْفَةِ الْمُذَاكَرَةِ رَفُّ الْكُتُبِ؟ نَعَمْ، فِيهَا ...</span>. Kata yang tepat untuk melengkapi kalimat sesuai pertanyaannya adalah...",
         "options": [
-            "Harimau",
-            "Singa",
-            "Serigala",
-            "Kucing"
+            "<span class='ar'>رَفُّ الْكُتُبِ</span> (rak buku)",
+            "<span class='ar'>سَرِيرٌ</span> (tempat tidur)",
+            "<span class='ar'>ثَلَّاجَةٌ</span> (kulkas)",
+            "<span class='ar'>مَوْقِدٌ</span> (kompor)"
         ],
-        "answer": 1,
-        "hint": "<span class='ar'>أَسَدٌ</span> artinya singa (raja hutan), sedangkan harimau adalah <span class='ar'>نَمِرٌ</span>."
+        "answer": 0,
+        "hint": "Jawaban 'نَعَمْ' (ya) mengulangi benda yang ditanyakan yaitu <span class='ar'>رَفُّ الْكُتُبِ</span> (rak buku)."
     },
     {
         "id": 8,
         "type": "pg",
-        "text": "Perhatikan kata acak berikut: <span class='ar'>طَوِيلَةٌ - زَرَافَةٌ - هَذِهِ</span>. Susunan yang benar sesuai pola Isim Isyarah + Isim + Na'at adalah...",
+        "text": "Pasangan <i>isim isyarah</i> + <i>na'at wa man'ut</i> yang tepat untuk kata <span class='ar'>مَكْتَبٌ</span> (meja belajar - mudzakkar) adalah...",
         "options": [
-            "<span class='ar'>زَرَافَةٌ طَوِيلَةٌ هَذِهِ</span>",
-            "<span class='ar'>طَوِيلَةٌ هَذِهِ زَرَافَةٌ</span>",
-            "<span class='ar'>هَذِهِ زَرَافَةٌ طَوِيلَةٌ</span>",
-            "<span class='ar'>هَذِهِ طَوِيلَةٌ زَرَافَةٌ</span>"
+            "<span class='ar'>هَذَا مَكْتَبٌ نَظِيفٌ</span>",
+            "<span class='ar'>هَذِهِ مَكْتَبٌ نَظِيفَةٌ</span>",
+            "<span class='ar'>هَذَا مَكْتَبٌ نَظِيفَةٌ</span>",
+            "<span class='ar'>هَذِهِ مَكْتَبٌ نَظِيفٌ</span>"
         ],
-        "answer": 2,
-        "hint": "Urutan pola yang benar: Isim Isyarah (<span class='ar'>هَذِهِ</span>) + Isim (<span class='ar'>زَرَافَةٌ</span>) + Na'at (<span class='ar'>طَوِيلَةٌ</span>) = Ini jerapah yang tinggi."
+        "answer": 0,
+        "hint": "<span class='ar'>مَكْتَبٌ</span> adalah isim mudzakkar, maka menggunakan <span class='ar'>هَذَا</span> dan kata sifat <span class='ar'>نَظِيفٌ</span>."
     },
     {
         "id": 9,
         "type": "pg",
-        "text": "Arti dari kalimat <span class='ar'>فِي حَدِيقَةِ الْحَيَوَانَاتِ قِرْدٌ نَشِيطٌ</span> adalah...",
+        "text": "Arti kata <span class='ar'>بِسَاطٌ</span> yang sering diletakkan di lantai ruang tamu adalah...",
         "options": [
-            "Di kebun binatang ada monyet yang lincah",
-            "Di kebun binatang ada singa yang tidur",
-            "Di halaman rumah ada burung yang berkicau",
-            "Di sawah ada kerbau yang kuat"
+            "Jam dinding",
+            "Karpet / permadani",
+            "Gorden",
+            "Jendela"
         ],
-        "answer": 0,
-        "hint": "<span class='ar'>قِرْدٌ نَشِيطٌ</span> artinya monyet/kera yang lincah/aktif."
+        "answer": 1,
+        "hint": "<span class='ar'>بِسَاطٌ</span> (bisaathun) artinya karpet atau permadani."
     },
     {
         "id": 10,
         "type": "pg",
-        "text": "Fungsi dari <span class='ar'>اللِّسَان</span> (al-lisaan) dalam kehidupan sehari-hari adalah...",
+        "text": "Terjemahan yang tepat dari kalimat <span class='ar'>تِلْكَ الْخِزَانَةُ كَبِيرَةٌ وَجَمِيلَةٌ</span> adalah...",
         "options": [
-            "<span class='ar'>لِلْمَشْيِ</span> (untuk berjalan)",
-            "<span class='ar'>لِلْكَلَامِ وَالتَّذَوُّقِ</span> (untuk berbicara dan mengecap rasa)",
-            "<span class='ar'>لِلشَّمِّ</span> (untuk mencium bau)",
-            "<span class='ar'>لِلسَّمْعِ</span> (untuk mendengar suara)"
+            "Lemari itu besar dan bagus",
+            "Kursi itu kecil dan bersih",
+            "Lampu itu terang dan baru",
+            "Meja itu panjang dan rapi"
         ],
-        "answer": 1,
-        "hint": "Lidah (<span class='ar'>اللِّسَان</span>) berfungsi untuk berbicara dan mengecap makanan."
+        "answer": 0,
+        "hint": "<span class='ar'>خِزَانَةٌ</span> = lemari, <span class='ar'>كَبِيرَةٌ</span> = besar, <span class='ar'>جَمِيلَةٌ</span> = bagus/indah."
     },
     {
         "id": 11,
         "type": "pg_kompleks",
         "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
-        "text": "Manakah di antara kosakata berikut yang termasuk anggota tubuh bagian kepala/wajah? (Pilih 3 jawaban benar)",
+        "text": "Perhatikan ilustrasi ruang tamu berikut:<div class=\"svg-box\"><svg width=\"320\" height=\"150\" viewBox=\"0 0 320 150\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"10\" width=\"300\" height=\"130\" rx=\"10\" fill=\"#f7fbf7\" stroke=\"#2ed573\" stroke-width=\"2\"/>\n  <rect x=\"35\" y=\"65\" width=\"120\" height=\"45\" rx=\"8\" fill=\"#27ae60\"/>\n  <rect x=\"42\" y=\"50\" width=\"106\" height=\"22\" rx=\"6\" fill=\"#2ecc71\"/>\n  <rect x=\"30\" y=\"75\" width=\"14\" height=\"35\" rx=\"4\" fill=\"#1e8449\"/>\n  <rect x=\"146\" y=\"75\" width=\"14\" height=\"35\" rx=\"4\" fill=\"#1e8449\"/>\n  <rect x=\"180\" y=\"88\" width=\"90\" height=\"10\" rx=\"3\" fill=\"#d35400\"/>\n  <rect x=\"190\" y=\"98\" width=\"8\" height=\"22\" fill=\"#a04000\"/>\n  <rect x=\"252\" y=\"98\" width=\"8\" height=\"22\" fill=\"#a04000\"/>\n  <path d=\"M217 88 L221 68 L231 68 L235 88 Z\" fill=\"#e67e22\"/>\n  <circle cx=\"226\" cy=\"60\" r=\"8\" fill=\"#e74c3c\"/>\n  <circle cx=\"220\" cy=\"56\" r=\"5\" fill=\"#f1c40f\"/>\n  <circle cx=\"232\" cy=\"56\" r=\"5\" fill=\"#3498db\"/>\n  <rect x=\"65\" y=\"18\" width=\"60\" height=\"24\" rx=\"3\" fill=\"#ffffff\" stroke=\"#16a085\" stroke-width=\"2\"/>\n  <text x=\"95\" y=\"34\" font-size=\"11\" text-anchor=\"middle\" fill=\"#16a085\" font-weight=\"bold\">RUANG TAMU</text>\n  <text x=\"95\" y=\"128\" font-size=\"11\" text-anchor=\"middle\" fill=\"#2d3436\">Sofa (أَرِيكَةٌ)</text>\n  <text x=\"226\" y=\"132\" font-size=\"11\" text-anchor=\"middle\" fill=\"#2d3436\">Meja &amp; Vas Bunga</text>\n</svg></div>Berdasarkan gambar tersebut, kosakata bahasa Arab yang sesuai dengan benda yang ada di dalam ruangan adalah... (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>عَيْنٌ</span> (Mata)",
-            "<span class='ar'>أَنْفٌ</span> (Hidung)",
-            "<span class='ar'>فَمٌ</span> (Mulut)",
-            "<span class='ar'>رِجْلٌ</span> (Kaki)"
+            "<span class='ar'>أَرِيكَةٌ</span> (Sofa)",
+            "<span class='ar'>مِنْضَدَةٌ</span> (Meja)",
+            "<span class='ar'>زَهْرِيَّةٌ</span> (Vas bunga)",
+            "<span class='ar'>سَرِيرٌ</span> (Tempat tidur)"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "Mata, hidung, dan mulut berada di kepala/wajah; sedangkan <span class='ar'>رِجْلٌ</span> adalah kaki."
+        "hint": "Pada gambar ruang tamu terdapat sofa (أَرِيكَةٌ), meja (مِنْضَدَةٌ), dan vas bunga (زَهْرِيَّةٌ)."
     },
     {
         "id": 12,
         "type": "pg_kompleks",
-        "text": "Manakah anggota tubuh yang berpasangan dan dihukumi <b>muannats</b> dalam bahasa Arab? (Pilih 3 jawaban benar)",
+        "text": "Perhatikan ilustrasi ruang belajar berikut:<div class=\"svg-box\"><svg width=\"320\" height=\"150\" viewBox=\"0 0 320 150\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"10\" y=\"10\" width=\"300\" height=\"130\" rx=\"10\" fill=\"#f7fbf7\" stroke=\"#2ed573\" stroke-width=\"2\"/>\n  <rect x=\"30\" y=\"80\" width=\"120\" height=\"10\" rx=\"3\" fill=\"#8e5a2b\"/>\n  <rect x=\"40\" y=\"90\" width=\"8\" height=\"35\" fill=\"#6e441f\"/>\n  <rect x=\"132\" y=\"90\" width=\"8\" height=\"35\" fill=\"#6e441f\"/>\n  <rect x=\"52\" y=\"66\" width=\"36\" height=\"14\" rx=\"2\" fill=\"#3498db\"/>\n  <line x1=\"115\" y1=\"80\" x2=\"115\" y2=\"48\" stroke=\"#2c3e50\" stroke-width=\"4\"/>\n  <polygon points=\"103,48 127,48 121,34 109,34\" fill=\"#f1c40f\"/>\n  <rect x=\"195\" y=\"25\" width=\"85\" height=\"95\" rx=\"4\" fill=\"#d35400\"/>\n  <rect x=\"203\" y=\"33\" width=\"69\" height=\"24\" fill=\"#fef9e7\"/>\n  <rect x=\"203\" y=\"64\" width=\"69\" height=\"24\" fill=\"#fef9e7\"/>\n  <rect x=\"208\" y=\"37\" width=\"10\" height=\"20\" fill=\"#e74c3c\"/>\n  <rect x=\"220\" y=\"37\" width=\"10\" height=\"20\" fill=\"#2980b9\"/>\n  <rect x=\"232\" y=\"37\" width=\"10\" height=\"20\" fill=\"#27ae60\"/>\n  <rect x=\"208\" y=\"68\" width=\"12\" height=\"20\" fill=\"#9b59b6\"/>\n  <rect x=\"223\" y=\"68\" width=\"12\" height=\"20\" fill=\"#f39c12\"/>\n  <text x=\"90\" y=\"136\" font-size=\"11\" text-anchor=\"middle\" fill=\"#2d3436\">Meja Belajar, Buku &amp; Lampu</text>\n  <text x=\"237\" y=\"136\" font-size=\"11\" text-anchor=\"middle\" fill=\"#2d3436\">Rak Buku</text>\n</svg></div>Berdasarkan gambar tersebut, benda-benda yang terlihat di ruang belajar adalah... (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>يَدٌ</span> (Tangan)",
-            "<span class='ar'>أُذُنٌ</span> (Telinga)",
-            "<span class='ar'>عَيْنٌ</span> (Mata)",
-            "<span class='ar'>أَنْفٌ</span> (Hidung)"
+            "<span class='ar'>مَكْتَبٌ</span> (Meja belajar)",
+            "<span class='ar'>مِصْبَاحٌ</span> (Lampu)",
+            "<span class='ar'>رَفُّ الْكُتُبِ</span> (Rak buku)",
+            "<span class='ar'>أَرِيكَةٌ</span> (Sofa ruang tamu)"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "Tangan (<span class='ar'>يَدٌ</span>), telinga (<span class='ar'>أُذُنٌ</span>), dan mata (<span class='ar'>عَيْنٌ</span>) berjumlah ganda sehingga muannats; sedangkan hidung tunggal (mudzakkar)."
+        "hint": "Di ruang belajar terlihat meja belajar (مَكْتَبٌ), lampu (مِصْبَاحٌ), dan rak buku (رَفُّ الْكُتُبِ)."
     },
     {
         "id": 13,
         "type": "pg_kompleks",
-        "text": "Manakah kalimat berikut yang menggunakan pola <b>Isim Isyarah + Isim + Na'at</b> (Mudzakkar) dengan benar? (Pilih 2 jawaban benar)",
+        "text": "Manakah kalimat deskriptif berpola <i>isim isyarah + man'ut + na'at</i> yang benar secara kaidah mudzakkar dan muannats? (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>هَذَا وَجْهٌ جَمِيلٌ</span> (Ini wajah yang tampan)",
-            "<span class='ar'>هَذَا شَعْرٌ نَظِيفٌ</span> (Ini rambut yang bersih)",
-            "<span class='ar'>هَذَا يَدٌ قَوِيَّةٌ</span>",
-            "<span class='ar'>هَذِهِ أَنْفٌ صَغِيرٌ</span>"
+            "<span class='ar'>هَذَا كُرْسِيٌّ جَدِيدٌ</span> (Ini kursi baru)",
+            "<span class='ar'>هَذِهِ غُرْفَةٌ وَاسِعَةٌ</span> (Ini ruangan yang luas)",
+            "<span class='ar'>هَذِهِ نَافِذَةٌ نَظِيفَةٌ</span> (Ini jendela yang bersih)",
+            "<span class='ar'>هَذَا صُورَةٌ جَمِيلٌ</span> (Salah pasangan jenis)"
         ],
         "answer": [
             0,
-            1
+            1,
+            2
         ],
-        "hint": "<span class='ar'>وَجْهٌ</span> dan <span class='ar'>شَعْرٌ</span> adalah mudzakkar sehingga memakai <span class='ar'>هَذَا</span> dan na'at tanpa ta' marbuthah."
+        "hint": "Mudzakkar memakai هَذَا + sifat tanpa ة; Muannats (ber-ة) memakai هَذِهِ + sifat ber-ة."
     },
     {
         "id": 14,
         "type": "pg_kompleks",
-        "text": "Manakah kalimat berikut yang menggunakan kata tunjuk <b><span class='ar'>هَذِهِ</span></b> (Muannats) dengan tepat? (Pilih 2 jawaban benar)",
+        "text": "Benda-benda berikut yang lazim ditemukan di ruang tamu (<span class='ar'>غُرْفَةُ الاِسْتِقْبَالِ</span>) adalah... (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>هَذِهِ يَدٌ قَوِيَّةٌ</span> (Ini tangan yang kuat)",
-            "<span class='ar'>هَذِهِ رِجْلٌ سَلِيمَةٌ</span> (Ini kaki yang sehat)",
-            "<span class='ar'>هَذِهِ فَمٌ وَاسِعٌ</span>",
-            "<span class='ar'>هَذِهِ رَأْسٌ كَبِيرٌ</span>"
+            "<span class='ar'>أَرِيكَةٌ</span> (Sofa)",
+            "<span class='ar'>مِنْضَدَةٌ</span> (Meja tamu)",
+            "<span class='ar'>زَهْرِيَّةٌ</span> (Vas bunga)",
+            "<span class='ar'>فُرْشَاةُ الأَسْنَانِ</span> (Sikat gigi)"
         ],
         "answer": [
             0,
-            1
+            1,
+            2
         ],
-        "hint": "<span class='ar'>يَدٌ</span> dan <span class='ar'>رِجْلٌ</span> adalah anggota tubuh ganda (muannats) sehingga memakai <span class='ar'>هَذِهِ</span> dan sifat muannats."
+        "hint": "Sofa, meja tamu, dan vas bunga adalah perlengkapan ruang tamu."
     },
     {
         "id": 15,
         "type": "pg_kompleks",
-        "text": "Hewan-hewan buas karnivora yang ada di kebun binatang antara lain adalah... (Pilih 2 jawaban benar)",
+        "text": "Benda-benda berikut yang umumnya berada di ruang belajar (<span class='ar'>غُرْفَةُ الْمُذَاكَرَةِ</span>) adalah... (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>أَسَدٌ</span> (Singa)",
-            "<span class='ar'>نَمِرٌ</span> (Harimau)",
-            "<span class='ar'>أَرْنَبٌ</span> (Kelinci)",
-            "<span class='ar'>فِيلٌ</span> (Gajah)"
+            "<span class='ar'>مَكْتَبٌ</span> (Meja belajar)",
+            "<span class='ar'>كُرْسِيٌّ</span> (Kursi)",
+            "<span class='ar'>كُتُبٌ وَأَقْلَامٌ</span> (Buku-buku dan pena)",
+            "<span class='ar'>مِقْلَاةٌ</span> (Wajan penggorengan)"
         ],
         "answer": [
             0,
-            1
+            1,
+            2
         ],
-        "hint": "<span class='ar'>أَسَدٌ</span> (singa) dan <span class='ar'>نَمِرٌ</span> (harimau) adalah hewan buas pemakan daging."
+        "hint": "Meja, kursi, buku, dan pena digunakan untuk belajar di ruang belajar."
     },
     {
         "id": 16,
         "type": "pg_kompleks",
-        "text": "Manakah kosakata hewan berikut yang termasuk hewan pemakan tumbuhan (herbivora)? (Pilih 3 jawaban benar)",
+        "text": "Manakah kata benda yang termasuk golongan <b>muannats</b> (berakhiran ta' marbuthah) sehingga harus memakai <span class='ar'>هَذِهِ</span>? (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>فِيلٌ</span> (Gajah)",
-            "<span class='ar'>زَرَافَةٌ</span> (Jerapah)",
-            "<span class='ar'>أَرْنَبٌ</span> (Kelinci)",
-            "<span class='ar'>تِمْسَاحٌ</span> (Buaya)"
+            "<span class='ar'>غُرْفَةٌ</span> (Ruangan)",
+            "<span class='ar'>سَاعَةٌ</span> (Jam)",
+            "<span class='ar'>خِزَانَةٌ</span> (Lemari)",
+            "<span class='ar'>مِصْبَاحٌ</span> (Lampu)"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "Gajah, jerapah, dan kelinci memakan rumput/daun/wortel, sedangkan buaya adalah karnivora."
+        "hint": "Kata yang diakhiri huruf ة (ta' marbuthah) tergolong isim muannats."
     },
     {
         "id": 17,
         "type": "pg_kompleks",
-        "text": "Perhatikan pasangan kata bahasa Arab dan artinya. Manakah pasangan yang tepat? (Pilih 3 jawaban benar)",
+        "text": "Manakah frasa <i>na'at wa man'ut</i> (kata benda + kata sifat) yang tepat artinya? (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>بَطْنٌ</span> = Perut",
-            "<span class='ar'>صَدْرٌ</span> = Dada",
-            "<span class='ar'>أَسْنَانٌ</span> = Gigi",
-            "<span class='ar'>رِجْلٌ</span> = Telinga"
+            "<span class='ar'>مِصْبَاحٌ مُنِيرٌ</span> = Lampu yang menerangi / terang",
+            "<span class='ar'>غُرْفَةٌ مُنَظَّمَةٌ</span> = Ruangan yang tertata rapi",
+            "<span class='ar'>كِتَابٌ مُفِيدٌ</span> = Buku yang bermanfaat",
+            "<span class='ar'>كُرْسِيٌّ صَغِيرَةٌ</span> = Kursi yang besar"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "<span class='ar'>رِجْلٌ</span> artinya kaki, bukan telinga."
+        "hint": "Tiga frasa pertama benar baik dari segi kaidah maupun artinya."
     },
     {
         "id": 18,
         "type": "pg_kompleks",
-        "text": "Pernyataan yang benar mengenai penyesuaian sifat (Na'at) dengan kata benda (Isim/Man'ut) dalam bahasa Arab adalah... (Pilih 2 jawaban benar)",
+        "text": "Manakah pernyataan bahasa Arab berikut yang memiliki isi yang <b>BENAR</b> sesuai konteks penggunaan di rumah? (Pilih 2 jawaban benar)",
         "options": [
-            "Jika benda mudzakkar (laki-laki/tanpa ta marbuthah), maka kata sifatnya juga harus mudzakkar",
-            "Jika benda muannats (perempuan/ada ta marbuthah/anggota tubuh berpasangan), kata sifatnya memakai ta marbuthah",
-            "Kata sifat posisinya selalu diletakkan sebelum kata bendanya",
-            "Semua anggota tubuh manusia dihukumi mudzakkar tanpa pengecualian"
+            "<span class='ar'>نَسْتَقْبِلُ الضُّيُوفَ فِي غُرْفَةِ الاِسْتِقْبَالِ</span> (Kita menyambut tamu di ruang tamu)",
+            "<span class='ar'>نَقْرَأُ الْكُتُبَ فِي غُرْفَةِ الْمُذَاكَرَةِ</span> (Kita membaca buku di ruang belajar)",
+            "<span class='ar'>نَطْبُخُ الطَّعَامَ فِي غُرْفَةِ النَّوْمِ</span> (Kita memasak makanan di kamar tidur)",
+            "<span class='ar'>نَنَامُ فِي الْحَمَّامِ</span> (Kita tidur di kamar mandi)"
         ],
         "answer": [
             0,
             1
         ],
-        "hint": "Na'at (sifat) mengikuti man'ut (benda) dalam gender (mudzakkar/muannats), dan na'at diletakkan setelah isim."
+        "hint": "Menyambut tamu di ruang tamu dan membaca buku di ruang belajar adalah konteks yang benar."
     },
     {
         "id": 19,
         "type": "pg_kompleks",
-        "text": "Manakah hewan yang bisa terbang atau hidup di air dari kosakata kebun binatang berikut? (Pilih 2 jawaban benar)",
+        "text": "Perhatikan kalimat deskriptif: <span class='ar'>فِي غُرْفَتِي خِزَانَةٌ كَبِيرَةٌ وَمَكْتَبٌ نَظِيفٌ وَمِصْبَاحٌ جَمِيلٌ.</span> Berdasarkan kalimat tersebut, benda apa saja yang ada di ruangan itu? (Pilih 3 jawaban benar)",
         "options": [
-            "<span class='ar'>طَائِرٌ</span> (Burung)",
-            "<span class='ar'>سَمَكٌ</span> (Ikan)",
-            "<span class='ar'>جَمَلٌ</span> (Unta)",
-            "<span class='ar'>قِرْدٌ</span> (Kera)"
+            "Lemari yang besar",
+            "Meja yang bersih",
+            "Lampu yang bagus",
+            "Televisi yang mahal"
         ],
         "answer": [
             0,
-            1
+            1,
+            2
         ],
-        "hint": "<span class='ar'>طَائِرٌ</span> (burung terbang di udara) dan <span class='ar'>سَمَكٌ</span> (ikan berenang di air)."
+        "hint": "خِزَانَةٌ كَبِيرَةٌ = lemari besar, مَكْتَبٌ نَظِيفٌ = meja bersih, مِصْبَاحٌ جَمِيلٌ = lampu bagus."
     },
     {
         "id": 20,
         "type": "pg_kompleks",
-        "text": "Kalimat berikut yang menjelaskan aktivitas/fungsi anggota tubuh dengan benar adalah... (Pilih 2 jawaban benar)",
+        "text": "Pilihlah 2 kalimat tanya beserta jawabannya yang tepat dan serasi! (Pilih 2 jawaban benar)",
         "options": [
-            "<span class='ar'>نَمْشِي بِالرِّجْلِ</span> (Kita berjalan dengan kaki)",
-            "<span class='ar'>نَشُمُّ بِالْأَنْفِ</span> (Kita mencium bau dengan hidung)",
-            "<span class='ar'>نَسْمَعُ بِالْفَمِ</span> (Kita mendengar dengan mulut)",
-            "<span class='ar'>نَكْتُبُ بِالْعَيْنِ</span> (Kita menulis dengan mata)"
+            "<span class='ar'>مَا هَذَا؟ هَذَا قَلَمٌ جَدِيدٌ.</span>",
+            "<span class='ar'>مَا هَذِهِ؟ هَذِهِ زَهْرِيَّةٌ جَمِيلَةٌ.</span>",
+            "<span class='ar'>مَا هَذَا؟ هَذِهِ سَاعَةٌ.</span>",
+            "<span class='ar'>مَنْ هَذِهِ؟ هَذِهِ مَكْتَبٌ.</span>"
         ],
         "answer": [
             0,
             1
         ],
-        "hint": "Berjalan dengan kaki dan mencium aroma dengan hidung adalah pernyataan yang tepat."
+        "hint": "Pertanyaan memakai هَذَا dijawab dengan benda mudzakkar (قَلَمٌ), dan هَذِهِ dijawab dengan benda muannats (زَهْرِيَّةٌ)."
     },
     {
         "id": 21,
         "type": "memasangkan",
-        "section": "III. Memasangkan (5 Soal - Pasangkan Kosakata Arab dengan Artinya yang Tepat)",
-        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>أَنْفٌ</b>",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Kosakata Bahasa Arab dengan Arti yang Tepat)",
+        "text": "Pasangkan kosakata berikut dengan arti yang tepat: <span class='ar'>غُرْفَةُ الاِسْتِقْبَالِ</span>",
         "options": [
-            "Hidung",
-            "Telinga",
-            "Mata",
-            "Kaki",
-            "Tangan"
+            "Ruang tamu",
+            "Ruang belajar",
+            "Vas bunga",
+            "Rak buku",
+            "Jam dinding"
         ],
-        "answer": "Hidung",
-        "hint": "Anfun artinya hidung."
+        "answer": "Ruang tamu",
+        "hint": "غُرْفَةُ الاِسْتِقْبَالِ berarti ruang tamu."
     },
     {
         "id": 22,
         "type": "memasangkan",
-        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>عَيْنٌ</b>",
+        "text": "Pasangkan kosakata berikut dengan arti yang tepat: <span class='ar'>غُرْفَةُ الْمُذَاكَرَةِ</span>",
         "options": [
-            "Hidung",
-            "Telinga",
-            "Mata",
-            "Kaki",
-            "Tangan"
+            "Ruang tamu",
+            "Ruang belajar",
+            "Vas bunga",
+            "Rak buku",
+            "Jam dinding"
         ],
-        "answer": "Mata",
-        "hint": "'Ainun artinya mata."
+        "answer": "Ruang belajar",
+        "hint": "غُرْفَةُ الْمُذَاكَرَةِ berarti ruang belajar."
     },
     {
         "id": 23,
         "type": "memasangkan",
-        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>أُذُنٌ</b>",
+        "text": "Pasangkan kosakata berikut dengan arti yang tepat: <span class='ar'>زَهْرِيَّةٌ</span>",
         "options": [
-            "Hidung",
-            "Telinga",
-            "Mata",
-            "Kaki",
-            "Tangan"
+            "Ruang tamu",
+            "Ruang belajar",
+            "Vas bunga",
+            "Rak buku",
+            "Jam dinding"
         ],
-        "answer": "Telinga",
-        "hint": "Udzunun artinya telinga."
+        "answer": "Vas bunga",
+        "hint": "زَهْرِيَّةٌ artinya vas bunga."
     },
     {
         "id": 24,
         "type": "memasangkan",
-        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>يَدٌ</b>",
+        "text": "Pasangkan kosakata berikut dengan arti yang tepat: <span class='ar'>رَفُّ الْكُتُبِ</span>",
         "options": [
-            "Hidung",
-            "Telinga",
-            "Mata",
-            "Kaki",
-            "Tangan"
+            "Ruang tamu",
+            "Ruang belajar",
+            "Vas bunga",
+            "Rak buku",
+            "Jam dinding"
         ],
-        "answer": "Tangan",
-        "hint": "Yadun artinya tangan."
+        "answer": "Rak buku",
+        "hint": "رَفُّ الْكُتُبِ artinya rak buku."
     },
     {
         "id": 25,
         "type": "memasangkan",
-        "text": "Pasangkan kosakata anggota tubuh berikut dengan arti yang tepat: <b class='ar'>رِجْلٌ</b>",
+        "text": "Pasangkan kosakata berikut dengan arti yang tepat: <span class='ar'>سَاعَةُ الْحَائِطِ</span>",
         "options": [
-            "Hidung",
-            "Telinga",
-            "Mata",
-            "Kaki",
-            "Tangan"
+            "Ruang tamu",
+            "Ruang belajar",
+            "Vas bunga",
+            "Rak buku",
+            "Jam dinding"
         ],
-        "answer": "Kaki",
-        "hint": "Rijlun artinya kaki."
+        "answer": "Jam dinding",
+        "hint": "سَاعَةُ الْحَائِطِ artinya jam dinding."
     },
     {
         "id": 26,
         "type": "isian",
         "section": "IV. Isian Singkat (10 Soal)",
-        "text": "Bahasa Arab dari kata 'Kepala' adalah...",
-        "answer": "رَأْسٌ (Ra'sun)",
+        "text": "Arti kata bahasa Arab <span class='ar'>أَرِيكَةٌ</span> dalam bahasa Indonesia adalah...",
+        "answer": "Sofa",
         "alt": [
-            "ra'sun",
-            "ro'sun",
-            "rasun",
-            "raas",
-            "رأس",
-            "رَأْسٌ"
+            "sofa",
+            "kursi panjang"
         ],
-        "hint": "Huruf hijaiyahnya: ra - alif hamzah - sin."
+        "hint": "Tempat duduk empuk di ruang tamu."
     },
     {
         "id": 27,
         "type": "isian",
-        "text": "Bahasa Arab dari kata 'Mulut' adalah...",
-        "answer": "فَمٌ (Famun)",
+        "text": "Arti kata bahasa Arab <span class='ar'>مِصْبَاحٌ</span> adalah...",
+        "answer": "Lampu",
         "alt": [
-            "famun",
-            "fam",
-            "فم",
-            "فَمٌ"
+            "lampu"
         ],
-        "hint": "Terdiri dari huruf fa dan mim."
+        "hint": "Alat penerangan di ruangan."
     },
     {
         "id": 28,
         "type": "isian",
-        "text": "Kata tunjuk dekat untuk benda mudzakkar (laki-laki) dalam bahasa Arab adalah...",
-        "answer": "هَذَا (Hadza)",
+        "text": "Arti kata bahasa Arab <span class='ar'>خِزَانَةٌ</span> adalah...",
+        "answer": "Lemari",
         "alt": [
-            "hadza",
-            "hadzaa",
-            "haadza",
-            "هذا",
-            "هَذَا"
+            "lemari"
         ],
-        "hint": "Lawan kata dari <span class='ar'>هَذِهِ</span>."
+        "hint": "Perabot untuk menyimpan pakaian atau barang."
     },
     {
         "id": 29,
         "type": "isian",
-        "text": "Kata tunjuk dekat untuk benda muannats (perempuan) dalam bahasa Arab adalah...",
-        "answer": "هَذِهِ (Hadzihi)",
+        "text": "Kata tunjuk (<i>isim isyarah</i>) untuk jarak dekat yang digunakan pada kata benda muannats seperti <span class='ar'>سَاعَةٌ</span> adalah...",
+        "answer": "Hadzihi",
         "alt": [
             "hadzihi",
-            "hadzihii",
-            "haadzihi",
-            "هذه",
-            "هَذِهِ"
+            "hazihi",
+            "هَذِهِ",
+            "هذه"
         ],
-        "hint": "Digunakan untuk kata berakhiran ta' marbuthoh atau anggota tubuh ganda."
+        "hint": "هَذِهِ (hadzihi) untuk muannats."
     },
     {
         "id": 30,
         "type": "isian",
-        "text": "Lengkapilah kalimat berikut dengan kata sifat yang tepat: <span class='ar'>هَذَا أَنْفٌ ...</span> (bersih = nazhiifun)",
-        "answer": "نَظِيفٌ (Nazhiifun)",
+        "text": "Lengkapilah pasangan <i>na'at</i> (kata sifat) yang tepat (tuliskan latinnya jika memakai keyboard Indonesia): <span class='ar'>هَذِهِ غُرْفَةٌ ...</span> (luas = wasi'un / wasi'atun) -> ...",
+        "answer": "Wasi'atun",
         "alt": [
-            "nazhiifun",
-            "nazhifun",
-            "nadzifun",
-            "bersih",
-            "نظيف",
-            "نَظِيفٌ"
+            "wasi'atun",
+            "wasiatun",
+            "وَاسِعَةٌ",
+            "واسعة"
         ],
-        "hint": "Bentuk mudzakkar tanpa ta' marbuthah."
+        "hint": "Karena غُرْفَةٌ muannats, sifatnya memakai akhiran ta' marbuthah: وَاسِعَةٌ (wasi'atun)."
     },
     {
         "id": 31,
         "type": "isian",
-        "text": "Lengkapilah kalimat berikut: <span class='ar'>هَذِهِ عَيْنٌ ...</span> (indah/cantik = jamiilatun)",
-        "answer": "جَمِيلَةٌ (Jamiilatun)",
+        "text": "Kata tanya dalam bahasa Arab yang berarti 'Di mana' untuk menanyakan letak suatu benda adalah...",
+        "answer": "Aina",
         "alt": [
-            "jamiilatun",
-            "jamilatun",
-            "cantik",
-            "indah",
-            "جميلة",
-            "جَمِيلَةٌ"
+            "aina",
+            "أَيْنَ",
+            "أين"
         ],
-        "hint": "Bentuk muannats berakhiran ta' marbuthah."
+        "hint": "Aina (أَيْنَ) artinya di mana."
     },
     {
         "id": 32,
         "type": "isian",
-        "text": "Bahasa Arab dari sebutan tempat rekreasi 'Kebun Binatang' adalah <span class='ar'>حَدِيقَةُ ...</span>",
-        "answer": "الْحَيَوَانَاتِ (Al-Hayawaanaat)",
+        "text": "Terjemahkan frasa berikut ke dalam bahasa Indonesia: <span class='ar'>كِتَابٌ جَدِيدٌ</span> artinya...",
+        "answer": "Buku baru",
         "alt": [
-            "al-hayawanat",
-            "al hayawanat",
-            "hayawanat",
-            "الـحيوانات",
-            "الْحَيَوَانَاتِ",
-            "حيوانات"
+            "buku baru",
+            "buku yang baru",
+            "kitab baru"
         ],
-        "hint": "Taman tempat berbagai macam hewan."
+        "hint": "كِتَابٌ = buku, جَدِيدٌ = baru."
     },
     {
         "id": 33,
         "type": "isian",
-        "text": "Hewan berleher panjang di kebun binatang disebut <span class='ar'>زَرَافَةٌ</span>. Arti dari kata tersebut adalah...",
-        "answer": "Jerapah",
+        "text": "Terjemahkan kata berikut ke dalam bahasa Indonesia: <span class='ar'>مَكْتَبٌ نَظِيفٌ</span> artinya...",
+        "answer": "Meja yang bersih",
         "alt": [
-            "jerapah",
-            "burung jerapah",
-            "hewan jerapah"
+            "meja yang bersih",
+            "meja bersih",
+            "meja belajar bersih"
         ],
-        "hint": "Mamalia tertinggi di darat dengan leher panjang."
+        "hint": "مَكْتَبٌ = meja, نَظِيفٌ = bersih."
     },
     {
         "id": 34,
         "type": "isian",
-        "text": "Hewan padang pasir yang berpunuk dan tahan haus dalam bahasa Arab disebut...",
-        "answer": "جَمَلٌ (Jamalun)",
+        "text": "Untuk menanyakan apakah ada buku di atas meja: '<span class='ar'>... عَلَى الْمَكْتَبِ كِتَابٌ؟</span>', kata tanya yang artinya 'Apakah' adalah...",
+        "answer": "Hal",
         "alt": [
-            "jamalun",
-            "jamal",
-            "unta",
-            "جمل",
-            "جَمَلٌ"
+            "hal",
+            "هَلْ",
+            "هل"
         ],
-        "hint": "Artinya adalah unta."
+        "hint": "Kata tanya 'Apakah' dalam bahasa Arab adalah هَلْ (Hal)."
     },
     {
         "id": 35,
         "type": "isian",
-        "text": "Bahasa Arab dari hewan 'Buaya' adalah...",
-        "answer": "تِمْسَاحٌ (Timsaahun)",
+        "text": "Arti dari kata <span class='ar'>نَافِذَةٌ</span> dalam kosakata ruangan di rumah adalah...",
+        "answer": "Jendela",
         "alt": [
-            "timsaahun",
-            "timsah",
-            "timsahun",
-            "تمساح",
-            "تِمْسَاحٌ"
+            "jendela"
         ],
-        "hint": "Reptil pemangsa air tawar bertubuh besar bergigi tajam."
+        "hint": "Tempat masuknya udara dan cahaya di dinding rumah."
     },
     {
         "id": 36,
         "type": "uraian",
         "section": "V. Uraian / Esai (5 Soal)",
-        "text": "Tuliskan 5 nama anggota tubuh manusia dalam bahasa Arab lengkap dengan artinya dalam bahasa Indonesia!",
-        "answer": "1. <span class='ar'>رَأْسٌ</span> (Ra'sun) = Kepala<br>2. <span class='ar'>عَيْنٌ</span> ('Ainun) = Mata<br>3. <span class='ar'>أَنْفٌ</span> (Anfun) = Hidung<br>4. <span class='ar'>فَمٌ</span> (Famun) = Mulut<br>5. <span class='ar'>يَدٌ</span> (Yadun) = Tangan (atau <span class='ar'>رِجْلٌ</span> = Kaki, <span class='ar'>أُذُنٌ</span> = Telinga).",
-        "hint": "Sebutkan minimal 5 kosakata anggota tubuh beserta arti Indonesianya."
+        "text": "Terjemahkan kalimat bahasa Arab berikut ke dalam bahasa Indonesia yang baik dan benar!<br>1. <span class='ar'>هَذِهِ غُرْفَةُ الاِسْتِقْبَالِ وَاسِعَةٌ وَنَظِيفَةٌ.</span><br>2. <span class='ar'>فِي غُرْفَةِ الْمُذَاكَرَةِ مَكْتَبٌ وَكُرْسِيٌّ وَمِصْبَاحٌ.</span>",
+        "answer": "1. Ini ruang tamu yang luas dan bersih.<br>2. Di dalam ruang belajar terdapat meja belajar, kursi, dan lampu.",
+        "hint": "Perhatikan kosakata ruangan, kata sifat, dan benda-benda di dalamnya."
     },
     {
         "id": 37,
         "type": "uraian",
-        "text": "Jelaskan rumus/pola kalimat bahasa Arab untuk: <b>Isim Isyarah lil mufrad + Isim + Na'at</b> dan berikan 1 contoh untuk mudzakkar serta 1 contoh untuk muannats!",
-        "answer": "Pola kalimat ini tersusun dari:<br>1. <b>Isim Isyarah</b> (Kata tunjuk tunggal: <span class='ar'>هَذَا</span> untuk mudzakkar / <span class='ar'>هَذِهِ</span> untuk muannats)<br>2. <b>Isim</b> (Kata benda anggota tubuh / hewan)<br>3. <b>Na'at</b> (Kata sifat yang jenis gender-nya mengikuti isim).<br><br><b>Contoh:</b><br>- Mudzakkar: <span class='ar'>هَذَا أَنْفٌ جَمِيلٌ</span> (Ini hidung yang indah)<br>- Muannats: <span class='ar'>هَذِهِ عَيْنٌ جَمِيلَةٌ</span> (Ini mata yang indah).",
-        "hint": "Uraikan bagian pola Isyarah + Isim + Na'at dan contoh mudzakkar & muannats."
+        "text": "Buatlah 3 kalimat sederhana berpola <b>Isim Isyarah (<span class='ar'>هَذَا / هَذِهِ</span>) + Man'ut (Benda) + Na'at (Sifat)</b> tentang benda di ruang tamu atau ruang belajar beserta artinya!",
+        "answer": "Contoh jawaban:<br>1. <span class='ar'>هَذَا مَكْتَبٌ نَظِيفٌ</span> (Ini meja belajar yang bersih)<br>2. <span class='ar'>هَذِهِ أَرِيكَةٌ جَمِيلَةٌ</span> (Ini sofa yang bagus)<br>3. <span class='ar'>هَذَا مِصْبَاحٌ مُنِيرٌ</span> (Ini lampu yang terang)",
+        "hint": "Pastikan kesesuaian mudzakkar (هَذَا) dan muannats (هَذِهِ) antara kata tunjuk, benda, dan sifatnya."
     },
     {
         "id": 38,
         "type": "uraian",
-        "text": "Susunlah kata-kata acak berikut menjadi kalimat yang baik dan benar sesuai pola tata bahasa Arab:<br>a. <span class='ar'>كَبِيرٌ - هَذَا - رَأْسٌ</span><br>b. <span class='ar'>قَوِيَّةٌ - هَذِهِ - يَدٌ</span><br>c. <span class='ar'>نَشِيطٌ - قِرْدٌ - ذَلِكَ</span>",
-        "answer": "a. <span class='ar'>هَذَا رَأْسٌ كَبِيرٌ</span> (Ini kepala yang besar)<br>b. <span class='ar'>هَذِهِ يَدٌ قَوِيَّةٌ</span> (Ini tangan yang kuat)<br>c. <span class='ar'>ذَلِكَ قِرْدٌ نَشِيطٌ</span> (Itu kera yang lincah)",
-        "hint": "Mulai dengan kata tunjuk (Isim Isyarah), lalu kata bendanya (Isim), diakhiri kata sifatnya (Na'at)."
+        "text": "Lengkapilah kalimat bahasa Arab berikut dengan memilih kata yang tepat dari kotak pilihan: [<span class='ar'>أَرِيكَةٌ</span> | <span class='ar'>غُرْفَةِ الْمُذَاكَرَةِ</span> | <span class='ar'>رَفِّ الْكُتُبِ</span>]<br>1. <span class='ar'>أَجْلِسُ مَعَ الضُّيُوفِ عَلَى ...</span><br>2. <span class='ar'>أَدْرُسُ الدُّرُوسَ فِي ...</span><br>3. <span class='ar'>الْكُتُبُ الْمُتَنَوِّعَةُ عَلَى ...</span>",
+        "answer": "1. <span class='ar'>أَرِيكَةٌ</span> (atau <span class='ar'>الأَرِيكَةِ</span>) — Saya duduk bersama tamu di atas sofa.<br>2. <span class='ar'>غُرْفَةِ الْمُذَاكَرَةِ</span> — Saya belajar pelajaran di ruang belajar.<br>3. <span class='ar'>رَفِّ الْكُتُبِ</span> — Buku-buku yang bermacam-macam ada di atas rak buku.",
+        "hint": "Cocokkan kata kerja/konteks ruangan dengan pilihan kosakata yang tersedia."
     },
     {
         "id": 39,
         "type": "uraian",
-        "text": "Tuliskan 5 nama hewan di kebun binatang (<span class='ar'>حَدِيقَةُ الْحَيَوَانَاتِ</span>) dalam bahasa Arab beserta artinya!",
-        "answer": "1. <span class='ar'>أَسَدٌ</span> (Asadun) = Singa<br>2. <span class='ar'>فِيلٌ</span> (Fiilun) = Gajah<br>3. <span class='ar'>قِرْدٌ</span> (Qirdun) = Kera / Monyet<br>4. <span class='ar'>زَرَافَةٌ</span> (Zarafatun) = Jerapah<br>5. <span class='ar'>تِمْسَاحٌ</span> (Timsaahun) = Buaya (atau <span class='ar'>نَمِرٌ</span> = Harimau, <span class='ar'>جَمَلٌ</span> = Unta, <span class='ar'>طَائِرٌ</span> = Burung).",
-        "hint": "Tuliskan 5 nama hewan kebun binatang dalam bahasa Arab dan artinya."
+        "text": "Sebutkan 5 kosakata bahasa Arab beserta artinya tentang benda-benda yang ada di <b>ruang tamu</b> (<span class='ar'>غُرْفَةُ الاِسْتِقْبَالِ</span>)!",
+        "answer": "1. <span class='ar'>أَرِيكَةٌ</span> = Sofa<br>2. <span class='ar'>مِنْضَدَةٌ</span> = Meja tamu<br>3. <span class='ar'>زَهْرِيَّةٌ</span> = Vas bunga<br>4. <span class='ar'>بِسَاطٌ</span> = Karpet<br>5. <span class='ar'>صُورَةٌ</span> = Gambar/lukisan (atau <span class='ar'>مِصْبَاحٌ</span> = lampu).",
+        "hint": "Tuliskan minimal 5 benda ruang tamu dalam bahasa Arab dan artinya."
     },
     {
         "id": 40,
         "type": "uraian",
-        "text": "Terjemahkan kalimat-kalimat bahasa Arab berikut ke dalam bahasa Indonesia yang baik dan benar:<br>a. <span class='ar'>أَنَا أَذْهَبُ إِلَى حَدِيقَةِ الْحَيَوَانَاتِ</span><br>b. <span class='ar'>فِي حَدِيقَةِ الْحَيَوَانَاتِ فِيلٌ كَبِيرٌ</span>",
-        "answer": "a. Saya pergi ke kebun binatang.<br>b. Di kebun binatang ada gajah yang besar.",
-        "hint": "Terjemahkan kata per kata: 'ana adzhabu' = saya pergi, 'fii' = di/di dalam."
+        "text": "Susunlah kata-kata acak berikut menjadi kalimat bahasa Arab yang benar dan tuliskan artinya!<br>1. <span class='ar'>الْمَكْتَبِ - عَلَى - الْمِصْبَاحُ</span><br>2. <span class='ar'>جَمِيلَةٌ - هَذِهِ - زَهْرِيَّةٌ</span>",
+        "answer": "1. <span class='ar'>الْمِصْبَاحُ عَلَى الْمَكْتَبِ</span> (Lampu itu berada di atas meja).<br>2. <span class='ar'>هَذِهِ زَهْرِيَّةٌ جَمِيلَةٌ</span> (Ini vas bunga yang indah).",
+        "hint": "Susun mulai dari kata benda/isyarah yang tepat."
     }
 ];
 

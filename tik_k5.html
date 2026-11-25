@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASAS TIK (Teknologi Informasi dan Komunikasi) Kelas 5 - SD Dilaraf Islamic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --primary: #34495e;
+            --primary-light: #1abc9c;
+            --bg: #ecf0f1;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --warning: #f39c12;
+            --card-bg: #ffffff;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .back-btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-btn-nav:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .header p {
+            font-size: 0.95em;
+            opacity: 0.95;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 700;
+            margin-top: 8px;
+            border: 1px dashed rgba(255,255,255,0.6);
+        }
+        .progress-bar {
+            height: 7px;
+            background: var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #2ecc71);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .score-board {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            display: none;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-val {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 10px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .score-detail {
+            font-size: 1em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .score-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .btn-retry {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        .btn-retry:hover {
+            background: #f1f2f6;
+            color: var(--primary);
+        }
+        .question-list {
+            padding: 25px 20px;
+        }
+        .section-title {
+            font-size: 0.95em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0 15px;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .question-item {
+            margin-bottom: 22px;
+            padding: 20px;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+            background: #fafbfc;
+            transition: all 0.2s;
+        }
+        .question-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+        .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 0.85em;
+            font-weight: 800;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .q-text {
+            font-size: 1.02em;
+            line-height: 1.65;
+            margin-bottom: 14px;
+            font-weight: 600;
+            color: #2d3436;
+        }
+        .reading-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 10px;
+            padding: 14px;
+            margin: 10px 0 15px;
+            line-height: 1.75;
+            font-size: 0.95em;
+        }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .radio-label, .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            background: white;
+            font-weight: 600;
+        }
+        .radio-label:hover, .checkbox-label:hover {
+            border-color: var(--primary);
+            background: #f0f8ff;
+            transform: translateX(4px);
+        }
+        .radio-label input[type="radio"], .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            flex-shrink: 0;
+        }
+        .radio-label:has(input:checked), .checkbox-label:has(input:checked) {
+            border-color: var(--primary);
+            background: #f0f8ff;
+        }
+        .match-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.95em;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .match-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        .input-text {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.98em;
+            font-family: 'Nunito', sans-serif;
+            transition: border 0.3s;
+            outline: none;
+            background: white;
+        }
+        .input-text:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.15);
+        }
+        textarea.input-text {
+            resize: vertical;
+            min-height: 85px;
+        }
+        .feedback-box {
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.92em;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+        .correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid var(--success);
+        }
+        .wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid var(--error);
+        }
+        .manual {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid var(--warning);
+        }
+        .footer-action {
+            background: var(--card-bg);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            border-top: 2px solid var(--border);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.04);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            padding: 14px 45px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 800;
+            transition: all 0.2s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav-top">
+                <a href="kelas5.html" class="back-btn-nav">⬅ Menu Kelas 5</a>
+                <span style="font-size: 0.85em; opacity: 0.95;">40 Soal Lengkap</span>
+            </div>
+            <h1>💻 TIK (Teknologi Informasi dan Komunikasi)</h1>
+            <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
+            <div class="badge">Asesmen Sumatif Akhir Semester (ASAS) 2026/2027 • 40 Soal</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="score-board" id="score-board">
+            <h2>📊 Hasil Ujian ASAS</h2>
+            <div class="score-val" id="final-score">0</div>
+            <p class="score-detail" id="score-detail"></p>
+            <div class="score-actions">
+                <button onclick="retryExam()" class="btn-action btn-retry">🔄 Coba Lagi</button>
+                <a href="kelas5.html" class="btn-action">⬅ Kembali ke Menu Kelas 5</a>
+            </div>
+        </div>
+        <div class="question-list" id="question-container"></div>
+        <div class="footer-action" id="footer-action">
+            <button class="btn-submit" onclick="submitExam()">Kumpulkan Jawaban ✅</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    {
+        "id": 1,
+        "type": "pg",
+        "section": "I. Pilihan Ganda (10 Soal)",
+        "text": "Komponen fisik komputer yang dapat dilihat dan disentuh secara langsung seperti monitor, keyboard, mouse, dan printer disebut...",
+        "options": [
+            "Software (Perangkat Lunak)",
+            "Hardware (Perangkat Keras)",
+            "Brainware (Pengguna)",
+            "Malware"
+        ],
+        "answer": 1,
+        "hint": "Hardware adalah perangkat keras fisik pada sistem komputer."
+    },
+    {
+        "id": 2,
+        "type": "pg",
+        "text": "Bagian komputer yang berfungsi sebagai 'otak' komputer untuk memproses seluruh perhitungan, logika, dan perintah data disebut...",
+        "options": [
+            "Proyektor",
+            "Prosesor (CPU)",
+            "Speaker",
+            "Flashdisk"
+        ],
+        "answer": 1,
+        "hint": "Prosesor (Central Processing Unit / CPU) bertugas memproses dan mengolah semua data."
+    },
+    {
+        "id": 3,
+        "type": "pg",
+        "text": "Perangkat keras komputer yang berfungsi sebagai <b>alat output</b> untuk menampilkan tampilan gambar dari layar komputer ke bidang lebar atau dinding kelas adalah...",
+        "options": [
+            "Scanner",
+            "Proyektor (LCD Projector)",
+            "Keyboard",
+            "Mikrofon"
+        ],
+        "answer": 1,
+        "hint": "Proyektor memancarkan gambar/presentasi komputer ke layar besar agar dapat dilihat banyak orang."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Perangkat lunak (<i>software</i>) yang dirancang khusus untuk mengolah data angka, membuat tabel, rumus perhitungan, dan grafik adalah...",
+        "options": [
+            "Microsoft Word",
+            "Microsoft Excel (Spreadsheet)",
+            "Paint",
+            "VLC Media Player"
+        ],
+        "answer": 1,
+        "hint": "Microsoft Excel / Google Sheets adalah perangkat lunak pengolah angka/data (spreadsheet)."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Orang yang mengoperasikan, merancang, memprogram, atau menggunakan sistem komputer disebut...",
+        "options": [
+            "Hardware",
+            "Software",
+            "Brainware",
+            "Freeware"
+        ],
+        "answer": 2,
+        "hint": "Brainware adalah manusia/pengguna yang menjalankan perangkat keras dan lunak."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Aplikasi yang digunakan untuk mengakses, mencari, dan membuka halaman-halaman situs web di internet (seperti Google Chrome, Mozilla Firefox, atau Microsoft Edge) disebut...",
+        "options": [
+            "Antivirus",
+            "Internet browser (peramban web)",
+            "Word processor",
+            "Driver printer"
+        ],
+        "answer": 1,
+        "hint": "Internet browser berfungsi membuka dan menjelajahi situs web di internet."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Kepanjangan yang tepat dari istilah jaringan nirkabel <b>Wi-Fi</b> adalah...",
+        "options": [
+            "Wireless File",
+            "Wireless Fidelity",
+            "Wide Finder",
+            "Window Filter"
+        ],
+        "answer": 1,
+        "hint": "Wi-Fi merupakan singkatan dari Wireless Fidelity."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Ketika gawai kita tersambung dengan jaringan <b>free Wi-Fi</b> (Wi-Fi publik gratis) di tempat umum, hal yang <b>HARUS DIHINDARI</b> demi keamanan adalah...",
+        "options": [
+            "Membaca artikel ensiklopedia umum",
+            "Melakukan transaksi perbankan (mobile banking) atau memasukkan kata sandi akun penting",
+            "Melihat jadwal kereta api umum",
+            "Mencari informasi cuaca hari ini"
+        ],
+        "answer": 1,
+        "hint": "Jaringan free Wi-Fi publik rentan penyadapan data, sehingga hindari transaksi keuangan atau login akun sensitif."
+    },
+    {
+        "id": 9,
+        "type": "pg",
+        "text": "Teknologi komunikasi nirkabel jarak dekat yang menggunakan gelombang radio untuk menghubungkan perangkat seperti ponsel, speaker, atau headset tanpa kabel disebut...",
+        "options": [
+            "Proyektor",
+            "Bluetooth",
+            "Kabel LAN",
+            "Flashdisk"
+        ],
+        "answer": 1,
+        "hint": "Bluetooth menghubungkan dua perangkat jarak dekat (sekitar 10 meter) secara nirkabel."
+    },
+    {
+        "id": 10,
+        "type": "pg",
+        "text": "Tindakan kejahatan yang dilakukan melalui jaringan internet atau komputer, seperti penipuan tautan palsu (<i>phishing</i>), peretasan akun, dan pencurian data disebut...",
+        "options": [
+            "Kejahatan siber (Cybercrime)",
+            "Desain grafis",
+            "Pengolahan kata",
+            "Pemasangan jaringan"
+        ],
+        "answer": 0,
+        "hint": "Kejahatan siber (cybercrime) adalah kejahatan digital di ruang internet."
+    },
+    {
+        "id": 11,
+        "type": "pg_kompleks",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Manakah perangkat keras yang termasuk dalam kelompok <b>perangkat input (masukan)</b> pada komputer? (Pilih 3 jawaban benar)",
+        "options": [
+            "Keyboard",
+            "Mouse",
+            "Scanner dan Mikrofon",
+            "Printer dan Speaker"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Keyboard, mouse, scanner, dan mikrofon memasukkan perintah/data ke komputer; printer & speaker adalah output."
+    },
+    {
+        "id": 12,
+        "type": "pg_kompleks",
+        "text": "Manakah perangkat keras yang termasuk dalam kelompok <b>perangkat output (keluaran)</b>? (Pilih 3 jawaban benar)",
+        "options": [
+            "Monitor",
+            "Printer",
+            "Speaker dan Proyektor",
+            "Mouse"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Monitor, printer, speaker, dan proyektor menampilkan atau mengeluarkan hasil olahan komputer."
+    },
+    {
+        "id": 13,
+        "type": "pg_kompleks",
+        "text": "Manakah yang termasuk perangkat <b>processing (pemrosesan)</b> di dalam unit sistem komputer? (Pilih 3 jawaban benar)",
+        "options": [
+            "Prosesor / CPU (Central Processing Unit)",
+            "RAM (Random Access Memory)",
+            "Motherboard dan Kartu Grafis (VGA/GPU)",
+            "Kertas HVS untuk mencetak"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "CPU, RAM, dan motherboard bekerja sama memproses data komputer."
+    },
+    {
+        "id": 14,
+        "type": "pg_kompleks",
+        "text": "Manakah yang merupakan contoh <b>perangkat lunak (software)</b> komputer? (Pilih 3 jawaban benar)",
+        "options": [
+            "Sistem operasi (Windows, macOS, Android)",
+            "Aplikasi pengolah kata & angka (Microsoft Word, Microsoft Excel)",
+            "Peramban web (Google Chrome, Mozilla Firefox)",
+            "Keyboard mekanik dan monitor LED"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Sistem operasi, Office, dan browser adalah program/software."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Apa saja bahaya dari serangan <b>virus komputer</b> jika menginfeksi laptop atau komputer kita? (Pilih 3 jawaban benar)",
+        "options": [
+            "Menghapus, mengunci, atau merusak file dokumen penting",
+            "Membuat kinerja komputer menjadi sangat lambat atau sering macet (hang)",
+            "Mencuri data pribadi dan kata sandi pengguna",
+            "Membersihkan debu yang menempel di layar monitor"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Virus komputer dapat merusak file, memperlambat sistem, dan mencuri data."
+    },
+    {
+        "id": 16,
+        "type": "pg_kompleks",
+        "text": "Manakah contoh pihak yang termasuk kategori <b>brainware</b> (pengguna komputer)? (Pilih 3 jawaban benar)",
+        "options": [
+            "Operator / pengguna komputer (seperti siswa dan karyawan)",
+            "Programmer (pembuat program/aplikasi)",
+            "Teknisi komputer dan administrator jaringan",
+            "Kabel HDMI dan adaptor daya"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Operator, programmer, dan teknisi adalah manusia (brainware) yang mengelola komputer."
+    },
+    {
+        "id": 17,
+        "type": "pg_kompleks",
+        "text": "Manakah langkah-langkah menjaga <b>keamanan berinternet</b> yang benar bagi anak usia sekolah? (Pilih 3 jawaban benar)",
+        "options": [
+            "Menjaga kerahasiaan data pribadi (alamat rumah, nomor HP, dan password)",
+            "Tidak sembarangan mengklik tautan mencurigakan dari orang tidak dikenal",
+            "Menggunakan kata sandi yang kuat dan meminta pendampingan orang tua/guru",
+            "Membagikan foto kartu pelajar dan password akun ke komentar media sosial"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Lindungi privasi, jangan klik link sembarangan, dan pakai password kuat."
+    },
+    {
+        "id": 18,
+        "type": "pg_kompleks",
+        "text": "Manakah yang termasuk contoh <b>koneksi nirkabel (wireless)</b> dan cara mengamankannya? (Pilih 3 jawaban benar)",
+        "options": [
+            "Wi-Fi dan Bluetooth merupakan koneksi jaringan tanpa kabel",
+            "Menggunakan kata sandi (enkripsi WPA2/WPA3) pada jaringan Wi-Fi pribadi",
+            "Mematikan fitur Wi-Fi atau Bluetooth jika sedang tidak digunakan",
+            "Menghubungkan kabel UTP panjang antar gedung"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Wi-Fi dan Bluetooth bekerja tanpa kabel; amankan dengan enkripsi password dan matikan bila tidak perlu."
+    },
+    {
+        "id": 19,
+        "type": "pg_kompleks",
+        "text": "Manakah kelebihan dan kekurangan penggunaan jaringan <b>Wi-Fi</b> yang benar? (Pilih 3 jawaban benar)",
+        "options": [
+            "Kelebihan: praktis tanpa kabel yang kusut dan mudah berpindah tempat (mobilitas)",
+            "Kelebihan: dapat menghubungkan banyak perangkat (laptop, HP, tablet) sekaligus",
+            "Kekurangan: jangkauan sinyal terbatas dan lebih rentan gangguan/penyadapan jika tanpa password",
+            "Kekurangan: hanya bisa dipakai di luar angkasa"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Wi-Fi praktis dan mendukung mobilitas, namun terbatas jarak dan butuh keamanan sandi."
+    },
+    {
+        "id": 20,
+        "type": "pg_kompleks",
+        "text": "Manakah fungsi dari koneksi <b>Bluetooth</b> pada ponsel dan laptop? (Pilih 3 jawaban benar)",
+        "options": [
+            "Mengirimkan foto, dokumen, atau file musik dalam jarak dekat tanpa kuota internet",
+            "Menghubungkan speaker, headset, mouse, atau keyboard nirkabel",
+            "Memindahkan data antar dua perangkat secara praktis tanpa kabel",
+            "Menghubungkan jaringan listrik bertegangan tinggi PLN"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "Bluetooth berguna untuk transfer file jarak dekat dan menghubungkan aksesori nirkabel."
+    },
+    {
+        "id": 21,
+        "type": "memasangkan",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Istilah TIK dengan Fungsi yang Tepat)",
+        "text": "Pasangkan perangkat/istilah TIK berikut dengan fungsinya: <b>Mouse &amp; Keyboard</b>",
+        "options": [
+            "Perangkat input untuk memasukkan teks dan perintah ke komputer",
+            "Perangkat output untuk mencetak dokumen ke kertas atau memancarkan ke layar lebar",
+            "Perangkat processing utama yang mengolah semua instruksi komputer",
+            "Perangkat lunak pengolah data dan angka berbentuk tabel",
+            "Teknologi nirkabel jarak dekat untuk menghubungkan headset atau kirim file"
+        ],
+        "answer": "Perangkat input untuk memasukkan teks dan perintah ke komputer",
+        "hint": "Mouse dan keyboard adalah perangkat masukan (input)."
+    },
+    {
+        "id": 22,
+        "type": "memasangkan",
+        "text": "Pasangkan perangkat/istilah TIK berikut dengan fungsinya: <b>Printer &amp; Proyektor</b>",
+        "options": [
+            "Perangkat input untuk memasukkan teks dan perintah ke komputer",
+            "Perangkat output untuk mencetak dokumen ke kertas atau memancarkan ke layar lebar",
+            "Perangkat processing utama yang mengolah semua instruksi komputer",
+            "Perangkat lunak pengolah data dan angka berbentuk tabel",
+            "Teknologi nirkabel jarak dekat untuk menghubungkan headset atau kirim file"
+        ],
+        "answer": "Perangkat output untuk mencetak dokumen ke kertas atau memancarkan ke layar lebar",
+        "hint": "Printer dan proyektor menampilkan/mengeluarkan hasil olahan."
+    },
+    {
+        "id": 23,
+        "type": "memasangkan",
+        "text": "Pasangkan perangkat/istilah TIK berikut dengan fungsinya: <b>Prosesor (CPU)</b>",
+        "options": [
+            "Perangkat input untuk memasukkan teks dan perintah ke komputer",
+            "Perangkat output untuk mencetak dokumen ke kertas atau memancarkan ke layar lebar",
+            "Perangkat processing utama yang mengolah semua instruksi komputer",
+            "Perangkat lunak pengolah data dan angka berbentuk tabel",
+            "Teknologi nirkabel jarak dekat untuk menghubungkan headset atau kirim file"
+        ],
+        "answer": "Perangkat processing utama yang mengolah semua instruksi komputer",
+        "hint": "CPU adalah otak pemrosesan komputer."
+    },
+    {
+        "id": 24,
+        "type": "memasangkan",
+        "text": "Pasangkan perangkat/istilah TIK berikut dengan fungsinya: <b>Microsoft Excel</b>",
+        "options": [
+            "Perangkat input untuk memasukkan teks dan perintah ke komputer",
+            "Perangkat output untuk mencetak dokumen ke kertas atau memancarkan ke layar lebar",
+            "Perangkat processing utama yang mengolah semua instruksi komputer",
+            "Perangkat lunak pengolah data dan angka berbentuk tabel",
+            "Teknologi nirkabel jarak dekat untuk menghubungkan headset atau kirim file"
+        ],
+        "answer": "Perangkat lunak pengolah data dan angka berbentuk tabel",
+        "hint": "Microsoft Excel digunakan untuk mengolah angka dan tabel."
+    },
+    {
+        "id": 25,
+        "type": "memasangkan",
+        "text": "Pasangkan perangkat/istilah TIK berikut dengan fungsinya: <b>Bluetooth</b>",
+        "options": [
+            "Perangkat input untuk memasukkan teks dan perintah ke komputer",
+            "Perangkat output untuk mencetak dokumen ke kertas atau memancarkan ke layar lebar",
+            "Perangkat processing utama yang mengolah semua instruksi komputer",
+            "Perangkat lunak pengolah data dan angka berbentuk tabel",
+            "Teknologi nirkabel jarak dekat untuk menghubungkan headset atau kirim file"
+        ],
+        "answer": "Teknologi nirkabel jarak dekat untuk menghubungkan headset atau kirim file",
+        "hint": "Bluetooth adalah konektivitas nirkabel jarak dekat."
+    },
+    {
+        "id": 26,
+        "type": "isian",
+        "section": "IV. Isian Singkat (10 Soal)",
+        "text": "Tiga komponen utama sistem komputer terdiri dari Hardware, Software, dan...",
+        "answer": "Brainware",
+        "alt": [
+            "brainware",
+            "pengguna"
+        ],
+        "hint": "Pengguna manusia disebut brainware."
+    },
+    {
+        "id": 27,
+        "type": "isian",
+        "text": "Perangkat keras yang digunakan untuk memindai dokumen kertas atau foto menjadi file digital di komputer disebut...",
+        "answer": "Scanner",
+        "alt": [
+            "scanner",
+            "pemindai"
+        ],
+        "hint": "Alat pemindai dokumen kertas."
+    },
+    {
+        "id": 28,
+        "type": "isian",
+        "text": "Perangkat lunak yang digunakan untuk melindungi komputer dari serangan virus, trojan, dan malware disebut...",
+        "answer": "Antivirus",
+        "alt": [
+            "antivirus",
+            "anti virus"
+        ],
+        "hint": "Program pencegah dan pembersih virus."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Jaringan nirkabel jarak menengah yang umum digunakan di sekolah, rumah, dan kafe untuk mengakses internet tanpa kabel disebut...",
+        "answer": "Wi-Fi",
+        "alt": [
+            "wi-fi",
+            "wifi",
+            "wi fi",
+            "wireless fidelity"
+        ],
+        "hint": "Singkatan dari Wireless Fidelity."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Kepanjangan dari kata <b>Wi-Fi</b> adalah Wireless...",
+        "answer": "Fidelity",
+        "alt": [
+            "fidelity",
+            "wireless fidelity"
+        ],
+        "hint": "Wireless Fidelity."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Program atau aplikasi di komputer yang berfungsi untuk berselancar dan membuka situs web di internet (seperti Google Chrome) disebut internet...",
+        "answer": "Browser",
+        "alt": [
+            "browser",
+            "web browser",
+            "internet browser",
+            "peramban"
+        ],
+        "hint": "Peramban web = browser."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Tindakan penipuan di internet berupa pengiriman tautan atau situs palsu untuk mencuri password atau data korban disebut...",
+        "answer": "Phishing",
+        "alt": [
+            "phishing",
+            "cybercrime",
+            "kejahatan siber"
+        ],
+        "hint": "Salah satu bentuk kejahatan siber (phishing)."
+    },
+    {
+        "id": 33,
+        "type": "isian",
+        "text": "Alat output yang menampilkan gambar presentasi dari laptop ke dinding atau layar lebar di ruang kelas disebut...",
+        "answer": "Proyektor",
+        "alt": [
+            "proyektor",
+            "lcd proyektor",
+            "projector"
+        ],
+        "hint": "Memproyeksikan tampilan layar komputer."
+    },
+    {
+        "id": 34,
+        "type": "isian",
+        "text": "Contoh perangkat lunak pengolah angka yang memiliki baris dan kolom tabel adalah Microsoft...",
+        "answer": "Excel",
+        "alt": [
+            "excel",
+            "microsoft excel",
+            "spreadsheet"
+        ],
+        "hint": "Microsoft Excel."
+    },
+    {
+        "id": 35,
+        "type": "isian",
+        "text": "Kata sandi atau kode rahasia yang harus dijaga kerahasiaannya saat menggunakan internet disebut...",
+        "answer": "Password",
+        "alt": [
+            "password",
+            "kata sandi",
+            "sandi",
+            "pin"
+        ],
+        "hint": "Password / kata sandi akun."
+    },
+    {
+        "id": 36,
+        "type": "uraian",
+        "section": "V. Uraian / Esai (5 Soal)",
+        "text": "Jelaskan pengertian dari <b>Hardware, Software, dan Brainware</b> serta berikan masing-masing 2 contohnya!",
+        "answer": "1. <b>Hardware (Perangkat Keras):</b> Komponen fisik komputer yang dapat disentuh. Contoh: monitor, keyboard, mouse, printer.<br>2. <b>Software (Perangkat Lunak):</b> Program atau aplikasi yang berjalan di dalam komputer. Contoh: Windows, Microsoft Excel, Google Chrome.<br>3. <b>Brainware (Pengguna):</b> Manusia yang mengoperasikan atau merancang komputer. Contoh: siswa/operator, programmer, teknisi.",
+        "hint": "Jelaskan ketiga komponen sistem komputer beserta contohnya."
+    },
+    {
+        "id": 37,
+        "type": "uraian",
+        "text": "Kelompokkan perangkat keras berikut menjadi perangkat <b>input, processing, dan output</b>, serta jelaskan fungsi dari <b>prosesor</b> dan <b>proyektor</b>!<br><i>(Keyboard, Prosesor/CPU, Monitor, Mouse, RAM, Printer, Proyektor, Scanner)</i>",
+        "answer": "- <b>Input:</b> Keyboard, Mouse, Scanner.<br>- <b>Processing:</b> Prosesor (CPU), RAM.<br>- <b>Output:</b> Monitor, Printer, Proyektor.<br>- <b>Fungsi Prosesor:</b> Sebagai otak komputer yang memproses dan mengolah seluruh perintah dan data.<br>- <b>Fungsi Proyektor:</b> Menampilkan gambar atau tampilan dari komputer ke layar lebar/dinding.",
+        "hint": "Kelompokkan semua perangkat dan jelaskan fungsi prosesor serta proyektor."
+    },
+    {
+        "id": 38,
+        "type": "uraian",
+        "text": "Jelaskan 3 bahaya <b>virus komputer</b> dan sebutkan 3 contoh bentuk <b>kejahatan siber (cybercrime)</b> di internet!",
+        "answer": "<b>3 Bahaya Virus Komputer:</b><br>1. Menghapus atau merusak file penting.<br>2. Memperlambat kinerja komputer hingga macet.<br>3. Mencuri data pribadi pengguna.<br><br><b>3 Contoh Kejahatan Siber:</b><br>1. <i>Phishing</i> (penipuan tautan/pesan palsu untuk mencuri akun).<br>2. <i>Hacking</i> (peretasan sistem atau akun orang lain).<br>3. <i>Cyberbullying</i> atau penipuan belanja daring (online).",
+        "hint": "Tuliskan 3 dampak virus komputer dan 3 contoh cybercrime."
+    },
+    {
+        "id": 39,
+        "type": "uraian",
+        "text": "Sebutkan 3 hal yang harus dilakukan untuk menjaga <b>keamanan saat berinternet</b> dan 2 hal yang harus dihindari saat tersambung ke <b>free Wi-Fi</b>!",
+        "answer": "<b>Keamanan Berinternet:</b><br>1. Tidak membagikan informasi pribadi (alamat, password, nomor HP) kepada orang asing.<br>2. Menggunakan kata sandi yang kuat dan berbeda tiap akun.<br>3. Tidak mengklik tautan mencurigakan dan selalu didampingi orang tua/guru.<br><br><b>Hal yang Dihindari di Free Wi-Fi:</b><br>1. Melakukan transaksi keuangan/mobile banking.<br>2. Login ke akun penting atau membuka file rahasia.",
+        "hint": "Bedakan kebiasaan aman berinternet dan pantangan saat memakai Wi-Fi publik."
+    },
+    {
+        "id": 40,
+        "type": "uraian",
+        "text": "Jelaskan pengertian <b>Wi-Fi</b> dan <b>Bluetooth</b>, serta sebutkan masing-masing 2 kelebihan dan 2 kekurangan menggunakan <b>Wi-Fi</b>!",
+        "answer": "<b>Wi-Fi (Wireless Fidelity):</b> Teknologi jaringan nirkabel untuk menghubungkan perangkat ke internet/jaringan lokal tanpa kabel.<br>- Kelebihan Wi-Fi: Praktis tanpa kabel, mudah berpindah tempat, bisa digunakan banyak perangkat sekaligus.<br>- Kekurangan Wi-Fi: Jangkauan sinyal terbatas, rentan terganggu tembok/cuaca, berisiko disadap jika tidak memakai password.<br><br><b>Bluetooth:</b> Teknologi komunikasi nirkabel jarak dekat berbasis gelombang radio untuk bertukar file atau menghubungkan aksesori (headset, speaker, mouse) tanpa kabel.",
+        "hint": "Jelaskan definisi Wi-Fi, Bluetooth, serta kelebihan dan kekurangan Wi-Fi."
+    }
+];
+
+        const container = document.getElementById('question-container');
+        let currentSection = '';
+
+        function render() {
+            let html = '';
+            questions.forEach((q, idx) => {
+                if (q.section && q.section !== currentSection) {
+                    currentSection = q.section;
+                    html += `<div class="section-title">${q.section}</div>`;
+                }
+                let inputHtml = '';
+                if (q.type === 'pg') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="radio-label"><input type="radio" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'pg_kompleks') {
+                    q.options.forEach((opt, i) => {
+                        inputHtml += `<label class="checkbox-label"><input type="checkbox" name="q${q.id}" value="${i}"> <span>${String.fromCharCode(65 + i)}. ${opt}</span></label>`;
+                    });
+                } else if (q.type === 'memasangkan') {
+                    inputHtml = `<select class="match-select" name="q${q.id}" onchange="updateProgress()">
+                        <option value="">-- Pilih Pasangan yang Tepat --</option>
+                        ${q.options.map(o => `<option value="${o}">${o}</option>`).join('')}
+                    </select>`;
+                } else if (q.type === 'isian') {
+                    inputHtml = `<input type="text" class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban singkat di sini..." autocomplete="off">`;
+                } else if (q.type === 'uraian') {
+                    inputHtml = `<textarea class="input-text" name="q${q.id}" id="input-q${q.id}" placeholder="Tulis jawaban uraian lengkap di sini..." rows="3"></textarea>`;
+                }
+                html += `<div class="question-item" id="qcard-${q.id}">
+                    <div class="q-text"><span class="q-number">${idx + 1}</span>${q.text}</div>
+                    <div class="options-group">${inputHtml}</div>
+                    <div class="feedback-box" id="fb-${q.id}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            let answered = 0;
+            questions.forEach(q => {
+                if (q.type === 'pg') {
+                    if (document.querySelector(`input[name="q${q.id}"]:checked`)) answered++;
+                } else if (q.type === 'pg_kompleks') {
+                    if (document.querySelectorAll(`input[name="q${q.id}"]:checked`).length > 0) answered++;
+                } else if (q.type === 'memasangkan') {
+                    const el = document.querySelector(`select[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el && el.value.trim()) answered++;
+                }
+            });
+            document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+        }
+
+        document.addEventListener('change', updateProgress);
+        document.addEventListener('input', updateProgress);
+
+        function cleanString(str) {
+            return (str || '')
+                .toLowerCase()
+                .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"“”]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function submitExam() {
+            let score = 0;
+            let maxAuto = 0;
+
+            questions.forEach(q => {
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (q.type === 'pg') {
+                    maxAuto++;
+                    const sel = document.querySelector(`input[name="q${q.id}"]:checked`);
+                    if (sel && parseInt(sel.value) === q.answer) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctOpt = q.options[q.answer];
+                        fb.innerHTML = `❌ <b>Kurang tepat.</b> Jawaban benar: <b>${String.fromCharCode(65 + q.answer)}. ${correctOpt}</b>. <br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'pg_kompleks') {
+                    maxAuto++;
+                    const checked = [...document.querySelectorAll(`input[name="q${q.id}"]:checked`)].map(c => parseInt(c.value));
+                    const isAllCorrect = checked.length === q.answer.length && checked.every(v => q.answer.includes(v));
+                    if (isAllCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar Semua!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        const correctLetters = q.answer.map(i => `${String.fromCharCode(65 + i)}. ${q.options[i]}`).join('; ');
+                        fb.innerHTML = `❌ <b>Jawaban yang benar:</b> <b>${correctLetters}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'memasangkan') {
+                    maxAuto++;
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    const val = sel ? sel.value.trim() : '';
+                    if (val && cleanString(val) === cleanString(q.answer)) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Pasangan Tepat!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Pasangan yang benar:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'isian') {
+                    maxAuto++;
+                    const inputEl = document.querySelector(`[name="q${q.id}"]`);
+                    const val = cleanString(inputEl.value);
+                    const target = cleanString(q.answer);
+                    let isCorrect = val === target || (target.length > 3 && val.includes(target)) || (val.length > 3 && target.includes(val));
+                    if (q.alt && Array.isArray(q.alt)) {
+                        q.alt.forEach(a => {
+                            const altClean = cleanString(a);
+                            if (val === altClean || (altClean.length > 3 && val.includes(altClean)) || (val.length > 3 && altClean.includes(val))) {
+                                isCorrect = true;
+                            }
+                        });
+                    }
+                    if (isCorrect) {
+                        score++;
+                        fb.className = 'feedback-box correct';
+                        fb.innerHTML = '✅ <b>Benar!</b> ' + (q.hint || '');
+                    } else {
+                        fb.className = 'feedback-box wrong';
+                        fb.innerHTML = `❌ <b>Jawaban tepat:</b> <b>${q.answer}</b>.<br>💡 <i>${q.hint || ''}</i>`;
+                    }
+                } else if (q.type === 'uraian') {
+                    fb.className = 'feedback-box manual';
+                    fb.innerHTML = `📝 <b>Kunci Jawaban Model / Pembahasan:</b><br>${q.answer}<br><br>💡 <i>Petunjuk Guru: ${q.hint || ''}</i>`;
+                }
+                fb.style.display = 'block';
+            });
+
+            const finalPct = maxAuto > 0 ? Math.round((score / maxAuto) * 100) : 0;
+            document.getElementById('final-score').innerText = finalPct;
+            document.getElementById('score-detail').innerText = `Benar ${score} dari ${maxAuto} soal pilihan otomatis (PG, PG Kompleks, Memasangkan, Isian). 5 Soal Uraian diperiksa secara mandiri/oleh guru.`;
+            document.getElementById('score-board').style.display = 'block';
+            document.getElementById('footer-action').style.display = 'none';
+            document.getElementById('progress-fill').style.width = '100%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function retryExam() {
+            questions.forEach(q => {
+                if (q.type === 'pg' || q.type === 'pg_kompleks') {
+                    document.querySelectorAll(`input[name="q${q.id}"]`).forEach(i => i.checked = false);
+                } else if (q.type === 'memasangkan') {
+                    const sel = document.querySelector(`select[name="q${q.id}"]`);
+                    if (sel) sel.value = '';
+                } else {
+                    const el = document.querySelector(`[name="q${q.id}"]`);
+                    if (el) el.value = '';
+                }
+                const fb = document.getElementById(`fb-${q.id}`);
+                if (fb) fb.style.display = 'none';
+            });
+            document.getElementById('score-board').style.display = 'none';
+            document.getElementById('footer-action').style.display = 'block';
+            document.getElementById('progress-fill').style.width = '0%';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        render();
+    </script>
+</body>
+</html>

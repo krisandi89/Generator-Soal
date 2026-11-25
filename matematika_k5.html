@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTS Matematika Kelas 5 - SD Dilaraf Islamic School</title>
+    <title>ASAS Matematika Kelas 5 - SD Dilaraf Islamic School</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -213,6 +213,20 @@
             line-height: 1.75;
             font-size: 0.95em;
         }
+        .svg-box {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0 14px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .svg-box svg {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
+        }
         .options-group {
             display: flex;
             flex-direction: column;
@@ -342,13 +356,13 @@
             </div>
             <h1>➗ Matematika</h1>
             <p>SD DILARAF ISLAMIC SCHOOL — Kelas 5 (Sa'id bin Zaid)</p>
-            <div class="badge">Asesmen Sumatif Tengah Semester (ASTS) Ganjil • 40 Soal</div>
+            <div class="badge">Asesmen Sumatif Akhir Semester (ASAS) 2026/2027 • 40 Soal</div>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progress-fill"></div>
         </div>
         <div class="score-board" id="score-board">
-            <h2>📊 Hasil Ujian ASTS</h2>
+            <h2>📊 Hasil Ujian ASAS</h2>
             <div class="score-val" id="final-score">0</div>
             <p class="score-detail" id="score-detail"></p>
             <div class="score-actions">
@@ -368,33 +382,98 @@
         "id": 1,
         "type": "pg",
         "section": "I. Pilihan Ganda (10 Soal)",
-        "text": "Nama bilangan yang tepat dari lambang bilangan 74.528 adalah...",
+        "text": "Cara membaca bilangan cacah <b>648.309</b> yang benar adalah...",
         "options": [
-            "Tujuh puluh empat ribu lima ratus dua puluh delapan",
-            "Tujuh puluh empat ribu lima ratus delapan puluh dua",
-            "Tujuh ratus empat ribu lima ratus dua puluh delapan",
-            "Tujuh puluh ribu empat ratus lima puluh delapan"
+            "Enam ratus empat puluh delapan ribu tiga ratus sembilan puluh",
+            "Enam ratus empat puluh delapan ribu tiga ratus sembilan",
+            "Enam puluh empat ribu delapan ratus tiga puluh sembilan",
+            "Enam ratus empat puluh ribu delapan ratus tiga puluh sembilan"
         ],
-        "answer": 0,
-        "hint": "74 = tujuh puluh empat ribu, 5 = lima ratus, 28 = dua puluh delapan."
+        "answer": 1,
+        "hint": "648 ribu = enam ratus empat puluh delapan ribu; 309 = tiga ratus sembilan."
     },
     {
         "id": 2,
         "type": "pg",
-        "text": "Pada bilangan 86.415, angka 6 menempati nilai tempat...",
+        "text": "Lambang bilangan dari <i>'sembilan ratus dua puluh lima ribu empat ratus tujuh puluh'</i> adalah...",
         "options": [
-            "Puluh ribuan",
-            "Ribuan",
-            "Ratusan",
-            "Puluhan"
+            "925.407",
+            "925.470",
+            "902.547",
+            "952.470"
         ],
         "answer": 1,
-        "hint": "8 = puluh ribuan, 6 = ribuan (nilainya 6.000), 4 = ratusan, 1 = puluhan, 5 = satuan."
+        "hint": "Sembilan ratus dua puluh lima ribu = 925.000; empat ratus tujuh puluh = 470 -> 925.470."
     },
     {
         "id": 3,
         "type": "pg",
-        "text": "Tanda perbandingan yang tepat untuk mengisi titik-titik pada 63.850 ... 63.805 adalah...",
+        "text": "Pada bilangan <b>739.542</b>, angka <b>7</b> menempati nilai tempat...",
+        "options": [
+            "Puluhan ribu",
+            "Ratusan ribu",
+            "Ribuan",
+            "Ratusan"
+        ],
+        "answer": 1,
+        "hint": "7 = ratusan ribu, 3 = puluhan ribu, 9 = ribuan, 5 = ratusan, 4 = puluhan, 2 = satuan."
+    },
+    {
+        "id": 4,
+        "type": "pg",
+        "text": "Pada bilangan <b>482.615</b>, angka yang menempati nilai tempat <b>puluhan ribu</b> adalah angka...",
+        "options": [
+            "4",
+            "8",
+            "2",
+            "6"
+        ],
+        "answer": 1,
+        "hint": "482.615 -> 4 (ratusan ribu), 8 (puluhan ribu, nilainya 80.000), 2 (ribuan)."
+    },
+    {
+        "id": 5,
+        "type": "pg",
+        "text": "Hasil komposisi bilangan dari <b>500.000 + 40.000 + 7.000 + 300 + 20 + 8</b> adalah...",
+        "options": [
+            "547.328",
+            "547.238",
+            "574.328",
+            "540.728"
+        ],
+        "answer": 0,
+        "hint": "Gabungkan sesuai nilai tempat masing-masing: 547.328."
+    },
+    {
+        "id": 6,
+        "type": "pg",
+        "text": "Bentuk dekomposisi (uraian) yang benar dari bilangan <b>816.405</b> adalah...",
+        "options": [
+            "800.000 + 10.000 + 6.000 + 400 + 50",
+            "800.000 + 10.000 + 6.000 + 400 + 5",
+            "800.000 + 16.000 + 40 + 5",
+            "80.000 + 10.000 + 6.000 + 400 + 5"
+        ],
+        "answer": 1,
+        "hint": "8 = 800.000, 1 = 10.000, 6 = 6.000, 4 = 400, 0 = 0 puluhan, 5 = 5 satuan."
+    },
+    {
+        "id": 7,
+        "type": "pg",
+        "text": "Perhatikan gambar pecahan uang Rupiah berikut!<div class=\"svg-box\"><svg width=\"420\" height=\"145\" viewBox=\"0 0 420 145\" xmlns=\"http://www.w3.org/2000/svg\">\n  <rect x=\"5\" y=\"5\" width=\"410\" height=\"135\" rx=\"10\" fill=\"#f4f9fd\" stroke=\"#3498db\" stroke-width=\"2\"/>\n  <!-- 2 lembar Rp100.000 -->\n  <rect x=\"18\" y=\"18\" width=\"115\" height=\"50\" rx=\"5\" fill=\"#f5b7b1\" stroke=\"#c0392b\" stroke-width=\"2\"/>\n  <text x=\"75\" y=\"40\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#78281f\">Rp100.000</text>\n  <text x=\"75\" y=\"56\" font-size=\"9\" text-anchor=\"middle\" fill=\"#78281f\">(2 lembar)</text>\n  <!-- 1 lembar Rp50.000 -->\n  <rect x=\"148\" y=\"18\" width=\"115\" height=\"50\" rx=\"5\" fill=\"#aed6f1\" stroke=\"#2471a3\" stroke-width=\"2\"/>\n  <text x=\"205\" y=\"40\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#154360\">Rp50.000</text>\n  <text x=\"205\" y=\"56\" font-size=\"9\" text-anchor=\"middle\" fill=\"#154360\">(1 lembar)</text>\n  <!-- 3 lembar Rp20.000 -->\n  <rect x=\"278\" y=\"18\" width=\"122\" height=\"50\" rx=\"5\" fill=\"#a9dfbf\" stroke=\"#1e8449\" stroke-width=\"2\"/>\n  <text x=\"339\" y=\"40\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#145a32\">Rp20.000</text>\n  <text x=\"339\" y=\"56\" font-size=\"9\" text-anchor=\"middle\" fill=\"#145a32\">(3 lembar)</text>\n  <!-- 1 lembar Rp5.000 + 2 koin Rp1.000 -->\n  <rect x=\"65\" y=\"80\" width=\"120\" height=\"46\" rx=\"5\" fill=\"#f9e79f\" stroke=\"#b7950b\" stroke-width=\"2\"/>\n  <text x=\"125\" y=\"101\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#7d6608\">Rp5.000</text>\n  <text x=\"125\" y=\"116\" font-size=\"9\" text-anchor=\"middle\" fill=\"#7d6608\">(1 lembar)</text>\n  <circle cx=\"250\" cy=\"103\" r=\"22\" fill=\"#e5e8e8\" stroke=\"#7f8c8d\" stroke-width=\"2\"/>\n  <text x=\"250\" y=\"106\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#2c3e50\">Rp1.000</text>\n  <circle cx=\"305\" cy=\"103\" r=\"22\" fill=\"#e5e8e8\" stroke=\"#7f8c8d\" stroke-width=\"2\"/>\n  <text x=\"305\" y=\"106\" font-size=\"10\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#2c3e50\">Rp1.000</text>\n</svg></div>Jumlah seluruh nilai uang pada gambar tersebut adalah...",
+        "options": [
+            "Rp315.000",
+            "Rp317.000",
+            "Rp297.000",
+            "Rp327.000"
+        ],
+        "answer": 1,
+        "hint": "(2 x 100.000) + 50.000 + (3 x 20.000) + 5.000 + (2 x 1.000) = 200.000 + 50.000 + 60.000 + 5.000 + 2.000 = Rp317.000."
+    },
+    {
+        "id": 8,
+        "type": "pg",
+        "text": "Tanda perbandingan yang tepat untuk mengisi titik-titik pada <b>458.720 ... 458.270</b> adalah...",
         "options": [
             "< (Kurang dari)",
             "> (Lebih dari)",
@@ -402,480 +481,421 @@
             "≤ (Kurang dari sama dengan)"
         ],
         "answer": 1,
-        "hint": "Puluh ribuan, ribuan, dan ratusannya sama (63.8..), tetapi puluhan 5 lebih besar daripada 0, maka 63.850 > 63.805."
-    },
-    {
-        "id": 4,
-        "type": "pg",
-        "text": "Hasil dari penjumlahan 34.785 + 28.460 adalah...",
-        "options": [
-            "62.245",
-            "63.145",
-            "63.245",
-            "64.245"
-        ],
-        "answer": 2,
-        "hint": "34.785 + 28.460 = 63.245."
-    },
-    {
-        "id": 5,
-        "type": "pg",
-        "text": "Sebuah perpustakaan kota memiliki 45.320 buku bacaan. Bulan ini perpustakaan menerima kiriman sumbangan buku sebanyak 12.850 buku baru. Berapakah jumlah seluruh buku di perpustakaan sekarang?",
-        "options": [
-            "57.170 buku",
-            "58.170 buku",
-            "58.270 buku",
-            "59.170 buku"
-        ],
-        "answer": 1,
-        "hint": "45.320 + 12.850 = 58.170 buku."
-    },
-    {
-        "id": 6,
-        "type": "pg",
-        "text": "Hasil dari pengurangan 75.200 - 38.645 adalah...",
-        "options": [
-            "36.555",
-            "36.655",
-            "37.555",
-            "37.655"
-        ],
-        "answer": 0,
-        "hint": "Gunakan teknik meminjam: 75.200 - 38.645 = 36.555."
-    },
-    {
-        "id": 7,
-        "type": "pg",
-        "text": "Pak Rahmat memiliki persediaan 50.000 kg beras di gudang. Sebanyak 27.450 kg beras telah didistribusikan ke pasar tradisional. Berapa sisa beras yang masih ada di gudang Pak Rahmat?",
-        "options": [
-            "22.450 kg",
-            "22.550 kg",
-            "23.550 kg",
-            "24.550 kg"
-        ],
-        "answer": 1,
-        "hint": "50.000 - 27.450 = 22.550 kg."
-    },
-    {
-        "id": 8,
-        "type": "pg",
-        "text": "Hasil perkalian dari 3.425 x 7 adalah...",
-        "options": [
-            "23.875",
-            "23.975",
-            "24.075",
-            "24.975"
-        ],
-        "answer": 1,
-        "hint": "3.425 x 7 = 23.975."
+        "hint": "Ratusan ribu, puluhan ribu, dan ribuan sama (458), sedangkan angka ratusan 7 > 2, maka 458.720 > 458.270."
     },
     {
         "id": 9,
         "type": "pg",
-        "text": "Hasil pembagian dari 14.400 : 6 adalah...",
+        "text": "Urutan bilangan berikut dari yang <b>terbesar</b> ke yang terkecil adalah...<br><b>325.400 ; 512.000 ; 298.900 ; 510.800</b>",
         "options": [
-            "2.300",
-            "2.400",
-            "2.500",
-            "2.600"
+            "512.000 ; 510.800 ; 325.400 ; 298.900",
+            "510.800 ; 512.000 ; 325.400 ; 298.900",
+            "298.900 ; 325.400 ; 510.800 ; 512.000",
+            "512.000 ; 325.400 ; 510.800 ; 298.900"
         ],
-        "answer": 1,
-        "hint": "144 : 6 = 24, maka 14.400 : 6 = 2.400."
+        "answer": 0,
+        "hint": "Bandingkan nilai ratusan ribu lalu ribuan: 512.000 > 510.800 > 325.400 > 298.900."
     },
     {
         "id": 10,
         "type": "pg",
-        "text": "Perhatikan barisan pola bilangan berikut: 12, 18, 24, 30, ... Dua bilangan selanjutnya untuk melanjutkan pola tersebut adalah...",
+        "text": "Urutan bilangan berikut dari yang <b>terkecil</b> ke yang terbesar adalah...<br><b>742.100 ; 689.500 ; 740.900 ; 801.000</b>",
         "options": [
-            "34 dan 40",
-            "36 dan 42",
-            "36 dan 44",
-            "38 dan 44"
+            "689.500 ; 740.900 ; 742.100 ; 801.000",
+            "689.500 ; 742.100 ; 740.900 ; 801.000",
+            "740.900 ; 689.500 ; 742.100 ; 801.000",
+            "801.000 ; 742.100 ; 740.900 ; 689.500"
         ],
-        "answer": 1,
-        "hint": "Pola bertambah 6 (+6): 30 + 6 = 36, lalu 36 + 6 = 42."
+        "answer": 0,
+        "hint": "Urutan dari kecil ke besar: 689.500 < 740.900 < 742.100 < 801.000."
     },
     {
         "id": 11,
         "type": "pg_kompleks",
-        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih Lebih Dari 1 Jawaban Benar)",
-        "text": "Diberikan bilangan 94.725. Pernyataan yang bernilai BENAR mengenai nilai tempat dan nilai angka dari bilangan tersebut adalah... (Pilih 3 jawaban benar)",
+        "section": "II. Pilihan Ganda Kompleks (10 Soal - Pilih lebih dari satu jawaban benar)",
+        "text": "Diketahui bilangan <b>945.381</b>. Manakah pernyataan nilai tempat yang benar? (Pilih 3 jawaban benar)",
         "options": [
-            "Angka 9 menempati nilai tempat puluh ribuan dengan nilai 90.000",
-            "Angka 4 menempati nilai tempat ribuan dengan nilai 4.000",
-            "Angka 7 menempati nilai tempat ratusan dengan nilai 700",
-            "Angka 2 menempati nilai tempat satuan dengan nilai 2"
+            "Angka 9 menempati nilai tempat ratusan ribu (900.000)",
+            "Angka 4 menempati nilai tempat puluhan ribu (40.000)",
+            "Angka 8 menempati nilai tempat puluhan (80)",
+            "Angka 3 menempati nilai tempat ribuan (3.000)"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "Angka 2 menempati nilai tempat puluhan (nilainya 20), sedangkan angka 5 yang menempati satuan."
+        "hint": "Angka 3 pada 945.381 menempati nilai tempat ratusan (300), sedangkan ribuan adalah 5."
     },
     {
         "id": 12,
         "type": "pg_kompleks",
-        "text": "Pernyataan perbandingan bilangan berikut yang bernilai BENAR adalah... (Pilih 3 jawaban benar)",
+        "text": "Manakah pasangan lambang bilangan dan nama bilangan yang <b>BENAR</b>? (Pilih 3 jawaban benar)",
         "options": [
-            "45.890 > 45.809",
-            "72.350 < 72.530",
-            "89.000 = 89.000",
-            "64.125 > 64.215"
+            "304.510 = Tiga ratus empat ribu lima ratus sepuluh",
+            "780.025 = Tujuh ratus delapan puluh ribu dua puluh lima",
+            "1.000.000 = Satu juta",
+            "520.304 = Lima puluh dua ribu tiga ratus empat"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "Pilihan ke-4 salah karena 64.125 lebih kecil daripada 64.215."
+        "hint": "520.304 dibaca lima ratus dua puluh ribu tiga ratus empat."
     },
     {
         "id": 13,
         "type": "pg_kompleks",
-        "text": "Urutan bilangan berikut dari yang TERBESAR ke yang TERKECIL yang benar adalah... (Pilih 2 jawaban benar)",
+        "text": "Manakah hasil komposisi bilangan berikut yang bernilai tepat <b>672.940</b>? (Pilih 2 jawaban benar)",
         "options": [
-            "85.400; 82.900; 78.500; 75.200",
-            "90.100; 88.500; 84.300; 80.000",
-            "52.000; 58.000; 63.000; 70.000",
-            "43.500; 45.200; 42.100; 40.000"
+            "600.000 + 70.000 + 2.000 + 900 + 40",
+            "6 ratusan ribu + 7 puluhan ribu + 2 ribuan + 9 ratusan + 4 puluhan + 0 satuan",
+            "600.000 + 72.000 + 90 + 4",
+            "60.000 + 7.000 + 200 + 90 + 4"
         ],
         "answer": [
             0,
             1
         ],
-        "hint": "Pilihan A dan B disusun turun dari nilai terbesar ke terkecil."
+        "hint": "672.940 terdiri dari 6 ratusan ribu, 7 puluhan ribu, 2 ribuan, 9 ratusan, 4 puluhan, 0 satuan."
     },
     {
         "id": 14,
         "type": "pg_kompleks",
-        "text": "Operasi penjumlahan bilangan cacah berikut yang menghasilkan nilai 50.000 adalah... (Pilih 2 jawaban benar)",
+        "text": "Manakah perbandingan dua bilangan cacah berikut yang <b>BENAR</b>? (Pilih 3 jawaban benar)",
         "options": [
-            "28.500 + 21.500",
-            "35.250 + 14.750",
-            "24.000 + 25.000",
-            "41.200 + 9.900"
-        ],
-        "answer": [
-            0,
-            1
-        ],
-        "hint": "28.500 + 21.500 = 50.000 dan 35.250 + 14.750 = 50.000."
-    },
-    {
-        "id": 15,
-        "type": "pg_kompleks",
-        "text": "Operasi hitung perkalian berikut yang hasilnya BENAR adalah... (Pilih 3 jawaban benar)",
-        "options": [
-            "425 x 12 = 5.100",
-            "650 x 8 = 5.200",
-            "1.200 x 5 = 6.000",
-            "250 x 20 = 4.000"
+            "834.500 > 834.050",
+            "299.999 < 300.001",
+            "615.420 > 614.999",
+            "490.100 > 501.000"
         ],
         "answer": [
             0,
             1,
             2
         ],
-        "hint": "250 x 20 seharusnya 5.000, bukan 4.000."
+        "hint": "490.100 lebih kecil (<) daripada 501.000."
+    },
+    {
+        "id": 15,
+        "type": "pg_kompleks",
+        "text": "Bilangan manakah yang nilainya berada di antara <b>450.000</b> dan <b>600.000</b>? (Pilih 3 jawaban benar)",
+        "options": [
+            "475.200",
+            "512.890",
+            "599.999",
+            "605.100"
+        ],
+        "answer": [
+            0,
+            1,
+            2
+        ],
+        "hint": "475.200, 512.890, dan 599.999 lebih besar dari 450.000 dan lebih kecil dari 600.000."
     },
     {
         "id": 16,
         "type": "pg_kompleks",
-        "text": "Hasil pembagian berikut yang tepat adalah... (Pilih 2 jawaban benar)",
+        "text": "Manakah susunan pecahan uang Rupiah yang jumlah nilainya tepat sama dengan <b>Rp275.000</b>? (Pilih 2 jawaban benar)",
         "options": [
-            "18.000 : 9 = 2.000",
-            "35.000 : 7 = 5.000",
-            "48.000 : 6 = 7.000",
-            "24.000 : 4 = 8.000"
+            "2 lembar Rp100.000 + 1 lembar Rp50.000 + 1 lembar Rp20.000 + 1 lembar Rp5.000",
+            "5 lembar Rp50.000 + 2 lembar Rp10.000 + 1 lembar Rp5.000",
+            "2 lembar Rp100.000 + 3 lembar Rp20.000 + 1 lembar Rp10.000",
+            "1 lembar Rp100.000 + 3 lembar Rp50.000 + 1 lembar Rp20.000"
         ],
         "answer": [
             0,
             1
         ],
-        "hint": "48.000 : 6 = 8.000 (bukan 7.000), dan 24.000 : 4 = 6.000 (bukan 8.000)."
+        "hint": "Opsi A = 200rb+50rb+20rb+5rb = 275rb; Opsi B = 250rb+20rb+5rb = 275rb."
     },
     {
         "id": 17,
         "type": "pg_kompleks",
-        "text": "Perhatikan operasi hitung campuran: 25.000 + 5.000 x 4 - 10.000. Aturan urutan pengerjaan operasi yang tepat adalah... (Pilih 2 jawaban benar)",
+        "text": "Pada bilangan <b>508.267</b>, manakah pernyataan tentang angka dan nilainya yang benar? (Pilih 3 jawaban benar)",
         "options": [
-            "Operasi perkalian (5.000 x 4) harus dikerjakan terlebih dahulu menghasilkan 20.000",
-            "Setelah perkalian, operasi penjumlahan dan pengurangan dikerjakan urut dari kiri",
-            "Operasi penjumlahan (25.000 + 5.000) wajib dikerjakan lebih dulu dari perkalian",
-            "Hasil akhir dari operasi tersebut adalah 110.000"
+            "Nilai angka 5 adalah 500.000",
+            "Angka 0 menempati puluhan ribu dengan nilai 0",
+            "Angka 8 menempati ribuan dan angka 7 menempati satuan",
+            "Nilai angka 6 adalah 600"
         ],
         "answer": [
             0,
-            1
+            1,
+            2
         ],
-        "hint": "Perkalian lebih kuat: 5.000 x 4 = 20.000. Lalu 25.000 + 20.000 - 10.000 = 35.000."
+        "hint": "Angka 6 berada di tempat puluhan sehingga nilainya 60, bukan 600."
     },
     {
         "id": 18,
         "type": "pg_kompleks",
-        "text": "Pola bilangan turun berikut yang memiliki selisih atau beda -15 pada setiap sukunya adalah... (Pilih 2 jawaban benar)",
+        "text": "Dari kartu angka: <b>2, 8, 5, 0, 9, 3</b> (masing-masing dipakai tepat satu kali), pernyataan yang benar adalah... (Pilih 2 jawaban benar)",
         "options": [
-            "100, 85, 70, 55",
-            "90, 75, 60, 45",
-            "120, 100, 80, 60",
-            "80, 70, 60, 50"
+            "Bilangan 6 digit terbesar yang dapat disusun adalah 985.320",
+            "Bilangan 6 digit terkecil yang dapat disusun adalah 203.589",
+            "Bilangan terbesar yang dapat disusun adalah 985.230",
+            "Bilangan terkecil yang dapat disusun dimulai dari angka 0 menjadi 023.589"
         ],
         "answer": [
             0,
             1
         ],
-        "hint": "Pilihan A: 100-15=85, 85-15=70, 70-15=55. Pilihan B: 90-15=75, 75-15=60, 60-15=45."
+        "hint": "Untuk 6 digit terkecil, angka ratusan ribu tidak boleh 0, sehingga 203.589."
     },
     {
         "id": 19,
         "type": "pg_kompleks",
-        "text": "Sebuah pabrik roti mengemas kue bolu ke dalam kotak. Tiap kotak berisi 24 buah bolu. Jika pabrik membuat 35 kotak bolu, maka pernyataan yang benar adalah... (Pilih 2 jawaban benar)",
+        "text": "Diketahui harga 4 barang: Sepeda Rp850.000, Sepatu Rp325.000, Tas Rp240.000, Helm Rp195.000. Pernyataan perbandingan yang benar adalah... (Pilih 3 jawaban benar)",
         "options": [
-            "Kalimat matematikanya adalah 35 x 24",
-            "Jumlah total bolu yang dikemas adalah 840 buah bolu",
-            "Jumlah total bolu yang dikemas adalah 720 buah bolu",
-            "Kalimat matematikanya adalah 35 + 24"
+            "Barang yang paling mahal adalah Sepeda",
+            "Barang yang paling murah adalah Helm",
+            "Urutan dari termurah ke termahal: Helm, Tas, Sepatu, Sepeda",
+            "Tas lebih mahal daripada Sepatu"
         ],
         "answer": [
             0,
-            1
+            1,
+            2
         ],
-        "hint": "35 x 24 = 840 buah bolu."
+        "hint": "195.000 < 240.000 < 325.000 < 850.000."
     },
     {
         "id": 20,
         "type": "pg_kompleks",
-        "text": "Ibu memiliki uang Rp90.000. Ibu membeli 3 kg apel seharga Rp20.000 per kg dan 2 kg jeruk seharga Rp12.000 per kg. Pernyataan yang benar adalah... (Pilih 2 jawaban benar)",
+        "text": "Manakah dekomposisi bilangan yang benar untuk angka <b>394.126</b>? (Pilih 2 jawaban benar)",
         "options": [
-            "Total uang yang dibayarkan ibu adalah Rp84.000",
-            "Sisa uang kembalian yang diterima ibu adalah Rp6.000",
-            "Harga seluruh apel adalah Rp50.000",
-            "Sisa uang ibu adalah Rp16.000"
+            "300.000 + 90.000 + 4.000 + 100 + 20 + 6",
+            "390.000 + 4.100 + 26",
+            "300.000 + 9.000 + 400 + 100 + 26",
+            "300.000 + 90.000 + 400 + 120 + 6"
         ],
         "answer": [
             0,
             1
         ],
-        "hint": "Apel: 3 x 20.000 = 60.000. Jeruk: 2 x 12.000 = 24.000. Total belanja = 84.000. Sisa = 90.000 - 84.000 = Rp6.000."
+        "hint": "300.000+90.000+4.000+100+20+6 = 394.126, dan 390.000+4.100+26 = 394.126."
     },
     {
         "id": 21,
         "type": "memasangkan",
-        "section": "III. Memasangkan (5 Soal - Pasangkan Pernyataan dengan Jawaban Tepat)",
-        "text": "Pasangkan lambang bilangan berikut dengan nama bilangannya: <b>56.708</b>",
+        "section": "III. Memasangkan (5 Soal - Pasangkan Angka yang Ditebalkan dengan Nilai Tempatnya)",
+        "text": "Pasangkan angka bergaris bawah/tebal pada bilangan <b><u>8</u>54.219</b> dengan nilai tempatnya:",
         "options": [
-            "Lima puluh enam ribu tujuh ratus delapan",
-            "Enam puluh lima ribu delapan ratus tujuh",
-            "Tujuh puluh lima ribu enam ratus delapan puluh",
-            "Empat puluh delapan ribu lima ratus dua puluh",
-            "Sembilan puluh dua ribu empat ratus lima"
+            "Ratusan ribu",
+            "Puluhan ribu",
+            "Ribuan",
+            "Ratusan",
+            "Satuan"
         ],
-        "answer": "Lima puluh enam ribu tujuh ratus delapan",
-        "hint": "56 ribu + 708."
+        "answer": "Ratusan ribu",
+        "hint": "Digit pertama dari kiri pada bilangan 6 angka adalah ratusan ribu."
     },
     {
         "id": 22,
         "type": "memasangkan",
-        "text": "Pasangkan lambang bilangan berikut dengan nama bilangannya: <b>65.807</b>",
+        "text": "Pasangkan angka bergaris bawah/tebal pada bilangan <b>4<u>7</u>2.830</b> dengan nilai tempatnya:",
         "options": [
-            "Lima puluh enam ribu tujuh ratus delapan",
-            "Enam puluh lima ribu delapan ratus tujuh",
-            "Tujuh puluh lima ribu enam ratus delapan puluh",
-            "Empat puluh delapan ribu lima ratus dua puluh",
-            "Sembilan puluh dua ribu empat ratus lima"
+            "Ratusan ribu",
+            "Puluhan ribu",
+            "Ribuan",
+            "Ratusan",
+            "Satuan"
         ],
-        "answer": "Enam puluh lima ribu delapan ratus tujuh",
-        "hint": "65 ribu + 807."
+        "answer": "Puluhan ribu",
+        "hint": "Angka 7 menempati puluhan ribu (nilainya 70.000)."
     },
     {
         "id": 23,
         "type": "memasangkan",
-        "text": "Pasangkan operasi hitung berikut dengan hasil perhitungannya yang tepat: <b>45.000 : 15</b>",
+        "text": "Pasangkan angka bergaris bawah/tebal pada bilangan <b>61<u>9</u>.450</b> dengan nilai tempatnya:",
         "options": [
-            "3.000",
-            "4.000",
-            "5.000",
-            "6.000",
-            "7.000"
+            "Ratusan ribu",
+            "Puluhan ribu",
+            "Ribuan",
+            "Ratusan",
+            "Satuan"
         ],
-        "answer": "3.000",
-        "hint": "45 : 15 = 3, maka 45.000 : 15 = 3.000."
+        "answer": "Ribuan",
+        "hint": "Angka 9 menempati ribuan (nilainya 9.000)."
     },
     {
         "id": 24,
         "type": "memasangkan",
-        "text": "Pasangkan operasi hitung berikut dengan hasil perhitungannya yang tepat: <b>250 x 16</b>",
+        "text": "Pasangkan angka bergaris bawah/tebal pada bilangan <b>530.<u>6</u>82</b> dengan nilai tempatnya:",
         "options": [
-            "3.000",
-            "4.000",
-            "5.000",
-            "6.000",
-            "7.000"
+            "Ratusan ribu",
+            "Puluhan ribu",
+            "Ribuan",
+            "Ratusan",
+            "Satuan"
         ],
-        "answer": "4.000",
-        "hint": "250 x 4 = 1.000, 1.000 x 4 = 4.000."
+        "answer": "Ratusan",
+        "hint": "Angka 6 menempati ratusan (nilainya 600)."
     },
     {
         "id": 25,
         "type": "memasangkan",
-        "text": "Pasangkan operasi hitung berikut dengan hasil perhitungannya yang tepat: <b>20.000 - 8.000 + 3.000 x 5</b>",
+        "text": "Pasangkan angka bergaris bawah/tebal pada bilangan <b>792.41<u>5</u></b> dengan nilai tempatnya:",
         "options": [
-            "27.000",
-            "4.000",
-            "3.000",
-            "5.000",
-            "15.000"
+            "Ratusan ribu",
+            "Puluhan ribu",
+            "Ribuan",
+            "Ratusan",
+            "Satuan"
         ],
-        "answer": "27.000",
-        "hint": "3.000 x 5 = 15.000. Lalu 20.000 - 8.000 = 12.000. 12.000 + 15.000 = 27.000."
+        "answer": "Satuan",
+        "hint": "Digit paling kanan adalah satuan."
     },
     {
         "id": 26,
         "type": "isian",
         "section": "IV. Isian Singkat (10 Soal)",
-        "text": "Lambang bilangan dari 'delapan puluh empat ribu dua ratus sembilan' ditulis angka...",
-        "answer": "84.209",
+        "text": "Tuliskan lambang bilangan dari: <i>empat ratus tujuh puluh lima ribu dua ratus enam puluh</i>!",
+        "answer": "475.260",
         "alt": [
-            "84209",
-            "84.209"
+            "475.260",
+            "475260"
         ],
-        "hint": "84 di puluh ribuan/ribuan, 2 di ratusan, 0 di puluhan, 9 di satuan."
+        "hint": "475.260."
     },
     {
         "id": 27,
         "type": "isian",
-        "text": "Pada bilangan 78.435, nilai angka dari angka 8 yang menempati tempat ribuan adalah...",
-        "answer": "8.000",
+        "text": "Tuliskan nama bilangan dari angka <b>608.050</b> dengan huruf!",
+        "answer": "Enam ratus delapan ribu lima puluh",
         "alt": [
-            "8000",
-            "8.000",
-            "delapan ribu"
+            "enam ratus delapan ribu lima puluh"
         ],
-        "hint": "Angka 8 di nilai tempat ribuan bernilai 8.000."
+        "hint": "608 ribu = enam ratus delapan ribu; 050 = lima puluh."
     },
     {
         "id": 28,
         "type": "isian",
-        "text": "Lengkapilah dengan tanda perbandingan (<, >, atau =): 71.450 ... 71.540",
-        "answer": "< (Kurang dari)",
+        "text": "Pada bilangan <b>842.791</b>, angka <b>9</b> menempati nilai tempat...",
+        "answer": "Puluhan",
+        "alt": [
+            "puluhan"
+        ],
+        "hint": "8=ratusan ribu, 4=puluhan ribu, 2=ribuan, 7=ratusan, 9=puluhan, 1=satuan."
+    },
+    {
+        "id": 29,
+        "type": "isian",
+        "text": "Pada bilangan <b>396.514</b>, nilai angka <b>9</b> adalah...",
+        "answer": "90.000",
+        "alt": [
+            "90.000",
+            "90000",
+            "sembilan puluh ribu"
+        ],
+        "hint": "Angka 9 berada di tempat puluhan ribu sehingga nilainya 90.000."
+    },
+    {
+        "id": 30,
+        "type": "isian",
+        "text": "Hasil komposisi dari <b>700.000 + 50.000 + 3.000 + 600 + 40 + 2</b> adalah...",
+        "answer": "753.642",
+        "alt": [
+            "753.642",
+            "753642"
+        ],
+        "hint": "Susun setiap nilai tempat: 753.642."
+    },
+    {
+        "id": 31,
+        "type": "isian",
+        "text": "Lengkapilah dekomposisi berikut: <b>529.380 = 500.000 + ... + 9.000 + 300 + 80</b>",
+        "answer": "20.000",
+        "alt": [
+            "20.000",
+            "20000"
+        ],
+        "hint": "Angka 2 menempati puluhan ribu = 20.000."
+    },
+    {
+        "id": 32,
+        "type": "isian",
+        "text": "Isilah tanda perbandingan (<, >, atau =) yang tepat: <b>684.510 ... 684.590</b>",
+        "answer": "<",
         "alt": [
             "<",
             "kurang dari",
             "lebih kecil"
         ],
-        "hint": "Ratusan 4 lebih kecil daripada 5."
-    },
-    {
-        "id": 29,
-        "type": "isian",
-        "text": "Berapakah hasil penjumlahan dari 42.630 + 37.890?",
-        "answer": "80.520",
-        "alt": [
-            "80520",
-            "80.520"
-        ],
-        "hint": "42.630 + 37.890 = 80.520."
-    },
-    {
-        "id": 30,
-        "type": "isian",
-        "text": "Berapakah hasil pengurangan dari 64.000 - 27.350?",
-        "answer": "36.650",
-        "alt": [
-            "36650",
-            "36.650"
-        ],
-        "hint": "64.000 - 27.350 = 36.650."
-    },
-    {
-        "id": 31,
-        "type": "isian",
-        "text": "Berapakah hasil perkalian dari 1.250 x 8?",
-        "answer": "10.000",
-        "alt": [
-            "10000",
-            "10.000"
-        ],
-        "hint": "1.250 x 8 = 10.000."
-    },
-    {
-        "id": 32,
-        "type": "isian",
-        "text": "Berapakah hasil pembagian dari 36.000 : 12?",
-        "answer": "3.000",
-        "alt": [
-            "3000",
-            "3.000"
-        ],
-        "hint": "36 : 12 = 3, tambahkan tiga nol di belakang = 3.000."
+        "hint": "684.510 lebih kecil (<) daripada 684.590."
     },
     {
         "id": 33,
         "type": "isian",
-        "text": "Hitunglah hasil operasi hitung campuran berikut: 15.000 + 4.000 x 3 =",
-        "answer": "27.000",
+        "text": "Santi mempunyai 4 lembar uang Rp50.000, 2 lembar Rp10.000, dan 1 lembar Rp5.000. Total uang Santi seluruhnya adalah Rp...",
+        "answer": "225.000",
         "alt": [
-            "27000",
-            "27.000"
+            "225.000",
+            "225000",
+            "rp225.000",
+            "rp 225.000"
         ],
-        "hint": "Dahulukan perkalian: 4.000 x 3 = 12.000. Lalu 15.000 + 12.000 = 27.000."
+        "hint": "(4 x 50.000) + (2 x 10.000) + 5.000 = 200.000 + 20.000 + 5.000 = 225.000."
     },
     {
         "id": 34,
         "type": "isian",
-        "text": "Tentukan angka selanjutnya pada pola bilangan berikut: 15, 22, 29, 36, ...",
-        "answer": "43",
+        "text": "Bilangan cacah yang tepat setelah bilangan <b>999.999</b> adalah...",
+        "answer": "1.000.000",
         "alt": [
-            "43"
+            "1.000.000",
+            "1000000",
+            "satu juta"
         ],
-        "hint": "Pola bertambah 7 (+7): 36 + 7 = 43."
+        "hint": "999.999 + 1 = 1.000.000."
     },
     {
         "id": 35,
         "type": "isian",
-        "text": "Tentukan angka selanjutnya pada pola bilangan turun berikut: 80, 72, 64, 56, ...",
-        "answer": "48",
+        "text": "Dari bilangan 415.000, 451.000, dan 405.900, bilangan yang nilainya paling besar adalah...",
+        "answer": "451.000",
         "alt": [
-            "48"
+            "451.000",
+            "451000"
         ],
-        "hint": "Pola berkurang 8 (-8): 56 - 8 = 48."
+        "hint": "Bandingkan puluhan ribu: 5 > 1 > 0, jadi 451.000 terbesar."
     },
     {
         "id": 36,
         "type": "uraian",
         "section": "V. Uraian / Esai (5 Soal)",
-        "text": "Urutkan bilangan-bilangan berikut dari yang terbesar ke yang terkecil:<br><b>58.750; 58.075; 58.705; 58.570; 58.507</b>!",
-        "answer": "Urutan dari yang terbesar ke terkecil adalah:<br><b>58.750 > 58.705 > 58.570 > 58.507 > 58.075</b>",
-        "hint": "Bandingkan angka ribuan, ratusan, puluhan, dan satuannya secara cermat."
+        "text": "Tuliskan cara membaca bilangan berikut dan uraikan ke dalam bentuk dekomposisinya!<br>a. <b>748.325</b><br>b. <b>905.640</b>",
+        "answer": "a. <b>748.325</b><br>- Dibaca: Tujuh ratus empat puluh delapan ribu tiga ratus dua puluh lima.<br>- Dekomposisi: 700.000 + 40.000 + 8.000 + 300 + 20 + 5.<br><br>b. <b>905.640</b><br>- Dibaca: Sembilan ratus lima ribu enam ratus empat puluh.<br>- Dekomposisi: 900.000 + 5.000 + 600 + 40.",
+        "hint": "Pastikan nama bilangan dan setiap nilai tempat diuraikan dengan benar."
     },
     {
         "id": 37,
         "type": "uraian",
-        "text": "Sebuah koperasi sekolah memiliki modal awal sebesar Rp85.000. Pada minggu pertama dibelanjakan untuk membeli buku tulis sebesar Rp34.500 dan alat tulis sebesar Rp22.750. Berapa sisa uang kas koperasi sekolah tersebut sekarang?",
-        "answer": "Total pengeluaran = Rp34.500 + Rp22.750 = Rp57.250.<br>Sisa uang kas koperasi = Rp85.000 - Rp57.250 = <b>Rp27.750</b>.",
-        "hint": "Hitung jumlah belanja terlebih dahulu, kemudian kurangkan dari modal awal."
+        "text": "Tentukan nilai tempat dan nilai angka dari setiap digit pada bilangan <b>863.472</b>!",
+        "answer": "- 8 = ratusan ribu (nilainya 800.000)<br>- 6 = puluhan ribu (nilainya 60.000)<br>- 3 = ribuan (nilainya 3.000)<br>- 4 = ratusan (nilainya 400)<br>- 7 = puluhan (nilainya 70)<br>- 2 = satuan (nilainya 2)",
+        "hint": "Sebutkan keenam nilai tempat dari ratusan ribu hingga satuan."
     },
     {
         "id": 38,
         "type": "uraian",
-        "text": "Di sebuah gudang terdapat 45 kardus mie instan. Setiap kardus berisi 40 bungkus mie. Mie tersebut akan disumbangkan kepada 10 panti asuhan sama banyak. Berapa bungkus mie instan yang diterima oleh setiap panti asuhan?",
-        "answer": "Langkah pengerjaan:<br>1. Total seluruh mie = 45 x 40 = 1.800 bungkus.<br>2. Bagian per panti asuhan = 1.800 : 10 = <b>180 bungkus mie instan</b>.",
-        "hint": "Kalikan jumlah kardus dengan isi per kardus, lalu bagi dengan jumlah panti asuhan."
+        "text": "Ibu membeli tas seharga Rp185.000 dan sepatu seharga Rp260.000. Jika Ibu membayar dengan 5 lembar uang Rp100.000, berapa total belanja Ibu dan berapa uang kembaliannya?",
+        "answer": "- Total belanja = Rp185.000 + Rp260.000 = <b>Rp445.000</b>.<br>- Uang yang dibayarkan = 5 x Rp100.000 = <b>Rp500.000</b>.<br>- Uang kembalian = Rp500.000 - Rp445.000 = <b>Rp55.000</b>.",
+        "hint": "Hitung jumlah belanja dulu, lalu kurangkan dari total uang yang dibayarkan."
     },
     {
         "id": 39,
         "type": "uraian",
-        "text": "Hitunglah hasil dari operasi hitung campuran berikut dengan menuliskan langkah-langkah pengerjaannya:<br><b>40.000 - 18.000 : 6 + 2.500 x 4</b>!",
-        "answer": "Langkah-langkah pengerjaan:<br>1. Kerjakan pembagian: 18.000 : 6 = 3.000<br>2. Kerjakan perkalian: 2.500 x 4 = 10.000<br>3. Hitung pengurangan dan penjumlahan dari kiri:<br>40.000 - 3.000 + 10.000 = 37.000 + 10.000 = <b>47.000</b>.",
-        "hint": "Dahulukan pembagian dan perkalian sebelum pengurangan dan penjumlahan."
+        "text": "Urutkan bilangan-bilangan berikut:<br><b>540.200 ; 498.750 ; 542.100 ; 610.000 ; 509.800</b><br>a. Dari yang <b>terkecil</b> ke yang terbesar.<br>b. Dari yang <b>terbesar</b> ke yang terkecil.",
+        "answer": "a. <b>Terkecil ke terbesar:</b> 498.750 ; 509.800 ; 540.200 ; 542.100 ; 610.000<br>b. <b>Terbesar ke terkecil:</b> 610.000 ; 542.100 ; 540.200 ; 509.800 ; 498.750",
+        "hint": "Periksa nilai ratusan ribu lalu puluhan ribu dan ribuan dengan teliti."
     },
     {
         "id": 40,
         "type": "uraian",
-        "text": "Tentukan aturan pola bilangan berikut dan tentukan tiga bilangan selanjutnya:<br><b>5, 12, 19, 26, ..., ..., ...</b>!",
-        "answer": "Aturan pola bilangan adalah <b>bertambah 7 (+7)</b> pada setiap bilangan berikutnya.<br>Tiga bilangan selanjutnya:<br>1. 26 + 7 = <b>33</b><br>2. 33 + 7 = <b>40</b><br>3. 40 + 7 = <b>47</b><br>Sehingga barisannya menjadi: 5, 12, 19, 26, <b>33, 40, 47</b>.",
-        "hint": "Cari selisih antarsuku yang berdekatan (12-5=7), lalu tambahkan 7 ke suku terakhir secara berurutan."
+        "text": "Dari angka <b>1, 4, 6, 7, 8, 9</b> (tanpa pengulangan), buatlah:<br>a. Bilangan 6 digit paling besar!<br>b. Bilangan 6 digit paling kecil!<br>c. Bandingkan kedua bilangan tersebut dengan tanda perbandingan!",
+        "answer": "a. Bilangan terbesar = <b>987.641</b><br>b. Bilangan terkecil = <b>146.789</b><br>c. Perbandingan: <b>987.641 > 146.789</b> (atau 146.789 < 987.641)",
+        "hint": "Susun angka dari besar ke kecil untuk nilai terbesar, dan sebaliknya."
     }
 ];
 
